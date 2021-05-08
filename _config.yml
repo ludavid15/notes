@@ -1,0 +1,26 @@
+# Dependencies
+markdown:         kramdown
+highlighter:      rouge
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            Notes
+tagline:          'A Personal Blog'
+description:      'A Personal Blog'
+url:              https://ludavid15.github.io/
+baseurl:          /blog
+
+author:
+  name:           'David Lu'
+  url:            
+
+paginate:         5
+
+# Custom vars
+version:          2.1.0
+
+
+github:
+  repo:           
