@@ -10,7 +10,7 @@ title:            Notes
 tagline:          'A Personal Blog'
 description:      'A Personal Blog'
 url:              https://ludavid15.github.io/
-baseurl:          /notes
+baseurl:          /notes/
 
 
 author:
