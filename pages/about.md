@@ -1,6 +1,8 @@
 ---
 layout: page
 title: About
+permalink: /notes/About/
+
 ---
 
 <p class="message">

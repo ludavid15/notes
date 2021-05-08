@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Music Theory
-permalink: /musicTheory/
+permalink: /notes/musicTheory/
 ---
 
 This is a page dedicated to music theory. 
