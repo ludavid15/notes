@@ -1,8 +1,8 @@
 ---
 layout: page
 title: About
-permalink: /About/
-
+permalink: /about/
+date: 2021-05-05
 ---
 
 <p class="message">
