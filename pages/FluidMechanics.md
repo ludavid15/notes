@@ -5,11 +5,23 @@ permalink: /Fluids/
 date: 2021-05-05
 ---
 
-Classical fluid dynamics is a subset of continuum mechanics. That is, we don't really care what the individual particles are doing. 
+To be clear, when we talk about fluid mechanics, we are not just talking about the second state of matter. It honestly would make a lot more sense if we called it "flow mechanics", but too many textbooks have been printed now to change that. In any case, we're stuck with the term fluid mechanics, so that's what we'll be working with here.
 
-> Continuums are characterized by the existence of shear, and by having continuity (duh). 
+In most cases, we'll be dealing with so called **Newtonion fluids**. Non-newtonian fluids are weird, and I haven't studied them, so there won't be anything about them here. 
 
-But watch out! When the density is really low, (such as in space) the continuum assumptions fall apart, at which point we switch back over to modelcular dynamics.
+While we're laying down the groundwork here, it's worth mentioning that classical fluids mechanics is treated as a subset of continuum mechanics. This is an assumption we make to simplify the problem.
+
+> Continuums are characterized by the existence of shear, and by being continuous (duh). 
+
+But watch out! When the density is really low, (such as in space) the continuum assumptions fall apart, at which point we must switch back over to modelcular dynamics. This changes the fundemental approach, and in this scenario things like the Navier-Stokes equations do not apply.
+
+### Newtonian Fluid
+
+A Newtonian fluid is defined by a linear relationship between stress and strain rate. 
+
+
+
+
 
 In general, we want to find the following properties as a function of location and time:
 
