@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Home
+mathjax: true
 ---
 
 <h1> Welcome! </h1> 
@@ -25,8 +26,7 @@ If I choose to start a blog, blog posts will appear here on the main page, but f
     </h1>
 
     <span class="post-date">{{ post.date | date_to_string }}</span>
-
-    {{ post.content }}
+    {{ post.excerpt }}
   </div>
   {% endfor %}
 </div>
