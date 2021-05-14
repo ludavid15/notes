@@ -4,13 +4,485 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-05-08T20:26:12-07:00</updated>
+ <updated>2021-05-13T20:05:13-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Fundamentals of Fluid Mechanics</title>
+   <link href="https://ludavid15.github.io//fluidFundamentals/"/>
+   <updated>2021-05-12T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//fluidFundamentals</id>
+   <content type="html">&lt;p&gt;To be clear, when we talk about fluid mechanics, we aren’t just talking about the second state of matter (liquid \(\subset\) fluid). It honestly would make a lot more sense if we called it “flow mechanics”, but too many textbooks have been printed now to change that. In any case, we’re stuck with the term fluid mechanics, so that’s what we’ll be working with here.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Also, we’ll be dealing with so called &lt;strong&gt;Newtonion fluids&lt;/strong&gt;. Non-newtonian fluids are weird, and I haven’t studied them, so there won’t be anything about them here.&lt;/p&gt;
+
+&lt;p&gt;Lastly, while we’re laying down the groundwork here, it’s important to mention that classic fluid mechanics is treated as a subset of continuum mechanics. This is known as an engineering model.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Continuums are characterized by the existence of shear, and by being continuous (duh).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;But watch out! When the density is really low, (such as in space) the continuum assumption falls apart, at which point we must switch over to modelcular dynamics. This is an important rule to remember generally speaking. Each equation we develop comes with it’s own set of assumptions that must be true or else our equation isn’t valid.&lt;/p&gt;
+
+&lt;h3 id=&quot;newtonian-fluid&quot;&gt;Newtonian Fluid&lt;/h3&gt;
+
+&lt;p&gt;A Newtonian fluid has a linear relationship between stress and strain rate. Non-newtonian fluids have non-linear relationships.&lt;/p&gt;
+
+&lt;h2 id=&quot;fundamentals&quot;&gt;Fundamentals&lt;/h2&gt;
+
+&lt;p&gt;In general, we want to find the following properties as a function of location and time:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Pressure&lt;/li&gt;
+  &lt;li&gt;Temperature&lt;/li&gt;
+  &lt;li&gt;Density&lt;/li&gt;
+  &lt;li&gt;Velocity&lt;/li&gt;
+  &lt;li&gt;Acceleration&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;With the above information, we can find things like lift, drag, work, &amp;amp; heat transfer (all very important for engineering applications). In a complete model, all 5 of these properties are closely related. Not surprisingly, it’s also difficult to solve for all 5 properties at once. Thus, the subject of fluid mechanics is further broken up into categories based on assumptions and simplifications. These assumptions allow us to make certain variables independent of other variables. The three most important “categories” are:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Incompressible vs Compressible&lt;/li&gt;
+  &lt;li&gt;Inviscid vs Viscid&lt;/li&gt;
+  &lt;li&gt;Laminar vs Turbulent&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Any combinations of the above labels are technically possible. Here are a few examples, and the respective sub-domains you get:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Compressible, Inviscid, Laminar = Shocks, expansion waves, acoustic waves&lt;/li&gt;
+  &lt;li&gt;Compressible, Viscid, Turbulent = Turbulent boundary layers, supersonic wakes&lt;/li&gt;
+  &lt;li&gt;Compressible, Viscid, Laminar = Hypersonic boundary layers&lt;/li&gt;
+  &lt;li&gt;Incompressible, Inviscid, Laminar = Potential flow theory&lt;/li&gt;
+  &lt;li&gt;Incompressible, Viscid, Laminar = Creeping flow, boundary layer theory&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;To solve problems in fluid mechanics, we can borrow laws and theories that traditionally fall under other disciplines. Some examples:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Thermodynamics&lt;/li&gt;
+  &lt;li&gt;Conservation Equations&lt;/li&gt;
+  &lt;li&gt;Gas Laws&lt;/li&gt;
+  &lt;li&gt;Continuum Mechanics&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;And finally, we can make assumptions which are imposed as additional contraints. Common assumptions come from thermodynamics: isentropic, isobaric, isochoric, isothermal, steady, etc.&lt;/p&gt;
+
+&lt;h3 id=&quot;viscosity&quot;&gt;Viscosity&lt;/h3&gt;
+
+&lt;p&gt;The viscosity of a fluid $\mu$ defines the relationship between stress and strain. In most cases, we assume that the fluid is a Newtonian Fluid, meaning its stress and strain are related linearly. Here it is in two dimensions:&lt;/p&gt;
+
+\[\tau=\mu\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right)\]
+
+\[Friction\ Force=\mu\nabla^2\vec{V}=\nabla\tau\]
+
+&lt;p&gt;We can also define the second coefficient of viscosity as λ.&lt;/p&gt;
+
+\[\xi=\lambda+\frac{2}{3}\mu\]
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Continuum Mechanics</title>
+   <link href="https://ludavid15.github.io//continuumMechanics/"/>
+   <updated>2021-05-11T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//continuumMechanics</id>
+   <content type="html">&lt;p&gt;One of the common assumptions we make when working with fluids is that it forms a continuum. The individual atoms of a fluid are assumed to be tightly packed enough that we can approximate the collective molecular interactions. What are these collective molecular interactions? Well, pretty standard stuff actually. We assume that applying a force causes an object to move, or a body to deform. (Technically speaking, that stress is related to strain). And honestly well, that’s kinda it.&lt;/p&gt;
+
+&lt;p&gt;The reason this assumption is so powerful is because it makes our model &lt;strong&gt;continuous&lt;/strong&gt;. This may seem pretty obvious at a glance, but working with stuff that is continuous is very different from working with stuff that is discrete! The reason as you may already have guessed: derivatives.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Alright, so what can we do with continuums? Well, how about mass, momentum, and energy conservation? Sure enough. There are two ways to do this: with either a &lt;strong&gt;control mass&lt;/strong&gt; or &lt;strong&gt;control volume&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;conservation-of-mass&quot;&gt;Conservation of Mass&lt;/h3&gt;
+
+&lt;p&gt;Also known as continuity. Time rate of change of mass in the control volume (CV) is equal to the mass flux through the boundary. Or, in differential form, partial derivative of density plus mass flux is zero.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Integral&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\frac{\partial}{\partial t}\iiint\rho dV=-\oiint{\rho\mathbit{u}\bullet\hat{\mathbit{n}}dA}\]
+
+&lt;ul&gt;
+  &lt;li&gt;Conservative&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\frac{\partial\rho}{\partial t}+\nabla\bullet\left(\rho\mathbit{u}\right)=0\]
+
+&lt;ul&gt;
+  &lt;li&gt;Non-conservative
+\(\frac{D\rho}{Dt}+\nabla\bullet\left(\rho\mathbit{u}\right)=0\)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For (quasi) 1-dimensional steady flow, the mass flow rate can be expressed as the following:&lt;/p&gt;
+
+\[\dot{m}=\rho AV\]
+
+&lt;p&gt;For 2D incompressible flow, we need to account for the velocity in two directions. In this case continuity can be expressed as:&lt;/p&gt;
+
+\[\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=0\]
+
+&lt;h3 id=&quot;conservation-of-momentum&quot;&gt;Conservation of Momentum&lt;/h3&gt;
+
+&lt;p&gt;Time rate of change of momentum in the CV is equal to the advection term plus forces. Or in differential form, partial of momentum with respect to time plus advection term is equal to forces acting on the fluid element. Note that the right side of the equation is the substantial derivative. You may recognize these as the Navier-Stokes equations. Or another way of thinking about it, the Navier-Stokes equations are just a statement momentum conservation.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Integral&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\frac{\partial}{\partial t}\iiint\rho udV=-\oiint\mathbit{u}\left(\rho\mathbit{u}\bullet\hat{\mathbit{n}}\right)dA-\oiint\left(P\hat{\mathbit{n}}\right)dA\]
+
+&lt;ul&gt;
+  &lt;li&gt;Conservative&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\frac{\partial\rho\mathbit{u}}{\partial t}+\left(\nabla\bullet\rho\mathbit{u}\right)\mathbit{u}=-\nabla P+\rho g+\nabla\tau+\mathbit{F}_{\mathbit{body}}\]
+
+&lt;ul&gt;
+  &lt;li&gt;Non-conservative&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\rho\frac{D\mathbit{u}}{Dt}=-\nabla P+\rho g+\nabla\tau+\mathbit{F}_{\mathbit{body}}\]
+
+&lt;h3 id=&quot;conservation-of-energy&quot;&gt;Conservation of Energy&lt;/h3&gt;
+
+&lt;p&gt;Time rate of change is equal to advection term plus heat (both volumetrically and through the surface). Note that work done is encapsulated in the P/rho term in the advection integral. Or, the substantial derivative of total enthalpy is equal to time rate of change of pressure (work) and flux of heat. This is also a statement of the 1st law of thermodynamics. (Conservation of Energy).&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Integral&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\frac{\partial}{\partial t}\iiint{\rho(e+\frac{1}{2}U^2)dV}=-\oiint{\rho\left(e+\frac{P}{\rho}+\frac{1}{2}U^2\right)\mathbit{u}\bullet\hat{\mathbit{n}}dA}+\iiint{\rho\dot{q}dV}-\oiint{\dot{q}^n\bullet\hat{\mathbit{n}}dA}\]
+
+&lt;ul&gt;
+  &lt;li&gt;Conservative&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\frac{\partial\rho e}{\partial t}+\nabla\bullet\left(\mathbit{u}(\rho e+P)\right)=0\]
+
+&lt;ul&gt;
+  &lt;li&gt;Non-Conservative&lt;/li&gt;
+&lt;/ul&gt;
+
+\[\rho\frac{Dh_o}{Dt}=\frac{\partial P}{\partial t}+\rho\dot{q}\]
+
+&lt;h3 id=&quot;conservative-vs-non-conservative-form&quot;&gt;Conservative vs Non-conservative Form&lt;/h3&gt;
+
+&lt;p&gt;Conservative equations are valid over discontinuities in the fluid flow. These mathematical models directly stems from applying conservation of mathematical quantities within a control volume.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Is this related to the idea of a conservative vector field? I’m actually unsure, but I like the question.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Now consider the case where we take a derivative of a multivariable function. Mathematically, we can expand this derivative with the chain rule, but in doing so, we introduce terms that no longer describe a physical quantity. This is known as the non-conservative form. Most importantly, the non-conservative forms are not valid over discontinuities (i.e. shocks).&lt;/p&gt;
+
+&lt;h3 id=&quot;euler-equations&quot;&gt;Euler Equations&lt;/h3&gt;
+
+&lt;p&gt;The Euler equations represent conservation of momentum when viscous forces are neglected. This is also associated with the limit as Reynold’s number approaches infinity, and the regime of potential flow theory. In this regime, the no slip boundary condition cannot be applied, instead fluid flow at the wall is always tangential to the wall. The following equations have assumed incompressible flow:&lt;/p&gt;
+
+&lt;h4 id=&quot;cartesian-coordinates&quot;&gt;Cartesian Coordinates&lt;/h4&gt;
+
+\[x:\ \ \ \ \rho\left[\frac{\partial u}{\partial t}+u\frac{\partial u}{\partial x}+v\frac{\partial u}{\partial y}+w\frac{\partial u}{\partial z}\right]=-\frac{\partial P}{\partial x}+\rho g_x\]
+
+\[y:\ \ \ \ \rho\left[\frac{\partial v}{\partial t}+u\frac{\partial v}{\partial x}+v\frac{\partial v}{\partial y}+w\frac{\partial v}{\partial z}\right]=-\frac{\partial P}{\partial x}+\rho g_y\]
+
+\[z:\ \ \ \ \rho\left[\frac{\partial w}{\partial t}+u\frac{\partial w}{\partial x}+v\frac{\partial w}{\partial y}+w\frac{\partial w}{\partial z}\right]=-\frac{\partial P}{\partial x}+\rho g_z\]
+
+&lt;h3 id=&quot;navier-stokes&quot;&gt;Navier-Stokes&lt;/h3&gt;
+&lt;p&gt;Navier-Stokes is a general statement of conservation of momentum. The form presented here includes forces due to pressure, gravity, and viscous forces, but neglects other types of forces. This form has also assumed constant density and viscosity.&lt;/p&gt;
+
+&lt;h4 id=&quot;cartesian-coordinates-1&quot;&gt;Cartesian Coordinates&lt;/h4&gt;
+
+\[x:\ \ \ \ \rho\left[\frac{\partial u}{\partial t}+u\frac{\partial u}{\partial x}+v\frac{\partial u}{\partial y}+w\frac{\partial u}{\partial z}\right]=-\frac{\partial P}{\partial x}+\rho g_x+\mu\left[\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}+\frac{\partial^2u}{\partial z^2}\right]\]
+
+\[y:\ \ \ \ \rho\left[\frac{\partial v}{\partial t}+u\frac{\partial v}{\partial x}+v\frac{\partial v}{\partial y}+w\frac{\partial v}{\partial z}\right]=-\frac{\partial P}{\partial x}+\rho g_y+\mu\left[\frac{\partial^2v}{\partial x^2}+\frac{\partial^2v}{\partial y^2}+\frac{\partial^2v}{\partial z^2}\right]\]
+
+\[z:\ \ \ \ \rho\left[\frac{\partial w}{\partial t}+u\frac{\partial w}{\partial x}+v\frac{\partial w}{\partial y}+w\frac{\partial w}{\partial z}\right]=-\frac{\partial P}{\partial x}+\rho g_z+\mu\left[\frac{\partial^2w}{\partial x^2}+\frac{\partial^2w}{\partial y^2}+\frac{\partial^2w}{\partial z^2}\right]\]
+
+&lt;h3 id=&quot;reynolds-transport-theorem&quot;&gt;Reynold’s Transport Theorem&lt;/h3&gt;
+
+&lt;p&gt;States that the total time rate of change of an extensive property (B) for a system, depends on the rate of change of the intensive property in the control volume and the flux of that property through the control volume. (Extensive = mass dependent and Intensive = mass independent). In other works, it relates the control mass view of a fluid to the control volume view of a fluid.&lt;/p&gt;
+
+\[\frac{DB_{sys}}{Dt}=\int_{cv}^{cv}\frac{\partial}{\partial t}(\rho b)dV+\int_{cs}^{cs}\rho b\left(\vec{v}\bullet\hat{n}\right)ds\]
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Viscous Flow</title>
+   <link href="https://ludavid15.github.io//viscousFlow/"/>
+   <updated>2021-05-10T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//viscous</id>
+   <content type="html">&lt;p&gt;Unlike solids, fluids deform constantly under stress (in other words, a fluid &lt;strong&gt;flows&lt;/strong&gt;). How it flows is very much dependent on it’s &lt;strong&gt;viscosity&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p class=&quot;message&quot;&gt;
+Viscosity is to fluids what the modulus of elasticity is to solids. It relates the stress (amount of force) to strain (amount of deformation). Qualitatively, viscosity is a measure of a fluid&apos;s resistence to flowing. Things like honey have a very high viscosity, while air and water have comparatively lower viscosity. 
+&lt;/p&gt;
+
+&lt;p&gt;Viscous flow is the study of how a fluid’s viscosity affects its behavior. Viscous flow covers topics like boundary layers, low-speed flows, and small-scale flows. Coincidentally, the regimes in which viscous forces dominate is often incompressible, but this is not a hard and fast rule.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;viscosity&quot;&gt;Viscosity&lt;/h3&gt;
+
+&lt;p&gt;The viscosity of a fluid $\mu$ defines the relationship between stress and strain. In most cases, we assume that the fluid is a Newtonian Fluid, meaning its stress and strain are related linearly. Here it is in two dimensions:&lt;/p&gt;
+
+\[\tau=\mu\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right)\]
+
+\[Friction\ Force=\mu\nabla^2\vec{V}=\nabla\tau\]
+
+&lt;p&gt;We can also define the second coefficient of viscosity as λ.&lt;/p&gt;
+
+\[\xi=\lambda+\frac{2}{3}\mu\]
+
+&lt;h3 id=&quot;reynolds-number&quot;&gt;Reynold’s Number&lt;/h3&gt;
+
+&lt;p&gt;The ratio between viscous forces and inertial forces. The lower the Reynold’s number, the more dominant viscous effects become. The Reynold’s number can also show when a flow transitions from laminar to turbulent flow. Where µ is the dynamic viscosity.&lt;/p&gt;
+
+\[Re=\ \frac{\rho U_\infty L}{\mu}\]
+
+&lt;p&gt;At very low Re, we get the Stokes equations. At very high Re, we get the Euler equations (potential flow theory).&lt;/p&gt;
+
+&lt;h3 id=&quot;low-reynolds-number-flow-stokes-flow&quot;&gt;Low Reynold’s Number Flow (Stokes’ Flow)&lt;/h3&gt;
+
+&lt;p&gt;This is the exact opposite regime of potential flow theory, in which viscous forces dominate over inertia forces. This is usually associated with low velocity, small scale, or highly viscous flows. Some applications can include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fully developed duct flow&lt;/li&gt;
+  &lt;li&gt;Flow about immersed bodies (i.e. small particle dynamics)&lt;/li&gt;
+  &lt;li&gt;Lubrication theory&lt;/li&gt;
+  &lt;li&gt;Flow through porous media (mostly used for civil engineering)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Under the above assumption, the momentum equation reduces to the following:&lt;/p&gt;
+
+\[\nabla P\approx\mu\nabla^2V\]
+
+&lt;h3 id=&quot;low-reynolds-number-flow-over-a-sphere&quot;&gt;Low Reynold’s Number Flow Over a Sphere&lt;/h3&gt;
+
+&lt;p&gt;By solving stokes equations with the boundary conditions for viscous flow past a sphere, the following stream function can be calculated:&lt;/p&gt;
+
+\[\psi=\frac{1}{4}Ua^2{sin}^2(\theta)\left[\frac{a}{r}-\frac{3r}{a}+\frac{2r^2}{a^2}\right]\]
+
+&lt;p&gt;This can be compared to the stream function found by applying potential flow theory about a sphere:&lt;/p&gt;
+
+\[\psi=\frac{1}{2}Ur^2{sin}^2(\theta)\left[1-\frac{a^3}{r^3}\right]\]
+
+&lt;p&gt;Solving the first equation for shear and pressure drag, we find an expression for the total drag on a sphere in the low Reynold’s number limit:&lt;/p&gt;
+
+\[F=4\pi\mu Ua+2\pi\mu Ua\]
+
+&lt;p&gt;Where the first term is the viscous contribution to drag, and the second term is the pressure contribution to drag. This is normalized by the area and dynamic pressure to find the drag coefficient.&lt;/p&gt;
+
+\[C_d=\frac{2F}{\rho U^2\pi a^2}=\frac{24}{Re}\]
+
+&lt;p&gt;This equation underpredicts drag for Reynold’s numbers larger than 1, since separation and wakes introduce greater pressure drag.&lt;/p&gt;
+
+&lt;h3 id=&quot;steady-flow-between-infinite-plates&quot;&gt;Steady Flow between Infinite Plates&lt;/h3&gt;
+
+&lt;p&gt;A class of problem in which viscous forces dominate. We take the bottom plate to be stationary and assume some steady velocity for the top plate. There can also be a pressure gradient in the direction parallel to the plates.&lt;/p&gt;
+
+&lt;p&gt;In the limit that the top plate’s velocity tends to zero we get a Hagen-Poiseuille flow problem (pressure gradient driven flow). In the limit that the pressure gradient tends to zero we get a Couette flow problem (velocity of the top plate drives flow). 
+The general solution of the velocity profile is expressed below. The first equation is the general solution, while the second equation takes the lower wall to be stationary. Where τo is the shear stress at the wall where y=0, and uo is the velocity at the wall where y=0.&lt;/p&gt;
+
+\[u\left(y\right)=\ -\frac{1}{2\mu}\left(-\frac{dP}{dx}\right)y^2+\frac{\tau_o}{\mu}y+u_o\]
+
+\[u\left(y\right)=\ +\frac{1}{2\mu}\left(-\frac{dP}{dx}\right)y(h-y)+U\frac{y}{h}\]
+
+&lt;p&gt;We can also solve for the volume flow rate per unit span by integrating over y.&lt;/p&gt;
+
+\[Q=U\frac{h}{2}+\frac{h^3}{12\mu}\left(-\frac{dP}{dx}\right)\]
+
+&lt;h3 id=&quot;unsteady-flow--infinite-plates&quot;&gt;Unsteady Flow &amp;amp; Infinite Plates&lt;/h3&gt;
+
+&lt;p&gt;There are two problems within this category, known as Stokes 1st problem (an impulsively started plate) and Stokes’s 2nd problem (an oscillating plate).&lt;/p&gt;
+
+&lt;h4 id=&quot;1st-problem&quot;&gt;1st Problem:&lt;/h4&gt;
+
+&lt;p&gt;Stoke’s first problem covers the scenario of an impulsively started plate.&lt;/p&gt;
+
+\[\frac{u(y,t)}{U}=1-\erf{\left(\frac{\eta}{2}\right)}\]
+
+\[\erf{\left(x\right)}=\ \frac{2}{\sqrt\pi}\int_{0}^{x}{e^{-x^2}dx\]
+
+\[\eta=\ \frac{y}{\sqrt{\nu t}}}\]
+
+&lt;p&gt;As time increases, the penetration height will increase. At infinite time, the entire fluid moves with velocity U. The above solution represents a non-dimensionalized solution, where η represents the ratio of position to penetration height scaling.&lt;/p&gt;
+
+&lt;h4 id=&quot;2nd-problem&quot;&gt;2nd Problem:&lt;/h4&gt;
+
+&lt;p&gt;Motion of the bottom plate is defined as the following:&lt;/p&gt;
+
+\[U\left(t\right)=\ U_o\cos\funcapply(\omega t)\]
+
+&lt;p&gt;The velocity profile above the plate and the stress at the wall can be solved to show the following:&lt;/p&gt;
+
+\[u\left(y,t\right)=U_oe^{-y\sqrt{\sfrac{\omega}{2v}}}cos\left(\omega t-y\sqrt{\sfrac{\omega}{2v}}\right)\]
+
+\[\tau_{wall}=\mu\frac{\partial u}{\partial y}=U_o\sqrt{\rho\mu\omega}sin\left(\omega t-\sfrac{\pi}{4}\right)\]
+
+&lt;p&gt;The amplitude of the velocity oscillation decreases with distance from the plate. The ratio of viscosity to frequency determines the penetration height. Note that this ratio also affects a phase lead/lag, which changes with height, represented within the cosine term.&lt;/p&gt;
+
+&lt;h3 id=&quot;hagen-poiseuille-circular-pipe-flow-model&quot;&gt;Hagen-Poiseuille Circular Pipe Flow Model&lt;/h3&gt;
+
+&lt;p&gt;Pressure driven viscous pipe flow. Given L is the length of pipe, Q is the volume flow rate, and some known diameter, we can find the pressure drop. Assumes laminar flow.&lt;/p&gt;
+
+\[∆P= 8μLQπR4\]
+
+\[u\left(r\right)=\ -\frac{1}{4\mu}\left(-\frac{\partial P}{\partial x}\right)\left(r_o^2-r^2\right)\]
+
+\[Q=\ \frac{\pi R^4}{8\mu}\left(\frac{\partial P}{\partial x}\right)\]
+
+\[C_f=-\frac{\tau_w}{\sfrac{(1}{2})\rho{U_{ave}}^2}=\frac{16}{Re_D}\]
+
+&lt;p&gt;Note that this may not be valid for short pipes, flow near the entrance, and fluids with low viscosity, or flow in a wide pipe. If flow is turbulent, you should switch over to the Darcy-Weisbach approach.&lt;/p&gt;
+
+&lt;h3 id=&quot;more-realistic-pipe-flow-analysis&quot;&gt;More Realistic Pipe Flow Analysis&lt;/h3&gt;
+
+&lt;p&gt;For flow (both laminar and turbulent) in a pipe of constant diameter D, we can express the pressure across a given length as:
+\(∆PL=fd(12)ρU2D\)&lt;/p&gt;
+
+&lt;p&gt;Where fd is the Darcy friction factor. In the laminar regime, the Darcy Friction factor is equal to \(\sfrac{f_D=64}{Re}\). For turbulent regime values, the friction factor is dependent on the surface roughness. Look up results in a Moody Diagram.&lt;/p&gt;
+
+&lt;p&gt;More commonly, pressure loss per unit length is replaced with head loss per unit length, S, where head loss is calculated as:
+\(∆h= ρg∆P\)&lt;/p&gt;
+
+\[S=∆hL=fd12gV2D\]
+
+&lt;p&gt;Note that the friction factor in the turbulent regime can be calculated with turbulent flow theory and is not simply an empiric fit!&lt;/p&gt;
+
+&lt;h3 id=&quot;colebrook-interpolation-formula-turbulent--transition-regime&quot;&gt;Colebrook Interpolation Formula (Turbulent &amp;amp; Transition Regime)&lt;/h3&gt;
+
+&lt;p&gt;Provides an easy way to find the friction factor for a given surface roughness and Reynold’s number. \(\Lambda\) here is the friction factor.&lt;/p&gt;
+
+\[\frac{1}{\Lambda^{1/2}}\approx-2.0\log_{10}{\left(\frac{k/D}{3.7}+\frac{2.51}{Re_D\sqrt\Lambda}\right)}-0.8\]
+
+&lt;h3 id=&quot;hydraulic-diameter&quot;&gt;Hydraulic Diameter&lt;/h3&gt;
+
+&lt;p&gt;For non-circular pipes, an equivalent diameter can be found, known as the hydraulic diameter. This allows you to analyze the pipe as if it were circular.&lt;/p&gt;
+
+\[\rho\left(\frac{\partial u_e}{\partial t}+u\frac{\partial u_e}{\partial x}\right)=-\frac{\partial P}{\partial x}\]
+
+&lt;h2 id=&quot;boundary-layers&quot;&gt;Boundary Layers&lt;/h2&gt;
+
+&lt;p&gt;Boundary layers are an incredibly important phenomena arising due to viscous forces. As before, we require that the velocity of the fluid at the wall is equal to the velocity of the wall.&lt;/p&gt;
+
+&lt;h3 id=&quot;2d-boundary-layer-similarity-solutions&quot;&gt;2D Boundary Layer Similarity Solutions&lt;/h3&gt;
+
+&lt;p&gt;In most cases, it is easier to create the following similarity variables, defined using the velocity potential:&lt;/p&gt;
+
+\[u=\ \frac{\partial\psi}{\partial y}\]
+
+\[v=\ -\frac{\partial\psi}{\partial x}\]
+
+\[\psi\left(y,x\right)=\ U_\infty l\left(x\right)f(\eta)\]
+
+\[\eta=\frac{y}{l(x)}=\frac{y}{x}\sqrt{\frac{Ux}{v}}=\frac{y}{x}\sqrt{Re}\]
+
+\[l\left(x\right)\cong\ \sqrt{\frac{\nu x}{U_\infty}}\]
+
+&lt;p&gt;Here, l(x) is proportional the height of the boundary layer, making η a normalized value for our position in the boundary layer. In addition, f(η) and η are both dimensionless. We should also be able to see that:&lt;/p&gt;
+
+\[f\left(\eta\right)\cong{\psi\]
+
+\[f}^\prime\left(\eta\right)\cong{u,\ v\]
+
+\[f}^{\prime\prime}\left(\eta\right)\cong\tau\]
+
+&lt;p&gt;Re-writing the Prandtl boundary layer equations in terms of our similarity variables, we find an exact solution:&lt;/p&gt;
+
+\[\dddot{f}\left(\eta\right)+f\left(\eta\right)\ddot{f}\left(\eta\right)=0\]
+
+&lt;h3 id=&quot;falkner-skan-2d-solution&quot;&gt;Falkner-Skan 2D Solution&lt;/h3&gt;
+
+&lt;p&gt;The Falkner-Skan solution describes boundary layer flow over a wedge. It is a generalization of the Blasius flat plate boundary layer. Using the same similarity definition as above, the exact solution takes the following form. As with the Blasius solution, a numerical approach is required to find a solution.&lt;/p&gt;
+
+\[\dddot{f}+f\ddot{f}+\beta(1+{\dot{f}}^2)=0\]
+
+&lt;p&gt;The velocity in the free stream (i.e. ur in the direction of πB) can be represented by the following equation, as a function of the turning angle:&lt;/p&gt;
+
+\[u_e=Kx^m\]
+
+\[\beta=\frac{2m}{1+m}\]
+
+&lt;p&gt;In the limiting case where B = 0, you get the Blasius flat plate general solution. In the limit that B = 1, you get stagnation point flow. There are tabulated values for the velocity thickness, displacement thickness, momentum thickness, and friction coefficient for a range of B values.&lt;/p&gt;
+
+&lt;h3 id=&quot;blasius-solution-a-2d-flat-plate-1st-order-solution&quot;&gt;Blasius Solution a 2D Flat Plate (1st Order Solution)&lt;/h3&gt;
+
+&lt;p&gt;The Blasius solution is an exact differential solution of the boundary layer equations for flow over a flat plate, however, solving it requires a numerical approach.&lt;/p&gt;
+
+\[\frac{\delta}{x}=\frac{5}{\sqrt{Re}}\]
+
+\[\frac{\delta^\ast}{x}=\frac{1.72}{\sqrt{Re}}\]
+
+\[\frac{\theta}{x}=\frac{0.664}{\sqrt{Re}}\]
+
+\[c_f=\frac{0.664}{\sqrt{Re}}\]
+
+&lt;h3 id=&quot;approximate-solutions-to-2d-boundary-layer&quot;&gt;Approximate Solutions to 2D Boundary Layer&lt;/h3&gt;
+
+&lt;p&gt;Thwaites method uses the Von-Karman integral equations to approximate the boundary layer characteristics. The Von Karman integral relation (steady flow with impermeable wall):&lt;/p&gt;
+
+\[\frac{c_f}{2}=\frac{d\theta}{dx}+(2+H)\frac{\theta}{U}\frac{dU}{dx}\]
+
+&lt;p&gt;This equation is still an exact relationship. Thwaites method is to make the following approximation: (where P(x) is any generic function of x, and is there to characterize the changes in the velocity profile shape in the boundary layer as a function of the x position)&lt;/p&gt;
+
+\[u(x,y)\approx U\left(x\right)f(\eta,P\left(x\right))\]
+
+&lt;p&gt;In the case of Thwaites method, the following parameter is defined:&lt;/p&gt;
+
+\[\lambda=\left(\frac{\theta}{\delta}\right)^2\frac{\delta^2}{v}\frac{dU_e}{dx}=\frac{\theta^2}{v}\frac{dU_e}{dx}\]
+
+&lt;p&gt;The Von-Karman integral relation can then be re-written, and we see that the terms of the original expression are going to be proportional to the parameter defined above.&lt;/p&gt;
+
+\[\frac{\tau_w\theta}{\mu U}=\frac{U\theta}{v}\frac{d\theta}{dx}+(2+H)\frac{\theta^2U^\prime}{v}\]
+
+\[\frac{\tau_w\theta}{\mu U}\approx Shear\ Factor\ Correlation=S(\lambda)\]
+
+\[H=\ \frac{\delta^\ast}{\theta}\approx Shape\ Factor\ Correlation=H(\lambda)\]
+
+&lt;p&gt;For an external flow problem, the following expression for momentum thickness can be derived:&lt;/p&gt;
+
+\[\theta^2=\frac{0.45v}{U_e^6(x)}\int_{0}^{x}{U_e^5(x\prime)}dx\prime\]
+
+&lt;p&gt;The displacement thickness can be solved by using the following shape factor correlation, as a function of λ.&lt;/p&gt;
+
+\[\delta^\ast=\theta H\left(\lambda\right)\]
+
+\[H\left(\lambda\right)=2+4.14z-83.5z^2+854z^3-3337z^4+4576z^5\]
+
+\[z=0.25-\lambda\]
+
+&lt;p&gt;The laminar boundary layer separates when λ = -0.09.&lt;/p&gt;
+
+&lt;h3 id=&quot;pressure-gradient-effects&quot;&gt;Pressure Gradient Effects&lt;/h3&gt;
+
+&lt;p&gt;There are three regimes for the pressure gradient term: favorable (less than zero), adverse (greater than zero), and neutral (equal to zero).&lt;/p&gt;
+
+&lt;p&gt;An adverse pressure gradient can cause boundary layer separation. Separation occurs at the point where the wall shear stress is equal to zero (slope of the velocity profile is zero), that is:&lt;/p&gt;
+
+\[\tau_w=\mu\frac{du}{dy}=0\]
+
+&lt;p&gt;Axis-Symmetric 3D Boundary Layers&lt;/p&gt;
+
+&lt;p&gt;The boundary layer equations for an axisymmetric steady flow without swirl can be shown to be equal to the following:&lt;/p&gt;
+
+\[\frac{\partial(r_ou)}{\partial x}+r_o\frac{\partial v}{\partial y}=0\]
+
+\[\rho\left(u\frac{\partial u}{\partial x}+v\frac{\partial u}{\partial y}\right)=\rho u_e\frac{\partial u_e}{\partialx}+\mu\frac{\partial^2u}{\partial y^2}\]
+
+&lt;p&gt;The above equations can be transformed into an equivalent set of 2D boundary layer equations with the Mangler Transformation of the coordinate frame.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Introducing Hyde</title>
@@ -208,10 +680,12 @@
  
  <entry>
    <title>What's Jekyll?</title>
-   <link href="https://ludavid15.github.io//2012/02/06/whats-jekyll/"/>
+   <link href="https://ludavid15.github.io//whatsJekyll/"/>
    <updated>2012-02-06T00:00:00-08:00</updated>
-   <id>https://ludavid15.github.io//2012/02/06/whats-jekyll</id>
+   <id>https://ludavid15.github.io//whats-jekyll</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From &lt;a href=&quot;https://github.com/mojombo/jekyll/blob/master/README.markdown&quot;&gt;the project’s readme&lt;/a&gt;:&lt;/p&gt;
+
+&lt;!--more--&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Jekyll is a simple, blog aware, static site generator. It takes a template directory […] and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.&lt;/p&gt;
