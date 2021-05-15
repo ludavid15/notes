@@ -17,6 +17,9 @@ author:
   name:           'David Lu'
   url:            
 
+plugins:
+  - jekyll-seo-tag
+
 paginate:         5
 
 # Custom vars

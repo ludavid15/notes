@@ -14,19 +14,24 @@ This is my website where I explain to myself things I have learned. Maybe some o
 If I choose to start a blog, blog posts will appear here on the main page, but for now here are some cut and paste samples. 
 </p>
 
+<p>
+Finally, please bear with me as I figure out how to get some of my equations and images rendered correctly!
+</p>
+
 <hr>
 
 <div class="posts">
   {% for post in paginator.posts %}
   <div class="post">
     <h1 class="post-title">
-      <a href="{{ post.url }}">
+      <a href="{{ post.url | relative_url }}">
         {{ post.title }}
       </a>
     </h1>
 
     <span class="post-date">{{ post.date | date_to_string }}</span>
     {{ post.excerpt }}
+    <hr>
   </div>
   {% endfor %}
 </div>

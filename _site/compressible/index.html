@@ -155,7 +155,36 @@
 
 <!--more-->
 
-<h4 id="stagnation-properties">Stagnation Properties</h4>
+<ul id="markdown-toc">
+  <li><a href="#stagnation-properties" id="markdown-toc-stagnation-properties">Stagnation Properties</a></li>
+  <li><a href="#waves" id="markdown-toc-waves">Waves</a>    <ul>
+      <li><a href="#acoustic-wave-theory" id="markdown-toc-acoustic-wave-theory">Acoustic Wave Theory</a></li>
+      <li><a href="#method-of-characteristics" id="markdown-toc-method-of-characteristics">Method of Characteristics</a>        <ul>
+          <li><a href="#1d-unsteady-moc" id="markdown-toc-1d-unsteady-moc">1D Unsteady MOC</a></li>
+          <li><a href="#2d-steady-moc" id="markdown-toc-2d-steady-moc">2D Steady MOC</a></li>
+          <li><a href="#minimum-length-nozzle-calculation-using-moc" id="markdown-toc-minimum-length-nozzle-calculation-using-moc">Minimum Length Nozzle Calculation using MOC</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#shocks" id="markdown-toc-shocks">Shocks</a>    <ul>
+      <li><a href="#normal-shocks" id="markdown-toc-normal-shocks">Normal Shocks</a></li>
+      <li><a href="#oblique-shocks" id="markdown-toc-oblique-shocks">Oblique Shocks</a></li>
+      <li><a href="#detached-shock" id="markdown-toc-detached-shock">Detached Shock</a></li>
+      <li><a href="#expansion-fans" id="markdown-toc-expansion-fans">Expansion Fans</a></li>
+      <li><a href="#prandtl-meyer-function" id="markdown-toc-prandtl-meyer-function">Prandtl-Meyer Function</a></li>
+      <li><a href="#reflections" id="markdown-toc-reflections">Reflections</a></li>
+      <li><a href="#interactions-of-shockwaves" id="markdown-toc-interactions-of-shockwaves">Interactions of Shockwaves</a></li>
+      <li><a href="#expansion-wave-interactions-method-of-characteristics" id="markdown-toc-expansion-wave-interactions-method-of-characteristics">Expansion Wave Interactions (Method of Characteristics)</a></li>
+    </ul>
+  </li>
+  <li><a href="#compressible-boundary-layers" id="markdown-toc-compressible-boundary-layers">Compressible Boundary Layers</a>    <ul>
+      <li><a href="#adiabatic-wall-temperature" id="markdown-toc-adiabatic-wall-temperature">Adiabatic Wall Temperature</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="stagnation-properties">Stagnation Properties</h3>
 
 <p>For any steady state fluid in motion, we can define stagnation/total properties. These reflect the actual values if the fluid were brought to rest isentropically.</p>
 
@@ -163,7 +192,7 @@
 
 <p>Note that the stagnation properties are frame dependent and thus not intrinsic thermodynamic properties.</p>
 
-<h3 id="waves">Waves</h3>
+<h2 id="waves">Waves</h2>
 <p>In the context of fluid dynamics, a wave is simply a disturbance which propagates. This disturbance can have many properties and effects on the fluid as it passes through:</p>
 
 <ul>
@@ -176,6 +205,12 @@
 </ul>
 
 <p>By this definition, a shock is a type of wave. Although shocks are often introduced as “stationary” objects, this is because we have shifted our frame of reference such that this the case. A shock can be stationary (like at the inlet of a ramjet), or a shock can propagate (like out from an explosion).</p>
+
+<p class="message">
+Another way to think of waves is as the propagation of information. Here's an example you might be familiar with: take a water droplet hitting the surface of a pond. Waves carry information about the event (the falling water) outwards. The speed at which the wave moves out is the speed at which this information is carried. 
+
+Every fluid has a local "acoustic speed" or **speed of sound**. This is the maximum speed at which waves can propagate. So here's a question for you, what happens when a disturbing even (like an airplane) moves faster than the local speed of sound? 
+</p>
 
 <h3 id="acoustic-wave-theory">Acoustic Wave Theory</h3>
 
@@ -214,6 +249,10 @@ Given the initial conditions about the displacement and rate, the solution for t
 
 <p>With MOC, it is possible to design a nozzle such that the local curvature exactly cancels any incident expansion waves (these result from the diverging section right after the throat). 
  </p>
+<h2 id="shocks">Shocks</h2>
+
+<p>Shocks occur when objects travel faster than the acoustic speed of the fluid it’s in (speed measured relative to the fluid). This leads to a sudden discontinuity in the fluid’s properties as it transitions from supersonic to subsonic velocities.</p>
+
 <h3 id="normal-shocks">Normal Shocks</h3>
 <p>Across a normal shock: total temperature remains constant, total pressure decreases, but static pressure and static temperature increase. Density increases, speed decreases. 
 Derivation of Normal Shock Equations:</p>
@@ -287,7 +326,7 @@ At a free boundary, waves reflect in opposite manners. A shock reflects as an ex
 
 <p>TBD</p>
 
-<h3 id="compressible-boundary-layers">Compressible Boundary Layers</h3>
+<h2 id="compressible-boundary-layers">Compressible Boundary Layers</h2>
 
 <p>The key feature of compressible boundary layers is that temperature and enthalpy changes cannot be decoupled from the velocity profile. Thus, even if the wall is adiabatic, the flow itself is neither adiabatic or isentropic (viscous dissipation). Consider the steady case where Prandtl number is equal to 1 (not a bad assumption with gases). This is also known as the Crocco-Busemann Relations.</p>
 
@@ -356,4 +395,23 @@ At a free boundary, waves reflect in opposite manners. A shock reflects as an ex
     </div>
 
   </body>
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Compressible Flow | Notes</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Compressible Flow" />
+<meta name="author" content="David Lu" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="While viscous flow deals with liquids, or flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects." />
+<meta property="og:description" content="While viscous flow deals with liquids, or flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects." />
+<link rel="canonical" href="https://ludavid15.github.io//notes/compressible/" />
+<meta property="og:url" content="https://ludavid15.github.io//notes/compressible/" />
+<meta property="og:site_name" content="Notes" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-09T00:00:00-07:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Compressible Flow" />
+<script type="application/ld+json">
+{"datePublished":"2021-05-09T00:00:00-07:00","description":"While viscous flow deals with liquids, or flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects.","dateModified":"2021-05-09T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/compressible/"},"url":"https://ludavid15.github.io//notes/compressible/","author":{"@type":"Person","name":"David Lu"},"@type":"BlogPosting","headline":"Compressible Flow","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
 </html>
