@@ -7,11 +7,15 @@ mathjax: true
 ---
 
 
+
 While viscous flow deals with liquids, or flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold's number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects.
 
 <!--more-->
 
-#### Stagnation Properties
+* TOC
+{:toc}
+
+### Stagnation Properties
 
 For any steady state fluid in motion, we can define stagnation/total properties. These reflect the actual values if the fluid were brought to rest isentropically. 
 
@@ -19,7 +23,7 @@ $$\frac{T_{Total}}{T}=\ \left(\frac{P_{Total}}{P}\right)^\sfrac{\gamma-1}{\gamma
 
 Note that the stagnation properties are frame dependent and thus not intrinsic thermodynamic properties.
 
-### Waves
+## Waves
 In the context of fluid dynamics, a wave is simply a disturbance which propagates. This disturbance can have many properties and effects on the fluid as it passes through:
 
 * It can increase/decrease a property of the fluid (density, pressure, etc.)
@@ -30,6 +34,12 @@ In the context of fluid dynamics, a wave is simply a disturbance which propagate
 * It can propagate faster than the local acoustic speed or at the acoustic speed.
 
 By this definition, a shock is a type of wave. Although shocks are often introduced as “stationary” objects, this is because we have shifted our frame of reference such that this the case. A shock can be stationary (like at the inlet of a ramjet), or a shock can propagate (like out from an explosion). 
+
+<p class="message">
+Another way to think of waves is as the propagation of information. Here's an example you might be familiar with: take a water droplet hitting the surface of a pond. Waves carry information about the event (the falling water) outwards. The speed at which the wave moves out is the speed at which this information is carried. 
+
+Every fluid has a local "acoustic speed" or **speed of sound**. This is the maximum speed at which waves can propagate. So here's a question for you, what happens when a disturbing even (like an airplane) moves faster than the local speed of sound? 
+</p>
 
 ### Acoustic Wave Theory
 
@@ -72,6 +82,10 @@ Ok, well I've outlined the principle behind it, but I need to actually write the
 
 With MOC, it is possible to design a nozzle such that the local curvature exactly cancels any incident expansion waves (these result from the diverging section right after the throat). 
  
+## Shocks
+
+Shocks occur when objects travel faster than the acoustic speed of the fluid it's in (speed measured relative to the fluid). This leads to a sudden discontinuity in the fluid's properties as it transitions from supersonic to subsonic velocities. 
+
 ### Normal Shocks
 Across a normal shock: total temperature remains constant, total pressure decreases, but static pressure and static temperature increase. Density increases, speed decreases. 
 Derivation of Normal Shock Equations:
@@ -141,7 +155,7 @@ TBD
 
 TBD
 
-### Compressible Boundary Layers
+## Compressible Boundary Layers
 
 The key feature of compressible boundary layers is that temperature and enthalpy changes cannot be decoupled from the velocity profile. Thus, even if the wall is adiabatic, the flow itself is neither adiabatic or isentropic (viscous dissipation). Consider the steady case where Prandtl number is equal to 1 (not a bad assumption with gases). This is also known as the Crocco-Busemann Relations.
 

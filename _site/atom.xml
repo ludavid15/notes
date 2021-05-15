@@ -4,7 +4,7 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-05-14T21:52:27-07:00</updated>
+ <updated>2021-05-15T16:12:32-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
@@ -524,7 +524,36 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 
 &lt;!--more--&gt;
 
-&lt;h4 id=&quot;stagnation-properties&quot;&gt;Stagnation Properties&lt;/h4&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#stagnation-properties&quot; id=&quot;markdown-toc-stagnation-properties&quot;&gt;Stagnation Properties&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#waves&quot; id=&quot;markdown-toc-waves&quot;&gt;Waves&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#acoustic-wave-theory&quot; id=&quot;markdown-toc-acoustic-wave-theory&quot;&gt;Acoustic Wave Theory&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#method-of-characteristics&quot; id=&quot;markdown-toc-method-of-characteristics&quot;&gt;Method of Characteristics&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#1d-unsteady-moc&quot; id=&quot;markdown-toc-1d-unsteady-moc&quot;&gt;1D Unsteady MOC&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#2d-steady-moc&quot; id=&quot;markdown-toc-2d-steady-moc&quot;&gt;2D Steady MOC&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#minimum-length-nozzle-calculation-using-moc&quot; id=&quot;markdown-toc-minimum-length-nozzle-calculation-using-moc&quot;&gt;Minimum Length Nozzle Calculation using MOC&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#shocks&quot; id=&quot;markdown-toc-shocks&quot;&gt;Shocks&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#normal-shocks&quot; id=&quot;markdown-toc-normal-shocks&quot;&gt;Normal Shocks&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#oblique-shocks&quot; id=&quot;markdown-toc-oblique-shocks&quot;&gt;Oblique Shocks&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#detached-shock&quot; id=&quot;markdown-toc-detached-shock&quot;&gt;Detached Shock&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#expansion-fans&quot; id=&quot;markdown-toc-expansion-fans&quot;&gt;Expansion Fans&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#prandtl-meyer-function&quot; id=&quot;markdown-toc-prandtl-meyer-function&quot;&gt;Prandtl-Meyer Function&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#reflections&quot; id=&quot;markdown-toc-reflections&quot;&gt;Reflections&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#interactions-of-shockwaves&quot; id=&quot;markdown-toc-interactions-of-shockwaves&quot;&gt;Interactions of Shockwaves&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#expansion-wave-interactions-method-of-characteristics&quot; id=&quot;markdown-toc-expansion-wave-interactions-method-of-characteristics&quot;&gt;Expansion Wave Interactions (Method of Characteristics)&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#compressible-boundary-layers&quot; id=&quot;markdown-toc-compressible-boundary-layers&quot;&gt;Compressible Boundary Layers&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#adiabatic-wall-temperature&quot; id=&quot;markdown-toc-adiabatic-wall-temperature&quot;&gt;Adiabatic Wall Temperature&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;stagnation-properties&quot;&gt;Stagnation Properties&lt;/h3&gt;
 
 &lt;p&gt;For any steady state fluid in motion, we can define stagnation/total properties. These reflect the actual values if the fluid were brought to rest isentropically.&lt;/p&gt;
 
@@ -532,7 +561,7 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 
 &lt;p&gt;Note that the stagnation properties are frame dependent and thus not intrinsic thermodynamic properties.&lt;/p&gt;
 
-&lt;h3 id=&quot;waves&quot;&gt;Waves&lt;/h3&gt;
+&lt;h2 id=&quot;waves&quot;&gt;Waves&lt;/h2&gt;
 &lt;p&gt;In the context of fluid dynamics, a wave is simply a disturbance which propagates. This disturbance can have many properties and effects on the fluid as it passes through:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -545,6 +574,12 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 &lt;/ul&gt;
 
 &lt;p&gt;By this definition, a shock is a type of wave. Although shocks are often introduced as “stationary” objects, this is because we have shifted our frame of reference such that this the case. A shock can be stationary (like at the inlet of a ramjet), or a shock can propagate (like out from an explosion).&lt;/p&gt;
+
+&lt;p class=&quot;message&quot;&gt;
+Another way to think of waves is as the propagation of information. Here&apos;s an example you might be familiar with: take a water droplet hitting the surface of a pond. Waves carry information about the event (the falling water) outwards. The speed at which the wave moves out is the speed at which this information is carried. 
+
+Every fluid has a local &quot;acoustic speed&quot; or **speed of sound**. This is the maximum speed at which waves can propagate. So here&apos;s a question for you, what happens when a disturbing even (like an airplane) moves faster than the local speed of sound? 
+&lt;/p&gt;
 
 &lt;h3 id=&quot;acoustic-wave-theory&quot;&gt;Acoustic Wave Theory&lt;/h3&gt;
 
@@ -583,6 +618,10 @@ Given the initial conditions about the displacement and rate, the solution for t
 
 &lt;p&gt;With MOC, it is possible to design a nozzle such that the local curvature exactly cancels any incident expansion waves (these result from the diverging section right after the throat). 
  &lt;/p&gt;
+&lt;h2 id=&quot;shocks&quot;&gt;Shocks&lt;/h2&gt;
+
+&lt;p&gt;Shocks occur when objects travel faster than the acoustic speed of the fluid it’s in (speed measured relative to the fluid). This leads to a sudden discontinuity in the fluid’s properties as it transitions from supersonic to subsonic velocities.&lt;/p&gt;
+
 &lt;h3 id=&quot;normal-shocks&quot;&gt;Normal Shocks&lt;/h3&gt;
 &lt;p&gt;Across a normal shock: total temperature remains constant, total pressure decreases, but static pressure and static temperature increase. Density increases, speed decreases. 
 Derivation of Normal Shock Equations:&lt;/p&gt;
@@ -656,7 +695,7 @@ At a free boundary, waves reflect in opposite manners. A shock reflects as an ex
 
 &lt;p&gt;TBD&lt;/p&gt;
 
-&lt;h3 id=&quot;compressible-boundary-layers&quot;&gt;Compressible Boundary Layers&lt;/h3&gt;
+&lt;h2 id=&quot;compressible-boundary-layers&quot;&gt;Compressible Boundary Layers&lt;/h2&gt;
 
 &lt;p&gt;The key feature of compressible boundary layers is that temperature and enthalpy changes cannot be decoupled from the velocity profile. Thus, even if the wall is adiabatic, the flow itself is neither adiabatic or isentropic (viscous dissipation). Consider the steady case where Prandtl number is equal to 1 (not a bad assumption with gases). This is also known as the Crocco-Busemann Relations.&lt;/p&gt;
 
