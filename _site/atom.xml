@@ -4,7 +4,7 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-05-13T20:05:13-07:00</updated>
+ <updated>2021-05-14T21:52:27-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
@@ -228,7 +228,7 @@
 Viscosity is to fluids what the modulus of elasticity is to solids. It relates the stress (amount of force) to strain (amount of deformation). Qualitatively, viscosity is a measure of a fluid&apos;s resistence to flowing. Things like honey have a very high viscosity, while air and water have comparatively lower viscosity. 
 &lt;/p&gt;
 
-&lt;p&gt;Viscous flow is the study of how a fluid’s viscosity affects its behavior. Viscous flow covers topics like boundary layers, low-speed flows, and small-scale flows. Coincidentally, the regimes in which viscous forces dominate is often incompressible, but this is not a hard and fast rule.&lt;/p&gt;
+&lt;p&gt;Viscous flow then, is the study of how a fluid’s viscosity affects its behavior. Viscous flow covers topics like boundary layers, low-speed flows, and small-scale flows. Coincidentally, the regimes in which viscous forces dominate is often incompressible, but this is not a hard and fast rule.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -263,7 +263,7 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
   &lt;li&gt;Flow through porous media (mostly used for civil engineering)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Under the above assumption, the momentum equation reduces to the following:&lt;/p&gt;
+&lt;p&gt;Under the above assumption (i.e. very low Re), the momentum equation reduces to the following:&lt;/p&gt;
 
 \[\nabla P\approx\mu\nabla^2V\]
 
@@ -289,10 +289,11 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 
 &lt;h3 id=&quot;steady-flow-between-infinite-plates&quot;&gt;Steady Flow between Infinite Plates&lt;/h3&gt;
 
-&lt;p&gt;A class of problem in which viscous forces dominate. We take the bottom plate to be stationary and assume some steady velocity for the top plate. There can also be a pressure gradient in the direction parallel to the plates.&lt;/p&gt;
+&lt;p&gt;Another class of problem in which viscous forces dominate. We take the bottom plate to be stationary and assume some steady velocity for the top plate. There can also be a pressure gradient in the direction parallel to the plates. Due to viscosity, the motion of the top plate drags the top layer of fluid along with it. Eventually, some sort of velocity profile develops along this direction.&lt;/p&gt;
 
-&lt;p&gt;In the limit that the top plate’s velocity tends to zero we get a Hagen-Poiseuille flow problem (pressure gradient driven flow). In the limit that the pressure gradient tends to zero we get a Couette flow problem (velocity of the top plate drives flow). 
-The general solution of the velocity profile is expressed below. The first equation is the general solution, while the second equation takes the lower wall to be stationary. Where τo is the shear stress at the wall where y=0, and uo is the velocity at the wall where y=0.&lt;/p&gt;
+&lt;p&gt;In the limit that the top plate’s velocity tends to zero we get a Hagen-Poiseuille flow problem (the only that can drive the fluid forward is a pressure gradient). In the limit that the pressure gradient tends to zero we get a Couette flow problem (velocity of the top plate drives flow).&lt;/p&gt;
+
+&lt;p&gt;The general solution of the velocity profile is expressed below. The first equation is the general solution, while the second equation takes the lower wall to be stationary. Where τo is the shear stress at the wall where y=0, and uo is the velocity at the wall where y=0.&lt;/p&gt;
 
 \[u\left(y\right)=\ -\frac{1}{2\mu}\left(-\frac{dP}{dx}\right)y^2+\frac{\tau_o}{\mu}y+u_o\]
 
@@ -304,7 +305,7 @@ The general solution of the velocity profile is expressed below. The first equat
 
 &lt;h3 id=&quot;unsteady-flow--infinite-plates&quot;&gt;Unsteady Flow &amp;amp; Infinite Plates&lt;/h3&gt;
 
-&lt;p&gt;There are two problems within this category, known as Stokes 1st problem (an impulsively started plate) and Stokes’s 2nd problem (an oscillating plate).&lt;/p&gt;
+&lt;p&gt;There are two problems within this category, known as Stokes 1st problem (an impulsively started plate) and Stokes’s 2nd problem (an oscillating plate). Unlike the previous problem, which solves for some steady state condition, these problems deal with transient situations.&lt;/p&gt;
 
 &lt;h4 id=&quot;1st-problem&quot;&gt;1st Problem:&lt;/h4&gt;
 
@@ -332,6 +333,10 @@ The general solution of the velocity profile is expressed below. The first equat
 
 &lt;p&gt;The amplitude of the velocity oscillation decreases with distance from the plate. The ratio of viscosity to frequency determines the penetration height. Note that this ratio also affects a phase lead/lag, which changes with height, represented within the cosine term.&lt;/p&gt;
 
+&lt;h2 id=&quot;pipes&quot;&gt;Pipes&lt;/h2&gt;
+
+&lt;p&gt;Although infinite plates are useful for understanding some of the concepts, they are exactly reflective of real life. What we do see plenty of though, is flow through pipes.&lt;/p&gt;
+
 &lt;h3 id=&quot;hagen-poiseuille-circular-pipe-flow-model&quot;&gt;Hagen-Poiseuille Circular Pipe Flow Model&lt;/h3&gt;
 
 &lt;p&gt;Pressure driven viscous pipe flow. Given L is the length of pipe, Q is the volume flow rate, and some known diameter, we can find the pressure drop. Assumes laminar flow.&lt;/p&gt;
@@ -352,6 +357,10 @@ The general solution of the velocity profile is expressed below. The first equat
 \(∆PL=fd(12)ρU2D\)&lt;/p&gt;
 
 &lt;p&gt;Where fd is the Darcy friction factor. In the laminar regime, the Darcy Friction factor is equal to \(\sfrac{f_D=64}{Re}\). For turbulent regime values, the friction factor is dependent on the surface roughness. Look up results in a Moody Diagram.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To be inserted, Moody Diagram&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;More commonly, pressure loss per unit length is replaced with head loss per unit length, S, where head loss is calculated as:
 \(∆h= ρg∆P\)&lt;/p&gt;
@@ -374,7 +383,9 @@ The general solution of the velocity profile is expressed below. The first equat
 
 &lt;h2 id=&quot;boundary-layers&quot;&gt;Boundary Layers&lt;/h2&gt;
 
-&lt;p&gt;Boundary layers are an incredibly important phenomena arising due to viscous forces. As before, we require that the velocity of the fluid at the wall is equal to the velocity of the wall.&lt;/p&gt;
+&lt;p&gt;Boundary layers are an incredibly important phenomena arising due to viscous forces. As before, we require that the velocity of the fluid at the wall is equal to the velocity of the wall. Only through BL analysis can we determine things like the lift, drag, and heat flux of objects moving through a fluid (such as a wing).&lt;/p&gt;
+
+&lt;p&gt;For now, we’ll focus on laminar boundary layers, however, it is possible for something known as &lt;strong&gt;Boundary Layer Separation&lt;/strong&gt; to occur. When this happens, the fluid ceases to flow past objects in a nice smooth fashion, and trips into turbulent flow. This leads to the topic of &lt;strong&gt;Tubulent Boundary Layer&lt;/strong&gt;, which is a whole other beast.&lt;/p&gt;
 
 &lt;h3 id=&quot;2d-boundary-layer-similarity-solutions&quot;&gt;2D Boundary Layer Similarity Solutions&lt;/h3&gt;
 
@@ -472,15 +483,380 @@ The general solution of the velocity profile is expressed below. The first equat
 
 \[\tau_w=\mu\frac{du}{dy}=0\]
 
-&lt;p&gt;Axis-Symmetric 3D Boundary Layers&lt;/p&gt;
+&lt;h3 id=&quot;axis-symmetric-3d-boundary-layers&quot;&gt;Axis-Symmetric 3D Boundary Layers&lt;/h3&gt;
 
 &lt;p&gt;The boundary layer equations for an axisymmetric steady flow without swirl can be shown to be equal to the following:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Axisymmetric steady flow without swirl:&lt;/strong&gt; in other words, flow only occurs in the radial or axial direction, and never in azimuth.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 \[\frac{\partial(r_ou)}{\partial x}+r_o\frac{\partial v}{\partial y}=0\]
 
 \[\rho\left(u\frac{\partial u}{\partial x}+v\frac{\partial u}{\partial y}\right)=\rho u_e\frac{\partial u_e}{\partialx}+\mu\frac{\partial^2u}{\partial y^2}\]
 
 &lt;p&gt;The above equations can be transformed into an equivalent set of 2D boundary layer equations with the Mangler Transformation of the coordinate frame.&lt;/p&gt;
+
+&lt;h3 id=&quot;fanno-flow&quot;&gt;Fanno Flow&lt;/h3&gt;
+
+&lt;p&gt;Associated with one dimensional flow with friction. Friction tends to drive flow eventually towards sonic conditions, regardless of whether flow starts out subsonic or supersonic. Given conditions at a point (1) in a pipe, you can solve for the sonic conditions (*). If you then know something about conditions at another point (2), you can use the sonic conditions to backtrack and find all other properties at that second point. In a Fanno flow table, you will usually find the following relations:&lt;/p&gt;
+
+\[M_1\ \ \ \ \ \frac{fL}{D}\ \ \ \ \ \frac{P}{P^\ast}\ \ \ \ \ \ \frac{T}{T^\ast}\ \ \ \ \ \ \frac{P_0}{P_0^\ast}\]
+
+&lt;h3 id=&quot;rayleigh-flow&quot;&gt;Rayleigh Flow&lt;/h3&gt;
+
+&lt;p&gt;Like Fanno flow, where heat addition tends to drive flow towards sonic conditions, regardless of initial velocity. Knowing heat input can allow you to find change in total temperature between two points. From there you can backtrack and solve for all other properties at those two points like how you would do it for Fanno flow.&lt;/p&gt;
+
+\[T_{t,2}=\frac{q}{c_p}+T_{t,1}\]
+
+&lt;h3 id=&quot;laminar-free-stream-shear-flow-jets-wakes-mixing-layers&quot;&gt;Laminar Free Stream Shear Flow (Jets, Wakes, Mixing Layers)&lt;/h3&gt;
+
+&lt;p&gt;A class of problems involving a large unbounded region and either excess momentum (i.e. a jet or plume) or a momentum deficit (i.e. wake). This section will be completed at a later date.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Compressible Flow</title>
+   <link href="https://ludavid15.github.io//compressible/"/>
+   <updated>2021-05-09T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//compressible</id>
+   <content type="html">&lt;p&gt;While viscous flow deals with liquids, or flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h4 id=&quot;stagnation-properties&quot;&gt;Stagnation Properties&lt;/h4&gt;
+
+&lt;p&gt;For any steady state fluid in motion, we can define stagnation/total properties. These reflect the actual values if the fluid were brought to rest isentropically.&lt;/p&gt;
+
+\[\frac{T_{Total}}{T}=\ \left(\frac{P_{Total}}{P}\right)^\sfrac{\gamma-1}{\gamma}=\left(\frac{\rho_{Total}}{\rho}\right)^{\gamma-1}=1+\left(\frac{\gamma-1}{2}\right)M^2\]
+
+&lt;p&gt;Note that the stagnation properties are frame dependent and thus not intrinsic thermodynamic properties.&lt;/p&gt;
+
+&lt;h3 id=&quot;waves&quot;&gt;Waves&lt;/h3&gt;
+&lt;p&gt;In the context of fluid dynamics, a wave is simply a disturbance which propagates. This disturbance can have many properties and effects on the fluid as it passes through:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It can increase/decrease a property of the fluid (density, pressure, etc.)&lt;/li&gt;
+  &lt;li&gt;It can change the velocity of the fluid&lt;/li&gt;
+  &lt;li&gt;The magnitude of the change can be large or small&lt;/li&gt;
+  &lt;li&gt;The shape of the disturbance can be continuous or discontinuous&lt;/li&gt;
+  &lt;li&gt;It can be isentropic/increase entropy&lt;/li&gt;
+  &lt;li&gt;It can propagate faster than the local acoustic speed or at the acoustic speed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;By this definition, a shock is a type of wave. Although shocks are often introduced as “stationary” objects, this is because we have shifted our frame of reference such that this the case. A shock can be stationary (like at the inlet of a ramjet), or a shock can propagate (like out from an explosion).&lt;/p&gt;
+
+&lt;h3 id=&quot;acoustic-wave-theory&quot;&gt;Acoustic Wave Theory&lt;/h3&gt;
+
+&lt;p&gt;An acoustic wave is the propagation of wave with small magnitude through a medium. This wave travels at the local acoustic speed of the medium and is adiabatic (i.e. the energy of the medium before and after the wave has passed through remains constant). 
+Given the initial conditions about the displacement and rate, the solution for the propagation of that disturbance can be found (d’Alembert’s Formula).&lt;/p&gt;
+
+\[∆px,t=0=fx\]
+
+\[∂∆p∂tx,t=0=gx\]
+
+\[∆px,t=fx-a∞t+fx+a∞t2+12a∞x-a∞tx+a∞tgsds\]
+
+&lt;p&gt;The fundamental result is that the initial disturbance splits into a left running and right running portion. The fluid velocity, pressure and density can also be related to one another.&lt;/p&gt;
+
+\[∆u= ±a∞ρ∞∆ρ\]
+
+\[∆ρ= ±1a∞2∆P\]
+
+\[∆ρ= ±1ρ∞a∞∆P\]
+
+&lt;p&gt;In deriving the above equation, we’ve assumed small amplitudes, meaning that the local speed of sound remains constant through the disturbance.&lt;/p&gt;
+
+&lt;p&gt;If we remove this assumption, the local speed at which the disturbance propagates will be proportional to the magnitude and shape of the disturbance. This leads to finite strength waves and the method of characteristics.&lt;/p&gt;
+
+&lt;h3 id=&quot;method-of-characteristics&quot;&gt;Method of Characteristics&lt;/h3&gt;
+
+&lt;p&gt;Alright here’s where it get complicated. It turns out that when we no longer assume a constant speed of sound, the equations are a tad unsolvable as they are. To this end, mathemeticians have defined a way around this. Instead of solving the entire system for every point in space, we can define some &lt;em&gt;characteristic lines&lt;/em&gt;. We can apply a constraint (i.e. some property is constant along the line), and this gives us the final equation we need to solve the system. Then if we define many lines, we can nearly cover the entire region we are solving for. By applying constraints at their intersection points, we can solve a big system of equations and have an approximate solution to our problem.&lt;/p&gt;
+
+&lt;h4 id=&quot;1d-unsteady-moc&quot;&gt;1D Unsteady MOC&lt;/h4&gt;
+
+&lt;p&gt;Ok, well I’ve outlined the principle behind it, but I need to actually write the section on how to do this. :(&lt;/p&gt;
+
+&lt;h4 id=&quot;2d-steady-moc&quot;&gt;2D Steady MOC&lt;/h4&gt;
+
+&lt;h4 id=&quot;minimum-length-nozzle-calculation-using-moc&quot;&gt;Minimum Length Nozzle Calculation using MOC&lt;/h4&gt;
+
+&lt;p&gt;With MOC, it is possible to design a nozzle such that the local curvature exactly cancels any incident expansion waves (these result from the diverging section right after the throat). 
+ &lt;/p&gt;
+&lt;h3 id=&quot;normal-shocks&quot;&gt;Normal Shocks&lt;/h3&gt;
+&lt;p&gt;Across a normal shock: total temperature remains constant, total pressure decreases, but static pressure and static temperature increase. Density increases, speed decreases. 
+Derivation of Normal Shock Equations:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Continuity Equation: 				\(\rho_1u_1=\rho_2u_2\)&lt;/li&gt;
+  &lt;li&gt;Momentum Conservation Equation:		\({P_1+\rho}_1{u_1}^2=P_2+\rho_2{u_2}^2\)&lt;/li&gt;
+  &lt;li&gt;Energy Conservation Equation		\(h_1+\frac{1}{2}u_1^2=h_2+\frac{1}{2}u_2^2\)&lt;/li&gt;
+  &lt;li&gt;Ideal Gas Law					\(PV=nRT\)&lt;/li&gt;
+  &lt;li&gt;Calorically Perfect Gas Assumption		\(h=\ C_pT\)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The above represents 5 equations with 5 unknowns (assuming we know the properties at state 1, upstream of the shock). They can be solved to show the following equations:&lt;/p&gt;
+
+\[\frac{P_2}{P_1}=1+\frac{2\gamma}{\gamma+1}\left(M_1^2-1\right)\]
+
+\[\frac{T_2}{T_1}=\left[1+\frac{2\gamma}{\gamma+1}\left(M_1^2-1\right)\right]\left[\frac{2+(\gamma-1)M_1^2}{(\gamma+1)M_1^2}\right]\]
+
+\[\frac{\rho_2}{\rho_1}=\frac{u_1}{u_2}=\frac{(\gamma+1)M_1^2}{2+(\gamma-1)M_1^2}\]
+
+\[{M_2}^2=\frac{1+\frac{\gamma-1}{2}M_1^2}{\gamma M_1^2-\frac{\gamma-1}{2}}\]
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h3 id=&quot;oblique-shocks&quot;&gt;Oblique Shocks&lt;/h3&gt;
+
+&lt;p&gt;Supersonic flow over an angle. From the conservation equations, there are two equally valid solutions to an oblique shock problem, a strong solution and a weak solution. It is also possible that for a given combination of turning angle and incoming Mach number, there is no solution. Instead, the oblique shock becomes a detached or bow shock.&lt;/p&gt;
+
+\[M_{n,1}=M_1\sin{\left(\sigma\right)}\]
+
+\[M_2=\ \frac{M_{2n}}{\sin\funcapply(\sigma-\delta)}\]
+
+\[\tan{\left(\delta\right)}=2\cot\funcapply(\sigma)\left[\frac{M_1^2{sin}^2\left(\sigma\right)-1}{M_1^2\left(\gamma+cos\left(2\sigma\right)\right)+2}\right]\]
+
+&lt;p&gt;Unless there is some downstream flow feature to support the strong shock, the weak solution is typically what develops. 
+The presence of a shock introduces a sudden change in the fluid properties, including pressure. This leads to the creation of wave drag.&lt;/p&gt;
+
+&lt;p&gt;There are some important takeaways from the above figure.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The red line denotes the maximum shock wave angle that is possible for a given incoming Mach number and deflection angle. If either one is increased while the other is kept constant, the shock will detach.&lt;/li&gt;
+  &lt;li&gt;After a strong shock, the fluid is always subsonic.&lt;/li&gt;
+  &lt;li&gt;fter a weak shock, the fluid can be either subsonic OR supersonic. This is the region bounded by the red and blue dotted lines.&lt;/li&gt;
+  &lt;li&gt;The strong limit is the normal shock.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;detached-shock&quot;&gt;Detached Shock&lt;/h3&gt;
+
+&lt;p&gt;The detached or bow shock is just an oblique shock problem in which a range of deflection angles (0 to 90 degrees) are present. At the centerline, fluid flow is perfectly perpendicular to the bow shock, and so it is treated as a normal shock. Traveling away from the center, the fluid flow has velocity partially parallel to the shock. This is equivalent to an oblique shock at some deflection angle. Infinitely far away, the deflection angle reaches 0 degrees and hence no shock develops.&lt;/p&gt;
+
+&lt;p&gt;Notice that there are two regions behind the bow shock, a subsonic flow region, and a supersonic flow region. The dividing line between these two regimes is defined by the point along the bow shock where M2 = 1, or the blue dotted line in the figure above.&lt;/p&gt;
+
+&lt;h3 id=&quot;expansion-fans&quot;&gt;Expansion Fans&lt;/h3&gt;
+&lt;p&gt;The exact opposite of an oblique shock, in which the boundary curves away from the flow direction. An expansion fan is formed as a continuous spread of Mach/Acoustic waves, each providing some infinitesimal change to the fluid properties. Thus, flow through an expansion fan is isentropic.&lt;/p&gt;
+
+&lt;h3 id=&quot;prandtl-meyer-function&quot;&gt;Prandtl-Meyer Function&lt;/h3&gt;
+&lt;p&gt;The flow angle can be related to the local Mach number by applying continuity and conservation laws across an expansion wave. The resulting expression is the Prandtl-Meyer Function.&lt;/p&gt;
+
+\[\theta_2-\theta_1=v\left(M_2\right)-v(M_1)\]
+
+\[v\left(M\right)=\ \sqrt{\frac{\gamma+1}{\gamma-1}}arctan\sqrt{\frac{\gamma-1}{\gamma+1}(M^2-1)}-arctan\sqrt{M^2-1}\]
+
+&lt;h3 id=&quot;reflections&quot;&gt;Reflections&lt;/h3&gt;
+
+&lt;p&gt;At a solid boundary, waves reflect in a like manner. That is, a shock reflects as a shock, and an expansion wave reflects as an expansion wave. This maintains the kinematic constraint that flow near a wall must be parallel to it (i.e. no penetration).
+At a free boundary, waves reflect in opposite manners. A shock reflects as an expansion wave, while an expansion wave reflects and converges as a shock. Across a free boundary, the pressure must be equal, and the flow in both regions must be parallel.&lt;/p&gt;
+
+&lt;h3 id=&quot;interactions-of-shockwaves&quot;&gt;Interactions of Shockwaves&lt;/h3&gt;
+
+&lt;p&gt;TBD&lt;/p&gt;
+
+&lt;h3 id=&quot;expansion-wave-interactions-method-of-characteristics&quot;&gt;Expansion Wave Interactions (Method of Characteristics)&lt;/h3&gt;
+
+&lt;p&gt;TBD&lt;/p&gt;
+
+&lt;h3 id=&quot;compressible-boundary-layers&quot;&gt;Compressible Boundary Layers&lt;/h3&gt;
+
+&lt;p&gt;The key feature of compressible boundary layers is that temperature and enthalpy changes cannot be decoupled from the velocity profile. Thus, even if the wall is adiabatic, the flow itself is neither adiabatic or isentropic (viscous dissipation). Consider the steady case where Prandtl number is equal to 1 (not a bad assumption with gases). This is also known as the Crocco-Busemann Relations.&lt;/p&gt;
+
+\[\Pr{=\ \frac{\mu C_p}{k}}\]
+
+&lt;p&gt;For an arbitrary pressure gradient, the temperature distribution takes the following form. This condition is satisfied for isentropic flow outside the boundary layer.&lt;/p&gt;
+
+\[T=T_e\left[1+\frac{\gamma-1}{2}M_e^2\left(1-\frac{u^2}{U_e^2}\right)\right]\]
+
+&lt;p&gt;For this scenario, the adiabatic wall temperature is equal to the stagnation temperature of the free stream. Recovery factor is 1.&lt;/p&gt;
+
+&lt;p&gt;The second scenario is for zero pressure gradient.&lt;/p&gt;
+
+\[T-T_w=\left(T_{oe}-T_w\right)\frac{u}{U_e}-\frac{u^2}{2C_p}\]
+
+&lt;p&gt;The similar solution to the adiabatic wall temperature can be found for cases of Prandtl number larger than one with the following expression.&lt;/p&gt;
+
+\[T_{aw}=T_e\left[1+\frac{\gamma-1}{2}\sqrt{Pr}M_e^2\right]\]
+
+&lt;h4 id=&quot;adiabatic-wall-temperature&quot;&gt;Adiabatic Wall Temperature&lt;/h4&gt;
+
+&lt;p&gt;This is the wall temperature for a fluid flow such that there is no net heat transfer into or out of the wall. If a system is let to run until equilibrium, this is the steady state temperature the immersed object will reach.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Turbulent Flow</title>
+   <link href="https://ludavid15.github.io//turbulent/"/>
+   <updated>2021-05-08T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//turbulent</id>
+   <content type="html">&lt;p&gt;In general, turbulent flow is modeled statistically. Averages values are used instead of exact ones. Before laminar flow becomes fully turbulent, it experiences transition. Transition begins with flow instability. The point at which a flow trips into instability (critical point) is distinct from the point at which flow transitions fully to turbulence (transition point).&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h4 id=&quot;squires-law&quot;&gt;Squire’s Law&lt;/h4&gt;
+&lt;p&gt;For two-dimensional parallel flow, the minimum critical unstable Reynold’s number occurs for a two-dimensional disturbance propagating in the same direction. Really all that this Law states is that a turbulence is tripped in the direction of disturbances.&lt;/p&gt;
+
+&lt;h4 id=&quot;orr-sommerfeld-equation&quot;&gt;Orr-Sommerfeld Equation&lt;/h4&gt;
+&lt;p&gt;The equation describing the velocity distribution of a two-dimensional disturbance propagating in the same direction as a two-dimensional parallel flow can found to be exactly:&lt;/p&gt;
+
+\[\left(U-c\right)\left(\phi^{\prime\prime}-\alpha^2\phi\right)-U^{\prime\prime}\phi+i\frac{\mathbit{\nu}}{\alpha}\left(\phi^{\prime\prime\prime\prime}-2\alpha^2\phi^{\prime\prime}+\alpha^4\phi\right)=\ 0\]
+
+\[\Psi\left(x,y,t\right)=\ \phi\left(y\right)exp\left(i\left[\alpha x-\beta t\right]\right)\]
+
+\[c=\sfrac{\beta}{\alpha}\]
+
+&lt;p&gt;Where U is the velocity of the free stream, α is the wavenumber, c is the wave speed, and the frequency, ω = αc. The primes denote differentiation with respect to y. This is a fourth order linear differential equation. Disturbances must vanish at walls and an infinity. The temporal growth and spatial growth of disturbances are functions of the following form:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Temporal: \(f\left(Re,\ \alpha,\ c_r,\ c_i\right)=0\)&lt;/li&gt;
+  &lt;li&gt;Spatial: \(g\left(Re,\ \alpha_r,\ \alpha_i,\ \omega\right)=0\)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Temporal neutral stability occurs when ci is equal to zero, while spatial neutral stability occurs for αi equal to zero. Instability begins at ci greater than zero. A full analytical solution of the Orr-Sommerfeld equation is non-trivial. In general, a non-dimensionalized version of the Orr-Sommerfeld equation can be written and can be plotted.&lt;/p&gt;
+
+&lt;h4 id=&quot;wavenumber&quot;&gt;Wavenumber&lt;/h4&gt;
+
+&lt;p&gt;The wavenumber is the waves per unit space. It is distinct from frequency, which is the waves per unit time.&lt;/p&gt;
+
+&lt;h4 id=&quot;rayleigh-inviscid-stability-theory&quot;&gt;Rayleigh Inviscid Stability Theory&lt;/h4&gt;
+
+&lt;p&gt;This is the limiting case where the viscous term in the Orr-Sommerfeld equation is neglected. In particular, the following five theorems are outlined:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It is necessary for instability that the velocity profile have a point of inflection.&lt;/li&gt;
+  &lt;li&gt;It is further necessary for instability that the numerical value of U’ of the vorticity be a maximum at the point of inflection.&lt;/li&gt;
+  &lt;li&gt;If a point of inflection exists, it is further necessary that U’’(U-UPI) &amp;lt; 0 somewhere on the profile.&lt;/li&gt;
+  &lt;li&gt;If U(y) possesses an inflection point, a neutral disturbance may exist who phase velocity is given by cr.
+  The phase velocity of an amplified disturbance must always lie between the minimum and maximum values of U(y).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;predicting-instability--transition-in-practice&quot;&gt;Predicting Instability &amp;amp; Transition in Practice&lt;/h4&gt;
+&lt;p&gt;It was found that for many different profiles and conditions, the critical transition Reynold’s number seems to depend only on the shape factor. Thus, if the shape factor can be found, one can predict the point of instability and transition. 
+Several models have been proposed to find an equivalent transition point. Wazzan uses a similar approach to instability and finds a transition Reynold’s number as a function of the shape factor. There is no universal curve that accounts for free stream turbulence.&lt;/p&gt;
+
+&lt;h4 id=&quot;improving-stability&quot;&gt;Improving Stability&lt;/h4&gt;
+&lt;p&gt;A favorable pressure gradient (decreasing pressure) delays the onset of instability, or in cases bring a flow back into stability. Boundary layers in gases are stabilized by cooling the wall, while boundary layers in liquids are stabilized by heating the wall.&lt;/p&gt;
+
+&lt;h3 id=&quot;transition-to-turbulence&quot;&gt;Transition to Turbulence&lt;/h3&gt;
+&lt;p&gt;The steps leading to fully developed turbulence are as follows:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Instability&lt;/li&gt;
+  &lt;li&gt;Non-linear development waves (Tollmien-Schlichting Waves)&lt;/li&gt;
+  &lt;li&gt;Three-dimensional instability and streamwise vortices&lt;/li&gt;
+  &lt;li&gt;Formation of turbulent spots&lt;/li&gt;
+  &lt;li&gt;Fully developed turbulence&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;reynolds-averaged-navier-stokes-equation-rans&quot;&gt;Reynolds-Averaged Navier Stokes Equation (RANS)&lt;/h3&gt;
+
+&lt;p&gt;These are time averaged forms of the Navier-Stokes equations. Properties of the fluid are expressed in terms of an average and fluctuation term. An especially interesting result is the resultant equation for local stress.&lt;/p&gt;
+
+\[\tau=\ \mu\left[\frac{\partial\bar{u}}{\partial\bar{y}}+\frac{\partial\bar{v}}{\partial\bar{x}}\right]-\rho\bar{u\prime v\prime}\]
+
+&lt;p&gt;The first term is the laminar stress, while the second term is an equivalent turbulent “Reynolds Stress”. Importantly, note that it is independent of viscosity. This means that in regions dominated by the Reynold’s stress, viscosity of the fluid is unimportant.&lt;/p&gt;
+
+&lt;h4 id=&quot;wall-bounded-turbulent-flow&quot;&gt;Wall Bounded Turbulent Flow&lt;/h4&gt;
+
+&lt;p&gt;Near the wall, fluctuations must be near zero, so laminar contributions are more important. Away from the wall, turbulent stress dominates. The velocity profile from a wall then has three components, a viscous dominates inner layer, a turbulent dominated outer layer, and an overlap layer. First, we define the friction velocity:&lt;/p&gt;
+
+\[v^\ast=\sqrt{\frac{\tau_w}{\rho}}\]
+
+&lt;p&gt;The average velocity and position are also re-written.&lt;/p&gt;
+
+\[u^+=\frac{\bar{u}}{v^\ast}\]
+
+\[y^+=\frac{\rho v^\ast y}{\mu}\]
+
+&lt;p&gt;The following is equation can then model the inner layer, overlap layer, and outer layer.&lt;/p&gt;
+
+\[u^+=\frac{1}{k}\ln{\left(y^+\right)}+B+\frac{2\Pi}{k}f(\eta)\]
+
+\[f\left(\eta\right)=\sin^2{\left(\frac{\pi}{2}\eta\right)}\]
+
+&lt;p&gt;Where k and B are universal constants equal to 0.41 and 5.0 respectively. The first term captures the logarithmic relationship in the overlap section, while the second capture the diverging effect in the outer layer.&lt;/p&gt;
+
+&lt;p&gt;Very, very near the wall, viscous and laminar forces dominate. The velocity profile in this region is linear and proportional to the wall stress. It is called the viscous sublayer.&lt;/p&gt;
+
+\[\tau_w=\mu\frac{\bar{u}}{\bar{y}}\]
+
+\[u^+=y^+\]
+
+&lt;h4 id=&quot;turbulent-pipe-flow&quot;&gt;Turbulent Pipe Flow&lt;/h4&gt;
+
+&lt;p&gt;Using the above model, you can actually derive an expression for the Darcy-friction factor from the flow equation. Note that this is for a smooth pipe, and so when possible, you should still reference a moody chart. In any case, the following is useful for seeing that the Darcy-Friction is not just an empirically derived fit.&lt;/p&gt;
+
+\[\frac{1}{\Lambda^{1/2}}=2.0\log_{10}{\left({Re}_D\Lambda^\frac{1}{2}\right)}-0.8\]
+
+\[Notably the following trends come out:\]
+
+\[\tau\approx0.0396\rho^{3/4}\mu^{7/4}D^{-1/4}{U_{avg}}^{7/4}\]
+
+&lt;h4 id=&quot;turbulent-boundary-layers&quot;&gt;Turbulent Boundary Layers&lt;/h4&gt;
+
+&lt;p&gt;Using the wall bounded turbulent model, the skin coefficient term can be approximated in terms of the boundary layer thickness Reynolds number. Meanwhile, the momentum thickness is evaluated by using a one-seventh power law profile taken from pipe flow data.&lt;/p&gt;
+
+\[C_f=2\frac{d\theta}{dx}\]
+
+\[\frac{\bar{u}}{U_e}\approx\left(\frac{y}{\delta}\right)^{1/7}\]
+
+\[C_f\approx0.020{Re}_\delta^{-1/6}\]
+
+\[{Re}_\delta\approx0.16{Re}_x^{6/7}\]
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Miscellaneous Topics</title>
+   <link href="https://ludavid15.github.io//misc/"/>
+   <updated>2021-05-07T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//reference</id>
+   <content type="html">&lt;p&gt;This is a series of random topics, including non-dimensional numbers and fluid statics.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;non-dimensional-numbers&quot;&gt;Non-Dimensional Numbers&lt;/h2&gt;
+
+&lt;p&gt;There’s a whole bunch. Here are the main ones that you might come across.&lt;/p&gt;
+
+&lt;h4 id=&quot;reynolds-number&quot;&gt;Reynold’s Number&lt;/h4&gt;
+
+\[\frac{\rho UL}{\mu}\]
+
+&lt;p&gt;Ratio of viscous forces to inertia forces. Determines flow regime (Laminar, turbulent, etc.).&lt;/p&gt;
+
+&lt;h4 id=&quot;mach-number&quot;&gt;Mach Number&lt;/h4&gt;
+
+\[\frac{u}{a}\]
+
+&lt;p&gt;Ratio of flow velocity to speed of sound. The higher the Mach number, the more irreversible the flow becomes.&lt;/p&gt;
+
+&lt;h4 id=&quot;knudsen-number&quot;&gt;Knudsen Number&lt;/h4&gt;
+
+\[\frac{\lambda}{L}\]
+
+&lt;p&gt;Ratio of molecular mean free path to characteristic length. Determines transition from gas dynamics to continuum mechanics.&lt;/p&gt;
+
+&lt;h4 id=&quot;prandtl-number&quot;&gt;Prandtl Number&lt;/h4&gt;
+
+\[\frac{C_p\mu}{k}\]
+
+&lt;p&gt;Ratio of momentum diffusivity to thermal diffusivity. In other words, ratio of the dominance of convection to conduction. Also relates momentum vs thermal boundary layers.&lt;/p&gt;
+
+&lt;h4 id=&quot;stokes-number&quot;&gt;Stokes Number&lt;/h4&gt;
+
+&lt;h4 id=&quot;nusselt-number&quot;&gt;Nusselt Number&lt;/h4&gt;
+
+&lt;h2 id=&quot;fluid-statics&quot;&gt;Fluid Statics&lt;/h2&gt;
+
+&lt;p&gt;Forces always act perpendicular to the surface. Given atmospheric surface pressure (free surface) the pressure at a depth (h) will be:&lt;/p&gt;
+
+\[P=\ \gamma h\]
+
+&lt;p&gt;Where \(\gamma\) is the specific gravity of the liquid, (1 for water). For submerged plate of area, A, total resultant force is equal to:&lt;/p&gt;
+
+\[F_r=\gamma h_cA\]
+
+&lt;p&gt;Where hc is the depth of the centroid of the plate. This total force DOES NOT act through the centroid however, instead it acts at through a point where the total moment is equal to zero (center of pressure or can think of this as the centroid of the pressure distribution). If the plate is symmetric, this will coincide with the centroid. 
+For curved surfaces, use the following force balance approach:&lt;/p&gt;
 </content>
  </entry>
  
