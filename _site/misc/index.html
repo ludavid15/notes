@@ -11,7 +11,7 @@
 
   <title>
     
-      Introducing Hyde &middot; Notes
+      Miscellaneous Topics &middot; Notes
     
   </title>
 
@@ -30,6 +30,27 @@
 </head>
 
   
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script
+  type="text/javascript"
+  charset="utf-8"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+>
+</script>
+<script
+  type="text/javascript"
+  charset="utf-8"
+  src="https://vincenttam.github.io/javascripts/MathJaxLocal.js"
+>
+</script>
+
 
   <body>
 
@@ -128,44 +149,56 @@
 
     <div class="content container">
       <div class="post">
-  <h1 class="post-title">Introducing Hyde</h1>
-  <span class="post-date">28 Dec 2013</span>
-  <p>Hyde is a brazen two-column <a href="http://jekyllrb.com">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. It’s based on <a href="http://getpoole.com">Poole</a>, the Jekyll butler.</p>
+  <h1 class="post-title">Miscellaneous Topics</h1>
+  <span class="post-date">07 May 2021</span>
+  <p>This is a series of random topics, including non-dimensional numbers and fluid statics.</p>
 
-<h3 id="built-on-poole">Built on Poole</h3>
+<!--more-->
 
-<p>Poole is the Jekyll Butler, serving as an upstanding and effective foundation for Jekyll themes by <a href="https://twitter.com/mdo">@mdo</a>. Poole, and every theme built on it (like Hyde here) includes the following:</p>
+<h2 id="non-dimensional-numbers">Non-Dimensional Numbers</h2>
 
-<ul>
-  <li>Complete Jekyll setup included (layouts, config, <a href="/404">404</a>, <a href="/atom.xml">RSS feed</a>, posts, and <a href="/about">example page</a>)</li>
-  <li>Mobile friendly design and development</li>
-  <li>Easily scalable text and component sizing with <code class="language-plaintext highlighter-rouge">rem</code> units in the CSS</li>
-  <li>Support for a wide gamut of HTML elements</li>
-  <li>Related posts (time-based, because Jekyll) below each post</li>
-  <li>Syntax highlighting, courtesy Pygments (the Python-based code snippet highlighter)</li>
-</ul>
+<p>There’s a whole bunch. Here are the main ones that you might come across.</p>
 
-<h3 id="hyde-features">Hyde features</h3>
+<h4 id="reynolds-number">Reynold’s Number</h4>
 
-<p>In addition to the features of Poole, Hyde adds the following:</p>
+\[\frac{\rho UL}{\mu}\]
 
-<ul>
-  <li>Sidebar includes support for textual modules and a dynamically generated navigation with active link support</li>
-  <li>Two orientations for content and sidebar, default (left sidebar) and <a href="https://github.com/poole/lanyon#reverse-layout">reverse</a> (right sidebar), available via <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> classes</li>
-  <li><a href="https://github.com/poole/hyde#themes">Eight optional color schemes</a>, available via <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> classes</li>
-</ul>
+<p>Ratio of viscous forces to inertia forces. Determines flow regime (Laminar, turbulent, etc.).</p>
 
-<p><a href="https://github.com/poole/hyde#readme">Head to the readme</a> to learn more.</p>
+<h4 id="mach-number">Mach Number</h4>
 
-<h3 id="browser-support">Browser support</h3>
+\[\frac{u}{a}\]
 
-<p>Hyde is by preference a forward-thinking project. In addition to the latest versions of Chrome, Safari (mobile and desktop), and Firefox, it is only compatible with Internet Explorer 9 and above.</p>
+<p>Ratio of flow velocity to speed of sound. The higher the Mach number, the more irreversible the flow becomes.</p>
 
-<h3 id="download">Download</h3>
+<h4 id="knudsen-number">Knudsen Number</h4>
 
-<p>Hyde is developed on and hosted with GitHub. Head to the <a href="https://github.com/poole/hyde">GitHub repository</a> for downloads, bug reports, and features requests.</p>
+\[\frac{\lambda}{L}\]
 
-<p>Thanks!</p>
+<p>Ratio of molecular mean free path to characteristic length. Determines transition from gas dynamics to continuum mechanics.</p>
+
+<h4 id="prandtl-number">Prandtl Number</h4>
+
+\[\frac{C_p\mu}{k}\]
+
+<p>Ratio of momentum diffusivity to thermal diffusivity. In other words, ratio of the dominance of convection to conduction. Also relates momentum vs thermal boundary layers.</p>
+
+<h4 id="stokes-number">Stokes Number</h4>
+
+<h4 id="nusselt-number">Nusselt Number</h4>
+
+<h2 id="fluid-statics">Fluid Statics</h2>
+
+<p>Forces always act perpendicular to the surface. Given atmospheric surface pressure (free surface) the pressure at a depth (h) will be:</p>
+
+\[P=\ \gamma h\]
+
+<p>Where \(\gamma\) is the specific gravity of the liquid, (1 for water). For submerged plate of area, A, total resultant force is equal to:</p>
+
+\[F_r=\gamma h_cA\]
+
+<p>Where hc is the depth of the centroid of the plate. This total force DOES NOT act through the centroid however, instead it acts at through a point where the total moment is equal to zero (center of pressure or can think of this as the centroid of the pressure distribution). If the plate is symmetric, this will coincide with the centroid. 
+For curved surfaces, use the following force balance approach:</p>
 
 </div>
 

@@ -1,0 +1,9 @@
+I"C<p>Unlike solids, fluids deform constantly under stress (in other words, a fluid <strong>flows</strong>). How it flows is very much dependent on it’s <strong>viscosity</strong>.</p>
+
+<p class="message">
+Viscosity is to fluids what the modulus of elasticity is to solids. It relates the stress (amount of force) to strain (amount of deformation). Qualitatively, viscosity is a measure of a fluid's resistence to flowing. Things like honey have a very high viscosity, while air and water have comparatively lower viscosity. 
+</p>
+
+<p>Viscous flow then, is the study of how a fluid’s viscosity affects its behavior. Viscous flow covers topics like boundary layers, low-speed flows, and small-scale flows. Coincidentally, the regimes in which viscous forces dominate is often incompressible, but this is not a hard and fast rule.</p>
+
+:ET
