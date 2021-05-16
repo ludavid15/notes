@@ -92,7 +92,7 @@
       
         
           
-            <a class="sidebar-nav-item" href="/notes/FluidPosts/">Fluid Mechanics</a>
+            <a class="sidebar-nav-item" href="/notes/fluids/">Fluid Mechanics</a>
           
         
       
@@ -108,7 +108,7 @@
       
         
           
-            <a class="sidebar-nav-item" href="/notes/musicTheory/">Music Theory</a>
+            <a class="sidebar-nav-item" href="/notes/music/">Music Theory</a>
           
         
       
@@ -124,12 +124,6 @@
           
         
       
-        
-      
-        
-          
-            <a class="sidebar-nav-item" href="/notes/thermodynamics/">Thermodynamics</a>
-          
         
       
         
@@ -157,7 +151,16 @@
 
 <!--more-->
 
-<p>Alright, so what can we do with continuums? Well, how about mass, momentum, and energy conservation? Sure enough. There are two ways to do this: with either a <strong>control mass</strong> or <strong>control volume</strong>.</p>
+<p>Alright, so what can we do with continuums? Well, how about mass, momentum, and energy conservation? Sounds easy enough. There are two ways to do this: with either a <strong>control mass</strong> or <strong>control volume</strong>.</p>
+
+<ul>
+  <li>
+    <p><strong>Control Mass</strong> We define a body/mass we are interested in and track how its momentum/energy changes over time. (Notice that by definition, the total mass remains constant)</p>
+  </li>
+  <li>
+    <p><strong>Control Volume</strong> We define a region of space, and take into account any mass/momentum/energy which flows in or out of this region.</p>
+  </li>
+</ul>
 
 <h3 id="conservation-of-mass">Conservation of Mass</h3>
 
@@ -167,24 +170,25 @@
   <li>Integral</li>
 </ul>
 
-\[\frac{\partial}{\partial t}\iiint\rho dV=-\oiint{\rho\mathbit{u}\bullet\hat{\mathbit{n}}dA}\]
+\[\frac{\partial}{\partial t}\iiint\rho dV=- \iint \rho u \bullet \hat{n} dA\]
 
 <ul>
   <li>Conservative</li>
 </ul>
 
-\[\frac{\partial\rho}{\partial t}+\nabla\bullet\left(\rho\mathbit{u}\right)=0\]
+\[\frac{\partial\rho}{\partial t}+\nabla\bullet\left(\rho u \right)=0\]
 
 <ul>
-  <li>Non-conservative
-\(\frac{D\rho}{Dt}+\nabla\bullet\left(\rho\mathbit{u}\right)=0\)</li>
+  <li>Non-conservative</li>
 </ul>
+
+\[\frac{D\rho}{Dt}+\nabla\bullet\left(\rho u \right)=0\]
 
 <p>For (quasi) 1-dimensional steady flow, the mass flow rate can be expressed as the following:</p>
 
 \[\dot{m}=\rho AV\]
 
-<p>For 2D incompressible flow, we need to account for the velocity in two directions. In this case continuity can be expressed as:</p>
+<p>For 2D incompressible flow, we need to account for the velocity in two directions. Note that we assumed incompressibe, which results in the density term dropping out. In this case continuity is also just conservation of volume. It can be expressed as:</p>
 
 \[\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=0\]
 
@@ -196,19 +200,19 @@
   <li>Integral</li>
 </ul>
 
-\[\frac{\partial}{\partial t}\iiint\rho udV=-\oiint\mathbit{u}\left(\rho\mathbit{u}\bullet\hat{\mathbit{n}}\right)dA-\oiint\left(P\hat{\mathbit{n}}\right)dA\]
+\[\frac{\partial}{\partial t}\iiint\rho udV=- \iint u \left(\rho u\bullet\hat{n}\right)dA-\iint\left(P\hat{n}\right)dA\]
 
 <ul>
   <li>Conservative</li>
 </ul>
 
-\[\frac{\partial\rho\mathbit{u}}{\partial t}+\left(\nabla\bullet\rho\mathbit{u}\right)\mathbit{u}=-\nabla P+\rho g+\nabla\tau+\mathbit{F}_{\mathbit{body}}\]
+\[\frac{\partial\rho u}{\partial t}+\left(\nabla\bullet\rho u  \right) u=-\nabla P+\rho g+\nabla\tau+F_{body}\]
 
 <ul>
   <li>Non-conservative</li>
 </ul>
 
-\[\rho\frac{D\mathbit{u}}{Dt}=-\nabla P+\rho g+\nabla\tau+\mathbit{F}_{\mathbit{body}}\]
+\[\rho\frac{Du}{Dt}=-\nabla P+\rho g+\nabla\tau+F_{body}\]
 
 <h3 id="conservation-of-energy">Conservation of Energy</h3>
 
@@ -218,13 +222,13 @@
   <li>Integral</li>
 </ul>
 
-\[\frac{\partial}{\partial t}\iiint{\rho(e+\frac{1}{2}U^2)dV}=-\oiint{\rho\left(e+\frac{P}{\rho}+\frac{1}{2}U^2\right)\mathbit{u}\bullet\hat{\mathbit{n}}dA}+\iiint{\rho\dot{q}dV}-\oiint{\dot{q}^n\bullet\hat{\mathbit{n}}dA}\]
+\[\frac{\partial}{\partial t}\iiint{\rho(e+\frac{1}{2}U^2)dV}=-\iint{\rho\left(e+\frac{P}{\rho}+\frac{1}{2}U^2\right)u\bullet\hat{n}dA}+\iiint{\rho\dot{q}dV}-\iint{\dot{q}^n\bullet\hat{n}dA}\]
 
 <ul>
   <li>Conservative</li>
 </ul>
 
-\[\frac{\partial\rho e}{\partial t}+\nabla\bullet\left(\mathbit{u}(\rho e+P)\right)=0\]
+\[\frac{\partial\rho e}{\partial t}+\nabla\bullet\left(u(\rho e+P)\right)=0\]
 
 <ul>
   <li>Non-Conservative</li>
@@ -325,7 +329,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Continuum Mechanics" />
 <script type="application/ld+json">
-{"description":"One of the common assumptions we make when working with fluids is that it forms a continuum. The individual atoms of a fluid are assumed to be tightly packed enough that we can approximate the collective molecular interactions. What are these collective molecular interactions? Well, pretty standard stuff actually. We assume that applying a force causes an object to move, or a body to deform. (Technically speaking, that stress is related to strain). And honestly well, that’s kinda it. The reason this assumption is so powerful is because it makes our model continuous. This may seem pretty obvious at a glance, but working with stuff that is continuous is very different from working with stuff that is discrete! The reason as you may already have guessed: derivatives.","url":"https://ludavid15.github.io//notes/continuumMechanics/","headline":"Continuum Mechanics","dateModified":"2021-05-11T00:00:00-07:00","datePublished":"2021-05-11T00:00:00-07:00","author":{"@type":"Person","name":"David Lu"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/continuumMechanics/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"headline":"Continuum Mechanics","dateModified":"2021-05-11T00:00:00-07:00","description":"One of the common assumptions we make when working with fluids is that it forms a continuum. The individual atoms of a fluid are assumed to be tightly packed enough that we can approximate the collective molecular interactions. What are these collective molecular interactions? Well, pretty standard stuff actually. We assume that applying a force causes an object to move, or a body to deform. (Technically speaking, that stress is related to strain). And honestly well, that’s kinda it. The reason this assumption is so powerful is because it makes our model continuous. This may seem pretty obvious at a glance, but working with stuff that is continuous is very different from working with stuff that is discrete! The reason as you may already have guessed: derivatives.","datePublished":"2021-05-11T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/continuumMechanics/"},"url":"https://ludavid15.github.io//notes/continuumMechanics/","author":{"@type":"Person","name":"David Lu"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   

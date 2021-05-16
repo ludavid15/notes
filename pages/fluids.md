@@ -1,11 +1,10 @@
 ---
 layout: page
 title: Fluid Mechanics
-permalink: /FluidPosts/
+permalink: /fluids/
 mathjax: true
 date: 2021-05-11
 ---
-
 
 <hr>
 
