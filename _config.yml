@@ -21,7 +21,7 @@ plugins:
   - jekyll-seo-tag
 
 # Google Analytics
-google_analytics: 272487581
+google_analytics: G-QF0ZEHWW7Y
 
 paginate:         5
 
