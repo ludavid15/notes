@@ -20,6 +20,9 @@ author:
 plugins:
   - jekyll-seo-tag
 
+# Google Analytics
+google_analytics: 272487581
+
 paginate:         5
 
 # Custom vars
