@@ -12,7 +12,11 @@ The reason this assumption is so powerful is because it makes our model **contin
 
 <!--more-->
 
-Alright, so what can we do with continuums? Well, how about mass, momentum, and energy conservation? Sure enough. There are two ways to do this: with either a **control mass** or **control volume**. 
+Alright, so what can we do with continuums? Well, how about mass, momentum, and energy conservation? Sounds easy enough. There are two ways to do this: with either a **control mass** or **control volume**. 
+
+* **Control Mass** We define a body/mass we are interested in and track how its momentum/energy changes over time. (Notice that by definition, the total mass remains constant)
+
+* **Control Volume** We define a region of space, and take into account any mass/momentum/energy which flows in or out of this region.
 
 ### Conservation of Mass
 
@@ -20,20 +24,21 @@ Also known as continuity. Time rate of change of mass in the control volume (CV)
 
 * Integral
 
-$$\frac{\partial}{\partial t}\iiint\rho dV=-\oiint{\rho\mathbit{u}\bullet\hat{\mathbit{n}}dA}$$
+$$\frac{\partial}{\partial t}\iiint\rho dV=- \iint \rho u \bullet \hat{n} dA$$
 
 * Conservative
 
-$$\frac{\partial\rho}{\partial t}+\nabla\bullet\left(\rho\mathbit{u}\right)=0$$
+$$\frac{\partial\rho}{\partial t}+\nabla\bullet\left(\rho u \right)=0$$
 
 * Non-conservative
-$$\frac{D\rho}{Dt}+\nabla\bullet\left(\rho\mathbit{u}\right)=0$$
+
+$$\frac{D\rho}{Dt}+\nabla\bullet\left(\rho u \right)=0$$
 
 For (quasi) 1-dimensional steady flow, the mass flow rate can be expressed as the following:
 
 $$\dot{m}=\rho AV$$
 
-For 2D incompressible flow, we need to account for the velocity in two directions. In this case continuity can be expressed as:
+For 2D incompressible flow, we need to account for the velocity in two directions. Note that we assumed incompressibe, which results in the density term dropping out. In this case continuity is also just conservation of volume. It can be expressed as:
 
 $$\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=0$$
 
@@ -43,15 +48,15 @@ Time rate of change of momentum in the CV is equal to the advection term plus fo
 
 * Integral
 
-$$\frac{\partial}{\partial t}\iiint\rho udV=-\oiint\mathbit{u}\left(\rho\mathbit{u}\bullet\hat{\mathbit{n}}\right)dA-\oiint\left(P\hat{\mathbit{n}}\right)dA$$
+$$\frac{\partial}{\partial t}\iiint\rho udV=- \iint u \left(\rho u\bullet\hat{n}\right)dA-\iint\left(P\hat{n}\right)dA$$
 
 * Conservative
 
-$$\frac{\partial\rho\mathbit{u}}{\partial t}+\left(\nabla\bullet\rho\mathbit{u}\right)\mathbit{u}=-\nabla P+\rho g+\nabla\tau+\mathbit{F}_{\mathbit{body}}$$
+$$\frac{\partial\rho u}{\partial t}+\left(\nabla\bullet\rho u  \right) u=-\nabla P+\rho g+\nabla\tau+F_{body}$$
 
 * Non-conservative
 
-$$\rho\frac{D\mathbit{u}}{Dt}=-\nabla P+\rho g+\nabla\tau+\mathbit{F}_{\mathbit{body}}$$
+$$\rho\frac{Du}{Dt}=-\nabla P+\rho g+\nabla\tau+F_{body}$$
 
 ### Conservation of Energy
 
@@ -59,11 +64,11 @@ Time rate of change is equal to advection term plus heat (both volumetrically an
 
 * Integral
 
-$$\frac{\partial}{\partial t}\iiint{\rho(e+\frac{1}{2}U^2)dV}=-\oiint{\rho\left(e+\frac{P}{\rho}+\frac{1}{2}U^2\right)\mathbit{u}\bullet\hat{\mathbit{n}}dA}+\iiint{\rho\dot{q}dV}-\oiint{\dot{q}^n\bullet\hat{\mathbit{n}}dA}$$
+$$\frac{\partial}{\partial t}\iiint{\rho(e+\frac{1}{2}U^2)dV}=-\iint{\rho\left(e+\frac{P}{\rho}+\frac{1}{2}U^2\right)u\bullet\hat{n}dA}+\iiint{\rho\dot{q}dV}-\iint{\dot{q}^n\bullet\hat{n}dA}$$
 
 * Conservative
 
-$$\frac{\partial\rho e}{\partial t}+\nabla\bullet\left(\mathbit{u}(\rho e+P)\right)=0$$
+$$\frac{\partial\rho e}{\partial t}+\nabla\bullet\left(u(\rho e+P)\right)=0$$
 
 * Non-Conservative
 
