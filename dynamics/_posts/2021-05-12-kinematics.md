@@ -4,6 +4,7 @@ title: Kinematics
 permalink: /kinematics/
 excerpt_separator: <!--more-->
 mathjax: true
+catergories: dynamics
 ---
 
 
@@ -13,14 +14,16 @@ A subset of dynamics, where forces are neglected, and we focus instead on the mo
 
 ## Derivatives
 
-In the world of 3D dynamics, derivatives get complicated. 
+In the world of 3D dynamics, derivatives get complicated. This is largely due to reference frames. We'll indicate a vector's reference frame with a prescript. 
+
+For example, \\({}^A V \\) indicates that the vector V is defined with respect to reference frame A. 
 
 
 ### Derivative of a Vector
 
 The derivative of a vector must always be defined with respect to some reference frame. Given a reference frame A, and basis vectors $$\alpha_i$$, and measure numbers $$V_i$$, the derivative of vector V in frame A is defined as:
 
-$${_\ ^A}\frac{dV}{dt}=\sum\frac{dV_i}{dx}\alpha_i$$
+$${}^A\frac{dV}{dt}=\sum\frac{dV_i}{dx}\alpha_i$$
 
 Thus, one way to take the derivative of vector V is to express the vector in terms of the A basis vectors first, and then derive the measure numbers. 
 
@@ -35,52 +38,63 @@ The angular velocity is defined as a vector function such that the cross of it w
 
 In other words, the angular velocity describes the rotation of one frame in another. 
 
-$${_\ ^A}\omega^B\times V={_\ ^A}\frac{dV}{dt}$$
+$${}^A \omega^B \times V= {}^A \frac{dV}{dt}$$
 
-$${_\ ^A}\omega^B=b_1\left(\dot{b_2}\bullet b_3\right)+b_2\left(\dot{b_3}\bullet b_1\right)+b_3(\dot{b_1}\bullet b_2)\$$
+Where the the above notation indicates that $$\omega$$ is the angular velocity of frame B defined in frame A.
+
+$${}^A \omega^B = b_1 (\dot{b_2} \bullet b_3 )+ b_2 (\dot{b_3} \bullet b_1 )+b_3 (\dot{b_1}\bullet b_2)$$
+
 
 This is a convenient tool for finding the derivative of a vector without first doing a complex change of reference frame calculation. Angular velocities can be added linearly. That is:
 
-$${_\ ^A}\omega^D=\ {_\ ^A}\omega^B+{_\ ^B}\omega^C+\ {_\ ^C}\omega^D$$
+$${}^A\omega^D=\ {}^A\omega^B + {}^B\omega^C + {}^C\omega^D$$
 
 Angular velocities can also be taken in inverse by applying a negative value in front:
 
-$${_\ ^A}\omega^B=\ -{_\ ^B}\omega^A$$
+$${}^A\omega^B=\ - {}^B\omega^A$$
 
 
 ### Rules about Derivatives
 
 There are a few rules to keep in mind when taking derivatives of vectors. First, it is that the order of differentiation matters when taking a double differential. That is to say,
 
-$${_\ ^B}\frac{d}{dt}\left({_\ ^A}\frac{d}{dt}V\right)\neq{_\ ^A}\frac{d}{dt}\left({_\ ^B}\frac{d}{dt}V\right)$$
+$${}^B \frac{d}{dt}\left({}^A \frac{d}{dt}V\right)\neq {}^A\frac{d}{dt}\left({}^B\frac{d}{dt}V\right)$$
 
 Some other rules are shown below for differentiation of sums and products
 
-* $${_\ ^A}\frac{d}{dt}\left(V_1+V_2\right)=\ {_\ ^A}\frac{d}{dt}V_1+{_\ ^A}\frac{d}{dt}V_2$$
+* Derivatives of a sum are distributed
 
-* $${_\ ^A}\frac{d}{dt}\left({sV}_1\right)=\ {_\ ^A}\frac{ds}{dt}V_1+s{_\ ^A}\frac{d}{dt}V_1$$
+$${}^A\frac{d}{dt}\left(V_1+V_2\right)=\ {}^A\frac{d}{dt}V_1+{}^A\frac{d}{dt}V_2$$
 
-* $${_\ ^A}\frac{d}{dt}\left(V\bullet W\right)=\ {_\ ^A}\frac{dV}{dt}\bullet W+V\bullet{_\ ^A}\frac{dW}{dt}$$
+* You can pull out a scalar multiplier
 
-$${_\ ^A}\frac{d}{dt}\left(V\times W\right)=\ {_\ ^A}\frac{dV}{dt}\times W+{_\ ^A}\frac{dW}{dt}\times V$$
+$${}^A\frac{d}{dt}\left({sV}_1\right)=\ {}^A\frac{ds}{dt}V_1+s{}^A\frac{d}{dt}V_1$$
+
+* Use the product rule when dealing with vector dot products (also known as an inner product).
+
+$${}^A\frac{d}{dt}\left(V\bullet W\right)=\ {}^A\frac{dV}{dt}\bullet W+V\bullet{}^A\frac{dW}{dt}$$
+
+* Also use the product rule with dealing with vector cross products (a.k.a. outer product), but note the change in operation order.
+
+$${}^A\frac{d}{dt}\left(V\times W\right)=\ {}^A\frac{dV}{dt}\times W+{}^A\frac{dW}{dt}\times V$$
 
 
 ### Simple Angular Velocity
 
 If there is a vector (k) fixed in both frame A and frame B over an interval of time, then B is said to have simple angular velocity in A during that time interval. This simplifies the expression of the angular velocity of B in A to:
 
-{_\ ^A}\omega^B=\ \dot{\theta}k
+$${}^A\omega^B=\ \dot{\theta} k$$
 
-This is a more precise way of defining the case where an “axis” of rotation may exist, but note that generally speaking, an axis does not need to exist for us to be able to define an angular velocity.
+Where \\( \theta \\) is an angle defined around the common axis, and k is a unit vector in the direction of the axis defined in A. This is a more precise way of defining the case where an “axis” of rotation may exist, but note that generally speaking, an axis does not need to exist for us to be able to define an angular velocity.
 
-> Euler angles (Roll, Pitch, Yaw) are often used as a way to define the attitude of a vehicle. In our kinematics framework, each euler angle represents a case of simple angular velocity. We could combine all three into a single angular velocity term, but it would not longer be simple. 
+> Interestingly, Euler's Rotation Theorem states that in three-dimensional space, any displacement of a rigid body such that a point on the rigid body remains fixed, is equivalent to a single rotation about some axis that runs through the fixed point. This leads to the idea of a "group" - a mathematical structure which all rotations must follow. This 3D rotation group is known as SO(3). In matrix representation, this is any orthogonal 3x3 matrix with determinant 1. 
 
 
 ### Derivative in Two Reference Frames
 
 The derivative of the same vector with respect to two different reference frames A and B can be related by the angular velocity of B in A. 
 
-$${_\ ^A}\frac{dV}{dt}=\ {_\ ^B}\frac{dV}{dt}+{_\ ^A}\omega^B\times V$$
+$${}^A\frac{dV}{dt}=\ {}^B\frac{dV}{dt}+{}^A\omega^B\times V$$
 
 Where V does not have to be a vector fixed in B. Note that if V is fixed in B, the derivative of V with respect to B goes to zero, leaving just the cross product of the angular velocity and V yielding the derivative in A. 
 
@@ -89,42 +103,42 @@ Where V does not have to be a vector fixed in B. Note that if V is fixed in B, t
 
 The angular acceleration of a vector is defined as the derivative of an angular velocity vector function in *any frame*. Note that the frame in which we take the derivative does not matter. 
 
-$${_\ ^A}\alpha^B=\ {_\ ^A}\frac{d}{dt}{_\ ^A}\omega^B={_\ ^B}\frac{d}{dt}{_\ ^A}\omega^B\$$
+$${}^A\alpha^B=\ {}^A\frac{d}{dt} {}^A\omega^B = {}^B\frac{d}{dt} {}^A\omega^B$$
 
 We can prove this second fact by applying the rule of differentiation in two reference frames, noting that a vector crossed by itself is always equal to zero.
 
-$${_\ ^A}\frac{d\omega}{dt}=\ {_\ ^B}\frac{d\omega}{dt}+{_\ ^A}\omega^B\times{_\ ^A}\omega^B$$
+$${}^A\frac{d\omega}{dt}=\ {}^B\frac{d\omega}{dt}+{}^A\omega^B\times{}^A\omega^B$$
 
 
 ### General Velocity and General Acceleration
 
 To define general velocity, we need to define a position vector. A position vector must start from a fixed point in the frame of differentiation. Any fixed point can be taken, as long as it is in the frame.
 
-$${_\ ^A}V^P=\ {_\ ^A}\frac{d}{dt}P^{P/N}$$
+$${}^AV^P=\ {}^A\frac{d}{dt}P^{P/N}$$
 
 The above is an expression for the velocity of point P in the reference frame A, where the vector P goes from point N fixed in A to a point P not fixed in A. The definition of acceleration of point P in frame A is then found by taking the second derivative of the velocity vector.
 
-$${_\ ^A}a^P={_\ ^A}\frac{d}{dt}{_\ ^A}V^P$$
+$${}^Aa^P={}^A\frac{d}{dt}{}^AV^P$$
 
 ### V2PTS and A2PTS
 
 Consider two points (P and Q) fixed in a rigid body B, that has some angular velocity in frame A. We can relate the velocities of these two points in frame A as:
 
-$${{_\ ^A}V}^Q={{_\ ^A}V}^P+{{_\ ^A}\omega}^B\times R^{Q/P}$$
+$${}^AV^Q= {}^AV ^P+ {}^A \omega^B \times R^{Q/P}$$
 
 Where R is a vector that points to Q from P. Similarly, we can relate the acceleration of these points if we know the angular acceleration of body B in frame A.
 
-$${{_\ ^A}a}^Q={{_\ ^A}a}^P+{{_\ ^A}\omega}^B\times\left({{_\ ^A}\omega}^B\times R^\sfrac{Q}{P}\right)+{{_\ ^A}\alpha}^B\times R^\sfrac{Q}{P}$$
+$${}^Aa^Q={}^A a^P+{}^A\omega ^B \times ( {}^A\omega ^B \times R^{Q/P})+{}^A \alpha^B \times R^{Q/P}$$
 
 ### V1PTS and A1PTS
 
 Consider a point P that has some velocity in frame B. Frame B itself moved with angular velocity in a reference frame A. The velocity and acceleration of point P in frame A is defined as:
 
-$${{_\ ^A}V}^P={{_\ ^A}V}^{B_p}+{{_\ ^B}V}^P$$
+$${}^AV^P={}^AV^{B_p}+{}^BV^P$$
 
-$${{_\ ^A}a}^P={{_\ ^A}a}^{B_p}+{{_\ ^B}a}^P+2{{_\ ^A}\omega}^B\times{{_\ ^B}V}^P$$
+$${}^Aa^P={}^Aa^{B_p}+{}^Ba^P+2{}^A\omega^B\times{}^BV^P$$
 
-Where Bp is defined as a point of B coincident with P at some time, t*. This is convenient because we can define Bp to be stationary in B. 
+Where \\( B_p \\) is defined as a point of B coincident with P at some time, t*. This is convenient because we can define \\( B_p \\) to be stationary in B. 
 
 
 ## Configuration Constraints
@@ -141,7 +155,7 @@ Next, we are going to define what are known as generalized coordinates and speed
 
 Instead of using configuration constraints, we can define a set of (n) generalized coordinates. The total number of generalized coordinates is equal to:
 
-n=3v+6\eta-m
+$$n=3v+6\eta-m$$
 
 Where v is the number of points, $$\eta$$ is the number of rigid bodies, and m is the number of configuration constraints we have defined in the original problem. Generalized coordinates are usually defined with the letter q.
 
@@ -152,7 +166,7 @@ $$q_1,q_2,q_3,\ldots q_n$$
 
 Generalized speeds are defined as linear combinations of the time derivative of the generalized coordinates. We define these both with the sum notation, and in matrix notation. 
 
-$$u_r=\sum_{s=1}^{n}{Y_{rs}{\dot{q}}_s}+Z_r\ \ \ \ \ \ r=(1,\ \ldots n)$$
+$$u_r= \sum_{s=1}^{n}{Y_{rs}{\dot{q}_s}+Z_r}\ \ \ \ \ \ r=(1,\ \ldots n)$$
 
 $$u=Y\dot{q}+Z$$
 
@@ -177,27 +191,27 @@ Motion constraints are referred to as “non-holonomic constraints”, but this 
 
 The partial angular velocities are defined as those that when multiplied by the generalized speeds produce the original angular velocity expression. Note that there is a remainder term at the end. There are (n) total partial angular velocities. When motion constraints are applied, there are only (p) partial angular velocities – one for every generalized speed. 
 
-$${{_\ ^A}\omega}^B=\left[{_\ ^A}\omega_1^B,\ \ldots,\ {_\ ^A}\omega_n^B\right]\left[\begin{matrix}u_1\\\ldots\\u_n\\\end{matrix}\right]+w_t$$
+$${}^A\omega^B= [{}^A\omega_1 ^B,\ \ldots,\ {}^A\omega_n^B] \begin{bmatrix}u_1\\\ldots\\u_n\\\end{bmatrix}+w_t$$
 
-$${{_\ ^A}\omega}^B=\left[{_\ ^A}{\widetilde{\omega}}_1^B,\ \ldots,\ {_\ ^A}{\widetilde{\omega}}_p^B\right]\left[\begin{matrix}u_1\\\ldots\\u_p\\\end{matrix}\right]+{\widetilde{w}}_t$$
+$${}^A\omega^B= [{}^A \tilde{\omega}_1^B,\ \ldots, {}^A \tilde{\omega}_p^B ]  \begin{bmatrix}u_1\\\ldots\\u_p\\\end{bmatrix} + \tilde{w}_t$$
 
 The partial velocities are defined in much the same way. 
 
-$${{_\ ^A}V}^B=\left[{_\ ^A}V_1^B,\ \ldots,\ {_\ ^A}V_n^B\right]\left[\begin{matrix}u_1\\\ldots\\u_n\\\end{matrix}\right]+V_t$$
+$${}^AV^B= [{}^AV_1^B,\ \ldots,\ {}^AV_n^B ] \begin{bmatrix}u_1\\\ldots\\u_n\\\end{bmatrix} +V_t$$
 
-$${{_\ ^A}V}^B=\left[{_\ ^A}{\widetilde{V}}_1^B,\ \ldots,\ {_\ ^A}{\widetilde{V}}_p^B\right]\left[\begin{matrix}u_1\\\ldots\\u_p\\\end{matrix}\right]+{\widetilde{V}}_t$$
+$${}^AV^B= [{}^A \widetilde{V}_1^B,\ \ldots,\ {}^A \widetilde{V}_p^B ] \begin{bmatrix}u_1\\\ldots\\u_p\\\end{bmatrix}+\widetilde{V}_t$$
 
 The partial angular velocities can be derived by using our previous definition of the angular velocity in terms of the basis vectors and their derivatives.
 
-$${_\ ^A}\omega^B=b_1\left(\dot{b_2}\bullet b_3\right)+b_2\left(\dot{b_3}\bullet b_1\right)+b_3\left(\dot{b_1}\bullet b_2\right)$$
+$${}^A\omega^B=b_1(\dot{b_2}\bullet b_3)+b_2 (\dot{b_3}\bullet b_1 )+b_3 (\dot{b_1}\bullet b_2)$$
 
-$$\frac{{_\ ^A}dV}{dt}=\left[\begin{matrix}\frac{\partial V}{\partial q_1}&\ldots&\frac{\partial V}{\partial q_s}\\\end{matrix}\right]\left[\begin{matrix}{\dot{q}}_1\\\ldots\\{\dot{q}}_s\\\end{matrix}\right]+\frac{{_\ ^A}\partial V}{\partial t}=\frac{\partial V}{\partial q}\dot{q}+\frac{{_\ ^A}\partial V}{\partial t}$$
+$$\frac{}^AdV}{dt}= \begin{bmatrix}\frac{\partial V}{\partial q_1}&\ldots&\frac{\partial V}{\partial q_s}\\\end{bmatrix} \begin{matrix}{\dot{q}_1\\\ldots\\{\dot{q}_s\\\end{matrix}+\frac{}^A\partial V}{\partial t}=\frac{\partial V}{\partial q}\dot{q}+\frac{}^A\partial V}{\partial t}$$
 
 $$\dot{q}=Wu+X$$
 
-$${_\ ^A}\omega^B=\left[b_1\frac{\partial b_2}{\partial q}\bullet b_3+b_2\frac{\partial b_3}{\partial q}\bullet b_1+b_3\frac{\partial b_1}{\partial q}\bullet b_2\right]\left(Wu+X\right)+\frac{{_\ ^A}\partial b_1}{\partial t}+\frac{{_\ ^A}\partial b_2}{\partial t}+\frac{{_\ ^A}\partial b_3}{\partial t}$$
+$${}^A\omega^B=\left[b_1\frac{\partial b_2}{\partial q}\bullet b_3+b_2\frac{\partial b_3}{\partial q}\bullet b_1+b_3\frac{\partial b_1}{\partial q}\bullet b_2\right]\left(Wu+X\right)+\frac{}^A\partial b_1}{\partial t}+\frac{}^A\partial b_2}{\partial t}+\frac{}^A\partial b_3}{\partial t}$$
 
-$${_\ ^A}\omega^B=\left[~\right]Wu+\left[~\right]X+\frac{{_\ ^A}\partial b_1}{\partial t}+\frac{{_\ ^A}\partial b_2}{\partial t}+\frac{{_\ ^A}\partial b_3}{\partial t}$$
+$${}^A\omega^B=\left[~\right]Wu+\left[~\right]X+\frac{}^A\partial b_1}{\partial t}+\frac{}^A\partial b_2}{\partial t}+\frac{}^A\partial b_3}{\partial t}$$
 
 We now have an expression for the angular velocity which satisfies the format we’ve already defined for the partial angular velocities. Take care to notice everything that goes into the remainder term. 
 

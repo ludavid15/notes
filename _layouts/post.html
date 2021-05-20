@@ -11,15 +11,17 @@ layout: default
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    {% for post in site.categories.fluids limit:3 %}
+    {% for post in site.posts %}
       <li>
-        {% if post.title != page.title %}
-        <h3>
-          <a href="{{ post.url | relative_url }}">
-            {{ post.title }}
-            <small>{{ post.date | date_to_string }}</small>
-          </a>
-        </h3>
+        {% if post.categories == page.categories %}
+          {% if post.title != page.title %}
+          <h3>
+            <a href="{{ post.url | relative_url }}">
+              {{ post.title }}
+              <small>{{ post.date | date_to_string }}</small>
+            </a>
+          </h3>
+          {% endif %}
         {% endif %}
       </li>
     {% endfor %}
