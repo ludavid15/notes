@@ -4,13 +4,61 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-05-15T22:06:58-07:00</updated>
+ <updated>2021-05-19T15:46:42-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Fundamentals of Dynamics</title>
+   <link href="https://ludavid15.github.io//fundamentalsDynamics/"/>
+   <updated>2021-05-13T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//dynamicsFundamentals</id>
+   <content type="html">&lt;p&gt;In dynamics, the goal is to predict the position, velocity, and acceleration of rigid bodies as a function of time through the use of Newton’s second law, F=ma. While the basic principle is simple, the key challenge of dynamics involves the definition of reference frames, vectors, and their relationships.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note that F = ma is not the only way to solve dynamics problems! In the late 1700’s, Joseph-Louis Lagrange introduced an energy conservation strategy, known today as the Euler-Lagrange Equations.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;The first idea to introduce is that of a reference frame. References frames are often attached to a rigid body, but this is not required. There are two properties to consider when relating two reference frames.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Position vector from the origin of one frame to another.&lt;/li&gt;
+  &lt;li&gt;Rotation from one frame to another.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;At this point, one may be tempted to take the derivative of the two previous quantities. However, this must be done carefully. This is because there are very specific definitions of angular velocity and velocity. Taking the derivative is non-trivial! We are in the world of 3-dimensions now, so no more thinking in terms of scalars!&lt;/p&gt;
+
+&lt;h3 id=&quot;kinematics&quot;&gt;Kinematics&lt;/h3&gt;
+
+&lt;p&gt;A subset of dynamics, where forces are neglected, and we focus instead on the motion of points and rigid bodies over time.&lt;/p&gt;
+
+&lt;h3 id=&quot;representation-of-rotations&quot;&gt;Representation of Rotations&lt;/h3&gt;
+
+&lt;p&gt;As we will see, an angular velocity is one easy way to define the rotation of one frame with respect to another. The angular velocity is defined using a vector and an angle. However, there are other ways to define the rotation. These methods are:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;A Rotation Matrix&lt;/li&gt;
+  &lt;li&gt;Euler Angle Rotations&lt;/li&gt;
+  &lt;li&gt;Axis-angle&lt;/li&gt;
+  &lt;li&gt;Quaternions&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Each method technically encapsulates all the information you need, and for obvious reasons, some are more useful than others.&lt;/p&gt;
+
+&lt;h3 id=&quot;vectors&quot;&gt;Vectors&lt;/h3&gt;
+
+&lt;p&gt;In the context of dynamics, a vector is defined as a construct of direction and magnitude, but do not have an associated location, unless otherwise specified to be a &lt;strong&gt;position vector&lt;/strong&gt;. Vectors are typically defined through the use of orthonormal basis vectors. A set of basis vectors is said to span some space/range. (see math section for a more detailed discussion of vectors spaces and linear algebra).&lt;/p&gt;
+
+\[V=\sum V_i\alpha_i\]
+
+&lt;p&gt;Where the values of \(\alpha_i\) are the basis vectors which are defined for a given problem and reference frame, and \(V_i\) are called the measure numbers (these are scalars).&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Fundamentals of Fluid Mechanics</title>
@@ -87,6 +135,227 @@
 &lt;p&gt;We can also define the second coefficient of viscosity as λ.&lt;/p&gt;
 
 \[\xi=\lambda+\frac{2}{3}\mu\]
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Kinematics</title>
+   <link href="https://ludavid15.github.io//kinematics/"/>
+   <updated>2021-05-12T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//kinematics</id>
+   <content type="html">&lt;p&gt;A subset of dynamics, where forces are neglected, and we focus instead on the motion of points and rigid bodies over time. At the core of this topic are a series of rules about positions, velocities, accelerations, and how to find them amid a potentially messy system of reference frames and motion constraints.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;derivatives&quot;&gt;Derivatives&lt;/h2&gt;
+
+&lt;p&gt;In the world of 3D dynamics, derivatives get complicated. This is largely due to reference frames. We’ll indicate a vector’s reference frame with a prescript.&lt;/p&gt;
+
+&lt;p&gt;For example, \({}^A V \) indicates that the vector V is defined with respect to reference frame A.&lt;/p&gt;
+
+&lt;h3 id=&quot;derivative-of-a-vector&quot;&gt;Derivative of a Vector&lt;/h3&gt;
+
+&lt;p&gt;The derivative of a vector must always be defined with respect to some reference frame. Given a reference frame A, and basis vectors \(\alpha_i\), and measure numbers \(V_i\), the derivative of vector V in frame A is defined as:&lt;/p&gt;
+
+\[{}^A\frac{dV}{dt}=\sum\frac{dV_i}{dx}\alpha_i\]
+
+&lt;p&gt;Thus, one way to take the derivative of vector V is to express the vector in terms of the A basis vectors first, and then derive the measure numbers.&lt;/p&gt;
+
+&lt;h3 id=&quot;angular-velocity&quot;&gt;Angular Velocity&lt;/h3&gt;
+
+&lt;p&gt;The angular velocity is defined as a vector function such that the cross of it with any vector fixed in the frame yields the derivative of that vector in a new frame. Let’s break this down a little bit.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Define a world frame &lt;strong&gt;A&lt;/strong&gt;, and local frame &lt;strong&gt;B&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Define a vector \(b_1\), that is fixed in &lt;strong&gt;B&lt;/strong&gt;, and defined in &lt;strong&gt;B&lt;/strong&gt; (understand the difference between fixed in &lt;strong&gt;B&lt;/strong&gt; vs defined in &lt;strong&gt;B&lt;/strong&gt;).&lt;/li&gt;
+  &lt;li&gt;An angular velocity term relates the original vector defined in B, to it’s velocity defined in A.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In other words, the angular velocity describes the rotation of one frame in another.&lt;/p&gt;
+
+\[{}^A \omega^B \times V= {}^A \frac{dV}{dt}\]
+
+&lt;p&gt;Where the the above notation indicates that \(\omega\) is the angular velocity of frame B defined in frame A.&lt;/p&gt;
+
+\[{}^A \omega^B = b_1 (\dot{b_2} \bullet b_3 )+ b_2 (\dot{b_3} \bullet b_1 )+b_3 (\dot{b_1}\bullet b_2)\]
+
+&lt;p&gt;This is a convenient tool for finding the derivative of a vector without first doing a complex change of reference frame calculation. Angular velocities can be added linearly. That is:&lt;/p&gt;
+
+\[{}^A\omega^D=\ {}^A\omega^B + {}^B\omega^C + {}^C\omega^D\]
+
+&lt;p&gt;Angular velocities can also be taken in inverse by applying a negative value in front:&lt;/p&gt;
+
+\[{}^A\omega^B=\ - {}^B\omega^A\]
+
+&lt;h3 id=&quot;rules-about-derivatives&quot;&gt;Rules about Derivatives&lt;/h3&gt;
+
+&lt;p&gt;There are a few rules to keep in mind when taking derivatives of vectors. First, it is that the order of differentiation matters when taking a double differential. That is to say,&lt;/p&gt;
+
+\[{}^B \frac{d}{dt}\left({}^A \frac{d}{dt}V\right)\neq {}^A\frac{d}{dt}\left({}^B\frac{d}{dt}V\right)\]
+
+&lt;p&gt;Some other rules are shown below for differentiation of sums and products&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Derivatives of a sum are distributed&lt;/li&gt;
+&lt;/ul&gt;
+
+\[{}^A\frac{d}{dt}\left(V_1+V_2\right)=\ {}^A\frac{d}{dt}V_1+{}^A\frac{d}{dt}V_2\]
+
+&lt;ul&gt;
+  &lt;li&gt;You can pull out a scalar multiplier&lt;/li&gt;
+&lt;/ul&gt;
+
+\[{}^A\frac{d}{dt}\left({sV}_1\right)=\ {}^A\frac{ds}{dt}V_1+s{}^A\frac{d}{dt}V_1\]
+
+&lt;ul&gt;
+  &lt;li&gt;Use the product rule when dealing with vector dot products (also known as an inner product).&lt;/li&gt;
+&lt;/ul&gt;
+
+\[{}^A\frac{d}{dt}\left(V\bullet W\right)=\ {}^A\frac{dV}{dt}\bullet W+V\bullet{}^A\frac{dW}{dt}\]
+
+&lt;ul&gt;
+  &lt;li&gt;Also use the product rule with dealing with vector cross products (a.k.a. outer product), but note the change in operation order.&lt;/li&gt;
+&lt;/ul&gt;
+
+\[{}^A\frac{d}{dt}\left(V\times W\right)=\ {}^A\frac{dV}{dt}\times W+{}^A\frac{dW}{dt}\times V\]
+
+&lt;h3 id=&quot;simple-angular-velocity&quot;&gt;Simple Angular Velocity&lt;/h3&gt;
+
+&lt;p&gt;If there is a vector (k) fixed in both frame A and frame B over an interval of time, then B is said to have simple angular velocity in A during that time interval. This simplifies the expression of the angular velocity of B in A to:&lt;/p&gt;
+
+\[{}^A\omega^B=\ \dot{\theta} k\]
+
+&lt;p&gt;Where \( \theta \) is an angle defined around the common axis, and k is a unit vector in the direction of the axis defined in A. This is a more precise way of defining the case where an “axis” of rotation may exist, but note that generally speaking, an axis does not need to exist for us to be able to define an angular velocity.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Interestingly, Euler’s Rotation Theorem states that in three-dimensional space, any displacement of a rigid body such that a point on the rigid body remains fixed, is equivalent to a single rotation about some axis that runs through the fixed point. This leads to the idea of a “group” - a mathematical structure which all rotations must follow. This 3D rotation group is known as SO(3). In matrix representation, this is any orthogonal 3x3 matrix with determinant 1.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;derivative-in-two-reference-frames&quot;&gt;Derivative in Two Reference Frames&lt;/h3&gt;
+
+&lt;p&gt;The derivative of the same vector with respect to two different reference frames A and B can be related by the angular velocity of B in A.&lt;/p&gt;
+
+\[{}^A\frac{dV}{dt}=\ {}^B\frac{dV}{dt}+{}^A\omega^B\times V\]
+
+&lt;p&gt;Where V does not have to be a vector fixed in B. Note that if V is fixed in B, the derivative of V with respect to B goes to zero, leaving just the cross product of the angular velocity and V yielding the derivative in A.&lt;/p&gt;
+
+&lt;h3 id=&quot;angular-acceleration&quot;&gt;Angular Acceleration&lt;/h3&gt;
+
+&lt;p&gt;The angular acceleration of a vector is defined as the derivative of an angular velocity vector function in &lt;em&gt;any frame&lt;/em&gt;. Note that the frame in which we take the derivative does not matter.&lt;/p&gt;
+
+\[{}^A\alpha^B=\ {}^A\frac{d}{dt} {}^A\omega^B = {}^B\frac{d}{dt} {}^A\omega^B\]
+
+&lt;p&gt;We can prove this second fact by applying the rule of differentiation in two reference frames, noting that a vector crossed by itself is always equal to zero.&lt;/p&gt;
+
+\[{}^A\frac{d\omega}{dt}=\ {}^B\frac{d\omega}{dt}+{}^A\omega^B\times{}^A\omega^B\]
+
+&lt;h3 id=&quot;general-velocity-and-general-acceleration&quot;&gt;General Velocity and General Acceleration&lt;/h3&gt;
+
+&lt;p&gt;To define general velocity, we need to define a position vector. A position vector must start from a fixed point in the frame of differentiation. Any fixed point can be taken, as long as it is in the frame.&lt;/p&gt;
+
+\[{}^AV^P=\ {}^A\frac{d}{dt}P^{P/N}\]
+
+&lt;p&gt;The above is an expression for the velocity of point P in the reference frame A, where the vector P goes from point N fixed in A to a point P not fixed in A. The definition of acceleration of point P in frame A is then found by taking the second derivative of the velocity vector.&lt;/p&gt;
+
+\[{}^Aa^P={}^A\frac{d}{dt}{}^AV^P\]
+
+&lt;h3 id=&quot;v2pts-and-a2pts&quot;&gt;V2PTS and A2PTS&lt;/h3&gt;
+
+&lt;p&gt;Consider two points (P and Q) fixed in a rigid body B, that has some angular velocity in frame A. We can relate the velocities of these two points in frame A as:&lt;/p&gt;
+
+\[{}^AV^Q= {}^AV ^P+ {}^A \omega^B \times R^{Q/P}\]
+
+&lt;p&gt;Where R is a vector that points to Q from P. Similarly, we can relate the acceleration of these points if we know the angular acceleration of body B in frame A.&lt;/p&gt;
+
+\[{}^Aa^Q={}^A a^P+{}^A\omega ^B \times ( {}^A\omega ^B \times R^{Q/P})+{}^A \alpha^B \times R^{Q/P}\]
+
+&lt;h3 id=&quot;v1pts-and-a1pts&quot;&gt;V1PTS and A1PTS&lt;/h3&gt;
+
+&lt;p&gt;Consider a point P that has some velocity in frame B. Frame B itself moved with angular velocity in a reference frame A. The velocity and acceleration of point P in frame A is defined as:&lt;/p&gt;
+
+\[{}^AV^P={}^AV^{B_p}+{}^BV^P\]
+
+\[{}^Aa^P={}^Aa^{B_p}+{}^Ba^P+2{}^A\omega^B\times{}^BV^P\]
+
+&lt;p&gt;Where \( B_p \) is defined as a point of B coincident with P at some time, t*. This is convenient because we can define \( B_p \) to be stationary in B.&lt;/p&gt;
+
+&lt;h2 id=&quot;configuration-constraints&quot;&gt;Configuration Constraints&lt;/h2&gt;
+
+&lt;p&gt;Consider a system of points, where each point is defined by position vector, where each vector has three measure numbers. A constraint configuration constraint is a function of these measure numbers that is equal to zero. Configuration constraints are also known as “holonomic constraints”.&lt;/p&gt;
+
+\[P_1,P_2,\ldots,\ P_n\rightarrow vectors\]
+
+\[f\left(P_{11},\ P_{12},\ P_{13},\ldots,\ P_{n1},\ P_{n2},P_{n3}\right)=0\]
+
+&lt;p&gt;Next, we are going to define what are known as generalized coordinates and speeds. The main objective of this function is to simplify later when we have to define and solve the F = ma equation.&lt;/p&gt;
+
+&lt;h3 id=&quot;generalized-coordinates&quot;&gt;Generalized Coordinates&lt;/h3&gt;
+
+&lt;p&gt;Instead of using configuration constraints, we can define a set of (n) generalized coordinates. The total number of generalized coordinates is equal to:&lt;/p&gt;
+
+\[n=3v+6\eta-m\]
+
+&lt;p&gt;Where v is the number of points, \(\eta\) is the number of rigid bodies, and m is the number of configuration constraints we have defined in the original problem. Generalized coordinates are usually defined with the letter q.&lt;/p&gt;
+
+\[q_1,q_2,q_3,\ldots q_n\]
+
+&lt;h3 id=&quot;generalized-speeds&quot;&gt;Generalized Speeds&lt;/h3&gt;
+
+&lt;p&gt;Generalized speeds are defined as linear combinations of the time derivative of the generalized coordinates. We define these both with the sum notation, and in matrix notation.&lt;/p&gt;
+
+\[u_r= \sum_{s=1}^{n}{Y_{rs}{\dot{q}_s}+Z_r}\ \ \ \ \ \ r=(1,\ \ldots n)\]
+
+\[u=Y\dot{q}+Z\]
+
+&lt;p&gt;Thus, we can also invert the matrix expression to arrive at an expression for the kinematic differential equations as follows:&lt;/p&gt;
+
+\[\dot{q}=Y^{-1}u-Y^{-1}Z\]
+
+&lt;p&gt;Generalized speeds are useful because they give us the flexibility to simplify our expression for velocity. We define as many as are necessary to fully describe the problem.&lt;/p&gt;
+
+&lt;h3 id=&quot;motion-constraints&quot;&gt;Motion Constraints&lt;/h3&gt;
+
+&lt;p&gt;The motion constraints can be created by separating the generalized speeds into a series of dependent and independent generalized speeds. We denote the first 1 through p speeds as the independent speeds, and p+1 through n as the dependent speeds. The dependent speeds are linear combinations of the independent speeds. The number of independent speeds, p, is also referred to as the degrees of freedom.&lt;/p&gt;
+
+\[u_1,u_2,\ldots,\ u_p,\ u_{p+1},\ldots,\ u_n\]
+
+\[u_r=\ \sum_{s=1}^{P}{A_{rs}u_s+B_r}\ \ \ \ \ r=(p+1,\ \ldots,\ n)\]
+
+&lt;p&gt;Motion constraints are referred to as “non-holonomic constraints”, but this is distinct from the “holonomic” constraints we used to define coordinate constraints (very confusing).&lt;/p&gt;
+
+&lt;h3 id=&quot;partial-angular-velocities-and-partial-velocities&quot;&gt;Partial Angular Velocities and Partial Velocities&lt;/h3&gt;
+
+&lt;p&gt;The partial angular velocities are defined as those that when multiplied by the generalized speeds produce the original angular velocity expression. Note that there is a remainder term at the end. There are (n) total partial angular velocities. When motion constraints are applied, there are only (p) partial angular velocities – one for every generalized speed.&lt;/p&gt;
+
+\[{}^A\omega^B= [{}^A\omega_1 ^B,\ \ldots,\ {}^A\omega_n^B] \begin{bmatrix}u_1\\\ldots\\u_n\\\end{bmatrix}+w_t\]
+
+\[{}^A\omega^B= [{}^A \tilde{\omega}_1^B,\ \ldots, {}^A \tilde{\omega}_p^B ]  \begin{bmatrix}u_1\\\ldots\\u_p\\\end{bmatrix} + \tilde{w}_t\]
+
+&lt;p&gt;The partial velocities are defined in much the same way.&lt;/p&gt;
+
+\[{}^AV^B= [{}^AV_1^B,\ \ldots,\ {}^AV_n^B ] \begin{bmatrix}u_1\\\ldots\\u_n\\\end{bmatrix} +V_t\]
+
+\[{}^AV^B= [{}^A \widetilde{V}_1^B,\ \ldots,\ {}^A \widetilde{V}_p^B ] \begin{bmatrix}u_1\\\ldots\\u_p\\\end{bmatrix}+\widetilde{V}_t\]
+
+&lt;p&gt;The partial angular velocities can be derived by using our previous definition of the angular velocity in terms of the basis vectors and their derivatives.&lt;/p&gt;
+
+\[{}^A\omega^B=b_1(\dot{b_2}\bullet b_3)+b_2 (\dot{b_3}\bullet b_1 )+b_3 (\dot{b_1}\bullet b_2)\]
+
+\[\frac{}^AdV}{dt}= \begin{bmatrix}\frac{\partial V}{\partial q_1}&amp;amp;\ldots&amp;amp;\frac{\partial V}{\partial q_s}\\\end{bmatrix} \begin{matrix}{\dot{q}_1\\\ldots\\{\dot{q}_s\\\end{matrix}+\frac{}^A\partial V}{\partial t}=\frac{\partial V}{\partial q}\dot{q}+\frac{}^A\partial V}{\partial t}\]
+
+\[\dot{q}=Wu+X\]
+
+\[{}^A\omega^B=\left[b_1\frac{\partial b_2}{\partial q}\bullet b_3+b_2\frac{\partial b_3}{\partial q}\bullet b_1+b_3\frac{\partial b_1}{\partial q}\bullet b_2\right]\left(Wu+X\right)+\frac{}^A\partial b_1}{\partial t}+\frac{}^A\partial b_2}{\partial t}+\frac{}^A\partial b_3}{\partial t}\]
+
+\[{}^A\omega^B=\left[~\right]Wu+\left[~\right]X+\frac{}^A\partial b_1}{\partial t}+\frac{}^A\partial b_2}{\partial t}+\frac{}^A\partial b_3}{\partial t}\]
+
+&lt;p&gt;We now have an expression for the angular velocity which satisfies the format we’ve already defined for the partial angular velocities. Take care to notice everything that goes into the remainder term.&lt;/p&gt;
+
+&lt;p&gt;But why define partial angular velocities at well? Well, in a full dynamics problem, we’ll frequently encounter a situation in which an applied force causes a resultant acceleration/velocity in one direction, but not in another. Partial velocities allow us to separate each F = ma statement by direction, greatly simplifying each equation.&lt;/p&gt;
+
+&lt;h3 id=&quot;partial-acceleration-and-partial-velocities&quot;&gt;Partial Acceleration and Partial Velocities&lt;/h3&gt;
+
+&lt;p&gt;We’re going to take the projection of accelerations into the partial velocities and see that it connects to the same result in Lagrange’s Method. I will write more when I understand what’s going on.&lt;/p&gt;
 </content>
  </entry>
  
@@ -224,6 +493,96 @@
 &lt;p&gt;States that the total time rate of change of an extensive property (B) for a system, depends on the rate of change of the intensive property in the control volume and the flux of that property through the control volume. (Extensive = mass dependent and Intensive = mass independent). In other works, it relates the control mass view of a fluid to the control volume view of a fluid.&lt;/p&gt;
 
 \[\frac{DB_{sys}}{Dt}=\int_{cv}^{cv}\frac{\partial}{\partial t}(\rho b)dV+\int_{cs}^{cs}\rho b\left(\vec{v}\bullet\hat{n}\right)ds\]
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Finally Getting to Dynamics</title>
+   <link href="https://ludavid15.github.io//dynamicalEquations/"/>
+   <updated>2021-05-11T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//dynamicEquations</id>
+   <content type="html">&lt;p&gt;We’re almost ready to write down F = ma, but before that, we need to define what F is (a force), and what ma is (an intertial term).&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;resultant&quot;&gt;Resultant&lt;/h3&gt;
+&lt;p&gt;The resultant is defined as the sum of force vectors. Useful for consolidating a number of forces into a singular equivalent one.&lt;/p&gt;
+
+&lt;h3 id=&quot;bound-vector&quot;&gt;Bound Vector&lt;/h3&gt;
+&lt;p&gt;A bound vector contains a direction, magnitude, or well-defined point. A bound vector may also exist on a line of action.&lt;/p&gt;
+
+&lt;h3 id=&quot;moment-about-a-point&quot;&gt;Moment about a Point&lt;/h3&gt;
+&lt;p&gt;The moment about a point due to a bound vector is defined as the cross product of any position vector from the point to the line of action with the force vector. Only defined for bound force vectors.&lt;/p&gt;
+
+\[M^{F/P}=P^{O/P}\times F\]
+
+&lt;p&gt;Where P is the point about which we’d like to take the moment, and O is a point on the line of action. The superscript on M denotes that this is the moment about point P due to a force F.&lt;/p&gt;
+
+&lt;h3 id=&quot;shift-theorem&quot;&gt;Shift Theorem&lt;/h3&gt;
+&lt;p&gt;If we know the moment about a point Q due to a set of forces S with resultant RS, and the position vector from Q to another point P, we can calculate the moment about the point P due to the set of forces RS as:&lt;/p&gt;
+
+\[M^{S/P}=M^{S/Q}+P^{Q/P}\times R^S\]
+
+&lt;h3 id=&quot;couples&quot;&gt;Couples&lt;/h3&gt;
+&lt;p&gt;A couple is a set of vectors whose resultant is zero&lt;/p&gt;
+
+&lt;h3 id=&quot;torque&quot;&gt;Torque&lt;/h3&gt;
+&lt;p&gt;A torque is the moment of a couple. Torques are constant regardless of the point around which a moment is calculated, due to the nature of couples and how moments are defined. This can be proved via the shift theorem, by simply setting the resultant equal to zero.&lt;/p&gt;
+
+&lt;h3 id=&quot;generalized-active-force&quot;&gt;Generalized Active Force&lt;/h3&gt;
+&lt;p&gt;The set of generalized active forces are those which are important for determining the dynamics of the problem. The generalized active forces are the set of forces acting on a point dotted with the partial velocities of that point. Recall that there are non-holonomic and holonomic partial velocities, and thus there are likewise non-holonomic and holonomic active forces.&lt;/p&gt;
+
+\[F_r=\sum_{i=1}^{v}{ ( ^A V)^P\bullet R^P}\ \ \ \ \ \ \left(r=1,\ \ldots,\ n\right)\]
+
+\[\widetilde{F_r}=\sum_{i=1}^{v}({}^A \widetilde{V})^P\bullet R^P\ \ \ \ \ \ (r=1,\ \ldots,\ p)\]
+
+&lt;p&gt;These two forces are also related using the definition of non-holonomic partial velocities.&lt;/p&gt;
+
+\[\widetilde{F_r}=F_r+\sum_{s=p+1}^{n}{F_sA_{sr}}\ \ \ \ (r=1,\ \ldots,\ p)\]
+
+&lt;p&gt;Similar to active forces, active torques and moments are defined by dotting with the partial angular velocity of that body.&lt;/p&gt;
+
+\[(F_r)_B=R\bullet{_\ ^A V}^Q+T\bullet{ ^A\omega}_r^B\]
+
+&lt;h3 id=&quot;non-contributing-forces&quot;&gt;Non-contributing Forces&lt;/h3&gt;
+
+&lt;p&gt;These types of forces do not act as part of the set of active forces. There are 4 conditions which allow us to determine which forces are non-contributing.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Forces exerted on a system S across smooth surfaces of bodies in contact with S, where smooth implies no friction.&lt;/li&gt;
+  &lt;li&gt;Internal forces between rigidly connected particles of S.&lt;/li&gt;
+  &lt;li&gt;If B (of S) rolls without slipping on B’ (not a part of S), then all forces exerted by B’ on B are non-contributing&lt;/li&gt;
+  &lt;li&gt;Forces exerted between B and B’ (both considered a part of S) are non-contributing.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;equivalent-replacement&quot;&gt;Equivalent Replacement&lt;/h3&gt;
+&lt;p&gt;Given a set of forces acting on a rigid body, we define an equivalent replacement force and torque for the system, where the force is the resultant of all the force vectors and acts through point Q, and P is a position vector from Q to the original point of force application.&lt;/p&gt;
+
+\[R=\sum F\]
+
+\[T=\sum{P\times F}\]
+
+&lt;h3 id=&quot;generalized-inertia-forces&quot;&gt;Generalized Inertia Forces&lt;/h3&gt;
+&lt;p&gt;These are the equivalent term given to the idea of inertia (mass x acceleration). For particles, they are defined as the partial velocity dotted with the mass times acceleration.&lt;/p&gt;
+
+\[F_R^\ast=\sum{V_r^P\bullet R_i^\ast}\]
+
+\[R_i^\ast=-m_i{ ^A a}^P\]
+
+&lt;p&gt;The equation is slightly different for rigid bodies, since we have to take into consideration the contributions due to angular acceleration.&lt;/p&gt;
+
+\[F_R^\ast=V_r^P\bullet R_\ ^\ast+{^A\omega}_r^B\bullet T^\ast\]
+
+\[R_i^\ast=-M_\ { ^A a}^B\]
+
+\[T^\ast=-\sum{mr\times}{ ^A \alpha}_r^P\]
+
+&lt;p&gt;Where r is the position vector from body B to point P.&lt;/p&gt;
+
+&lt;h3 id=&quot;dynamical-equations&quot;&gt;Dynamical Equations&lt;/h3&gt;
+
+&lt;p&gt;The dynamical equations are the equivalent of stating Newton’s second law, F = ma. These equations simply state that the generalized active forces plus the generalized inertia forces is equal to zero. These are generally integrated alongside the kinematic differential equations to find the state variables.&lt;/p&gt;
+
 </content>
  </entry>
  
