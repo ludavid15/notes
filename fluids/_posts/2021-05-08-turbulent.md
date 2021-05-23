@@ -4,6 +4,7 @@ title: Turbulent Flow
 permalink: /turbulent/
 excerpt_separator: <!--more-->
 mathjax: true
+categories: fluids
 ---
 
 

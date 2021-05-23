@@ -279,11 +279,70 @@
 
 \[\frac{DB_{sys}}{Dt}=\int_{cv}^{cv}\frac{\partial}{\partial t}(\rho b)dV+\int_{cs}^{cs}\rho b\left(\vec{v}\bullet\hat{n}\right)ds\]
 
+<h3 id="dimensional-analysis">Dimensional Analysis</h3>
+<p>We can re-write an equation with normalized terms to see the relative magnitude of the different variables. For example, we can introduce a variable, keeping in mind to apply the chain rule when we take a derivative:</p>
+
+\[\widetilde{x}=\frac{x}{L}\]
+
+\[\frac{\partial\widetilde{x}}{\partial t}=\frac{1}{L}\frac{\partial x}{\partial t}\]
+
+<p>We can then make the following substitution into the original expression</p>
+
+\[\frac{\partial x}{\partial t}=L\ast\frac{\partial\widetilde{x}}{\partial t}\]
+
+<h3 id="bernoulli-equation">Bernoulli Equation</h3>
+
+<p>Ah who doesn’t love Bernoullli’s equation. It’s so simple. We can derive Bernoulli’s equation from the conservation of energy equations (Euler equations already model adiabatic flow with no viscous forces). Assuming that the flow is also isentropic, steady, and irrotational, Euler’s equations simplify into:</p>
+
+\[P+\frac{1}{2}\rho U^2+gz=constant\]
+
+<p>Ok, hold on, what are those assumptions again? Let’s just go over those one more time: isentropic, stready, irrotational, adiabatic, inviscid.</p>
+
+<p>Oh well.</p>
+
+<p>Unsteady Bernoulli’s (applicable for irrotational flow). Where the integral of ds is taken along a streamline.</p>
+
+\[\int\frac{\partial\left|v\right|}{\partial x}ds+\frac{1}{2}v^2+\int\frac{\partial P}{\rho}+gz=F(t)\]
+
+<h3 id="2d-potential-flow">2D Potential Flow</h3>
+<p>Potential flow theory is the theory of inviscid fluid flow. This is also the limit where Reynold’s number tends to infinity. For two-dimensional inviscid flow, we can define the velocity components in terms of two other functions, the stream function and the potential function.</p>
+
+<ul>
+  <li>Irrotational Velocity Potential $\phi$ 	\(\nabla\times\vec{V}=0\)</li>
+  <li>Incompressible Stream Function $\psi$	\(\nabla\bullet\vec{V}=0\)</li>
+</ul>
+
+\[u=\ \frac{\partial\phi}{\partial x}= \frac{\partial\psi}{\partial y}\]
+
+\[v=\ \frac{\partial\phi}{\partial y}=\ -\frac{\partial\psi}{\partial x}\]
+
+\[u_r=\frac{\partial\phi}{\partial r}=\frac{1}{r}\frac{\partial\psi}{\partial\theta}\]
+
+\[u_\theta=\frac{\partial\psi}{\partial r}=\frac{1}{r}\frac{\partial\phi}{\partial\theta}\]
+
+<p>If either of the following is true, we can say that the fluid is both irrotational and incompressible.</p>
+
+\[\nabla^2\psi=0\]
+
+\[\nabla^2\phi=0\]
+
+<p>In assuming incompressibility, mass continuity reduces into a volume continuity equation, where density has dropped out:</p>
+
+\[Volume\ Continuity:\ \ \ \nabla\bullet V=\ \frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=0\]
+
 </div>
 
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
     
       <li>
         
@@ -402,7 +461,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Continuum Mechanics" />
 <script type="application/ld+json">
-{"headline":"Continuum Mechanics","dateModified":"2021-05-11T00:00:00-07:00","description":"One of the common assumptions we make when working with fluids is that it forms a continuum. The individual atoms of a fluid are assumed to be tightly packed enough that we can approximate the collective molecular interactions. What are these collective molecular interactions? Well, pretty standard stuff actually. We assume that applying a force causes an object to move, or a body to deform. (Technically speaking, that stress is related to strain). And honestly well, that’s kinda it. The reason this assumption is so powerful is because it makes our model continuous. This may seem pretty obvious at a glance, but working with stuff that is continuous is very different from working with stuff that is discrete! The reason as you may already have guessed: derivatives.","datePublished":"2021-05-11T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/continuumMechanics/"},"url":"https://ludavid15.github.io//notes/continuumMechanics/","author":{"@type":"Person","name":"David Lu"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/continuumMechanics/"},"description":"One of the common assumptions we make when working with fluids is that it forms a continuum. The individual atoms of a fluid are assumed to be tightly packed enough that we can approximate the collective molecular interactions. What are these collective molecular interactions? Well, pretty standard stuff actually. We assume that applying a force causes an object to move, or a body to deform. (Technically speaking, that stress is related to strain). And honestly well, that’s kinda it. The reason this assumption is so powerful is because it makes our model continuous. This may seem pretty obvious at a glance, but working with stuff that is continuous is very different from working with stuff that is discrete! The reason as you may already have guessed: derivatives.","url":"https://ludavid15.github.io//notes/continuumMechanics/","author":{"@type":"Person","name":"David Lu"},"headline":"Continuum Mechanics","dateModified":"2021-05-11T00:00:00-07:00","datePublished":"2021-05-11T00:00:00-07:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   

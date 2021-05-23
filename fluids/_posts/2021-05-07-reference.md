@@ -4,6 +4,7 @@ title: Miscellaneous Topics
 permalink: /misc/
 excerpt_separator: <!--more-->
 mathjax: true
+categories: fluids
 ---
 
 This is a series of random topics, including non-dimensional numbers and fluid statics.
