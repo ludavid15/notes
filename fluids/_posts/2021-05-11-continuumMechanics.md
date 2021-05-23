@@ -4,6 +4,7 @@ title: Continuum Mechanics
 permalink: /continuumMechanics/
 excerpt_separator: <!--more-->
 mathjax: true
+categories: fluids
 ---
 
 One of the common assumptions we make when working with fluids is that it forms a continuum. The individual atoms of a fluid are assumed to be tightly packed enough that we can approximate the collective molecular interactions. What are these collective molecular interactions? Well, pretty standard stuff actually. We assume that applying a force causes an object to move, or a body to deform. (Technically speaking, that stress is related to strain). And honestly well, that's kinda it. 
@@ -112,3 +113,55 @@ $$z:\ \ \ \ \rho\left[\frac{\partial w}{\partial t}+u\frac{\partial w}{\partial 
 States that the total time rate of change of an extensive property (B) for a system, depends on the rate of change of the intensive property in the control volume and the flux of that property through the control volume. (Extensive = mass dependent and Intensive = mass independent). In other works, it relates the control mass view of a fluid to the control volume view of a fluid.
 
 $$\frac{DB_{sys}}{Dt}=\int_{cv}^{cv}\frac{\partial}{\partial t}(\rho b)dV+\int_{cs}^{cs}\rho b\left(\vec{v}\bullet\hat{n}\right)ds$$
+
+### Dimensional Analysis
+We can re-write an equation with normalized terms to see the relative magnitude of the different variables. For example, we can introduce a variable, keeping in mind to apply the chain rule when we take a derivative:
+
+$$\widetilde{x}=\frac{x}{L}$$
+
+$$\frac{\partial\widetilde{x}}{\partial t}=\frac{1}{L}\frac{\partial x}{\partial t}$$
+
+We can then make the following substitution into the original expression
+
+$$\frac{\partial x}{\partial t}=L\ast\frac{\partial\widetilde{x}}{\partial t}$$
+
+
+### Bernoulli Equation
+
+Ah who doesn't love Bernoullli's equation. It's so simple. We can derive Bernoulli’s equation from the conservation of energy equations (Euler equations already model adiabatic flow with no viscous forces). Assuming that the flow is also isentropic, steady, and irrotational, Euler’s equations simplify into: 
+
+$$P+\frac{1}{2}\rho U^2+gz=constant$$
+
+Ok, hold on, what are those assumptions again? Let's just go over those one more time: isentropic, stready, irrotational, adiabatic, inviscid.
+
+Oh well.
+
+Unsteady Bernoulli’s (applicable for irrotational flow). Where the integral of ds is taken along a streamline.
+
+$$\int\frac{\partial\left|v\right|}{\partial x}ds+\frac{1}{2}v^2+\int\frac{\partial P}{\rho}+gz=F(t)$$
+
+
+### 2D Potential Flow
+Potential flow theory is the theory of inviscid fluid flow. This is also the limit where Reynold’s number tends to infinity. For two-dimensional inviscid flow, we can define the velocity components in terms of two other functions, the stream function and the potential function.
+
+
+* Irrotational Velocity Potential $\phi$ 	$$\nabla\times\vec{V}=0$$
+* Incompressible Stream Function $\psi$	$$\nabla\bullet\vec{V}=0$$
+
+$$u=\ \frac{\partial\phi}{\partial x}= \frac{\partial\psi}{\partial y}$$
+
+$$v=\ \frac{\partial\phi}{\partial y}=\ -\frac{\partial\psi}{\partial x}$$
+
+$$u_r=\frac{\partial\phi}{\partial r}=\frac{1}{r}\frac{\partial\psi}{\partial\theta}$$
+
+$$u_\theta=\frac{\partial\psi}{\partial r}=\frac{1}{r}\frac{\partial\phi}{\partial\theta}$$
+
+If either of the following is true, we can say that the fluid is both irrotational and incompressible.
+
+$$\nabla^2\psi=0$$
+
+$$\nabla^2\phi=0$$
+
+In assuming incompressibility, mass continuity reduces into a volume continuity equation, where density has dropped out:
+
+$$Volume\ Continuity:\ \ \ \nabla\bullet V=\ \frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=0$$

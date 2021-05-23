@@ -4,6 +4,7 @@ title: Compressible Flow
 permalink: /compressible/
 excerpt_separator: <!--more-->
 mathjax: true
+categories: fluids
 ---
 
 

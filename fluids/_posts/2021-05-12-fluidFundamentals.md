@@ -4,6 +4,7 @@ title: Fundamentals of Fluid Mechanics
 permalink: /fluidFundamentals/
 excerpt_separator: <!--more-->
 mathjax: true
+categories: fluids
 ---
 
 To be clear, when we talk about fluid mechanics, we aren't just talking about the second state of matter (liquid $$\subset$$ fluid). It honestly would make a lot more sense if we called it "flow mechanics", but too many textbooks have been printed now to change that. In any case, we're stuck with the term fluid mechanics, so that's what we'll be working with here.

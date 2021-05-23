@@ -4,13 +4,614 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-05-19T15:46:42-07:00</updated>
+ <updated>2021-05-23T15:15:44-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Fundamentals of Propulsion</title>
+   <link href="https://ludavid15.github.io//fundamentalsProp/"/>
+   <updated>2021-05-18T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//fundamentalsPropulsion</id>
+   <content type="html">&lt;p&gt;When it comes to propulsion, it can be difficult to keep track of all the different classifications floating around out there. Props, turboprops, turbojets, ramjets, chemical rockets, nuclear rockets, Hall thrusters, and ion thrusters, just to name a few. If anything, it’s a testament to our joint creativity that we’ve come up with so many ways to &lt;em&gt;move&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;To help clear up some confusion, this section presents a roadmap - a heirarchy of propulsion systems to help you navigate this broad topic.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;To begin, all propulsion systems must achieve the same goal: generate forward momentum. And the only way to do this (that we know of … ) is to make use of Newton’s third law.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;For every action, there is an equal and opposite reaction.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So that’s it. We have to push something back, and the action of doing so pushes us forward. Naturally the next question becomes, well how do we push mass back? The three answers we have achieved are:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Mechanically, by interacting with the environment.&lt;/li&gt;
+  &lt;li&gt;Converting a fluid’s internal energy into kinetic energy with a nozzle.&lt;/li&gt;
+  &lt;li&gt;If we have access to mass that is charged/magnetized, we can accelerate it with an electromagnetic field.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Other ideas that we have come up with, but cannot achieve yet:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Artificial gravity&lt;/li&gt;
+  &lt;li&gt;Wormholes (i.e. spacetime warping)&lt;/li&gt;
+  &lt;li&gt;Teleporters (technically &lt;em&gt;not&lt;/em&gt; a form of propulsion, since we’re not moving mass from one location to another, but rather assembling a copy somewhere else)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Although not explicitly stated, all relevant propulsion systems work with &lt;strong&gt;fluids&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Q: What is a good measure for efficiency?&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p class=&quot;message&quot;&gt;
+A: As with most things in life, very little is free. Since the goal is to produce thrust, a common measure of effiency is how much thrust gets produced per unit weight of expendable mass. Naturally, this is not so good a quantifier for something like a battery powered quadcopter, but for anything that must carry fuel or propellent, thrust per mass flow is usually what is meant by &quot;efficiency&quot;. 
+&lt;/p&gt;
+
+&lt;h2 id=&quot;mechanical-propulsion&quot;&gt;Mechanical Propulsion&lt;/h2&gt;
+
+&lt;p&gt;This group covers any type of system that captures momentum from the environment, and includes sails and propellers.&lt;/p&gt;
+
+&lt;p&gt;Sails (whether on the ocean or in space) have large surface areas so that when a particle collides with the surface, the particle’s momentum is transferred to the sail.&lt;/p&gt;
+
+&lt;p&gt;Propellers operate slightly differently. Power is required to turn the propeller, and as the propeller moves through the fluid, the fluid is accelerated in one direction, and the vehicle is moved in the opposite direction.&lt;/p&gt;
+
+&lt;p&gt;From a force perspective, the fluid’s flow over each propeller blade creates a pressure gradient, which can be integrated to find a forward force.&lt;/p&gt;
+
+&lt;h3 id=&quot;propeller-based-systems&quot;&gt;Propeller Based Systems&lt;/h3&gt;
+
+&lt;p&gt;Propeller driven propulsion system are further classified by &lt;em&gt;how power is supplied&lt;/em&gt;.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Turboprop and Turbofan - a jet engine’s turbine is used to turn the propeller. The jet engine is powered by fuel.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Turboprop&lt;/strong&gt; - the jet engine turns a propeller.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Turbofan&lt;/strong&gt; - the jet engine turns a fan (like a propeller, but with more blades and also sits inside a duct).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Electric Propulsion - some power source drives an electric motor which turns the propellor. Batteries have poor energy density, which is why you don’t often see electric airplanes.&lt;/li&gt;
+  &lt;li&gt;Gas Engine - relies on good old combustion with cylinders and pistons to turn the propeller.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;electromagnetic-propulsion&quot;&gt;Electromagnetic Propulsion&lt;/h2&gt;
+
+&lt;p&gt;Along with gravity, the weak nuclear force, and strong nuclear force, electromagnetism is one of the four fundamental interactions of the universe. In other words, it doesn’t get more general than this. The concept is pretty simple - use electric and magnetic fields to accerate charged particles. Unfortunately, electromagnetism is weird, and this makes things complicated.&lt;/p&gt;
+
+&lt;p&gt;Propulsion systems under this umbrella subdivide into two categories:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Electrostatic&lt;/strong&gt; thrusters create a static electric field and accelerate particles from high field potential to low field potential. Gridded ion thrusters and electrosprays use this method.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Electromagnetic&lt;/strong&gt; thrusters create a combined electromagnetic field. Hall thrusters use this method.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;nozzle-propulsion&quot;&gt;Nozzle Propulsion&lt;/h2&gt;
+
+&lt;p&gt;If you’ve ever put your thumb over the end of a hose and observed the flow of water increasing in velocity, you’ve seen a nozzle. Nozzles work by constricting the area through which a fluid can pass.&lt;/p&gt;
+
+&lt;p&gt;From a mass conservation perspective, the fluid velocity must increase so the mass flow rate remains the same (this applies for incompressible fluids).&lt;/p&gt;
+
+\[\dot{m} = \rhoAV\]
+
+&lt;p&gt;When the velocity increases, the pressure decreases according to Bernoulli’s equation (assumptions: adiabatic, incompressible, inviscid, isentropic).&lt;/p&gt;
+
+\[P+\frac{1}{2}\rho U^2+gz=constant\]
+
+&lt;p&gt;This point is especially important. Nozzles convert the internal energy (pressure and/or temperature) of a fluid into kinetic energy. Thus to maximize kinetic energy, we would like to increase the internal energy of the fluid &lt;em&gt;before&lt;/em&gt; it enters the nozzle.&lt;/p&gt;
+
+&lt;h3 id=&quot;increasing-the-internal-energy&quot;&gt;Increasing the Internal Energy&lt;/h3&gt;
+
+&lt;p&gt;Things are heating up now as we subdivide nozzle based propulsion systems by the mechanism through which energy is added to a fluid.&lt;/p&gt;
+
+&lt;h3 id=&quot;electricity&quot;&gt;Electricity&lt;/h3&gt;
+
+&lt;p&gt;Thrusters of this variety convert power in the form of electricity into thermal energy by heating up the fluid. Your toaster oven at home does this. By passing current through a heating element, some of the electrical power is converted into heat, which radiates and convects to the air around it. This exact method is used in a resistojet.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A &lt;strong&gt;resistojet&lt;/strong&gt; is a nozzle based propulsion system which adds heat to a fluid by means of a resistor.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Alternatively, if two conducting pieces are placed very close to one another and have a high potential difference between them, current can &lt;strong&gt;arc&lt;/strong&gt; through the fluid in between. This action heats up the fluid, and thus we have discovered another type of thruster: the arcjet.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;An &lt;strong&gt;arcjet&lt;/strong&gt; is a nozzle based propulsion system which adds heat to a fluid by an electric discharge.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;radiation-nuclear&quot;&gt;Radiation (Nuclear)&lt;/h3&gt;
+
+&lt;p&gt;Though the word “radiation” may invoke images of nuclear power plants and dangerous x-rays, scientifically speaking radiation simply refers to the transfer of heat through a wave or particle. If you’ve studied heat transfer, you’ll know that radiation via electromagnetic waves is a fundamental mode of heat transfer. Radiation can also exist through particles, such as with the alpha and beta radiation you get when atoms experience radioactive decay.&lt;/p&gt;
+
+&lt;p&gt;In the context of propulsion systems, this energy can be used to &lt;strong&gt;directly&lt;/strong&gt; heat up a fluid. Note the important distinction here. We’re not using nuclear power to generate electricity to power the engine - heat from the controlled fission reaction goes directly into the propellent. Thus we are firmly still in the word of &lt;em&gt;nozzle based&lt;/em&gt; propulsion systems.&lt;/p&gt;
+
+&lt;p&gt;The main implementation of this idea takes the form of nuclear thermal rockets.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A &lt;strong&gt;nuclear thermal rocket&lt;/strong&gt; passes fluid over a nuclear reactor core, which gets heated and then accelerated with a nozzle.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In rocket applications, nuclear thermal systems have an efficiency and thust in between chemical thrusters, and electromagnetic thrusters. While a few have been developed, this technology never caught on.&lt;/p&gt;
+
+&lt;p&gt;In aircraft applications, nuclear systems have been proposed for high endurance applications, but this idea was never realized.&lt;/p&gt;
+
+&lt;h3 id=&quot;combustion&quot;&gt;Combustion&lt;/h3&gt;
+
+&lt;p&gt;And finally we’ve gotten to the biggest bucket of all - combustion based propulsion. That thing which powers our cars and cooks our food, turns out to be pretty reliable for adding heat to fluids.&lt;/p&gt;
+
+&lt;p&gt;But did you know there are actually two modes of combustion? Deflagration is the one most people are familiar with. This is an open flame, or that thing which powers your car.&lt;/p&gt;
+
+&lt;p&gt;The other mode of combustion is known as a detonation. In a detonation, a supersonic exothermic wave expands out, creating a shockwave. Detonations are much louder and less stable than deflagration combustion, but have the theoretical capacity to be more efficient.&lt;/p&gt;
+
+&lt;h4 id=&quot;detonation-combustion-propulsion&quot;&gt;Detonation Combustion Propulsion&lt;/h4&gt;
+
+&lt;p&gt;As of today, only two detonation engine designs have been designed and tested. These are the pulse detonation engine, and rotating detonation engine.&lt;/p&gt;
+
+&lt;h4 id=&quot;deflagration-combustion-propulsion&quot;&gt;Deflagration Combustion Propulsion&lt;/h4&gt;
+
+&lt;p&gt;Arguably, the bulk of today’s propulsion technology sits in this category. To further subdivide, we merely have to ask the question:&lt;/p&gt;
+
+&lt;p&gt;Where do we get the oxygen required for our combustion reaction? If the answer is from the atmosphere, then we have a jet engine. But if do not have this option and must carry all our oxygen onboard, then we have a rocket engine. Due to this constraint, rocket engines are less efficient than jet engines, but that hasn’t stopped us from building them bigger!&lt;/p&gt;
+
+&lt;h5 id=&quot;jet-engines&quot;&gt;Jet Engines&lt;/h5&gt;
+
+&lt;p&gt;Jet engines have become the backbone of today’s aviation industry. Unlike their rocket counterparts, planes have the luxury of flying through the atmosphere, which is full of useful oxygen for combustion reactions. Thus, Jet engines are referred to as “air-breathing”.&lt;/p&gt;
+
+&lt;p&gt;The basic jet engine consists of 5 stages.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Inlet - slows down incoming air and deals with shockwaves if there’s any&lt;/li&gt;
+  &lt;li&gt;Compressor - draws in air and slows it down while raising the pressure.&lt;/li&gt;
+  &lt;li&gt;Combustion - adds energy to incoming fluid&lt;/li&gt;
+  &lt;li&gt;Turbine - collect some power from the flow to drive the compressor&lt;/li&gt;
+  &lt;li&gt;Nozzle - converts thermal energy into kinetic energy&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Jet engines that follow this model which includes a turbine are known as &lt;strong&gt;Turbojets&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Turbojet&lt;/strong&gt; - a nozzle based propulsion system, that uses deflagration combustion, where oyxgen for the combustion reaction is pulled from the environment. In order to pressurize air, a compressor is used.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;At some point in our quest to move faster, we must cross over into supersonic speeds. In this realm of super fast fluid flow, shocks become an important problem. Luckily, we have a solution: ramjets and scramjets.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Ramjets&lt;/strong&gt; - these function like a turbojet, but rely on the incredibly fast forward speed of the vehicle to compress incoming air. Thus, ramjets do away with the compressor and turbine stages, but do not generate any thrust on their own unless the vehicle is already moving.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Scramjets&lt;/strong&gt; - short for supersonic combustion ramjet. Virtually identical in functionality to a ramjet but instead of slowing the flow down to supsonic speeds for combustion, scarmjets keep the flow supersonic. This makes combustion very complicated but at &lt;strong&gt;very&lt;/strong&gt; high speeds, slowing incoming air down all the way just isn’t very efficient.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;rocket-engines&quot;&gt;Rocket Engines&lt;/h5&gt;
+
+&lt;p&gt;And last but not least, we have rockets. Rockets engines are a nozzle based propulsion system, that relies on a deflagration combustion reactions to add thermal energy to a fluid. Additionally, rockets carry their own oxidizer onboard.&lt;/p&gt;
+
+&lt;p&gt;So how do we subdivide rocket engines? Well how about by the way in which propellent is stored? If both fuel and oxidizer and mixed together in a solid, that’s a solid rocket motor.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Solid rocket motor&lt;/strong&gt; - not all that different from an explosive, but simple, cheap, and reliable. These things are what you find in hobby rockets, but can be scaled up to power things like the space shuttle.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If (fuel xor oxidizer == liquid), then we have a hybrid rocket engine&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Hybrid rocket motor&lt;/strong&gt; - these allow for more control than a solid rocket motor, but are a step up in complexity.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Lastly, if both the fuel and oxidizer are liquid, then we have a liquid rocket.&lt;/p&gt;
+
+&lt;h6 id=&quot;liquid-rockets&quot;&gt;Liquid Rockets&lt;/h6&gt;
+
+&lt;p&gt;If you’ve ever seen a big rocket launch, most likely it was a liquid rocket. The Falcon 9, Atlas, Delta, and Space Shuttle are all examples. The primary advantage of these systems is their control. A series of pumps and valves moderate the flow of both oxidizer and fuel into the combustion chamber, thus allowing for operators on the ground to control the thrust. This is a necessary component if you want to attempt manuevers like propulsively landing your rocket.&lt;/p&gt;
+
+&lt;p&gt;Liquid rockets are further classified by the way in which propellent is fed into the combustion chamber.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pumps&lt;/strong&gt; are a common way and provide a nice amount of control.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Pump-fed systems&lt;/strong&gt; are classified into open loop systems, and closed loop systems.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Pressure&lt;/strong&gt; can also be used to push propellent along the lines.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Pressure-fed systems&lt;/strong&gt; are classified based on the source of pressure. Some propellents automatically sublimate and create pressure. These systems are autogenous. Alternatively, a third gas (usually a non-reactive nobel gas) can be used.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A short addendum to the rockets category is &lt;strong&gt;monopropellant&lt;/strong&gt; engines.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Monopropellant engine&lt;/strong&gt; - these do not technically use combustion, but instead rely on an incredibly exothermic chemical decomposition reaction. Hydrazine (NH4) is a popular choice.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;And there you have it! If you’ve followed along all this way, we’ve gone over about 20 different propulsion systems, ranging from tiny electrosprays to enormous liquid rocket engines. Hopefully you’ve gained a better understanding for the fundamental principles that drive propulsion technology.&lt;/p&gt;
+
+&lt;p&gt;Personally, I think roadmaps like this are important for visualizing gaps (now there’s a loaded systems engineering word for ya) in our research and development. A question like “what propulsive technologies are we missing?” is much more difficult to answer comprehensively than something like “how can we add heat to a fluid?”.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Electric Propulsion</title>
+   <link href="https://ludavid15.github.io//electric/"/>
+   <updated>2021-05-17T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//electric</id>
+   <content type="html">&lt;p&gt;Electric propulsion (EP) is, you guessed it, all about electric propulsion. This includes: ion thrusters, hall thrusters, resistojets, arcjets, and electrosprays.&lt;/p&gt;
+
+&lt;p&gt;Technically speaking, anything battery powered is also frequently called &lt;em&gt;electric propulsion&lt;/em&gt;, but the underlying mechanism of thrust generation in these cases is often a propeller, and that’s certainly an aerodynamics problem.&lt;/p&gt;
+
+&lt;p&gt;Also worth mentioning while we’re here: propulsion systems are never independent of the entire vehicle. It turns out, the power/fuel demand greatly impacts the design. Sizing appropriate solar arrays for an EP spacecraft, or sizing fuel tanks for a rocket are challenges in their own right, so we’ll limit out scope in this post to analyzing thruster performance only.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;thrust-to-power-ratio&quot;&gt;Thrust to Power Ratio&lt;/h3&gt;
+&lt;p&gt;Applicable to all EP systems. Note that as Isp improves, the thrust per unit power decreases. In the limit of very high Isp, the system is very efficient with propellant, but there is also no thrust being generated.&lt;/p&gt;
+
+\[\frac{T}{P}=\frac{2\eta}{U_{ex}}\]
+
+&lt;h3 id=&quot;thrust&quot;&gt;Thrust&lt;/h3&gt;
+
+&lt;p&gt;Derived from a simple statement of conservation of momentum.
+\(T=\ \dot{m}U_{ex}\)&lt;/p&gt;
+
+&lt;h3 id=&quot;specific-impulse&quot;&gt;Specific Impulse&lt;/h3&gt;
+
+&lt;p&gt;The specific impulse is defined with the following equation. In practice, the Isp is found not by measuring exhaust velocity, but rather by measuring thrust and flow rate.&lt;/p&gt;
+
+\[I_{sp}=\frac{T}{\dot{m}g_o}=\frac{U_{ex}}{g_o}\]
+
+&lt;h3 id=&quot;time-of-flight&quot;&gt;Time of Flight&lt;/h3&gt;
+
+&lt;p&gt;Recall that the rocket equation is expressed as:
+\(∆V=U_{exhaust}\log{m_initial/m_final}\)&lt;/p&gt;
+
+&lt;p&gt;Solving the above in terms of the mass of propellent (the difference between the final and initial mass) we get the following equation:&lt;/p&gt;
+
+\[m_{propellent}=m_{final}\ (e∆VUex-1)\]
+
+&lt;p&gt;The thrust time will be equal to the mass of propellent divided by the mass flow rate. The mass flow rate can be expressed in terms of the thrust and exhaust velocity.&lt;/p&gt;
+
+\[\dot{m}U_{ex}=T\]
+
+\[\Delta t=\ \frac{m_{initial}U_{ex}}{T}e∆VUex-1\]
+
+&lt;p&gt;Note that for electric propulsion systems, thrust scales directly with the power input, according to the following equation:&lt;/p&gt;
+
+\[\frac{T}{P}=\frac{2\eta}{U_{ex}}\]
+
+&lt;p&gt;Thus, the time of flight equation becomes:&lt;/p&gt;
+
+\[∆t= (mpayload+αP)Uex22ηPe∆VUex-1\]
+
+&lt;p&gt;Where α is defined as the power density, in units of [weight/power]. We see that thrust time trades directly with power input. For a known thrust time and power, there is an optimum Isp which will minimize launch mass. This is because at low specific impulse, there is a large propellant penalty, but at high specific impulse, there is a large power system mass penalty.&lt;/p&gt;
+
+\[m_{initial}=\frac{2\Delta t\eta m_{pl}e^{\Delta V/U}}{2\Delta t\eta+\alpha U^2\left(1-e^{\Delta V/U}\right)}\]
+
+&lt;h2 id=&quot;resistojets&quot;&gt;Resistojets&lt;/h2&gt;
+
+&lt;p&gt;As the name implies, this type of thruster uses a resistive heating element to add energy to a propellent, which is then expanded through a nozzle. Through an energy balance, we can find an expression for the thrust output. Note the efficiency terms.&lt;/p&gt;
+
+\[\frac{1}{2}\frac{T}{\dot{m}}=\eta P_{in}\]
+
+\[\frac{T^2}{P_{in}}=2\eta\dot{m}\]
+
+\[\eta=\eta_f\eta_n\eta_h\eta_d\]
+
+&lt;p&gt;The power going into the propellant directly goes into raising the enthalpy of the propellant. We note here that enthalpy is a function of the temperature, and in most scenarios, is just equal to the specific heat times the temperature.&lt;/p&gt;
+
+\[\eta_hP_{in}=\dot{m}h\left(T_c\right)\]
+
+\[h=c_pT\]
+
+&lt;p&gt;Using all the above relationship, we can express the exhaust velocity as a function of the chamber temperature and specific heat of the gas.&lt;/p&gt;
+
+\[U_{ex}=\sqrt{2c_pT_c\eta_f\eta_n\eta_d}\]
+
+&lt;h3 id=&quot;frozen-flow-efficiency&quot;&gt;Frozen Flow Efficiency&lt;/h3&gt;
+
+&lt;p&gt;This efficiency term is a measure of how well the internal energy of the gas is converted into directed potential energy. In an ideal case, he would be equal to zero, indicating that 100% of the internal energy has been converted into kinetic energy. In reality, not all the energy can be recovered. In EP systems particularly, dissociation of the propellant due to high temperatures can often lead to high frozen flow losses. (c) refers to the enthalpy in the chamber, and (e) refers to the enthalpy at the exit plane.&lt;/p&gt;
+
+\[\eta_f=\frac{h_c-h_e}{h_c}\]
+
+&lt;p&gt;To improve the frozen flow efficiency, one can:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Increase length of the nozzle (increased heat loss to the walls generally outweighs improved frozen flow efficiency.&lt;/li&gt;
+  &lt;li&gt;Increase pressure (although this increases engine mass)&lt;/li&gt;
+  &lt;li&gt;Gases with lower specific heat have better recombination, at the expense of lower enthalpy.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;heater-efficiency&quot;&gt;Heater Efficiency&lt;/h3&gt;
+
+&lt;p&gt;A measure of how much power input to the heating chamber is actually used towards raising the temperature of the propellant.&lt;/p&gt;
+
+\[\eta_h=\frac{heat\ added\ to\ propellant}{power\ supplied}\]
+
+&lt;h3 id=&quot;divergence-efficiency&quot;&gt;Divergence Efficiency&lt;/h3&gt;
+&lt;p&gt;Decreased effective thrust due to radial velocity component of exhaust plume.&lt;/p&gt;
+
+\[\eta_D={cos}^2\theta=\left[\frac{\int{\cos\funcapply(\theta)d\dot{m}}}{\int{d\dot{m}}}\right]^2\]
+
+&lt;h3 id=&quot;nozzle-efficiency&quot;&gt;Nozzle Efficiency&lt;/h3&gt;
+&lt;p&gt;Viscous and thermal losses of propellant internal energy to the nozzle and chamber walls. Q dot here is the rate of energy loss to the walls.&lt;/p&gt;
+
+\[\eta_n=\frac{h_c-h_e-\sfrac{\dot{Q}}{\dot{m}}}{h_c-h_e}\]
+
+&lt;h3 id=&quot;enthalpy&quot;&gt;Enthalpy&lt;/h3&gt;
+&lt;p&gt;The specific enthalpy scales with relation to the available energy storage modes, including translational, vibrational, rotational, and dissociative modes. (m) is the molecule mass of a propellent molecule. We’ve assumed that no ionization occurs.&lt;/p&gt;
+
+\[h=\ \frac{k_bT}{m}\left[\frac{5}{2}\left(2-\alpha_2\right)+\beta_r\alpha_2+\beta_r\alpha_2+\frac{(1-\alpha_2)\varepsilon_D}{k_bT}\right]\]
+
+\[\alpha_2+\frac{1}{2}\alpha_1=1\]
+
+\[\alpha_2=fraction\ of\ molecules\ not\ dissociated\]
+
+\[\alpha_1=2\astfraction\ of\ molecules\ that\ have\ dissociated\]
+
+\[\varepsilon_D=dissociation\ energy\]
+
+\[k_b=boltzman\ constant\]
+
+\[\beta_r=percent\ of\ molecules\ which\ have\ this\ energy\ mode\]
+
+&lt;p&gt;Note that for monoatomic molecules, there cannot be rotational or vibrational modes of energy storage. Thus, the enthalpy for a monoatomic molecule reduces to:&lt;/p&gt;
+
+\[h=\ \frac{k_bT}{m}\left[\frac{5}{2}\right]\]
+
+&lt;p&gt;Important result is that dissociation increases entropy, but only if molecules can recombine. If the nozzle length is too short, some dissociated molecules do not recombine to release usable energy in time before they are expelled out the nozzle.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;arcjets&quot;&gt;Arcjets&lt;/h2&gt;
+&lt;p&gt;Similar in concept to resistojets, but the propellant acts like a resistor. A typical Arcjets layout is shown below:&lt;/p&gt;
+
+&lt;p&gt;The power absorbed by the gas is a function of its resistance and the current passed through it. The resistance can be found with the following equations:&lt;/p&gt;
+
+\[R=\eta\left(\frac{L}{A}\right)=\frac{m_eV_c}{n_eq^2}\left(\frac{L}{A}\right)\]
+
+\[V_c=\ V_{Te}n_n\sigma\]
+
+\[V_{Te}=\sqrt{\frac{k_bT_e}{m_e}}\]
+
+\[\lambda=\frac{1}{n_n\sigma}\]
+
+&lt;p&gt;Term Definitions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;L – length of the chamber&lt;/li&gt;
+  &lt;li&gt;A – nozzle throat area&lt;/li&gt;
+  &lt;li&gt;Vc – electron/neutral collision frequency&lt;/li&gt;
+  &lt;li&gt;VTe – thermal velocity of electrons&lt;/li&gt;
+  &lt;li&gt;me – mass of an electron&lt;/li&gt;
+  &lt;li&gt;σ – cross section of molecule (πr2)&lt;/li&gt;
+  &lt;li&gt;ne – electron density&lt;/li&gt;
+  &lt;li&gt;nn – neutral density&lt;/li&gt;
+  &lt;li&gt;q – fundamental charge&lt;/li&gt;
+  &lt;li&gt;kb – Boltzmann constant&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Arcjets are still limited in efficiency by the material at the wall. There is however, a significant temperature drop-off from the centerline to the wall, which can be expressed with the following differential equation (where K is the thermal conductivity [W/Km]):&lt;/p&gt;
+
+\[\left(\frac{I}{A}\right)^2\eta=-\frac{1}{r}\frac{\partial}{\partial r}\left[rK\frac{dT}{dr}\right]\]
+
+&lt;p&gt;Convection, and radiation have been ignored in the above relationship. It has also assumed that the power into the propellant has been evenly distributed throughout the volume.&lt;/p&gt;
+
+&lt;p&gt;Thus, the relationship of exhaust velocity to Pin for an arcjet can be expressed as:&lt;/p&gt;
+
+\[\frac{1}{2}\dot{m}{U_{ex}}^2=\eta\int\rho\left(\vec{u}\bullet\hat{n}\right)h\left(T\right)dA&amp;lt;\eta h(T_c)\dot{m}\]
+
+&lt;p&gt;Where \( T_c \) refers to the temperature long the centerline.&lt;/p&gt;
+
+&lt;h3 id=&quot;derivation-of-gas-resistivity&quot;&gt;Derivation of Gas Resistivity&lt;/h3&gt;
+
+&lt;p&gt;Begin by assuming some electric field, spanning some gap populated with neutral molecules. The acceleration of electrons in that field can be expressed as:&lt;/p&gt;
+
+\[m_e\frac{dV}{dT}=-q\vec{E}\]
+
+&lt;p&gt;In between collisions with the neutrals, the electron is accelerated by the electric field. The increase in velocity is found by integrating the above equation. In this case, Δt is the time in between collisions.&lt;/p&gt;
+
+\[\vec{V_f}=-\frac{qE}{m_e}∆t+Vi\]
+
+&lt;p&gt;We assume that velocity added by the electric field is negligible compared to the thermal velocity of electrons, which allows us to write:&lt;/p&gt;
+
+\[∆t=1Vc≅λVTe\]
+
+&lt;p&gt;The average velocity of electrons in the gap is then:&lt;/p&gt;
+
+\[Average\ V_f=\frac{1}{N}\sum{-\frac{qE\Delta t}{m_e}}+\frac{1}{N}\sum V_i=-\frac{qE}{m_eV_c}\]
+
+&lt;h2 id=&quot;gridded-ion-thruster&quot;&gt;Gridded Ion Thruster&lt;/h2&gt;
+
+&lt;p&gt;These thrusters no longer rely on heating of a propellant. Instead, ions are directly accelerated through an electrostatic potential. Note that like a thermal system, kinetic energy of the propellant increase as the potential energy goes down. In this case, potential energy is in the form of an electrostatic potential.&lt;/p&gt;
+
+\[\frac{1}{2}mU^2=q(V_{in}-V_{out})\]
+
+\[U_{ex}=\sqrt{\frac{2q}{M}V_o}\]
+
+\[T=\dot{m}U_{ex}=\frac{I_B}{q}M_{Xe}\sqrt{\frac{2q}{M_{Xe}}V_o}\]
+
+&lt;p&gt;There are few important constraints that affect how we want to design the electric potential profile of the thruster.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We want a large potential drop from the positive grid to the negative grid to accelerate our ions.&lt;/li&gt;
+  &lt;li&gt;We want to attract positively charged ions to the positive grid while repelling electrons. This is achieved by keeping the chamber at a slightly higher potential than the positive grid.&lt;/li&gt;
+  &lt;li&gt;We do not want electrons in the exhaust plume to be pulled back into the chamber, so we offset the entire thruster, (i.e. the negative grid is at a lower potential than the exhaust, thus repelling electrons).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In general, there are three important components to a gridded ion thruster&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Accelerator Grid (A positive and negative grid, sometimes a third one)&lt;/li&gt;
+  &lt;li&gt;Ion Production chamber&lt;/li&gt;
+  &lt;li&gt;Neutralizing Electron Gun&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;An electrical diagram is shown below, along with a map of the electric potential throughout the thruster. A minimum of 3 independent power supplies are required in order to achieve the desired mapping of potentials.&lt;/p&gt;
+
+&lt;p&gt;The efficiency of a gridded ion system can be calculated with an energy balance as follows:&lt;/p&gt;
+
+\[\eta=\frac{T^2}{2\dot{m}P_{in}}\]
+
+\[\eta=\frac{M}{\dot{m}}\frac{V_B}{q}\frac{I_B^2{cos}^2\theta}{P_D+V_BI_B}=\eta_D\eta_m\eta_e\]
+
+\[\eta_D={cos}^2\theta\]
+
+\[\eta_m=\frac{M}{\dot{m}}\frac{I_B}{q}\]
+
+\[\eta_E=\frac{V_BI_B}{P_D+V_BI_B}\]
+
+&lt;p&gt;Where, B refers to beam and D refers to the discharge. The three main types of efficiency are the discharge efficiency, mass utilization efficiency (how much of mass flowrate is successfully accelerated), and the electrical efficiency (power put into the ionization and constraining ions vs energy of successfully accelerated ions).&lt;/p&gt;
+
+&lt;h3 id=&quot;charge-exchange-event&quot;&gt;Charge Exchange Event&lt;/h3&gt;
+&lt;p&gt;An event in which an accelerated ion impacts a neutral molecule in the exhaust plume. The decelerated ion is drawn back into to the potential well that was preventing electron backflow. This leads to sputtering and degrading of the negative grid.&lt;/p&gt;
+
+&lt;p&gt;Solution is to install a third grid, which creates a positive electric potential which repels ions. It unfortunately does attract electrons, but electrons are stopped by the negative grid from passing further into the thruster.&lt;/p&gt;
+
+&lt;h3 id=&quot;space-charge-limited-thrust-density&quot;&gt;Space Charge Limited Thrust Density&lt;/h3&gt;
+
+&lt;p&gt;There is a limit to the amount of current which can be passed through the grids before the current itself cancels the electric field. This limit is defined with the Child-Langmuir Law.&lt;/p&gt;
+
+\[J=\frac{4\varepsilon_o}{9}\sqrt{\frac{2q}{m_{Xe}}}\frac{V^{3/2}}{d^2}\]
+
+&lt;p&gt;This is the primary limiter of thrust density for all Gridded Ion Thrusters.&lt;/p&gt;
+
+&lt;h3 id=&quot;quasi-neutrality&quot;&gt;Quasi-Neutrality&lt;/h3&gt;
+
+&lt;p&gt;Within the plasma chamber of a gridded ion thruster, quasi-neutrality is maintained (i.e. the electron density and ion density is the same). This is no longer true between the grids (by design since electrons are not allowed to enter). Quasi-neutrality is also maintained everywhere within a Hall thruster. This idea is important because space charge effects cannot apply to a quasi-neutral plasma.&lt;/p&gt;
+
+&lt;h2 id=&quot;hall-thrusters&quot;&gt;Hall Thrusters&lt;/h2&gt;
+&lt;p&gt;Hall thrusters are a form of electromagnetic propulsion which rely on the combination of an electric field and magnetic field. They have higher thrust densities than gridded ion thrusters, but lower efficiency and specific impulse.&lt;/p&gt;
+
+&lt;p&gt;Propellent, typically Xenon, is injected into the chamber. They collide with electrons caught in the hall drift and are ionized. The ions are then accelerated out by the electric field.&lt;/p&gt;
+
+&lt;p&gt;Although the device is an electrostatic accelerator, thrust is actually produced magnetically through the hall current. The hall current generates a magnetic field, which interacts with the current flowing in the solenoids (which generate the magnetic field that causes the hall current in the first place) to generate thrust. So, while the thruster can be analyzed with momentum conservation, the mechanism of force generation is not directly due to the acceleration of ions.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;I_D&lt;/strong&gt; 	Discharge Current&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;I_B&lt;/strong&gt;	Beam Current&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;I_{ec}&lt;/strong&gt;	Cathode Discharge Current&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The discharge current represents the total current emitted from the cathode. A portion will go towards neutralizing the exhaust and is thus equal to the beam current. Another portion falls into the annulus of the thruster. Electrons which fall into the annulus become trapped in the Hall Effect, providing the source of ionization and thrust. Overtime, electrons will collide with neutrals, ionizing them. However, this leads to them slowly escaping the Hall Effect and eventually falling into the anode (along the electric potential line). The current of electrons escaping the hall current and reaching the anode (Iec) is a loss mechanism.&lt;/p&gt;
+
+\[I_D=I_B+I_{ec}\]
+
+&lt;p&gt;We can define a similar setup for the voltage.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;VD&lt;/strong&gt; 	Discharge Voltage&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Vo&lt;/strong&gt;	Beam Voltage&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Vc&lt;/strong&gt;	Cathode Offset Voltage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As with the current, a portion of the total discharge voltage goes towards extracting electrons from the cathode, instead of accelerating ions in the beam. This value is typically small (20 V, compared to a 300 V discharge voltage).&lt;/p&gt;
+
+\[V_D=V_o+V_c\]
+
+&lt;h3 id=&quot;larmor-precession&quot;&gt;Larmor Precession&lt;/h3&gt;
+
+&lt;p&gt;Charged particles subject to a magnetic field experience a phenomenon known as Larmor precession. This is a spiraling motion, azimuthally around the axis of the magnetic field. Recall that Maxwell’s equation states:&lt;/p&gt;
+
+\[F=q(V\times B)\]
+
+&lt;p&gt;The radius of this precession is known as the Larmor radius/Gryoradius, and the frequency is known as the Cyclotron frequency.&lt;/p&gt;
+
+\[\omega_{cyclotron}=\frac{qB}{m}\]
+
+\[r_{Larmor}=\frac{mv_\bot}{qB}\]
+
+&lt;p&gt;Due to the mass difference, ions have a much larger Larmor radius than electrons. This means that electron motion is very tightly bound by the magnetic field lines, but ions are mostly free to follow the direction of electric potential.&lt;/p&gt;
+
+&lt;h3 id=&quot;hall-effect&quot;&gt;Hall Effect&lt;/h3&gt;
+&lt;p&gt;When subject to perpendicular E and B fields, charged particles will experience azimuthal drift in the direction perpendicular to both the E and B field. The drift velocity can be found as:&lt;/p&gt;
+
+\[v_\theta=\frac{E\times B}{B^2}\]
+
+&lt;p&gt;This leads the creation of the Hall Current, which is the current due to charged particles (in our case only electrons) drifting in the azimuthal direction within the thruster. Ions also experience drift, but due to their larger mass are not as affected.&lt;/p&gt;
+
+\[J_{hall}=qn_ev_\theta\]
+
+&lt;p&gt;The net equation of motion for a charged particle inside an E x B field is the combination of the E x B drift term (the Hall Effect), and the Larmor precession. The initial perpendicular velocity and phase can be given, but in our case, we are not as interested in the specific motion of a single electron as the general bulk motion giving rise to the hall current.&lt;/p&gt;
+
+\[\vec{v}=-\frac{E_o}{B_o}\hat{y}+v_\bot[\cos{\left(\omega_{ce}t+\theta\right)}\hat{x}+\sin\funcapply(\omega_{ce}t+\theta)\hat{y}]\]
+
+\[J_{hall}=qn_e\frac{E_o}{B_o}\]
+
+&lt;h3 id=&quot;hall-thruster-efficiency&quot;&gt;Hall Thruster Efficiency&lt;/h3&gt;
+
+&lt;p&gt;Hall thruster efficiency decreases with thruster size. This is due to the ratio of surface area to volume (electrons colliding with the SA is a loss). Current systems can achieve about 75% efficiency, and this appears to be an empirical limit. We define the following efficiency terms:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Current utilization (losses due to differences between beam and discharge current). This is the dominate form of loss (~75%)&lt;/li&gt;
+  &lt;li&gt;Charge utilization (losses due to non-singly charged ions) (~95-97%)&lt;/li&gt;
+  &lt;li&gt;Divergence efficiency (~93-95%)&lt;/li&gt;
+  &lt;li&gt;Mass utilization (~93-99%)&lt;/li&gt;
+  &lt;li&gt;Voltage utilization (losses due to applied voltage potential not being equal to potential drop of ions as they are accelerated) (~95%)&lt;/li&gt;
+  &lt;li&gt;Electrical efficiency (~99%)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These efficiencies can be calculated using the following expressions:&lt;/p&gt;
+
+\[\eta_B=\frac{I_B}{I_D}\]
+
+\[\eta_v=\frac{V_o}{V_D}\]
+
+\[\eta_e=\frac{V_DI_D}{V_DI_D+P_{magnets}}\]
+
+\[\eta_m=\frac_{beam}}_{injected}}\]
+
+\[\eta_D={cos}^2(\theta)\]
+
+&lt;p&gt;The total power efficiency is the product of the current and voltage utilization efficiency. As mentioned, the major loss mechanism in Hall thrusters is the flow of electrons flowing into the anode. This current is captured by the Iec term. This loss mechanism can be reduced by increasing the strength of the magnetic field (and hence electron confinement by the hall effect). See Hall Parameter.&lt;/p&gt;
+
+&lt;h3 id=&quot;hall-parameter&quot;&gt;Hall Parameter&lt;/h3&gt;
+
+&lt;p&gt;The hall parameter is the ratio of cyclotron frequency to collision frequency. At higher values, the rate of electron-neutral collisions is decreased, hall current increases, and efficiency improves (due to fewer losses to the anode). The hall parameter increases with increasing magnetic field.&lt;/p&gt;
+
+\[\Omega=\frac{\omega_{cyclotron}}{v_c}\]
+
+&lt;p&gt;In general, a higher hall parameter is desirable. However, at very large values, the magnetic field becomes sufficiently large that ions are also trapped by the Hall drift and thrust decreases to zero. Current empirical cap is around 150.&lt;/p&gt;
+
+&lt;h3 id=&quot;hall-thruster-erosion&quot;&gt;Hall Thruster Erosion&lt;/h3&gt;
+
+&lt;p&gt;This is an issue that has been largely overcome due to the technology of magnetic shielding. Magnetic field lines are configured such that charged particles following the field lines do not collide with the walls.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;electrosprays&quot;&gt;Electrosprays&lt;/h2&gt;
+
+&lt;p&gt;Electrosprays rely on the acceleration of charged ionic fluid with an electrostatic field. When exposed to an electrostatic potential, an ionic liquid will form into a Taylor Cone and droplets will be emitted from the tip of the cone.&lt;/p&gt;
+
+&lt;p&gt;Electrosprays are further subdivided system which emit droplets (colloids) and system which emit ion (field emission thruster, or FEEP). Colloid thruster use ionic liquids, while some FEEP systems use liquid metals. Due to the high mass of droplets, colloid thrusters product greater thrust, at the loss of efficiency.&lt;/p&gt;
+
+&lt;h3 id=&quot;colloid-thrusters&quot;&gt;Colloid Thrusters&lt;/h3&gt;
+&lt;p&gt;Charged propellant droplets have some average charge to mass ratio that is a function of the volume flow rate.&lt;/p&gt;
+
+\[\frac{q}{m}= \frac{f(\varepsilon\right)}{\rho} (\frac{\gamma K}{\varepsilon Q})^\frac{1}{2}\]
+
+&lt;p&gt;Where f(ε) is an empirical scaling function that is equal to approximately 18 for values of (ε) greater than 40. K is the conductivity, Q is the volume flow rate, ε is the permittivity of the liquid, \gamma is the surface tension, and \rho is the density. The above can be used to solve for thrust as a function of the specific impulse and applied voltage.&lt;/p&gt;
+
+\[T=\frac{f(\varepsilon )^2}{\rho (g_oIsp\right)^3}(\frac{\gamma K}{\varepsilon}\right)4{V_o}^2\]
+
+&lt;p&gt;Importantly, we find that that thrust scales with the square of voltage, but inversely with the cube of Isp. At high values of specific impulse, an extremely large voltage is required to produce even small amounts of thrust. Thus electrosprays must be built with multiple emission sites (typically on the order of 100-1000) to reach thrust levels comparable to gridded ion or hall thrusters.&lt;/p&gt;
+
+&lt;p&gt;Luckily, this also means that we can just keep adding emission sites to increase the thrust (like increasing the number of thrusters). At this scale, doing so adds relatively little support equipment mass.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Fundamentals of Dynamics</title>
@@ -493,6 +1094,57 @@
 &lt;p&gt;States that the total time rate of change of an extensive property (B) for a system, depends on the rate of change of the intensive property in the control volume and the flux of that property through the control volume. (Extensive = mass dependent and Intensive = mass independent). In other works, it relates the control mass view of a fluid to the control volume view of a fluid.&lt;/p&gt;
 
 \[\frac{DB_{sys}}{Dt}=\int_{cv}^{cv}\frac{\partial}{\partial t}(\rho b)dV+\int_{cs}^{cs}\rho b\left(\vec{v}\bullet\hat{n}\right)ds\]
+
+&lt;h3 id=&quot;dimensional-analysis&quot;&gt;Dimensional Analysis&lt;/h3&gt;
+&lt;p&gt;We can re-write an equation with normalized terms to see the relative magnitude of the different variables. For example, we can introduce a variable, keeping in mind to apply the chain rule when we take a derivative:&lt;/p&gt;
+
+\[\widetilde{x}=\frac{x}{L}\]
+
+\[\frac{\partial\widetilde{x}}{\partial t}=\frac{1}{L}\frac{\partial x}{\partial t}\]
+
+&lt;p&gt;We can then make the following substitution into the original expression&lt;/p&gt;
+
+\[\frac{\partial x}{\partial t}=L\ast\frac{\partial\widetilde{x}}{\partial t}\]
+
+&lt;h3 id=&quot;bernoulli-equation&quot;&gt;Bernoulli Equation&lt;/h3&gt;
+
+&lt;p&gt;Ah who doesn’t love Bernoullli’s equation. It’s so simple. We can derive Bernoulli’s equation from the conservation of energy equations (Euler equations already model adiabatic flow with no viscous forces). Assuming that the flow is also isentropic, steady, and irrotational, Euler’s equations simplify into:&lt;/p&gt;
+
+\[P+\frac{1}{2}\rho U^2+gz=constant\]
+
+&lt;p&gt;Ok, hold on, what are those assumptions again? Let’s just go over those one more time: isentropic, stready, irrotational, adiabatic, inviscid.&lt;/p&gt;
+
+&lt;p&gt;Oh well.&lt;/p&gt;
+
+&lt;p&gt;Unsteady Bernoulli’s (applicable for irrotational flow). Where the integral of ds is taken along a streamline.&lt;/p&gt;
+
+\[\int\frac{\partial\left|v\right|}{\partial x}ds+\frac{1}{2}v^2+\int\frac{\partial P}{\rho}+gz=F(t)\]
+
+&lt;h3 id=&quot;2d-potential-flow&quot;&gt;2D Potential Flow&lt;/h3&gt;
+&lt;p&gt;Potential flow theory is the theory of inviscid fluid flow. This is also the limit where Reynold’s number tends to infinity. For two-dimensional inviscid flow, we can define the velocity components in terms of two other functions, the stream function and the potential function.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Irrotational Velocity Potential $\phi$ 	\(\nabla\times\vec{V}=0\)&lt;/li&gt;
+  &lt;li&gt;Incompressible Stream Function $\psi$	\(\nabla\bullet\vec{V}=0\)&lt;/li&gt;
+&lt;/ul&gt;
+
+\[u=\ \frac{\partial\phi}{\partial x}= \frac{\partial\psi}{\partial y}\]
+
+\[v=\ \frac{\partial\phi}{\partial y}=\ -\frac{\partial\psi}{\partial x}\]
+
+\[u_r=\frac{\partial\phi}{\partial r}=\frac{1}{r}\frac{\partial\psi}{\partial\theta}\]
+
+\[u_\theta=\frac{\partial\psi}{\partial r}=\frac{1}{r}\frac{\partial\phi}{\partial\theta}\]
+
+&lt;p&gt;If either of the following is true, we can say that the fluid is both irrotational and incompressible.&lt;/p&gt;
+
+\[\nabla^2\psi=0\]
+
+\[\nabla^2\phi=0\]
+
+&lt;p&gt;In assuming incompressibility, mass continuity reduces into a volume continuity equation, where density has dropped out:&lt;/p&gt;
+
+\[Volume\ Continuity:\ \ \ \nabla\bullet V=\ \frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=0\]
 </content>
  </entry>
  

@@ -4,7 +4,7 @@ title: Kinematics
 permalink: /kinematics/
 excerpt_separator: <!--more-->
 mathjax: true
-catergories: dynamics
+categories: dynamics
 ---
 
 

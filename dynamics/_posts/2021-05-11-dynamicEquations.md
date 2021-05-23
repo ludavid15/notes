@@ -4,7 +4,7 @@ title: Finally Getting to Dynamics
 permalink: /dynamicalEquations/
 excerpt_separator: <!--more-->
 mathjax: true
-catergories: dynamics
+categories: dynamics
 ---
 
 We're almost ready to write down F = ma, but before that, we need to define what F is (a force), and what ma is (an intertial term).
