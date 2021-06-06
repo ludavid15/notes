@@ -1,4 +1,4 @@
-I"<<p>When it comes to propulsion, it can be difficult to keep track of all the different classifications floating around out there. Props, turboprops, turbojets, ramjets, chemical rockets, nuclear rockets, Hall thrusters, and ion thrusters, just to name a few. If anything, it’s a testament to our joint creativity that we’ve come up with so many ways to <em>move</em>.</p>
+I"�<<p>When it comes to propulsion, it can be difficult to keep track of all the different classifications floating around out there. Props, turboprops, turbojets, ramjets, chemical rockets, nuclear rockets, Hall thrusters, and ion thrusters, just to name a few. If anything, it’s a testament to our joint creativity that we’ve come up with so many ways to <em>move</em>.</p>
 
 <p>To help clear up some confusion, this section presents a roadmap - a heirarchy of propulsion systems to help you navigate this broad topic.</p>
 
@@ -51,7 +51,7 @@ A: As with most things in life, very little is free. Since the goal is to produc
 <p>Propeller driven propulsion system are further classified by <em>how power is supplied</em>.</p>
 
 <ol>
-  <li>Turboprop and Turbofan - a jet engine’s turbine is used to turn the propeller. The jet engine is powered by fuel.</li>
+  <li>Turboprop and Turbofan - a jet engine’s turbine is used to turn the propeller. This is a little tricky, because jet engines are capable of producing thrust themselves, but they use an entirely different method.</li>
 </ol>
 
 <blockquote>
@@ -165,7 +165,7 @@ A: As with most things in life, very little is free. Since the goal is to produc
 <p>Jet engines that follow this model which includes a turbine are known as <strong>Turbojets</strong></p>
 
 <blockquote>
-  <p>Turbojet - a nozzle based propulsion system, that uses deflagration combustion, where oyxgen for the combustion reaction is pulled from the environment. In order to pressurize air, a compressor is used.</p>
+  <p><strong>Turbojet</strong> - a nozzle based propulsion system, that uses deflagration combustion, where oyxgen for the combustion reaction is pulled from the environment. In order to pressurize air, a compressor is used.</p>
 </blockquote>
 
 <p>At some point in our quest to move faster, we must cross over into supersonic speeds. In this realm of super fast fluid flow, shocks become an important problem. Luckily, we have a solution: ramjets and scramjets.</p>

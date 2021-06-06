@@ -4,13 +4,116 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-05-23T15:15:44-07:00</updated>
+ <updated>2021-06-05T18:56:55-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Twelve Tone Equal Temperatment</title>
+   <link href="https://ludavid15.github.io//twelveTone/"/>
+   <updated>2021-06-05T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//twelveTone</id>
+   <content type="html">&lt;p&gt;If you’ve taken any kind of music lesson before, chances are you were introduced to the western classical system of notation, otherwise known as twelve-tone equal temperament. In this system, each octave is subdivided into 12 notes, labeled A through G.&lt;/p&gt;
+
+&lt;p&gt;So much of music theory is based on this system that it’s easy to forget what it is - a constructed language that approximates something physical.&lt;/p&gt;
+
+&lt;p&gt;That physical thing in question being acoustic waves traveling through the air. These waves (like all waves) carry a frequency, amplitude, and waveform. What we call pitch is the first of these - the frequency.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;To build a bridge between music theory and physics, let us begin with intervals. If we define the note &lt;strong&gt;A&lt;/strong&gt; at 1 hz and then double the frequency to 2 hz, the resulting note is defined in our musical langauge as being 1 octave higher.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In western music, two notes that are an octave apart are considered the same “note”. For this reason, they recieve the same label, although a number is sometimes used to indicate how high the note is. However, not all musical languages may recognize the concept of an octave, and after all, why should they? Even though we say two notes an octave apart are the same, they clearly are not - one is much higher in pitch than the other. Be careful to remember that the language we have shapes our perspective of the world.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We could continue to double each frequency (1, 2, 4, …) and find a series of notes spaced 1 octave apart, but this musical scale is pretty limiting. So how do we define other intervals? Well, let’s take other ratios along the set of positive integers.&lt;/p&gt;
+
+\[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ...\]
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2/1&lt;/td&gt;
+      &lt;td&gt;3/2&lt;/td&gt;
+      &lt;td&gt;4/3&lt;/td&gt;
+      &lt;td&gt;5/4&lt;/td&gt;
+      &lt;td&gt;6/5&lt;/td&gt;
+      &lt;td&gt;7/6&lt;/td&gt;
+      &lt;td&gt;8/7&lt;/td&gt;
+      &lt;td&gt;9/8&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;octave&lt;/td&gt;
+      &lt;td&gt;fifth&lt;/td&gt;
+      &lt;td&gt;fourth&lt;/td&gt;
+      &lt;td&gt;major third&lt;/td&gt;
+      &lt;td&gt;minor third&lt;/td&gt;
+      &lt;td&gt;??&lt;/td&gt;
+      &lt;td&gt;??&lt;/td&gt;
+      &lt;td&gt;whole step&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Notice that each subsequent ratio gets closer and closer to 1. In this way we achieve smaller and smaller intervals. There’s also nothing wrong with 7/6 or 8/7, those particular intervals just aren’t defined in our musical theory language.&lt;/p&gt;
+
+&lt;p&gt;But are these intervals any good? Like many things, the answer is: it depends. They certainly &lt;em&gt;sound&lt;/em&gt; nice, but these all lack an important feature: they don’t return to the same point.&lt;/p&gt;
+
+&lt;p&gt;Let’s take a whole step: 9/8. If we start on a note and travel up 7 whole steps, we get to:&lt;/p&gt;
+
+\[(9/8)^6 = 2.0272\]
+
+&lt;p&gt;Which is NOT an octave. Almost, but not quite. Whole steps are also unable to build any to any of the other intervals.&lt;/p&gt;
+
+\[(9/8)^3 = 1.42\]
+
+&lt;p&gt;Which is neither equal to 3/2 or 4/3. In fact, this basic problem extends for any interval defined with the ratio of positive integers. This is where 12-tone equal temperament comes in. The frequency ratio for a half step is set to be the twelfth root of two.&lt;/p&gt;
+
+\[^{12} \sqrt{2}\]
+
+&lt;p&gt;This way, any pair of notes 12 half steps apart form a perfect octave. This allows us to freely move about the piano and play in any key, at the cost of perfect intervals ratios. The approximations of each perfect ratio in this system become:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Exact ratio&lt;/td&gt;
+      &lt;td&gt;2/1&lt;/td&gt;
+      &lt;td&gt;3/2&lt;/td&gt;
+      &lt;td&gt;4/3&lt;/td&gt;
+      &lt;td&gt;5/4&lt;/td&gt;
+      &lt;td&gt;6/5&lt;/td&gt;
+      &lt;td&gt;9/8&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;As decimal&lt;/td&gt;
+      &lt;td&gt;2.0&lt;/td&gt;
+      &lt;td&gt;1.5&lt;/td&gt;
+      &lt;td&gt;1.333&lt;/td&gt;
+      &lt;td&gt;1.25&lt;/td&gt;
+      &lt;td&gt;1.2&lt;/td&gt;
+      &lt;td&gt;1.125&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;12-tone approx.&lt;/td&gt;
+      &lt;td&gt;2.0&lt;/td&gt;
+      &lt;td&gt;1.498&lt;/td&gt;
+      &lt;td&gt;1.335&lt;/td&gt;
+      &lt;td&gt;1.26&lt;/td&gt;
+      &lt;td&gt;1.19&lt;/td&gt;
+      &lt;td&gt;1.123&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;As you can see, except for an octave which remains perfect, each 12-tone interval is very slightly off from the corresponding “just intonation” interval. In most cases, the variation is small enough that it very nearly sounds the same.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Fundamentals of Propulsion</title>
@@ -70,7 +173,7 @@ A: As with most things in life, very little is free. Since the goal is to produc
 &lt;p&gt;Propeller driven propulsion system are further classified by &lt;em&gt;how power is supplied&lt;/em&gt;.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Turboprop and Turbofan - a jet engine’s turbine is used to turn the propeller. The jet engine is powered by fuel.&lt;/li&gt;
+  &lt;li&gt;Turboprop and Turbofan - a jet engine’s turbine is used to turn the propeller. This is a little tricky, because jet engines are capable of producing thrust themselves, but they use an entirely different method.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;blockquote&gt;
@@ -1917,6 +2020,65 @@ Several models have been proposed to find an equivalent transition point. Wazzan
 
 &lt;p&gt;Where hc is the depth of the centroid of the plate. This total force DOES NOT act through the centroid however, instead it acts at through a point where the total moment is equal to zero (center of pressure or can think of this as the centroid of the pressure distribution). If the plate is symmetric, this will coincide with the centroid. 
 For curved surfaces, use the following force balance approach:&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Jet Engines</title>
+   <link href="https://ludavid15.github.io//jetEngines/"/>
+   <updated>2021-05-06T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//jets</id>
+   <content type="html">&lt;!--more--&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;TSFC&lt;/dt&gt;
+  &lt;dd&gt;Thrust specific fuel consumption&lt;/dd&gt;
+  &lt;dt&gt;SFC&lt;/dt&gt;
+  &lt;dd&gt;Specific fuel consumption&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;For the sake of simplicity, jet engines can be analyzed as a quasi 1 dimensional system, that is, we only need to consider velocities in one direction. This makes our math much easier.&lt;/p&gt;
+
+&lt;h3 id=&quot;fundamentals&quot;&gt;Fundamentals&lt;/h3&gt;
+
+\[F_{uninstalled}=\dot{m_9}u_9-\dot{m_0}u_0-A_{exit}(P_9-P_0)\]
+
+\[&quot;{Takeoff\ Thrust&quot;\ F}_{gross}=\dot{m_9}u_9-A_{exit}(P_9-P_0)\]
+
+\[\mathrm{TSFC}=\ \frac{\dot{m_f}}{T}=\frac{1}{g Isp_f}=\frac{f}{g Isp_{air}}\]
+
+&lt;h3 id=&quot;combustion&quot;&gt;Combustion&lt;/h3&gt;
+
+&lt;p&gt;Combustion is still the driving force behind all jet engines. The energy added to the air gets converted into kinetic energy by a nozzle, thereby producing thrust.&lt;/p&gt;
+
+\[C_xH_y+\left(x+\frac{y}{4}\right)\left(O_2+{3.76N}_2\right)\leftrightarrow xCO_2+\left(\frac{y}{2}\right)H_2O+(x+\frac{y}{4})N_2\]
+
+\[\phi=\ \frac{f}{f_{stoich}}\]
+
+\[f_{stoich}=\ \frac{M_{Fuel}}{(x+\frac{y}{4})(M_{O2}+3.76M_{N2})}\]
+
+&lt;p&gt;Combustion does not always happen to completion and fuels are not made of a singular type of hydrocarbon. This means that as equivalence ratio tends to 1, actual flame temperature is lower than the ideal value.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Equivalence Ratio&lt;/td&gt;
+      &lt;td&gt;Type of Combustion Environment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(\phi&amp;lt;1\)&lt;/td&gt;
+      &lt;td&gt;Fuel Lean&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(\phi=1\)&lt;/td&gt;
+      &lt;td&gt;Stoichiometric&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(\phi&amp;gt;1\)&lt;/td&gt;
+      &lt;td&gt;Fuel Rich&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 </content>
  </entry>
  

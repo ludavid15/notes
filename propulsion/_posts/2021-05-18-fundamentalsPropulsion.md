@@ -52,7 +52,7 @@ From a force perspective, the fluid's flow over each propeller blade creates a p
 
 Propeller driven propulsion system are further classified by *how power is supplied*. 
 
-1. Turboprop and Turbofan - a jet engine's turbine is used to turn the propeller. The jet engine is powered by fuel.
+1. Turboprop and Turbofan - a jet engine's turbine is used to turn the propeller. This is a little tricky, because jet engines are capable of producing thrust themselves, but they use an entirely different method. 
 
 > **Turboprop** - the jet engine turns a propeller.
 
