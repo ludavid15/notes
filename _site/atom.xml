@@ -4,13 +4,116 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-05-23T15:15:44-07:00</updated>
+ <updated>2021-06-06T19:21:14-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Twelve Tone Equal Temperatment</title>
+   <link href="https://ludavid15.github.io//twelveTone/"/>
+   <updated>2021-06-05T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//twelveTone</id>
+   <content type="html">&lt;p&gt;If you’ve taken any kind of music lesson before, chances are you were introduced to the western classical system of notation, otherwise known as twelve-tone equal temperament. In this system, each octave is subdivided into 12 notes, labeled A through G.&lt;/p&gt;
+
+&lt;p&gt;So much of music theory is based on this system that it’s easy to forget what it is - a constructed language that approximates something physical.&lt;/p&gt;
+
+&lt;p&gt;That physical thing in question being acoustic waves traveling through the air. These waves (like all waves) carry a frequency, amplitude, and waveform. What we call pitch is the first of these - the frequency.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;To build a bridge between music theory and physics, let us begin with intervals. If we define the note &lt;strong&gt;A&lt;/strong&gt; at 1 hz and then double the frequency to 2 hz, the resulting note is defined in our musical langauge as being 1 octave higher.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In western music, two notes that are an octave apart are considered the same “note”. For this reason, they recieve the same label, although a number is sometimes used to indicate how high the note is. However, not all musical languages may recognize the concept of an octave, and after all, why should they? Even though we say two notes an octave apart are the same, they clearly are not - one is much higher in pitch than the other. Be careful to remember that the language we have shapes our perspective of the world.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We could continue to double each frequency (1, 2, 4, …) and find a series of notes spaced 1 octave apart, but this musical scale is pretty limiting. So how do we define other intervals? Well, let’s take other ratios along the set of positive integers.&lt;/p&gt;
+
+\[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ...\]
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2/1&lt;/td&gt;
+      &lt;td&gt;3/2&lt;/td&gt;
+      &lt;td&gt;4/3&lt;/td&gt;
+      &lt;td&gt;5/4&lt;/td&gt;
+      &lt;td&gt;6/5&lt;/td&gt;
+      &lt;td&gt;7/6&lt;/td&gt;
+      &lt;td&gt;8/7&lt;/td&gt;
+      &lt;td&gt;9/8&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;octave&lt;/td&gt;
+      &lt;td&gt;fifth&lt;/td&gt;
+      &lt;td&gt;fourth&lt;/td&gt;
+      &lt;td&gt;major third&lt;/td&gt;
+      &lt;td&gt;minor third&lt;/td&gt;
+      &lt;td&gt;??&lt;/td&gt;
+      &lt;td&gt;??&lt;/td&gt;
+      &lt;td&gt;whole step&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Notice that each subsequent ratio gets closer and closer to 1. In this way we achieve smaller and smaller intervals. There’s also nothing wrong with 7/6 or 8/7, those particular intervals just aren’t defined in our musical theory language.&lt;/p&gt;
+
+&lt;p&gt;But are these intervals any good? Like many things, the answer is: it depends. They certainly &lt;em&gt;sound&lt;/em&gt; nice, but these all lack an important feature: they don’t return to the same point.&lt;/p&gt;
+
+&lt;p&gt;Let’s take a whole step: 9/8. If we start on a note and travel up 7 whole steps, we get to:&lt;/p&gt;
+
+\[(9/8)^6 = 2.0272\]
+
+&lt;p&gt;Which is NOT an octave. Almost, but not quite. Whole steps are also unable to build any to any of the other intervals.&lt;/p&gt;
+
+\[(9/8)^3 = 1.42\]
+
+&lt;p&gt;Which is neither equal to 3/2 or 4/3. In fact, this basic problem extends for any interval defined with the ratio of positive integers. This is where 12-tone equal temperament comes in. The frequency ratio for a half step is set to be the twelfth root of two.&lt;/p&gt;
+
+\[^{12} \sqrt{2}\]
+
+&lt;p&gt;This way, any pair of notes 12 half steps apart form a perfect octave. This allows us to freely move about the piano and play in any key, at the cost of perfect intervals ratios. The approximations of each perfect ratio in this system become:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Exact ratio&lt;/td&gt;
+      &lt;td&gt;2/1&lt;/td&gt;
+      &lt;td&gt;3/2&lt;/td&gt;
+      &lt;td&gt;4/3&lt;/td&gt;
+      &lt;td&gt;5/4&lt;/td&gt;
+      &lt;td&gt;6/5&lt;/td&gt;
+      &lt;td&gt;9/8&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;As decimal&lt;/td&gt;
+      &lt;td&gt;2.0&lt;/td&gt;
+      &lt;td&gt;1.5&lt;/td&gt;
+      &lt;td&gt;1.333&lt;/td&gt;
+      &lt;td&gt;1.25&lt;/td&gt;
+      &lt;td&gt;1.2&lt;/td&gt;
+      &lt;td&gt;1.125&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;12-tone approx.&lt;/td&gt;
+      &lt;td&gt;2.0&lt;/td&gt;
+      &lt;td&gt;1.498&lt;/td&gt;
+      &lt;td&gt;1.335&lt;/td&gt;
+      &lt;td&gt;1.26&lt;/td&gt;
+      &lt;td&gt;1.19&lt;/td&gt;
+      &lt;td&gt;1.123&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;As you can see, except for an octave which remains perfect, each 12-tone interval is very slightly off from the corresponding “just intonation” interval. In most cases, the variation is small enough that it very nearly sounds the same.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Fundamentals of Propulsion</title>
@@ -70,7 +173,7 @@ A: As with most things in life, very little is free. Since the goal is to produc
 &lt;p&gt;Propeller driven propulsion system are further classified by &lt;em&gt;how power is supplied&lt;/em&gt;.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Turboprop and Turbofan - a jet engine’s turbine is used to turn the propeller. The jet engine is powered by fuel.&lt;/li&gt;
+  &lt;li&gt;Turboprop and Turbofan - a jet engine’s turbine is used to turn the propeller. This is a little tricky, because jet engines are capable of producing thrust themselves, but they use an entirely different method.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;blockquote&gt;
@@ -346,12 +449,12 @@ A: As with most things in life, very little is free. Since the goal is to produc
 &lt;h3 id=&quot;divergence-efficiency&quot;&gt;Divergence Efficiency&lt;/h3&gt;
 &lt;p&gt;Decreased effective thrust due to radial velocity component of exhaust plume.&lt;/p&gt;
 
-\[\eta_D={cos}^2\theta=\left[\frac{\int{\cos\funcapply(\theta)d\dot{m}}}{\int{d\dot{m}}}\right]^2\]
+\[\eta_D={cos}^2\theta=\left[\frac{\int{\cos(\theta)d\dot{m}}}{\int{d\dot{m}}}\right]^2\]
 
 &lt;h3 id=&quot;nozzle-efficiency&quot;&gt;Nozzle Efficiency&lt;/h3&gt;
 &lt;p&gt;Viscous and thermal losses of propellant internal energy to the nozzle and chamber walls. Q dot here is the rate of energy loss to the walls.&lt;/p&gt;
 
-\[\eta_n=\frac{h_c-h_e-\sfrac{\dot{Q}}{\dot{m}}}{h_c-h_e}\]
+\[\eta_n=\frac{h_c-h_e-\frac{\dot{Q}}{\dot{m}}}{h_c-h_e}\]
 
 &lt;h3 id=&quot;enthalpy&quot;&gt;Enthalpy&lt;/h3&gt;
 &lt;p&gt;The specific enthalpy scales with relation to the available energy storage modes, including translational, vibrational, rotational, and dissociative modes. (m) is the molecule mass of a propellent molecule. We’ve assumed that no ionization occurs.&lt;/p&gt;
@@ -362,7 +465,7 @@ A: As with most things in life, very little is free. Since the goal is to produc
 
 \[\alpha_2=fraction\ of\ molecules\ not\ dissociated\]
 
-\[\alpha_1=2\astfraction\ of\ molecules\ that\ have\ dissociated\]
+\[\alpha_1=2 * fraction\ of\ molecules\ that\ have\ dissociated\]
 
 \[\varepsilon_D=dissociation\ energy\]
 
@@ -379,6 +482,8 @@ A: As with most things in life, very little is free. Since the goal is to produc
 &lt;p&gt; &lt;/p&gt;
 &lt;h2 id=&quot;arcjets&quot;&gt;Arcjets&lt;/h2&gt;
 &lt;p&gt;Similar in concept to resistojets, but the propellant acts like a resistor. A typical Arcjets layout is shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/arcjet.png&quot; alt=&quot;arcjet&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The power absorbed by the gas is a function of its resistance and the current passed through it. The resistance can be found with the following equations:&lt;/p&gt;
 
@@ -463,6 +568,8 @@ A: As with most things in life, very little is free. Since the goal is to produc
 
 &lt;p&gt;An electrical diagram is shown below, along with a map of the electric potential throughout the thruster. A minimum of 3 independent power supplies are required in order to achieve the desired mapping of potentials.&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;../images/git.png&quot; alt=&quot;Gridded Ion Thruster&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
 &lt;p&gt;The efficiency of a gridded ion system can be calculated with an energy balance as follows:&lt;/p&gt;
 
 \[\eta=\frac{T^2}{2\dot{m}P_{in}}\]
@@ -476,6 +583,8 @@ A: As with most things in life, very little is free. Since the goal is to produc
 \[\eta_E=\frac{V_BI_B}{P_D+V_BI_B}\]
 
 &lt;p&gt;Where, B refers to beam and D refers to the discharge. The three main types of efficiency are the discharge efficiency, mass utilization efficiency (how much of mass flowrate is successfully accelerated), and the electrical efficiency (power put into the ionization and constraining ions vs energy of successfully accelerated ions).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/gitPotential.png&quot; alt=&quot;GIT Potential&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;charge-exchange-event&quot;&gt;Charge Exchange Event&lt;/h3&gt;
 &lt;p&gt;An event in which an accelerated ion impacts a neutral molecule in the exhaust plume. The decelerated ion is drawn back into to the potential well that was preventing electron backflow. This leads to sputtering and degrading of the negative grid.&lt;/p&gt;
@@ -502,9 +611,9 @@ A: As with most things in life, very little is free. Since the goal is to produc
 &lt;p&gt;Although the device is an electrostatic accelerator, thrust is actually produced magnetically through the hall current. The hall current generates a magnetic field, which interacts with the current flowing in the solenoids (which generate the magnetic field that causes the hall current in the first place) to generate thrust. So, while the thruster can be analyzed with momentum conservation, the mechanism of force generation is not directly due to the acceleration of ions.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;I_D&lt;/strong&gt; 	Discharge Current&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;I_B&lt;/strong&gt;	Beam Current&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;I_{ec}&lt;/strong&gt;	Cathode Discharge Current&lt;/li&gt;
+  &lt;li&gt;\(I_D\) 	Discharge Current&lt;/li&gt;
+  &lt;li&gt;\(I_B\)	Beam Current&lt;/li&gt;
+  &lt;li&gt;\(I_{ec}\)	Cathode Discharge Current&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;The discharge current represents the total current emitted from the cathode. A portion will go towards neutralizing the exhaust and is thus equal to the beam current. Another portion falls into the annulus of the thruster. Electrons which fall into the annulus become trapped in the Hall Effect, providing the source of ionization and thrust. Overtime, electrons will collide with neutrals, ionizing them. However, this leads to them slowly escaping the Hall Effect and eventually falling into the anode (along the electric potential line). The current of electrons escaping the hall current and reaching the anode (Iec) is a loss mechanism.&lt;/p&gt;
@@ -514,9 +623,9 @@ A: As with most things in life, very little is free. Since the goal is to produc
 &lt;p&gt;We can define a similar setup for the voltage.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;VD&lt;/strong&gt; 	Discharge Voltage&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Vo&lt;/strong&gt;	Beam Voltage&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Vc&lt;/strong&gt;	Cathode Offset Voltage&lt;/li&gt;
+  &lt;li&gt;\(V_D\) 	Discharge Voltage&lt;/li&gt;
+  &lt;li&gt;\(V_o\)	Beam Voltage&lt;/li&gt;
+  &lt;li&gt;\(V_c\)	Cathode Offset Voltage&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;As with the current, a portion of the total discharge voltage goes towards extracting electrons from the cathode, instead of accelerating ions in the beam. This value is typically small (20 V, compared to a 300 V discharge voltage).&lt;/p&gt;
@@ -530,6 +639,8 @@ A: As with most things in life, very little is free. Since the goal is to produc
 \[F=q(V\times B)\]
 
 &lt;p&gt;The radius of this precession is known as the Larmor radius/Gryoradius, and the frequency is known as the Cyclotron frequency.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/LarmorProcession.jpg&quot; alt=&quot;larmorPrecesession&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
 
 \[\omega_{cyclotron}=\frac{qB}{m}\]
 
@@ -548,7 +659,7 @@ A: As with most things in life, very little is free. Since the goal is to produc
 
 &lt;p&gt;The net equation of motion for a charged particle inside an E x B field is the combination of the E x B drift term (the Hall Effect), and the Larmor precession. The initial perpendicular velocity and phase can be given, but in our case, we are not as interested in the specific motion of a single electron as the general bulk motion giving rise to the hall current.&lt;/p&gt;
 
-\[\vec{v}=-\frac{E_o}{B_o}\hat{y}+v_\bot[\cos{\left(\omega_{ce}t+\theta\right)}\hat{x}+\sin\funcapply(\omega_{ce}t+\theta)\hat{y}]\]
+\[\vec{v}=-\frac{E_o}{B_o}\hat{y}+v_\bot[\cos{\left(\omega_{ce}t+\theta\right)}\hat{x}+\sin(\omega_{ce}t+\theta)\hat{y}]\]
 
 \[J_{hall}=qn_e\frac{E_o}{B_o}\]
 
@@ -573,7 +684,7 @@ A: As with most things in life, very little is free. Since the goal is to produc
 
 \[\eta_e=\frac{V_DI_D}{V_DI_D+P_{magnets}}\]
 
-\[\eta_m=\frac_{beam}}_{injected}}\]
+\[\eta_m=\frac{\dot{m}_{beam}} {\dot{m}_{injected}}\]
 
 \[\eta_D={cos}^2(\theta)\]
 
@@ -601,11 +712,11 @@ A: As with most things in life, very little is free. Since the goal is to produc
 &lt;h3 id=&quot;colloid-thrusters&quot;&gt;Colloid Thrusters&lt;/h3&gt;
 &lt;p&gt;Charged propellant droplets have some average charge to mass ratio that is a function of the volume flow rate.&lt;/p&gt;
 
-\[\frac{q}{m}= \frac{f(\varepsilon\right)}{\rho} (\frac{\gamma K}{\varepsilon Q})^\frac{1}{2}\]
+\[\frac{q}{m}= \frac{f(\varepsilon)}{\rho} (\frac{\gamma K}{\varepsilon Q})^{\frac{1}{2}}\]
 
 &lt;p&gt;Where f(ε) is an empirical scaling function that is equal to approximately 18 for values of (ε) greater than 40. K is the conductivity, Q is the volume flow rate, ε is the permittivity of the liquid, \gamma is the surface tension, and \rho is the density. The above can be used to solve for thrust as a function of the specific impulse and applied voltage.&lt;/p&gt;
 
-\[T=\frac{f(\varepsilon )^2}{\rho (g_oIsp\right)^3}(\frac{\gamma K}{\varepsilon}\right)4{V_o}^2\]
+\[T=\frac{f(\varepsilon )^2}{\rho (g_o Isp)^3}(\frac{\gamma K}{\varepsilon})4{V_o}^2\]
 
 &lt;p&gt;Importantly, we find that that thrust scales with the square of voltage, but inversely with the cube of Isp. At high values of specific impulse, an extremely large voltage is required to produce even small amounts of thrust. Thus electrosprays must be built with multiple emission sites (typically on the order of 100-1000) to reach thrust levels comparable to gridded ion or hall thrusters.&lt;/p&gt;
 
@@ -1917,6 +2028,334 @@ Several models have been proposed to find an equivalent transition point. Wazzan
 
 &lt;p&gt;Where hc is the depth of the centroid of the plate. This total force DOES NOT act through the centroid however, instead it acts at through a point where the total moment is equal to zero (center of pressure or can think of this as the centroid of the pressure distribution). If the plate is symmetric, this will coincide with the centroid. 
 For curved surfaces, use the following force balance approach:&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Jet Engines</title>
+   <link href="https://ludavid15.github.io//jetEngines/"/>
+   <updated>2021-05-06T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//jets</id>
+   <content type="html">&lt;p&gt;In 1941, a Messerschmitt Me 262 became the world’s first operational jet powered aircraft. Relying on combustion and a nozzle, the new “jet engine” was conceptually more similar to a rocket than a propeller.&lt;/p&gt;
+
+&lt;p&gt;80 years later, jet engines have continued to rule the aviation world.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;TSFC&lt;/dt&gt;
+  &lt;dd&gt;Thrust specific fuel consumption&lt;/dd&gt;
+  &lt;dt&gt;SFC&lt;/dt&gt;
+  &lt;dd&gt;Specific fuel consumption&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;For the sake of simplicity, jet engines can be analyzed as a quasi 1 dimensional system, that is, we only need to consider velocities in one direction. This makes our math much easier.&lt;/p&gt;
+
+&lt;h3 id=&quot;fundamentals&quot;&gt;Fundamentals&lt;/h3&gt;
+
+\[F_{uninstalled}=\dot{m_9}u_9-\dot{m_0}u_0-A_{exit}(P_9-P_0)\]
+
+\[&quot;{Takeoff\ Thrust&quot;\ F}_{gross}=\dot{m_9}u_9-A_{exit}(P_9-P_0)\]
+
+\[\mathrm{TSFC}=\ \frac{\dot{m_f}}{T}=\frac{1}{g Isp_f}=\frac{f}{g Isp_{air}}\]
+
+&lt;h3 id=&quot;combustion&quot;&gt;Combustion&lt;/h3&gt;
+
+&lt;p&gt;Combustion is still the driving force behind all jet engines. The energy added to the air gets converted into kinetic energy by a nozzle, thereby producing thrust.&lt;/p&gt;
+
+\[C_xH_y+\left(x+\frac{y}{4}\right)\left(O_2+{3.76N}_2\right)\leftrightarrow xCO_2+\left(\frac{y}{2}\right)H_2O+(x+\frac{y}{4})N_2\]
+
+\[\phi=\ \frac{f}{f_{stoich}}\]
+
+\[f_{stoich}=\ \frac{M_{Fuel}}{(x+\frac{y}{4})(M_{O2}+3.76M_{N2})}\]
+
+&lt;p&gt;Combustion does not always happen to completion and fuels are not made of a singular type of hydrocarbon. This means that as equivalence ratio tends to 1, actual flame temperature is lower than the ideal value.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Equivalence Ratio&lt;/td&gt;
+      &lt;td&gt;Type of Combustion Environment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(\phi&amp;lt;1\)&lt;/td&gt;
+      &lt;td&gt;Fuel Lean&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(\phi=1\)&lt;/td&gt;
+      &lt;td&gt;Stoichiometric&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(\phi&amp;gt;1\)&lt;/td&gt;
+      &lt;td&gt;Fuel Rich&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;adiabatic-flame-temperature&quot;&gt;Adiabatic Flame Temperature&lt;/h3&gt;
+
+\[Q_R=Energy\ gained\ in\ combustion=\sum{(nh_{f,\ products})}-\sum{(nh_{f,\ reactants})}\]
+
+\[Q_R+{\sum{nc_p(T_2-T_f)}}_{Products}=\ {\sum{nc_p(T_1-T_f)}}_{Reactants}\]
+
+&lt;p&gt;In other words, energy is released by combustion reaction, and this energy goes into heating up the products. Note that for the above equation we assume that cp does not vary with temperature (even though it does!).&lt;/p&gt;
+
+&lt;h3 id=&quot;ideal-turbojet-cycle&quot;&gt;Ideal Turbojet Cycle&lt;/h3&gt;
+
+&lt;p&gt;For each stage in a turbojet, we can abstract the relative change in temperature and pressure of air passing through. In this way, if we know the initial conditions of incoming air, we can easily find the temperature and pressure at any stage. Of note, we are comparing stagnation temperatures and stangation pressures (since this a measure of the “total” energy.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/jetBasic.png&quot; alt=&quot;turbojet&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Diffuser&lt;/td&gt;
+      &lt;td&gt;Compressor&lt;/td&gt;
+      &lt;td&gt;Burner&lt;/td&gt;
+      &lt;td&gt;Turbine&lt;/td&gt;
+      &lt;td&gt;Nozzle&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;π (Pressure Ratio)&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;\({\tau_c}^{\gamma/(\gamma-1)}\)&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;\({\tau_t}^{\gamma/(\gamma-1)}\)&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;τ (Temp Ratio)&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;\(\tau_c\)&lt;/td&gt;
+      &lt;td&gt;\(\tau_b\)&lt;/td&gt;
+      &lt;td&gt;\(\tau_t\)&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Where τ &amp;amp; π are defined as the ratio of stagnation temperatures and pressures across the stage. The relationship between pressure ratio and temperature ratio is established by assuming assumed isentropic processes. We also define a unique value called the recovery temperature/pressure ratio, which is the ratio of stagnation temperature/pressure to local temperature/pressure at station 0.&lt;/p&gt;
+
+\[\frac{T_{t0}}{T_0}=1+\frac{\gamma-1}{2}M^2=\ \tau_r\]
+
+\[\tau_\lambda=\tau_r\tau_c\tau_b=\frac{T_{t4}}{T_0}\]
+
+&lt;p&gt;Note that for an ideal turbojet without an afterburner, the ratio of outlet state temperature to inlet temperature is the same as burner temperature ratio.&lt;/p&gt;
+
+\[\tau_b=\frac{T_9}{T_0}\]
+
+\[Isp_{air}=\ \frac{a_0M_0}{g}\left(\sqrt{\frac{\tau_b(\tau_r\tau_c\tau_t-1)}{\tau_r-1}}-1\right)=\frac{T}{\dot{m_0}g}\]
+
+&lt;p&gt;Assuming all fuel is burned in combustor, where f is the fuel to air ratio.&lt;/p&gt;
+
+\[f=\ \frac{c_pT_0}{Q_R}\tau_r\tau_c(\tau_b-1)\]
+
+&lt;p&gt;Also, if turbine work is equal to compressor work:&lt;/p&gt;
+
+\[\tau_r=\ \left[1-\frac{\tau_c-1}{\tau_c\tau_b}\right]\]
+
+&lt;p&gt;\(Isp_{air}\) for an ideal turbojet can then be solved if we are given the recovery temperature ratio, compressor ratio and the maximum temperature at station 4 after the burner.&lt;/p&gt;
+
+\[Isp_{air}=\ \frac{a_0M_0}{g}\left(\sqrt{\frac{1}{\tau_r-1}\left[\tau_\lambda\left(1-\frac{1}{\tau_r\tau_c}\right)-\tau_r(\tau_c-1)\right]}-1\right)\]
+
+&lt;p&gt;We can also find the ratio of outlet to inlet velocity&lt;/p&gt;
+
+\[\frac{u_9}{u_0}=\ \left(\frac{M_9}{M_0}\right)\sqrt{\frac{\gamma_9R_9T_9}{\gamma_0R_0T_0}}=\ \sqrt{\frac{\tau_b(\tau_r\tau_c\tau_t-1)}{\tau_r-1}}\]
+
+&lt;p&gt;Which can be found by first realizing that the following holds true&lt;/p&gt;
+
+\[\left(\frac{P_{t9}}{P_9}\right)^\frac{\gamma-1}{\gamma}=\frac{T_{t9}}{T_9}=\ \frac{T_0}{T_9}\tau_r\tau_d\tau_c\tau_b\tau_t\tau_n\]
+
+&lt;h3 id=&quot;engine-efficiencies&quot;&gt;Engine Efficiencies&lt;/h3&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Propulsive Efficiency&lt;/dt&gt;
+  &lt;dd&gt;
+\[\eta_p=\frac{P_{prop}}{P_{KE}}\cong\frac{2\frac{u_o}{u_e}}{1+\frac{u_o}{u_e}}\]
+  &lt;/dd&gt;
+  &lt;dt&gt;Thermal Efficiency&lt;/dt&gt;
+  &lt;dd&gt;
+\[\eta_{th}=\frac{P_{KE}}{P_{in}}=\frac{\left\{\left(\dot{m_0}+\dot{m_f}\right)\frac{ u_e^2}{2}-\dot{m_0}\frac{ u_0^2}{2}\right\}}{\dot{m_f}Q_R}=1-\frac{T_9-T_0}{T_{t4}-T_{t3}}=1-\frac{1}{\tau_r\tau_c}\]
+  &lt;/dd&gt;
+  &lt;dt&gt;Total Efficiency&lt;/dt&gt;
+  &lt;dd&gt;
+\[\eta_0=\eta_{th}\eta_p=\frac{P_{Prop}}{P_{in}}=\ \frac{Thrust\ast u_0}{\dot{m_f}Q_R}\]
+  &lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3 id=&quot;real-component-analysis&quot;&gt;Real Component Analysis&lt;/h3&gt;
+
+\[\eta_d=\ \frac{\left(\frac{P_{t2}}{P_0}\right)^\frac{\gamma-1}{\gamma}-1}{\frac{\gamma-1}{2}{M_0}^2}\]
+
+\[\eta_c=\ \frac{\left(\pi_c\right)^\frac{\gamma-1}{\gamma}-1}{\tau_c-1}\]
+
+\[\eta_b=\frac{c_pT_0}{Q_Rf}\tau_r\tau_c(\tau_b-1)\]
+
+\[\eta_t=\ \frac{\left(\pi_c\right)^\frac{\gamma-1}{\gamma}-1}{\tau_c-1}\]
+
+\[\eta_t=\ \frac{\left(NPR\frac{P_0}{P_9}\right)^\frac{\gamma-1}{\gamma}-\left(\pi_n\right)^\frac{\gamma-1}{\gamma}}{\left(NPR\frac{P_0}{P_9}\right)^\frac{\gamma-1}{\gamma}-1}\ \ \ \ \ \ \ \ \ \ \ \ NPR=\ \frac{P_{t5}}{P_0}\]
+
+&lt;h3 id=&quot;ramjets&quot;&gt;Ramjets&lt;/h3&gt;
+
+&lt;p&gt;Ramjets function like a turbojet, but do not include a turbine or compressor. Most of the original equations still apply. Set \(\tau_c=\ \tau_t=1\).&lt;/p&gt;
+
+\[Isp_{air}=\ \frac{a_0M_0}{g}\left(\sqrt{\tau_b}-1\right)\]
+
+\[TSFC=\frac{f}{a_0M_0}\left[\frac{1}{\sqrt{\tau_b}-1}\right]\]
+
+&lt;p&gt;Note that ramjet combustors tend to operate at a higher equivalence ratio. This means that some fuel remains un-combusted, and thus we need to revisit certain assumptions we made about turbojets. In particular, we must use \(∆T_{equilibrium}\). This value will depend on initial temperature, and equivalence ratio.&lt;/p&gt;
+
+&lt;p&gt;When considering a real ramjet, diffuser and nozzle are still largely adiabatic, but there is an associated drop in total pressure&lt;/p&gt;
+
+&lt;h3 id=&quot;afterburners&quot;&gt;Afterburners&lt;/h3&gt;
+
+&lt;p&gt;An afterburner is like attaching a ramjet to the back of a turbojet. Turbojet exhaust is combusted again, increasing thrust at the cost of efficiency.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/afterBurner.png&quot; alt=&quot;afterburner&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+\[\tau_b\tau_{ab}=\frac{T_9}{T_0}\]
+
+\[Isp_{air}=\ \frac{a_0M_0}{g}\left(\sqrt{\frac{\tau_{ab}}{\tau_r-1}\left[\tau_\lambda\left(1-\frac{1}{\tau_r\tau_c}\right)-\tau_r(\tau_c-1)\right]}-1\right)\]
+
+\[TSFC=\ \frac{1}{g{Isp}_{air}}\frac{c_pT_0}{\dot{Q_R}}\left[\tau_r\tau_c\left(\tau_b-1\right)+\tau_r\tau_c\tau_b\tau_t(\tau_{ab}-1)\right]\]
+
+&lt;h3 id=&quot;turbofans&quot;&gt;Turbofans&lt;/h3&gt;
+
+&lt;p&gt;A turbofan makes of use the turbine in a turbojet to generate shaft power which drives a ducted fan. It provides increased efficiency over a regular turbojet. Most commercial passenger planes fly with turbofan engines.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/turboFan.png&quot; alt=&quot;turboFan&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+\[\alpha=\ \frac{air\ flow\ rate\ through\ bypass\ cycle}{air\ flow\ rate\ through\ turbojet\ cycle}\]
+
+\[Thrust=\ \dot{m_0}u_9+\alpha\dot{m_0}u_{19}-(1+\alpha)\dot{m_0}u_0\]
+
+&lt;p&gt;Alpha is defined as the bypass ratio. Flow through the center should be treated like flow through the turbojet. Flow through the fan can be treated like flow through a compressor. Note that for the following equations we assume to interference in exhaust from the bypass and the turbojet.
+Assume: Work absorbed by turbine = work done by compressor + work done by fan.&lt;/p&gt;
+
+\[\dot{m_0}\left(h_{t3}-h_{t2}\right)+\ \alpha\dot{m_0}\left(h_{t13}-h_{t2}\right)=\ \eta_{mechanical}\dot{m_0}(1+f)\left(h_{t4}-h_{t5}\right)\]
+
+\[\tau_t=1-\frac{\tau_r\left[\left(\tau_r-1\right)+\alpha(\tau_f-1)\right]}{\eta_{mechanical}(1+f)\tau_\lambda}\]
+
+&lt;p&gt;If ideal, since no combustion occurs, T19 = T0.&lt;/p&gt;
+
+\[Isp_{air}=\ \frac{a_0M_0}{g}\left[\frac{1+f}{1+\alpha}\left(\frac{u_9}{u_0}\right)+\frac{\alpha}{1+\alpha}\left(\frac{u_{19}}{u_0}\right)-1\right]\]
+
+\[\frac{u_{19}}{u_0}=\ \left(\frac{M_{19}}{M_0}\right)\sqrt{\frac{\gamma_{19}R_{19}T_{19}}{\gamma_0R_0T_0}}\]
+
+&lt;p&gt;As with a regular turbojet cycle, we can solve for the M19 and the ratio of temperatures by using the following setup. Notice that for an ideal scenario, the ratio of temperatures before and after the fan is 1, since no combustion occurs, thus you only need to find M19 using the relationships below.&lt;/p&gt;
+
+\[\left(\frac{P_{t19}}{P_{19}}\right)^\frac{\gamma-1}{\gamma}=\frac{T_{t19}}{T_{19}}=1+\frac{\gamma-1}{2}{M_{19}}^2\]
+
+\[(\frac{P_0}{P_{19}}\pi_r\pi_d\pi_{fan}\pi_n)^\frac{\gamma-1}{\gamma}=\frac{T_0}{T_{19}}(\tau_r \tau_{fan})\]
+
+&lt;h3 id=&quot;turboprops&quot;&gt;Turboprops&lt;/h3&gt;
+
+&lt;p&gt;Turboprops operate on a similar idea to turbofans, in that the turbine from the turbojet cycle drives a larger propeller out in front, which is ultimately responsible for generating most of the thrust. Yields increased efficiency. Notice that for this analysis we break the turbine into two parts, the first (4 to 4.5) drives the compressor, while the second (4.5 to 5) drives the propeller.&lt;/p&gt;
+
+\[T_{prop}u_0=\ \dot{m_0}(1+f)\alpha\eta_{mechanical,\ LPT}\eta_{LPT}\eta_{gearbox}\eta_{propeller}(h_{t4.5}-h_{9s})\]
+
+&lt;p&gt;Where LPT stands for low pressure turbine (which drives propeller)&lt;/p&gt;
+
+\[Power\ Split:\ \alpha=\ \frac{h_{t4.5}-h_{t5s}}{h_{t4.5}-h_{9s}}\]
+
+&lt;h3 id=&quot;inletsdiffusers&quot;&gt;Inlets/Diffusers&lt;/h3&gt;
+
+&lt;p&gt;Shock Ramp Inlets take advantage of oblique shocks to achieve near isentropic compression and minimize drag.&lt;/p&gt;
+
+\[\frac{\dot{m}}{A}=MP_t\sqrt{\frac{\gamma}{RT_t}}\left[1+\frac{\gamma-1}{2}M^2\right]^\frac{-\gamma-1}{2(\gamma-1)}\]
+
+\[c_{pr}=\frac{P_2-P_1}{q_1}\]
+
+&lt;p&gt;Starting Problem refers to the issue of how we can transition from subsonic to supersonic flow on a converging-diverging inlet. In general, it involves the questions of how to “swallow the shock”.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Overspeed – By increasing M0 the bow shock moves closer towards the inlet.&lt;/li&gt;
+  &lt;li&gt;Kantrowitz Donaldson Inlet – fixed geometry CD inlet with an enlarged throat that places starting shock in the diverging section.&lt;/li&gt;
+  &lt;li&gt;Variable Geometry Inlet – For maximum efficiency, starting shock should occur in the throat. Thus, throat begins initially enlarged to swallow the shock, and then closes to push the shock upstream closer to the throat.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;combustors&quot;&gt;Combustors&lt;/h3&gt;
+
+&lt;p&gt;Law of mass action presents a way to calculate reaction rate. Equilibrium occurs when rate of products becoming reactants equals the rate of reactants becoming products.&lt;/p&gt;
+
+\[r_{foward}=k_{forward}\left[A\right]^a\left[B\right]^b\]
+
+\[K=\ \frac{k_{forward}}{k_{reverse}}=\frac{\left[C\right]^c\left[D\right]^d}{\left[A\right]^a\left[B\right]^b}\]
+
+&lt;p&gt;Note that equilibrium constant can also be represented with partial pressure, or mole fraction.
+Laminar Flame Speeds tend to be on the order of 0.1-3 m/s, which is much slower than flight speeds. To prevent blowout, flame holders are sometimes required to slow down the flow. These also exert a drag on the flow, resulting in the following equation:&lt;/p&gt;
+
+\[\frac{P_{t4}}{P_{t3}}=\frac{\left(1+\gamma{M_4}^2\left(1-\frac{C_d}{2}\right)\right)}{\left(1+\gamma{M_4}^2\right)}\left[\frac{1+\frac{\gamma-1}{2}{M_4}^2}{1+\frac{\gamma-1}{2}{M_3}^2}\right]^\frac{\gamma}{\gamma-1}\]
+
+&lt;h3 id=&quot;axial-compressors&quot;&gt;Axial Compressors&lt;/h3&gt;
+
+&lt;p&gt;Compressors consist of multiple stages. Each stage involves 1 rotor, followed by 1 stator. Rotor drives the fluid, giving it angular velocity, and increases total pressure. Stator converts extra angular velocity into an increase in static pressure but does no work on the fluid itself. Multi-staging is necessary to avoid boundary layer separation in rotor (which faces an adverse pressure gradient). We’ll define the absolute fluid velocity as \(C\).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/rotAndStat.png&quot; alt=&quot;rotor and stator&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Fluid Velocity Relative to Rotor&lt;/dt&gt;
+  &lt;dd&gt;
+\[W=C-U\]
+  &lt;/dd&gt;
+&lt;/dl&gt;
+
+\[\tau=\ \dot{m}[r_2C_{\theta,2}-r_1C_{\theta,1}]\]
+
+\[h_{t2}-h_{t1}=\ \omega[r_2C_{\theta,2}-r_1C_{\theta,1}]\]
+
+&lt;p&gt;Assume that C1 = C3 and Cz remains constant from stage 1 through stage 3. For small changes in stage pressure, and where stage efficiency is all the same, stage efficiency nstage is approximately equal to polytrophic compressor efficiency etc.&lt;/p&gt;
+
+\[\beta_1=\alpha_2\]
+
+\[\beta_2=\alpha_1\]
+
+\[\frac{P_{t3}}{P_{t1}}=\left[1+\eta_{stage}\frac{U\Delta C_\theta}{c_pT_{t1}}\right]^\frac{\gamma}{\gamma-1}\]
+
+\[\frac{T_{t2}}{T_{t1}}=1+\frac{U^2}{c_pT_{t1}}\left[1+\frac{C_z}{U}\left(\tan{\left(\beta_2\right)}-\tan(\alpha_1)\right)\right]\]
+
+&lt;p&gt;It is also useful to define unitless parameters to characterize axial compressor performance. Increasing the flow coefficient decreases total temperature rise and work contribution of the rotor.&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Flow Coefficient&lt;/dt&gt;
+  &lt;dd&gt;
+\[\phi=\ \frac{C_z}{U}\]
+  &lt;/dd&gt;
+  &lt;dt&gt;Stage Loading Factor&lt;/dt&gt;
+  &lt;dd&gt;
+\[\psi= \frac{\Delta h_t}{U^2} = 1+\phi(\tan(\beta_2)-\tan(\alpha_1)\]
+  &lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3 id=&quot;degree-of-reaction-for-compressor&quot;&gt;Degree of Reaction for Compressor&lt;/h3&gt;
+
+&lt;p&gt;Define as the ratio of static enthalpy rise over the rotor to total static enthalpy change in the stage. Usually we try to design this number to be equal to 50%.&lt;/p&gt;
+
+\[R=\ \frac{h_2-h_1}{h_3-h_1}\]
+
+&lt;h3 id=&quot;axial-turbines&quot;&gt;Axial Turbines&lt;/h3&gt;
+
+&lt;p&gt;Calculations for an axial turbine is very similar to an axial compressor. In a turbine, a stator (or a nozzle) gives angular velocity to fluid flow, which drives the rotors. Since there is no adverse pressure gradient, fewer stages are needed.&lt;/p&gt;
+
+\[R^o\ =1-\frac{C_{\theta2}-C_{\theta3}}{2U}\]
+
+&lt;dl&gt;
+  &lt;dt&gt;Impulse Stage&lt;/dt&gt;
+  &lt;dd&gt;Entire static enthalpy drop happens over the stator/nozzle. Used when trying to minimize the number of stages (maximizing specific work per stage).&lt;/dd&gt;
+  &lt;dt&gt;50% Degree of Reaction Stage&lt;/dt&gt;
+  &lt;dd&gt;static enthalpy drop is split evenly between stator and rotor. Use to minimize losses and maximize isentropic efficiency.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3 id=&quot;component-matching&quot;&gt;Component Matching&lt;/h3&gt;
+
+&lt;p&gt;With the above equations, we can enforce the following constraints which allow us to solve the combined equations:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Turbine Angular Shaft Speed = Compressor Angular Shaft Speed&lt;/li&gt;
+  &lt;li&gt;Constant mass flow rate of air&lt;/li&gt;
+  &lt;li&gt;Work extracted by turbine = work done by compressor&lt;/li&gt;
+&lt;/ol&gt;
 </content>
  </entry>
  

@@ -2,7 +2,7 @@
 layout: page
 title: Music Theory
 permalink: /music/
-date: 2021-05-05
+date: 2021-06-05
 ---
 
 <hr>

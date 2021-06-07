@@ -210,6 +210,13 @@ pre code {
   border-radius: 0;
 }
 
+
+.center-image
+{
+    margin: 0 auto;
+    display: block;
+}
+
 /* Quotes */
 blockquote {
   padding: .5rem 1rem;
