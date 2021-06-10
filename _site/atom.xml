@@ -4,7 +4,7 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-06-06T19:21:14-07:00</updated>
+ <updated>2021-06-07T12:42:58-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
@@ -111,6 +111,317 @@
 &lt;/table&gt;
 
 &lt;p&gt;As you can see, except for an octave which remains perfect, each 12-tone interval is very slightly off from the corresponding “just intonation” interval. In most cases, the variation is small enough that it very nearly sounds the same.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Machine Learning</title>
+   <link href="https://ludavid15.github.io//machineLearning/"/>
+   <updated>2021-06-05T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//machineLearning</id>
+   <content type="html">&lt;p&gt;At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;matrix-math&quot;&gt;Matrix Math&lt;/h3&gt;
+
+&lt;p&gt;Before getting started, a few important definitions.&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Vector&lt;/dt&gt;
+  &lt;dd&gt;By default, vectors are written as a column. The transpose/Hermitian of a vector places it into row format.&lt;/dd&gt;
+  &lt;dt&gt;Range/Span&lt;/dt&gt;
+  &lt;dd&gt;The set of all linear combinations of each vector.&lt;/dd&gt;
+&lt;/dl&gt;
+
+\[R\left(A\right)={\alpha_1A_1+a_2A_2\ldots+\alpha_kA_k,\ for\ any\ \alpha_i\in F}\]
+
+&lt;dl&gt;
+  &lt;dt&gt;Nullspace/Kernel (of a matrix A)&lt;/dt&gt;
+  &lt;dd&gt;The set of all vectors [x] such that Ax = 0&lt;/dd&gt;
+&lt;/dl&gt;
+
+\[N\left(A\right)={x\in F^n,\ Ax=0}\]
+
+&lt;dl&gt;
+  &lt;dt&gt;Ortho-complement (of a subspace)&lt;/dt&gt;
+  &lt;dd&gt;The set of all vectors [x] that are orthogonal to all vectors in the subspace V.&lt;/dd&gt;
+&lt;/dl&gt;
+
+\[V^\bot={x,\ x\bot y\ for\ all\ y\in V}\]
+
+&lt;dl&gt;
+  &lt;dt&gt;Linear Dependence&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;p&gt;A set of vectors are said to linearly dependent if there exist scalars \(\alpha\) not all zero such that:&lt;/p&gt;
+  &lt;/dd&gt;
+&lt;/dl&gt;
+
+\[\alpha_1V_1+a_2V_2\ldots+\alpha_kV_k=0\]
+
+&lt;dl&gt;
+  &lt;dt&gt;Rank&lt;/dt&gt;
+  &lt;dd&gt;The rank of a matrix is the is the number of linearly independent rows or columns. It is equal to the dimension of the span of the matrix. The rank cannot be greater than min(m, n) given \(A\in F^{m\times n}\).&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3 id=&quot;summary-of-matrix-properties&quot;&gt;Summary of Matrix Properties&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Mathematical Expression&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Equivalent Statements/Other Properties&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Normal Matrix&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(AA^H=A^HA\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[A] is normal if it commutes with its conjugate transpose&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[A] is diagonalizable by a unitary matrix&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;There exists a set of eigenvectors of [A] which form an orthonormal basis for range([A])&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(|A|^2=tr(A^HA)\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;The Frobenius norm can by computed by the eigenvalues&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(A=Q\Lambda Q^H\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(AQ[:,i]=λiQ[:,i]\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[A] can be decomposed into the product of its unitary eigenvector matrices and a diagonal matrix of eigenvalues&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Unitary/Orthogonal Matrix&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(AA^H=A^HA=I\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[A] is unitary if it is normal and its product with its conjugate transpose equals the identity matrix&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(|x|_2=|Ax|_2\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;The product of a unitary matrix with a vector does not change the magnitude of the vector.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Symmetric/Hermitian Matrix&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(A=A^T\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[A] is symmetric if it is equal to its conjugate transpose&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;All symmetric matrices are also normal matrices&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Rectangular matrices are never normal matrices&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;The eigenvalues of a symmetric (and thus normal) matrix are always real&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Diagonalizable Matrix&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(A=Q\Lambda Q^H\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[A] is diagonalizable if it is similar to a diagonal matrix&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;singular-value-decomposition&quot;&gt;Singular Value Decomposition&lt;/h3&gt;
+
+&lt;p&gt;The singular value decomposition of a matrix [A] yields the following expression, where  U\in F^{m\times m} is the matrix of left singular vector, V\in F^{n\times n} is the matrix of right singular vectors, and the strictly positive entries of \Sigma\in F^{m\times n} are referred to singular values. The number of nonzero singular values equals the rank of [A]. Both U and V are unitary matrixes.&lt;/p&gt;
+
+\[A\in F^{m\times n}=U\Sigma V^H\]
+
+&lt;p&gt;Realizing that in some cases, the rank of A is less than either m or n, leaving a few zero entries along the singular values. These send corresponding vectors in U and V to zero, and thus A can be reassembled with only the vectors of U, V and singular values through (r).&lt;/p&gt;
+
+\[A=\ \sum_{i=1}^{r}{\sigma_iu_iv_i^H}\]
+
+&lt;h4 id=&quot;additional-properties-of-the-svd&quot;&gt;Additional Properties of the SVD&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(Av_j=\sigma_ju_j\ \ \ \ \ \ if\ j\in\left(1,r\right)\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(Av_j=\sigma_ju_j=0\ \ \ \ \ \ \ \ if\ j\in(r+1,\ n)\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(A^Hu_j=\sigma_jv_j\ \ \ \ \ \ \ \ if\ j\in(1,\ r)\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;The right singular vectors of AH are the left singular vectors of A and vice-versa&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;The dimension of the range of A is equal to the rank of A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(u_1,u_2,\ldots u_r\) are orthogonal basis vectors for the range of A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(u_{r+1},u_{r+2},\ldots u_m\) are orthogonal basis vectors for the orthocomplement of the range of A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(v_{r+1},v_{r+2},\ldots u_n\) are orthogonal basis vectors for the nullspace of A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(v_1,v_2,\ldots v_r\) are orthogonal basis vectors for the orthocomplement of the nullspace of A&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;orthogonal-projection-matrix&quot;&gt;Orthogonal Projection Matrix&lt;/h3&gt;
+
+&lt;p&gt;Consider a set of vectors \(v_1,\ v_2,\ \ldots v_k\) which form an orthonormal basis for the subspace of some range V. The orthogonal projection matrix of the subspace V as well as the orthocomplement of V is formed as:&lt;/p&gt;
+
+\[P_v=Q_kQ_k^H\]
+
+\[P_{v^\bot}={I-Q}_kQ_k^H\]
+
+&lt;p&gt;The orthogonal projection matrix when multiplied by a vector finds the projection of that vector onto the subspace and is equal to subtraction of any orthogonal components from the original vector. That is:&lt;/p&gt;
+
+\[P_{v^\bot}x=x-P_vx\]
+
+&lt;h3 id=&quot;pseudo-inverse-moore-penrose-inverse&quot;&gt;Pseudo-Inverse (Moore-Penrose Inverse)&lt;/h3&gt;
+
+&lt;p&gt;Note that a non-square matrix cannot be inverted in the traditional sense. However, it is still possible to achieve a partial inverse by using the SVD. We define the pseudo inverse as:&lt;/p&gt;
+
+\[A^+=V\Sigma^+U^H\]
+
+\[\Sigma^+=\left[\begin{matrix}\Sigma_{r\times r}&amp;amp;0_{r,\ n-r}\\0_{m\times r,\ r}&amp;amp;0_{m-r,\ n-r}\\\end{matrix}\right]\ \in F^{n\times m}\]
+
+&lt;h3 id=&quot;least-squares-regressionordinary-least-squares&quot;&gt;Least Squares Regression/Ordinary Least Squares&lt;/h3&gt;
+&lt;p&gt;Given a problem stated in the following format, it is possible to find an exact solution.&lt;/p&gt;
+
+\[x_{LS}=argmin\|Ax-b\|_2^2\]
+
+\[x_{LS}=A^+b\]
+
+&lt;p&gt;Thus, we may be generally motivated to format our problems in the above format, such that a solution can be easily solved using the pseudo-inverse. Consider a dataset of inputs and corresponding outputs, denoted as t and b.&lt;/p&gt;
+
+&lt;p&gt;Our approximation function we would like to take the form:&lt;/p&gt;
+
+\[b_j=c_1+c_2t_j+c_3t_j^2+ \ldots α_1cos(t_j)+β_1sin(t_j)+α_2cos(t_j)+β_2sin(t_j)+ \ldots\]
+
+&lt;p&gt;This can be represented in a linear format by defining the following sets of A and x matrices.&lt;/p&gt;
+
+\[x=\ \left[c_1,\ c_2,c_3,\ldots,\ \alpha_1,\beta_1,\alpha_2,\beta_2,\ \ldots\right]^T\]
+
+\[A_j=[1,\ t_j,\ t_j^2, \ldots,\cos(t_j),\sin(t_j),\cos(t_j),\sin(t_j)]\]
+
+&lt;p&gt;Thus, the dot product of x with Aj should yield Equation 1. Repeating the above for every data point will yield a full matrix for A. The coefficients for our model equation which best fit the data can be found now using least squares regression.&lt;/p&gt;
+
+&lt;h3 id=&quot;regularized-least-squares&quot;&gt;Regularized Least Squares&lt;/h3&gt;
+
+&lt;p&gt;Consider for a moment, a constrained least squares problem:&lt;/p&gt;
+
+\[x_{LS}=argmin\|Ax-b\|_2^2\]
+
+\[\|Dx\|_2&amp;lt;τ\]
+
+&lt;p&gt;As we did in optimization, we can include the constraint, as something that should be included in the weighting of the objective function.&lt;/p&gt;
+
+\[x_{LS}=argmin\|Ax-b\|_2^2+λ^2\|Dx\|_2^2\]
+
+&lt;p&gt;We can be reformed into our classic least squares problem format by defining the following sets of matrices:&lt;/p&gt;
+
+\[\widetilde{A}=\left[\begin{matrix}A\\\lambda D\\\end{matrix}\right],\ \widetilde{b}=\left[\begin{matrix}b\\0\\\end{matrix}\right]\]
+
+\[x_{LS}=argmin\|Ax-b\|_2^2\]
+
+&lt;h3 id=&quot;first-difference-matrix&quot;&gt;First Difference Matrix&lt;/h3&gt;
+
+&lt;p&gt;The first difference matrix when multiplied by a vector yields the elementwise gradients (taking the spacing/index to be the x displacement).&lt;/p&gt;
+
+\[D=\ \left[\begin{matrix}-1&amp;amp;1&amp;amp;0&amp;amp;0&amp;amp;0\\0&amp;amp;-1&amp;amp;\cdots&amp;amp;0&amp;amp;0\\0&amp;amp;\vdots&amp;amp;\ddots&amp;amp;\vdots&amp;amp;0\\0&amp;amp;0&amp;amp;\cdots&amp;amp;-1&amp;amp;1\\1&amp;amp;0&amp;amp;0&amp;amp;0&amp;amp;-1\\\end{matrix}\right]\]
+
+&lt;h3 id=&quot;trace-of-a-matrix&quot;&gt;Trace of a Matrix&lt;/h3&gt;
+
+&lt;p&gt;The trace of a matrix is defined as the sum of values down the primary diagonal. The trace is invariant under cyclic permutation:&lt;/p&gt;
+
+\[tr\left(AB\right)=tr\left(BA\right)\]
+
+\[tr\left(A+B\right)=tr\left(A\right)+tr\left(B\right)\]
+
+&lt;h3 id=&quot;frobenius-norm&quot;&gt;Frobenius Norm&lt;/h3&gt;
+
+&lt;p&gt;The Frobenius norm of a matrix is the root of the sum of the square of all values. The frobenius norm is also equal to the square root of the trace, and the sum of square of singular values of A.&lt;/p&gt;
+
+\[\|A\|_F = a_{ij}^2\]
+
+\[\|A\|_F^2=tr(AA^H)=tr(A^HA)=σ_i^2\]
+
+&lt;h3 id=&quot;principal-component-analysis&quot;&gt;Principal Component Analysis&lt;/h3&gt;
+
+&lt;p&gt;Consider a matrix whose columns represent different items in a dataset, and whose rows represent different parameters for each data item (i.e. x, y, z, coordinates). Principal Component Analysis, or PCA, finds an orthonormal basis of directions which best fit the data. These lines minimize the average squared distance of each point to the line. This orthonormal basis are also the left singular vectors obtained through SVD.&lt;/p&gt;
+
+&lt;p&gt;The first principal component of a matrix A, associated with the first eigenvector/left singular vector of the eigen decomposition and SVD, can be found as the vector which maximizes the second norm of the product of A with x.&lt;/p&gt;
+
+\[u_1=\ argmax\|Ax\|^2)\]
+
+&lt;p&gt;The next largest principal component can be found by projecting A into the null space formed from the previously found vectors and repeating the previous calculation. (We are finding the next line of best fit that is orthonormal to any previously found lines).&lt;/p&gt;
+
+&lt;h3 id=&quot;independent-component-analysis&quot;&gt;Independent Component Analysis&lt;/h3&gt;
+
+&lt;p&gt;ICA decomposes a signal into independent (non-correlated) non-Gaussian signals. When sources are statistically independent, ICA works very well in separating the two. ICA methods tend to breakdown when there is similarity in the signal, leading to correlation. To do this, ICA identifies directions that maximize absolute kurtosis. Mathematically, this is:&lt;/p&gt;
+
+\[x=\ argmax(|k_4(x^TA)|)\]
+
+&lt;p&gt;Where Kurtosis, or fourth central cumulant, is defined as:&lt;/p&gt;
+
+\[k_4(y^T)=\frac{1}{n}\sum y_i^4- 3(\frac{1}{n} \sum y_i^2)^2\]
+
+&lt;p&gt;And in addition, subject to a spherical constraint on the x input (i.e., two norm of x is equal to 1).&lt;/p&gt;
+
+\[\|x\|_2^2=1\]
+
+&lt;h3 id=&quot;k-means-clustering&quot;&gt;K-Means Clustering&lt;/h3&gt;
+
+&lt;p&gt;Minimizes the intra-cluster variance. The strength of clustering algorithms lies in the fact that it is an unsupervised learning method, i.e., data does not have to come pre-labeled. The process goes:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Propose N cluster centers.&lt;/li&gt;
+  &lt;li&gt;Assign every pixel to the closest cluster center.&lt;/li&gt;
+  &lt;li&gt;Calculate new cluster centers using the average of assigned pixels.&lt;/li&gt;
+  &lt;li&gt;Repeat until centers have stabilized.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For data classification, there typically needs to be as many dimensions as independent features (N) we’d like to distinguish. This means that for a task like image classification, we’ll need to find a way to transform a 2D image into a single point in 2D dimensional space.&lt;/p&gt;
+
+&lt;h3 id=&quot;neural-networks-and-deep-nets&quot;&gt;Neural Networks and Deep Nets&lt;/h3&gt;
+&lt;p&gt;Networks are function approximators. Each node consists of any number of inputs and any number of outputs, but is itself a simple activation function (relu, sigmoid, tangent, etc.) These functions generally produce an output in the range of 0 to 1 or -1 to 1. For each node, there are a series of weights and offsets to be calculated/tuned by the learning process.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/dnn.png&quot; alt=&quot;deep neural net&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The benefit of Deep nets is that they can separate non-linear shapes, at the downside of long computation times and unreliable convergence of results. Results depend a lot on how error is measured, the function of each node, etc.&lt;/p&gt;
+
+&lt;h3 id=&quot;receiver-operator-characteristic-curve&quot;&gt;Receiver Operator Characteristic Curve&lt;/h3&gt;
+
+&lt;p&gt;The R.O.C plots the probability of correct classification vs the probability of false positive. In an ideal case, the area under the curve will be equal to 1. A random guesser achieves a straight line on this plot, so a classifier needs to beat this result. Placement along the curve is also important, and changes depending on the application.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/roc.png&quot; alt=&quot;roc curve&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;procrustes-analysis&quot;&gt;Procrustes Analysis&lt;/h3&gt;
+
+&lt;p&gt;A method for statistical analysis of shape distributions. An orthogonal Procrustes problem is one that finds the optimal rotation, translation, and/or reflection which aligns two shapes.&lt;/p&gt;
 
 </content>
  </entry>
