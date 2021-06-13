@@ -101,7 +101,7 @@ Using the above model, you can actually derive an expression for the Darcy-frict
 
 $$\frac{1}{\Lambda^{1/2}}=2.0\log_{10}{\left({Re}_D\Lambda^\frac{1}{2}\right)}-0.8$$
 
-$$Notably the following trends come out:$$
+Notably the following trends come out:
 
 $$\tau\approx0.0396\rho^{3/4}\mu^{7/4}D^{-1/4}{U_{avg}}^{7/4}$$
 
