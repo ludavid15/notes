@@ -20,7 +20,7 @@ While viscous flow deals with liquids, or flows that are very slow, compressible
 
 For any steady state fluid in motion, we can define stagnation/total properties. These reflect the actual values if the fluid were brought to rest isentropically. 
 
-$$\frac{T_{Total}}{T}=\ \left(\frac{P_{Total}}{P}\right)^\sfrac{\gamma-1}{\gamma}=\left(\frac{\rho_{Total}}{\rho}\right)^{\gamma-1}=1+\left(\frac{\gamma-1}{2}\right)M^2$$
+$$\frac{T_{Total}}{T}=\ \left(\frac{P_{Total}}{P}\right)^\frac{\gamma-1}{\gamma}=\left(\frac{\rho_{Total}}{\rho}\right)^{\gamma-1}=1+\left(\frac{\gamma-1}{2}\right)M^2$$
 
 Note that the stagnation properties are frame dependent and thus not intrinsic thermodynamic properties.
 
@@ -39,7 +39,7 @@ By this definition, a shock is a type of wave. Although shocks are often introdu
 <p class="message">
 Another way to think of waves is as the propagation of information. Here's an example you might be familiar with: take a water droplet hitting the surface of a pond. Waves carry information about the event (the falling water) outwards. The speed at which the wave moves out is the speed at which this information is carried. 
 
-Every fluid has a local "acoustic speed" or **speed of sound**. This is the maximum speed at which waves can propagate. So here's a question for you, what happens when a disturbing even (like an airplane) moves faster than the local speed of sound? 
+Every fluid has a local "acoustic speed" or speed of sound. This is the maximum speed at which waves can propagate. So here's a question for you, what happens when a disturbing even (like an airplane) moves faster than the local speed of sound? 
 </p>
 
 ### Acoustic Wave Theory
@@ -47,19 +47,19 @@ Every fluid has a local "acoustic speed" or **speed of sound**. This is the maxi
 An acoustic wave is the propagation of wave with small magnitude through a medium. This wave travels at the local acoustic speed of the medium and is adiabatic (i.e. the energy of the medium before and after the wave has passed through remains constant). 
 Given the initial conditions about the displacement and rate, the solution for the propagation of that disturbance can be found (d’Alembert’s Formula). 
 
-$$∆px,t=0=fx$$
+$$∆p(x,t=0)=f(x)$$
 
-$$∂∆p∂tx,t=0=gx$$
+$$\frac{∂∆p}{∂t}(x,t=0)=g(x)$$
 
-$$∆px,t=fx-a∞t+fx+a∞t2+12a∞x-a∞tx+a∞tgsds$$
+$$∆p(x,t)=\frac{f(x)-a_∞t+f(x+a_∞t)}{2}+\frac{1}{2a_∞} \int_{x-a_∞t}^{x+a_∞t} gs \ ds$$
 
 The fundamental result is that the initial disturbance splits into a left running and right running portion. The fluid velocity, pressure and density can also be related to one another.
 
-$$∆u= ±a∞ρ∞∆ρ$$
+$$∆u= ±\frac{a_∞}{ρ_∞}∆ρ$$
 
-$$∆ρ= ±1a∞2∆P$$
+$$∆ρ= ±\frac{1}{a_∞^2}∆P$$
 
-$$∆ρ= ±1ρ∞a∞∆P$$
+$$∆ρ= ±\frac{1}{ρ_∞a_∞}∆P$$
 
 In deriving the above equation, we’ve assumed small amplitudes, meaning that the local speed of sound remains constant through the disturbance. 
 
@@ -114,9 +114,9 @@ Supersonic flow over an angle. From the conservation equations, there are two eq
  
 $$M_{n,1}=M_1\sin{\left(\sigma\right)}$$
 
-$$M_2=\ \frac{M_{2n}}{\sin\funcapply(\sigma-\delta)}$$
+$$M_2=\ \frac{M_{2n}}{\sin(\sigma-\delta)}$$
 
-$$\tan{\left(\delta\right)}=2\cot\funcapply(\sigma)\left[\frac{M_1^2{sin}^2\left(\sigma\right)-1}{M_1^2\left(\gamma+cos\left(2\sigma\right)\right)+2}\right]$$
+$$\tan{\left(\delta\right)}=2\cot(\sigma)\left[\frac{M_1^2{sin}^2\left(\sigma\right)-1}{M_1^2\left(\gamma+cos\left(2\sigma\right)\right)+2}\right]$$
 
 Unless there is some downstream flow feature to support the strong shock, the weak solution is typically what develops. 
 The presence of a shock introduces a sudden change in the fluid properties, including pressure. This leads to the creation of wave drag.
