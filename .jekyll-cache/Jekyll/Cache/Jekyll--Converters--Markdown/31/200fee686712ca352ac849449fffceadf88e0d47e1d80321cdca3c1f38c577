@@ -1,0 +1,38 @@
+I"<hr />
+
+<div class="posts">
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/structuralFundamentals/">
+        Structural Mechanics
+      </a>
+    </h2>
+
+    <span class="post-date">12 Jun 2021</span>
+    <p>In dynamics, we often make a “rigid body” assumption for all our working parts. All forces merely cause these objects to move or rotate. In reality, forces can cause pieces to deform or even break. Structural mechanics then, is the study of these deformations and failures.</p>
+
+    <a href="/notes/structuralFundamentals/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/fem/">
+        Finite Element Methods
+      </a>
+    </h2>
+
+    <span class="post-date">10 Jun 2021</span>
+    <p>Finite element methods, or FEM, is a strategy for modeling complex shapes as a series of small blocks. The math of FEM is foundational for modern computational structural analysis.</p>
+
+    <a href="/notes/fem/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+</div>
+:ET

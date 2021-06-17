@@ -83,20 +83,18 @@ $$J=\int_{t_0}^{t_1}L(t,x,u)dt$$
 #### Bolza’s Problem
 The optimal control problem where neither the terminal nor incremental cost are zero.
 
-$$J=K\left(t_1,\ x_1)+\int_{t_0}^{t_1}L\left(t,x,u)dt$$
+$$J=K(t_1,\ x_1)+\int_{t_0}^{t_1}L(t,x,u)dt$$
  
 ### Pontryagin Maximum Principle
 PMP provides a series of necessary conditions for continuous time optimal control problems. These principles bear a strong resemblance to the KKT necessary conditions. There are four components, outlined below:
 
 1. Expression of the Hamiltonian – where L is the incremental cost expression
 
-$$H=p_0L(t,x,u)+p^Tf(t,x,u)\$$
+$$H=p_0 L(t,x,u)+ p^T f(t,x,u)$$
 
 2. Maximum Principle* – the control minimizer is a minimizer of the Hamiltonian
 
 $$H\left(u^\ast,x,t\right)\le H(u,x,t)$$
-
-> In the case of time varying control constraints, u must be a minimizer of the integral of the Hamiltonian over the duration of the time of flight.
 
 3. Adjoint Equations – time rate of change as it relates to the Hamiltonian
 
@@ -106,7 +104,9 @@ $$\dot{p}=-\nabla_xH(x,u,p,t)$$
 
 $$p\left(t_1\right)-p_o\nabla_xK\left(x\left(t_1\right),t_1\right)=\ \sum_{i=1}^{j}{\alpha_i\nabla_x}g_i(x,u,t)$$
 
-$$-H\left(x\left(t_1\right),u\left(t_1\right),p\left(t_1\right),t_1\right)-p_o\nabla_xK=\sum_{i=1}^{j}{\alpha_i\nabla_t}g_i(x,u,t)\$$
+$$-H\left(x\left(t_1\right),u\left(t_1\right),p\left(t_1\right),t_1\right)-p_o\nabla_xK=\sum_{i=1}^{j}{\alpha_i\nabla_t}g_i(x,u,t)$$
+
+* In the case of time varying control constraints, u must be a minimizer of the integral of the Hamiltonian over the duration of the time of flight.
 
 If an optimization problem has some initial and end condition, the transversality conditions are expressed in terms of partials with respect to the terminal state and initial state. 
 
@@ -128,13 +128,13 @@ Application of the PMP necessary conditions results in a two-point boundary valu
 
 The central goal of dynamic programming is to determine a control policy, that is, the control u as a function of the state and time which will produce the optimal trajectory. This is achieved through construction of the cost-to-go function, otherwise known as the Bellman Function.
 
-$$V_N=K\left(x\right)$$
+$$V_N=K(x)$$
 
-$$V_k=\min\below{u\in U}{{L\left(k,\ x,u\right)+V_{i+1}(k,x,u)}}$$
+$$V_k=\min_{u\in U}{L(k,\ x,u)+V_{i+1}(k,x,u)}$$
 
 The Bellman function must be computed backward in time from the terminal cost. The optimal control at a time instance k, is a function of the incremental cost at k, and the Bellman function at k+1.
 
-$$u_k^\ast=argmin{L\left(k,\ x,u\right)+V_{k+1}\left(k,x,u\right)}$$
+$$u_k^\ast= \arg\min \ L\left(k,\ x,u\right)+V_{k+1}\left(k,x,u\right)$$
 
 To solve the dynamic programming problem, follow these steps and iterate backwards in time.
 
@@ -149,7 +149,7 @@ Unfortunately, discrete dynamic programming scales very poorly. The number of op
 ### Dynamic Programming (Continuous Time)
 In the continuous time case, we can show that the Bellman function must satisfy the following partial differential equation.
 
-$$\min\below{u\in U}{{L\left(k,\ x,u\right)+\frac{\partial V(t,x)}{\partial t}+\frac{\partial V(t,x)}{\partial x}f(t,x,u)}}$$
+$$\min_{u\in U}{L\left(k,\ x,u\right)+\frac{\partial V(t,x)}{\partial t}+\frac{\partial V(t,x)}{\partial x}f(t,x,u)}$$
 
 $$V\left(t_1,x\right)=K(x)$$
 
@@ -177,7 +177,7 @@ Then the optimal control on a singular arc can be found by taking even derivativ
 
 $$\frac{\partial^{2q}\rho}{\partial t^{2q}}=h_1\left(p,x\right)+h_2\left(p,x\right)u=0$$
 
-$$u^\ast\left(t\right)=\ -\frac{h_1(p^\ast\left(t\right),\ \ x^\ast\left(t\right))}{h_2(p^\ast\left(t\right),\ \ x^\ast\left(t\right))}$$
+$$u^\ast(t)=\ -\frac{h_1(p^\ast(t),\ \ x^\ast(t))}{h_2(p^\ast(t),\ \ x^\ast(t))}$$
 
 Note that in a single input linear time invariant system, if the pair A, b and are controllable*, then singular arcs do not exist.
 
@@ -196,7 +196,7 @@ Assuming that the optimal control and trajectory have already been computed, thi
 
 $$u\left(t\right)=u^\ast\left(t\right)+\Gamma\left(T\right)\left(x\left(t\right)-x^\ast\left(t\right)\right)$$
 
-Where $$\Gamma\left(T\right)$$ is a time varying gain $$T=\ t_1-t$$. Neighboring extremal optimal control maintains the PMP necessary conditions approximately to the first order.
+Where $$\Gamma\left(T\right)$$ is a time varying gain $$T=t_1-t$$. Neighboring extremal optimal control maintains the PMP necessary conditions approximately to the first order.
 
 ### Linear Quadratic Optimal Control Problems
 This is a special format of optimal control problem where the equations of motion can be represented as a linear time invariant system, and the objective function is represented as a quadratic equation. 
@@ -208,7 +208,7 @@ $$J=\ \frac{1}{2}x^TSx+\frac{1}{2}\int{x^TQx+u^TRu\ dt}$$
 These systems can be analyzed in continuous time, discrete time, or through dynamic programming. 
 
 ### Continuous Time LQR
-Begin by defining the Hamiltonian. It is also possible to show that p0 must take the value of one. Apply PMP. 
+Begin by defining the Hamiltonian. It is also possible to show that $$p_0$$ must take the value of one. Then apply PMP. 
 
 $$H=\ \frac{1}{2}p_0\left(x^TQx+u^TRu\ \right)+p^T(Ax+Bu)$$
 
@@ -224,7 +224,7 @@ The adjoint equation and the equations of motion can be re-expressed in matrix f
 
 $$\left[\begin{matrix}\dot{x}\\\dot{p}\\\end{matrix}\right]=\left[\begin{matrix}A&-BR^{-1}B^T\\-Q&-A\\\end{matrix}\right]\left[\begin{matrix}x\\p\\\end{matrix}\right]=H\left[\begin{matrix}x\\p\\\end{matrix}\right]$$
 
-$$\left[\begin{matrix}\Phi_{11}(t,t_1)&\Phi_{12}(t,t_1)\\\Phi_{21}(t,t_1)&\Phi_{22}(t,t_1)\\\end{matrix}\right]=\exp\funcapply(H\left(t-t_1\right))$$
+$$\left[\begin{matrix}\Phi_{11}(t,t_1)&\Phi_{12}(t,t_1)\\\Phi_{21}(t,t_1)&\Phi_{22}(t,t_1)\\\end{matrix}\right]=\exp(H\left(t-t_1\right))$$
 
 We seek a solution to p(t) to the above necessary conditions in the form:
 
@@ -240,9 +240,9 @@ $$P\left(t_1\right)=\ S_f$$
 
 $$P\left(t\right)=\left(\Phi_{21}+\Phi_{22}S_f\right)\left(\Phi_{11}+\Phi_{21}S_f\right)^{-1}$$
 
-$$u^\ast\left(t\right)=\ -R^{-1}B^TP\left(t\right)x^\ast\left(t\right)$$
+$$u^\ast(t)=\ -R^{-1}B^TP\left(t\right)x^\ast(t)$$
 
-Where x*(t) is the solution to:
+Where $$x^\ast(t)$$ is the solution to:
 
 $$\dot{x}\left(t\right)=Ax\left(t\right)-BR^{-1}B^TP\left(t\right)x\left(t\right),\ \ \ \ x\left(t_0\right)=\ x_0$$
 
@@ -258,7 +258,7 @@ In the infinite horizon case, if (A, B) is controllable and (A, C) is observable
 
 $$PA-PBR^{-1}B^TP+Q+A^TP=0$$
 
-If (A, B) is stabilizable and (A, C) is observable/detectable, where Q = CTC, ARE has a unique positive definite/semi definite solution. 
+If (A, B) is stabilizable and (A, C) is observable/detectable, where Q = CTC, DARE has a unique positive definite/semi definite solution. 
 
 ### Discrete Time LQR
 A set of continuous time equations of motion can be converted to a discrete time set of step update equations as follows:
@@ -312,13 +312,14 @@ $$F=\ -\left(R+B^TSB\right)^{-1}B^TSA$$
 
 The above can be written in as a function of only S, otherwise known as the discrete Riccati Algebraic Equation (DARE).
 
-$$S=Q+A^TSA-A^TSB\left(R+B^TSB\right)^{-1}B^TSA\$$
+$$S=Q+A^TSA-A^TSB\left(R+B^TSB\right)^{-1}B^TSA$$
 
 The equivalent form of DARE for the infinite horizon LQR is
 
-$$S=Q+A^TSA-A^TS\left(I+{BR^{-1}B}^TS\right)^{-1}A\$$ 
+$$S=Q+A^TSA-A^TS\left(I+{BR^{-1}B}^TS\right)^{-1}A$$ 
 
-Continuous Time, Minimum Time, Linear Time-Invariant Optimal Control Problems
+### Continuous Time, Minimum Time, Linear Time-Invariant Optimal Control Problems
+
 Take a time invariant system, with given initial and terminal conditions. The objective is to minimize the transfer time.
 
 $$\dot{x}=Ax+Bu$$

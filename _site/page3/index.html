@@ -139,6 +139,10 @@
         
       
         
+          
+        
+      
+        
       
 
       <!-- <a class="sidebar-nav-item" href="/archive/v2.1.0.zip">Download</a>
@@ -177,7 +181,7 @@ In the meantime, please enjoy the following collection of jokes.
 
 <p>I didn’t think orthopedic shoes would help, but I stand corrected.</p>
 
-<p>I had to leave my job as a personal trainer because I wasn't strong to change the weights. I just submitted my too weak notice.  
+<p>I had to leave my job as a personal trainer because I wasn't strong enough to change the weights. I just submitted my too weak notice.  
 </p>
 
 <!--
@@ -185,13 +189,17 @@ In the meantime, please enjoy the following collection of jokes.
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/notes/compressible/">
-        Compressible Flow
+      <a href="/notes/fundamentalsDynamics/">
+        Fundamentals of Dynamics
       </a>
     </h1>
 
-    <span class="post-date">09 May 2021</span>
-    <p>While viscous flow deals with liquids, or flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects.</p>
+    <span class="post-date">13 May 2021</span>
+    <p>In dynamics, the goal is to predict the position, velocity, and acceleration of rigid bodies as a function of time through the use of Newton’s second law, F=ma. While the basic principle is simple, the key challenge of dynamics involves the definition of reference frames, vectors, and their relationships.</p>
+
+<blockquote>
+  <p>Note that F = ma is not the only way to solve dynamics problems! In the late 1700’s, Joseph-Louis Lagrange introduced an energy conservation strategy, known today as the Euler-Lagrange Equations.</p>
+</blockquote>
 
 
     <hr>
@@ -199,13 +207,13 @@ In the meantime, please enjoy the following collection of jokes.
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/notes/turbulent/">
-        Turbulent Flow
+      <a href="/notes/fluidFundamentals/">
+        Fundamentals of Fluid Mechanics
       </a>
     </h1>
 
-    <span class="post-date">08 May 2021</span>
-    <p>In general, turbulent flow is modeled statistically. Averages values are used instead of exact ones. Before laminar flow becomes fully turbulent, it experiences transition. Transition begins with flow instability. The point at which a flow trips into instability (critical point) is distinct from the point at which flow transitions fully to turbulence (transition point).</p>
+    <span class="post-date">12 May 2021</span>
+    <p>To be clear, when we talk about fluid mechanics, we aren’t just talking about the second state of matter (liquid \(\subset\) fluid). It honestly would make a lot more sense if we called it “flow mechanics”, but too many textbooks have been printed now to change that. In any case, we’re stuck with the term fluid mechanics, so that’s what we’ll be working with here.</p>
 
 
     <hr>
@@ -213,13 +221,13 @@ In the meantime, please enjoy the following collection of jokes.
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/notes/misc/">
-        Miscellaneous Topics
+      <a href="/notes/kinematics/">
+        Kinematics
       </a>
     </h1>
 
-    <span class="post-date">07 May 2021</span>
-    <p>This is a series of random topics, including non-dimensional numbers and fluid statics.</p>
+    <span class="post-date">12 May 2021</span>
+    <p>A subset of dynamics, where forces are neglected, and we focus instead on the motion of points and rigid bodies over time. At the core of this topic are a series of rules about positions, velocities, accelerations, and how to find them amid a potentially messy system of reference frames and motion constraints.</p>
 
 
     <hr>
@@ -227,61 +235,30 @@ In the meantime, please enjoy the following collection of jokes.
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/notes/jetEngines/">
-        Jet Engines
+      <a href="/notes/continuumMechanics/">
+        Continuum Mechanics
       </a>
     </h1>
 
-    <span class="post-date">06 May 2021</span>
-    <p>In 1941, a Messerschmitt Me 262 became the world’s first operational jet powered aircraft. Relying on combustion and a nozzle, the new “jet engine” was conceptually more similar to a rocket than a propeller.</p>
+    <span class="post-date">11 May 2021</span>
+    <p>One of the common assumptions we make when working with fluids is that it forms a continuum. The individual atoms of a fluid are assumed to be tightly packed enough that we can approximate the collective molecular interactions. What are these collective molecular interactions? Well, pretty standard stuff actually. We assume that applying a force causes an object to move, or a body to deform. (Technically speaking, that stress is related to strain). And honestly well, that’s kinda it.</p>
+
+<p>The reason this assumption is so powerful is because it makes our model <strong>continuous</strong>. This may seem pretty obvious at a glance, but working with stuff that is continuous is very different from working with stuff that is discrete! The reason as you may already have guessed: derivatives.</p>
+
 
     <hr>
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/notes/2013/12/28/introducing-hyde/">
-        Introducing Hyde
+      <a href="/notes/dynamicalEquations/">
+        Finally Getting to Dynamics
       </a>
     </h1>
 
-    <span class="post-date">28 Dec 2013</span>
-    <p>Hyde is a brazen two-column <a href="http://jekyllrb.com">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. It’s based on <a href="http://getpoole.com">Poole</a>, the Jekyll butler.</p>
+    <span class="post-date">11 May 2021</span>
+    <p>We’re almost ready to write down F = ma, but before that, we need to define what F is (a force), and what ma is (an intertial term).</p>
 
-<h3 id="built-on-poole">Built on Poole</h3>
-
-<p>Poole is the Jekyll Butler, serving as an upstanding and effective foundation for Jekyll themes by <a href="https://twitter.com/mdo">@mdo</a>. Poole, and every theme built on it (like Hyde here) includes the following:</p>
-
-<ul>
-  <li>Complete Jekyll setup included (layouts, config, <a href="/404">404</a>, <a href="/atom.xml">RSS feed</a>, posts, and <a href="/about">example page</a>)</li>
-  <li>Mobile friendly design and development</li>
-  <li>Easily scalable text and component sizing with <code class="language-plaintext highlighter-rouge">rem</code> units in the CSS</li>
-  <li>Support for a wide gamut of HTML elements</li>
-  <li>Related posts (time-based, because Jekyll) below each post</li>
-  <li>Syntax highlighting, courtesy Pygments (the Python-based code snippet highlighter)</li>
-</ul>
-
-<h3 id="hyde-features">Hyde features</h3>
-
-<p>In addition to the features of Poole, Hyde adds the following:</p>
-
-<ul>
-  <li>Sidebar includes support for textual modules and a dynamically generated navigation with active link support</li>
-  <li>Two orientations for content and sidebar, default (left sidebar) and <a href="https://github.com/poole/lanyon#reverse-layout">reverse</a> (right sidebar), available via <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> classes</li>
-  <li><a href="https://github.com/poole/hyde#themes">Eight optional color schemes</a>, available via <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> classes</li>
-</ul>
-
-<p><a href="https://github.com/poole/hyde#readme">Head to the readme</a> to learn more.</p>
-
-<h3 id="browser-support">Browser support</h3>
-
-<p>Hyde is by preference a forward-thinking project. In addition to the latest versions of Chrome, Safari (mobile and desktop), and Firefox, it is only compatible with Internet Explorer 9 and above.</p>
-
-<h3 id="download">Download</h3>
-
-<p>Hyde is developed on and hosted with GitHub. Head to the <a href="https://github.com/poole/hyde">GitHub repository</a> for downloads, bug reports, and features requests.</p>
-
-<p>Thanks!</p>
 
     <hr>
   </div>
@@ -303,7 +280,7 @@ In the meantime, please enjoy the following collection of jokes.
 
   </body>
   <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Page 3 of 4 for Home | Notes</title>
+<title>Page 3 of 5 for Home | Notes</title>
 <meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Home" />
 <meta name="author" content="David Lu" />

@@ -7,35 +7,23 @@ except_separator: <!--more-->
 categories: structures
 ---
 
+In dynamics, we often make a "rigid body" assumption for all our working parts. All forces merely cause these objects to move or rotate. In reality, forces can cause pieces to deform or even break. Structural mechanics then, is the study of these deformations and failures.
+
+<!--more-->
+
+
 ### Moments
 Description of the various types of “moments” and their relevant applications. Tabulated values for moments of common shapes are not included in this document. 
 
 | Type				| Mathematical Expression	| Use/Meaning
+|-
 | 1st Moment		| $$\iint x d A$$			| Centroid andCenter of Mass
-| 2nd Moment		| $$I_y=\iint{x^2dA}$$		| Second Moment of Inertia/Area or Area Moment of Inertia [m^4]
-
-This property is relevant for 2D objects! Beam bending uses this type of moment calculation.
-
-	$$I_x=\iint{y^2dA}$$
-
-	$$I_{xy}=\iint x y dA$$	
-
-	$$I=\ mr^2$$
-
-(For a point mass)
-
-Moment of Inertia [kg-m^2]
-
-$$M = Iα$$
-
-3D objects have can have moments in Yaw, Pitch and Roll
-
-Moment/
-Torque	T=\ f\ast d	
-Moment of Force/Torque [Nm]
-
-Causes angular acceleration/torsion
-
+| 2nd Moment		| $$I_y=\iint{x^2dA}$$		| Second Moment of Inertia/Area or Area Moment of Inertia [m^4], This property is relevant for 2D objects! Beam bending uses this type of moment calculation.
+|					| $$I_x=\iint{y^2dA}$$	|
+| 					| $$I_{xy}=\iint x y dA$$	|
+|					| $$I=\ mr^2$$		| (For a point mass)
+| Moment of Inertia [kg-m^2] | $$M = Iα$$  | 3D objects have can have moments in Yaw, Pitch and Roll
+| Moment or Torque| $$T=\ f\ast d$$	|  Moment of Force/Torque [Nm] - Causes angular acceleration/torsion
 
  
 ### Stress & Strain (1D)
@@ -43,9 +31,9 @@ Where E is young’s modulus. E for Al 6061 is 68.9 GPa. We can also define Pois
 
 $$\sigma=\ \frac{F}{A}$$
 
-$$\varepsilon=\ \frac{\Delta L}{L}\$$ 
+$$\varepsilon =\ \frac{\Delta L}{L}$$ 
 
-$$\varepsilon=\ \frac{\sigma}{E}$$
+$$\varepsilon =\ \frac{\sigma}{E}$$
 
 ### Shear
 Shear strains ($$\gamma$$) can be induced by shear stresses ($$\tau$$). In the simplest case, they are related by the following equation, where G is the shear modulus, a material property. Shear strains change the shape/angle of the object and is generally defined as the change in angle.
@@ -80,7 +68,8 @@ $$\sigma_{yy}=\frac{zM_Z}{I_Z}$$
 
 When the beam is non-symmetric (for example, a section of webs and stringers), moments in the X and Z directions have a coupled effect on the axial stress. The resultant stress is then a function of the location (x, z) relative to the centroid, the applied moments, and the area moment of inertia. 
 
-$$\sigma_{yy}=\left(x-x_c\right)\frac{I_XM_Z+I_{XZ}M_X}{I_XI_Z-I_{XZ}^2}+\left(z-z_c\right)\frac{I_ZM_X+I_{XZ}M_Z}{I_XI_Z-I_{XZ}^2}$$
+
+$$\sigma_{yy}=\left(x-x_c\right)\frac{I_XM_Z+I_{XZ}M_X}{I_XI_Z-I_{XZ}^2}+\left(z-z_c\right)\frac{I_Z M_X+I_{XZ}M_Z}{I_X I_Z-I_{XZ}^2}$$
  
 ### Shear in Beams
 
@@ -126,7 +115,7 @@ When the section is closed, you do not have the boundary conditions necessary to
 1. Find the moment of inertia of the cross section.
 2. Assume that the shear force is applied at the shear center. Find the bending moment (force/length) carried by each stringer with the following equation.
 
-$$∆P= VyIzA$$
+$$∆P= V_yI_zA$$
 
 3. At each stringer, the change in shear flow (force/length) is equal to the bending moment carried by that stringer. Use this to relate all the shear flow variables.
 
@@ -149,9 +138,9 @@ $$\theta_1=\frac{q_1}{A_1}∆S_i t_i$$
 
 Where q1 is the shear flow due to pure torsion in the cell, A1 is the area of the cell, Si is the length of the wall, and ti is the thickness of the wall. When you have two cells that are adjacent, you must account for the shear flow in the shared wall due to the other cell. Setting the two twist equations equal and then writing the torque equation below provides you with two equations to solve for the two unknowns.
 
-$$\theta_2=\theta_1=\frac{q_1}{A_1}∆Siti-q2A1∆S_{shared}t_{shared}$$
+$$\theta_2=\theta_1=\frac{q_1}{A_1}∆S_it_i-q2A_1∆S_{shared}t_{shared}$$
 
-$$T=2A_1q_1+2A_2q_2$$
+$$T=2 A_1 q_1+2 A_2 q_2$$
  
 
 
@@ -163,26 +152,27 @@ The 3D stress tensor is presented below. The eigenvectors, n1, n2, and n3 repres
 
 $$\left[\begin{matrix}\sigma_{xx}&\tau_{xy}&\tau_{xy}\\\tau_{xy}&\sigma_{yy}&\tau_{yz}\\\tau_{xz}&\tau_{yz}&\sigma_{zz}\\\end{matrix}\right]=0$$
  
-Torsion
+### Torsion
 
-Von Mises Stress Criteria
+### Von Mises Stress Criteria
 
 ### Pressure Vessels
-For a cylindrical pressure vessel, we can define the hoop stress and axial stress using the equations below:
+For a cylindrical pressure vessel of radius $$r$$ and a (thin) wall of thickness $$t$$, we can define the hoop stress and axial stress using the equations below:
 
 $$\sigma_{Hoop}=\frac{Pr}{t}$$
 
 $$\sigma_{Axial}=\frac{Pr}{2t}$$
 
-Fastener Shear Failure Methods
-Tearout	
-Bypass	
-Fastener Shear	
-Bearing	
+### Fastener Shear Failure Methods
 
-Thread Failure
+|Tearout 			|	|	
+|Bypass				|	|
+|Fastener Shear		|	|
+|Bearing			|	|
 
-Beam Joints/Splicing
+### Thread Failure
+
+### Beam Joints/Splicing
 
 
 
