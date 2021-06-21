@@ -1,4 +1,4 @@
-I"è-<p>In previous posts, we explored the field of dynamics, which taught us how to calculate the position, velocity, and acceleration of an object given a set of driving forces. The topic of control theory flips this process around, and seeks an answer to the question: what type of force will produce the desired motion?</p>
+I"²0<p>In previous posts, we explored the field of dynamics, which taught us how to calculate the position, velocity, and acceleration of an object given a set of driving forces. The topic of control theory flips this process around, and seeks an answer to the question: what type of force will produce the desired motion?</p>
 
 <p>In other words, if dynamics is the study of rules, controls is the study of how we use those rules to achieve results.</p>
 
@@ -57,6 +57,8 @@
 
 \[x\left(t\right)=ae^{-t/\tau}\]
 
+<p><img src="../images/firstOrderImpulse.jpg" alt="first order impulse response" class="center-image" /></p>
+
 <dl>
   <dt>Time Constant</dt>
   <dd>A term defined only for first order systems, after Ï„ seconds, only 37% of initial value remains</dd>
@@ -67,6 +69,8 @@
 <p>Step Response Curve</p>
 
 \[y\left(t\right)=\frac{a}{\sigma}\left(1-e^{-t/\tau}\right)\]
+
+<p><img src="../images/firstOrderStep.png" alt="first order step response" class="center-image" /></p>
 
 <h4 id="second-order-systems">Second Order Systems</h4>
 
@@ -96,6 +100,8 @@
 
 \[x\left(t\right)=\ \frac{\omega_n}{\sqrt{1-\zeta^2}}e^{\frac{-\zeta}{\sqrt{1-\zeta^2}}\omega t}\sin{\omega t}\]
 
+<p><img src="../images/secondOrderImpulse.png" alt="second order impulse response" class="center-image" /></p>
+
 <p>Step Response Curve</p>
 
 \[Mp=\ e^\frac{-\zeta\pi}{\sqrt{1-\zeta^2}}\]
@@ -104,36 +110,45 @@
 
 \[Settle\ Time\ \tau_s\cong\ \frac{4.6}{\sigma}\]
 
-\[Peak\ Time\ \tau_p=\ \frac{\pi}{\omega}\\]
+\[Peak\ Time\ \tau_p=\ \frac{\pi}{\omega}\]
+
+<p><img src="../images/secondOrderStep.png" alt="second order step response" class="center-image" /></p>
 
 <h3 id="laplace-transform">Laplace Transform:</h3>
 <p>Most important take away is that in the Laplace domain, derivation is represented by multiplication, while integration is represented by division.</p>
 
-<p>\mathcal{L}\left(\dot{x}(t)\right)=sX(s)+x(0_+)</p>
+\[\mathcal{L}\left(\dot{x}(t)\right)=sX(s)+x(0_+)\]
 
-<p>\mathcal{L}\left[\int_{0}^{t}x\left(t\right)dt\right]=\frac{X(s)}{s}</p>
+\[\mathcal{L}\left[\int_{0}^{t}x\left(t\right)dt\right]=\frac{X(s)}{s}\]
 
 <h3 id="final-value-theorem--initial-value-theorem">Final Value Theorem &amp; Initial Value Theorem:</h3>
 
 <p>Where F(s) is the transfer function of the system defined by f(t).</p>
 
-<p>f\left(\infty\right)=\ \lim\below{s\rightarrow0}{sF(s)}</p>
+\[f\left(\infty\right)=\ \lim_{s\rightarrow0}{sF(s)}\]
 
-<p>f\left(0\right)=\ \lim\below{s\rightarrow\infty}{sF(s)}</p>
+\[f\left(0\right)=\ \lim_{s\rightarrow\infty}{sF(s)}\]
 
 <h3 id="stability">Stability:</h3>
 
-<dl>
-  <dt>A system can be stable, unstable, or marginally stable. </dt>
-  <dt>Stable</dt>
-  <dd>All poles must be in the LHP
-Marginally Stable</dd>
-  <dd>There are no poles in the RHP</dd>
-  <dd>There are poles on the imaginary axis</dd>
-  <dd>Poles on the imaginary axis are non-repeated 
-Unstable</dd>
-  <dd>Any pole in the RHP makes a system unstable</dd>
-</dl>
+<p>A system can be stable, unstable, or marginally stable.</p>
+
+<p>Stable</p>
+<ol>
+  <li>All poles must be in the LHP</li>
+</ol>
+
+<p>Marginally Stable</p>
+<ol>
+  <li>There are no poles in the RHP</li>
+  <li>There are poles on the imaginary axis</li>
+  <li>Poles on the imaginary axis are non-repeated</li>
+</ol>
+
+<p>Unstable</p>
+<ol>
+  <li>Any pole in the RHP makes a system unstable</li>
+</ol>
 
 <blockquote>
   <p>Theorem: Given a system represented by a denominator in expanded form, it is not stable if any coefficients of sn are zero or negative.</p>
@@ -197,17 +212,17 @@ Unstable</dd>
 <h3 id="steady-state-error">Steady State Error:</h3>
 <p>In most cases, steady state error can be found by multiplying the E/R by R to yield E and applying the final value theorem. The below equations are simply shortcuts, that can be used by identifying the system type.</p>
 
-\[Position\ Constant\ K_p=\ \lim\below{s\longrightarrow0}{L(s)}\]
+\[Position\ Constant\ K_p=\ \lim_{s\longrightarrow0}{L(s)}\]
 
-\[Velocity\ Constant\ K_v=\ \lim\below{s\longrightarrow0}{sL\left(s\right)}\]
+\[Velocity\ Constant\ K_v=\ \lim_{s\longrightarrow0}{sL\left(s\right)}\]
 
-\[Acceleration\ Constant\ K_a=\ \lim\below{s\longrightarrow0}{s^2L(s)}\bigm\]
+\[Acceleration\ Constant\ K_a=\ \lim_{s\longrightarrow0}{s^2L(s)}\]
 
 <h3 id="pid-control">PID Control:</h3>
 
 <p>Classic and very fundamental method of controller. PID stands for proportional, integral, and derivative. Each serves a different purpose for maintaining stability.</p>
 
-\[D\left(s\right)=\ K_P+\frac{K_I}{s}+sK_D\\]
+\[D\left(s\right)=\ K_P+\frac{K_I}{s}+sK_D\]
 
 \[H\left(s\right)=\ \frac{s}{as^3+\left(b+K_D\right)s^2+\left(c+K_P\right)s+K_I}\]
 
@@ -220,7 +235,7 @@ Unstable</dd>
   </thead>
   <tbody>
     <tr>
-      <td>K_P</td>
+      <td>\(K_P\)</td>
       <td>Faster Convergence</td>
     </tr>
     <tr>
@@ -232,7 +247,7 @@ Unstable</dd>
       <td>No effect on settling time</td>
     </tr>
     <tr>
-      <td>K_D</td>
+      <td>\(K_D\)</td>
       <td>Faster convergence</td>
     </tr>
     <tr>
@@ -240,7 +255,7 @@ Unstable</dd>
       <td>Less oscillation</td>
     </tr>
     <tr>
-      <td>K_I</td>
+      <td>\(K_I\)</td>
       <td>More oscillations</td>
     </tr>
     <tr>
@@ -282,7 +297,7 @@ Unstable</dd>
   <li>Departure angles measured from poles, arrival angles measured at zeros. q is the multiplicity of each pole/zero.</li>
 </ol>
 
-\[q\phi_K=\sum{\angle\left(p_k-z_i\right)-\sum{\angle\left(p_k-p_i\right)+\left(2l-1\right)\pi}}\\]
+\[q\phi_K=\sum{\angle\left(p_k-z_i\right)-\sum{\angle\left(p_k-p_i\right)+\left(2l-1\right)\pi}}\]
 
 \[q\psi_K=\sum{\angle\left(z_k-p_i\right)-\sum{\angle\left(z_k-z_i\right)+(2l-1)\pi}}\]
 
@@ -290,12 +305,18 @@ Unstable</dd>
 
 <p>Bode plots are simply plots of magnitude vs frequency and phase angle vs frequency.</p>
 
+<p><img src="../images/firstOrderBode.png" alt="first order Bode plot" class="center-image" /></p>
+
+<p><img src="../images/secondOrderBode.png" alt="second order Bode plot" class="center-image" /></p>
+
 <h3 id="nyquist-plots">Nyquist Plots</h3>
 <p>A Nyquist plot is L(jw) on the complex plane as frequency tends from minus infinity to positive infinity. Motivation for using Nyquist plots is that we can determine closed loop stability by examining the open loop (L(jw)). Can be sketched from the bode plots, or by mapping a plot of the range of frequencies.</p>
 
 \[Z=P-N\]
 
 <p>Where Z is the number of unstable closed loop poles. P is the number of unstable open loop poles, and N is the number of counterclockwise encirclements of -1.</p>
+
+<p><img src="../images/nyquist.png" alt="nyquist plot" class="center-image" /></p>
 
 <h3 id="stability-margins">Stability Margins</h3>
 

@@ -216,6 +216,8 @@
 
 \[x\left(t\right)=ae^{-t/\tau}\]
 
+<p><img src="../images/firstOrderImpulse.jpg" alt="first order impulse response" class="center-image" /></p>
+
 <dl>
   <dt>Time Constant</dt>
   <dd>A term defined only for first order systems, after τ seconds, only 37% of initial value remains</dd>
@@ -226,6 +228,8 @@
 <p>Step Response Curve</p>
 
 \[y\left(t\right)=\frac{a}{\sigma}\left(1-e^{-t/\tau}\right)\]
+
+<p><img src="../images/firstOrderStep.png" alt="first order step response" class="center-image" /></p>
 
 <h4 id="second-order-systems">Second Order Systems</h4>
 
@@ -255,6 +259,8 @@
 
 \[x\left(t\right)=\ \frac{\omega_n}{\sqrt{1-\zeta^2}}e^{\frac{-\zeta}{\sqrt{1-\zeta^2}}\omega t}\sin{\omega t}\]
 
+<p><img src="../images/secondOrderImpulse.png" alt="second order impulse response" class="center-image" /></p>
+
 <p>Step Response Curve</p>
 
 \[Mp=\ e^\frac{-\zeta\pi}{\sqrt{1-\zeta^2}}\]
@@ -264,6 +270,8 @@
 \[Settle\ Time\ \tau_s\cong\ \frac{4.6}{\sigma}\]
 
 \[Peak\ Time\ \tau_p=\ \frac{\pi}{\omega}\]
+
+<p><img src="../images/secondOrderStep.png" alt="second order step response" class="center-image" /></p>
 
 <h3 id="laplace-transform">Laplace Transform:</h3>
 <p>Most important take away is that in the Laplace domain, derivation is represented by multiplication, while integration is represented by division.</p>
@@ -456,12 +464,18 @@
 
 <p>Bode plots are simply plots of magnitude vs frequency and phase angle vs frequency.</p>
 
+<p><img src="../images/firstOrderBode.png" alt="first order Bode plot" class="center-image" /></p>
+
+<p><img src="../images/secondOrderBode.png" alt="second order Bode plot" class="center-image" /></p>
+
 <h3 id="nyquist-plots">Nyquist Plots</h3>
 <p>A Nyquist plot is L(jw) on the complex plane as frequency tends from minus infinity to positive infinity. Motivation for using Nyquist plots is that we can determine closed loop stability by examining the open loop (L(jw)). Can be sketched from the bode plots, or by mapping a plot of the range of frequencies.</p>
 
 \[Z=P-N\]
 
 <p>Where Z is the number of unstable closed loop poles. P is the number of unstable open loop poles, and N is the number of counterclockwise encirclements of -1.</p>
+
+<p><img src="../images/nyquist.png" alt="nyquist plot" class="center-image" /></p>
 
 <h3 id="stability-margins">Stability Margins</h3>
 
@@ -627,7 +641,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Intro to Control Theory" />
 <script type="application/ld+json">
-{"headline":"Intro to Control Theory","dateModified":"2021-06-15T00:00:00-07:00","description":"In previous posts, we explored the field of dynamics, which taught us how to calculate the position, velocity, and acceleration of an object given a set of driving forces. The topic of control theory flips this process around, and seeks an answer to the question: what type of force will produce the desired motion?","datePublished":"2021-06-15T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/controls/"},"url":"https://ludavid15.github.io//notes/controls/","author":{"@type":"Person","name":"David Lu"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/controls/"},"description":"In previous posts, we explored the field of dynamics, which taught us how to calculate the position, velocity, and acceleration of an object given a set of driving forces. The topic of control theory flips this process around, and seeks an answer to the question: what type of force will produce the desired motion?","url":"https://ludavid15.github.io//notes/controls/","author":{"@type":"Person","name":"David Lu"},"headline":"Intro to Control Theory","dateModified":"2021-06-15T00:00:00-07:00","datePublished":"2021-06-15T00:00:00-07:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   

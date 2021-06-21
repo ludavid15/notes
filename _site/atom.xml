@@ -4,7 +4,7 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-06-17T15:09:45-07:00</updated>
+ <updated>2021-06-20T20:52:26-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
@@ -76,6 +76,8 @@
 
 \[x\left(t\right)=ae^{-t/\tau}\]
 
+&lt;p&gt;&lt;img src=&quot;../images/firstOrderImpulse.jpg&quot; alt=&quot;first order impulse response&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
 &lt;dl&gt;
   &lt;dt&gt;Time Constant&lt;/dt&gt;
   &lt;dd&gt;A term defined only for first order systems, after τ seconds, only 37% of initial value remains&lt;/dd&gt;
@@ -86,6 +88,8 @@
 &lt;p&gt;Step Response Curve&lt;/p&gt;
 
 \[y\left(t\right)=\frac{a}{\sigma}\left(1-e^{-t/\tau}\right)\]
+
+&lt;p&gt;&lt;img src=&quot;../images/firstOrderStep.png&quot; alt=&quot;first order step response&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;second-order-systems&quot;&gt;Second Order Systems&lt;/h4&gt;
 
@@ -115,6 +119,8 @@
 
 \[x\left(t\right)=\ \frac{\omega_n}{\sqrt{1-\zeta^2}}e^{\frac{-\zeta}{\sqrt{1-\zeta^2}}\omega t}\sin{\omega t}\]
 
+&lt;p&gt;&lt;img src=&quot;../images/secondOrderImpulse.png&quot; alt=&quot;second order impulse response&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
 &lt;p&gt;Step Response Curve&lt;/p&gt;
 
 \[Mp=\ e^\frac{-\zeta\pi}{\sqrt{1-\zeta^2}}\]
@@ -124,6 +130,8 @@
 \[Settle\ Time\ \tau_s\cong\ \frac{4.6}{\sigma}\]
 
 \[Peak\ Time\ \tau_p=\ \frac{\pi}{\omega}\]
+
+&lt;p&gt;&lt;img src=&quot;../images/secondOrderStep.png&quot; alt=&quot;second order step response&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;laplace-transform&quot;&gt;Laplace Transform:&lt;/h3&gt;
 &lt;p&gt;Most important take away is that in the Laplace domain, derivation is represented by multiplication, while integration is represented by division.&lt;/p&gt;
@@ -316,12 +324,18 @@
 
 &lt;p&gt;Bode plots are simply plots of magnitude vs frequency and phase angle vs frequency.&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;../images/firstOrderBode.png&quot; alt=&quot;first order Bode plot&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/secondOrderBode.png&quot; alt=&quot;second order Bode plot&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;nyquist-plots&quot;&gt;Nyquist Plots&lt;/h3&gt;
 &lt;p&gt;A Nyquist plot is L(jw) on the complex plane as frequency tends from minus infinity to positive infinity. Motivation for using Nyquist plots is that we can determine closed loop stability by examining the open loop (L(jw)). Can be sketched from the bode plots, or by mapping a plot of the range of frequencies.&lt;/p&gt;
 
 \[Z=P-N\]
 
 &lt;p&gt;Where Z is the number of unstable closed loop poles. P is the number of unstable open loop poles, and N is the number of counterclockwise encirclements of -1.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/nyquist.png&quot; alt=&quot;nyquist plot&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;stability-margins&quot;&gt;Stability Margins&lt;/h3&gt;
 
