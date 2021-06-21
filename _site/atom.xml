@@ -4,13 +4,1242 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-06-07T12:42:58-07:00</updated>
+ <updated>2021-06-20T20:52:26-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Intro to Control Theory</title>
+   <link href="https://ludavid15.github.io//controls/"/>
+   <updated>2021-06-15T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//controls</id>
+   <content type="html">&lt;p&gt;In previous posts, we explored the field of dynamics, which taught us how to calculate the position, velocity, and acceleration of an object given a set of driving forces. The topic of control theory flips this process around, and seeks an answer to the question: what type of force will produce the desired motion?&lt;/p&gt;
+
+&lt;p&gt;In other words, if dynamics is the study of rules, controls is the study of how we use those rules to achieve results.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;the-goals-of-control-theory&quot;&gt;The Goals of Control Theory&lt;/h3&gt;
+
+&lt;p&gt;Let’s explore the above statement further. In dynamics, we’re usually given a system of parts, a set of forces \(f(x, t)\), and are asked to calculate \(x(t)\), \(v(t)\), and \(a(t)\). Now we could just as easily reverse this around (given, \(a(t)\), \(v(t)\), \(x(t)\), find \(f(t)\), but this doesn’t seem very interesting, nor is this really what control theory is.&lt;/p&gt;
+
+&lt;p&gt;The key idea that control theory introduces is of a &lt;em&gt;desired&lt;/em&gt; motion or state, which we’ll define with \(x&apos;(t)\), \(v&apos;(t)\), \(a&apos;(t)\) (not be confused with derivatives). Thus, a better problem statement would be: find f(t) that minimizes error between our desired state and actual state.&lt;/p&gt;
+
+\[min | x(t) - x&apos;(t) | + | v(t) - v&apos;(t) | + | a(t) - a&apos;(t) |\]
+
+&lt;p&gt;This is a bit more realistic because “close” is way easier than exactly equal. But as any engineer may point out, we are not only interested in the answer - the margins are just as important. Thus control theory seeks to understand how systems responds to inputs. Then, we can take these theories and design controllers to achieve particular goals.&lt;/p&gt;
+
+&lt;p&gt;The design of a controller should strive to achieve the following:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Stable&lt;/li&gt;
+  &lt;li&gt;Tracking – keeping y(t) close to command input&lt;/li&gt;
+  &lt;li&gt;Regulation – keeping y(t) constant in the presence of disturbances&lt;/li&gt;
+  &lt;li&gt;Control Effort – keeping u(t) to a minimum&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;modeling-systems-with-differential-equations&quot;&gt;Modeling Systems with Differential Equations&lt;/h3&gt;
+
+&lt;p&gt;It goes without saying that highly complex systems are difficult to model, but that’s largely because of the number of interactions which exist. Depending on the system, a few common relationships are likely to be present:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;State relationships - The interest you make on your savings is related to how much money you have saved (the state).&lt;/li&gt;
+  &lt;li&gt;Rate relationships - Aerodynamic drag increase with speed, making it a rate relationship.&lt;/li&gt;
+  &lt;li&gt;Acceleration relationships - Damping mechanisms are acceleration relationships, often used to counteract sudden changes.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;These relationships can be linear, exponential, logarithmic, etc.&lt;/p&gt;
+
+&lt;h3 id=&quot;linear-first-and-second-order-systems&quot;&gt;Linear First and Second Order Systems&lt;/h3&gt;
+
+&lt;h4 id=&quot;first-order&quot;&gt;First order&lt;/h4&gt;
+
+&lt;p&gt;Differential Equation&lt;/p&gt;
+
+\[b\frac{\partial x}{\partial t}+kx=0\]
+
+&lt;p&gt;Transfer Function&lt;/p&gt;
+
+\[H(s)=\ \frac{a}{s+\sigma}\]
+
+&lt;p&gt;Poles&lt;/p&gt;
+
+\[-\sigma\]
+
+\[\sigma=\frac{k}{b}\]
+
+&lt;p&gt;Impulse Response Curve&lt;/p&gt;
+
+\[x\left(t\right)=ae^{-t/\tau}\]
+
+&lt;p&gt;&lt;img src=&quot;../images/firstOrderImpulse.jpg&quot; alt=&quot;first order impulse response&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Time Constant&lt;/dt&gt;
+  &lt;dd&gt;A term defined only for first order systems, after τ seconds, only 37% of initial value remains&lt;/dd&gt;
+&lt;/dl&gt;
+
+\[\tau=\ 1/\sigma\]
+
+&lt;p&gt;Step Response Curve&lt;/p&gt;
+
+\[y\left(t\right)=\frac{a}{\sigma}\left(1-e^{-t/\tau}\right)\]
+
+&lt;p&gt;&lt;img src=&quot;../images/firstOrderStep.png&quot; alt=&quot;first order step response&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;second-order-systems&quot;&gt;Second Order Systems&lt;/h4&gt;
+
+&lt;p&gt;Differential Equation&lt;/p&gt;
+
+\[m\frac{\partial^2x}{\partial t^2}+b\frac{\partial x}{\partial t}+kx=0\]
+
+&lt;p&gt;Transfer Function&lt;/p&gt;
+
+\[H(s)=\ \frac{\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}\]
+
+\[H(s)=\ \frac{\sigma^2+\omega^2}{(s+\sigma)^2+\omega^2}\]
+
+&lt;p&gt;Poles&lt;/p&gt;
+
+\[-\sigma\pm j\omega\]
+
+\[\sigma=\ \zeta\omega_n\]
+
+\[\omega=\ \omega_n\sqrt{1-\zeta^2}\]
+
+\[\omega_n=\sqrt{\frac{k}{m}}\]
+
+\[\xi=\frac{b}{2\sqrt{km}}\]
+
+&lt;p&gt;Impulse Response Curve&lt;/p&gt;
+
+\[x\left(t\right)=\ \frac{\omega_n}{\sqrt{1-\zeta^2}}e^{\frac{-\zeta}{\sqrt{1-\zeta^2}}\omega t}\sin{\omega t}\]
+
+&lt;p&gt;&lt;img src=&quot;../images/secondOrderImpulse.png&quot; alt=&quot;second order impulse response&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Step Response Curve&lt;/p&gt;
+
+\[Mp=\ e^\frac{-\zeta\pi}{\sqrt{1-\zeta^2}}\]
+
+\[Rise\ Time\ \tau_r\cong\ \frac{1.8}{\omega_n}\]
+
+\[Settle\ Time\ \tau_s\cong\ \frac{4.6}{\sigma}\]
+
+\[Peak\ Time\ \tau_p=\ \frac{\pi}{\omega}\]
+
+&lt;p&gt;&lt;img src=&quot;../images/secondOrderStep.png&quot; alt=&quot;second order step response&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;laplace-transform&quot;&gt;Laplace Transform:&lt;/h3&gt;
+&lt;p&gt;Most important take away is that in the Laplace domain, derivation is represented by multiplication, while integration is represented by division.&lt;/p&gt;
+
+\[\mathcal{L}\left(\dot{x}(t)\right)=sX(s)+x(0_+)\]
+
+\[\mathcal{L}\left[\int_{0}^{t}x\left(t\right)dt\right]=\frac{X(s)}{s}\]
+
+&lt;h3 id=&quot;final-value-theorem--initial-value-theorem&quot;&gt;Final Value Theorem &amp;amp; Initial Value Theorem:&lt;/h3&gt;
+
+&lt;p&gt;Where F(s) is the transfer function of the system defined by f(t).&lt;/p&gt;
+
+\[f\left(\infty\right)=\ \lim_{s\rightarrow0}{sF(s)}\]
+
+\[f\left(0\right)=\ \lim_{s\rightarrow\infty}{sF(s)}\]
+
+&lt;h3 id=&quot;stability&quot;&gt;Stability:&lt;/h3&gt;
+
+&lt;p&gt;A system can be stable, unstable, or marginally stable.&lt;/p&gt;
+
+&lt;p&gt;Stable&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;All poles must be in the LHP&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Marginally Stable&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;There are no poles in the RHP&lt;/li&gt;
+  &lt;li&gt;There are poles on the imaginary axis&lt;/li&gt;
+  &lt;li&gt;Poles on the imaginary axis are non-repeated&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Unstable&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Any pole in the RHP makes a system unstable&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Theorem: Given a system represented by a denominator in expanded form, it is not stable if any coefficients of sn are zero or negative.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;undershoot&quot;&gt;Undershoot&lt;/h3&gt;
+&lt;p&gt;Typical in non-minimum phase systems (defined as having a zero in the RHP).&lt;/p&gt;
+
+&lt;h3 id=&quot;poles--zeros&quot;&gt;Poles &amp;amp; Zeros&lt;/h3&gt;
+&lt;p&gt;A pole is a value of s such that the denominator of the transfer function will be equal to zero. Meanwhile, a zero is defined as a value of s such that the numerator of the transfer function will be equal to zero.&lt;/p&gt;
+
+&lt;h3 id=&quot;routh-stability-criterion&quot;&gt;Routh Stability Criterion&lt;/h3&gt;
+&lt;p&gt;Number of sign changes is equal to the number of poles in the RHP.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;IMPORTANT: Unstable pole/zero cancellation is not a valid method for achieving stability&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Feedback Control Systems:&lt;/p&gt;
+
+&lt;p&gt;CL Transfer Function Numerator&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;R&lt;/td&gt;
+      &lt;td&gt;W&lt;/td&gt;
+      &lt;td&gt;V&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Y&lt;/td&gt;
+      &lt;td&gt;GD&lt;/td&gt;
+      &lt;td&gt;G&lt;/td&gt;
+      &lt;td&gt;-GD&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;E&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;-G&lt;/td&gt;
+      &lt;td&gt;GD&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;U&lt;/td&gt;
+      &lt;td&gt;D&lt;/td&gt;
+      &lt;td&gt;-GD&lt;/td&gt;
+      &lt;td&gt;-D&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Where the denominator is the same for all: 1+GD&lt;/p&gt;
+
+&lt;h3 id=&quot;system-type&quot;&gt;System Type&lt;/h3&gt;
+&lt;p&gt;A transfer function and the system it represents is said to be type k if a polynomial input of tk results in an output converging to a nonzero constant. In practice,&lt;/p&gt;
+
+\[H\left(s\right)\ is\ type\ K\ \Leftrightarrow\ H\left(s\right)\ has\ K\ zeros\ @\ origin\]
+
+&lt;p&gt;For inputs of magnitude lower than k, output will converge to zero. For inputs of magnitude greater than k, output will diverge.&lt;/p&gt;
+
+&lt;h3 id=&quot;steady-state-error&quot;&gt;Steady State Error:&lt;/h3&gt;
+&lt;p&gt;In most cases, steady state error can be found by multiplying the E/R by R to yield E and applying the final value theorem. The below equations are simply shortcuts, that can be used by identifying the system type.&lt;/p&gt;
+
+\[Position\ Constant\ K_p=\ \lim_{s\longrightarrow0}{L(s)}\]
+
+\[Velocity\ Constant\ K_v=\ \lim_{s\longrightarrow0}{sL\left(s\right)}\]
+
+\[Acceleration\ Constant\ K_a=\ \lim_{s\longrightarrow0}{s^2L(s)}\]
+
+&lt;h3 id=&quot;pid-control&quot;&gt;PID Control:&lt;/h3&gt;
+
+&lt;p&gt;Classic and very fundamental method of controller. PID stands for proportional, integral, and derivative. Each serves a different purpose for maintaining stability.&lt;/p&gt;
+
+\[D\left(s\right)=\ K_P+\frac{K_I}{s}+sK_D\]
+
+\[H\left(s\right)=\ \frac{s}{as^3+\left(b+K_D\right)s^2+\left(c+K_P\right)s+K_I}\]
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Increase&lt;/th&gt;
+      &lt;th&gt;Effect&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(K_P\)&lt;/td&gt;
+      &lt;td&gt;Faster Convergence&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;More oscillations for convergence&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;No effect on settling time&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(K_D\)&lt;/td&gt;
+      &lt;td&gt;Faster convergence&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Less oscillation&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(K_I\)&lt;/td&gt;
+      &lt;td&gt;More oscillations&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;No steady state error&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;lead-lag-compensator&quot;&gt;Lead-Lag Compensator&lt;/h3&gt;
+
+&lt;p&gt;Lead compensators improve transient response and is a variety of PD control, while lag compensators improve steady state response, and is a variety of PI control.&lt;/p&gt;
+
+\[Lead\ Compensator:\ D\left(s\right)=K\frac{\left(s-z\right)}{\left(s-p\right)}\ where\ z&amp;lt;p\]
+
+\[Lag\ Compensator:\ D\left(s\right)=K\frac{\left(s-z\right)}{\left(s-p\right)}\ where\ p&amp;lt;z\]
+
+\[\alpha=\ \frac{z}{p}\]
+
+&lt;h3 id=&quot;root-locus&quot;&gt;Root Locus&lt;/h3&gt;
+&lt;p&gt;A root locus plot is defined as the plot of the roots of 1+KL(s) on the complex plane as K tends from -∞ to +∞. When drawing a root locus, follow these rules:&lt;/p&gt;
+
+&lt;p&gt;Define: m zeroes and n poles.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The root locus is symmetric about the real axis&lt;/li&gt;
+  &lt;li&gt;The root locus starts from n poles of L(s). m branches approach m zeros of L(s). n-m branches go to infinity.&lt;/li&gt;
+  &lt;li&gt;The portion of the real axis to the left of an odd number of poles and zeroes is part of the root locus. (Plot the poles/zeroes of L(s) that are on the real axis and label them A, B, C from right to left. Then the segments, AB, CD, … are part of the root locus.)&lt;/li&gt;
+  &lt;li&gt;There are n-m branches of the root locus that approach the following asymptotes&lt;/li&gt;
+&lt;/ol&gt;
+
+\[s=\ \alpha+\sqrt[n-m]{K}e^{j\theta}\]
+
+\[\alpha=\ \frac{\sum P-\sum Z}{n-m}\]
+
+\[\theta=\ \frac{2l-1}{n-m}\pi\ \ \ \ \ \ l=arbitrary\ integer\]
+
+&lt;ol&gt;
+  &lt;li&gt;Departure angles measured from poles, arrival angles measured at zeros. q is the multiplicity of each pole/zero.&lt;/li&gt;
+&lt;/ol&gt;
+
+\[q\phi_K=\sum{\angle\left(p_k-z_i\right)-\sum{\angle\left(p_k-p_i\right)+\left(2l-1\right)\pi}}\]
+
+\[q\psi_K=\sum{\angle\left(z_k-p_i\right)-\sum{\angle\left(z_k-z_i\right)+(2l-1)\pi}}\]
+
+&lt;h3 id=&quot;bode-plots&quot;&gt;Bode Plots&lt;/h3&gt;
+
+&lt;p&gt;Bode plots are simply plots of magnitude vs frequency and phase angle vs frequency.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/firstOrderBode.png&quot; alt=&quot;first order Bode plot&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/secondOrderBode.png&quot; alt=&quot;second order Bode plot&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;nyquist-plots&quot;&gt;Nyquist Plots&lt;/h3&gt;
+&lt;p&gt;A Nyquist plot is L(jw) on the complex plane as frequency tends from minus infinity to positive infinity. Motivation for using Nyquist plots is that we can determine closed loop stability by examining the open loop (L(jw)). Can be sketched from the bode plots, or by mapping a plot of the range of frequencies.&lt;/p&gt;
+
+\[Z=P-N\]
+
+&lt;p&gt;Where Z is the number of unstable closed loop poles. P is the number of unstable open loop poles, and N is the number of counterclockwise encirclements of -1.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/nyquist.png&quot; alt=&quot;nyquist plot&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;stability-margins&quot;&gt;Stability Margins&lt;/h3&gt;
+
+\[\left|L\left(j\omega_c\right)\right|=1\]
+
+\[\angle L\left(j\omega_p\right)=\ -180\]
+
+\[Gain\ Margin=\ \frac{1}{\left|L\left(j\omega_p\right)\right|}\]
+
+\[Phase\ Margin=\ \angle L\left(j\omega_c\right)+180\cong100\zeta\]
+
+\[\omega_{c\ }\cong\frac{\omega_n}{1+\zeta^2}\]
+
+&lt;p&gt;Where \(\omega_c\) is defined as the gain crossover frequency and \(\omega_p\) is defined to be the phase crossover frequency. On a Nyquist plot, gain crossover frequency is when the graph crosses a circle of radius 1, and phase crossover is when the it crosses the negative real axis. Gain margin is the maximum factor which gain can be increased without making CLS unstable. Phase margin is the maximum angle by which phase can be decreased without making CLS unstable.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Eigen Values</title>
+   <link href="https://ludavid15.github.io//eigen/"/>
+   <updated>2021-06-13T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//eigen</id>
+   <content type="html">&lt;p&gt;Eigenvalues are everywhere, from machine learning, to structural mechanics, to dynamics, to linear algebra. So just exactly what are these strange numbers?&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Let’s take an N by N matrix and call it A. We’ll also define a length N vector v. Usually, multiplying a vector by a matrix (i.e. a rotation matrix) will change the direction of the original vector. However, if the product of matrix A and vector v is still in the same direction of v (but scaled by a factor λ) then we can say that v is an eigenvector of A, and that λ is the eigen value associated with that eigenvector. Mathematically:&lt;/p&gt;
+
+\[Av=\ \lambda v\]
+
+\[\left(A-\lambda I\right)v=0\]
+
+\[determinant\left|A-\lambda I\right|=0\]
+
+&lt;p&gt;Solving the above equation, we will find &lt;em&gt;up to&lt;/em&gt; N different eigenvalues, and &lt;em&gt;up to&lt;/em&gt; N different eigenvectors.&lt;/p&gt;
+
+&lt;p&gt;This irrotational property of eigenvectors underlies their significance: eigenvectors carry information about the dimensional size and direction of matrices.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Structural Mechanics</title>
+   <link href="https://ludavid15.github.io//structuralFundamentals/"/>
+   <updated>2021-06-12T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//fundamentals</id>
+   <content type="html">&lt;p&gt;In dynamics, we often make a “rigid body” assumption for all our working parts. All forces merely cause these objects to move or rotate. In reality, forces can cause pieces to deform or even break. Structural mechanics then, is the study of these deformations and failures.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;moments&quot;&gt;Moments&lt;/h3&gt;
+&lt;p&gt;Description of the various types of “moments” and their relevant applications. Tabulated values for moments of common shapes are not included in this document.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Type&lt;/th&gt;
+      &lt;th&gt;Mathematical Expression&lt;/th&gt;
+      &lt;th&gt;Use/Meaning&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1st Moment&lt;/td&gt;
+      &lt;td&gt;\(\iint x d A\)&lt;/td&gt;
+      &lt;td&gt;Centroid andCenter of Mass&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2nd Moment&lt;/td&gt;
+      &lt;td&gt;\(I_y=\iint{x^2dA}\)&lt;/td&gt;
+      &lt;td&gt;Second Moment of Inertia/Area or Area Moment of Inertia [m^4], This property is relevant for 2D objects! Beam bending uses this type of moment calculation.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;\(I_x=\iint{y^2dA}\)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;\(I_{xy}=\iint x y dA\)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;\(I=\ mr^2\)&lt;/td&gt;
+      &lt;td&gt;(For a point mass)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Moment of Inertia [kg-m^2]&lt;/td&gt;
+      &lt;td&gt;\(M = Iα\)&lt;/td&gt;
+      &lt;td&gt;3D objects have can have moments in Yaw, Pitch and Roll&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Moment or Torque&lt;/td&gt;
+      &lt;td&gt;\(T=\ f\ast d\)&lt;/td&gt;
+      &lt;td&gt;Moment of Force/Torque [Nm] - Causes angular acceleration/torsion&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h3 id=&quot;stress--strain-1d&quot;&gt;Stress &amp;amp; Strain (1D)&lt;/h3&gt;
+&lt;p&gt;Where E is young’s modulus. E for Al 6061 is 68.9 GPa. We can also define Poisson’s ratio (v) as the ratio of transverse strain to axial strain. (v) for aluminum and steel is about 0.33, and about 0.5 for rubber.&lt;/p&gt;
+
+\[\sigma=\ \frac{F}{A}\]
+
+\[\varepsilon =\ \frac{\Delta L}{L}\]
+
+\[\varepsilon =\ \frac{\sigma}{E}\]
+
+&lt;h3 id=&quot;shear&quot;&gt;Shear&lt;/h3&gt;
+&lt;p&gt;Shear strains (\(\gamma\)) can be induced by shear stresses (\(\tau\)). In the simplest case, they are related by the following equation, where G is the shear modulus, a material property. Shear strains change the shape/angle of the object and is generally defined as the change in angle.&lt;/p&gt;
+
+\[\gamma=\frac{1}{G}\tau\]
+
+&lt;h3 id=&quot;expanded-3d-stress--strain-matrix-for-3d-elements&quot;&gt;Expanded 3D Stress &amp;amp; Strain Matrix for 3D Elements&lt;/h3&gt;
+
+&lt;p&gt;Normal and shear stresses are identified by two subscripts. The first denotes the plane in which the stress acts, and the second denotes the direction. For example, \(\sigma_{xy}\) refers to shear stress acting in the x-plane (i.e. normal to the x direction) and in the y-direction. By force balance, we can also show that \(\sigma_{xy}=\sigma_{yx}\).&lt;/p&gt;
+
+&lt;p&gt;The fully expanded relationship between stress and the strain can be represented by the following matrix. For isotropic and/or orthotropic materials this simplifies significantly. Below, v is Poisson’s ratio, E is Young’s modulus, and G is the shear modulus. The other moduli (n and µ) are not relevant for most materials. When in the following format, the large matrix is known as the &lt;em&gt;compliance matrix&lt;/em&gt;. Its inverse is known as the stiffness matrix.&lt;/p&gt;
+
+\[\left[\begin{matrix}\varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\\gamma_{yz}\\\gamma_{xz}\\\gamma_{xy}\\\end{matrix}\right]=\left[\begin{matrix}\frac{1}{E_x}&amp;amp;-\frac{v_{yx}}{E_y}&amp;amp;-\frac{v_{zx}}{E_z}&amp;amp;\frac{n_{yz,x}}{G_{yz}}&amp;amp;\frac{n_{xz,x}}{G_{xz}}&amp;amp;\frac{n_{xy,x}}{G_{xy}}\\-\frac{v_{xy}}{E_x}&amp;amp;\frac{1}{E_y}&amp;amp;-\frac{v_{zy}}{E_z}&amp;amp;\frac{n_{yz,y}}{G_{yz}}&amp;amp;\frac{n_{xz,y}}{G_{xz}}&amp;amp;\frac{n_{xy,y}}{G_{xy}}\\-\frac{v_{xz}}{E_x}&amp;amp;-\frac{v_{yz}}{E_y}&amp;amp;\frac{1}{E_z}&amp;amp;\frac{n_{yz,z}}{G_{yz}}&amp;amp;\frac{n_{xz,z}}{G_{xz}}&amp;amp;\frac{n_{xy,z}}{G_{xy}}\\\frac{n_{x,yz}}{E_x}&amp;amp;\frac{n_{y,yz}}{E_y}&amp;amp;\frac{n_{z,yz}}{E_z}&amp;amp;\frac{1}{G_{yz}}&amp;amp;\frac{\mu_{xz,yz}}{G_{xz}}&amp;amp;\frac{\mu_{xy,yz}}{G_{xy}}\\\frac{n_{x,xz}}{E_x}&amp;amp;\frac{n_{y,xz}}{E_y}&amp;amp;\frac{n_{z,xz}}{E_z}&amp;amp;\frac{\mu_{yz,xz}}{G_{yz}}&amp;amp;\frac{1}{G_{xz}}&amp;amp;\frac{\mu_{xy,xz}}{G_{xy}}\\\frac{n_{x,xy}}{E_x}&amp;amp;\frac{n_{y,xy}}{E_y}&amp;amp;\frac{n_{z,xy}}{E_z}&amp;amp;\frac{\mu_{yz,xy}}{G_{yz}}&amp;amp;\frac{\mu_{xz,xy}}{G_{xz}}&amp;amp;\frac{1}{G_{xy}}\\\end{matrix}\right]\ast\left[\begin{matrix}\sigma_{xx}\\\sigma_{yy}\\\sigma_{zz}\\\tau_{yz}\\\tau_{xz}\\\tau_{xy}\\\end{matrix}\right]\]
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h3 id=&quot;isotropic-materials-in-3d&quot;&gt;Isotropic Materials in 3D&lt;/h3&gt;
+
+\[\left[\begin{matrix}\frac{vE}{\left(1+v\right)\left(1-2v\right)}+2G&amp;amp;&amp;amp;\\&amp;amp;\frac{vE}{\left(1+v\right)\left(1-2v\right)}+2G&amp;amp;\\&amp;amp;&amp;amp;\frac{vE}{\left(1+v\right)\left(1-2v\right)}+2G\\\end{matrix}\right]\]
+
+&lt;h3 id=&quot;orthotropic-materials&quot;&gt;Orthotropic Materials&lt;/h3&gt;
+&lt;p&gt;An orthotropic material (Properties vary in 3 directions) has three elastic moduli, three shear moduli, and three Poisson’s ratios.&lt;/p&gt;
+
+&lt;h3 id=&quot;axial-stress-in-beams&quot;&gt;Axial Stress in Beams&lt;/h3&gt;
+&lt;p&gt;For a symmetric beam, the axial stress is a function of the distance away from the centroid. Mathematically, that is:&lt;/p&gt;
+
+\[\sigma_{yy}=\frac{zM_Z}{I_Z}\]
+
+&lt;p&gt;When the beam is non-symmetric (for example, a section of webs and stringers), moments in the X and Z directions have a coupled effect on the axial stress. The resultant stress is then a function of the location (x, z) relative to the centroid, the applied moments, and the area moment of inertia.&lt;/p&gt;
+
+&lt;p&gt;\(\sigma_{yy}=\left(x-x_c\right)\frac{I_XM_Z+I_{XZ}M_X}{I_XI_Z-I_{XZ}^2}+\left(z-z_c\right)\frac{I_Z M_X+I_{XZ}M_Z}{I_X I_Z-I_{XZ}^2}\)
+ &lt;/p&gt;
+&lt;h3 id=&quot;shear-in-beams&quot;&gt;Shear in Beams&lt;/h3&gt;
+
+&lt;p&gt;For the beam pictured below, a force applied in the x-direction causes axial compression in the top of the I-beam (\sigma_{xx}) and tension in the bottom. By force balance, this also causes a shear force, \sigma_{xy} in the cross section of the beam. It is important to remember that changes in the axial stress cause changes in the shear stress.&lt;/p&gt;
+
+&lt;p&gt;This shear stress at a location y along the cross section of the beam can be calculated with the equation below. Where c is the y location of the centroid of the beam. Note that we assume the applied shear force does not twist the section. This is true only if the force is applied through the shear center.&lt;/p&gt;
+
+\[\sigma_{xy}=\frac{V_y}{I_zt}\int_{y1}^{c}ydA\]
+
+&lt;p&gt;The above equation is useful for beams with thick walled sectioned. When the beam consists instead of stringers and thin webbed members, we can simplify the problem and avoid using integrals.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Solving problems with shear flows allow us to do away with stresses for a while and work directly with the forces, which makes our life a bit easier&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;shear-flow&quot;&gt;Shear Flow&lt;/h3&gt;
+
+&lt;p&gt;Consider now if the cross section of the beam consists of stringers and thin webbed members. The stringers are going to carry all the axial stresses, while the webs take care of shear stresses. Since the webs are thin, the shear stress will be constant along these webs. 
+This leads to an idea called “shear flow”. Note that this concept is not defined for thick walled sections. We define shear flow in terms of the shear stress in a web, and the thickness. It is in units of force per length. At each stringer, there is a change in shear flow equal to the bending moment carried by that stringer.&lt;/p&gt;
+
+\[q=\tau_{xy}\ast thickness\]
+
+\[F_y=\int_{0}^{y}qdy\]
+
+\[F_x=\int_{0}^{x}qdx\]
+
+&lt;p&gt;Integrating the shear flow (Force/Length) along the web yields the total shear force.&lt;/p&gt;
+
+&lt;h3 id=&quot;shear-center&quot;&gt;Shear Center&lt;/h3&gt;
+&lt;p&gt;The shear center is defined as the point where if a shear force is applied, no additional torsion is created. For symmetric sections, the shear center coincides with the centroid. For non-symmetric &amp;amp; open sections, the shear center can be found as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Find the shear flows in each beam. Since the section is open, you have the boundary conditions needed to find them directly.&lt;/li&gt;
+  &lt;li&gt;Select an arbitrary point in your section, and the find the torque around that point due to the shear flows. A is the area swept out by the web.&lt;/li&gt;
+&lt;/ol&gt;
+
+\[T=2Aq\]
+
+&lt;ol&gt;
+  &lt;li&gt;The shear center is the point where if the shear force is applied, it will cancel out the torque due to the shear flow around the point you’ve selected.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;process-to-solving-simple-1-box-problem-closed-section&quot;&gt;Process to Solving Simple 1 Box Problem (Closed Section)&lt;/h3&gt;
+&lt;p&gt;When the section is closed, you do not have the boundary conditions necessary to immediately solve for the shear flows. Instead you’ll impose a torque balance condition at the end and then solve a system of equations.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Find the moment of inertia of the cross section.&lt;/li&gt;
+  &lt;li&gt;Assume that the shear force is applied at the shear center. Find the bending moment (force/length) carried by each stringer with the following equation.&lt;/li&gt;
+&lt;/ol&gt;
+
+\[∆P= V_yI_zA\]
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;At each stringer, the change in shear flow (force/length) is equal to the bending moment carried by that stringer. Use this to relate all the shear flow variables.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Since we’ve assumed the shear force is initially applied at the shear center, we can find the location of the shear center by imposing that the torque due to the shear flows must be equal to the restoring torque caused by the shear force at the shear center.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+\[T=\sum2Aq=V_x\ast e\]
+
+&lt;ol&gt;
+  &lt;li&gt;Now find the additional shear flow caused by the shear force being applied away from the shear center. Assuming all walls are of the same thickness, the shear flow will be constant in every wall in this pure torsion case.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;6.Add the two resultant shear flows together to get the total.&lt;/p&gt;
+
+&lt;h3 id=&quot;shear-flow-in-multiple-cells&quot;&gt;Shear Flow in Multiple Cells&lt;/h3&gt;
+&lt;p&gt;When multiple cells are adjacent to one another, you must apply a compatibility constraint, which states that the twist in both cells are equal.&lt;/p&gt;
+
+\[\theta_1=\frac{q_1}{A_1}∆S_i t_i\]
+
+&lt;p&gt;Where q1 is the shear flow due to pure torsion in the cell, A1 is the area of the cell, Si is the length of the wall, and ti is the thickness of the wall. When you have two cells that are adjacent, you must account for the shear flow in the shared wall due to the other cell. Setting the two twist equations equal and then writing the torque equation below provides you with two equations to solve for the two unknowns.&lt;/p&gt;
+
+\[\theta_2=\theta_1=\frac{q_1}{A_1}∆S_it_i-q2A_1∆S_{shared}t_{shared}\]
+
+\[T=2 A_1 q_1+2 A_2 q_2\]
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h3 id=&quot;principle-stress&quot;&gt;Principle Stress&lt;/h3&gt;
+
+&lt;p&gt;The magnitude of axial stress and shear stress will change depending on the coordinate frame used. The principle stresses are the components of the stress tensor such that when we change into a particular frame, the shear components go to zero. These stresses act in the principal directions. 
+The 3D stress tensor is presented below. The eigenvectors, n1, n2, and n3 represent the principal directions, and the eigenvalues are the principle stresses in each of those directions.&lt;/p&gt;
+
+&lt;p&gt;\(\left[\begin{matrix}\sigma_{xx}&amp;amp;\tau_{xy}&amp;amp;\tau_{xy}\\\tau_{xy}&amp;amp;\sigma_{yy}&amp;amp;\tau_{yz}\\\tau_{xz}&amp;amp;\tau_{yz}&amp;amp;\sigma_{zz}\\\end{matrix}\right]=0\)
+ &lt;/p&gt;
+&lt;h3 id=&quot;torsion&quot;&gt;Torsion&lt;/h3&gt;
+
+&lt;h3 id=&quot;von-mises-stress-criteria&quot;&gt;Von Mises Stress Criteria&lt;/h3&gt;
+
+&lt;h3 id=&quot;pressure-vessels&quot;&gt;Pressure Vessels&lt;/h3&gt;
+&lt;p&gt;For a cylindrical pressure vessel of radius \(r\) and a (thin) wall of thickness \(t\), we can define the hoop stress and axial stress using the equations below:&lt;/p&gt;
+
+\[\sigma_{Hoop}=\frac{Pr}{t}\]
+
+\[\sigma_{Axial}=\frac{Pr}{2t}\]
+
+&lt;h3 id=&quot;fastener-shear-failure-methods&quot;&gt;Fastener Shear Failure Methods&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Tearout&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bypass&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Fastener Shear&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bearing&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;thread-failure&quot;&gt;Thread Failure&lt;/h3&gt;
+
+&lt;h3 id=&quot;beam-jointssplicing&quot;&gt;Beam Joints/Splicing&lt;/h3&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Finite Element Methods</title>
+   <link href="https://ludavid15.github.io//fem/"/>
+   <updated>2021-06-10T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//fem</id>
+   <content type="html">&lt;p&gt;Finite element methods, or FEM, is a strategy for modeling complex shapes as a series of small blocks. The math of FEM is foundational for modern computational structural analysis.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;spring-model-of-elements&quot;&gt;Spring Model of Elements&lt;/h3&gt;
+
+&lt;p&gt;All elements are modeled as a spring, that is, exterior force is equal to the stiffness matrix times the displacement at the ends of the spring.&lt;/p&gt;
+
+\[F=Ku\]
+
+&lt;h3 id=&quot;shape-functions&quot;&gt;Shape Functions&lt;/h3&gt;
+
+&lt;p&gt;Shape functions transform the displacements at nodes to the displacement at a point in space. In the equation below, the shape functions are a function of position.&lt;/p&gt;
+
+\[\left[\begin{matrix}\begin{matrix}u\\v\\w\\\end{matrix}\\\end{matrix}\right]=\left[\begin{matrix}\begin{matrix}N_1&amp;amp;0&amp;amp;0\\0&amp;amp;N_2&amp;amp;0\\0&amp;amp;0&amp;amp;N_3\\\end{matrix}&amp;amp;\begin{matrix}\ldots&amp;amp;N_1&amp;amp;0&amp;amp;0\\\ldots&amp;amp;0&amp;amp;N_2&amp;amp;0\\\ldots&amp;amp;0&amp;amp;0&amp;amp;N_3\\\end{matrix}\\\end{matrix}\right]\left[\begin{matrix}u_1\\v_1\\w_1\\\ldots\\u_n\\v_n\\w_n\\\end{matrix}\right]\]
+
+&lt;h3 id=&quot;b-matrix&quot;&gt;B Matrix&lt;/h3&gt;
+&lt;p&gt;The “B” Matrix relates the strains to the displacements at the nodes. This depends primarily on the strain equations of the specific case, and so there is not a universal B matrix.&lt;/p&gt;
+
+&lt;h3 id=&quot;stress&quot;&gt;Stress&lt;/h3&gt;
+
+&lt;p&gt;The stress can be found once the nodal displacements, B matrix, and D matrix are known.&lt;/p&gt;
+
+\[\sigma=DBq\]
+
+&lt;p&gt;\(\sigma=D\epsilon\)
+ &lt;/p&gt;
+&lt;h3 id=&quot;shape-functions-1&quot;&gt;Shape Functions&lt;/h3&gt;
+&lt;p&gt;Shape functions transform values at the nodes into values in space. The shape function corresponding to a node should be equal to one if given the coordinate of that node. The sum of all node functions should be also equal to one. From the previous two requirements, we can also understand that at a node, one shape function will evaluate to one, and all others will be zero.&lt;/p&gt;
+
+&lt;h4 id=&quot;1d&quot;&gt;1D&lt;/h4&gt;
+
+&lt;p&gt;2 Node Shape Function&lt;/p&gt;
+
+\[N_1=\frac{x_2-x}{x_2-x_1}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ N_2=\frac{x-x_1}{x_2-x_1}\]
+
+&lt;p&gt;3 Node Shape Functions&lt;/p&gt;
+
+\[N_1=\frac{(x-x_2)(x-x_3)}{(x_1-x_2)(x_1-x_3)}\]
+
+\[N_1=\frac{(x-x_1)(x-x_3)}{(x_2-x_1)(x_2-x_3)}\]
+
+\[N_1=\frac{(x-x_1)(x-x_2)}{(x_3-x_1)(x_3-x_2)}\]
+
+&lt;h4 id=&quot;2d&quot;&gt;2D&lt;/h4&gt;
+
+&lt;p&gt;3 Node (Standard Triangle Elements)&lt;/p&gt;
+
+\[N_1=\xi\ \ \ \ \ \ N_2=\eta\ \ \ {\ \ \ \ N}_3=1-\xi-\eta\]
+
+&lt;p&gt;4 Node (Standard Quad Elements)&lt;/p&gt;
+
+\[N_i=\frac{1}{4}\left(1+{\xi\xi}_i\right)\left(1+\eta\eta_i\right)\]
+
+&lt;p&gt;8 Node (Standard Higher Order Quad Elements)&lt;/p&gt;
+
+\[N_{i,corners}=\frac{1}{8}\xi\eta(\xi+\xi_i)(\eta+\eta_i)\]
+
+\[N_{i,\xi=0}=\frac{1}{8}\eta(1-\xi^2)(\eta+\eta_i)\]
+
+\[N_{i,\eta=0}=\frac{1}{8}\xi(1-\eta^2)(\xi+\xi_i)\]
+
+&lt;h4 id=&quot;3d&quot;&gt;3D&lt;/h4&gt;
+
+&lt;p&gt;4 Node (Standard Tetrahedral Element)&lt;/p&gt;
+
+\[N_1=\xi\ \ \ \ \ \ {\ \ \ \ \ \ \ N}_2=\eta\ \ \ {\ \ \ \ \ \ \ \ N}_3=\chi\ \ \ \ \ \ \ N_4=1-\xi-\eta-\chi\]
+
+&lt;p&gt;8 Node (Standard Brick Element)&lt;/p&gt;
+
+\[N_i=\left(\frac{1}{4}\right)\left(1+{\xi\xi}_i\right)\left(1+\eta\eta_i\right)\left(1+{\chi\chi}_i\right)\]
+
+&lt;h3 id=&quot;numerical-integration&quot;&gt;Numerical Integration&lt;/h3&gt;
+
+&lt;p&gt;A definite integral from negative one to one can be approximated numerically by evaluating the function at different points between the range and multiplying by a “weight”. This is represented as:&lt;/p&gt;
+
+\[I=\ \int_{-1}^{1}f\left(x\right)dx=w_1f\left(x_1\right)+w_2f\left(x_2\right)+\ldots\]
+
+&lt;p&gt;Depending on the order of the polynomial that is the function f(x) numerical integration can yield exact results. The number of integration points this requires is related to the order of the polynomial by the following expression:&lt;/p&gt;
+
+\[n=\ \frac{P+1}{2}\]
+
+&lt;p&gt;Note that the bounds must range from negative one to positive one. It is possible to do this numerical approximation for higher dimensional problems. New integration points are the permutation of integration point values for the 1-dimensional case.&lt;/p&gt;
+
+&lt;h3 id=&quot;stiffness-matrix&quot;&gt;Stiffness Matrix&lt;/h3&gt;
+
+&lt;p&gt;The following matrix can be found using potential energy minimization or calculated directly through analytical means.&lt;/p&gt;
+
+\[K=\ \int{B^TDBdV}\]
+
+&lt;h3 id=&quot;force-vector&quot;&gt;Force Vector&lt;/h3&gt;
+&lt;p&gt;There can be multiple things that add terms to the force vector. The final force vector used in the spring expression will be the sum of the following:&lt;/p&gt;
+
+\[f_{body}=\ \int{N^TbdV}\]
+
+\[f_{traction}=\ \int{N^TTdA}\]
+
+\[f_{thermal}=\int{B^TD}\epsilon_{thermal}dV\]
+
+&lt;p&gt;Where ɛthermal is the thermal strain and is typically equal to αΔT.&lt;/p&gt;
+
+&lt;h3 id=&quot;mass-matrix&quot;&gt;Mass Matrix&lt;/h3&gt;
+
+&lt;p&gt;The sum of all elements in a mass matrix should be equal to the mass of the element you are modeling.&lt;/p&gt;
+
+\[M=\ \rho\int{N^TNdV}\]
+
+&lt;h3 id=&quot;natural-frequency&quot;&gt;Natural Frequency&lt;/h3&gt;
+
+&lt;p&gt;Eigenvalues of the Mass Matrix and Stiffness matrix when the forcing term is set to zero.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Optimization Fundamentals</title>
+   <link href="https://ludavid15.github.io//optimization/"/>
+   <updated>2021-06-10T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//optimization</id>
+   <content type="html">&lt;p&gt;The underlying principle of an optimization is pretty straightfoward - find the best way to do something. Best can mean fastest, safest, most efficient, shortest or thousands of other things, but the common denominator is that we are looking for the most (or least) of something. Mathematically then, this is pretty simple: we’re solving for a maximum.&lt;/p&gt;
+
+&lt;p&gt;Finding this maximum or minumum is pretty straightfoward, but more often then not, an optimization attempt fails not because we couldn’t find the correct min/max, but because our question was posed poorly in the first place.&lt;/p&gt;
+
+&lt;p&gt;For example, if you wanted to get from point A to point B, the fastest way to do this is probably not the cheapest way. In fact, these things likely trade off with one another. When you frame this mathematically, how do you weigh each objective? Lacking a common unit or denomination, it’s like comparing apples to oranges.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;mathematics&quot;&gt;Mathematics&lt;/h3&gt;
+
+&lt;p&gt;An optimization problem is generally stated as follows:&lt;/p&gt;
+
+\[f\left(x\right)\rightarrow min,\ \ \ \ x\in R^n\]
+
+&lt;p&gt;Subject to equality constraints and inequality constraints&lt;/p&gt;
+
+\[g\left(x\right)=0\]
+
+\[h\left(x\right)\le0\]
+
+&lt;h3 id=&quot;np-completeness&quot;&gt;NP Completeness&lt;/h3&gt;
+&lt;p&gt;The NP completeness of a problem is a measure of its computational complexity.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-lagrangian&quot;&gt;The Lagrangian&lt;/h3&gt;
+&lt;p&gt;A useful equation in constrained optimization problems. The unconstrained minimizer of the Lagrangian is equal to the constrained minimizer.&lt;/p&gt;
+
+\[\mathcal{L}=q_0f\left(x\right)+p^Tg\left(x\right)+q^Th(x)\]
+
+&lt;p&gt;Lagrange multipliers have a price interpretation, that is, the Lagrange multiplier leading an inequality function is the sensitivity of the final objective cost to slackness in that inequality.&lt;/p&gt;
+
+\[h\left(x\right)+b\le0\\]
+
+\[q=\ \frac{\partial f^\ast}{\partial b}\]
+
+&lt;h3 id=&quot;the-hamiltonian&quot;&gt;The Hamiltonian&lt;/h3&gt;
+&lt;p&gt;If the Hamiltonian does not explicitly depend on time, then the Hamiltonian remains constant along the optimal trajectory. Furthermore, if the terminal conditions and cost also do not depend on time, then the Hamiltonian is equal to zero for all time along the trajectory. The vector p contains what are known as adjoint variables.&lt;/p&gt;
+
+\[H=\ p_0L(t,x,u)+p^Tf(t,x,u)\]
+
+&lt;h3 id=&quot;fritz-john-necessary-conditions&quot;&gt;Fritz-John Necessary Conditions&lt;/h3&gt;
+
+&lt;p&gt;The following necessary conditions must hold at any local or global minimizer. The first condition is known as stationarity, the second is dual feasibility, and the third is complementary slackness.&lt;/p&gt;
+
+\[\nabla_xL\left(x^\ast,\ p,\ q_0,\ q\right)=0\]
+
+\[q\geq0\]
+
+\[q^Th\left(x^\ast\right)=0\]
+
+&lt;p&gt;In addition to the above, all constraints must be met, the Lagrange multipliers cannot all be zero, and qo is either 0 or 1. In the case where all constraints are linearly independent, we can know that qo takes the value of one. This unique scenario leads to the KKT conditions.&lt;/p&gt;
+
+&lt;h3 id=&quot;karush-khan-tucker-kkt-necessary-conditions&quot;&gt;Karush Khan Tucker (KKT) Necessary Conditions&lt;/h3&gt;
+&lt;p&gt;Identical to the FJ necessary conditions, with the exception that qo is taken to be equal to 1. This is most often the case. Note that for KKT to apply, the constraints must be linearly independent of one another (LICQ – Linear Independence of Constraints Qualification). The conditions become:&lt;/p&gt;
+
+\[\nabla f\left(x\right)+\sum_{i=1}^{m}{p_i\nabla g_i\left(x\right)}+\sum_{i=1}^{l}{q_i\nabla h_i\left(x\right)}=0\]
+
+\[q\geq0\]
+
+\[q^Th\left(x^\ast\right)=0\]
+
+&lt;p&gt;From a conceptual standpoint, the set of constraints define a feasible region of the design space. If the minimizer exists on one of these boundaries, then the inequality constraint must be equal to zero. Thus, complementary slackness is met. Consider however, there may be other inequality constraints which are not limiting the minimizer. These constraints are not “active” at the minimum, and their Lagrange multipliers must have the value of 0 to satisfy complementary slackness. The set of all nonzero Lagrange multipliers is known as the “active” set. In other words, this is a list of all the inequality constraints which are equal to zero at the minimizer.&lt;/p&gt;
+
+&lt;h3 id=&quot;hessian&quot;&gt;Hessian&lt;/h3&gt;
+
+&lt;p&gt;The hessian of a function is the second order derivative. It takes the form of an n x n matrix for a problem with n design variables. Typically abbreviated as just Hf.&lt;/p&gt;
+
+\[\nabla^2f=\left[\begin{matrix}\frac{\partial^2f}{\partial x_{11}^2}&amp;amp;\cdots&amp;amp;\frac{\partial^2f}{\partial x_{1n}^2}\\\vdots&amp;amp;\ddots&amp;amp;\vdots\\\frac{\partial^2f}{\partial x_{n1}^2}&amp;amp;\cdots&amp;amp;\frac{\partial^2f}{\partial x_{nn}^2}\\\end{matrix}\right]\]
+
+&lt;h2 id=&quot;finite-dimension-optimization-algorithms&quot;&gt;Finite Dimension Optimization Algorithms&lt;/h2&gt;
+&lt;h3 id=&quot;line-search&quot;&gt;Line Search&lt;/h3&gt;
+
+&lt;p&gt;Line search algorithms look for the minimum function value for a given search direction. Once a minimum is found, a new search direction is selected, and the line search is repeated. The first direction is typically the steepest descent direction, or the negative of the gradient.&lt;/p&gt;
+
+\[-\nabla f=steepest\ descent\]
+
+&lt;p&gt;It is not always required to find the exact minimum in the search direction. In fact, doing so is often more computationally expensive than it is worth. Instead of requiring the Strong Wolfe conditions, another option is to use sufficient decrease, where if the objective function is found to have decreased enough, it is accepted as the new position.&lt;/p&gt;
+
+&lt;h3 id=&quot;armijo-rule&quot;&gt;Armijo Rule&lt;/h3&gt;
+&lt;p&gt;Conditions for accepting a new point in a line search.&lt;/p&gt;
+
+\[f\left(x+ap\right)\le f\left(x\right)+c_1ap^T\nabla f(x)\]
+
+&lt;p&gt;Where a is the step length, p is the search direction, and c_1 is some scaling term that is less than 1. c_1 is usually selected to be very small.&lt;/p&gt;
+
+&lt;h3 id=&quot;strong-wolfe-condition&quot;&gt;Strong Wolfe Condition&lt;/h3&gt;
+&lt;p&gt;In addition to Armijo rule, the strong Wolfe conditions add another requirement on the local curvature. c_2 is usually selected to be much larger than c_1, but still less than 1.&lt;/p&gt;
+
+\[\left|p^T\nabla f(x+ap)\right|\le\ c_2\left|p^T\nabla f(x)\right|\]
+
+&lt;h3 id=&quot;conjugate-gradient&quot;&gt;Conjugate Gradient&lt;/h3&gt;
+&lt;p&gt;Conjugate gradient improves line search convergence by providing a better alternative for the search direction than steepest descent. It retains information about the previous descent direction in the direction update for the next search.&lt;/p&gt;
+
+\[p_k=-\nabla f_k+\beta_kp_{k-1}\]
+
+\[\beta_k=\frac{\nabla f_k^T\nabla f_k}{\nabla f_{k-1}^T\nabla f_k}\]
+
+&lt;p&gt;Where p is the search direction. Conjugate gradient avoids the zig-zagging behavior that can occur when using steepest descent.&lt;/p&gt;
+
+&lt;h3 id=&quot;newtons-method&quot;&gt;Newton’s Method&lt;/h3&gt;
+
+&lt;p&gt;Newton’s method makes a local quadratic approximation of the function and goes to the minimum. Requires second order differentiable functions in order to work but has the fastest convergence. The step (i.e. the next point is calculated as x + s) in every iteration is calculated as:&lt;/p&gt;
+
+\[s_k=-H_k^{-1}\nabla f_k\]
+
+&lt;p&gt;Where H is the hessian of the function calculated at that location. For a quadratic function, a minimum is found in a single step. However, because an exact hessian may not be available, the Hessian is typically approximated using the local gradients. This is known as a “Quasi-Newton Method”. BFGS is one such method for approximating the local hessian. It is also possible that the hessian is not positive definite, in which case the search direction is not a descent direction, and it is possible to end at a maximum or saddle point. As with SQP, a line search is frequently performed on top of the search direction once it has been calculated to ensure we are not blindly accepting the update.&lt;/p&gt;
+
+&lt;h3 id=&quot;trust-regions&quot;&gt;Trust Regions&lt;/h3&gt;
+&lt;p&gt;This is an alternative to the line search method and helps account for non-positive definite hessian matrices. Effectively, the trust region sets a maximum range on how far a Newton step can take the minimizer point. Then, using this fixed step distance, the search direction is picked which minimizes the function (in contrast to a line search, which fixes the search direction and searches for the step distance).&lt;/p&gt;
+
+&lt;h3 id=&quot;penalty-methods&quot;&gt;Penalty Methods&lt;/h3&gt;
+&lt;p&gt;Penalty methods provide a way to use unconstrained optimization techniques for constrained optimization problems. While straightforward, penalty methods have poor numerical performance and are generally not used anymore. Sequential quadratic programming is a better way to solve constrained optimization problems.&lt;/p&gt;
+
+&lt;h3 id=&quot;sequential-quadratic-programming&quot;&gt;Sequential Quadratic Programming&lt;/h3&gt;
+&lt;p&gt;SQP is the current state of the art method for solving constrained continuously differentiable optimization problems. The general problem that it solves is:&lt;/p&gt;
+
+&lt;p&gt;Minimize:&lt;/p&gt;
+
+\[\mathcal{L}=f\left(x,u,t\right)+\lambda h\left(x,u,t\right)+\mu g(x,u,t)\]
+
+&lt;p&gt;Subject to:&lt;/p&gt;
+
+\[h\left(x,u,t\right)=0\]
+
+\[g\left(x,u,t\right)\le0\]
+
+&lt;p&gt;It is effectively a Newton’s method application to solving the unconstrained Lagrangian equation and can be derived by application of KKT to any generic problem. It makes local quadratic approximations of the design variables and Lagrange multipliers, then repeats. At every step, the system to be solved:&lt;/p&gt;
+
+\[\left[\begin{matrix}\nabla_{xx}^2\mathcal{L}&amp;amp;\left[\nabla h\right]^T\\\nabla h&amp;amp;0\\\end{matrix}\right]\bullet\delta X=\left[\begin{matrix}-\nabla_x\mathcal{L}\\-h\\\end{matrix}\right]\]
+
+&lt;p&gt;Where \(\delta X\) is a stack up of all the design variables and the Lagrange multipliers, and represents the update (i.e. it should be added to the previous set of X values). It is possible and sometimes necessary to perform a line search in this direction to enable better convergence.&lt;/p&gt;
+
+&lt;h3 id=&quot;gradient-calculation&quot;&gt;Gradient Calculation&lt;/h3&gt;
+
+&lt;p&gt;The method of gradient calculation can have a large impact the accuracy, and hence convergence speed and robustness of the solver. Finite difference is the most straightforward and makes a local linear approximation. Accuracy increases with decreasing step size, up through numerical precision limits, typically on the order of 10e-6. FD also requires at least two function evaluations per term in the gradient.&lt;/p&gt;
+
+\[df\cong\frac{f\left(x+h\right)-f(x)}{h}\]
+
+&lt;p&gt;Complex step eliminates the subtraction step and provides a better approach with more accuracy, but still requires one function evaluations per term in the gradient.&lt;/p&gt;
+
+\[df\cong Im[fx+ih]h\]
+
+&lt;p&gt;Algorithmic differentiation, or sometimes known as automatic differentiation is similar to taking an analytical gradient but is performed line by line on the code of the objective function. AD derivates are exact and require zero function evaluations but are limited in regard to where they can be applied. Developers intending to use AD later on should understand ahead of time the types of code that cannot be passed through an AD tool and write their objective function accordingly. For python, the module Autograd provides an easy and useful tool for applying AD to obtain the first order gradient or second order Hessian.&lt;/p&gt;
+
+&lt;h3 id=&quot;gradient-free-methods&quot;&gt;Gradient Free Methods&lt;/h3&gt;
+&lt;p&gt;These methods avoid the calculation of a gradient. For this reason, they are more robust to non-continuous objective functions and constraints. Unfortunately, this also means that gradient free methods scale very poorly for problems of very many variables. There are a multitude of different gradient free algorithms, but two of the most popular are the genetic algorithm and Nelder-mead methods.&lt;/p&gt;
+
+&lt;p&gt;Nelder-mead is a simplex method, where a simplex is defined as an N dimensional polyhedron formed form triangles. In 2D, it is a triangle, in 3D it is a tetrahedron, etc.&lt;/p&gt;
+
+&lt;h3 id=&quot;metaheuristics&quot;&gt;Metaheuristics&lt;/h3&gt;
+&lt;p&gt;Refers generally to a class of optimization methods that are designed to perform “well enough”. These typically can provide good solutions, but in a limited capacity and does not guarantee a perfect solution.&lt;/p&gt;
+
+&lt;p&gt;These strategies make relatively few assumptions about the problem nature and aim to be generally applicable. A common metaheuristic strategy is to implement a form of stochastic optimization. Some examples of metaheuristic optimization include:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Ant colony optimization&lt;/li&gt;
+  &lt;li&gt;Genetic and evolutionary algorithms&lt;/li&gt;
+  &lt;li&gt;Iterated local searches&lt;/li&gt;
+  &lt;li&gt;Simulated annealing&lt;/li&gt;
+  &lt;li&gt;Tabu search&lt;/li&gt;
+&lt;/ol&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Trajectory Optimization</title>
+   <link href="https://ludavid15.github.io//trajoptimization/"/>
+   <updated>2021-06-07T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//trajectoryOptimization</id>
+   <content type="html">&lt;p&gt;This is a subset within the broader field of optimization. There are a few details which make this subject unique:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Trajectories occur in 3D dimensional space, meaning that there should be x(t), y(t), and z(t).&lt;/li&gt;
+  &lt;li&gt;The variables to be optimized optimize is the control input as a function of time. That is, u(t).&lt;/li&gt;
+  &lt;li&gt;Trajectories are continuous time problems. Problems can be solved as continuous time or can be discretized and solved as a finite dimensional optimization problem.&lt;/li&gt;
+  &lt;li&gt;There are equations of motion which govern the effect of the control input u to the state variables x.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;general-optimization-problem-statement&quot;&gt;General Optimization Problem Statement&lt;/h3&gt;
+&lt;p&gt;The problem statement in flight trajectory optimization is a specialized version of the problem statement for a generic optimization problem:&lt;/p&gt;
+
+\[J=K\left(t_1,\ x_1\right)+\int_{t_0}^{t_1}L\left(t,x,u\right)dt\]
+
+&lt;p&gt;Where K is known as the terminal cost, while L is known as an incremental cost. The one in the subscript indicates the value at the final time. The problem is subject to equations of motion, equality constraints, and inequality constraints.&lt;/p&gt;
+
+\[\dot{x}=f\left(t,x,u\right)\]
+
+\[g\left(t,x,u\right)=0\]
+
+\[h\left(t,x,u\right)\le0\]
+
+&lt;h3 id=&quot;solution-strategies&quot;&gt;Solution Strategies&lt;/h3&gt;
+&lt;p&gt;There are three approaches for solving a continuous time trajectory optimization problem. These are:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Dynamic Programming* – using sufficient conditions to derive a control law (i.e. a function of the state and time)&lt;/li&gt;
+  &lt;li&gt;Indirect Methods – apply Pontryagin Maximum Principle (which provide necessary conditions) and solve the resulting two-point boundary value problem.&lt;/li&gt;
+  &lt;li&gt;Direct Methods – discretize the trajectory and solve as a constrained finite dimensional optimization problem. This is also known as transcription.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;*Note that dynamic programming can also be used to solve discrete (i.e. finite dimensional optimization problems). The principle of both is the same, just with slightly modified steps.&lt;/p&gt;
+
+&lt;h3 id=&quot;discrete-time-optimal-control-problems&quot;&gt;Discrete Time Optimal Control Problems&lt;/h3&gt;
+
+&lt;p&gt;In a discrete time optimal control problem, the trajectory is divided into a series of nodes, where at each node the vehicle has some state (i.e. position, velocity, angle, etc.) and control input. The problem statement can be rewritten in the following form:&lt;/p&gt;
+
+\[J=K\left(x_N\right)+\sum_{k=0}^{N-1}{L(x_k,u_k,k})\]
+
+\[x_{k+1}=f(x_k,u_k,k)\]
+
+&lt;p&gt;The set of necessary conditions can be expressed as follows&lt;/p&gt;
+
+\[p_k=\nabla_{x_k}H_k\]
+
+\[\nabla_{u_k}H_k=0\]
+
+\[p_N=\nabla_{x_N}K(x_N)\]
+
+&lt;p&gt;If the Hamiltonian is convex in u, then the stationary condition becomes necessary and sufficient for the optimal control sequence to a pointwise minimizer of the Hamiltonian.&lt;/p&gt;
+
+&lt;h3 id=&quot;collocation&quot;&gt;Collocation&lt;/h3&gt;
+
+&lt;p&gt;This is a discretization method whereby the trajectory is divided into nodes, and both the state variables and controls are free (i.e. to be optimized by the optimizer). The state variables are chosen such that they equations of motions are satisfied. The total number of design variables is expressed below:&lt;/p&gt;
+
+\[X=\left[\begin{matrix}x_o\\\vdots\\x_N\\u_o\\\vdots\\u_{N-1}\\\end{matrix}\right]\]
+
+&lt;p&gt;In the above expression, u is the control vector at every node, while x is the state vector at every node. There can be multiple values within a single state vector or control vector (i.e. position and velocity in 3D space = 6 variables in each state vector). The equations of motion are applied as equality constraints on the components of the input vector.&lt;/p&gt;
+
+&lt;h3 id=&quot;shooting-methods&quot;&gt;Shooting Methods&lt;/h3&gt;
+&lt;p&gt;Whereas collocation methods approximate the trajectory curve, shooting methods are simulation based. There are two types of shooting methods: single shooting, and multiple shooting. Single shooting estimates the entire trajectory as one arc, while multiple shooting approximates the trajectory as a spline of multiple arcs, and then must satisfy continuity and constraint equations to join those arcs together.&lt;/p&gt;
+
+&lt;p&gt;Classification of Optimal Control Problem Types
+Problems formatted in one type can be transformed into another format fairly easily.&lt;/p&gt;
+
+&lt;h4 id=&quot;mayers-problem&quot;&gt;Mayer’s Problem&lt;/h4&gt;
+&lt;p&gt;A variation of optimal control problem where there is no incremental cost&lt;/p&gt;
+
+\[J=K(x(t_1),\ t_1)\]
+
+&lt;h4 id=&quot;lagranges-problem&quot;&gt;Lagrange’s Problem&lt;/h4&gt;
+&lt;p&gt;A variation of optimal control problem where there is no terminal cost&lt;/p&gt;
+
+\[J=\int_{t_0}^{t_1}L(t,x,u)dt\]
+
+&lt;h4 id=&quot;bolzas-problem&quot;&gt;Bolza’s Problem&lt;/h4&gt;
+&lt;p&gt;The optimal control problem where neither the terminal nor incremental cost are zero.&lt;/p&gt;
+
+&lt;p&gt;\(J=K(t_1,\ x_1)+\int_{t_0}^{t_1}L(t,x,u)dt\)
+ &lt;/p&gt;
+&lt;h3 id=&quot;pontryagin-maximum-principle&quot;&gt;Pontryagin Maximum Principle&lt;/h3&gt;
+&lt;p&gt;PMP provides a series of necessary conditions for continuous time optimal control problems. These principles bear a strong resemblance to the KKT necessary conditions. There are four components, outlined below:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Expression of the Hamiltonian – where L is the incremental cost expression&lt;/li&gt;
+&lt;/ol&gt;
+
+\[H=p_0 L(t,x,u)+ p^T f(t,x,u)\]
+
+&lt;ol&gt;
+  &lt;li&gt;Maximum Principle* – the control minimizer is a minimizer of the Hamiltonian&lt;/li&gt;
+&lt;/ol&gt;
+
+\[H\left(u^\ast,x,t\right)\le H(u,x,t)\]
+
+&lt;ol&gt;
+  &lt;li&gt;Adjoint Equations – time rate of change as it relates to the Hamiltonian&lt;/li&gt;
+&lt;/ol&gt;
+
+\[\dot{p}=-\nabla_xH(x,u,p,t)\]
+
+&lt;ol&gt;
+  &lt;li&gt;Transversality Conditions – constraints on the endpoints&lt;/li&gt;
+&lt;/ol&gt;
+
+\[p\left(t_1\right)-p_o\nabla_xK\left(x\left(t_1\right),t_1\right)=\ \sum_{i=1}^{j}{\alpha_i\nabla_x}g_i(x,u,t)\]
+
+\[-H\left(x\left(t_1\right),u\left(t_1\right),p\left(t_1\right),t_1\right)-p_o\nabla_xK=\sum_{i=1}^{j}{\alpha_i\nabla_t}g_i(x,u,t)\]
+
+&lt;ul&gt;
+  &lt;li&gt;In the case of time varying control constraints, u must be a minimizer of the integral of the Hamiltonian over the duration of the time of flight.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If an optimization problem has some initial and end condition, the transversality conditions are expressed in terms of partials with respect to the terminal state and initial state.&lt;/p&gt;
+
+\[p\left(t_1\right)-p_o\frac{\partial K}{\partial x_1}\left(x\left(t_0\right),x\left(t_1\right),\ t_0,t_1\right)=\ \sum_{i=1}^{j}\alpha_i\frac{\partial g_i}{\partial x_1}(x\left(t_0\right),x\left(t_1\right),\ t_0,t_1)\]
+
+\[p\left(t_0\right)-p_o\frac{\partial K}{\partial x_0}\left(x\left(t_0\right),x\left(t_1\right),\ t_0,t_1\right)=\ \sum_{i=1}^{j}\alpha_i\frac{\partial g_i}{\partial x_0}(x\left(t_0\right),x\left(t_1\right),\ t_0,t_1)\]
+
+&lt;p&gt;In general, the PMP statement of the necessary conditions assumes that the optimal control is a piecewise continuous function. Note that α is a vector of constant values. The following constraints must also apply:&lt;/p&gt;
+
+\[p_0\in\left\{0,1\right\}\]
+
+\[\left(p_0,\alpha\right)\neq0\]
+
+&lt;p&gt;Application of the PMP necessary conditions results in a two-point boundary value problem to be solved.&lt;/p&gt;
+
+&lt;h3 id=&quot;dynamic-programming-discrete-time&quot;&gt;Dynamic Programming (Discrete Time)&lt;/h3&gt;
+
+&lt;p&gt;The central goal of dynamic programming is to determine a control policy, that is, the control u as a function of the state and time which will produce the optimal trajectory. This is achieved through construction of the cost-to-go function, otherwise known as the Bellman Function.&lt;/p&gt;
+
+\[V_N=K(x)\]
+
+\[V_k=\min_{u\in U}{L(k,\ x,u)+V_{i+1}(k,x,u)}\]
+
+&lt;p&gt;The Bellman function must be computed backward in time from the terminal cost. The optimal control at a time instance k, is a function of the incremental cost at k, and the Bellman function at k+1.&lt;/p&gt;
+
+\[u_k^\ast= \arg\min \ L\left(k,\ x,u\right)+V_{k+1}\left(k,x,u\right)\]
+
+&lt;p&gt;To solve the dynamic programming problem, follow these steps and iterate backwards in time.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Start with \(V_N\)&lt;/li&gt;
+  &lt;li&gt;Calculate \(Q_{N-1}=L_{N-1}+V_N\)&lt;/li&gt;
+  &lt;li&gt;Find the optimal control as: \(u_{N-1}^\ast=argmin(Q_{N-1})\)&lt;/li&gt;
+  &lt;li&gt;Use \(u_{N-1}^*\) to calculate \(V_{N-1}\)&lt;/li&gt;
+  &lt;li&gt;Repeat&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Unfortunately, discrete dynamic programming scales very poorly. The number of operations increases exponentially with the number of states. Typically, DDP strategies are limited to problems with up to 5 states variables.&lt;/p&gt;
+
+&lt;h3 id=&quot;dynamic-programming-continuous-time&quot;&gt;Dynamic Programming (Continuous Time)&lt;/h3&gt;
+&lt;p&gt;In the continuous time case, we can show that the Bellman function must satisfy the following partial differential equation.&lt;/p&gt;
+
+\[\min_{u\in U}{L\left(k,\ x,u\right)+\frac{\partial V(t,x)}{\partial t}+\frac{\partial V(t,x)}{\partial x}f(t,x,u)}\]
+
+\[V\left(t_1,x\right)=K(x)\]
+
+&lt;p&gt;This equation is known as the Hamilton-Jacobi-Bellman PDE. The solution can be found by finding the control which minimizes the Bellman PDE, in terms of the partials the Bellman function and x and t. Then plug this expression back into the PDE and solve for the Bellman function. Once the Bellman equation has been found, it can be plugged back into the expression for optimal control to obtain the optimal control. A continuously differential solution to the PDE has met sufficient conditions for optimality. Note that in system of multiple dimensions, the partial of V with respect to each state variable is a vector.&lt;/p&gt;
+
+&lt;p&gt;The gradient of V with respect to all the state variables is in fact the adjoint variable vector used by PMP. In other words, the adjoint variable vector at time t, is exactly the sensitivity of the optimal cost to go changes in the state at the nominal optimal trajectory. This is similar to the idea of the price interpretation of Lagrange multipliers.&lt;/p&gt;
+
+\[p\left(t\right)=\ \left(\frac{\partial V}{\partial x}\right)^T\]
+
+&lt;h3 id=&quot;sufficient-conditions-for-existence-of-optimal-control-in-continuous-time-problems&quot;&gt;Sufficient Conditions for Existence of Optimal Control in Continuous Time Problems&lt;/h3&gt;
+
+&lt;p&gt;If there exists an admissible control, i.e. u(t) exists within a set Ω where Ω is compact, that is a measurable function of time and it results in a state trajectory that satisfies the terminal condition, then there exists an optimal control. Assuming Lipshitz continuity holds for the equations of motion.&lt;/p&gt;
+
+&lt;h3 id=&quot;singular-arcs--singular-control&quot;&gt;Singular Arcs &amp;amp; Singular Control&lt;/h3&gt;
+
+&lt;p&gt;Singular arcs occur when minimization of the Hamiltonian with respect to the control does not provide any useful information about the control. This can occur for instance, if the adjoint variable in front of the control is equal to zero. Singular arcs must be defined over a real time interval and cannot simply occur at a time instance.&lt;/p&gt;
+
+&lt;p&gt;Define a function of time, ρ(t), that is the coefficient in front of the control term. As an example, consider the following Hamiltonian.&lt;/p&gt;
+
+\[H=p^T\left(f\left(x\right)+g\left(x\right)\ast u\right)\]
+
+\[\rho\left(t\right)=p^T\left(t\right)\ast g\left(x\left(t\right)\right)\]
+
+&lt;p&gt;Then the optimal control on a singular arc can be found by taking even derivatives of rho with respect to time.&lt;/p&gt;
+
+\[\frac{\partial^{2q}\rho}{\partial t^{2q}}=h_1\left(p,x\right)+h_2\left(p,x\right)u=0\]
+
+\[u^\ast(t)=\ -\frac{h_1(p^\ast(t),\ \ x^\ast(t))}{h_2(p^\ast(t),\ \ x^\ast(t))}\]
+
+&lt;p&gt;Note that in a single input linear time invariant system, if the pair A, b and are controllable*, then singular arcs do not exist.&lt;/p&gt;
+
+\[\dot{x}=Ax+Bu\]
+
+&lt;h3 id=&quot;kelleys-necessary-conditions-for-optimality-of-singular-control&quot;&gt;Kelley’s Necessary Conditions for Optimality of Singular Control&lt;/h3&gt;
+&lt;p&gt;Any candidate solution obtained via the previous method must be checked to obey the following condition. Kelley’s conditions must be satisfies to show the existence of singular arcs on an optimal control path.&lt;/p&gt;
+
+\[\frac{\partial}{\partial u}\frac{d^k}{dt^k}\rho=0\ \ \ \ for\ k=0,\ \ldots2q-1\]
+
+\[\left(-1\right)^{q+1}\frac{\partial}{\partial u}\frac{d^{2q}}{dt^{2q}}\rho\le0\]
+
+&lt;h3 id=&quot;neighboring-extremal-optimal-control&quot;&gt;Neighboring Extremal Optimal Control&lt;/h3&gt;
+
+&lt;p&gt;Assuming that the optimal control and trajectory have already been computed, this method provides a way to correct the optimal control without having to recompute it from scratch if the initial state is changed. It is a feedback law taking the following form:&lt;/p&gt;
+
+\[u\left(t\right)=u^\ast\left(t\right)+\Gamma\left(T\right)\left(x\left(t\right)-x^\ast\left(t\right)\right)\]
+
+&lt;p&gt;Where \(\Gamma\left(T\right)\) is a time varying gain \(T=t_1-t\). Neighboring extremal optimal control maintains the PMP necessary conditions approximately to the first order.&lt;/p&gt;
+
+&lt;h3 id=&quot;linear-quadratic-optimal-control-problems&quot;&gt;Linear Quadratic Optimal Control Problems&lt;/h3&gt;
+&lt;p&gt;This is a special format of optimal control problem where the equations of motion can be represented as a linear time invariant system, and the objective function is represented as a quadratic equation.&lt;/p&gt;
+
+\[\dot{x}=Ax+Bu\]
+
+\[J=\ \frac{1}{2}x^TSx+\frac{1}{2}\int{x^TQx+u^TRu\ dt}\]
+
+&lt;p&gt;These systems can be analyzed in continuous time, discrete time, or through dynamic programming.&lt;/p&gt;
+
+&lt;h3 id=&quot;continuous-time-lqr&quot;&gt;Continuous Time LQR&lt;/h3&gt;
+&lt;p&gt;Begin by defining the Hamiltonian. It is also possible to show that \(p_0\) must take the value of one. Then apply PMP.&lt;/p&gt;
+
+\[H=\ \frac{1}{2}p_0\left(x^TQx+u^TRu\ \right)+p^T(Ax+Bu)\]
+
+\[u=\ -R^{-1}B^Tp\]
+
+\[\dot{p}=-Qx-A^Tp\]
+
+\[\dot{x}=Ax-BR^{-1}B^Tp\]
+
+\[p\left(t_1\right)=S_fx(t_1)\]
+
+&lt;p&gt;The adjoint equation and the equations of motion can be re-expressed in matrix form. Then the state transition matrices for linear systems are applied.&lt;/p&gt;
+
+\[\left[\begin{matrix}\dot{x}\\\dot{p}\\\end{matrix}\right]=\left[\begin{matrix}A&amp;amp;-BR^{-1}B^T\\-Q&amp;amp;-A\\\end{matrix}\right]\left[\begin{matrix}x\\p\\\end{matrix}\right]=H\left[\begin{matrix}x\\p\\\end{matrix}\right]\]
+
+\[\left[\begin{matrix}\Phi_{11}(t,t_1)&amp;amp;\Phi_{12}(t,t_1)\\\Phi_{21}(t,t_1)&amp;amp;\Phi_{22}(t,t_1)\\\end{matrix}\right]=\exp(H\left(t-t_1\right))\]
+
+&lt;p&gt;We seek a solution to p(t) to the above necessary conditions in the form:&lt;/p&gt;
+
+\[p\left(t\right)=P\left(t\right)x\left(t\right)\]
+
+&lt;p&gt;Where P(t) is a time varying n x n matrix to be determined. Using this above format, it is plugged back into the adjoint equation expression to get the following result which must be satisfied by P(t).&lt;/p&gt;
+
+\[\dot{P}\left(t\right)+PA-PBR^{-1}B^TP+Q+A^TP=0\]
+
+&lt;p&gt;This is known as the &lt;strong&gt;Ricatti&lt;/strong&gt; equation. The following results are obtained&lt;/p&gt;
+
+\[P\left(t_1\right)=\ S_f\]
+
+\[P\left(t\right)=\left(\Phi_{21}+\Phi_{22}S_f\right)\left(\Phi_{11}+\Phi_{21}S_f\right)^{-1}\]
+
+\[u^\ast(t)=\ -R^{-1}B^TP\left(t\right)x^\ast(t)\]
+
+&lt;p&gt;Where \(x^\ast(t)\) is the solution to:&lt;/p&gt;
+
+\[\dot{x}\left(t\right)=Ax\left(t\right)-BR^{-1}B^TP\left(t\right)x\left(t\right),\ \ \ \ x\left(t_0\right)=\ x_0\]
+
+&lt;p&gt;Note that the above differential Ricatti equation must be solved backwards in time. A transformation of the P matrix can allow the problem to be solved forward in time.&lt;/p&gt;
+
+\[\widetilde{P}\left(\tau\right)=P\left(t_1-\tau\right)\]
+
+\[\widetilde{P}\left(0\right)=S_f\]
+
+\[\frac{\partial\widetilde{P}(\tau)}{\partial\tau}=-\frac{\partial P\left(t_1-\tau\right)}{\partial t}=A^T\widetilde{P}+\widetilde{P}A+\widetilde{P}BR^{-1}B^T\widetilde{P}+Q\]
+
+&lt;p&gt;In the infinite horizon case, if (A, B) is controllable and (A, C) is observable, then in the limit as t1 tends to infinity, P(t) will converge to a symmetric positive definite matrix P that satisfies the Algebraic Riccatti Equation.&lt;/p&gt;
+
+\[PA-PBR^{-1}B^TP+Q+A^TP=0\]
+
+&lt;p&gt;If (A, B) is stabilizable and (A, C) is observable/detectable, where Q = CTC, DARE has a unique positive definite/semi definite solution.&lt;/p&gt;
+
+&lt;h3 id=&quot;discrete-time-lqr&quot;&gt;Discrete Time LQR&lt;/h3&gt;
+&lt;p&gt;A set of continuous time equations of motion can be converted to a discrete time set of step update equations as follows:&lt;/p&gt;
+
+\[\dot{x}=Ax+Bu\]
+
+\[x_{k+1}=A_dx_k+B_du_k\]
+
+\[A_d=e^{A\Delta T}\]
+
+\[B_d=A^{-1}\left(e^{A\Delta T}-I\right)B\]
+
+&lt;p&gt;In the following equations, the discrete time Ad is simply abbreviated as A. Given the initial conditions, x0, it is possible to express the state at any step as a function of the initial conditions and control input at each step (i.e. iterating forward in time through each step)&lt;/p&gt;
+
+\[x_k=A^kx_0+\sum_{j=1}^{k-1}{A^{k-1-j}Bu_j}\]
+
+&lt;p&gt;Apply the discrete time necessary conditions to this system.&lt;/p&gt;
+
+\[H_k=\frac{1}{2}x_k^TQx_k+\frac{1}{2}u_k^TRu_k+p_{k+1}^T(Ax_k+Bx_k)\]
+
+&lt;p&gt;The transversality conditions become:&lt;/p&gt;
+
+\[p_N=\nabla_{x_N}K=\ S_fx_N\]
+
+&lt;p&gt;Iterate backward in time to find the series of S and F at every time step.&lt;/p&gt;
+
+\[S_N=S_f\]
+
+\[F_{k-1}=-\left(R+B^TS_kB\right)^{-1}B^TS_kA\]
+
+\[S_{k-1}=Q+A^TS_kA+A^TS_kBF_{k-1}\]
+
+\[u_k^\ast=\ F_kx_k\]
+
+&lt;p&gt;Which follows the form of a time varying state feedback control law. The adjoint variables at every step can be found similarly as:&lt;/p&gt;
+
+\[p_k^\ast=\ S_kx_k\]
+
+&lt;p&gt;The optimal control and trajectory can then be constructed forward in time beginning with xo and updating according to the optimal control at every point. As an aside, the cost to go comes out in this expression as follows:&lt;/p&gt;
+
+\[J^\ast\left(x_k,k\right)=\ \frac{1}{2}x_k^TS_kx_k\]
+
+&lt;p&gt;Note that the derivative of the cost to go is equal to the corresponding adjoint variables at k. This result implies that the adjoint variables are sensitivities of the cost to go with respect to changes in the state.&lt;/p&gt;
+
+&lt;h3 id=&quot;steady-state-discrete-lqr&quot;&gt;Steady State Discrete LQR&lt;/h3&gt;
+&lt;p&gt;As N tends to infinity, Sk may converge to a matrix S, where S satisfies the “steady state” version of the above equations.&lt;/p&gt;
+
+\[S=Q+A^TSA+A^TSBF\]
+
+\[F=\ -\left(R+B^TSB\right)^{-1}B^TSA\]
+
+&lt;p&gt;The above can be written in as a function of only S, otherwise known as the discrete Riccati Algebraic Equation (DARE).&lt;/p&gt;
+
+\[S=Q+A^TSA-A^TSB\left(R+B^TSB\right)^{-1}B^TSA\]
+
+&lt;p&gt;The equivalent form of DARE for the infinite horizon LQR is&lt;/p&gt;
+
+\[S=Q+A^TSA-A^TS\left(I+{BR^{-1}B}^TS\right)^{-1}A\]
+
+&lt;h3 id=&quot;continuous-time-minimum-time-linear-time-invariant-optimal-control-problems&quot;&gt;Continuous Time, Minimum Time, Linear Time-Invariant Optimal Control Problems&lt;/h3&gt;
+
+&lt;p&gt;Take a time invariant system, with given initial and terminal conditions. The objective is to minimize the transfer time.&lt;/p&gt;
+
+\[\dot{x}=Ax+Bu\]
+
+\[x\left(t_0\right)=x_0\]
+
+\[x\left(t_1\right)=0\]
+
+&lt;p&gt;The Hamiltonian is defined, and the adjoint equations are expressed as follows:&lt;/p&gt;
+
+\[H=\ p_0+p^T\left(Ax+Bu\right)\]
+
+\[\dot{p}\left(t\right)=\ -\left(\frac{\partial H}{\partial x}\right)^T=-A^Tp(t)\]
+
+\[u_k^\ast=-sign(p^Tb_k)\]
+
+&lt;p&gt;Where bk is an element in the B matrix. The optimal control assumes only the value of +1 and -1. The time instances at which the control switches from one to the other are called control switch points. Each component of the optimal control has a finite number of switch points. If all the eigenvalues of the matrix A are real-valued then the number of switch points of each component is at most n-1, where n is the dimension of A&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Twelve Tone Equal Temperatment</title>
@@ -1754,11 +2983,11 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 
 &lt;p&gt;Stoke’s first problem covers the scenario of an impulsively started plate.&lt;/p&gt;
 
-\[\frac{u(y,t)}{U}=1-\erf{\left(\frac{\eta}{2}\right)}\]
+\[\frac{u(y,t)}{U}=1-erf{\left(\frac{\eta}{2}\right)}\]
 
-\[\erf{\left(x\right)}=\ \frac{2}{\sqrt\pi}\int_{0}^{x}{e^{-x^2}dx\]
+\[erf{\left(x\right)}=\ \frac{2}{\sqrt\pi}\int_{0}^{x}{e^{-x^2}}dx\]
 
-\[\eta=\ \frac{y}{\sqrt{\nu t}}}\]
+\[\eta=\ \frac{y}{\sqrt{\nu t}}\]
 
 &lt;p&gt;As time increases, the penetration height will increase. At infinite time, the entire fluid moves with velocity U. The above solution represents a non-dimensionalized solution, where η represents the ratio of position to penetration height scaling.&lt;/p&gt;
 
@@ -1766,13 +2995,13 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 
 &lt;p&gt;Motion of the bottom plate is defined as the following:&lt;/p&gt;
 
-\[U\left(t\right)=\ U_o\cos\funcapply(\omega t)\]
+\[U\left(t\right)=\ U_o\cos(\omega t)\]
 
 &lt;p&gt;The velocity profile above the plate and the stress at the wall can be solved to show the following:&lt;/p&gt;
 
-\[u\left(y,t\right)=U_oe^{-y\sqrt{\sfrac{\omega}{2v}}}cos\left(\omega t-y\sqrt{\sfrac{\omega}{2v}}\right)\]
+\[u\left(y,t\right)=U_oe^{-y\sqrt{\frac{\omega}{2v}}}cos\left(\omega t-y\sqrt{\frac{\omega}{2v}}\right)\]
 
-\[\tau_{wall}=\mu\frac{\partial u}{\partial y}=U_o\sqrt{\rho\mu\omega}sin\left(\omega t-\sfrac{\pi}{4}\right)\]
+\[\tau_{wall}=\mu\frac{\partial u}{\partial y}=U_o\sqrt{\rho\mu\omega}sin\left(\omega t-\frac{\pi}{4}\right)\]
 
 &lt;p&gt;The amplitude of the velocity oscillation decreases with distance from the plate. The ratio of viscosity to frequency determines the penetration height. Note that this ratio also affects a phase lead/lag, which changes with height, represented within the cosine term.&lt;/p&gt;
 
@@ -1790,25 +3019,27 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 
 \[Q=\ \frac{\pi R^4}{8\mu}\left(\frac{\partial P}{\partial x}\right)\]
 
-\[C_f=-\frac{\tau_w}{\sfrac{(1}{2})\rho{U_{ave}}^2}=\frac{16}{Re_D}\]
+\[C_f=-\frac{\tau_w}{\frac{(1}{2})\rho{U_{ave}}^2}=\frac{16}{Re_D}\]
 
 &lt;p&gt;Note that this may not be valid for short pipes, flow near the entrance, and fluids with low viscosity, or flow in a wide pipe. If flow is turbulent, you should switch over to the Darcy-Weisbach approach.&lt;/p&gt;
 
 &lt;h3 id=&quot;more-realistic-pipe-flow-analysis&quot;&gt;More Realistic Pipe Flow Analysis&lt;/h3&gt;
 
-&lt;p&gt;For flow (both laminar and turbulent) in a pipe of constant diameter D, we can express the pressure across a given length as:
-\(∆PL=fd(12)ρU2D\)&lt;/p&gt;
+&lt;p&gt;For flow (both laminar and turbulent) in a pipe of constant diameter D, we can express the pressure across a given length as:&lt;/p&gt;
 
-&lt;p&gt;Where fd is the Darcy friction factor. In the laminar regime, the Darcy Friction factor is equal to \(\sfrac{f_D=64}{Re}\). For turbulent regime values, the friction factor is dependent on the surface roughness. Look up results in a Moody Diagram.&lt;/p&gt;
+\[\frac{∆P}{L}=f_d\frac{(1/2)ρU^2}{D}\]
+
+&lt;p&gt;Where fd is the Darcy friction factor. In the laminar regime, the Darcy Friction factor is equal to \(\frac{f_D=64}{Re}\). For turbulent regime values, the friction factor is dependent on the surface roughness. Look up results in a Moody Diagram.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;To be inserted, Moody Diagram&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;More commonly, pressure loss per unit length is replaced with head loss per unit length, S, where head loss is calculated as:
-\(∆h= ρg∆P\)&lt;/p&gt;
+&lt;p&gt;More commonly, pressure loss per unit length is replaced with head loss per unit length, S, where head loss is calculated as:&lt;/p&gt;
 
-\[S=∆hL=fd12gV2D\]
+\[∆h= ρg∆P\]
+
+\[S=\frac{∆h}{L}=f_d\frac{1}{2g}\frac{V^2}{D}\]
 
 &lt;p&gt;Note that the friction factor in the turbulent regime can be calculated with turbulent flow theory and is not simply an empiric fit!&lt;/p&gt;
 
@@ -1836,7 +3067,7 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 
 \[u=\ \frac{\partial\psi}{\partial y}\]
 
-\[v=\ -\frac{\partial\psi}{\partial x}\]
+\[v=-\frac{\partial\psi}{\partial x}\]
 
 \[\psi\left(y,x\right)=\ U_\infty l\left(x\right)f(\eta)\]
 
@@ -1846,11 +3077,11 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 
 &lt;p&gt;Here, l(x) is proportional the height of the boundary layer, making η a normalized value for our position in the boundary layer. In addition, f(η) and η are both dimensionless. We should also be able to see that:&lt;/p&gt;
 
-\[f\left(\eta\right)\cong{\psi\]
+\[f\left(\eta\right)\cong \psi\]
 
-\[f}^\prime\left(\eta\right)\cong{u,\ v\]
+\[f^\prime\left(\eta\right) \cong u,\ v\]
 
-\[f}^{\prime\prime}\left(\eta\right)\cong\tau\]
+\[f^{\prime\prime}\left(\eta\right)\cong \tau\]
 
 &lt;p&gt;Re-writing the Prandtl boundary layer equations in terms of our similarity variables, we find an exact solution:&lt;/p&gt;
 
@@ -1936,7 +3167,7 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 
 \[\frac{\partial(r_ou)}{\partial x}+r_o\frac{\partial v}{\partial y}=0\]
 
-\[\rho\left(u\frac{\partial u}{\partial x}+v\frac{\partial u}{\partial y}\right)=\rho u_e\frac{\partial u_e}{\partialx}+\mu\frac{\partial^2u}{\partial y^2}\]
+\[\rho\left(u\frac{\partial u}{\partial x}+v\frac{\partial u}{\partial y}\right)=\rho u_e\frac{\partial u_e}{\partial x}+\mu\frac{\partial^2u}{\partial y^2}\]
 
 &lt;p&gt;The above equations can be transformed into an equivalent set of 2D boundary layer equations with the Mangler Transformation of the coordinate frame.&lt;/p&gt;
 
@@ -2000,7 +3231,7 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 
 &lt;p&gt;For any steady state fluid in motion, we can define stagnation/total properties. These reflect the actual values if the fluid were brought to rest isentropically.&lt;/p&gt;
 
-\[\frac{T_{Total}}{T}=\ \left(\frac{P_{Total}}{P}\right)^\sfrac{\gamma-1}{\gamma}=\left(\frac{\rho_{Total}}{\rho}\right)^{\gamma-1}=1+\left(\frac{\gamma-1}{2}\right)M^2\]
+\[\frac{T_{Total}}{T}=\ \left(\frac{P_{Total}}{P}\right)^\frac{\gamma-1}{\gamma}=\left(\frac{\rho_{Total}}{\rho}\right)^{\gamma-1}=1+\left(\frac{\gamma-1}{2}\right)M^2\]
 
 &lt;p&gt;Note that the stagnation properties are frame dependent and thus not intrinsic thermodynamic properties.&lt;/p&gt;
 
@@ -2021,7 +3252,7 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 &lt;p class=&quot;message&quot;&gt;
 Another way to think of waves is as the propagation of information. Here&apos;s an example you might be familiar with: take a water droplet hitting the surface of a pond. Waves carry information about the event (the falling water) outwards. The speed at which the wave moves out is the speed at which this information is carried. 
 
-Every fluid has a local &quot;acoustic speed&quot; or **speed of sound**. This is the maximum speed at which waves can propagate. So here&apos;s a question for you, what happens when a disturbing even (like an airplane) moves faster than the local speed of sound? 
+Every fluid has a local &quot;acoustic speed&quot; or speed of sound. This is the maximum speed at which waves can propagate. So here&apos;s a question for you, what happens when a disturbing even (like an airplane) moves faster than the local speed of sound? 
 &lt;/p&gt;
 
 &lt;h3 id=&quot;acoustic-wave-theory&quot;&gt;Acoustic Wave Theory&lt;/h3&gt;
@@ -2029,19 +3260,19 @@ Every fluid has a local &quot;acoustic speed&quot; or **speed of sound**. This i
 &lt;p&gt;An acoustic wave is the propagation of wave with small magnitude through a medium. This wave travels at the local acoustic speed of the medium and is adiabatic (i.e. the energy of the medium before and after the wave has passed through remains constant). 
 Given the initial conditions about the displacement and rate, the solution for the propagation of that disturbance can be found (d’Alembert’s Formula).&lt;/p&gt;
 
-\[∆px,t=0=fx\]
+\[∆p(x,t=0)=f(x)\]
 
-\[∂∆p∂tx,t=0=gx\]
+\[\frac{∂∆p}{∂t}(x,t=0)=g(x)\]
 
-\[∆px,t=fx-a∞t+fx+a∞t2+12a∞x-a∞tx+a∞tgsds\]
+\[∆p(x,t)=\frac{f(x)-a_∞t+f(x+a_∞t)}{2}+\frac{1}{2a_∞} \int_{x-a_∞t}^{x+a_∞t} gs \ ds\]
 
 &lt;p&gt;The fundamental result is that the initial disturbance splits into a left running and right running portion. The fluid velocity, pressure and density can also be related to one another.&lt;/p&gt;
 
-\[∆u= ±a∞ρ∞∆ρ\]
+\[∆u= ±\frac{a_∞}{ρ_∞}∆ρ\]
 
-\[∆ρ= ±1a∞2∆P\]
+\[∆ρ= ±\frac{1}{a_∞^2}∆P\]
 
-\[∆ρ= ±1ρ∞a∞∆P\]
+\[∆ρ= ±\frac{1}{ρ_∞a_∞}∆P\]
 
 &lt;p&gt;In deriving the above equation, we’ve assumed small amplitudes, meaning that the local speed of sound remains constant through the disturbance.&lt;/p&gt;
 
@@ -2094,9 +3325,9 @@ Derivation of Normal Shock Equations:&lt;/p&gt;
 
 \[M_{n,1}=M_1\sin{\left(\sigma\right)}\]
 
-\[M_2=\ \frac{M_{2n}}{\sin\funcapply(\sigma-\delta)}\]
+\[M_2=\ \frac{M_{2n}}{\sin(\sigma-\delta)}\]
 
-\[\tan{\left(\delta\right)}=2\cot\funcapply(\sigma)\left[\frac{M_1^2{sin}^2\left(\sigma\right)-1}{M_1^2\left(\gamma+cos\left(2\sigma\right)\right)+2}\right]\]
+\[\tan{\left(\delta\right)}=2\cot(\sigma)\left[\frac{M_1^2{sin}^2\left(\sigma\right)-1}{M_1^2\left(\gamma+cos\left(2\sigma\right)\right)+2}\right]\]
 
 &lt;p&gt;Unless there is some downstream flow feature to support the strong shock, the weak solution is typically what develops. 
 The presence of a shock introduces a sudden change in the fluid properties, including pressure. This leads to the creation of wave drag.&lt;/p&gt;
@@ -2267,7 +3498,7 @@ Several models have been proposed to find an equivalent transition point. Wazzan
 
 \[\frac{1}{\Lambda^{1/2}}=2.0\log_{10}{\left({Re}_D\Lambda^\frac{1}{2}\right)}-0.8\]
 
-\[Notably the following trends come out:\]
+&lt;p&gt;Notably the following trends come out:&lt;/p&gt;
 
 \[\tau\approx0.0396\rho^{3/4}\mu^{7/4}D^{-1/4}{U_{avg}}^{7/4}\]
 

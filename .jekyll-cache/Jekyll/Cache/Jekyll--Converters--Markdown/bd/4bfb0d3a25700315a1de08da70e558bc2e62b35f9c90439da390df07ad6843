@@ -1,0 +1,77 @@
+I"�	<hr />
+
+<div class="posts">
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/controls/">
+        Intro to Control Theory
+      </a>
+    </h2>
+
+    <span class="post-date">15 Jun 2021</span>
+    <p>In previous posts, we explored the field of dynamics, which taught us how to calculate the position, velocity, and acceleration of an object given a set of driving forces. The topic of control theory flips this process around, and seeks an answer to the question: what type of force will produce the desired motion?</p>
+
+    <a href="/notes/controls/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/fundamentalsDynamics/">
+        Fundamentals of Dynamics
+      </a>
+    </h2>
+
+    <span class="post-date">13 May 2021</span>
+    <p>In dynamics, the goal is to predict the position, velocity, and acceleration of rigid bodies as a function of time through the use of Newton’s second law, F=ma. While the basic principle is simple, the key challenge of dynamics involves the definition of reference frames, vectors, and their relationships.</p>
+
+<blockquote>
+  <p>Note that F = ma is not the only way to solve dynamics problems! In the late 1700’s, Joseph-Louis Lagrange introduced an energy conservation strategy, known today as the Euler-Lagrange Equations.</p>
+</blockquote>
+
+
+    <a href="/notes/fundamentalsDynamics/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/kinematics/">
+        Kinematics
+      </a>
+    </h2>
+
+    <span class="post-date">12 May 2021</span>
+    <p>A subset of dynamics, where forces are neglected, and we focus instead on the motion of points and rigid bodies over time. At the core of this topic are a series of rules about positions, velocities, accelerations, and how to find them amid a potentially messy system of reference frames and motion constraints.</p>
+
+
+    <a href="/notes/kinematics/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/dynamicalEquations/">
+        Finally Getting to Dynamics
+      </a>
+    </h2>
+
+    <span class="post-date">11 May 2021</span>
+    <p>We’re almost ready to write down F = ma, but before that, we need to define what F is (a force), and what ma is (an intertial term).</p>
+
+
+    <a href="/notes/dynamicalEquations/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+</div>
+:ET

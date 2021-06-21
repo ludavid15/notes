@@ -7,13 +7,25 @@ except_separator: <!--more-->
 categories: algorithms
 ---
 
-### Fundamentals
+The underlying principle of an optimization is pretty straightfoward - find the best way to do something. Best can mean fastest, safest, most efficient, shortest or thousands of other things, but the common denominator is that we are looking for the most (or least) of something. Mathematically then, this is pretty simple: we're solving for a maximum. 
+
+Finding this maximum or minumum is pretty straightfoward, but more often then not, an optimization attempt fails not because we couldn't find the correct min/max, but because our question was posed poorly in the first place. 
+
+For example, if you wanted to get from point A to point B, the fastest way to do this is probably not the cheapest way. In fact, these things likely trade off with one another. When you frame this mathematically, how do you weigh each objective? Lacking a common unit or denomination, it's like comparing apples to oranges. 
+
+<!--more-->
+
+### Mathematics
 
 An optimization problem is generally stated as follows:
-f\left(x\right)\rightarrow min,\ \ \ \ x\in R^n
-Subject to equality constrains and inequality constraints
-g\left(x\right)=0
-h\left(x\right)\le0
+
+$$f\left(x\right)\rightarrow min,\ \ \ \ x\in R^n$$
+
+Subject to equality constraints and inequality constraints
+
+$$g\left(x\right)=0$$
+
+$$h\left(x\right)\le0$$
 
 ### NP Completeness
 The NP completeness of a problem is a measure of its computational complexity. 
@@ -110,9 +122,15 @@ Penalty methods provide a way to use unconstrained optimization techniques for c
 ### Sequential Quadratic Programming
 SQP is the current state of the art method for solving constrained continuously differentiable optimization problems. The general problem that it solves is:
 
-Minimize:	$$\mathcal{L}=f\left(x,u,t\right)+\lambda h\left(x,u,t\right)+\mu g(x,u,t)$$
-Subject to:    	$$h\left(x,u,t\right)=0$$
-		$$g\left(x,u,t\right)\le0$$
+Minimize:	
+
+$$\mathcal{L}=f\left(x,u,t\right)+\lambda h\left(x,u,t\right)+\mu g(x,u,t)$$
+
+Subject to:    	
+
+$$h\left(x,u,t\right)=0$$
+
+$$g\left(x,u,t\right)\le0$$
 
 It is effectively a Newton’s method application to solving the unconstrained Lagrangian equation and can be derived by application of KKT to any generic problem. It makes local quadratic approximations of the design variables and Lagrange multipliers, then repeats. At every step, the system to be solved:
 
@@ -128,7 +146,7 @@ $$df\cong\frac{f\left(x+h\right)-f(x)}{h}$$
 
 Complex step eliminates the subtraction step and provides a better approach with more accuracy, but still requires one function evaluations per term in the gradient.
 
-$$df\congIm[fx+ih]h$$
+$$df\cong Im[fx+ih]h$$
 
 Algorithmic differentiation, or sometimes known as automatic differentiation is similar to taking an analytical gradient but is performed line by line on the code of the objective function. AD derivates are exact and require zero function evaluations but are limited in regard to where they can be applied. Developers intending to use AD later on should understand ahead of time the types of code that cannot be passed through an AD tool and write their objective function accordingly. For python, the module Autograd provides an easy and useful tool for applying AD to obtain the first order gradient or second order Hessian. 
 
