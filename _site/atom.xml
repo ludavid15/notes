@@ -4,13 +4,386 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-06-20T20:52:26-07:00</updated>
+ <updated>2021-06-21T15:21:11-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Engineering of Aircraft</title>
+   <link href="https://ludavid15.github.io//aircraft/"/>
+   <updated>2021-06-21T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//aircraft</id>
+   <content type="html">&lt;p&gt;This post serves as an overview of various topics pertaining to aircraft performance, design, and aerodynamics.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;h3 id=&quot;basic-equations-of-flight&quot;&gt;Basic Equations of Flight:&lt;/h3&gt;
+
+\[L=\ \frac{1}{2}\rho U^2SC_L\]
+
+\[D=\ \frac{1}{2}\rho U^2SC_D\]
+
+&lt;p&gt;Where \(C_{D,min}\) is the contribution due to parasitic drag. We add on the contribution from induced drag (itself a function of the coefficient of lift) to find the total drag \(C_D\) during flight. Recall that \(\frac{1}{2}\rho U^2\) is defined as the dynamic pressure.&lt;/p&gt;
+
+&lt;p&gt;We’ll also use a capital D and capital L to denote total coefficient of drag and lift for the wing, vs a lowercase d and lowercase l for local coefficient of drag and lift as a function of the angle of attack.&lt;/p&gt;
+
+&lt;h3 id=&quot;drag&quot;&gt;Drag&lt;/h3&gt;
+&lt;p&gt;Three main types of drag: parasitic, induced, and wave. Total drag coefficient is a function of parasitic and induced drag coefficient.&lt;/p&gt;
+
+\[C_D=\ C_{D,min}+\frac{1}{\pi Ae}{C_L}^2\]
+
+&lt;h3 id=&quot;aircraft-performance&quot;&gt;Aircraft Performance&lt;/h3&gt;
+&lt;p&gt;In steady flight, thrust is equal to drag.&lt;/p&gt;
+
+\[Power=Thrust\ast Velocity\]
+
+&lt;h3 id=&quot;rate-of-descent&quot;&gt;Rate of Descent&lt;/h3&gt;
+
+&lt;p&gt;First two equations for rate of descent are used for propeller driven/glider aircraft.&lt;/p&gt;
+
+\[Rate\ of\ Descent\ =\ \sqrt{\frac{W}{S}\frac{2}{\rho}\frac{C_D^2}{C_L^3}}\]
+
+\[V=\ \sqrt{\frac{2W}{\rho S C_L}}\]
+
+&lt;h3 id=&quot;rate-of-climb&quot;&gt;Rate of Climb:&lt;/h3&gt;
+
+&lt;p&gt;First equation is used for a jet (since thrust is constant at different velocities. Second equation is used for propeller aircraft (since power is constant at different velocities).&lt;/p&gt;
+
+\[RC=\ \frac{\left(T_{av}-T_{req}\right)V}{W}\]
+
+\[RC=\ \frac{\left(P_{av}-P_{req}\right)}{W}\]
+
+&lt;p&gt;Climb gradient is calculated as the climb rate divided by the flight speed. Absolute ceiling is defined as the altitude at which RC = 0.&lt;/p&gt;
+
+\[\gamma=\ \frac{RC}{V}\]
+
+&lt;h3 id=&quot;summary-of-lift-coefficients-and-their-uses&quot;&gt;Summary of Lift Coefficients and Their Uses&lt;/h3&gt;
+
+\[Max\ C_L\]
+
+&lt;ul&gt;
+  &lt;li&gt;Stall speed&lt;/li&gt;
+  &lt;li&gt;Lift constrained load factor&lt;/li&gt;
+&lt;/ul&gt;
+
+\[Max \ \frac{C_L^\frac{1}{2}}{C_D}\]
+
+&lt;ul&gt;
+  &lt;li&gt;Max Range for Jets&lt;/li&gt;
+&lt;/ul&gt;
+
+\[Max\ \frac{C_L}{C_D}\]
+
+&lt;ul&gt;
+  &lt;li&gt;Min Drag Condition&lt;/li&gt;
+  &lt;li&gt;Max Climb Rate for Jets&lt;/li&gt;
+  &lt;li&gt;Max Range for Props &amp;amp; Gliders&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Max Endurance for Jets&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+\[C_L=\sqrt{C_{D,0}\pi Ae}\]
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+\[Max\ \frac{C_L^\frac{3}{2}}{C_D}\]
+
+&lt;ul&gt;
+  &lt;li&gt;Min Power Condition&lt;/li&gt;
+  &lt;li&gt;Max Climb Rate for Props&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Max Endurance for Props and Gliders&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+\[C_L=\sqrt{3C_{D,0}\pi Ae}\]
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cruise-performance&quot;&gt;Cruise Performance&lt;/h3&gt;
+
+&lt;p&gt;Range &amp;amp; Endurance for a propeller aircraft.&lt;/p&gt;
+
+\[R=\ \frac{\eta_{propulsive}}{c_p}\frac{C_L}{C_D}ln\left(\frac{W_i}{W_f}\right)\]
+
+\[E=\ \frac{\eta_{propulsive}{C_L}^{3/2}}{c_PC_D}\sqrt{2\rho S}\left(\frac{1}{W_f^{1/2}}-\frac{1}{W_i^{1/2}}\right)\]
+
+&lt;p&gt;Range &amp;amp; Endurance for a jet aircraft.&lt;/p&gt;
+
+\[R=\ \frac{2}{c_t}\frac{C_L^{1/2}}{C_D}\sqrt{\frac{2}{\rho S}}\left({W_0}^{1/2}-{W_f}^{1/2}\right)\]
+
+\[E=\ \frac{1}{c_t}\frac{C_L}{C_D}\ln(\frac{W_0}{W_1})\]
+
+&lt;p&gt;Where \(c_p\) is (power/brake) specific fuel consumption (lbf/shp/hr) and \(\eta_{propulsive}\) is the propeller efficiency. Where \(c_T\) is the thrust specific fuel consumption. (Different from just the power specific fuel consumption).&lt;/p&gt;
+
+&lt;p&gt;Range for a battery powered propeller aircraft&lt;/p&gt;
+
+\[R=\ \left(\frac{C_L}{C_D}\right)\left(\frac{\eta}{W}\right)E\]
+
+&lt;p&gt;In general, we can solve for range with the following equation:&lt;/p&gt;
+
+\[R=\int_{W_f}^{W_i}{\frac{U\ast L}{c_t\ast D}\frac{dW}{W}}\]
+
+&lt;p&gt;In a headwind, aircraft should fly faster to maximize range, while in a tailwind aircraft should fly flower to maximize range.&lt;/p&gt;
+
+&lt;h3 id=&quot;carsons-speed&quot;&gt;Carson’s Speed&lt;/h3&gt;
+
+&lt;p&gt;Highest speed to thrust ratio (also known as optimum cruise). Carson’s speed for a propeller aircraft is the same as velocity for max jet aircraft range. Turns out, endurance speed, range speed, and Carson’s speed are all related by 3^{1/4}.&lt;/p&gt;
+
+&lt;h3 id=&quot;maneuvering&quot;&gt;Maneuvering:&lt;/h3&gt;
+
+&lt;p&gt;We define the loading factor as the ratio of lift to weight. When we turn, our lift vector changes, and so total lift must increase to force balance. At low velocities, max load factor is constrained by how much lift we can produce, while at higher velocities it is constrained by how much thrust we can produce (since there is less lift at low velocities, and more drag at higher velocities).&lt;/p&gt;
+
+\[Turning\ Radius=\ \frac{U^2}{g\sqrt{\eta^2-1}}=\frac{mU^2}{Lsin\phi}\]
+
+\[Turn\ Rate\ \left(w\right)=\ \frac{g\sqrt{\eta^2-1}}{V}\]
+
+\[\eta=\ \frac{Lift}{Weight}\]
+
+\[\eta_{Lift\ Constrained}=\frac{1}{2}\rho U^2\frac{C_{L,max}}{\frac{(W}{S)}}\]
+
+\[\eta_{Thrust\ Constrained}=\frac{L}{D}\left(\frac{T_{Available}}{W}\right)_{Max}\]
+
+&lt;p&gt;Note that when we bank, stall velocity increases (i.e. we need to fly faster when we bank to maintain steady flight). To minimize turn radius &amp;amp; maximize turn rate, decrease wing loading and decrease K (1/πAe).&lt;/p&gt;
+
+&lt;p&gt;Symmetric Pull Up (When L &amp;gt; W) there is a centripetal force felt by the plane. Recall that rate of turn is equal to turn velocity over radius and is still applicable here.&lt;/p&gt;
+
+\[R=\frac{U^2}{g\left(\eta-1\right)}\]
+
+&lt;h3 id=&quot;takeoff-and-landing&quot;&gt;Takeoff and Landing:&lt;/h3&gt;
+
+&lt;p&gt;The longer the runway, the higher our max refusal velocity is (speed above which we can no longer slow down to a stop). A “balanced field length” is one such that this max refusal speed is the same as the required takeoff velocity. Above this velocity, a pilot must take off. Below it, they must slow down.&lt;/p&gt;
+
+&lt;p&gt;Ground roll distance and air distance. Assumes acceleration varies linearly with velocity squared. Equation below uses terms calculated at \(0.7V_{Liftoff}\).&lt;/p&gt;
+
+\[S_G=\frac{(V_{Liftoff}-V_{headwind})^2}{2g\left[\left(\frac{T}{W}-\mu_g\right)-\frac{(C_{D,g}-\mu_gC_{L,g})\bar{q}}{\frac{W}{S}}\right]}\]
+
+\[S_A=\frac{mg}{\left(T-D\right)_{avg}}\left[\frac{V_2^2-{V_{Liftoff}}^2}{2g}+h_{screen}\right]\]
+
+\[S_{G,Landing}=\frac{V_{Touchown}^2}{2a_{0.7Vtouchdown}}+NV_{Touchdown}\]
+
+&lt;h3 id=&quot;stability&quot;&gt;Stability:&lt;/h3&gt;
+&lt;p&gt;Contribution from the wing to the moment about the center of gravity is expressed as:&lt;/p&gt;
+
+\[C_{M,\ CG,Wing}=\ C_{M,\ AC,\ Wing}+C_{L,Wing}\ast(h_{cg}-h_{ac,Wing})\]
+
+\[C_{L,Wing}=\ a_W\alpha\]
+
+&lt;p&gt;Where hcg and hac,Wing is the distance measured from the leading edge of the wing to the plane’s center of gravity and the wing’s aerodynamic center respectively, all normalized by the chord length.&lt;/p&gt;
+
+&lt;p&gt;Similarly, the tail’s contribution to moment about the airplane’s center of gravity is:&lt;/p&gt;
+
+\[C_{M,\ CG,Tail}=\ C_{M,\ AC,\ Tail}-C_{L,Tail}\ast\frac{l_{tail}}{C}\frac{S_{Tail}}{S_{Wing}}\]
+
+\[C_{L,Tail}=\ a_T\alpha\left(1-\varepsilon\right)-a_Ti_t\]
+
+\[Volume\ Coefficient\ \left(V_H\right)=\ \frac{l_{tail}}{C}\frac{S_{Tail}}{S_{Wing}}\]
+
+&lt;p&gt;Due to downwash, the AoA observed by the tail is not the same as the AoA experienced by the wing. Furthermore, the tail is usually positioned at some different AoA anyway, represented here as an additional incidence angle.&lt;/p&gt;
+
+&lt;p&gt;This leads to a net equation for complete Coefficient of Moment about the CG:&lt;/p&gt;
+
+\[C_{M,\ CG}=\ C_{M,\ AC,\ Wing}+a_W\left[{(h}_{cg}-h_{ac,Wing})-V_H\frac{a_T}{a_W}(1-\varepsilon)\right]\alpha+C_{M,\ AC,\ Tail}+V_Ha_Ti_T\]
+
+&lt;p&gt;If we replace hcg with hnuetral point, we can take the derivative of the above expression with respect to angle of attack and set it equal to zero. This will allow us to find the neutral point position.&lt;/p&gt;
+
+\[h_n=\ \frac{h_{ac,w}+h_{ac,t}\frac{S_T}{S_W}\frac{a_T}{a_W}(1-\varepsilon)}{1+\frac{S_T}{S_W}\frac{a_T}{a_W}(1-\varepsilon)}\]
+
+&lt;p&gt;For static stability, CG must be located ahead of the neutral point. The difference between these two points is called the “static margin” and usually defined as a unitless value.&lt;/p&gt;
+
+&lt;h3 id=&quot;trim-flight&quot;&gt;Trim flight:&lt;/h3&gt;
+&lt;p&gt;For trim flight (that is, L=W and Mcg = 0), the moment must be zero at a positive AoA that will allow for lift to equal weight.&lt;/p&gt;
+
+\[C_L=C_{L,\alpha}\ \alpha+C_{L,i}i_t\]
+
+\[C_M=C_{M,AC}+C_{M,\alpha}\alpha+C_{M,i}i_t\]
+
+\[C_{M,\alpha}=C_{L,\alpha}\ \left(h_{cg}-h_n\right)=a_w\left[\left(h_{cg}-h_{ac,wing}\right)-V_H\frac{a_T}{a_W}\left(1-\varepsilon\right)\right]\]
+
+\[C_{L,\alpha}=\ a_W+a_T\frac{S_T}{S_W}\left(1-\varepsilon\right)\]
+
+\[C_{L,i}=\ -a_T\frac{S_T}{S_W}\]
+
+\[C_{M,i}=\ a_TV_H\]
+
+\[i_t=\ -\frac{C_{M,AC}\ C_{L,\alpha}+C_{M,\alpha}C_L}{C_{L,\alpha}C_{M,i}-C_{M,\alpha}C_{L,i}}\]
+
+&lt;p&gt;For actual planes with an elevator, we can deflect the elevator to achieve trim flight. This will introduce another term into our equation for moment coefficient and our term for lift coefficient. We’ll call the elevator deflection angle δ. Note that for the following equation we assume that the contribution to lift from \(C_{L,i}\ast i_t\) is small.&lt;/p&gt;
+
+\[\delta_{elevator}=\ -\frac{C_{M,0}\ C_{L,\alpha}+C_{M,\alpha}C_L}{C_{L,\alpha}C_{M,\delta}-C_{M,\alpha}C_{L,\delta}}\]
+
+&lt;p&gt;C_{M,\delta}=\ 
+C_{L,\delta}=\&lt;/p&gt;
+
+\[C_{M,0}=C_{M,AC}+C_{M,i}i_t\]
+
+&lt;p&gt;Note that CL is the only term here that varies as a function of our flight characteristics. All other coefficients are constants.&lt;/p&gt;
+
+&lt;h3 id=&quot;flapped-airfoils&quot;&gt;Flapped Airfoils&lt;/h3&gt;
+&lt;p&gt;Flaps include ailerons, elevators, and rudders. For smaller angular deflections, we can model it as an equivalent change in the angle attack of the entire airfoil according to this equation:&lt;/p&gt;
+
+\[i_{effective}=\ i_{airfoil}+\tau\delta_{flap}\]
+
+&lt;p&gt;Where τ is a correction coefficient that should be looked up in a table.&lt;/p&gt;
+
+&lt;h3 id=&quot;stick-free-neutral-point&quot;&gt;Stick Free Neutral Point:&lt;/h3&gt;
+&lt;p&gt;When the pilot lets go of the stick, the elevator will fall into an equilibrium position where there is no moment on the hinge. This shifts the neutral point to the “stick free neutral point” (denoted here with an apostrophe).&lt;/p&gt;
+
+\[h_n-{h^\prime}_n=(1-f)V_H\frac{a_T}{a_W}\left(1-\varepsilon\right)\]
+
+\[{a\prime}_T=a_T\left(1-\frac{C_{L,T,\delta}}{\alpha_T}\frac{C_{h,\alpha,T}}{C_{h,\delta}}\right)=\ a_Tf\]
+
+&lt;h3 id=&quot;speed-stability&quot;&gt;Speed Stability&lt;/h3&gt;
+&lt;p&gt;An aircraft having speed stability is one that wants to return to constant speed when the speed changes. This is achieved when cg is in front of the stick free neutral point. (This is because stick force decreases with velocity. Say aircraft speeds up. Stick force will decrease, causing a pitch up, and speed decreases again.)&lt;/p&gt;
+
+&lt;p&gt;Stability Derivatives&lt;/p&gt;
+
+&lt;p&gt;Summary of Aircraft Coordinate Systems
+|L	|Roll Moment	|X	    |Forward Acceleration
+|M	|Pitch Moment	|Y	    |Lateral Acceleration
+|N	|Yaw Moment	    |Z	    |Vertical Acceleration
+|p	|Roll Rate	    |u	    |Forward Velocity
+|q	|Pitch Rate	    |v	    |Lateral Velocity (Side Slip)
+|r	|Yaw Rate	    |w	    |Vertical Velocity&lt;/p&gt;
+
+&lt;p&gt;Some of the more important stability derivatives are presented below, along with a physical explanation.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Damping Terms&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(L_p(-)\)&lt;/td&gt;
+      &lt;td&gt;Roll moment due to roll rate&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;As we start to roll, one wing moves down while the other moves up. This changes angle of attack over each wing and creates a restoring force.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(N_r(-)\)&lt;/td&gt;
+      &lt;td&gt;Yaw moment due to yaw rate&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Side slips angle induces lift on the vertical stabilizer, which creates a restoring yaw moment&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(M_q(-)\)&lt;/td&gt;
+      &lt;td&gt;Pitch moment due to pitch rate&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Angle Dependent Moments&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(L_\beta(-)\)&lt;/td&gt;
+      &lt;td&gt;Roll moment due to side slip angle&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Without a dihedral, side slips angle creates no roll moment. With a dihedral, side slip angle introduces a horizontal component to the velocity vector, and thus changes AoA over each wing to create a restoring force.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(N_\beta(+)\)&lt;/td&gt;
+      &lt;td&gt;Yaw moment due to side slip angle&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Side slip angle induces lift on the tail, thus creating lift that tends to increase yaw moment.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Rate Dependent Moments (But not damping terms)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(L_r(+)\)&lt;/td&gt;
+      &lt;td&gt;Roll moment due to yaw rate&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Positive yaw leads to left wing moving forward while right wing moves backwards, decreasing local velocity. Thus, lift increases over the left and decreases over the right, leading to a positive roll moment.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(N_p(-)\)&lt;/td&gt;
+      &lt;td&gt;Yaw moment due to roll rate&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Roll leads to change in AoA over each wing and change in spanwise drag, which leads to a positive yaw moment. At the same time, since AoA changes, lift vector over each wing also changes direction slightly (leans forward on downward wing due to higher AoA) which leads to a negative yaw moment.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(M_{\dot{\alpha}}(-)\)&lt;/td&gt;
+      &lt;td&gt;Pitch moment due to AoA rate&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;When AoA of the wing changes, downwash changes as well, but lags before reaching the tail. Thus, for a moment the tail experiences the original downwash, resulting in a pitch moment.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;longitudinal-motion&quot;&gt;Longitudinal Motion&lt;/h3&gt;
+&lt;p&gt;To increase equilibrium climb rate, increase engine power. To increase equilibrium speed, increase elevator deflection angle. Longitudinal motion can be represented with following matrix, known as the State Space, which relates the rates to the state vector and control vector.&lt;/p&gt;
+
+&lt;h3 id=&quot;phugoid-mode&quot;&gt;Phugoid Mode&lt;/h3&gt;
+&lt;p&gt;This is the low frequency mode which result from the slow trade between potential and kinetic energy. This is a very uncomfortable experience when occurring in passenger jets and should be mitigated. In this mode, we assume AoA remains constant.&lt;/p&gt;
+
+\[\omega_{natural}=\ \sqrt2\frac{g}{u_0}\]
+
+\[\zeta=\ \frac{1}{\sqrt2}\frac{1}{\frac{L}{D}}\]
+
+&lt;h3 id=&quot;short-period&quot;&gt;Short Period&lt;/h3&gt;
+
+&lt;p&gt;Associated with faster frequency oscillations due to change in AoA. Although it is faster, it is more highly damped.&lt;/p&gt;
+
+\[\omega_{natural}=\ \sqrt{\frac{Z_\alpha M_q}{u_0}-M_\alpha}\]
+
+\[\zeta=\ \frac{-\left(M_q+M_{\dot{\alpha}}+\frac{Z_\alpha}{u_0}\right)}{2\omega_n}\]
+
+&lt;h3 id=&quot;lateral-motion&quot;&gt;Lateral Motion&lt;/h3&gt;
+&lt;p&gt;Roll and Yaw are coupled, but distinct from pitch, hence the two are grouped together as lateral directional motion. As with longitudinal motion, lateral motion can be represented by the state space.&lt;/p&gt;
+
+&lt;h3 id=&quot;roll-mode&quot;&gt;Roll Mode&lt;/h3&gt;
+&lt;p&gt;Consists of pure rolling motion, where other dimensions are constrained. In this scenario roll moment is only affected by role rate and aileron deflection.&lt;/p&gt;
+
+\[L_p=\ \frac{QSb^2C_{lp}}{2I_xu_0}\]
+
+&lt;h3 id=&quot;dutch-roll&quot;&gt;Dutch Roll&lt;/h3&gt;
+
+&lt;p&gt;Note that \(N_p(-)\) &amp;amp; \(L_r(+)\) will tend to drive each other to divergence, however both roll and yaw are also self-damping terms. Thus, this mode is driven primarily by side slipping and yawing motions. It results in higher frequency oscillations in which the wingtips trace out circles. Worsened by wing dihedral.&lt;/p&gt;
+
+&lt;h3 id=&quot;spiral-mode&quot;&gt;Spiral Mode&lt;/h3&gt;
+
+&lt;p&gt;Associated with a banking maneuver that diverges (roll and yaw). Spiral mode is brought about when the bank angle and heading angle (UNRELATED TO RATE!) pass a critical value, and yaw and roll both steadily increase.&lt;/p&gt;
+
+&lt;p&gt;It can be unstable, but since it acts very slowly it is not a huge problem because the pilot can adjust by changing the ailerons. Can also be reduced by adding dihedral to the wings. 
+ &lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Intro to Control Theory</title>
