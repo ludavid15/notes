@@ -1,0 +1,86 @@
+I"þ<hr />
+
+<div class="posts">
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/vision/">
+        Machine Vision
+      </a>
+    </h2>
+
+    <span class="post-date">05 Jul 2021</span>
+    <p>The topic of perception and machine vision can be broken down into a few separate problems.</p>
+
+    <a href="/notes/vision/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/pathPlanning/">
+        Path Planning
+      </a>
+    </h2>
+
+    <span class="post-date">05 Jul 2021</span>
+    <h3 id="sampling-methods">Sampling Methods</h3>
+
+    <a href="/notes/pathPlanning/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/optimization/">
+        Optimization Fundamentals
+      </a>
+    </h2>
+
+    <span class="post-date">10 Jun 2021</span>
+    <p>The underlying principle of an optimization is pretty straightfoward - find the best way to do something. Best can mean fastest, safest, most efficient, shortest or thousands of other things, but the common denominator is that we are looking for the most (or least) of something. Mathematically then, this is pretty simple: weâ€™re solving for a maximum.</p>
+
+    <a href="/notes/optimization/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/trajoptimization/">
+        Trajectory Optimization
+      </a>
+    </h2>
+
+    <span class="post-date">07 Jun 2021</span>
+    <p>This is a subset within the broader field of optimization. There are a few details which make this subject unique:</p>
+
+    <a href="/notes/trajoptimization/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/machineLearning/">
+        Machine Learning
+      </a>
+    </h2>
+
+    <span class="post-date">05 Jun 2021</span>
+    <p>At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.</p>
+
+    <a href="/notes/machineLearning/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+</div>
+:ET

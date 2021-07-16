@@ -1,0 +1,75 @@
+I"q<p>The topic of perception and machine vision can be broken down into a few separate problems.</p>
+
+<ol>
+  <li>Odometry – where are you?*</li>
+  <li>Reconstruction/Mapping – where are things in the world?*</li>
+  <li>Semantics – what are things in the world?</li>
+  <li>Prediction – where will things in the world be?</li>
+</ol>
+
+<p><em>*The coordinate frame is very important! Positions are always defined with respect to something.</em></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Odometry</td>
+      <td>Can be achieved with a number of things such as GPS, SLAM, internal IMU data, etc.</td>
+    </tr>
+    <tr>
+      <td>Reconstruction</td>
+      <td>Requires some sort of information about the environment. This can be achieved with cameras, LiDAR, radar, etc. There are also varying degrees to which we can process and store our internal model of the environment.</td>
+    </tr>
+    <tr>
+      <td>Semantics</td>
+      <td>Typically achieved through the use of machine learning, and some sort of image classification algorithm.</td>
+    </tr>
+    <tr>
+      <td>Prediction</td>
+      <td>Machine learning methods are a</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Isomorphism – a form of transformation that preserves structure.</p>
+
+<p>Homography – an isomorphism between projected images.</p>
+
+<h3 id="image-projections">Image Projections</h3>
+
+<p>Consider a set of points in 3D space, defined by the camera frame. The projection of this point into the image plane can be expressed as:</p>
+
+\[u=f\frac{p_x^w}{p_z^w}\]
+
+\[v=f\frac{p_y^w}{p_z^w}\]
+
+<p>Where \(u\), \(v\) are the coordinates of point P expressed in the image plane, and f is the focal length of the camera. Note that u,\ v are not pixel coordinates.</p>
+
+<p>Note an important characteristic of 2D images is the lack information regarding depth. A machine cannot tell if we are looking at a large object very far away or a close object nearby.</p>
+
+<h3 id="feature-identification">Feature Identification</h3>
+
+<p>Although modern vision systems may incorporate object identification and tracking, a more rudimentary system may begin by tracking local features. This begs the question, what defines a good feature? Long story short, corners are good features, while edges and surfaces are not. 
+Consider a rectangular window centered around some pixel \(\widetilde{x}\). This is a “good” feature if shifting the window in any direction produces a new window that is different from the original. Mathematically, let us define:</p>
+
+\[G=\sum_{W\left(x\right)}^{\ }{\nabla I\left(\widetilde{x}\right)\nabla I\left(\widetilde{x}\right)^\top}\]
+
+<p>Where \(\nabla I\left(\widetilde{x}\right)\) is the gradient of the image. Two common ways of scoring the corner is with either the Harris score, or the Shi-Tomasi score. These are, respectively:</p>
+
+\[C\left(G\right)=det\left(G\right)-ktr\left(G\right)^2\]
+
+\[S\left(G\right)=\lambda_{min}\left(G\right)\]
+
+<p>Where \(\lambda_{min}\) is a function that returns the smallest eigenvalue of the matrix.</p>
+
+<h3 id="random-consensus-sampling-ransac">Random Consensus Sampling (RANSAC)</h3>
+<p>From consecutive image frames, one can perform feature matching, and calculate the change in camera position between frames. However, given a set of matched features (typically called correspondences), there are bound to be a few mis-identified matches. RANSAC provides a method for dealing with these so-called outliers.</p>
+
+<h3 id="feature-tracking">Feature Tracking</h3>
+
+<h3 id="image-segmentation">Image Segmentation</h3>
+
+<p>Broadly, image segmentation is a form of pixel classification. The ultimate goal is to find meaningful groupings. Note that this can be done independently, in combination with, or as step in object classification, which involves finding labels. Traditional image segmentation methods are also not necessarily feature tracking methods or SLAM methods.</p>
+
+<p>Simultaneous Localization and Mapping (SLAM)</p>
+
+:ET

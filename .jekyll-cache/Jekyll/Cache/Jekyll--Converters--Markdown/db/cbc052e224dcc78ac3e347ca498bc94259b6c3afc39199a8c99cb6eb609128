@@ -1,0 +1,17 @@
+I"Þ
+<h3 id="sampling-methods">Sampling Methods</h3>
+
+<p>As the name implies, these methods sample the free space for feasible paths. Active methods like Rapidly-Exploring Random Trees (RRT) expand outwards and only add new paths to existing paths (thus keeping everything connected). Meanwhile passive methods like Probabilistic Roadmaps (PRM) fill the feasible space and then must find a connected path. Sampling methods tend to be the most simple, but most do not guarantee a global optimum, nor do they typically consider things like dynamic feasibility, or visibility.</p>
+
+<h3 id="node-or-heuristic-based-searches">Node or Heuristic Based Searches</h3>
+
+<p>Node based algorithms implement a search strategy to optimize some cost function. In this sense, they represent a form of dynamic programming. Fundamental to this category are methods like Dijkstraâ€™s algorithm, A<em>, and D</em> []. As with sampling methods, the location of the drone and obstacles in the environment must be known ahead of time.</p>
+
+<h3 id="mathematical-modeling">Mathematical Modeling</h3>
+
+<p>Mathematical modeling is a more comprehensive, though computationally expensive strategy. With this approach, the problem is expressed by a cost function subject to kinodynamic constraints. This large optimization problem is then solved using a variety of either direct or indirect methods, i.e. through construction of the Hamiltonian, collocation, shooting methods, etc.</p>
+
+<h3 id="machine-learning-methods">Machine Learning Methods</h3>
+
+<p>These methods involve the use of machine learning to discover an appropriate cost function. Rather than construct a model which tries to capture all the details, data is used to train a network to make the appropriate path decision.</p>
+:ET
