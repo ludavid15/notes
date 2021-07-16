@@ -4,13 +4,267 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-06-21T15:21:11-07:00</updated>
+ <updated>2021-07-05T14:56:50-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Modes</title>
+   <link href="https://ludavid15.github.io//modes/"/>
+   <updated>2021-07-05T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//modes</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Machine Vision</title>
+   <link href="https://ludavid15.github.io//vision/"/>
+   <updated>2021-07-05T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//vision</id>
+   <content type="html">&lt;p&gt;The topic of perception and machine vision can be broken down into a few separate problems.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Odometry – where are you?*&lt;/li&gt;
+  &lt;li&gt;Reconstruction/Mapping – where are things in the world?*&lt;/li&gt;
+  &lt;li&gt;Semantics – what are things in the world?&lt;/li&gt;
+  &lt;li&gt;Prediction – where will things in the world be?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;*The coordinate frame is very important! Positions are always defined with respect to something.&lt;/em&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Odometry&lt;/td&gt;
+      &lt;td&gt;Can be achieved with a number of things such as GPS, SLAM, internal IMU data, etc.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Reconstruction&lt;/td&gt;
+      &lt;td&gt;Requires some sort of information about the environment. This can be achieved with cameras, LiDAR, radar, etc. There are also varying degrees to which we can process and store our internal model of the environment.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Semantics&lt;/td&gt;
+      &lt;td&gt;Typically achieved through the use of machine learning, and some sort of image classification algorithm.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Prediction&lt;/td&gt;
+      &lt;td&gt;Machine learning methods are a&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;image-projections&quot;&gt;Image Projections&lt;/h3&gt;
+
+&lt;p&gt;Consider a set of points in 3D space, defined by the camera frame. The projection of this point into the image plane can be expressed as:&lt;/p&gt;
+
+\[u=f\frac{p_x^w}{p_z^w}\]
+
+\[v=f\frac{p_y^w}{p_z^w}\]
+
+&lt;p&gt;Where \(u\), \(v\) are the coordinates of point P expressed in the image plane, and f is the focal length of the camera. Note that \(u\), \(v\) are not pixel coordinates.&lt;/p&gt;
+
+&lt;p&gt;An important characteristic of 2D images is the lack information regarding depth. A machine cannot tell if we are looking at a large object very far away or a close object nearby. There are multiple ways around this problem, including but not limited to LiDAR, Radar, or triangulation.&lt;/p&gt;
+
+&lt;h3 id=&quot;feature-identification&quot;&gt;Feature Identification&lt;/h3&gt;
+
+&lt;p&gt;Although modern vision systems may incorporate object identification and tracking, a more rudimentary system may begin by tracking local features. This begs the question, what defines a good feature? Long story short, corners are good features, while edges and surfaces are not. 
+Consider a rectangular window centered around some pixel \(\widetilde{x}\). This is a “good” feature if shifting the window in any direction produces a new window that is different from the original. Mathematically, let us define:&lt;/p&gt;
+
+\[G=\sum_{W\left(x\right)}^{\ }{\nabla I\left(\widetilde{x}\right)\nabla I\left(\widetilde{x}\right)^\top}\]
+
+&lt;p&gt;Where \(\nabla I\left(\widetilde{x}\right)\) is the gradient of the image. Two common ways of scoring the corner is with either the Harris score, or the Shi-Tomasi score. These are, respectively:&lt;/p&gt;
+
+\[C\left(G\right)=det\left(G\right)-ktr\left(G\right)^2\]
+
+\[S\left(G\right)=\lambda_{min}\left(G\right)\]
+
+&lt;p&gt;Where \(\lambda_{min}\) is a function that returns the smallest eigenvalue of the matrix.&lt;/p&gt;
+
+&lt;h3 id=&quot;random-consensus-sampling-ransac&quot;&gt;Random Consensus Sampling (RANSAC)&lt;/h3&gt;
+&lt;p&gt;From consecutive image frames, one can perform feature matching, and calculate the change in camera position between frames. However, given a set of matched features (typically called correspondences), there are bound to be a few mis-identified matches. RANSAC provides a method for dealing with these so-called outliers.&lt;/p&gt;
+
+&lt;h3 id=&quot;feature-tracking&quot;&gt;Feature Tracking&lt;/h3&gt;
+
+&lt;h3 id=&quot;image-segmentation&quot;&gt;Image Segmentation&lt;/h3&gt;
+
+&lt;p&gt;Broadly, image segmentation is a form of pixel classification. The ultimate goal is to find meaningful groupings. Note that this can be done independently, in combination with, or as step in object classification, which involves finding labels. Traditional image segmentation methods are also not necessarily feature tracking methods or SLAM methods.&lt;/p&gt;
+
+&lt;h3 id=&quot;simultaneous-localization-and-mapping-slam&quot;&gt;Simultaneous Localization and Mapping (SLAM)&lt;/h3&gt;
+
+&lt;h3 id=&quot;term-definitions&quot;&gt;Term Definitions&lt;/h3&gt;
+
+&lt;p&gt;Isomorphism – a form of transformation that preserves structure.&lt;/p&gt;
+
+&lt;p&gt;Homography – an isomorphism between projected images.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Path Planning</title>
+   <link href="https://ludavid15.github.io//pathPlanning/"/>
+   <updated>2021-07-05T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//pathPlanning</id>
+   <content type="html">&lt;p&gt;Get to where ya want to be.&lt;/p&gt;
+
+&lt;h3 id=&quot;sampling-methods&quot;&gt;Sampling Methods&lt;/h3&gt;
+
+&lt;p&gt;As the name implies, these methods sample the free space for feasible paths. Active methods like Rapidly-Exploring Random Trees (RRT) expand outwards and only add new paths to existing paths (thus keeping everything connected). Meanwhile passive methods like Probabilistic Roadmaps (PRM) fill the feasible space and then must find a connected path. Sampling methods tend to be the most simple, but most do not guarantee a global optimum, nor do they typically consider things like dynamic feasibility, or visibility.&lt;/p&gt;
+
+&lt;h3 id=&quot;node-or-heuristic-based-searches&quot;&gt;Node or Heuristic Based Searches&lt;/h3&gt;
+
+&lt;p&gt;Node based algorithms implement a search strategy to optimize some cost function. In this sense, they represent a form of dynamic programming. Fundamental to this category are methods like Dijkstra’s algorithm, A&lt;em&gt;, and D&lt;/em&gt; []. As with sampling methods, the location of the drone and obstacles in the environment must be known ahead of time.&lt;/p&gt;
+
+&lt;h3 id=&quot;mathematical-modeling&quot;&gt;Mathematical Modeling&lt;/h3&gt;
+
+&lt;p&gt;Mathematical modeling is a more comprehensive, though computationally expensive strategy. With this approach, the problem is expressed by a cost function subject to kinodynamic constraints. This large optimization problem is then solved using a variety of either direct or indirect methods, i.e. through construction of the Hamiltonian, collocation, shooting methods, etc.&lt;/p&gt;
+
+&lt;h3 id=&quot;machine-learning-methods&quot;&gt;Machine Learning Methods&lt;/h3&gt;
+
+&lt;p&gt;These methods involve the use of machine learning to discover an appropriate cost function. Rather than construct a model which tries to capture all the details, data is used to train a network to make the appropriate path decision. It may be more accurate to call the final algorithm a controller, rather than a path planner.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Astrodynamics</title>
+   <link href="https://ludavid15.github.io//astrodynamics/"/>
+   <updated>2021-06-23T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//astrodynamics</id>
+   <content type="html">&lt;p&gt;Did you know that in space, you slow down to catch up? Such is the strange nature of astrodynamics, where gravity and orbits dominate.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;keplers-laws-of-planetary-motion&quot;&gt;Kepler’s Laws of Planetary Motion&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;All planets move in elliptical orbits, with the Sun at the focus.&lt;/li&gt;
+  &lt;li&gt;A line that connects a planet to the Sun sweeps out equal areas in equal times.&lt;/li&gt;
+  &lt;li&gt;The period of an orbit is proportional to the root of the cube of the semimajor axis.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;2d-orbits&quot;&gt;2D Orbits&lt;/h3&gt;
+
+&lt;p&gt;The two-dimensional orbital frame is also known as the perifocal frame (i.e. periapsis and apoapsis vectors are in the plane). Assumes that one body is significantly larger than the other. Given θ as the true anomaly of your orbit, orbital radius from focus is:&lt;/p&gt;
+
+\[r=\ \frac{h^2}{\mu}\frac{1}{1+e\cos(\theta)}\]
+
+&lt;p&gt;Where µ is the gravitational parameter of the larger body being orbited. Standard values are presented below:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Body&lt;/td&gt;
+      &lt;td&gt;µ (m3s-2)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Sun&lt;/td&gt;
+      &lt;td&gt;\(1.327\ast{10}^{20}\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mercury&lt;/td&gt;
+      &lt;td&gt;\(2.203\ast{10}^{13}\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Venus&lt;/td&gt;
+      &lt;td&gt;\(3.248\ast{10}^{14}\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Earth&lt;/td&gt;
+      &lt;td&gt;\(3.986\ast{10}^{14}\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Moon&lt;/td&gt;
+      &lt;td&gt;\(4.904\ast{10}^{12}\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mars&lt;/td&gt;
+      &lt;td&gt;\(6.263\ast{10}^{13}\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Jupiter&lt;/td&gt;
+      &lt;td&gt;\(1.266\ast{10}^{17}\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Saturn&lt;/td&gt;
+      &lt;td&gt;\(3.793\ast{10}^{16}\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Uranus&lt;/td&gt;
+      &lt;td&gt;\(5.793\ast{10}^{15}\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Neptune&lt;/td&gt;
+      &lt;td&gt;\(6.836\ast{10}^{15}\)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;For each orbit, we can also define the specific angular momentum (h):&lt;/p&gt;
+
+\[Specific\ Angular\ Momentum\ \vec{h}=\vec{r}\times\vec{v}\]
+
+&lt;p&gt;Where \(vec{r}\) and \(\vec{v}\) are the position vector and velocity vector at a point in time. The total angular momentum remains constant through the orbit. If the orbit is elliptical, we can define an apoapsis distance, periapsis distance, and semimajor axis distance.&lt;/p&gt;
+
+\[2a=\ r_a+r_p\]
+
+\[e=\ \frac{r_a-r_p}{r_a+r_p}\]
+
+&lt;p&gt;Through conservation of energy we arrive at the Vis-Viva equation. An orbit with a specific energy of zero is defined to be on a parabolic orbit. A positive specific energy means that it is on an escape trajectory, while a negative value means it is captured by the planet’s gravity (circular or elliptical).&lt;/p&gt;
+
+&lt;p&gt;Vis Viva Equation:&lt;/p&gt;
+
+\[\frac{v^2}{2}-\frac{\mu}{r}=-\frac{\mu}{2a}=\varepsilon\]
+
+\[Orbital\ Period\ \left(T\right)=2\pi\sqrt{\frac{a^3}{\mu}}\]
+
+&lt;p&gt;Using the energy equation, we can show that for a circular orbit, where r = a, the circular orbit velocity is simply:&lt;/p&gt;
+
+\[V=\ \sqrt{\frac{\mu}{r_1}}\]
+
+&lt;h3 id=&quot;low-thrust-transfers&quot;&gt;Low Thrust Transfers&lt;/h3&gt;
+
+&lt;p&gt;In general, there is no way to algebraically solve for a low thrust trajectory. Instead, problems of this type neet to solve for x(t) and u(t) through trajectory optimization.&lt;/p&gt;
+
+&lt;p&gt;An initial estimate for the delta V cost of a low thrust transfer orbit can be obtained by assuming that the resulting transfer path is made up of many circular orbits with gradually increasing radius. This applies when the initial and final orbits are circular and transfer time is long.&lt;/p&gt;
+
+\[∆V= μr1-μr2\]
+
+&lt;p&gt;Derivation:&lt;/p&gt;
+
+&lt;p&gt;We start with Newton’s first law, relating forces to acceleration.&lt;/p&gt;
+
+\[m\frac{d\vec{V}}{dt}=\vec{T}-\frac{\mu m}{r^3}\vec{r}\]
+
+&lt;p&gt;We assume T is aligned with velocity. Both sides of the expression are dotted with V.&lt;/p&gt;
+
+\[\vec{V}\bullet\left(m\frac{d\vec{V}}{dt}\right)=\vec{V}\bullet\left(T\ast\hat{V}-\frac{\mu m}{r^3}\vec{r}\right)\]
+
+\[\frac{1}{2}\frac{d}{dt}V^2=\frac{T}{m}\vec{V}-\frac{1}{2}\frac{\mu}{r^2}\frac{d}{dt}r^2\]
+
+&lt;p&gt;We re-write the thrust in terms of the mass flow rate and the exhaust velocity and integrate.&lt;/p&gt;
+
+\[T=\ \dot{m}U_{ex}\]
+
+\[\frac{d\vec{V}}{dt}=-\frac{d}{dt}\ln{\left(m\right)}U_{ex}-\frac{\mu}{r^2}\frac{dr}{dt}\frac{1}{V}\]
+
+\[∆V=-Uexlnmfmo-totfμr2drdt1Vdt\]
+
+&lt;p&gt;With a circular approximation, we can substitute the magnitude of velocity in with the radius.&lt;/p&gt;
+
+\[V=\sqrt{\frac{\mu}{r}}\]
+
+&lt;p&gt;Integrating the “gravity drag” term from inner radius to outer radius yields the circular transfer approximation equation.&lt;/p&gt;
+
+&lt;p&gt;For short transfers, low thrust trajectories result in a much higher time of flight, but as the transfer distance increases, EP transfer times become better than traditional impulsive options, due to a higher achieved maximum velocity from long periods of sustained thrust.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Engineering of Aircraft</title>
@@ -64,45 +318,58 @@
 
 &lt;h3 id=&quot;summary-of-lift-coefficients-and-their-uses&quot;&gt;Summary of Lift Coefficients and Their Uses&lt;/h3&gt;
 
-\[Max\ C_L\]
-
-&lt;ul&gt;
-  &lt;li&gt;Stall speed&lt;/li&gt;
-  &lt;li&gt;Lift constrained load factor&lt;/li&gt;
-&lt;/ul&gt;
-
-\[Max \ \frac{C_L^\frac{1}{2}}{C_D}\]
-
-&lt;ul&gt;
-  &lt;li&gt;Max Range for Jets&lt;/li&gt;
-&lt;/ul&gt;
-
-\[Max\ \frac{C_L}{C_D}\]
-
-&lt;ul&gt;
-  &lt;li&gt;Min Drag Condition&lt;/li&gt;
-  &lt;li&gt;Max Climb Rate for Jets&lt;/li&gt;
-  &lt;li&gt;Max Range for Props &amp;amp; Gliders&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Max Endurance for Jets&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-\[C_L=\sqrt{C_{D,0}\pi Ae}\]
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-\[Max\ \frac{C_L^\frac{3}{2}}{C_D}\]
-
-&lt;ul&gt;
-  &lt;li&gt;Min Power Condition&lt;/li&gt;
-  &lt;li&gt;Max Climb Rate for Props&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Max Endurance for Props and Gliders&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-\[C_L=\sqrt{3C_{D,0}\pi Ae}\]
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(Max\ C_L\)&lt;/td&gt;
+      &lt;td&gt;Stall speed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Lift constrained load factor&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(Max \ \frac{C_L^\frac{1}{2}}{C_D}\)&lt;/td&gt;
+      &lt;td&gt;Max range for jets&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(Max\ \frac{C_L}{C_D}\)&lt;/td&gt;
+      &lt;td&gt;Min drag Condition&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Max Climb Rate for Jets&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Max Range for Props &amp;amp; Gliders&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Max Endurance for Jets&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;\(C_L=\sqrt{C_{D,0}\pi Ae}\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(Max\ \frac{C_L^\frac{3}{2}}{C_D}\)&lt;/td&gt;
+      &lt;td&gt;Min power condition&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Min climb rate for propeller planes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Max Endurance for Props and Gliders&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;\(C_L=\sqrt{3C_{D,0}\pi Ae}\)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;h3 id=&quot;cruise-performance&quot;&gt;Cruise Performance&lt;/h3&gt;
 
@@ -215,9 +482,6 @@
 &lt;p&gt;For actual planes with an elevator, we can deflect the elevator to achieve trim flight. This will introduce another term into our equation for moment coefficient and our term for lift coefficient. We’ll call the elevator deflection angle δ. Note that for the following equation we assume that the contribution to lift from \(C_{L,i}\ast i_t\) is small.&lt;/p&gt;
 
 \[\delta_{elevator}=\ -\frac{C_{M,0}\ C_{L,\alpha}+C_{M,\alpha}C_L}{C_{L,\alpha}C_{M,\delta}-C_{M,\alpha}C_{L,\delta}}\]
-
-&lt;p&gt;C_{M,\delta}=\ 
-C_{L,\delta}=\&lt;/p&gt;
 
 \[C_{M,0}=C_{M,AC}+C_{M,i}i_t\]
 

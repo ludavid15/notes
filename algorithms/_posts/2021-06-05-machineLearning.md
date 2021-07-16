@@ -7,15 +7,13 @@ except_separator: <!--more-->
 categories: algorithms
 ---
 
-At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.
-
-
+At its core, machine learning is a **statistical science**, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.
 
 <!--more-->
 
-### Matrix Math
+## Machine Learning through Matrix Math
 
-Before getting started, a few important definitions.
+Before getting started, a few important definitions. Why are these important? Well, matrices are how we store data. Before we jump into any fancy machine learning algorithms, we can borrow techniques from Linear algebra to understand patterns in the data.
 
 Vector
 : By default, vectors are written as a column. The transpose/Hermitian of a vector places it into row format.
@@ -62,8 +60,6 @@ Rank
 |                               |           | The eigenvalues of a symmetric (and thus normal) matrix are always real |
 | Diagonalizable Matrix	| $$A=Q\Lambda Q^H$$ |	[A] is diagonalizable if it is similar to a diagonal matrix
 
-
-
  
 ### Singular Value Decomposition
 
@@ -74,6 +70,7 @@ $$A\in F^{m\times n}=U\Sigma V^H$$
 Realizing that in some cases, the rank of A is less than either m or n, leaving a few zero entries along the singular values. These send corresponding vectors in U and V to zero, and thus A can be reassembled with only the vectors of U, V and singular values through (r). 
 
 $$A=\ \sum_{i=1}^{r}{\sigma_iu_iv_i^H}$$
+
 
 #### Additional Properties of the SVD
 
@@ -110,6 +107,7 @@ $$A^+=V\Sigma^+U^H$$
 $$\Sigma^+=\left[\begin{matrix}\Sigma_{r\times r}&0_{r,\ n-r}\\0_{m\times r,\ r}&0_{m-r,\ n-r}\\\end{matrix}\right]\ \in F^{n\times m}$$
 
 ### Least Squares Regression/Ordinary Least Squares
+
 Given a problem stated in the following format, it is possible to find an exact solution.
 
 $$x_{LS}=argmin\|Ax-b\|_2^2$$
@@ -165,7 +163,7 @@ $$tr\left(A+B\right)=tr\left(A\right)+tr\left(B\right)$$
 
 ### Frobenius Norm
 
-The Frobenius norm of a matrix is the root of the sum of the square of all values. The frobenius norm is also equal to the square root of the trace, and the sum of square of singular values of A.
+The Frobenius norm of a matrix is the root of the sum of the square of all values. The frobenius norm is also equal to the square root of the trace, and the sum of square of singular values of A. 
 
 $$\|A\|_F = a_{ij}^2$$
 
@@ -195,6 +193,14 @@ And in addition, subject to a spherical constraint on the x input (i.e., two nor
 
 $$\|x\|_2^2=1$$
 
+## Machine Learning Algorithms
+
+Now we can finally get to more modern approaches to machine learning. Current methods fall into three main categories:
+
+1. Supervised Learning
+2. Unsurpervised Learning
+3. Reinforcement Learning
+
 ### K-Means Clustering
 
 Minimizes the intra-cluster variance. The strength of clustering algorithms lies in the fact that it is an unsupervised learning method, i.e., data does not have to come pre-labeled. The process goes:
@@ -207,6 +213,7 @@ Minimizes the intra-cluster variance. The strength of clustering algorithms lies
 For data classification, there typically needs to be as many dimensions as independent features (N) we’d like to distinguish. This means that for a task like image classification, we’ll need to find a way to transform a 2D image into a single point in 2D dimensional space. 
 
 ### Neural Networks and Deep Nets
+
 Networks are function approximators. Each node consists of any number of inputs and any number of outputs, but is itself a simple activation function (relu, sigmoid, tangent, etc.) These functions generally produce an output in the range of 0 to 1 or -1 to 1. For each node, there are a series of weights and offsets to be calculated/tuned by the learning process.
  
 ![deep neural net](../images/dnn.png){: .center-image }
@@ -225,3 +232,16 @@ The R.O.C plots the probability of correct classification vs the probability of 
 
 A method for statistical analysis of shape distributions. An orthogonal Procrustes problem is one that finds the optimal rotation, translation, and/or reflection which aligns two shapes.
 
+### Representation Learning or Feature Learning
+
+The goal of representation learning is to discover the features which define a classification. 
+
+Here's an example. We wish to write a program to classify flowers. Using a clustering approach, we might make measurements of the flower color or petal size and shape. K-means clustering would return the averages for each class. While we do find the averages, the properties were pre-defined. 
+
+If we linearized the pixels of each image (n by m), we'd end up performing clustering in ($$n \times m$$) space, which is computationally expensive. 
+
+So how can we get a machine to learn features? Well, when we perform supervised learning with something like a deep neural net, the last hidden layer before the output can actually be a set of features. 
+
+Or in an unsupervised case, independent component analysis and autoencoders achieve this goal by looking for ways to represent the most original information in the fewest variables. The singular value decomposition and eigenvalues do this. 
+
+> Consider the example of rotations. A rotation matrix in 3D is a 3x3 matrix, for a total of nine variables. But it turns out that any rotation in 3D can be represented by only three Euler angles (Roll Pitch Yaw). If we have those three numbers, we can follow a specific set of rules to reconstruct the original object. In this way, the Euler angles can be thought of as "features" of the rotation matrix. 

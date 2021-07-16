@@ -1,0 +1,128 @@
+I"%<p>Did you know that in space, you slow down to catch up? Such is the strange nature of astrodynamics, where gravity and orbits dominate.</p>
+
+<!--more-->
+
+<h3 id="keplers-laws-of-planetary-motion">Kepler’s Laws of Planetary Motion</h3>
+
+<ol>
+  <li>All planets move in elliptical orbits, with the Sun at the focus.</li>
+  <li>A line that connects a planet to the Sun sweeps out equal areas in equal times.</li>
+  <li>The period of an orbit is proportional to the root of the cube of the semimajor axis.</li>
+</ol>
+
+<h3 id="2d-orbits">2D Orbits</h3>
+
+<p>The two-dimensional orbital frame is also known as the perifocal frame (i.e. periapsis and apoapsis vectors are in the plane). Assumes that one body is significantly larger than the other. Given θ as the true anomaly of your orbit, orbital radius from focus is:</p>
+
+\[r=\ \frac{h^2}{\mu}\frac{1}{1+e\cos\funcapply(\theta)}\]
+
+<p>Where µ is the gravitational parameter of the larger body being orbited. Standard values are presented below:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Body</td>
+      <td>µ (m3s-2)</td>
+    </tr>
+    <tr>
+      <td>Sun</td>
+      <td>1.327\ast{10}^{20}</td>
+    </tr>
+    <tr>
+      <td>Mercury</td>
+      <td>2.203\ast{10}^{13}</td>
+    </tr>
+    <tr>
+      <td>Venus</td>
+      <td>3.248\ast{10}^{14}</td>
+    </tr>
+    <tr>
+      <td>Earth</td>
+      <td>3.986\ast{10}^{14}</td>
+    </tr>
+    <tr>
+      <td>Moon</td>
+      <td>4.904\ast{10}^{12}</td>
+    </tr>
+    <tr>
+      <td>Mars</td>
+      <td>6.263\ast{10}^{13}</td>
+    </tr>
+    <tr>
+      <td>Jupiter</td>
+      <td>1.266\ast{10}^{17}</td>
+    </tr>
+    <tr>
+      <td>Saturn</td>
+      <td>3.793\ast{10}^{16}</td>
+    </tr>
+    <tr>
+      <td>Uranus</td>
+      <td>5.793\ast{10}^{15}</td>
+    </tr>
+    <tr>
+      <td>Neptune</td>
+      <td>6.836\ast{10}^{15}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For each orbit, we can also define the specific angular momentum (h):</p>
+
+\[Specific\ Angular\ Momentum\ \vec{h}=\vec{r}\times\vec{v}\]
+
+<p>Through the geometry of an elliptical orbit, we can define an apoapsis distance, periapsis distance, and semimajor axis distance.</p>
+
+\[2a=\ r_a+r_p\]
+
+\[e=\ \frac{r_a-r_p}{r_a+r_p}\]
+
+<p>Through conservation of energy we arrive at the Vis Viva equation. An orbit with a specific energy of zero is defined to be on a parabolic orbit. A positive specific energy means that it is on an escape trajectory, while a negative value means it is captured by the planet’s gravity (circular or elliptical).</p>
+
+<p>Vis\ Viva\ Equation:</p>
+
+\[frac{v^2}{2}-\frac{\mu}{r}=-\frac{\mu}{2a}=\varepsilon\]
+
+\[Orbital\ Period\ \left(T\right)=2\pi\sqrt{\frac{a^3}{\mu}}\]
+
+<p>Using the energy equation, we can show that for a circular orbit, where r = a, the circular orbit velocity is simply:</p>
+
+\[V=\ \sqrt{\frac{\mu}{r_1}}\]
+
+<h3 id="low-thrust-transfers">Low Thrust Transfers</h3>
+
+<p>In general, there is no way to algebraically solve for a low thrust trajectory. Instead, problems of this type neet to solve for x(t) and u(t) through trajectory optimization.</p>
+
+<p>An initial estimate for the delta V cost of a low thrust transfer orbit can be obtained by assuming that the resulting transfer path is made up of many circular orbits with gradually increasing radius. This applies when the initial and final orbits are circular and transfer time is long.</p>
+
+\[∆V= μr1-μr2\]
+
+<p>Derivation:</p>
+
+<p>We start with Newton’s first law, relating forces to acceleration.</p>
+
+\[m\frac{d\vec{V}}{dt}=\vec{T}-\frac{\mu m}{r^3}\vec{r}\]
+
+<p>We assume T is aligned with velocity. Both sides of the expression are dotted with V.</p>
+
+\[\vec{V}\bullet\left(m\frac{d\vec{V}}{dt}\right)=\vec{V}\bullet\left(T\ast\hat{V}-\frac{\mu m}{r^3}\vec{r}\right)\]
+
+\[\frac{1}{2}\frac{d}{dt}V^2=\frac{T}{m}\vec{V}-\frac{1}{2}\frac{\mu}{r^2}\frac{d}{dt}r^2\]
+
+<p>We re-write the thrust in terms of the mass flow rate and the exhaust velocity and integrate.</p>
+
+\[T=\ \dot{m}U_{ex}\]
+
+\[\frac{d\vec{V}}{dt}=-\frac{d}{dt}\ln{\left(m\right)}U_{ex}-\frac{\mu}{r^2}\frac{dr}{dt}\frac{1}{V}\]
+
+\[∆V=-Uexlnmfmo-totfμr2drdt1Vdt\]
+
+<p>With a circular approximation, we can substitute the magnitude of velocity in with the radius.</p>
+
+\[V=\sqrt{\frac{\mu}{r}}\]
+
+<p>Integrating the “gravity drag” term from inner radius to outer radius yields the circular transfer approximation equation.</p>
+
+<p>For short transfers, low thrust trajectories result in a much higher time of flight, but as the transfer distance increases, EP transfer times become better than traditional impulsive options, due to a higher achieved maximum velocity from long periods of sustained thrust.</p>
+
+:ET
