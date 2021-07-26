@@ -19,6 +19,17 @@ Alright, so what can we do with continuums? Well, how about mass, momentum, and 
 
 * **Control Volume** We define a region of space, and take into account any mass/momentum/energy which flows in or out of this region.
 
+### Conservation Equations for 1D Steady Inviscid Flow
+
+Please note the assumptions required for these equations to be valid:
+
+$$d(pu)=0$$
+
+$$d(p+pu^2) = 0$$
+
+$$d(h+\frac{1}{2}u^2)=0$$
+
+
 ### Conservation of Mass
 
 Also known as continuity. Time rate of change of mass in the control volume (CV) is equal to the mass flux through the boundary. Or, in differential form, partial derivative of density plus mass flux is zero.
