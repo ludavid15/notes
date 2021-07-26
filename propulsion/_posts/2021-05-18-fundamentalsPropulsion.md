@@ -13,11 +13,11 @@ To help clear up some confusion, this section presents a roadmap - a heirarchy o
 
 <!--more-->
 
-To begin, all propulsion systems must achieve the same goal: generate forward momentum. And the only way to do this (that we know of ... ) is to make use of Newton's third law.
+To begin, all propulsion systems must achieve the same goal: generate forward momentum. And the only way to do this (that we know of ... ) is to make use of Newton's third law. 
 
 > For every action, there is an equal and opposite reaction.
 
-So that's it. We have to push something back, and the action of doing so pushes us forward. Naturally the next question becomes, well how do we push mass back? The three answers we have achieved are:
+So that's it. We have to push something back (or push against something), and the action of doing so pushes us forward. Naturally the next question becomes, well how do we push mass back? The three answers we have achieved are:
 
 1. Mechanically, by interacting with the environment.
 2. Converting a fluid's internal energy into kinetic energy with a nozzle.

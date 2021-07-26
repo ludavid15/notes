@@ -16,6 +16,8 @@ While viscous flow deals with liquids, or flows that are very slow, compressible
 * TOC
 {:toc}
 
+One easy way to group topics in compressible flow is into 1D compressible flow, and everything else. This is because you'll often find 1D compressible flow topics in an introductory fluid mechanics course. 
+
 ### Stagnation Properties
 
 For any steady state fluid in motion, we can define stagnation/total properties. These reflect the actual values if the fluid were brought to rest isentropically. 

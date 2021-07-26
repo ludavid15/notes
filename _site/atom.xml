@@ -4,7 +4,7 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-07-05T14:56:50-07:00</updated>
+ <updated>2021-07-26T16:08:07-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
@@ -13,11 +13,270 @@
 
  
  <entry>
+   <title>Music and AI</title>
+   <link href="https://ludavid15.github.io//musicAI/"/>
+   <updated>2021-07-21T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//musicAI</id>
+   <content type="html">&lt;p&gt;Background&lt;/p&gt;
+
+&lt;p&gt;Converted sheet music into text, and then used a text replication NN to write music.&lt;/p&gt;
+
+&lt;p&gt;Instead of writing a music generation deep neural network, let’s try SVD or ICA and determine the underlying structure.&lt;/p&gt;
+
+&lt;p&gt;But since composers follow some basic rules, can we apply independent component analysis, or semantic learning to written music?&lt;/p&gt;
+
+&lt;p&gt;Structuring the data:&lt;/p&gt;
+
+&lt;p&gt;First, we are looking at sheet music, not trying to separate out different sounds from an audio track.&lt;/p&gt;
+
+&lt;p&gt;How do we get the sheet music into matrix form in a way that makes sense? We could pretty easily create a matrix by just storing pitch information, but I think this loses information about tempo.&lt;/p&gt;
+
+&lt;p&gt;Maybe we could store longer notes as repeated notes? This way we keep the time step? What about consecutive beats that do not contain the same number of notes? We’d have a matrix sizing problem.&lt;/p&gt;
+
+&lt;p&gt;What about the octave? We can try using the frequency of the note, instead of the MIDI pitch label, and maybe it would capture some information about that?&lt;/p&gt;
+
+&lt;p&gt;Or we could unravel each line? Take 4 part Bach harmonies.&lt;/p&gt;
+
+&lt;p&gt;Reach out to Professor Martins.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>How to Think About Machine Learning</title>
+   <link href="https://ludavid15.github.io//howTomachineLearning/"/>
+   <updated>2021-07-21T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//howToThinkaboutML</id>
+   <content type="html">&lt;p&gt;There is so much literature out there on machine learning that it can get pretty overwhelming. This post serves to organize machine learning into a few broad categories, and in doing so, highlight their different strengths.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Before going further, it’s worth mentioning that many machine learning algorithms are built using optimization. There is almost always something to be optimized (an objective function - error, fitness, etc.), and different ways to run the optimization (genetic, linear, quadratic, etc.). Different algorithms may change the problem, but the name of the game remains the same. Keep this mind, because it might help unify your understanding of this large field.&lt;/p&gt;
+
+&lt;h3 id=&quot;supervised-learning&quot;&gt;Supervised Learning&lt;/h3&gt;
+
+&lt;p&gt;Supervised learning algorithms are used when you know the type of output you want, but need to learn the function that will get you there. These algorithms are often implemented with deep neural networks, and are useful for classification tasks. As the name implies, this method absolutely requires having a labeled dataset. If your problem doesn’t readily accept labels, this strategy will probably fall short. Try instead to identify if parts of the solution involve identification.&lt;/p&gt;
+
+&lt;h3 id=&quot;unsupervised-learning&quot;&gt;Unsupervised Learning&lt;/h3&gt;
+
+&lt;p&gt;Unsupervised learning algorithms discover patterns in your data. Note that these algorithms are NOT classification algorithms. Instead, they tell you what the likely categories are. In this sense, they are a lot like the statistical regression methods you may have have encountered in high school. Depending on the structure of your data, there are many different strategies which fall under this umbrella, such as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;K-means Clustering&lt;/li&gt;
+  &lt;li&gt;Singular Value Decomposition&lt;/li&gt;
+  &lt;li&gt;Independent Component Analysis&lt;/li&gt;
+  &lt;li&gt;Autoencoders&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Another way to understand unsupervised learning algorithms is that they look for ways to compress your data. If you had fifty (x,y) coordinates which all fall onto the line y = 3x+2, an unsupervised learning algorithm can compress those 100 numbers into fifty x-coordinates and a function. See how we’ve reduced the total datasize? If you’ve ever compressed an image or a word document, you’ve made use of an unsupervised learning technique.&lt;/p&gt;
+
+&lt;h3 id=&quot;reinforcement-learning&quot;&gt;Reinforcement Learning&lt;/h3&gt;
+
+&lt;p&gt;Improvement through natural selection is the general idea of reinforcement learning. For some problems, success is measured by a distant goal, or by some cumulative performance. In these cases, it doesn’t make sense to define individual state variables. Here is where reinforcement learning comes in.&lt;/p&gt;
+
+&lt;h3 id=&quot;knowledge-base-or-symbolic-ai&quot;&gt;Knowledge Base or Symbolic AI&lt;/h3&gt;
+
+&lt;p&gt;Although other algorithms perform well enough, they don’t gain any real “understanding” about what they’re doing, at least, not in the same capacity as you and me. And when something does goes wrong, it’s extremely difficult to identify the cause, especially when you’re dealing with NN’s that can have millions of weights.&lt;/p&gt;
+
+&lt;p&gt;A knowledge base approach uses logic to make deductions. If I told it that a cat is a type of mammal, and that all mammals are animals, then it could deduce that a cat is a type of animal. These types of system are great for when we need to understand how the machine arrived at a decision. But because they operate on such an abstract level, building up the required database of statements is also a highly abstract task that relies on human input. Furthermore, many topics cannot be described with binary yes/no logic (things like the arts, personal opinions, relationships, etc.).&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Systems Engineering</title>
+   <link href="https://ludavid15.github.io//systemsEngineering/"/>
+   <updated>2021-07-16T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//systems</id>
+   <content type="html">&lt;!--more--&gt;
+
+&lt;h3 id=&quot;requirements&quot;&gt;Requirements&lt;/h3&gt;
+
+&lt;p&gt;Requirements have been the backbone of aerospace systems engineering for a few decades now. The basic idea is that we write down a complete list of everything our project needs to do, and then break them down piece by piece. The idea is sound, but the execution gets messy very quickly, and is more art than science.&lt;/p&gt;
+
+&lt;p&gt;Let’s consider an example. Say we are trying to design a rocketship to Mars. We might define a few high level requirements that read:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The rocket shall carry 4 astronauts&lt;/li&gt;
+  &lt;li&gt;The rocket shall be able to complete the mission in 2 years.&lt;/li&gt;
+  &lt;li&gt;The rocket shall use electric propulsion systems.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Taking the first requirement, we can break it down logically into necessary components. This process then gets repeated over and over until we reach a good level of detail, or more likely, until we can’t be bothered to keep going.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The rocket shall include a life support system to recycle oxygen.&lt;/li&gt;
+  &lt;li&gt;The rocket shall include 5000 cubic feet of living space for the astronauts.&lt;/li&gt;
+  &lt;li&gt;The rocket shall carry 3000 lbs of food and living equipment.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Once all the requirements have been written, design work begins. The engineers build the rocketship exactly to spec, ahead of schedule and under budget, and then we fly to Mars. Err, ok maybe not. Before we launch we need to validate and verify that everything is good to go.&lt;/p&gt;
+
+&lt;h3 id=&quot;validation-and-verification&quot;&gt;Validation and Verification&lt;/h3&gt;
+
+&lt;p&gt;The process of ensuring the design meets the expectation is known as the validation and verification step. &lt;strong&gt;Verification&lt;/strong&gt; checks to see that the design satisfies the exact wording of the requirement. For example, we can measure the interior space of our rocket, and if we find that there is indeed 5000 cubic feet, we have verified that requirement. &lt;strong&gt;Validation&lt;/strong&gt; checks that we’re meeting the spirit of the requirement. In this case, the intent of this requirement is to provide astronauts with enough living space, but is 5000 really enough? What if the 5000 cubic feet is in the form of a 1 ft x 1 ft x 5000 ft narrow tube? Such a design would not meet the intent of the requirement, even though technically it satisfied the exact wording.&lt;/p&gt;
+
+&lt;h4 id=&quot;problems-with-requirement-writing&quot;&gt;Problems with Requirement Writing&lt;/h4&gt;
+
+&lt;p&gt;At a glance, everything outlined so far seems fine, but the devil is in the details as they say. What happens if the 5000 cubic feet of living space conflicts with the goal of completing the mission in 2 years? Aerospace engineering projects are difficult, and in no world will your requirement be 100% perfect from the start.&lt;/p&gt;
+
+&lt;p&gt;Here is the problem with requirements. Every engineering project is a system of compromises. Very rarely can a change be made in one place without affecting another. So why do we create a system that implies we’ve “lock in” a design from the beginning?&lt;/p&gt;
+
+&lt;h4 id=&quot;requirements-as-documentation&quot;&gt;Requirements as Documentation&lt;/h4&gt;
+
+&lt;p&gt;Often engineers end up using requirements as a form of documentation, but since requirements were not imagined as documentation to begin with, they fulfill this need poorly. One problem is the wording of requirements. As you’ve noticed, each requirements begins with “should” or “shall”. This can lead to clunkly language such as:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The satellite shall have the capability to accept commands from ground.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Where even is the verb in this sentence? And I’m not very compelled by this satellite being the subject. Instead, why not:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Operators on the ground command the satellite.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Here, there is a well defined human being as the subject, with a clear verb - command - that describes the same functionality in half as many words. Unfortunately, the difficult requirement lingo filters its way into other steps of the design process. Let’s say you create a requirement that says:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;He shall have the capability to run 100 m in 10 seconds or less.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;How should an engineering performing verification interpret this sentence? What exactly does it mean to &lt;em&gt;have the capability&lt;/em&gt;? I suppose that as a human being, I &lt;em&gt;have the capability&lt;/em&gt;, but if you asked me to do it I certainly could not.&lt;/p&gt;
+
+&lt;h3 id=&quot;review-of-problems&quot;&gt;Review of Problems&lt;/h3&gt;
+
+&lt;p&gt;With these problems identifed, let’s think logically about what a good design process should include.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;We need a way to track the design baseline.&lt;/li&gt;
+  &lt;li&gt;Once a change is made, it should be easy to explore how it impacts other systems.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;model-based-systems-engineering&quot;&gt;Model Based Systems Engineering&lt;/h3&gt;
+
+&lt;p&gt;With better computers, engineers have increasingly turned to model based systems engineering, or MBSE as a solution to the engineering process. After all, things like CAD, CFD, and FEM have enabled us to model complex physics, so why not create a program to model a project?&lt;/p&gt;
+
+&lt;p&gt;But what exactly do we need to capture? Here’s a list.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Physical Configuration&lt;/li&gt;
+  &lt;li&gt;Function/Behavior&lt;/li&gt;
+  &lt;li&gt;Interactions&lt;/li&gt;
+  &lt;li&gt;Heirarchies/Definitions&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;physical-configuration&quot;&gt;Physical Configuration&lt;/h4&gt;
+
+&lt;p&gt;Fairly straightfoward, we need to track the hardware, physical connectors, and physical properties (shape, weight, thermal resistence, etc.). If our project was a sentence, the physical configuration would be the subject.&lt;/p&gt;
+
+&lt;h4 id=&quot;functionbehavior&quot;&gt;Function/Behavior&lt;/h4&gt;
+
+&lt;p&gt;Verbs. Things that happen. You could say that function is the first thing we choose. Hardware is designed to meet a function, not the other way around.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Technically this isn’t always true. When a heritage (proven) piece of hardware is selected, it’s function is already defined, and then engineers build the rest of the system around it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;interactions&quot;&gt;Interactions&lt;/h4&gt;
+
+&lt;p&gt;Interactions can be very abstract, but are also very important. A function might include an interaction, (i.e. a satellite interacts with a ground station by sending telemetry), but a physical configuration might also include an interaction (i.e. the baseplate on a satellite draws heat away from the electronics).&lt;/p&gt;
+
+&lt;h4 id=&quot;definitions&quot;&gt;Definitions&lt;/h4&gt;
+
+&lt;p&gt;We create words to group stuff together. If many pieces of hardware work together to provide telemetry, we might designate a “telemetry subsystem”. These abstractions are an important part of communicating complex ideas, but also get messy.&lt;/p&gt;
+
+&lt;h3 id=&quot;proposed-mbse-steps&quot;&gt;Proposed MBSE Steps&lt;/h3&gt;
+
+&lt;p&gt;Putting everything together, the new outline we have for systems engineering is:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Start by defining the actions your system must perform.&lt;/li&gt;
+  &lt;li&gt;At this point, do NOT list constraints yet.&lt;/li&gt;
+  &lt;li&gt;Break down high level functions, doing your best to stay away from a specific implementation. For example, if you need your spacecraft to change attitude, you might say: generate a moment. See how this stays away from a particular hardware implemention? (thrusters, momentum wheels, magnetic torque rods, etc.)&lt;/li&gt;
+  &lt;li&gt;Once each function has been mapped out, create a list of specifications. These are tied to a function that has already been created. For example, we might have a function that reads: send telemetry. Now we can add a corresponding spec that reads: send telemetry at 8 kbps. The function is neccessary, but the specification is a design choice. One is required, the other can be changed. The content of the specification is not critical at this point. The point is to identify which parameters we need to think about.&lt;/li&gt;
+  &lt;li&gt;Create a list of constraints.&lt;/li&gt;
+  &lt;li&gt;Begin the process of optimizing the design variables (the specifications), subject to out constraints. Here is where we explore the various hardware solutions that are available.&lt;/li&gt;
+  &lt;li&gt;Verify and validate your system!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;engineering-in-practice&quot;&gt;Engineering in Practice&lt;/h3&gt;
+
+&lt;p&gt;In real life, we often do not build things up from scratch. Instead a project is merely an addition, or a modification to something that already exists. Even though this is meant to simplify the process, as anyone who has tried to read someone else’s code can testify, it also creates a lot of additional work.&lt;/p&gt;
+
+&lt;p&gt;For this reason, it makes a lot of sense to develop systems engineering with this in mind.&lt;/p&gt;
+
+&lt;h3 id=&quot;dodaf&quot;&gt;DoDAF&lt;/h3&gt;
+
+&lt;p&gt;The Department of Defense Architecture Framework is an effort to generalize how we explain complex systems. Before getting into what DodAF is, let’s be clear that DoDAF is NOT model based systems engineering. DoDAF only defines a set of “viewpoints”, which each viewpoint showing a different aspect of the system. For example, systems viewpoint 4 (SV4) shows functional flow diagrams, while SV1’s show a high level overview of the physical elements.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Disclaimer - the benefits of DoDAF remain to be demonstrated.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Consider an analogy - in CAD, we build 3D shapes. When we try to represent them on a 2D screen, we must choose a viewing angle and projection, but there are likely some standard views that everyone expects. Maybe a cross section to show the internal structure, or a profile view if it’s a flat plate. DoDAF is no different.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;- DoDAF Views&lt;/td&gt;
+      &lt;td&gt;- Explanation&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SV-1&lt;/td&gt;
+      &lt;td&gt;High level hardware overview&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SV-2&lt;/td&gt;
+      &lt;td&gt;Detailed hardware overview&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SV-4&lt;/td&gt;
+      &lt;td&gt;Functional flow diagram&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SV-10&lt;/td&gt;
+      &lt;td&gt;States and Modes transitions&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;agile-engineering&quot;&gt;Agile Engineering&lt;/h3&gt;
+
+&lt;h3 id=&quot;sysml&quot;&gt;SysML&lt;/h3&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
    <title>Modes</title>
    <link href="https://ludavid15.github.io//modes/"/>
    <updated>2021-07-05T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//modes</id>
-   <content type="html">
+   <content type="html">&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mode&lt;/td&gt;
+      &lt;td&gt;Origin note&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Lydian&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Phyrgian&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mixolydian&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 </content>
  </entry>
  
@@ -72,8 +331,9 @@
 
 &lt;h3 id=&quot;feature-identification&quot;&gt;Feature Identification&lt;/h3&gt;
 
-&lt;p&gt;Although modern vision systems may incorporate object identification and tracking, a more rudimentary system may begin by tracking local features. This begs the question, what defines a good feature? Long story short, corners are good features, while edges and surfaces are not. 
-Consider a rectangular window centered around some pixel \(\widetilde{x}\). This is a “good” feature if shifting the window in any direction produces a new window that is different from the original. Mathematically, let us define:&lt;/p&gt;
+&lt;p&gt;Although modern vision systems may incorporate object identification and tracking, a more rudimentary system may begin by tracking local features. This begs the question, what defines a good feature? Long story short, corners are good features, while edges and surfaces are not.&lt;/p&gt;
+
+&lt;p&gt;Consider a rectangular window centered around some pixel \(\widetilde{x}\). This is a “good” feature if shifting the window in any direction produces a new window that is different from the original. Mathematically, let us define:&lt;/p&gt;
 
 \[G=\sum_{W\left(x\right)}^{\ }{\nabla I\left(\widetilde{x}\right)\nabla I\left(\widetilde{x}\right)^\top}\]
 
@@ -85,8 +345,15 @@ Consider a rectangular window centered around some pixel \(\widetilde{x}\). This
 
 &lt;p&gt;Where \(\lambda_{min}\) is a function that returns the smallest eigenvalue of the matrix.&lt;/p&gt;
 
+&lt;h3 id=&quot;outliers&quot;&gt;Outliers&lt;/h3&gt;
+
+&lt;p&gt;When we use a quadratic loss function, the weights of outliers are exaggerated. Thus instead of fitting the correct data, we end up fitting to the incorrect ones. This is not an easy problem to overcome, because we do not know ahead of time which data points are the wrong ones. To overcome this problem, a few outlier reject or outlier robust methods have been proposed.&lt;/p&gt;
+
 &lt;h3 id=&quot;random-consensus-sampling-ransac&quot;&gt;Random Consensus Sampling (RANSAC)&lt;/h3&gt;
-&lt;p&gt;From consecutive image frames, one can perform feature matching, and calculate the change in camera position between frames. However, given a set of matched features (typically called correspondences), there are bound to be a few mis-identified matches. RANSAC provides a method for dealing with these so-called outliers.&lt;/p&gt;
+
+&lt;p&gt;From consecutive image frames, one can perform feature matching, and calculate the change in camera position between frames. However, given a set of matched features (typically called correspondences), there are bound to be a few mis-identified matches. RANSAC provides a method for dealing with these outliers.&lt;/p&gt;
+
+&lt;p&gt;The basic idea is pretty simple. From the entire complete set of “matches”, we take a random set, and calculae the resulting change in position. We then repeat with another random set, and another, and check to see if there is agreement.&lt;/p&gt;
 
 &lt;h3 id=&quot;feature-tracking&quot;&gt;Feature Tracking&lt;/h3&gt;
 
@@ -95,6 +362,8 @@ Consider a rectangular window centered around some pixel \(\widetilde{x}\). This
 &lt;p&gt;Broadly, image segmentation is a form of pixel classification. The ultimate goal is to find meaningful groupings. Note that this can be done independently, in combination with, or as step in object classification, which involves finding labels. Traditional image segmentation methods are also not necessarily feature tracking methods or SLAM methods.&lt;/p&gt;
 
 &lt;h3 id=&quot;simultaneous-localization-and-mapping-slam&quot;&gt;Simultaneous Localization and Mapping (SLAM)&lt;/h3&gt;
+
+&lt;p&gt;SLAM is a process which covers the first two goals in computer vision - odometry and mapping. SLAM then can be further subdivided into two components, a &lt;strong&gt;front end&lt;/strong&gt; which identifies features in the environment, and a &lt;strong&gt;back-end&lt;/strong&gt; which builds an internal map of those features.&lt;/p&gt;
 
 &lt;h3 id=&quot;term-definitions&quot;&gt;Term Definitions&lt;/h3&gt;
 
@@ -1365,11 +1634,11 @@ The 3D stress tensor is presented below. The eigenvectors, n1, n2, and n3 repres
    <id>https://ludavid15.github.io//optimization</id>
    <content type="html">&lt;p&gt;The underlying principle of an optimization is pretty straightfoward - find the best way to do something. Best can mean fastest, safest, most efficient, shortest or thousands of other things, but the common denominator is that we are looking for the most (or least) of something. Mathematically then, this is pretty simple: we’re solving for a maximum.&lt;/p&gt;
 
+&lt;!--more--&gt;
+
 &lt;p&gt;Finding this maximum or minumum is pretty straightfoward, but more often then not, an optimization attempt fails not because we couldn’t find the correct min/max, but because our question was posed poorly in the first place.&lt;/p&gt;
 
 &lt;p&gt;For example, if you wanted to get from point A to point B, the fastest way to do this is probably not the cheapest way. In fact, these things likely trade off with one another. When you frame this mathematically, how do you weigh each objective? Lacking a common unit or denomination, it’s like comparing apples to oranges.&lt;/p&gt;
-
-&lt;!--more--&gt;
 
 &lt;h3 id=&quot;mathematics&quot;&gt;Mathematics&lt;/h3&gt;
 
@@ -1986,13 +2255,13 @@ Problems formatted in one type can be transformed into another format fairly eas
    <link href="https://ludavid15.github.io//machineLearning/"/>
    <updated>2021-06-05T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//machineLearning</id>
-   <content type="html">&lt;p&gt;At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.&lt;/p&gt;
+   <content type="html">&lt;p&gt;At its core, machine learning is a &lt;strong&gt;statistical science&lt;/strong&gt;, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
-&lt;h3 id=&quot;matrix-math&quot;&gt;Matrix Math&lt;/h3&gt;
+&lt;h2 id=&quot;machine-learning-through-matrix-math&quot;&gt;Machine Learning through Matrix Math&lt;/h2&gt;
 
-&lt;p&gt;Before getting started, a few important definitions.&lt;/p&gt;
+&lt;p&gt;Before getting started, a few important definitions. Why are these important? Well, matrices are how we store data. Before we jump into any fancy machine learning algorithms, we can borrow techniques from Linear algebra to understand patterns in the data.&lt;/p&gt;
 
 &lt;dl&gt;
   &lt;dt&gt;Vector&lt;/dt&gt;
@@ -2175,6 +2444,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 \[\Sigma^+=\left[\begin{matrix}\Sigma_{r\times r}&amp;amp;0_{r,\ n-r}\\0_{m\times r,\ r}&amp;amp;0_{m-r,\ n-r}\\\end{matrix}\right]\ \in F^{n\times m}\]
 
 &lt;h3 id=&quot;least-squares-regressionordinary-least-squares&quot;&gt;Least Squares Regression/Ordinary Least Squares&lt;/h3&gt;
+
 &lt;p&gt;Given a problem stated in the following format, it is possible to find an exact solution.&lt;/p&gt;
 
 \[x_{LS}=argmin\|Ax-b\|_2^2\]
@@ -2259,6 +2529,16 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 \[\|x\|_2^2=1\]
 
+&lt;h2 id=&quot;machine-learning-algorithms&quot;&gt;Machine Learning Algorithms&lt;/h2&gt;
+
+&lt;p&gt;Now we can finally get to more modern approaches to machine learning. Current methods fall into three main categories:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Supervised Learning&lt;/li&gt;
+  &lt;li&gt;Unsurpervised Learning&lt;/li&gt;
+  &lt;li&gt;Reinforcement Learning&lt;/li&gt;
+&lt;/ol&gt;
+
 &lt;h3 id=&quot;k-means-clustering&quot;&gt;K-Means Clustering&lt;/h3&gt;
 
 &lt;p&gt;Minimizes the intra-cluster variance. The strength of clustering algorithms lies in the fact that it is an unsupervised learning method, i.e., data does not have to come pre-labeled. The process goes:&lt;/p&gt;
@@ -2273,6 +2553,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 &lt;p&gt;For data classification, there typically needs to be as many dimensions as independent features (N) we’d like to distinguish. This means that for a task like image classification, we’ll need to find a way to transform a 2D image into a single point in 2D dimensional space.&lt;/p&gt;
 
 &lt;h3 id=&quot;neural-networks-and-deep-nets&quot;&gt;Neural Networks and Deep Nets&lt;/h3&gt;
+
 &lt;p&gt;Networks are function approximators. Each node consists of any number of inputs and any number of outputs, but is itself a simple activation function (relu, sigmoid, tangent, etc.) These functions generally produce an output in the range of 0 to 1 or -1 to 1. For each node, there are a series of weights and offsets to be calculated/tuned by the learning process.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;../images/dnn.png&quot; alt=&quot;deep neural net&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
@@ -2289,6 +2570,21 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;p&gt;A method for statistical analysis of shape distributions. An orthogonal Procrustes problem is one that finds the optimal rotation, translation, and/or reflection which aligns two shapes.&lt;/p&gt;
 
+&lt;h3 id=&quot;representation-learning-or-feature-learning&quot;&gt;Representation Learning or Feature Learning&lt;/h3&gt;
+
+&lt;p&gt;The goal of representation learning is to discover the features which define a classification.&lt;/p&gt;
+
+&lt;p&gt;Here’s an example. We wish to write a program to classify flowers. Using a clustering approach, we might make measurements of the flower color or petal size and shape. K-means clustering would return the averages for each class. While we do find the averages, the properties were pre-defined.&lt;/p&gt;
+
+&lt;p&gt;If we linearized the pixels of each image (n by m), we’d end up performing clustering in (\(n \times m\)) space, which is computationally expensive.&lt;/p&gt;
+
+&lt;p&gt;So how can we get a machine to learn features? Well, when we perform supervised learning with something like a deep neural net, the last hidden layer before the output can actually be a set of features.&lt;/p&gt;
+
+&lt;p&gt;Or in an unsupervised case, independent component analysis and autoencoders achieve this goal by looking for ways to represent the most original information in the fewest variables. The singular value decomposition and eigenvalues do this.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Consider the example of rotations. A rotation matrix in 3D is a 3x3 matrix, for a total of nine variables. But it turns out that any rotation in 3D can be represented by only three Euler angles (Roll Pitch Yaw). If we have those three numbers, we can follow a specific set of rules to reconstruct the original object. In this way, the Euler angles can be thought of as “features” of the rotation matrix.&lt;/p&gt;
+&lt;/blockquote&gt;
 </content>
  </entry>
  
@@ -2309,7 +2605,7 @@ Problems formatted in one type can be transformed into another format fairly eas
   &lt;p&gt;For every action, there is an equal and opposite reaction.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;So that’s it. We have to push something back, and the action of doing so pushes us forward. Naturally the next question becomes, well how do we push mass back? The three answers we have achieved are:&lt;/p&gt;
+&lt;p&gt;So that’s it. We have to push something back (or push against something), and the action of doing so pushes us forward. Naturally the next question becomes, well how do we push mass back? The three answers we have achieved are:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Mechanically, by interacting with the environment.&lt;/li&gt;
@@ -3270,6 +3566,16 @@ A: As with most things in life, very little is free. Since the goal is to produc
   &lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h3 id=&quot;conservation-equations-for-1d-steady-inviscid-flow&quot;&gt;Conservation Equations for 1D Steady Inviscid Flow&lt;/h3&gt;
+
+&lt;p&gt;Please note the assumptions required for these equations to be valid:&lt;/p&gt;
+
+\[d(pu)=0\]
+
+\[d(p+pu^2) = 0\]
+
+\[d(h+\frac{1}{2}u^2)=0\]
+
 &lt;h3 id=&quot;conservation-of-mass&quot;&gt;Conservation of Mass&lt;/h3&gt;
 
 &lt;p&gt;Also known as continuity. Time rate of change of mass in the control volume (CV) is equal to the mass flux through the boundary. Or, in differential form, partial derivative of density plus mass flux is zero.&lt;/p&gt;
@@ -3823,6 +4129,10 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 &lt;h3 id=&quot;laminar-free-stream-shear-flow-jets-wakes-mixing-layers&quot;&gt;Laminar Free Stream Shear Flow (Jets, Wakes, Mixing Layers)&lt;/h3&gt;
 
 &lt;p&gt;A class of problems involving a large unbounded region and either excess momentum (i.e. a jet or plume) or a momentum deficit (i.e. wake). This section will be completed at a later date.&lt;/p&gt;
+
+&lt;h3 id=&quot;drag-acting-on-a-body-in-a-uniform-stream&quot;&gt;Drag Acting on a Body in a Uniform Stream&lt;/h3&gt;
+
+\[D = \int{\rho u (U_{\infinity}-u)}dS\]
 </content>
  </entry>
  
@@ -3863,6 +4173,8 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;One easy way to group topics in compressible flow is into 1D compressible flow, and everything else. This is because you’ll often find 1D compressible flow topics in an introductory fluid mechanics course.&lt;/p&gt;
 
 &lt;h3 id=&quot;stagnation-properties&quot;&gt;Stagnation Properties&lt;/h3&gt;
 

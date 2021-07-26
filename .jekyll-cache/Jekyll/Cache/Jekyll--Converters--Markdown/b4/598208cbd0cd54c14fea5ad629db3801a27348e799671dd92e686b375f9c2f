@@ -1,0 +1,23 @@
+I"�<p>Background</p>
+
+<p>Converted sheet music into text, and then used a text replication NN to write music.</p>
+
+<p>Instead of writing a music generation deep neural network, let’s try SVD or ICA and determine the underlying structure.</p>
+
+<p>But since composers follow some basic rules, can we apply independent component analysis, or semantic learning to written music?</p>
+
+<p>Structuring the data:</p>
+
+<p>First, we are looking at sheet music, not trying to separate out different sounds from an audio track.</p>
+
+<p>How do we get the sheet music into matrix form in a way that makes sense? We could pretty easily create a matrix by just storing pitch information, but I think this loses information about tempo.</p>
+
+<p>Maybe we could store longer notes as repeated notes? This way we keep the time step? What about consecutive beats that do not contain the same number of notes? We’d have a matrix sizing problem.</p>
+
+<p>What about the octave? We can try using the frequency of the note, instead of the MIDI pitch label, and maybe it would capture some information about that?</p>
+
+<p>Or we could unravel each line? Take 4 part Bach harmonies.</p>
+
+<p>Reach out to Professor Martins.</p>
+
+:ET

@@ -1,0 +1,15 @@
+I"V<p>There is so much literature out there on machine learning that it can get pretty overwhelming. This post serves to organize machine learning into a few broad categories, and in doing so, highlight their different strengths.</p>
+
+<!--more-->
+
+<h3 id="supervised-learning">Supervised Learning</h3>
+
+<p>Supervised learning algorithms are used when you need to approximate some unknown function. These algorithms are often implemented with deep neural networks, and are useful for classification tasks. As the name implies, this method absolutely requires having a labeled dataset. If your problem doesn’t readily accept labels, this strategy will probably fall short. Try instead to identify if parts of the solution involve identification.</p>
+
+<blockquote>
+  <p>In my opinion, the expression “unsupervised learning” is pretty <strong>un</strong>informative - it’s like grouping all forms of transportation into cars and not-cars. There are plenty of conceptually different learning algorithms, and grouping them together would be a disservice.</p>
+</blockquote>
+
+<h3 id="clustering">Clustering</h3>
+
+:ET
