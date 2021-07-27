@@ -29,6 +29,12 @@ Unsupervised learning algorithms discover patterns in your data. Note that these
 
 Another way to understand unsupervised learning algorithms is that they look for ways to compress your data. If you had fifty (x,y) coordinates which all fall onto the line y = 3x+2, an unsupervised learning algorithm can compress those 100 numbers into fifty x-coordinates and a function. See how we've reduced the total datasize? If you've ever compressed an image or a word document, you've made use of an unsupervised learning technique. 
 
+A really cool outcome we get from unsupervised learning is the ability to generate new examples from the underlying principles that we've discovered, also known as generative modeling. 
+
+### Generative Adversarial Modeling
+
+A generative adversarial model, or GAN, consists of two parts - a generative modeling program to create plausible examples, and a supervised learning/classification program that tries to distinguish the fake ones from the real ones. They are trained against one another (hence adversarial), until the classifier is no longer able to distinguish between the two. 
+
 ### Reinforcement Learning
 
 Improvement through natural selection is the general idea of reinforcement learning. For some problems, success is measured by a distant goal, or by some cumulative performance. In these cases, it doesn't make sense to define individual state variables. Here is where reinforcement learning comes in. 

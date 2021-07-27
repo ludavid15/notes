@@ -4,13 +4,107 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-07-26T16:08:07-07:00</updated>
+ <updated>2021-07-26T20:28:38-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Machine Vision</title>
+   <link href="https://ludavid15.github.io//vision/"/>
+   <updated>2021-07-26T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//vision</id>
+   <content type="html">&lt;p&gt;The topic of perception and machine vision can be broken down into a few separate problems.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Odometry – where are you?*&lt;/li&gt;
+  &lt;li&gt;Reconstruction/Mapping – where are things in the world?*&lt;/li&gt;
+  &lt;li&gt;Semantics – what are things in the world?&lt;/li&gt;
+  &lt;li&gt;Prediction – where will things in the world be?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;*The coordinate frame is very important! Positions are always defined with respect to something.&lt;/em&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Odometry&lt;/td&gt;
+      &lt;td&gt;Can be achieved with a number of things such as GPS, SLAM, internal IMU data, etc.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Reconstruction&lt;/td&gt;
+      &lt;td&gt;Requires some sort of information about the environment. This can be achieved with cameras, LiDAR, radar, etc. There are also varying degrees to which we can process and store our internal model of the environment.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Semantics&lt;/td&gt;
+      &lt;td&gt;Typically achieved through the use of machine learning, and some sort of image classification algorithm.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Prediction&lt;/td&gt;
+      &lt;td&gt;Machine learning methods are a&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;image-projections&quot;&gt;Image Projections&lt;/h3&gt;
+
+&lt;p&gt;Consider a set of points in 3D space, defined by the camera frame. The projection of this point into the image plane can be expressed as:&lt;/p&gt;
+
+\[u=f\frac{p_x^w}{p_z^w}\]
+
+\[v=f\frac{p_y^w}{p_z^w}\]
+
+&lt;p&gt;Where \(u\), \(v\) are the coordinates of point P expressed in the image plane, and f is the focal length of the camera. Note that \(u\), \(v\) are not pixel coordinates.&lt;/p&gt;
+
+&lt;p&gt;An important characteristic of 2D images is the lack information regarding depth. A machine cannot tell if we are looking at a large object very far away or a close object nearby. There are multiple ways around this problem, including but not limited to LiDAR, Radar, or triangulation.&lt;/p&gt;
+
+&lt;h3 id=&quot;feature-identification&quot;&gt;Feature Identification&lt;/h3&gt;
+
+&lt;p&gt;Although modern vision systems may incorporate object identification and tracking, a more rudimentary system may begin by tracking local features. This begs the question, what defines a good feature? Long story short, corners are good features, while edges and surfaces are not.&lt;/p&gt;
+
+&lt;p&gt;Consider a rectangular window centered around some pixel \(\widetilde{x}\). This is a “good” feature if shifting the window in any direction produces a new window that is different from the original. Mathematically, let us define:&lt;/p&gt;
+
+\[G=\sum_{W\left(x\right)}^{\ }{\nabla I\left(\widetilde{x}\right)\nabla I\left(\widetilde{x}\right)^\top}\]
+
+&lt;p&gt;Where \(\nabla I\left(\widetilde{x}\right)\) is the gradient of the image. Two common ways of scoring the corner is with either the Harris score, or the Shi-Tomasi score. These are, respectively:&lt;/p&gt;
+
+\[C\left(G\right)=det\left(G\right)-ktr\left(G\right)^2\]
+
+\[S\left(G\right)=\lambda_{min}\left(G\right)\]
+
+&lt;p&gt;Where \(\lambda_{min}\) is a function that returns the smallest eigenvalue of the matrix.&lt;/p&gt;
+
+&lt;h3 id=&quot;outliers&quot;&gt;Outliers&lt;/h3&gt;
+
+&lt;p&gt;When we use a quadratic loss function, the weights of outliers are exaggerated. Thus instead of fitting the correct data, we end up fitting to the incorrect ones. This is not an easy problem to overcome, because we do not know ahead of time which data points are the wrong ones. To overcome this problem, a few outlier reject or outlier robust methods have been proposed.&lt;/p&gt;
+
+&lt;h3 id=&quot;random-consensus-sampling-ransac&quot;&gt;Random Consensus Sampling (RANSAC)&lt;/h3&gt;
+
+&lt;p&gt;From consecutive image frames, one can perform feature matching, and calculate the change in camera position between frames. However, given a set of matched features (typically called correspondences), there are bound to be a few mis-identified matches. RANSAC provides a method for dealing with these outliers.&lt;/p&gt;
+
+&lt;p&gt;The basic idea is pretty simple. From the entire complete set of “matches”, we take a random set, and calculae the resulting change in position. We then repeat with another random set, and another, and check to see if there is agreement.&lt;/p&gt;
+
+&lt;h3 id=&quot;feature-tracking&quot;&gt;Feature Tracking&lt;/h3&gt;
+
+&lt;h3 id=&quot;image-segmentation&quot;&gt;Image Segmentation&lt;/h3&gt;
+
+&lt;p&gt;Broadly, image segmentation is a form of pixel classification. The ultimate goal is to find meaningful groupings. Note that this can be done independently, in combination with, or as step in object classification, which involves finding labels. Traditional image segmentation methods are also not necessarily feature tracking methods or SLAM methods.&lt;/p&gt;
+
+&lt;h3 id=&quot;simultaneous-localization-and-mapping-slam&quot;&gt;Simultaneous Localization and Mapping (SLAM)&lt;/h3&gt;
+
+&lt;p&gt;SLAM is a process which covers the first two goals in computer vision - odometry and mapping. SLAM then can be further subdivided into two components, a &lt;strong&gt;front end&lt;/strong&gt; which identifies features in the environment, and a &lt;strong&gt;back-end&lt;/strong&gt; which builds an internal map of those features.&lt;/p&gt;
+
+&lt;h3 id=&quot;term-definitions&quot;&gt;Term Definitions&lt;/h3&gt;
+
+&lt;p&gt;Isomorphism – a form of transformation that preserves structure.&lt;/p&gt;
+
+&lt;p&gt;Homography – an isomorphism between projected images.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Music and AI</title>
@@ -69,6 +163,12 @@
 &lt;/ul&gt;
 
 &lt;p&gt;Another way to understand unsupervised learning algorithms is that they look for ways to compress your data. If you had fifty (x,y) coordinates which all fall onto the line y = 3x+2, an unsupervised learning algorithm can compress those 100 numbers into fifty x-coordinates and a function. See how we’ve reduced the total datasize? If you’ve ever compressed an image or a word document, you’ve made use of an unsupervised learning technique.&lt;/p&gt;
+
+&lt;p&gt;A really cool outcome we get from unsupervised learning is the ability to generate new examples from the underlying principles that we’ve discovered, also known as generative modeling.&lt;/p&gt;
+
+&lt;h3 id=&quot;generative-adversarial-modeling&quot;&gt;Generative Adversarial Modeling&lt;/h3&gt;
+
+&lt;p&gt;A generative adversarial model, or GAN, consists of two parts - a generative modeling program to create plausible examples, and a supervised learning/classification program that tries to distinguish the fake ones from the real ones. They are trained against one another (hence adversarial), until the classifier is no longer able to distinguish between the two.&lt;/p&gt;
 
 &lt;h3 id=&quot;reinforcement-learning&quot;&gt;Reinforcement Learning&lt;/h3&gt;
 
@@ -244,132 +344,6 @@
 &lt;h3 id=&quot;agile-engineering&quot;&gt;Agile Engineering&lt;/h3&gt;
 
 &lt;h3 id=&quot;sysml&quot;&gt;SysML&lt;/h3&gt;
-
-</content>
- </entry>
- 
- <entry>
-   <title>Modes</title>
-   <link href="https://ludavid15.github.io//modes/"/>
-   <updated>2021-07-05T00:00:00-07:00</updated>
-   <id>https://ludavid15.github.io//modes</id>
-   <content type="html">&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Mode&lt;/td&gt;
-      &lt;td&gt;Origin note&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Lydian&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Phyrgian&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Mixolydian&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Machine Vision</title>
-   <link href="https://ludavid15.github.io//vision/"/>
-   <updated>2021-07-05T00:00:00-07:00</updated>
-   <id>https://ludavid15.github.io//vision</id>
-   <content type="html">&lt;p&gt;The topic of perception and machine vision can be broken down into a few separate problems.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Odometry – where are you?*&lt;/li&gt;
-  &lt;li&gt;Reconstruction/Mapping – where are things in the world?*&lt;/li&gt;
-  &lt;li&gt;Semantics – what are things in the world?&lt;/li&gt;
-  &lt;li&gt;Prediction – where will things in the world be?&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;em&gt;*The coordinate frame is very important! Positions are always defined with respect to something.&lt;/em&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Odometry&lt;/td&gt;
-      &lt;td&gt;Can be achieved with a number of things such as GPS, SLAM, internal IMU data, etc.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Reconstruction&lt;/td&gt;
-      &lt;td&gt;Requires some sort of information about the environment. This can be achieved with cameras, LiDAR, radar, etc. There are also varying degrees to which we can process and store our internal model of the environment.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Semantics&lt;/td&gt;
-      &lt;td&gt;Typically achieved through the use of machine learning, and some sort of image classification algorithm.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Prediction&lt;/td&gt;
-      &lt;td&gt;Machine learning methods are a&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;image-projections&quot;&gt;Image Projections&lt;/h3&gt;
-
-&lt;p&gt;Consider a set of points in 3D space, defined by the camera frame. The projection of this point into the image plane can be expressed as:&lt;/p&gt;
-
-\[u=f\frac{p_x^w}{p_z^w}\]
-
-\[v=f\frac{p_y^w}{p_z^w}\]
-
-&lt;p&gt;Where \(u\), \(v\) are the coordinates of point P expressed in the image plane, and f is the focal length of the camera. Note that \(u\), \(v\) are not pixel coordinates.&lt;/p&gt;
-
-&lt;p&gt;An important characteristic of 2D images is the lack information regarding depth. A machine cannot tell if we are looking at a large object very far away or a close object nearby. There are multiple ways around this problem, including but not limited to LiDAR, Radar, or triangulation.&lt;/p&gt;
-
-&lt;h3 id=&quot;feature-identification&quot;&gt;Feature Identification&lt;/h3&gt;
-
-&lt;p&gt;Although modern vision systems may incorporate object identification and tracking, a more rudimentary system may begin by tracking local features. This begs the question, what defines a good feature? Long story short, corners are good features, while edges and surfaces are not.&lt;/p&gt;
-
-&lt;p&gt;Consider a rectangular window centered around some pixel \(\widetilde{x}\). This is a “good” feature if shifting the window in any direction produces a new window that is different from the original. Mathematically, let us define:&lt;/p&gt;
-
-\[G=\sum_{W\left(x\right)}^{\ }{\nabla I\left(\widetilde{x}\right)\nabla I\left(\widetilde{x}\right)^\top}\]
-
-&lt;p&gt;Where \(\nabla I\left(\widetilde{x}\right)\) is the gradient of the image. Two common ways of scoring the corner is with either the Harris score, or the Shi-Tomasi score. These are, respectively:&lt;/p&gt;
-
-\[C\left(G\right)=det\left(G\right)-ktr\left(G\right)^2\]
-
-\[S\left(G\right)=\lambda_{min}\left(G\right)\]
-
-&lt;p&gt;Where \(\lambda_{min}\) is a function that returns the smallest eigenvalue of the matrix.&lt;/p&gt;
-
-&lt;h3 id=&quot;outliers&quot;&gt;Outliers&lt;/h3&gt;
-
-&lt;p&gt;When we use a quadratic loss function, the weights of outliers are exaggerated. Thus instead of fitting the correct data, we end up fitting to the incorrect ones. This is not an easy problem to overcome, because we do not know ahead of time which data points are the wrong ones. To overcome this problem, a few outlier reject or outlier robust methods have been proposed.&lt;/p&gt;
-
-&lt;h3 id=&quot;random-consensus-sampling-ransac&quot;&gt;Random Consensus Sampling (RANSAC)&lt;/h3&gt;
-
-&lt;p&gt;From consecutive image frames, one can perform feature matching, and calculate the change in camera position between frames. However, given a set of matched features (typically called correspondences), there are bound to be a few mis-identified matches. RANSAC provides a method for dealing with these outliers.&lt;/p&gt;
-
-&lt;p&gt;The basic idea is pretty simple. From the entire complete set of “matches”, we take a random set, and calculae the resulting change in position. We then repeat with another random set, and another, and check to see if there is agreement.&lt;/p&gt;
-
-&lt;h3 id=&quot;feature-tracking&quot;&gt;Feature Tracking&lt;/h3&gt;
-
-&lt;h3 id=&quot;image-segmentation&quot;&gt;Image Segmentation&lt;/h3&gt;
-
-&lt;p&gt;Broadly, image segmentation is a form of pixel classification. The ultimate goal is to find meaningful groupings. Note that this can be done independently, in combination with, or as step in object classification, which involves finding labels. Traditional image segmentation methods are also not necessarily feature tracking methods or SLAM methods.&lt;/p&gt;
-
-&lt;h3 id=&quot;simultaneous-localization-and-mapping-slam&quot;&gt;Simultaneous Localization and Mapping (SLAM)&lt;/h3&gt;
-
-&lt;p&gt;SLAM is a process which covers the first two goals in computer vision - odometry and mapping. SLAM then can be further subdivided into two components, a &lt;strong&gt;front end&lt;/strong&gt; which identifies features in the environment, and a &lt;strong&gt;back-end&lt;/strong&gt; which builds an internal map of those features.&lt;/p&gt;
-
-&lt;h3 id=&quot;term-definitions&quot;&gt;Term Definitions&lt;/h3&gt;
-
-&lt;p&gt;Isomorphism – a form of transformation that preserves structure.&lt;/p&gt;
-
-&lt;p&gt;Homography – an isomorphism between projected images.&lt;/p&gt;
 
 </content>
  </entry>

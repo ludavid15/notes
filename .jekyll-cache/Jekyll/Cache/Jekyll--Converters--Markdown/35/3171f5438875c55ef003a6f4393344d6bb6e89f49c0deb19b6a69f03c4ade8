@@ -4,6 +4,22 @@
   
   <div class="post">
     <h2 class="post-title">
+      <a href="/notes/vision/">
+        Machine Vision
+      </a>
+    </h2>
+
+    <span class="post-date">26 Jul 2021</span>
+    <p>The topic of perception and machine vision can be broken down into a few separate problems.</p>
+
+    <a href="/notes/vision/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
       <a href="/notes/howTomachineLearning/">
         How to Think About Machine Learning
       </a>
@@ -13,22 +29,6 @@
     <p>There is so much literature out there on machine learning that it can get pretty overwhelming. This post serves to organize machine learning into a few broad categories, and in doing so, highlight their different strengths.</p>
 
     <a href="/notes/howTomachineLearning/">
-    Read on
-    </a>
-  </div>
-  <hr />
-  
-  <div class="post">
-    <h2 class="post-title">
-      <a href="/notes/vision/">
-        Machine Vision
-      </a>
-    </h2>
-
-    <span class="post-date">05 Jul 2021</span>
-    <p>The topic of perception and machine vision can be broken down into a few separate problems.</p>
-
-    <a href="/notes/vision/">
     Read on
     </a>
   </div>
