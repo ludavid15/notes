@@ -1,41 +1,18 @@
-I"!<hr />
+I"�<hr />
 
 <div class="posts">
   
   <div class="post">
     <h2 class="post-title">
-      <a href="/notes/modes/">
-        Modes
+      <a href="/notes/musicAI/">
+        Music and AI
       </a>
     </h2>
 
-    <span class="post-date">05 Jul 2021</span>
-    <table>
-  <tbody>
-    <tr>
-      <td>Mode</td>
-      <td>Origin note</td>
-    </tr>
-    <tr>
-      <td>Lydian</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Phyrgian</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Mixolydian</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
+    <span class="post-date">21 Jul 2021</span>
+    <p>Background</p>
 
-    <a href="/notes/modes/">
+    <a href="/notes/musicAI/">
     Read on
     </a>
   </div>
