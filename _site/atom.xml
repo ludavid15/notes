@@ -4,7 +4,7 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-07-26T20:28:38-07:00</updated>
+ <updated>2021-08-02T18:56:17-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
@@ -168,7 +168,23 @@
 
 &lt;h3 id=&quot;generative-adversarial-modeling&quot;&gt;Generative Adversarial Modeling&lt;/h3&gt;
 
-&lt;p&gt;A generative adversarial model, or GAN, consists of two parts - a generative modeling program to create plausible examples, and a supervised learning/classification program that tries to distinguish the fake ones from the real ones. They are trained against one another (hence adversarial), until the classifier is no longer able to distinguish between the two.&lt;/p&gt;
+&lt;p&gt;A generative adversarial model, or GAN, is a method to train a generative modeling algorithm. GAN’s consist of two parts - a generative modeling program to create plausible examples, and a supervised learning/classification program that tries to distinguish the fake ones from the real ones. They are trained against one another (hence adversarial), until the classifier is no longer able to distinguish between the two.&lt;/p&gt;
+
+&lt;h3 id=&quot;representation-learning-or-feature-learning&quot;&gt;Representation Learning or Feature Learning&lt;/h3&gt;
+
+&lt;p&gt;Unsupervised learning groups differentiate algorithms by the data. Representation learning differentiates algorithms by their goals. Many unsupervised learning algorithms are representation learning algorithms and vice versa, but there is not a perfect overlap.&lt;/p&gt;
+
+&lt;p&gt;Here’s an example. We wish to write a program to classify flowers. Using a clustering approach, we might make measurements of the flower color or petal size and shape. K-means clustering would return the averages for each class. While we do find the averages, the properties were pre-defined.&lt;/p&gt;
+
+&lt;p&gt;If we linearized the pixels of each image (n by m), we’d end up performing clustering in (\(n \times m\)) space, which is computationally expensive.&lt;/p&gt;
+
+&lt;p&gt;So how can we get a machine to learn features? Well, when we perform supervised learning with something like a deep neural net, the last hidden layer before the output can actually be a set of features.&lt;/p&gt;
+
+&lt;p&gt;Or in an unsupervised case, independent component analysis and autoencoders achieve this goal by looking for ways to represent the most original information in the fewest variables. The singular value decomposition and eigenvalues do this.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Consider the example of rotations. A rotation matrix in 3D is a 3x3 matrix, for a total of nine variables. But it turns out that any rotation in 3D can be represented by only three Euler angles (Roll Pitch Yaw). If we have those three numbers, we can follow a specific set of rules to reconstruct the original object. In this way, the Euler angles can be thought of as “features” of the rotation matrix.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3 id=&quot;reinforcement-learning&quot;&gt;Reinforcement Learning&lt;/h3&gt;
 
@@ -188,7 +204,9 @@
    <link href="https://ludavid15.github.io//systemsEngineering/"/>
    <updated>2021-07-16T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//systems</id>
-   <content type="html">&lt;!--more--&gt;
+   <content type="html">&lt;p&gt;In the 1980’s, the field of systems engineering emerged from a slowing aerospace industry. Driven by new demands for safety and reliability, engineers formalized a process to sustain highly complex projects that have no budget for failure.&lt;/p&gt;
+
+&lt;!--more--&gt;
 
 &lt;h3 id=&quot;requirements&quot;&gt;Requirements&lt;/h3&gt;
 
@@ -340,10 +358,6 @@
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-
-&lt;h3 id=&quot;agile-engineering&quot;&gt;Agile Engineering&lt;/h3&gt;
-
-&lt;h3 id=&quot;sysml&quot;&gt;SysML&lt;/h3&gt;
 
 </content>
  </entry>
@@ -514,7 +528,7 @@
    <link href="https://ludavid15.github.io//aircraft/"/>
    <updated>2021-06-21T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//aircraft</id>
-   <content type="html">&lt;p&gt;This post serves as an overview of various topics pertaining to aircraft performance, design, and aerodynamics.&lt;/p&gt;
+   <content type="html">&lt;p&gt;This post reviews the principles of aircraft performance, design, and aerodynamics. Be prepared for alot of math!&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -2229,7 +2243,7 @@ Problems formatted in one type can be transformed into another format fairly eas
    <link href="https://ludavid15.github.io//machineLearning/"/>
    <updated>2021-06-05T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//machineLearning</id>
-   <content type="html">&lt;p&gt;At its core, machine learning is a &lt;strong&gt;statistical science&lt;/strong&gt;, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.&lt;/p&gt;
+   <content type="html">&lt;p&gt;At its core, machine learning is a &lt;strong&gt;statistical science&lt;/strong&gt;, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result. This is a reference page with lots of math!&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -2544,21 +2558,6 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;p&gt;A method for statistical analysis of shape distributions. An orthogonal Procrustes problem is one that finds the optimal rotation, translation, and/or reflection which aligns two shapes.&lt;/p&gt;
 
-&lt;h3 id=&quot;representation-learning-or-feature-learning&quot;&gt;Representation Learning or Feature Learning&lt;/h3&gt;
-
-&lt;p&gt;The goal of representation learning is to discover the features which define a classification.&lt;/p&gt;
-
-&lt;p&gt;Here’s an example. We wish to write a program to classify flowers. Using a clustering approach, we might make measurements of the flower color or petal size and shape. K-means clustering would return the averages for each class. While we do find the averages, the properties were pre-defined.&lt;/p&gt;
-
-&lt;p&gt;If we linearized the pixels of each image (n by m), we’d end up performing clustering in (\(n \times m\)) space, which is computationally expensive.&lt;/p&gt;
-
-&lt;p&gt;So how can we get a machine to learn features? Well, when we perform supervised learning with something like a deep neural net, the last hidden layer before the output can actually be a set of features.&lt;/p&gt;
-
-&lt;p&gt;Or in an unsupervised case, independent component analysis and autoencoders achieve this goal by looking for ways to represent the most original information in the fewest variables. The singular value decomposition and eigenvalues do this.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Consider the example of rotations. A rotation matrix in 3D is a 3x3 matrix, for a total of nine variables. But it turns out that any rotation in 3D can be represented by only three Euler angles (Roll Pitch Yaw). If we have those three numbers, we can follow a specific set of rules to reconstruct the original object. In this way, the Euler angles can be thought of as “features” of the rotation matrix.&lt;/p&gt;
-&lt;/blockquote&gt;
 </content>
  </entry>
  
@@ -3176,7 +3175,7 @@ A: As with most things in life, very little is free. Since the goal is to produc
    <link href="https://ludavid15.github.io//fundamentalsDynamics/"/>
    <updated>2021-05-13T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//dynamicsFundamentals</id>
-   <content type="html">&lt;p&gt;In dynamics, the goal is to predict the position, velocity, and acceleration of rigid bodies as a function of time through the use of Newton’s second law, F=ma. While the basic principle is simple, the key challenge of dynamics involves the definition of reference frames, vectors, and their relationships.&lt;/p&gt;
+   <content type="html">&lt;p&gt;In dynamics, the goal is to predict the position, velocity, and acceleration of rigid bodies as a function of time through using this equation: F=ma. While the basic principle is simple, the key challenge of dynamics involves defining reference frames, vectors, and their relationships.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Note that F = ma is not the only way to solve dynamics problems! In the late 1700’s, Joseph-Louis Lagrange introduced an energy conservation strategy, known today as the Euler-Lagrange Equations.&lt;/p&gt;

@@ -1,0 +1,7 @@
+I"<p>In dynamics, the goal is to predict the position, velocity, and acceleration of rigid bodies as a function of time through using this equation: F=ma. While the basic principle is simple, the key challenge of dynamics involves defining reference frames, vectors, and their relationships.</p>
+
+<blockquote>
+  <p>Note that F = ma is not the only way to solve dynamics problems! In the late 1700’s, Joseph-Louis Lagrange introduced an energy conservation strategy, known today as the Euler-Lagrange Equations.</p>
+</blockquote>
+
+:ET
