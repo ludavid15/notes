@@ -7,7 +7,7 @@ mathjax: true
 categories: dynamics
 ---
 
-In dynamics, the goal is to predict the position, velocity, and acceleration of rigid bodies as a function of time through the use of Newton’s second law, F=ma. While the basic principle is simple, the key challenge of dynamics involves the definition of reference frames, vectors, and their relationships. 
+In dynamics, the goal is to predict the position, velocity, and acceleration of rigid bodies as a function of time through using this equation: F=ma. While the basic principle is simple, the key challenge of dynamics involves defining reference frames, vectors, and their relationships. 
 
 > Note that F = ma is not the only way to solve dynamics problems! In the late 1700's, Joseph-Louis Lagrange introduced an energy conservation strategy, known today as the Euler-Lagrange Equations. 
 

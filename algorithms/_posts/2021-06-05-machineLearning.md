@@ -7,7 +7,7 @@ except_separator: <!--more-->
 categories: algorithms
 ---
 
-At its core, machine learning is a **statistical science**, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.
+At its core, machine learning is a **statistical science**, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result. This is a reference page with lots of math!
 
 <!--more-->
 
@@ -128,6 +128,7 @@ $$A_j=[1,\ t_j,\ t_j^2, \ldots,\cos(t_j),\sin(t_j),\cos(t_j),\sin(t_j)]$$
 
 Thus, the dot product of x with Aj should yield Equation 1. Repeating the above for every data point will yield a full matrix for A. The coefficients for our model equation which best fit the data can be found now using least squares regression.
 
+
 ### Regularized Least Squares
 
 Consider for a moment, a constrained least squares problem:
@@ -153,6 +154,7 @@ The first difference matrix when multiplied by a vector yields the elementwise g
 
 $$D=\ \left[\begin{matrix}-1&1&0&0&0\\0&-1&\cdots&0&0\\0&\vdots&\ddots&\vdots&0\\0&0&\cdots&-1&1\\1&0&0&0&-1\\\end{matrix}\right]$$
 
+
 ### Trace of a Matrix
 
 The trace of a matrix is defined as the sum of values down the primary diagonal. The trace is invariant under cyclic permutation:
@@ -161,6 +163,7 @@ $$tr\left(AB\right)=tr\left(BA\right)$$
 
 $$tr\left(A+B\right)=tr\left(A\right)+tr\left(B\right)$$
 
+
 ### Frobenius Norm
 
 The Frobenius norm of a matrix is the root of the sum of the square of all values. The frobenius norm is also equal to the square root of the trace, and the sum of square of singular values of A. 
@@ -168,6 +171,7 @@ The Frobenius norm of a matrix is the root of the sum of the square of all value
 $$\|A\|_F = a_{ij}^2$$
 
 $$\|A\|_F^2=tr(AA^H)=tr(A^HA)=σ_i^2$$
+
 
 ### Principal Component Analysis
 
@@ -178,6 +182,7 @@ The first principal component of a matrix A, associated with the first eigenvect
 $$u_1=\ argmax\|Ax\|^2)$$
 
 The next largest principal component can be found by projecting A into the null space formed from the previously found vectors and repeating the previous calculation. (We are finding the next line of best fit that is orthonormal to any previously found lines).
+
 
 ### Independent Component Analysis
 
@@ -232,16 +237,4 @@ The R.O.C plots the probability of correct classification vs the probability of 
 
 A method for statistical analysis of shape distributions. An orthogonal Procrustes problem is one that finds the optimal rotation, translation, and/or reflection which aligns two shapes.
 
-### Representation Learning or Feature Learning
 
-The goal of representation learning is to discover the features which define a classification. 
-
-Here's an example. We wish to write a program to classify flowers. Using a clustering approach, we might make measurements of the flower color or petal size and shape. K-means clustering would return the averages for each class. While we do find the averages, the properties were pre-defined. 
-
-If we linearized the pixels of each image (n by m), we'd end up performing clustering in ($$n \times m$$) space, which is computationally expensive. 
-
-So how can we get a machine to learn features? Well, when we perform supervised learning with something like a deep neural net, the last hidden layer before the output can actually be a set of features. 
-
-Or in an unsupervised case, independent component analysis and autoencoders achieve this goal by looking for ways to represent the most original information in the fewest variables. The singular value decomposition and eigenvalues do this. 
-
-> Consider the example of rotations. A rotation matrix in 3D is a 3x3 matrix, for a total of nine variables. But it turns out that any rotation in 3D can be represented by only three Euler angles (Roll Pitch Yaw). If we have those three numbers, we can follow a specific set of rules to reconstruct the original object. In this way, the Euler angles can be thought of as "features" of the rotation matrix. 
