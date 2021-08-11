@@ -7,16 +7,16 @@ except_separator: <!--more-->
 categories: algorithms
 ---
 
-At its core, machine learning is a **statistical science**, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result. This is a reference page with lots of math!
+At its core, machine learning is a **statistical science**, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result. 
 
 <!--more-->
 
 ## Machine Learning through Matrix Math
 
-Before getting started, a few important definitions. Why are these important? Well, matrices are how we store data. Before we jump into any fancy machine learning algorithms, we can borrow techniques from Linear algebra to understand patterns in the data.
+Before getting started - why do we care about matrices? Well, matrices are how we store data. So before we jump into neural networks, we can begin with techniques from linear algebra to extract data patterns.
 
 Vector
-: By default, vectors are written as a column. The transpose/Hermitian of a vector places it into row format.
+: By default, vectors are columns. The transpose/Hermitian of a vector turns it into a row. 
 
 Range/Span
 : The set of all linear combinations of each vector. 

@@ -11,11 +11,9 @@ The underlying principle of an optimization is pretty straightfoward - find the 
 
 <!--more-->
 
-Finding this maximum or minumum is pretty straightfoward, but more often then not, an optimization attempt fails not because we couldn't find the correct min/max, but because our question was posed poorly in the first place. 
+Finding this maximum or minumum is pretty straightforward. However, optimization attempts often fail not because we couldn't find the correct min/max, but because our question was posed poorly in the first place. 
 
 For example, if you wanted to get from point A to point B, the fastest way to do this is probably not the cheapest way. In fact, these things likely trade off with one another. When you frame this mathematically, how do you weigh each objective? Lacking a common unit or denomination, it's like comparing apples to oranges. 
-
-
 
 ### Mathematics
 
