@@ -1,0 +1,55 @@
+I"�	<p>Non-dimensional simply means unitless. Why unitless? Because we’re taking the ratio of two similar properties and comparing their relative magnitude.</p>
+
+<p>There’s a whole bunch of these, but here are the main ones that you might come across.</p>
+
+<!--more-->
+
+<h4 id="reynolds-number">Reynold’s Number</h4>
+
+\[\frac{\rho UL}{\mu}\]
+
+<p>Ratio of viscous forces to inertia forces. Determines flow regime (Laminar, turbulent, etc.).</p>
+
+<h4 id="mach-number">Mach Number</h4>
+
+\[\frac{u}{a}\]
+
+<p>Ratio of flow velocity to speed of sound. The higher the Mach number, the more irreversible the flow becomes.</p>
+
+<h4 id="knudsen-number">Knudsen Number</h4>
+
+\[\frac{\lambda}{L}\]
+
+<p>Ratio of molecular mean free path to characteristic length. Determines transition from gas dynamics to continuum mechanics.</p>
+
+<h4 id="prandtl-number">Prandtl Number</h4>
+
+\[\frac{C_p\mu}{k}\]
+
+<p>Ratio of momentum diffusivity to thermal diffusivity. This number relates the size of momentum to thermal boundary layers, or the ratio of convection to conduction.</p>
+
+<h4 id="nusselt-number">Nusselt Number</h4>
+
+\[\frac{hL}{k}\]
+
+<p>Ratio of convective to conductive heat transfer. Since a fluid’s speed affects the convection coefficient, the Nusselt Number is very similar to the Prandtl number.</p>
+
+<h4 id="stokes-number">Stokes Number</h4>
+
+\[\frac{t_0 u_0}{l_0}\]
+
+<p>Ratio of the characteristic time of a particle to a characteristic time of the flow. In other words, the effect of drag on a particle’s motion. On on extreme a particle’s motion follows the fluid streamlines and on the other extreme, it continues on its original trajectory.</p>
+
+<h2 id="fluid-statics">Fluid Statics</h2>
+
+<p>Forces always act perpendicular to the surface. Given atmospheric surface pressure (free surface) the pressure at a depth (h) will be:</p>
+
+\[P=\ \gamma h\]
+
+<p>Where \(\gamma\) is the specific gravity of the liquid, (1 for water). For submerged plate of area, A, total resultant force is equal to:</p>
+
+\[F_r=\gamma h_cA\]
+
+<p>Where hc is the depth of the centroid of the plate. This total force DOES NOT act through the centroid however, instead it acts at through a point where the total moment is equal to zero (center of pressure or can think of this as the centroid of the pressure distribution). If the plate is symmetric, this will coincide with the centroid. 
+For curved surfaces, use the following force balance approach:</p>
+:ET

@@ -172,12 +172,14 @@
     <div class="content container">
       <div class="post">
   <h1 class="post-title">Trajectory Optimization</h1>
-  <span class="post-date">07 Jun 2021</span>
-  <p>This is a subset within the broader field of optimization. There are a few details which make this subject unique:</p>
+  Last Updated: <span class="post-date">11 Aug 2021</span>
+  <p>In this article, we learn how to frame a trajectory problem as an optimization problem. To begin, let’s connect the physical properties of a trajectory, to the inputs of any optimization problem.</p>
+
+<!--more-->
 
 <ul>
   <li>Trajectories occur in 3D dimensional space, meaning that there should be x(t), y(t), and z(t).</li>
-  <li>The variables to be optimized optimize is the control input as a function of time. That is, u(t).</li>
+  <li>The variables to be optimized, are the control inputs as a function of time. That is, u(t).</li>
   <li>Trajectories are continuous time problems. Problems can be solved as continuous time or can be discretized and solved as a finite dimensional optimization problem.</li>
   <li>There are equations of motion which govern the effect of the control input u to the state variables x.</li>
 </ul>
@@ -199,7 +201,7 @@
 <p>There are three approaches for solving a continuous time trajectory optimization problem. These are:</p>
 
 <ol>
-  <li>Dynamic Programming* – using sufficient conditions to derive a control law (i.e. a function of the state and time)</li>
+  <li>Dynamic Programming* – using sufficient conditions to derive a control law (i.e. a function of the state and time).</li>
   <li>Indirect Methods – apply Pontryagin Maximum Principle (which provide necessary conditions) and solve the resulting two-point boundary value problem.</li>
   <li>Direct Methods – discretize the trajectory and solve as a constrained finite dimensional optimization problem. This is also known as transcription.</li>
 </ol>
@@ -526,6 +528,29 @@ Problems formatted in one type can be transformed into another format fairly eas
       <li>
         
           
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+          
+          <h3>
+            <a href="/notes/howTomachineLearning/">
+              How to Think About Machine Learning
+              <small>10 Aug 2021</small>
+            </a>
+          </h3>
+          
+        
+      </li>
+    
+      <li>
+        
+          
           <h3>
             <a href="/notes/vision/">
               Machine Vision
@@ -542,18 +567,18 @@ Problems formatted in one type can be transformed into another format fairly eas
     
       <li>
         
-          
-          <h3>
-            <a href="/notes/howTomachineLearning/">
-              How to Think About Machine Learning
-              <small>21 Jul 2021</small>
-            </a>
-          </h3>
-          
-        
       </li>
     
       <li>
+        
+          
+          <h3>
+            <a href="/notes/machineLearning/">
+              Machine Learning
+              <small>10 Jul 2021</small>
+            </a>
+          </h3>
+          
         
       </li>
     
@@ -592,10 +617,6 @@ Problems formatted in one type can be transformed into another format fairly eas
     
       <li>
         
-      </li>
-    
-      <li>
-        
           
           <h3>
             <a href="/notes/optimization/">
@@ -608,25 +629,6 @@ Problems formatted in one type can be transformed into another format fairly eas
       </li>
     
       <li>
-        
-          
-        
-      </li>
-    
-      <li>
-        
-      </li>
-    
-      <li>
-        
-          
-          <h3>
-            <a href="/notes/machineLearning/">
-              Machine Learning
-              <small>05 Jun 2021</small>
-            </a>
-          </h3>
-          
         
       </li>
     
@@ -702,17 +704,17 @@ Problems formatted in one type can be transformed into another format fairly eas
 <meta property="og:title" content="Trajectory Optimization" />
 <meta name="author" content="David Lu" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="This is a subset within the broader field of optimization. There are a few details which make this subject unique:" />
-<meta property="og:description" content="This is a subset within the broader field of optimization. There are a few details which make this subject unique:" />
+<meta name="description" content="In this article, we learn how to frame a trajectory problem as an optimization problem. To begin, let’s connect the physical properties of a trajectory, to the inputs of any optimization problem." />
+<meta property="og:description" content="In this article, we learn how to frame a trajectory problem as an optimization problem. To begin, let’s connect the physical properties of a trajectory, to the inputs of any optimization problem." />
 <link rel="canonical" href="https://ludavid15.github.io//notes/trajoptimization/" />
 <meta property="og:url" content="https://ludavid15.github.io//notes/trajoptimization/" />
 <meta property="og:site_name" content="Notes" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-06-07T00:00:00-07:00" />
+<meta property="article:published_time" content="2021-08-11T00:00:00-07:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Trajectory Optimization" />
 <script type="application/ld+json">
-{"headline":"Trajectory Optimization","dateModified":"2021-06-07T00:00:00-07:00","description":"This is a subset within the broader field of optimization. There are a few details which make this subject unique:","datePublished":"2021-06-07T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/trajoptimization/"},"url":"https://ludavid15.github.io//notes/trajoptimization/","author":{"@type":"Person","name":"David Lu"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"headline":"Trajectory Optimization","dateModified":"2021-08-11T00:00:00-07:00","description":"In this article, we learn how to frame a trajectory problem as an optimization problem. To begin, let’s connect the physical properties of a trajectory, to the inputs of any optimization problem.","datePublished":"2021-08-11T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/trajoptimization/"},"url":"https://ludavid15.github.io//notes/trajoptimization/","author":{"@type":"Person","name":"David Lu"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   

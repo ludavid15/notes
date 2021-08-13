@@ -1,19 +1,17 @@
 ---
 layout: post
-title: Miscellaneous Topics
+title: Non Dimensional Numbers
 permalink: /misc/
 excerpt_separator: <!--more-->
 mathjax: true
 categories: fluids
 ---
 
-This is a series of random topics, including non-dimensional numbers and fluid statics.
+Non-dimensional simply means unitless. Why unitless? Because we're taking the ratio of two similar properties and comparing their relative magnitude. 
+
+There’s a whole bunch of these, but here are the main ones that you might come across. 
 
 <!--more-->
-
-## Non-Dimensional Numbers
-
-There’s a whole bunch. Here are the main ones that you might come across. 
 
 #### Reynold’s Number
 
@@ -37,11 +35,21 @@ Ratio of molecular mean free path to characteristic length. Determines transitio
 
 $$\frac{C_p\mu}{k}$$	
 
-Ratio of momentum diffusivity to thermal diffusivity. In other words, ratio of the dominance of convection to conduction. Also relates momentum vs thermal boundary layers.
-
-#### Stokes Number		
+Ratio of momentum diffusivity to thermal diffusivity. This number relates the size of momentum to thermal boundary layers, or the ratio of convection to conduction. 
 
 #### Nusselt Number		
+
+$$\frac{hL}{k}$$
+
+Ratio of convective to conductive heat transfer. Since a fluid's speed affects the convection coefficient, the Nusselt Number is very similar to the Prandtl number.
+
+
+#### Stokes Number	
+
+$$\frac{t_0 u_0}{l_0}$$
+
+Ratio of the characteristic time of a particle to a characteristic time of the flow. In other words, the effect of drag on a particle's motion. On on extreme a particle's motion follows the fluid streamlines and on the other extreme, it continues on its original trajectory. 
+
 
 
 ## Fluid Statics

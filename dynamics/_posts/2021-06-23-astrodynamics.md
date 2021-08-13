@@ -66,7 +66,7 @@ In general, there is no way to algebraically solve for a low thrust trajectory. 
 
 An initial estimate for the delta V cost of a low thrust transfer orbit can be obtained by assuming that the resulting transfer path is made up of many circular orbits with gradually increasing radius. This applies when the initial and final orbits are circular and transfer time is long. 
 
-$$∆V= μr1-μr2$$
+$$∆V= \sqrt{\frac{μ}{r_1}}-\sqrt{\frac{μ}{r_2}}$$
 
 Derivation: 
 
@@ -86,7 +86,7 @@ $$T=\ \dot{m}U_{ex}$$
 
 $$\frac{d\vec{V}}{dt}=-\frac{d}{dt}\ln{\left(m\right)}U_{ex}-\frac{\mu}{r^2}\frac{dr}{dt}\frac{1}{V}$$
 
-$$∆V=-Uexlnmfmo-totfμr2drdt1Vdt$$
+$$∆V=-U_{ex}ln\frac{m_f}{m_o}-\int_{t_o}^{t_f}\frac{μ}{r^2}\frac{dr}{dt}\frac{1}{V}dt$$
 
 With a circular approximation, we can substitute the magnitude of velocity in with the radius.
 
