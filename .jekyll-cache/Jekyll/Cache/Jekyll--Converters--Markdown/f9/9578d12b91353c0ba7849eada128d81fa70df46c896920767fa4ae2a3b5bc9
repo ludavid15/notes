@@ -1,0 +1,102 @@
+I"a<hr />
+
+<div class="posts">
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/trajoptimization/">
+        Trajectory Optimization
+      </a>
+    </h2>
+
+    <span class="post-date">11 Aug 2021</span>
+    <p>In this article, we learn how to frame a trajectory problem as an optimization problem. To begin, let’s connect the physical properties of a trajectory, to the inputs of any optimization problem.</p>
+
+    <a href="/notes/trajoptimization/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/howTomachineLearning/">
+        How to Think About Machine Learning
+      </a>
+    </h2>
+
+    <span class="post-date">10 Aug 2021</span>
+    <p>There is so much literature out there on machine learning that it can get pretty overwhelming. This post serves to organize machine learning into a few broad categories, and in doing so, highlight their different strengths.</p>
+
+    <a href="/notes/howTomachineLearning/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/vision/">
+        Machine Vision
+      </a>
+    </h2>
+
+    <span class="post-date">26 Jul 2021</span>
+    <p>The topic of perception and machine vision can be broken down into a few separate problems.</p>
+
+    <a href="/notes/vision/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/machineLearning/">
+        Machine Learning
+      </a>
+    </h2>
+
+    <span class="post-date">10 Jul 2021</span>
+    <p>At its core, machine learning is a <strong>statistical science</strong>, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.</p>
+
+    <a href="/notes/machineLearning/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/pathPlanning/">
+        Path Planning
+      </a>
+    </h2>
+
+    <span class="post-date">05 Jul 2021</span>
+    <p>Across the vast field of robotics and controls, there is a common question of “how do we get from point A to point B?”. Without any constraints, the answer is pretty easy - go in a straight line - but this is not very useful. So how can we formulate a more useful question?</p>
+
+    <a href="/notes/pathPlanning/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/optimization/">
+        Optimization Fundamentals
+      </a>
+    </h2>
+
+    <span class="post-date">10 Jun 2021</span>
+    <p>The underlying principle of an optimization is pretty straightfoward - find the best way to do something. Best can mean fastest, safest, most efficient, shortest or thousands of other things, but the common denominator is that we are looking for the most (or least) of something. Mathematically then, this is pretty simple: we’re solving for a maximum.</p>
+
+    <a href="/notes/optimization/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+</div>
+:ET

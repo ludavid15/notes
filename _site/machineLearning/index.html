@@ -172,51 +172,34 @@
     <div class="content container">
       <div class="post">
   <h1 class="post-title">Machine Learning</h1>
-  <span class="post-date">05 Jun 2021</span>
-  <p>At its core, machine learning is a <strong>statistical science</strong>, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result. This is a reference page with lots of math!</p>
+  Last Updated: <span class="post-date">10 Jul 2021</span>
+  <p>At its core, machine learning is a <strong>statistical science</strong>, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.</p>
 
 <!--more-->
 
-<h2 id="machine-learning-through-matrix-math">Machine Learning through Matrix Math</h2>
+<h2 id="matrices">Matrices</h2>
 
-<p>Before getting started, a few important definitions. Why are these important? Well, matrices are how we store data. Before we jump into any fancy machine learning algorithms, we can borrow techniques from Linear algebra to understand patterns in the data.</p>
+<p>Before getting started - why do we care about matrices? Well, matrices are how we store data. So before we jump into neural networks, we can begin with techniques from linear algebra to extract data patterns.</p>
 
-<dl>
-  <dt>Vector</dt>
-  <dd>By default, vectors are written as a column. The transpose/Hermitian of a vector places it into row format.</dd>
-  <dt>Range/Span</dt>
-  <dd>The set of all linear combinations of each vector.</dd>
-</dl>
+<p><strong>Vector</strong> - By default, vectors are columns. The transpose/Hermitian of a vector turns it into a row.</p>
+
+<p><strong>Range/Span</strong> - The set of all linear combinations of each vector.</p>
 
 \[R\left(A\right)={\alpha_1A_1+a_2A_2\ldots+\alpha_kA_k,\ for\ any\ \alpha_i\in F}\]
 
-<dl>
-  <dt>Nullspace/Kernel (of a matrix A)</dt>
-  <dd>The set of all vectors [x] such that Ax = 0</dd>
-</dl>
+<p><strong>Nullspace/Kernel (of a matrix A)</strong> - The set of all vectors [x] such that Ax = 0</p>
 
 \[N\left(A\right)={x\in F^n,\ Ax=0}\]
 
-<dl>
-  <dt>Ortho-complement (of a subspace)</dt>
-  <dd>The set of all vectors [x] that are orthogonal to all vectors in the subspace V.</dd>
-</dl>
+<p><strong>Ortho-complement (of a subspace)</strong> -  The set of all vectors [x] that are orthogonal to all vectors in the subspace V.</p>
 
 \[V^\bot={x,\ x\bot y\ for\ all\ y\in V}\]
 
-<dl>
-  <dt>Linear Dependence</dt>
-  <dd>
-    <p>A set of vectors are said to linearly dependent if there exist scalars \(\alpha\) not all zero such that:</p>
-  </dd>
-</dl>
+<p><strong>Linear Dependence</strong> - A set of vectors are said to linearly dependent if there exist scalars \(\alpha\) not all zero such that:</p>
 
 \[\alpha_1V_1+a_2V_2\ldots+\alpha_kV_k=0\]
 
-<dl>
-  <dt>Rank</dt>
-  <dd>The rank of a matrix is the is the number of linearly independent rows or columns. It is equal to the dimension of the span of the matrix. The rank cannot be greater than min(m, n) given \(A\in F^{m\times n}\).</dd>
-</dl>
+<p><strong>Rank</strong> - The rank of a matrix is the is the number of linearly independent rows or columns. It is equal to the dimension of the span of the matrix. The rank cannot be greater than min(m, n) given \(A\in F^{m\times n}\).</p>
 
 <h3 id="summary-of-matrix-properties">Summary of Matrix Properties</h3>
 
@@ -499,9 +482,9 @@
         
           
           <h3>
-            <a href="/notes/vision/">
-              Machine Vision
-              <small>26 Jul 2021</small>
+            <a href="/notes/trajoptimization/">
+              Trajectory Optimization
+              <small>11 Aug 2021</small>
             </a>
           </h3>
           
@@ -518,7 +501,7 @@
           <h3>
             <a href="/notes/howTomachineLearning/">
               How to Think About Machine Learning
-              <small>21 Jul 2021</small>
+              <small>10 Aug 2021</small>
             </a>
           </h3>
           
@@ -526,6 +509,29 @@
       </li>
     
       <li>
+        
+          
+          <h3>
+            <a href="/notes/vision/">
+              Machine Vision
+              <small>26 Jul 2021</small>
+            </a>
+          </h3>
+          
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+          
         
       </li>
     
@@ -564,10 +570,6 @@
     
       <li>
         
-      </li>
-    
-      <li>
-        
           
           <h3>
             <a href="/notes/optimization/">
@@ -580,25 +582,6 @@
       </li>
     
       <li>
-        
-          
-          <h3>
-            <a href="/notes/trajoptimization/">
-              Trajectory Optimization
-              <small>07 Jun 2021</small>
-            </a>
-          </h3>
-          
-        
-      </li>
-    
-      <li>
-        
-      </li>
-    
-      <li>
-        
-          
         
       </li>
     
@@ -674,17 +657,17 @@
 <meta property="og:title" content="Machine Learning" />
 <meta name="author" content="David Lu" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result. This is a reference page with lots of math!" />
-<meta property="og:description" content="At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result. This is a reference page with lots of math!" />
+<meta name="description" content="At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result." />
+<meta property="og:description" content="At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result." />
 <link rel="canonical" href="https://ludavid15.github.io//notes/machineLearning/" />
 <meta property="og:url" content="https://ludavid15.github.io//notes/machineLearning/" />
 <meta property="og:site_name" content="Notes" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-06-05T00:00:00-07:00" />
+<meta property="article:published_time" content="2021-07-10T00:00:00-07:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Machine Learning" />
 <script type="application/ld+json">
-{"headline":"Machine Learning","dateModified":"2021-06-05T00:00:00-07:00","description":"At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result. This is a reference page with lots of math!","datePublished":"2021-06-05T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/machineLearning/"},"url":"https://ludavid15.github.io//notes/machineLearning/","author":{"@type":"Person","name":"David Lu"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"headline":"Machine Learning","dateModified":"2021-07-10T00:00:00-07:00","description":"At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.","datePublished":"2021-07-10T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/machineLearning/"},"url":"https://ludavid15.github.io//notes/machineLearning/","author":{"@type":"Person","name":"David Lu"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
