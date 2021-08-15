@@ -231,3 +231,7 @@ The R.O.C plots the probability of correct classification vs the probability of 
 A method for statistical analysis of shape distributions. An orthogonal Procrustes problem is one that finds the optimal rotation, translation, and/or reflection which aligns two shapes.
 
 
+### Minimum Dimensions
+
+If I told you that there were 4 distinct points, and gave you the distance between every pair, you could determine the minimum dimensional space required to properly map these points. For instance, if all 6 distances are the same, there is no way to position these 4 points in a plane that makes this true. Instead, they must be arranged as a regular tetrahedron in 3D space. 
+
