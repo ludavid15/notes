@@ -17,7 +17,7 @@ Lastly, while we're laying down the groundwork here, it's important to mention t
 
 > Continuums are characterized by the existence of shear, and by being continuous (duh). 
 
-But watch out! When the density is really low, (such as in space) the continuum assumption falls apart, at which point we must switch over to modelcular dynamics. This is an important rule to remember generally speaking. Each equation we develop comes with it's own set of assumptions that must be true or else our equation isn't valid. 
+But watch out! When the density is really low, (such as in space) the continuum assumption falls apart, at which point we must switch over to molecular dynamics. This is an important rule to remember generally speaking - each equation we develop comes with it's own set of assumptions that must be true or else our equation isn't valid. 
 
 ### Newtonian Fluid
 

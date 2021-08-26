@@ -1,0 +1,158 @@
+I"�(<p>In the 1980’s, the field of systems engineering emerged from a slowing aerospace industry. Driven by new demands for safety and reliability, engineers formalized a process to sustain highly complex projects that have no budget for failure.</p>
+
+<!--more-->
+
+<h3 id="requirements">Requirements</h3>
+
+<p>Requirements have been the backbone of aerospace systems engineering for a few decades now. The basic idea is that we write down a complete list of everything our project needs to do, and then break them down piece by piece. The idea is sound, but the execution gets messy very quickly, and is more art than science.</p>
+
+<p>Let’s consider an example. Say we are trying to design a rocketship to Mars. We might define a few high level requirements that read:</p>
+
+<ol>
+  <li>The rocket shall carry 4 astronauts</li>
+  <li>The rocket shall be able to complete the mission in 2 years.</li>
+  <li>The rocket shall use electric propulsion systems.</li>
+</ol>
+
+<p>Taking the first requirement, we can break it down logically into necessary components. This process then gets repeated over and over until we reach a good level of detail, or more likely, until we can’t be bothered to keep going.</p>
+
+<ol>
+  <li>The rocket shall include a life support system to recycle oxygen.</li>
+  <li>The rocket shall include 5000 cubic feet of living space for the astronauts.</li>
+  <li>The rocket shall carry 3000 lbs of food and living equipment.</li>
+</ol>
+
+<p>Once all the requirements have been written, design work begins. The engineers build the rocketship exactly to spec, ahead of schedule and under budget, and then we fly to Mars. Err, ok maybe not. Before we launch we need to validate and verify that everything is good to go.</p>
+
+<h3 id="validation-and-verification">Validation and Verification</h3>
+
+<p>The process of ensuring the design meets the expectation is known as the validation and verification step. <strong>Verification</strong> checks to see that the design satisfies the exact wording of the requirement. For example, we can measure the interior space of our rocket, and if we find that there is indeed 5000 cubic feet, we have verified that requirement. <strong>Validation</strong> checks that we’re meeting the spirit of the requirement. In this case, the intent of this requirement is to provide astronauts with enough living space, but is 5000 really enough? What if the 5000 cubic feet is in the form of a 1 ft x 1 ft x 5000 ft narrow tube? Such a design would not meet the intent of the requirement, even though technically it satisfied the exact wording.</p>
+
+<h4 id="problems-with-requirement-writing">Problems with Requirement Writing</h4>
+
+<p>At a glance, everything outlined so far seems fine, but the devil is in the details as they say. What happens if the 5000 cubic feet of living space conflicts with the goal of completing the mission in 2 years? Aerospace engineering projects are difficult, and in no world will your requirement be 100% perfect from the start.</p>
+
+<p>Here is the problem with requirements. Every engineering project is a system of compromises. Very rarely can a change be made in one place without affecting another. So why do we create a system that implies we’ve “lock in” a design from the beginning?</p>
+
+<h4 id="requirements-as-documentation">Requirements as Documentation</h4>
+
+<p>Often engineers end up using requirements as a form of documentation, but since requirements were not imagined as documentation to begin with, they fulfill this need poorly. One problem is the wording of requirements. As you’ve noticed, each requirements begins with “should” or “shall”. This can lead to clunkly language such as:</p>
+
+<blockquote>
+  <p>The satellite shall have the capability to accept commands from ground.</p>
+</blockquote>
+
+<p>Where even is the verb in this sentence? And I’m not very compelled by this satellite being the subject. Instead, why not:</p>
+
+<blockquote>
+  <p>Operators on the ground command the satellite.</p>
+</blockquote>
+
+<p>Here, there is a well defined human being as the subject, with a clear verb - command - that describes the same functionality in half as many words. Unfortunately, the difficult requirement lingo filters its way into other steps of the design process. Let’s say you create a requirement that says:</p>
+
+<blockquote>
+  <p>He shall have the capability to run 100 m in 10 seconds or less.</p>
+</blockquote>
+
+<p>How should an engineering performing verification interpret this sentence? What exactly does it mean to <em>have the capability</em>? I suppose that as a human being, I <em>have the capability</em>, but if you asked me to do it I certainly could not.</p>
+
+<h3 id="review-of-problems">Review of Problems</h3>
+
+<p>With these problems identifed, let’s think logically about what a good design process should include.</p>
+
+<ol>
+  <li>We need a way to track the design baseline.</li>
+  <li>Once a change is made, it should be easy to explore how it impacts other systems.</li>
+</ol>
+
+<h3 id="model-based-systems-engineering">Model Based Systems Engineering</h3>
+
+<p>With better computers, engineers have increasingly turned to model based systems engineering, or MBSE as a solution to the engineering process. After all, things like CAD, CFD, and FEM have enabled us to model complex physics, so why not create a program to model a project?</p>
+
+<p>But what exactly do we need to capture? Here’s a list.</p>
+
+<ol>
+  <li>Physical Configuration</li>
+  <li>Function/Behavior</li>
+  <li>Interactions</li>
+  <li>Heirarchies/Definitions</li>
+</ol>
+
+<h4 id="physical-configuration">Physical Configuration</h4>
+
+<p>Fairly straightfoward, we need to track the hardware, physical connectors, and physical properties (shape, weight, thermal resistence, etc.). If our project was a sentence, the physical configuration would be the subject.</p>
+
+<h4 id="functionbehavior">Function/Behavior</h4>
+
+<p>Verbs. Things that happen. You could say that function is the first thing we choose. Hardware is designed to meet a function, not the other way around.</p>
+
+<blockquote>
+  <p>Technically this isn’t always true. When a heritage (proven) piece of hardware is selected, it’s function is already defined, and then engineers build the rest of the system around it.</p>
+</blockquote>
+
+<h4 id="interactions">Interactions</h4>
+
+<p>Interactions can be very abstract, but are also very important. A function might include an interaction, (i.e. a satellite interacts with a ground station by sending telemetry), but a physical configuration might also include an interaction (i.e. the baseplate on a satellite draws heat away from the electronics).</p>
+
+<h4 id="definitions">Definitions</h4>
+
+<p>We create words to group stuff together. If many pieces of hardware work together to provide telemetry, we might designate a “telemetry subsystem”. These abstractions are an important part of communicating complex ideas, but also get messy.</p>
+
+<h3 id="proposed-mbse-steps">Proposed MBSE Steps</h3>
+
+<p>Putting everything together, here is my idea for how to approach a problem:</p>
+
+<ol>
+  <li>Start by defining the actions your system must perform.</li>
+  <li>At this point, do NOT list constraints yet.</li>
+  <li>Break down high level functions, doing your best to stay away from a specific implementation. For example, if you need your spacecraft to change attitude, you might say: generate a moment. See how this stays away from a particular hardware implemention? (thrusters, momentum wheels, magnetic torque rods, etc.)</li>
+  <li>Once each function has been mapped out, create a list of specifications. These are tied to a function that has already been created. For example, we might have a function that reads: send telemetry. Now we can add a corresponding spec that reads: send telemetry at 8 kbps. The function is neccessary, but the specification is a design choice. One is required, the other can be changed. The content of the specification is not critical at this point. The point is to identify which parameters we need to think about.</li>
+  <li>Create a list of constraints.</li>
+  <li>Begin the process of optimizing the design variables (the specifications), subject to out constraints. Here is where we explore the various hardware solutions that are available.</li>
+  <li>Verify and validate your system!</li>
+</ol>
+
+<p>If you’ve noticed, the above approach is very much inspired by my coursework in optimization. I’m thinking of the problem in terms of a cost function, constraints, and variables.</p>
+
+<h3 id="engineering-in-practice">Engineering in Practice</h3>
+
+<p>In real life, we often do not build things up from scratch. Instead a project is  an addition, or a modification to something that already exists. Even though this is meant to simplify the process, it also creates a lot of additional work (as anyone who has tried to read someone else’s code can testify).</p>
+
+<p>For this reason, it makes a lot of sense to develop systems engineering with this in mind.</p>
+
+<h3 id="dodaf">DoDAF</h3>
+
+<p>The Department of Defense Architecture Framework is an effort to generalize how we explain complex systems. Before getting into what DodAF is, let’s be clear that DoDAF is NOT model based systems engineering. DoDAF only defines a set of “viewpoints”, which each viewpoint showing a different aspect of the system. For example, systems viewpoint 4 (SV4) shows functional flow diagrams, while SV1’s show a high level overview of the physical elements.</p>
+
+<blockquote>
+  <p>Disclaimer - the benefits of DoDAF remain to be demonstrated.</p>
+</blockquote>
+
+<p>Consider an analogy - in CAD, we build 3D shapes. When we try to represent them on a 2D screen, we must choose a viewing angle and projection, but there are likely some standard views that everyone expects. Maybe a cross section to show the internal structure, or a profile view if it’s a flat plate. DoDAF is no different.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>DoDAF Views</td>
+      <td>Explanation</td>
+    </tr>
+    <tr>
+      <td>SV-1</td>
+      <td>High level hardware overview</td>
+    </tr>
+    <tr>
+      <td>SV-2</td>
+      <td>Detailed hardware overview</td>
+    </tr>
+    <tr>
+      <td>SV-4</td>
+      <td>Functional flow diagram</td>
+    </tr>
+    <tr>
+      <td>SV-10</td>
+      <td>States and Modes transitions</td>
+    </tr>
+  </tbody>
+</table>
+
+:ET

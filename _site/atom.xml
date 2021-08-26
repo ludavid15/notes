@@ -4,13 +4,205 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-08-13T13:04:55-07:00</updated>
+ <updated>2021-08-25T20:06:13-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Writing Effectively</title>
+   <link href="https://ludavid15.github.io//writingEffectively/"/>
+   <updated>2021-08-25T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//writing</id>
+   <content type="html">&lt;p&gt;A collection of writing tips. If you’re serious about writing, I’d recommend reading &lt;em&gt;On Writing Well&lt;/em&gt; by William Zinsser.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;1-be-concise&quot;&gt;1. Be Concise.&lt;/h2&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Textbooks</title>
+   <link href="https://ludavid15.github.io//textbooks/"/>
+   <updated>2021-08-25T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//textbooks</id>
+   <content type="html">&lt;p&gt;These are some textbooks that I found helpful, or that were recommended to me by friends and professors.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;strong&gt;Thermodynamics: Foundations and Applications&lt;/strong&gt;
+E.P Gyftopoulos, and G. P. Beretta&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Dynamics and Thermodynamics of Compressible Fluid Flow&lt;/strong&gt;
+A. H. Shapiro&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Elements of Gasdynamics&lt;/strong&gt;
+H.W Liempann and A. Roshko&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Physics of Shock Waves and High Temperature Hydrodynamic Phenomena&lt;/strong&gt;
+Y.B Zel’dovich and Y.P Raizer&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Viscous Flow&lt;/strong&gt;
+F. M. White&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Fluid Mechanics&lt;/strong&gt;
+L. D. Landau and E.M Lifshitz&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Boundary Layer Theory&lt;/strong&gt;
+H. Schlichting&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Space Mission Analysis and Design&lt;/strong&gt;
+J. Wertz&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Path Planning</title>
+   <link href="https://ludavid15.github.io//pathPlanning/"/>
+   <updated>2021-08-25T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//pathPlanning</id>
+   <content type="html">&lt;p&gt;Across the vast field of robotics and controls, there is a common question of “how do we get from point A to point B?”. Without any constraints, the answer is pretty easy - go in a straight line - but this is not very useful. So how can we formulate a more useful question?&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;First, we’ll add a safety requirement - that we’d like to make this journey while avoiding obstacles. Then we’ll want to make sure we’re planning a feasible route - no sharp 180’s at supersonic speeds. And finally we’d like to find the best route. Maybe best means shortest, or fastest, or most efficient. With all of these requirements, the task of path planning becomes much more challenging, but most solutions fall into one of four methods.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-a-path&quot;&gt;What is a Path?&lt;/h3&gt;
+
+&lt;p&gt;When we talk about path planning, what information actually makes up a “path”? To figure this out, imagine we are designing an autonomous driver that does everything you do.&lt;/p&gt;
+
+&lt;p&gt;To start, we need (x,y,z) position coordinates. This is akin to choosing which street we take, or which lane on the freeway we use. But we as drivers make more decisions than just position - we also speed up and slow down. So a path might also have velocities (x’, y’, z’) at each position coordinate. To make these velocities happen, we apply accelerations. This quickly gets complicated, so instead of storing three velocities and three accelerations with each position, we could just index each position coordinate by time. This way, we can also calculate any order derivative!&lt;/p&gt;
+
+&lt;h3 id=&quot;sampling-methods&quot;&gt;Sampling Methods&lt;/h3&gt;
+
+&lt;p&gt;As the name implies, these search the free space for feasible paths. Active methods like Rapidly-Exploring Random Trees (RRT) expand outwards and only add new paths to existing paths (thus keeping everything connected). Meanwhile passive methods like Probabilistic Roadmaps (PRM) fill the feasible space and then must find a connected path. Sampling methods tend to be the most simple, but most do not guarantee a global optimum, nor do they typically consider things like dynamic feasibility, or visibility.&lt;/p&gt;
+
+&lt;h3 id=&quot;node-or-heuristic-based-searches&quot;&gt;Node or Heuristic Based Searches&lt;/h3&gt;
+
+&lt;p&gt;Node based algorithms implement a search to optimize some cost function. In this sense, they represent a form of dynamic programming. Dijkstra’s algorithm, A&lt;em&gt;, and D&lt;/em&gt; are the most well known algorithms of this group. As with sampling methods, the location of the drone and obstacles in the environment must be known ahead of time. Because there is optimization involved, a node based search finds some kind of optimal path, and not just a feasible path.&lt;/p&gt;
+
+&lt;h3 id=&quot;mathematical-modeling&quot;&gt;Mathematical Modeling&lt;/h3&gt;
+
+&lt;p&gt;Mathematical modeling is a more comprehensive, though computationally expensive strategy. With this approach, we write a cost function subject to kinodynamic constraints. This large optimization problem is then solved using a variety of either direct or indirect methods, i.e. through construction of the Hamiltonian, collocation, shooting methods, etc. See the section on &lt;a href=&quot;/notes/trajoptimization/&quot;&gt;trajectory optimization&lt;/a&gt; for more info.&lt;/p&gt;
+
+&lt;h3 id=&quot;machine-learning-methods&quot;&gt;Machine Learning Methods&lt;/h3&gt;
+
+&lt;p&gt;These methods use machine learning to discover an appropriate cost function. Rather than construct a model which tries to capture all the details, we provide data from real human drivers (i.e. throttle and steering wheel inputs). The algorithm then learns how to drive safely by mimicking the data. The final result is more of a controller - learning to track and avoid collisions as they come up - rather than a path planner.&lt;/p&gt;
+
+&lt;h3 id=&quot;jerk-optimization&quot;&gt;Jerk Optimization&lt;/h3&gt;
+
+&lt;p&gt;You probably noticed that sampling methods and node searches don’t consider things like dynamic feasibility. Mostly, they discretize the space around them into grids, and plot a series of waypoints. To convert these waypoints into an actual path, we enforce each waypoint as a constraint, and then minimize the 4th derivative, or the “jerk”, of the trajectory. This makes a smooth path, but not necessarily a feasible path. To make it feasible we have to add more constraints, such as a maximum acceleration or velocity.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Scales</title>
+   <link href="https://ludavid15.github.io//scales/"/>
+   <updated>2021-08-16T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//scales</id>
+   <content type="html">&lt;p&gt;Major Scale (Diatonic Scale, Ionian Mode)&lt;/p&gt;
+
+&lt;p&gt;Ionian, Dorian, Phrygian, Lydian,&lt;/p&gt;
+
+&lt;p&gt;More importantly, we need to know the style and color of a scale (major, minor, dom7, bright, dark, etc.)&lt;/p&gt;
+
+&lt;p&gt;From brightest to darkest (notice that we are slowly dropping the pitch of notes, in the same order as we would along the circl of 5ths)&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Name&lt;/td&gt;
+      &lt;td&gt;Sharps or Flats&lt;/td&gt;
+      &lt;td&gt;Quality&lt;/td&gt;
+      &lt;td&gt;Chords&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Lydian&lt;/td&gt;
+      &lt;td&gt;# 4th&lt;/td&gt;
+      &lt;td&gt;Major&lt;/td&gt;
+      &lt;td&gt;Major chords&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Ionian&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;Major&lt;/td&gt;
+      &lt;td&gt;Major chords&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Mixolydian&lt;/td&gt;
+      &lt;td&gt;b7&lt;/td&gt;
+      &lt;td&gt;Dominant&lt;/td&gt;
+      &lt;td&gt;Dominant 7th chords&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Dorian&lt;/td&gt;
+      &lt;td&gt;add b3&lt;/td&gt;
+      &lt;td&gt;Minor&lt;/td&gt;
+      &lt;td&gt;Minor 7th chords&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Aeolian&lt;/td&gt;
+      &lt;td&gt;add b6&lt;/td&gt;
+      &lt;td&gt;Minor&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Phyrgian&lt;/td&gt;
+      &lt;td&gt;add b2&lt;/td&gt;
+      &lt;td&gt;Minor&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Locrian&lt;/td&gt;
+      &lt;td&gt;add b5&lt;/td&gt;
+      &lt;td&gt;Minor&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;dominant-7-harmony-scales&quot;&gt;Dominant 7 Harmony Scales&lt;/h3&gt;
+
+&lt;p&gt;Lydian Flat 7
+Altered Scale - flat 9, sharp 9, natural 3, sharp 11, flat 13, flat 7
+Normally does not include the 5th, but the 5th is still usable in this scale.&lt;/p&gt;
+
+&lt;p&gt;Symmetric Diminished - sounds like the diminished chord
+b9, sharp 9, natural 3, sharp 11, natural 5, natural 6, flat 7&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Chord Progressions</title>
+   <link href="https://ludavid15.github.io//progressions/"/>
+   <updated>2021-08-14T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//progressions</id>
+   <content type="html">&lt;p&gt;A collection of common chord progressions I’ve encountered. Though they come in all sorts of flavors and styles, many progressions are built on the idea of &lt;strong&gt;tension&lt;/strong&gt; and &lt;strong&gt;release&lt;/strong&gt;. We play dissonant chords to “push” the melody towards a nice resolution, which usually is the tonic chord (also known as the home chord).&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;the-2-5-1&quot;&gt;The 2-5-1&lt;/h3&gt;
+
+&lt;h4 id=&quot;minor-2-5-1&quot;&gt;Minor 2-5-1&lt;/h4&gt;
+
+&lt;p&gt;It’s the same chord progression, but this is the minor version. The &lt;strong&gt;ii&lt;/strong&gt; which is normally a minor 7th, becomes a diminished&lt;/p&gt;
+
+&lt;h4 id=&quot;extended-3-6-2-5-1&quot;&gt;Extended 3-6-2-5-1&lt;/h4&gt;
+
+&lt;h3 id=&quot;tritone-substitutions&quot;&gt;Tritone Substitutions&lt;/h3&gt;
+
+&lt;h3 id=&quot;diminished-sixths&quot;&gt;Diminished Sixths&lt;/h3&gt;
+
+&lt;p&gt;Sometimes also known as the Barry Harris progression,&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Trajectory Optimization</title>
@@ -398,7 +590,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;!--more--&gt;
 
-&lt;p&gt;Before going further, it’s worth mentioning that many machine learning algorithms are built using optimization. There is almost always something to be optimized (an objective function - error, fitness, etc.), and different ways to run the optimization (genetic, linear, quadratic, etc.). Different algorithms may change the problem, but the name of the game remains the same (for example, the “learning rate” and “search step size” refer to the same thing!) Keep this mind, because it might help simplify large field.&lt;/p&gt;
+&lt;p&gt;Before going further, it’s worth mentioning that many machine learning algorithms are built using optimization. There is almost always something to be optimized (an objective function - error, fitness, etc.), and different ways to run the optimization (genetic, linear, quadratic, etc.). Different algorithms may change the problem, but the name of the game remains the same (for example, the “learning rate” and “search step size” refer to the same thing!) Keep this mind, because it helps to simplify this large field.&lt;/p&gt;
 
 &lt;h3 id=&quot;supervised-learning&quot;&gt;Supervised Learning&lt;/h3&gt;
 
@@ -662,7 +854,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;h3 id=&quot;proposed-mbse-steps&quot;&gt;Proposed MBSE Steps&lt;/h3&gt;
 
-&lt;p&gt;Putting everything together, the new outline we have for systems engineering is:&lt;/p&gt;
+&lt;p&gt;Putting everything together, here is my idea for how to approach a problem:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Start by defining the actions your system must perform.&lt;/li&gt;
@@ -674,9 +866,11 @@ Problems formatted in one type can be transformed into another format fairly eas
   &lt;li&gt;Verify and validate your system!&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;p&gt;If you’ve noticed, the above approach is very much inspired by my coursework in optimization. I’m thinking of the problem in terms of a cost function, constraints, and variables.&lt;/p&gt;
+
 &lt;h3 id=&quot;engineering-in-practice&quot;&gt;Engineering in Practice&lt;/h3&gt;
 
-&lt;p&gt;In real life, we often do not build things up from scratch. Instead a project is merely an addition, or a modification to something that already exists. Even though this is meant to simplify the process, as anyone who has tried to read someone else’s code can testify, it also creates a lot of additional work.&lt;/p&gt;
+&lt;p&gt;In real life, we often do not build things up from scratch. Instead a project is  an addition, or a modification to something that already exists. Even though this is meant to simplify the process, it also creates a lot of additional work (as anyone who has tried to read someone else’s code can testify).&lt;/p&gt;
 
 &lt;p&gt;For this reason, it makes a lot of sense to develop systems engineering with this in mind.&lt;/p&gt;
 
@@ -693,8 +887,8 @@ Problems formatted in one type can be transformed into another format fairly eas
 &lt;table&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;- DoDAF Views&lt;/td&gt;
-      &lt;td&gt;- Explanation&lt;/td&gt;
+      &lt;td&gt;DoDAF Views&lt;/td&gt;
+      &lt;td&gt;Explanation&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;SV-1&lt;/td&gt;
@@ -1021,45 +1215,9 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;p&gt;A method for statistical analysis of shape distributions. An orthogonal Procrustes problem is one that finds the optimal rotation, translation, and/or reflection which aligns two shapes.&lt;/p&gt;
 
-</content>
- </entry>
- 
- <entry>
-   <title>Path Planning</title>
-   <link href="https://ludavid15.github.io//pathPlanning/"/>
-   <updated>2021-07-05T00:00:00-07:00</updated>
-   <id>https://ludavid15.github.io//pathPlanning</id>
-   <content type="html">&lt;p&gt;Across the vast field of robotics and controls, there is a common question of “how do we get from point A to point B?”. Without any constraints, the answer is pretty easy - go in a straight line - but this is not very useful. So how can we formulate a more useful question?&lt;/p&gt;
+&lt;h3 id=&quot;minimum-dimensions&quot;&gt;Minimum Dimensions&lt;/h3&gt;
 
-&lt;!--more--&gt;
-
-&lt;p&gt;First, we’ll add a safety requirement - that we’d like to make this journey while avoiding obstacles. Then we’ll want to make sure we’re planning a feasible route - no sharp 180’s at supersonic speeds. And finally we’d like to find the best route. Maybe best means shortest, or fastest, or most efficient. With all of these requirements, the task of path planning becomes much more challenging, but most solutions fall into one of four methods.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-is-a-path&quot;&gt;What is a Path?&lt;/h3&gt;
-
-&lt;p&gt;When we talk about path planning, what information actually makes up a “path”? To figure this out, imagine we are designing an autonomous driver that does everything you do.&lt;/p&gt;
-
-&lt;p&gt;To start, we need (x,y,z) position coordinates. This is akin to choosing which street we take, or which lane on the freeway we use. But we as drivers make more decisions than just position - we also speed up and slow down. So a path might also have velocities (x’, y’, z’) at each position coordinate. To make these velocities happen, we apply accelerations. But instead of storing three velocities and three accelerations with each position, we could just index each position coordinate by time. This way, we can also calculate any order derivative!&lt;/p&gt;
-
-&lt;h3 id=&quot;sampling-methods&quot;&gt;Sampling Methods&lt;/h3&gt;
-
-&lt;p&gt;As the name implies, these search the free space for feasible paths. Active methods like Rapidly-Exploring Random Trees (RRT) expand outwards and only add new paths to existing paths (thus keeping everything connected). Meanwhile passive methods like Probabilistic Roadmaps (PRM) fill the feasible space and then must find a connected path. Sampling methods tend to be the most simple, but most do not guarantee a global optimum, nor do they typically consider things like dynamic feasibility, or visibility.&lt;/p&gt;
-
-&lt;h3 id=&quot;node-or-heuristic-based-searches&quot;&gt;Node or Heuristic Based Searches&lt;/h3&gt;
-
-&lt;p&gt;Node based algorithms implement a search to optimize some cost function. In this sense, they represent a form of dynamic programming. Dijkstra’s algorithm, A&lt;em&gt;, and D&lt;/em&gt; are the most well known algorithms of this group. As with sampling methods, the location of the drone and obstacles in the environment must be known ahead of time. Because there is optimization involved, a node based search finds some kind of optimal path, and not just a feasible path.&lt;/p&gt;
-
-&lt;h3 id=&quot;mathematical-modeling&quot;&gt;Mathematical Modeling&lt;/h3&gt;
-
-&lt;p&gt;Mathematical modeling is a more comprehensive, though computationally expensive strategy. With this approach, we write a cost function subject to kinodynamic constraints. This large optimization problem is then solved using a variety of either direct or indirect methods, i.e. through construction of the Hamiltonian, collocation, shooting methods, etc.&lt;/p&gt;
-
-&lt;h3 id=&quot;machine-learning-methods&quot;&gt;Machine Learning Methods&lt;/h3&gt;
-
-&lt;p&gt;These methods use machine learning to discover an appropriate cost function. Rather than construct a model which tries to capture all the details, we provide data from real human drivers (i.e. throttle and steering wheel inputs). The algorithm then learns how to drive safely by mimicking the data. The final result is more of a controller - learning to track and avoid collisions as they come up - rather than a path planner.&lt;/p&gt;
-
-&lt;h3 id=&quot;jerk-optimization&quot;&gt;Jerk Optimization&lt;/h3&gt;
-
-&lt;p&gt;You probably noticed that sampling methods and node searches don’t consider things like dynamic feasibility. Mostly, they discretize the space around them into grids, and plot a series of waypoints. To convert these waypoints into an actual path, we enforce each waypoint as a constraint, and then minimize the 4th derivative, or the “jerk”, of the trajectory. This makes a smooth path, but not necessarily a feasible path. To make it feasible we have to add more constraints, such as a maximum acceleration or velocity.&lt;/p&gt;
+&lt;p&gt;If I told you that there were 4 distinct points, and gave you the distance between every pair, you could determine the minimum dimensional space required to properly map these points. For instance, if all 6 distances are the same, there is no way to position these 4 points in a plane that makes this true. Instead, they must be arranged as a regular tetrahedron in 3D space.&lt;/p&gt;
 
 </content>
  </entry>
@@ -2082,27 +2240,30 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 \[T=\sum2Aq=V_x\ast e\]
 
 &lt;ol&gt;
-  &lt;li&gt;Now find the additional shear flow caused by the shear force being applied away from the shear center. Assuming all walls are of the same thickness, the shear flow will be constant in every wall in this pure torsion case.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now find the additional shear flow caused by the shear force being applied away from the shear center. Assuming all walls are of the same thickness, the shear flow will be constant in every wall in this pure torsion case.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add the two resultant shear flows together to get the total.&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;p&gt;6.Add the two resultant shear flows together to get the total.&lt;/p&gt;
 
 &lt;h3 id=&quot;shear-flow-in-multiple-cells&quot;&gt;Shear Flow in Multiple Cells&lt;/h3&gt;
 &lt;p&gt;When multiple cells are adjacent to one another, you must apply a compatibility constraint, which states that the twist in both cells are equal.&lt;/p&gt;
 
 \[\theta_1=\frac{q_1}{A_1}∆S_i t_i\]
 
-&lt;p&gt;Where q1 is the shear flow due to pure torsion in the cell, A1 is the area of the cell, Si is the length of the wall, and ti is the thickness of the wall. When you have two cells that are adjacent, you must account for the shear flow in the shared wall due to the other cell. Setting the two twist equations equal and then writing the torque equation below provides you with two equations to solve for the two unknowns.&lt;/p&gt;
+&lt;p&gt;Where \(q_1\) is the shear flow due to pure torsion in the cell, \(A_1\) is the area of the cell, \(S_i\) is the length of the wall, and \(t_i\) is the thickness of the wall. When you have two cells that are adjacent, you must account for the shear flow in the shared wall due to the other cell. Setting the two twist equations equal and then writing the torque equation below provides you with two equations to solve for the two unknowns.&lt;/p&gt;
 
 \[\theta_2=\theta_1=\frac{q_1}{A_1}∆S_it_i-q2A_1∆S_{shared}t_{shared}\]
 
-\[T=2 A_1 q_1+2 A_2 q_2\]
-
-&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;\(T=2 A_1 q_1+2 A_2 q_2\)
+ &lt;/p&gt;
 &lt;h3 id=&quot;principle-stress&quot;&gt;Principle Stress&lt;/h3&gt;
 
-&lt;p&gt;The magnitude of axial stress and shear stress will change depending on the coordinate frame used. The principle stresses are the components of the stress tensor such that when we change into a particular frame, the shear components go to zero. These stresses act in the principal directions. 
-The 3D stress tensor is presented below. The eigenvectors, n1, n2, and n3 represent the principal directions, and the eigenvalues are the principle stresses in each of those directions.&lt;/p&gt;
+&lt;p&gt;The magnitude of axial stress and shear stress will change depending on the coordinate frame used, though the total “energy” remains constant. Thus in some frame, the shear stress will go to zero, and the axial stress will be maximized. These maximum axial stresses are also known as principle stresses.&lt;/p&gt;
+
+&lt;p&gt;Mathematically, the principle stresses are the eigenvalues of the stress tensor, and the direction in which they act are the principle directions (the eigenvectors).&lt;/p&gt;
 
 &lt;p&gt;\(\left[\begin{matrix}\sigma_{xx}&amp;amp;\tau_{xy}&amp;amp;\tau_{xy}\\\tau_{xy}&amp;amp;\sigma_{yy}&amp;amp;\tau_{yz}\\\tau_{xz}&amp;amp;\tau_{yz}&amp;amp;\sigma_{zz}\\\end{matrix}\right]=0\)
  &lt;/p&gt;
@@ -3211,7 +3372,7 @@ A: As with most things in life, very little is free. Since the goal is to produc
   &lt;p&gt;Continuums are characterized by the existence of shear, and by being continuous (duh).&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;But watch out! When the density is really low, (such as in space) the continuum assumption falls apart, at which point we must switch over to modelcular dynamics. This is an important rule to remember generally speaking. Each equation we develop comes with it’s own set of assumptions that must be true or else our equation isn’t valid.&lt;/p&gt;
+&lt;p&gt;But watch out! When the density is really low, (such as in space) the continuum assumption falls apart, at which point we must switch over to molecular dynamics. This is an important rule to remember generally speaking - each equation we develop comes with it’s own set of assumptions that must be true or else our equation isn’t valid.&lt;/p&gt;
 
 &lt;h3 id=&quot;newtonian-fluid&quot;&gt;Newtonian Fluid&lt;/h3&gt;
 

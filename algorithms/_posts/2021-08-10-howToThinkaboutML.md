@@ -11,7 +11,7 @@ There is so much literature out there on machine learning that it can get pretty
 
 <!--more-->
 
-Before going further, it's worth mentioning that many machine learning algorithms are built using optimization. There is almost always something to be optimized (an objective function - error, fitness, etc.), and different ways to run the optimization (genetic, linear, quadratic, etc.). Different algorithms may change the problem, but the name of the game remains the same (for example, the "learning rate" and "search step size" refer to the same thing!) Keep this mind, because it might help simplify large field. 
+Before going further, it's worth mentioning that many machine learning algorithms are built using optimization. There is almost always something to be optimized (an objective function - error, fitness, etc.), and different ways to run the optimization (genetic, linear, quadratic, etc.). Different algorithms may change the problem, but the name of the game remains the same (for example, the "learning rate" and "search step size" refer to the same thing!) Keep this mind, because it helps to simplify this large field. 
 
 ### Supervised Learning
 
