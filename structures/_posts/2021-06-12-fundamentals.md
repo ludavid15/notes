@@ -40,7 +40,6 @@ Shear strains ($$\gamma$$) can be induced by shear stresses ($$\tau$$). In the s
 
 $$\gamma=\frac{1}{G}\tau$$
  
-
 ### Expanded 3D Stress & Strain Matrix for 3D Elements
 
 Normal and shear stresses are identified by two subscripts. The first denotes the plane in which the stress acts, and the second denotes the direction. For example, $$\sigma_{xy}$$ refers to shear stress acting in the x-plane (i.e. normal to the x direction) and in the y-direction. By force balance, we can also show that $$\sigma_{xy}=\sigma_{yx}$$.
@@ -67,7 +66,6 @@ For a symmetric beam, the axial stress is a function of the distance away from t
 $$\sigma_{yy}=\frac{zM_Z}{I_Z}$$
 
 When the beam is non-symmetric (for example, a section of webs and stringers), moments in the X and Z directions have a coupled effect on the axial stress. The resultant stress is then a function of the location (x, z) relative to the centroid, the applied moments, and the area moment of inertia. 
-
 
 $$\sigma_{yy}=\left(x-x_c\right)\frac{I_XM_Z+I_{XZ}M_X}{I_XI_Z-I_{XZ}^2}+\left(z-z_c\right)\frac{I_Z M_X+I_{XZ}M_Z}{I_X I_Z-I_{XZ}^2}$$
  
@@ -105,8 +103,6 @@ The shear center is defined as the point where if a shear force is applied, no a
 
 $$T=2Aq$$
 
- 
-
 3. The shear center is the point where if the shear force is applied, it will cancel out the torque due to the shear flow around the point you’ve selected.
 
 ### Process to Solving Simple 1 Box Problem (Closed Section)
@@ -119,7 +115,6 @@ $$∆P= V_yI_zA$$
 
 3. At each stringer, the change in shear flow (force/length) is equal to the bending moment carried by that stringer. Use this to relate all the shear flow variables.
 
-  
 
 4. Since we’ve assumed the shear force is initially applied at the shear center, we can find the location of the shear center by imposing that the torque due to the shear flows must be equal to the restoring torque caused by the shear force at the shear center.
 
@@ -127,7 +122,7 @@ $$T=\sum2Aq=V_x\ast e$$
 
 5. Now find the additional shear flow caused by the shear force being applied away from the shear center. Assuming all walls are of the same thickness, the shear flow will be constant in every wall in this pure torsion case.
 
-6.Add the two resultant shear flows together to get the total.
+6. Add the two resultant shear flows together to get the total.
 
 
  
@@ -136,19 +131,17 @@ When multiple cells are adjacent to one another, you must apply a compatibility 
 
 $$\theta_1=\frac{q_1}{A_1}∆S_i t_i$$
 
-Where q1 is the shear flow due to pure torsion in the cell, A1 is the area of the cell, Si is the length of the wall, and ti is the thickness of the wall. When you have two cells that are adjacent, you must account for the shear flow in the shared wall due to the other cell. Setting the two twist equations equal and then writing the torque equation below provides you with two equations to solve for the two unknowns.
+Where $$q_1$$ is the shear flow due to pure torsion in the cell, $$A_1$$ is the area of the cell, $$S_i$$ is the length of the wall, and $$t_i$$ is the thickness of the wall. When you have two cells that are adjacent, you must account for the shear flow in the shared wall due to the other cell. Setting the two twist equations equal and then writing the torque equation below provides you with two equations to solve for the two unknowns.
 
 $$\theta_2=\theta_1=\frac{q_1}{A_1}∆S_it_i-q2A_1∆S_{shared}t_{shared}$$
 
 $$T=2 A_1 q_1+2 A_2 q_2$$
- 
-
-
  
 ### Principle Stress
 
-The magnitude of axial stress and shear stress will change depending on the coordinate frame used. The principle stresses are the components of the stress tensor such that when we change into a particular frame, the shear components go to zero. These stresses act in the principal directions. 
-The 3D stress tensor is presented below. The eigenvectors, n1, n2, and n3 represent the principal directions, and the eigenvalues are the principle stresses in each of those directions.
+The magnitude of axial stress and shear stress will change depending on the coordinate frame used, though the total "energy" remains constant. Thus in some frame, the shear stress will go to zero, and the axial stress will be maximized. These maximum axial stresses are also known as principle stresses. 
+
+Mathematically, the principle stresses are the eigenvalues of the stress tensor, and the direction in which they act are the principle directions (the eigenvectors).
 
 $$\left[\begin{matrix}\sigma_{xx}&\tau_{xy}&\tau_{xy}\\\tau_{xy}&\sigma_{yy}&\tau_{yz}\\\tau_{xz}&\tau_{yz}&\sigma_{zz}\\\end{matrix}\right]=0$$
  

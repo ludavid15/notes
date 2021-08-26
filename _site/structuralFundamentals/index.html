@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
   <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/notes/public/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/notes/public/apple-touch-icon-precomposed.png">
                                  <link rel="shortcut icon" href="/notes/public/favicon.ico">
 
   <!-- RSS -->
@@ -126,7 +126,7 @@
       
         
           
-            <a class="sidebar-nav-item" href="/notes/references/">Reference</a>
+            <a class="sidebar-nav-item" href="/notes/references/">References</a>
           
         
       
@@ -136,6 +136,10 @@
           
         
       
+        
+      
+        
+          
         
       
         
@@ -328,27 +332,30 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 \[T=\sum2Aq=V_x\ast e\]
 
 <ol>
-  <li>Now find the additional shear flow caused by the shear force being applied away from the shear center. Assuming all walls are of the same thickness, the shear flow will be constant in every wall in this pure torsion case.</li>
+  <li>
+    <p>Now find the additional shear flow caused by the shear force being applied away from the shear center. Assuming all walls are of the same thickness, the shear flow will be constant in every wall in this pure torsion case.</p>
+  </li>
+  <li>
+    <p>Add the two resultant shear flows together to get the total.</p>
+  </li>
 </ol>
-
-<p>6.Add the two resultant shear flows together to get the total.</p>
 
 <h3 id="shear-flow-in-multiple-cells">Shear Flow in Multiple Cells</h3>
 <p>When multiple cells are adjacent to one another, you must apply a compatibility constraint, which states that the twist in both cells are equal.</p>
 
 \[\theta_1=\frac{q_1}{A_1}∆S_i t_i\]
 
-<p>Where q1 is the shear flow due to pure torsion in the cell, A1 is the area of the cell, Si is the length of the wall, and ti is the thickness of the wall. When you have two cells that are adjacent, you must account for the shear flow in the shared wall due to the other cell. Setting the two twist equations equal and then writing the torque equation below provides you with two equations to solve for the two unknowns.</p>
+<p>Where \(q_1\) is the shear flow due to pure torsion in the cell, \(A_1\) is the area of the cell, \(S_i\) is the length of the wall, and \(t_i\) is the thickness of the wall. When you have two cells that are adjacent, you must account for the shear flow in the shared wall due to the other cell. Setting the two twist equations equal and then writing the torque equation below provides you with two equations to solve for the two unknowns.</p>
 
 \[\theta_2=\theta_1=\frac{q_1}{A_1}∆S_it_i-q2A_1∆S_{shared}t_{shared}\]
 
-\[T=2 A_1 q_1+2 A_2 q_2\]
-
-<p> </p>
+<p>\(T=2 A_1 q_1+2 A_2 q_2\)
+ </p>
 <h3 id="principle-stress">Principle Stress</h3>
 
-<p>The magnitude of axial stress and shear stress will change depending on the coordinate frame used. The principle stresses are the components of the stress tensor such that when we change into a particular frame, the shear components go to zero. These stresses act in the principal directions. 
-The 3D stress tensor is presented below. The eigenvectors, n1, n2, and n3 represent the principal directions, and the eigenvalues are the principle stresses in each of those directions.</p>
+<p>The magnitude of axial stress and shear stress will change depending on the coordinate frame used, though the total “energy” remains constant. Thus in some frame, the shear stress will go to zero, and the axial stress will be maximized. These maximum axial stresses are also known as principle stresses.</p>
+
+<p>Mathematically, the principle stresses are the eigenvalues of the stress tensor, and the direction in which they act are the principle directions (the eigenvectors).</p>
 
 <p>\(\left[\begin{matrix}\sigma_{xx}&amp;\tau_{xy}&amp;\tau_{xy}\\\tau_{xy}&amp;\sigma_{yy}&amp;\tau_{yz}\\\tau_{xz}&amp;\tau_{yz}&amp;\sigma_{zz}\\\end{matrix}\right]=0\)
  </p>
@@ -396,6 +403,22 @@ The 3D stress tensor is presented below. The eigenvectors, n1, n2, and n3 repres
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
     
       <li>
         
