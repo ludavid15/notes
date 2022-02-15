@@ -211,6 +211,11 @@
 
 \[q=\ \frac{\partial f^\ast}{\partial b}\]
 
+<h3 id="derivatives-of-multivariable-functions">Derivatives of Multivariable Functions</h3>
+<p>Rather than having a singular gradient/slope/derivative, a multivariable function will have a gradient with respect to each variable. This together is represented as a vector of values.</p>
+
+<p>If we are on a slopped region (in whatever dimension), lines of constant height will always be perpindicular to the local gradient at that point. Thus if we are running something like a steepest descent line search, the direction of steepest descent will be given by the negative of the gradient vector.</p>
+
 <h3 id="the-hamiltonian">The Hamiltonian</h3>
 <p>If the Hamiltonian does not explicitly depend on time, then the Hamiltonian remains constant along the optimal trajectory. Furthermore, if the terminal conditions and cost also do not depend on time, then the Hamiltonian is equal to zero for all time along the trajectory. The vector p contains what are known as adjoint variables.</p>
 
@@ -229,7 +234,7 @@
 <p>In addition to the above, all constraints must be met, the Lagrange multipliers cannot all be zero, and qo is either 0 or 1. In the case where all constraints are linearly independent, we can know that qo takes the value of one. This unique scenario leads to the KKT conditions.</p>
 
 <h3 id="karush-khan-tucker-kkt-necessary-conditions">Karush Khan Tucker (KKT) Necessary Conditions</h3>
-<p>Identical to the FJ necessary conditions, with the exception that qo is taken to be equal to 1. This is most often the case. Note that for KKT to apply, the constraints must be linearly independent of one another (LICQ – Linear Independence of Constraints Qualification). The conditions become:</p>
+<p>Identical to the FJ necessary conditions, with the exception that \(q_o\) is taken to be equal to 1. This is most often the case. Note that for KKT to apply, the constraints must be linearly independent of one another (LICQ – Linear Independence of Constraints Qualification). The conditions become:</p>
 
 \[\nabla f\left(x\right)+\sum_{i=1}^{m}{p_i\nabla g_i\left(x\right)}+\sum_{i=1}^{l}{q_i\nabla h_i\left(x\right)}=0\]
 
@@ -550,7 +555,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Optimization Fundamentals" />
 <script type="application/ld+json">
-{"headline":"Optimization Fundamentals","dateModified":"2021-06-10T00:00:00-07:00","description":"The underlying principle of an optimization is pretty straightfoward - find the best way to do something. Best can mean fastest, safest, most efficient, shortest or thousands of other things, but the common denominator is that we are looking for the most (or least) of something. Mathematically then, this is pretty simple: we’re solving for a maximum.","datePublished":"2021-06-10T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/optimization/"},"url":"https://ludavid15.github.io//notes/optimization/","author":{"@type":"Person","name":"David Lu"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"description":"The underlying principle of an optimization is pretty straightfoward - find the best way to do something. Best can mean fastest, safest, most efficient, shortest or thousands of other things, but the common denominator is that we are looking for the most (or least) of something. Mathematically then, this is pretty simple: we’re solving for a maximum.","url":"https://ludavid15.github.io//notes/optimization/","headline":"Optimization Fundamentals","dateModified":"2021-06-10T00:00:00-07:00","datePublished":"2021-06-10T00:00:00-07:00","author":{"@type":"Person","name":"David Lu"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/optimization/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
