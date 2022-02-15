@@ -4,7 +4,7 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-08-25T20:06:13-07:00</updated>
+ <updated>2021-08-28T13:49:20-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
@@ -95,7 +95,7 @@ J. Wertz&lt;/p&gt;
 
 &lt;h3 id=&quot;jerk-optimization&quot;&gt;Jerk Optimization&lt;/h3&gt;
 
-&lt;p&gt;You probably noticed that sampling methods and node searches don’t consider things like dynamic feasibility. Mostly, they discretize the space around them into grids, and plot a series of waypoints. To convert these waypoints into an actual path, we enforce each waypoint as a constraint, and then minimize the 4th derivative, or the “jerk”, of the trajectory. This makes a smooth path, but not necessarily a feasible path. To make it feasible we have to add more constraints, such as a maximum acceleration or velocity.&lt;/p&gt;
+&lt;p&gt;You’ve probably noticed that sampling methods and node searches don’t consider things like dynamic feasibility. They discretize space into grids, and plot a series of waypoints. To convert these waypoints into an actual path, we enforce each waypoint as a constraint, and then minimize the 4th derivative, or the “jerk”, of the trajectory. This makes a smooth path, though not necessarily a feasible path. To make it feasible we have to add more constraints, such as a maximum acceleration or velocity.&lt;/p&gt;
 
 </content>
  </entry>
@@ -689,7 +689,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 \[v=f\frac{p_y^w}{p_z^w}\]
 
-&lt;p&gt;Where \(u\), \(v\) are the coordinates of point P expressed in the image plane, and f is the focal length of the camera. Note that \(u\), \(v\) are not pixel coordinates.&lt;/p&gt;
+&lt;p&gt;Where \(u\), \(v\) are the coordinates of point P expressed in the image plane, and f is the focal length of the camera. Note that \(u\), \(v\) are not pixel coordinates, but image plane coordinates defined from an origin.&lt;/p&gt;
 
 &lt;p&gt;An important characteristic of 2D images is the lack information regarding depth. A machine cannot tell if we are looking at a large object very far away or a close object nearby. There are multiple ways around this problem, including but not limited to LiDAR, Radar, or triangulation.&lt;/p&gt;
 
@@ -711,13 +711,13 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;h3 id=&quot;outliers&quot;&gt;Outliers&lt;/h3&gt;
 
-&lt;p&gt;When we use a quadratic loss function, the weights of outliers are exaggerated. Thus instead of fitting the correct data, we end up fitting to the incorrect ones. This is not an easy problem to overcome, because we do not know ahead of time which data points are the wrong ones. To overcome this problem, a few outlier reject or outlier robust methods have been proposed.&lt;/p&gt;
+&lt;p&gt;When we use a quadratic loss function, the weights of outliers are exaggerated. Thus instead of fitting the correct data, we end up fitting to the incorrect ones. This is not an easy problem to overcome, because we do not know ahead of time which data points are the wrong ones, but a few outlier robust methods do exist.&lt;/p&gt;
 
 &lt;h3 id=&quot;random-consensus-sampling-ransac&quot;&gt;Random Consensus Sampling (RANSAC)&lt;/h3&gt;
 
 &lt;p&gt;From consecutive image frames, one can perform feature matching, and calculate the change in camera position between frames. However, given a set of matched features (typically called correspondences), there are bound to be a few mis-identified matches. RANSAC provides a method for dealing with these outliers.&lt;/p&gt;
 
-&lt;p&gt;The basic idea is pretty simple. From the entire complete set of “matches”, we take a random set, and calculae the resulting change in position. We then repeat with another random set, and another, and check to see if there is agreement.&lt;/p&gt;
+&lt;p&gt;The basic idea is pretty simple. From the entire complete set of “matches”, we take a random set, and calculate the resulting change in position. We then repeat with another random set, and another, and check to see if there is agreement.&lt;/p&gt;
 
 &lt;h3 id=&quot;feature-tracking&quot;&gt;Feature Tracking&lt;/h3&gt;
 
@@ -1494,7 +1494,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;h3 id=&quot;maneuvering&quot;&gt;Maneuvering:&lt;/h3&gt;
 
-&lt;p&gt;We define the loading factor as the ratio of lift to weight. When we turn, our lift vector changes, and so total lift must increase to force balance. At low velocities, max load factor is constrained by how much lift we can produce, while at higher velocities it is constrained by how much thrust we can produce (since there is less lift at low velocities, and more drag at higher velocities).&lt;/p&gt;
+&lt;p&gt;We define the loading factor as the ratio of lift to weight. When we turn, our lift vector angles, and so total lift must increase to balance the weight. At low velocities, max load factor is constrained by how much lift we can produce, while at higher velocities it is constrained by how much thrust we can produce (since there is less lift at low velocities, and more drag at higher velocities).&lt;/p&gt;
 
 \[Turning\ Radius=\ \frac{U^2}{g\sqrt{\eta^2-1}}=\frac{mU^2}{Lsin\phi}\]
 
@@ -1531,7 +1531,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 \[C_{L,Wing}=\ a_W\alpha\]
 
-&lt;p&gt;Where hcg and hac,Wing is the distance measured from the leading edge of the wing to the plane’s center of gravity and the wing’s aerodynamic center respectively, all normalized by the chord length.&lt;/p&gt;
+&lt;p&gt;Where \(h_{cg}\) and \(h_{ac,Wing}\) is the distance measured from the leading edge of the wing to the plane’s center of gravity and the wing’s aerodynamic center respectively, all normalized by the chord length.&lt;/p&gt;
 
 &lt;p&gt;Similarly, the tail’s contribution to moment about the airplane’s center of gravity is:&lt;/p&gt;
 
@@ -1547,14 +1547,14 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 \[C_{M,\ CG}=\ C_{M,\ AC,\ Wing}+a_W\left[{(h}_{cg}-h_{ac,Wing})-V_H\frac{a_T}{a_W}(1-\varepsilon)\right]\alpha+C_{M,\ AC,\ Tail}+V_Ha_Ti_T\]
 
-&lt;p&gt;If we replace hcg with hnuetral point, we can take the derivative of the above expression with respect to angle of attack and set it equal to zero. This will allow us to find the neutral point position.&lt;/p&gt;
+&lt;p&gt;If we replace \(h_{cg}\) with hnuetral point, we can take the derivative of the above expression with respect to angle of attack and set it equal to zero. This will allow us to find the neutral point position.&lt;/p&gt;
 
 \[h_n=\ \frac{h_{ac,w}+h_{ac,t}\frac{S_T}{S_W}\frac{a_T}{a_W}(1-\varepsilon)}{1+\frac{S_T}{S_W}\frac{a_T}{a_W}(1-\varepsilon)}\]
 
 &lt;p&gt;For static stability, CG must be located ahead of the neutral point. The difference between these two points is called the “static margin” and usually defined as a unitless value.&lt;/p&gt;
 
 &lt;h3 id=&quot;trim-flight&quot;&gt;Trim flight:&lt;/h3&gt;
-&lt;p&gt;For trim flight (that is, L=W and Mcg = 0), the moment must be zero at a positive AoA that will allow for lift to equal weight.&lt;/p&gt;
+&lt;p&gt;For trim flight (that is, \(L=W\) and \(M_{cg} = 0\)), the moment must be zero at a positive AoA that will allow for lift to equal weight.&lt;/p&gt;
 
 \[C_L=C_{L,\alpha}\ \alpha+C_{L,i}i_t\]
 
@@ -1576,7 +1576,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 \[C_{M,0}=C_{M,AC}+C_{M,i}i_t\]
 
-&lt;p&gt;Note that CL is the only term here that varies as a function of our flight characteristics. All other coefficients are constants.&lt;/p&gt;
+&lt;p&gt;Note that \(C_L\) is the only term here that varies as a function of our flight characteristics. All other coefficients are constants.&lt;/p&gt;
 
 &lt;h3 id=&quot;flapped-airfoils&quot;&gt;Flapped Airfoils&lt;/h3&gt;
 &lt;p&gt;Flaps include ailerons, elevators, and rudders. For smaller angular deflections, we can model it as an equivalent change in the angle attack of the entire airfoil according to this equation:&lt;/p&gt;
@@ -2465,6 +2465,11 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 
 \[q=\ \frac{\partial f^\ast}{\partial b}\]
 
+&lt;h3 id=&quot;derivatives-of-multivariable-functions&quot;&gt;Derivatives of Multivariable Functions&lt;/h3&gt;
+&lt;p&gt;Rather than having a singular gradient/slope/derivative, a multivariable function will have a gradient with respect to each variable. This together is represented as a vector of values.&lt;/p&gt;
+
+&lt;p&gt;If we are on a slopped region (in whatever dimension), lines of constant height will always be perpindicular to the local gradient at that point. Thus if we are running something like a steepest descent line search, the direction of steepest descent will be given by the negative of the gradient vector.&lt;/p&gt;
+
 &lt;h3 id=&quot;the-hamiltonian&quot;&gt;The Hamiltonian&lt;/h3&gt;
 &lt;p&gt;If the Hamiltonian does not explicitly depend on time, then the Hamiltonian remains constant along the optimal trajectory. Furthermore, if the terminal conditions and cost also do not depend on time, then the Hamiltonian is equal to zero for all time along the trajectory. The vector p contains what are known as adjoint variables.&lt;/p&gt;
 
@@ -2483,7 +2488,7 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 &lt;p&gt;In addition to the above, all constraints must be met, the Lagrange multipliers cannot all be zero, and qo is either 0 or 1. In the case where all constraints are linearly independent, we can know that qo takes the value of one. This unique scenario leads to the KKT conditions.&lt;/p&gt;
 
 &lt;h3 id=&quot;karush-khan-tucker-kkt-necessary-conditions&quot;&gt;Karush Khan Tucker (KKT) Necessary Conditions&lt;/h3&gt;
-&lt;p&gt;Identical to the FJ necessary conditions, with the exception that qo is taken to be equal to 1. This is most often the case. Note that for KKT to apply, the constraints must be linearly independent of one another (LICQ – Linear Independence of Constraints Qualification). The conditions become:&lt;/p&gt;
+&lt;p&gt;Identical to the FJ necessary conditions, with the exception that \(q_o\) is taken to be equal to 1. This is most often the case. Note that for KKT to apply, the constraints must be linearly independent of one another (LICQ – Linear Independence of Constraints Qualification). The conditions become:&lt;/p&gt;
 
 \[\nabla f\left(x\right)+\sum_{i=1}^{m}{p_i\nabla g_i\left(x\right)}+\sum_{i=1}^{l}{q_i\nabla h_i\left(x\right)}=0\]
 
@@ -3971,7 +3976,7 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 
 &lt;h3 id=&quot;reynolds-number&quot;&gt;Reynold’s Number&lt;/h3&gt;
 
-&lt;p&gt;The ratio between viscous forces and inertial forces. The lower the Reynold’s number, the more dominant viscous effects become. The Reynold’s number can also show when a flow transitions from laminar to turbulent flow. Where µ is the dynamic viscosity.&lt;/p&gt;
+&lt;p&gt;The ratio between viscous forces and inertial forces. The lower the Reynold’s number, the more dominant viscous effects become. The Reynold’s number can also show when a flow transitions from laminar to turbulent flow. Here, µ is the dynamic viscosity.&lt;/p&gt;
 
 \[Re=\ \frac{\rho U_\infty L}{\mu}\]
 
@@ -3994,11 +3999,11 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 
 &lt;h3 id=&quot;low-reynolds-number-flow-over-a-sphere&quot;&gt;Low Reynold’s Number Flow Over a Sphere&lt;/h3&gt;
 
-&lt;p&gt;By solving stokes equations with the boundary conditions for viscous flow past a sphere, the following stream function can be calculated:&lt;/p&gt;
+&lt;p&gt;By solving stokes equations with the boundary conditions for viscous flow past a sphere (i.e. zero velocity at the wall), the following stream function can be calculated:&lt;/p&gt;
 
 \[\psi=\frac{1}{4}Ua^2{sin}^2(\theta)\left[\frac{a}{r}-\frac{3r}{a}+\frac{2r^2}{a^2}\right]\]
 
-&lt;p&gt;This can be compared to the stream function found by applying potential flow theory about a sphere:&lt;/p&gt;
+&lt;p&gt;This can be compared to the stream function found by applying potential flow theory about a sphere (i.e. flow is tangent to the wall):&lt;/p&gt;
 
 \[\psi=\frac{1}{2}Ur^2{sin}^2(\theta)\left[1-\frac{a^3}{r^3}\right]\]
 
@@ -4016,9 +4021,9 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 
 &lt;p&gt;Another class of problem in which viscous forces dominate. We take the bottom plate to be stationary and assume some steady velocity for the top plate. There can also be a pressure gradient in the direction parallel to the plates. Due to viscosity, the motion of the top plate drags the top layer of fluid along with it. Eventually, some sort of velocity profile develops along this direction.&lt;/p&gt;
 
-&lt;p&gt;In the limit that the top plate’s velocity tends to zero we get a Hagen-Poiseuille flow problem (the only that can drive the fluid forward is a pressure gradient). In the limit that the pressure gradient tends to zero we get a Couette flow problem (velocity of the top plate drives flow).&lt;/p&gt;
+&lt;p&gt;In the limit that the top plate’s velocity tends to zero we get a Hagen-Poiseuille flow problem (the only thing that can drive the fluid forward is a pressure gradient). In the limit that the pressure gradient tends to zero we get a Couette flow problem (velocity of the top plate drives flow).&lt;/p&gt;
 
-&lt;p&gt;The general solution of the velocity profile is expressed below. The first equation is the general solution, while the second equation takes the lower wall to be stationary. Where τo is the shear stress at the wall where y=0, and uo is the velocity at the wall where y=0.&lt;/p&gt;
+&lt;p&gt;The general solution of the velocity profile is expressed below. The first equation is the general solution, while the second equation takes the lower wall to be stationary. Where \(τ_o\) is the shear stress at the wall where y=0, and \(u_o\) is the velocity at the wall where y=0.&lt;/p&gt;
 
 \[u\left(y\right)=\ -\frac{1}{2\mu}\left(-\frac{dP}{dx}\right)y^2+\frac{\tau_o}{\mu}y+u_o\]
 
@@ -5068,8 +5073,7 @@ Laminar Flame Speeds tend to be on the order of 0.1-3 m/s, which is much slower 
 
 &lt;p&gt;Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Donec sed odio dui.&lt;/p&gt;
 
-&lt;noscript&gt;&lt;pre&gt;400: Invalid request&lt;/pre&gt;&lt;/noscript&gt;
-&lt;script src=&quot;https://gist.github.com/5555251.js?file=gist.md&quot;&gt; &lt;/script&gt;
+&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/5555251.js?file=gist.md&quot;&gt; &lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Vestibulum id ligula porta felis euismod semper.&lt;/p&gt;
 

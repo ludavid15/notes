@@ -41,6 +41,11 @@ $$h\left(x\right)+b\le0\$$
 
 $$q=\ \frac{\partial f^\ast}{\partial b}$$
 
+### Derivatives of Multivariable Functions
+Rather than having a singular gradient/slope/derivative, a multivariable function will have a gradient with respect to each variable. This together is represented as a vector of values. 
+
+If we are on a slopped region (in whatever dimension), lines of constant height will always be perpindicular to the local gradient at that point. Thus if we are running something like a steepest descent line search, the direction of steepest descent will be given by the negative of the gradient vector. 
+
 ### The Hamiltonian
 If the Hamiltonian does not explicitly depend on time, then the Hamiltonian remains constant along the optimal trajectory. Furthermore, if the terminal conditions and cost also do not depend on time, then the Hamiltonian is equal to zero for all time along the trajectory. The vector p contains what are known as adjoint variables.
 
@@ -59,7 +64,7 @@ $$q^Th\left(x^\ast\right)=0$$
 In addition to the above, all constraints must be met, the Lagrange multipliers cannot all be zero, and qo is either 0 or 1. In the case where all constraints are linearly independent, we can know that qo takes the value of one. This unique scenario leads to the KKT conditions.
 
 ### Karush Khan Tucker (KKT) Necessary Conditions
-Identical to the FJ necessary conditions, with the exception that qo is taken to be equal to 1. This is most often the case. Note that for KKT to apply, the constraints must be linearly independent of one another (LICQ – Linear Independence of Constraints Qualification). The conditions become:
+Identical to the FJ necessary conditions, with the exception that $$q_o$$ is taken to be equal to 1. This is most often the case. Note that for KKT to apply, the constraints must be linearly independent of one another (LICQ – Linear Independence of Constraints Qualification). The conditions become:
 
 $$\nabla f\left(x\right)+\sum_{i=1}^{m}{p_i\nabla g_i\left(x\right)}+\sum_{i=1}^{l}{q_i\nabla h_i\left(x\right)}=0$$
 

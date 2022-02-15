@@ -38,5 +38,5 @@ These methods use machine learning to discover an appropriate cost function. Rat
 
 ### Jerk Optimization 
 
-You probably noticed that sampling methods and node searches don't consider things like dynamic feasibility. Mostly, they discretize the space around them into grids, and plot a series of waypoints. To convert these waypoints into an actual path, we enforce each waypoint as a constraint, and then minimize the 4th derivative, or the "jerk", of the trajectory. This makes a smooth path, but not necessarily a feasible path. To make it feasible we have to add more constraints, such as a maximum acceleration or velocity. 
+You've probably noticed that sampling methods and node searches don't consider things like dynamic feasibility. They discretize space into grids, and plot a series of waypoints. To convert these waypoints into an actual path, we enforce each waypoint as a constraint, and then minimize the 4th derivative, or the "jerk", of the trajectory. This makes a smooth path, though not necessarily a feasible path. To make it feasible we have to add more constraints, such as a maximum acceleration or velocity. 
 
