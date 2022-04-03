@@ -1,0 +1,54 @@
+I"@<hr />
+
+<div class="posts">
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/fundamentalsProp/">
+        Fundamentals of Propulsion
+      </a>
+    </h2>
+
+    <span class="post-date">18 May 2021</span>
+    <p>When it comes to propulsion, it can be difficult to keep track of all the different classifications floating around out there. Props, turboprops, turbojets, ramjets, chemical rockets, nuclear rockets, Hall thrusters, and ion thrusters, just to name a few. If anything, it’s a testament to our joint creativity that we’ve come up with so many ways to <em>move</em>.</p>
+
+    <a href="/notes/fundamentalsProp/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/electric/">
+        Electric Propulsion
+      </a>
+    </h2>
+
+    <span class="post-date">17 May 2021</span>
+    <p>Electric propulsion (EP) is, you guessed it, all about electric propulsion. This includes: ion thrusters, hall thrusters, resistojets, arcjets, and electrosprays.</p>
+
+    <a href="/notes/electric/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/jetEngines/">
+        Jet Engines
+      </a>
+    </h2>
+
+    <span class="post-date">06 May 2021</span>
+    <p>In 1941, a Messerschmitt Me 262 became the world’s first operational jet powered aircraft. Relying on combustion and a nozzle, the new “jet engine” is conceptually more similar to a rocket than a propeller.</p>
+
+    <a href="/notes/jetEngines/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+</div>
+:ET

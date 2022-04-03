@@ -13,6 +13,13 @@ There is so much literature out there on machine learning that it can get pretty
 
 Before going further, it's worth mentioning that many machine learning algorithms are built using optimization. There is almost always something to be optimized (an objective function - error, fitness, etc.), and different ways to run the optimization (genetic, linear, quadratic, etc.). Different algorithms may change the problem, but the name of the game remains the same (for example, the "learning rate" and "search step size" refer to the same thing!) Keep this mind, because it helps to simplify this large field. 
 
+For any machine learning algorithm, we should be able to identify three distinct aspects:
+1. **The architecture**, or relationship between inputs and ouputs, which influences the
+2. **Cost function**, which we minimize by using different
+3. **Optimization techniques**.
+
+For a more mathematical discussion of machine learning algorithms, check out the [original ML post]({% post_url /algorithms/2022-03-30-machineLearning %})!
+
 ### Supervised Learning
 
 When we know the type of output you want, but need to learn the function that will get us there, we use supervised learning. These algorithms are implemented with deep neural networks, and are useful for classification tasks. As the name implies, this method absolutely requires having a labeled dataset. If your problem doesn't readily accept labels, this strategy will probably fall short. Try instead to identify if *parts* of the solution involve identification. 
@@ -23,7 +30,7 @@ Unsupervised learning algorithms discover patterns in your data. Note that these
 
 * K-means Clustering
 * Singular Value Decomposition
-* [Independent Component Analysis]({% post_url /algorithms/2021-07-10-machineLearning %})
+* [Independent Component Analysis]({% post_url /algorithms/2022-03-30-machineLearning %})
 * Autoencoders
 
 Another way to understand unsupervised learning algorithms is that they look for ways to compress your data. If you had fifty (x,y) coordinates which all fall onto the line y = 3x+2, an unsupervised learning algorithm can compress those 100 numbers into fifty x-coordinates and a function. See how we've reduced the total datasize? If you've ever compressed an image or a word document, you've made use of an unsupervised learning technique. 

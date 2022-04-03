@@ -4,13 +4,715 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2021-08-28T13:49:20-07:00</updated>
+ <updated>2022-03-30T21:27:03-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Linear Algrebra</title>
+   <link href="https://ludavid15.github.io//linearAlgebra/"/>
+   <updated>2022-03-30T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//linearAlgebra</id>
+   <content type="html">&lt;p&gt;Although titled linear algrebra, this post is really about linear algebra as it applies to machine learning.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1---matrices&quot;&gt;Section 1 - Matrices&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Vector&lt;/strong&gt; - By default, vectors are columns. The transpose/Hermitian of a vector turns it into a row.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Range/Span&lt;/strong&gt; - The set of all linear combinations of each vector.&lt;/p&gt;
+
+\[R\left(A\right)={\alpha_1A_1+a_2A_2\ldots+\alpha_kA_k,\ for\ any\ \alpha_i\in F}\]
+
+&lt;p&gt;&lt;strong&gt;Nullspace/Kernel (of a matrix A)&lt;/strong&gt; - The set of all vectors [x] such that Ax = 0&lt;/p&gt;
+
+\[N\left(A\right)={x\in F^n,\ Ax=0}\]
+
+&lt;p&gt;&lt;strong&gt;Ortho-complement (of a subspace)&lt;/strong&gt; -  The set of all vectors [x] that are orthogonal to all vectors in the subspace V.&lt;/p&gt;
+
+\[V^\bot={x,\ x\bot y\ for\ all\ y\in V}\]
+
+&lt;p&gt;&lt;strong&gt;Linear Dependence&lt;/strong&gt; - A set of vectors are said to linearly dependent if there exist scalars \(\alpha\) not all zero such that:&lt;/p&gt;
+
+\[\alpha_1V_1+a_2V_2\ldots+\alpha_kV_k=0\]
+
+&lt;p&gt;&lt;strong&gt;Rank&lt;/strong&gt; - The rank of a matrix is the is the number of linearly independent rows or columns. It is equal to the dimension of the span of the matrix. The rank cannot be greater than min(m, n) given \(A\in F^{m\times n}\).&lt;/p&gt;
+
+&lt;h3 id=&quot;summary-of-matrix-properties&quot;&gt;Summary of Matrix Properties&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Mathematical Expression&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Equivalent Statements/Other Properties&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Normal Matrix&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(AA^H=A^HA\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[A] is normal if it commutes with its conjugate transpose&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[A] is diagonalizable by a unitary matrix&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;There exists a set of eigenvectors of [A] which form an orthonormal basis for range([A])&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(|A|^2=tr(A^HA)\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;The Frobenius norm can by computed by the eigenvalues&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(A=Q\Lambda Q^H\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(AQ[:,i]=λiQ[:,i]\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[A] can be decomposed into the product of its unitary eigenvector matrices and a diagonal matrix of eigenvalues&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Unitary/Orthogonal Matrix&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(AA^H=A^HA=I\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[A] is unitary if it is normal and its product with its conjugate transpose equals the identity matrix&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(|x|_2=|Ax|_2\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;The product of a unitary matrix with a vector does not change the magnitude of the vector.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Symmetric/Hermitian Matrix&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(A=A^T\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[A] is symmetric if it is equal to its conjugate transpose&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;All symmetric matrices are also normal matrices&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Rectangular matrices are never normal matrices&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;The eigenvalues of a symmetric (and thus normal) matrix are always real&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Diagonalizable Matrix&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;\(A=Q\Lambda Q^H\)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;[A] is diagonalizable if it is similar to a diagonal matrix&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;singular-value-decomposition&quot;&gt;Singular Value Decomposition&lt;/h3&gt;
+
+&lt;p&gt;The singular value decomposition of a matrix [A] yields the following expression, where  U\in F^{m\times m} is the matrix of left singular vector, V\in F^{n\times n} is the matrix of right singular vectors, and the strictly positive entries of \Sigma\in F^{m\times n} are referred to singular values. The number of nonzero singular values equals the rank of [A]. Both U and V are unitary matrixes.&lt;/p&gt;
+
+\[A\in F^{m\times n}=U\Sigma V^H\]
+
+&lt;p&gt;Realizing that in some cases, the rank of A is less than either m or n, leaving a few zero entries along the singular values. These send corresponding vectors in U and V to zero, and thus A can be reassembled with only the vectors of U, V and singular values through (r).&lt;/p&gt;
+
+\[A=\ \sum_{i=1}^{r}{\sigma_iu_iv_i^H}\]
+
+&lt;h4 id=&quot;additional-properties-of-the-svd&quot;&gt;Additional Properties of the SVD&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(Av_j=\sigma_ju_j\ \ \ \ \ \ if\ j\in\left(1,r\right)\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(Av_j=\sigma_ju_j=0\ \ \ \ \ \ \ \ if\ j\in(r+1,\ n)\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(A^Hu_j=\sigma_jv_j\ \ \ \ \ \ \ \ if\ j\in(1,\ r)\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;The right singular vectors of AH are the left singular vectors of A and vice-versa&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;The dimension of the range of A is equal to the rank of A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(u_1,u_2,\ldots u_r\) are orthogonal basis vectors for the range of A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(u_{r+1},u_{r+2},\ldots u_m\) are orthogonal basis vectors for the orthocomplement of the range of A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(v_{r+1},v_{r+2},\ldots u_n\) are orthogonal basis vectors for the nullspace of A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;\(v_1,v_2,\ldots v_r\) are orthogonal basis vectors for the orthocomplement of the nullspace of A&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;orthogonal-projection-matrix&quot;&gt;Orthogonal Projection Matrix&lt;/h3&gt;
+
+&lt;p&gt;Consider a set of vectors \(v_1,\ v_2,\ \ldots v_k\) which form an orthonormal basis for the subspace of some range V. The orthogonal projection matrix of the subspace V as well as the orthocomplement of V is formed as:&lt;/p&gt;
+
+\[P_v=Q_kQ_k^H\]
+
+\[P_{v^\bot}={I-Q}_kQ_k^H\]
+
+&lt;p&gt;The orthogonal projection matrix when multiplied by a vector finds the projection of that vector onto the subspace and is equal to subtraction of any orthogonal components from the original vector. That is:&lt;/p&gt;
+
+\[P_{v^\bot}x=x-P_vx\]
+
+&lt;h3 id=&quot;pseudo-inverse-moore-penrose-inverse&quot;&gt;Pseudo-Inverse (Moore-Penrose Inverse)&lt;/h3&gt;
+
+&lt;p&gt;Note that a non-square matrix cannot be inverted in the traditional sense. However, it is still possible to achieve a partial inverse by using the SVD. We define the pseudo inverse as:&lt;/p&gt;
+
+\[A^+=V\Sigma^+U^H\]
+
+\[\Sigma^+=\left[\begin{matrix}\Sigma_{r\times r}&amp;amp;0_{r,\ n-r}\\0_{m\times r,\ r}&amp;amp;0_{m-r,\ n-r}\\\end{matrix}\right]\ \in F^{n\times m}\]
+
+&lt;h3 id=&quot;least-squares-regressionordinary-least-squares&quot;&gt;Least Squares Regression/Ordinary Least Squares&lt;/h3&gt;
+
+&lt;p&gt;Given a problem stated in the following format, it is possible to find an exact solution.&lt;/p&gt;
+
+\[x_{LS}=argmin\|Ax-b\|_2^2\]
+
+\[x_{LS}=A^+b\]
+
+&lt;p&gt;Thus, we may be generally motivated to format our problems in the above format, such that a solution can be easily solved using the pseudo-inverse. Consider a dataset of inputs and corresponding outputs, denoted as t and b.&lt;/p&gt;
+
+&lt;p&gt;Our approximation function we would like to take the form:&lt;/p&gt;
+
+\[b_j=c_1+c_2t_j+c_3t_j^2+ \ldots α_1cos(t_j)+β_1sin(t_j)+α_2cos(t_j)+β_2sin(t_j)+ \ldots\]
+
+&lt;p&gt;This can be represented in a linear format by defining the following sets of A and x matrices.&lt;/p&gt;
+
+\[x=\ \left[c_1,\ c_2,c_3,\ldots,\ \alpha_1,\beta_1,\alpha_2,\beta_2,\ \ldots\right]^T\]
+
+\[A_j=[1,\ t_j,\ t_j^2, \ldots,\cos(t_j),\sin(t_j),\cos(t_j),\sin(t_j)]\]
+
+&lt;p&gt;Thus, the dot product of x with Aj should yield Equation 1. Repeating the above for every data point will yield a full matrix for A. The coefficients for our model equation which best fit the data can be found now using least squares regression.&lt;/p&gt;
+
+&lt;h3 id=&quot;regularized-least-squares&quot;&gt;Regularized Least Squares&lt;/h3&gt;
+
+&lt;p&gt;Consider for a moment, a constrained least squares problem:&lt;/p&gt;
+
+\[x_{LS}=argmin\|Ax-b\|_2^2\]
+
+\[\|Dx\|_2&amp;lt;τ\]
+
+&lt;p&gt;As we did in optimization, we can include the constraint, as something that should be included in the weighting of the objective function.&lt;/p&gt;
+
+\[x_{LS}=argmin\|Ax-b\|_2^2+λ^2\|Dx\|_2^2\]
+
+&lt;p&gt;We can be reformed into our classic least squares problem format by defining the following sets of matrices:&lt;/p&gt;
+
+\[\widetilde{A}=\left[\begin{matrix}A\\\lambda D\\\end{matrix}\right],\ \widetilde{b}=\left[\begin{matrix}b\\0\\\end{matrix}\right]\]
+
+\[x_{LS}=argmin\|Ax-b\|_2^2\]
+
+&lt;h3 id=&quot;first-difference-matrix&quot;&gt;First Difference Matrix&lt;/h3&gt;
+
+&lt;p&gt;The first difference matrix when multiplied by a vector yields the elementwise gradients (taking the spacing/index to be the x displacement).&lt;/p&gt;
+
+\[D=\ \left[\begin{matrix}-1&amp;amp;1&amp;amp;0&amp;amp;0&amp;amp;0\\0&amp;amp;-1&amp;amp;\cdots&amp;amp;0&amp;amp;0\\0&amp;amp;\vdots&amp;amp;\ddots&amp;amp;\vdots&amp;amp;0\\0&amp;amp;0&amp;amp;\cdots&amp;amp;-1&amp;amp;1\\1&amp;amp;0&amp;amp;0&amp;amp;0&amp;amp;-1\\\end{matrix}\right]\]
+
+&lt;h3 id=&quot;trace-of-a-matrix&quot;&gt;Trace of a Matrix&lt;/h3&gt;
+
+&lt;p&gt;The trace of a matrix is defined as the sum of values down the primary diagonal. The trace is invariant under cyclic permutation:&lt;/p&gt;
+
+\[tr\left(AB\right)=tr\left(BA\right)\]
+
+\[tr\left(A+B\right)=tr\left(A\right)+tr\left(B\right)\]
+
+&lt;h3 id=&quot;frobenius-norm&quot;&gt;Frobenius Norm&lt;/h3&gt;
+
+&lt;p&gt;The Frobenius norm of a matrix is the root of the sum of the square of all values. The frobenius norm is also equal to the square root of the trace, and the sum of square of singular values of A.&lt;/p&gt;
+
+\[\|A\|_F = a_{ij}^2\]
+
+\[\|A\|_F^2=tr(AA^H)=tr(A^HA)=σ_i^2\]
+
+&lt;h3 id=&quot;principal-component-analysis&quot;&gt;Principal Component Analysis&lt;/h3&gt;
+
+&lt;p&gt;Consider a matrix whose columns represent different items in a dataset, and whose rows represent different parameters for each data item (i.e. x, y, z, coordinates). Principal Component Analysis, or PCA, finds an orthonormal basis of directions which best fit the data. These lines minimize the average squared distance of each point to the line. This orthonormal basis are also the left singular vectors obtained through SVD.&lt;/p&gt;
+
+&lt;p&gt;The first principal component of a matrix A, associated with the first eigenvector/left singular vector of the eigen decomposition and SVD, can be found as the vector which maximizes the second norm of the product of A with x.&lt;/p&gt;
+
+\[u_1=\ argmax\|Ax\|^2)\]
+
+&lt;p&gt;The next largest principal component can be found by projecting A into the null space formed from the previously found vectors and repeating the previous calculation. (We are finding the next line of best fit that is orthonormal to any previously found lines).&lt;/p&gt;
+
+&lt;h3 id=&quot;independent-component-analysis&quot;&gt;Independent Component Analysis&lt;/h3&gt;
+
+&lt;p&gt;ICA decomposes a signal into independent (non-correlated) non-Gaussian signals. When sources are statistically independent, ICA works very well in separating the two. ICA methods tend to breakdown when there is similarity in the signal, leading to correlation. To do this, ICA identifies directions that maximize absolute kurtosis. Mathematically, this is:&lt;/p&gt;
+
+\[x=\ argmax(|k_4(x^TA)|)\]
+
+&lt;p&gt;Where Kurtosis, or the fourth central cumulant, is defined as:&lt;/p&gt;
+
+\[k_4(y^T)=\frac{1}{n}\sum y_i^4- 3(\frac{1}{n} \sum y_i^2)^2\]
+
+&lt;p&gt;And in addition, subject to a spherical constraint on the x input (i.e., two norm of x is equal to 1).&lt;/p&gt;
+
+\[\|x\|_2^2=1\]
+
+&lt;h3 id=&quot;procrustes-analysis&quot;&gt;Procrustes Analysis&lt;/h3&gt;
+
+&lt;p&gt;A method for statistical analysis of shape distributions. An orthogonal Procrustes problem is one that finds the optimal rotation, translation, and/or reflection which aligns two shapes.&lt;/p&gt;
+
+&lt;h3 id=&quot;minimum-dimensions&quot;&gt;Minimum Dimensions&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If I told you that there were 4 distinct points, and gave you the distance between every pair, you could determine the minimum dimensional space required to properly map these points. For instance, if all 6 distances are the same, there is no way to position these 4 points in a plane that makes this true. Instead, they must be arranged as a regular tetrahedron in 3D space.&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Machine Learning Architectures</title>
+   <link href="https://ludavid15.github.io//machineLearning/"/>
+   <updated>2022-03-30T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//machineLearning</id>
+   <content type="html">&lt;p&gt;At its core, machine learning is a &lt;strong&gt;statistical science&lt;/strong&gt;, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.&lt;/p&gt;
+
+&lt;p&gt;This article takes the traditional view of machine learning, where we organize the sub-disciplines by objectives and data structure. For a discussion of machine learning as a wandering exploration of linear algrebra, see the post on &lt;a href=&quot;/notes/linearAlgebra/&quot;&gt;linear algebra&lt;/a&gt;. In fact, I’d recommend starting on that page first! Matrices are the bedrock of machine learning.&lt;/p&gt;
+
+&lt;p&gt;Or if you are just looking for a high level overview of what machine learning is, I recommend readying this post on &lt;a href=&quot;/notes/howTomachineLearning/&quot;&gt;how to think about machine learning&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;linear-regression&quot;&gt;Linear Regression&lt;/h3&gt;
+
+&lt;p&gt;To start, let’s review the most basic type of machine learning problem is - linear regression. The aim is to find a linear best-fit relationship between (x) and (y).&lt;/p&gt;
+
+\[h(x) = b + \theta_1x_1 + ... + \theta_nx_n = b + \sum_{i=1}^{n}theta_1x_i\]
+
+&lt;p&gt;Where \(h\) is the model, $b$ is an offset, and the \(\theta\)’s are the weights to be learned.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2---machine-learning-algorithms&quot;&gt;Section 2 - Machine Learning Algorithms&lt;/h2&gt;
+
+&lt;p&gt;So far we’ve talked a lot about what we can do with matrices, and the reason we’ve done this is because many problems can be solved without reaching for a neural network with billions of weights that need to be optimized. This section takes the more traditional approach to machine learning, where we divide algorithms according to their objectives.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Supervised Learning&lt;/li&gt;
+  &lt;li&gt;Unsurpervised Learning&lt;/li&gt;
+  &lt;li&gt;Reinforcement Learning&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;k-means-clustering&quot;&gt;K-Means Clustering&lt;/h3&gt;
+
+&lt;p&gt;Minimizes the intra-cluster variance. The strength of clustering algorithms lies in the fact that it is an unsupervised learning method, i.e., data does not have to come pre-labeled. The process goes:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Propose N cluster centers.&lt;/li&gt;
+  &lt;li&gt;Assign every pixel to the closest cluster center.&lt;/li&gt;
+  &lt;li&gt;Calculate new cluster centers using the average of assigned pixels.&lt;/li&gt;
+  &lt;li&gt;Repeat until centers have stabilized.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For data classification, there typically needs to be as many dimensions as independent features (N) we’d like to distinguish. This means that for a task like image classification, we’ll need to find a way to transform a 2D image into a single point in 2D dimensional space.&lt;/p&gt;
+
+&lt;h3 id=&quot;neural-networks-and-deep-nets&quot;&gt;Neural Networks and Deep Nets&lt;/h3&gt;
+
+&lt;p&gt;Networks are function approximators. Each node consists of any number of inputs and any number of outputs, but is itself a simple activation function (relu, sigmoid, tangent, etc.) These functions generally produce an output in the range of 0 to 1 or -1 to 1. For each node, there are a series of weights and offsets to be calculated/tuned by the learning process.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/dnn.png&quot; alt=&quot;deep neural net&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The benefit of deep nets is that they can separate non-linear shapes, at the downside of long computation times and unreliable convergence of results. Results depend a lot on how error is measured, the function of each node, etc.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Back in the day, pre-training a neural network demonstrated that these could actually be trained efficiently, but since then other strategies have taken over. These include batch normalization and deep residual learning.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;mathematical-fundamentals-for-nns&quot;&gt;Mathematical Fundamentals for NN’s&lt;/h3&gt;
+
+&lt;p&gt;A neural network (deep or otherwise), can be broken down into this simple equation:&lt;/p&gt;
+
+\[y = h(x) = AF(b + Wx)\]
+
+&lt;p&gt;Where $h(x) = y$ is the model to be trained, $b$ is some kind of offset (sometimes ignored), $W$ the set of weights to be calculated, $x$ the set of inputs, and $AF$ is some activation function. If this looks familiar, it’s because this is just a slightly modified linear regression! This mathematical basis should also reveal that neural networks are deterministic - the same input will always produce the same output!&lt;/p&gt;
+
+&lt;p&gt;Depending on the type of task we are training our Neural Network to do, there are different ways to encode our solution, which demand different types of activation functions, which demand different cost functions. These are outlined here:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Task&lt;/th&gt;
+      &lt;th&gt;Output&lt;/th&gt;
+      &lt;th&gt;Target Encoding&lt;/th&gt;
+      &lt;th&gt;Activation Function&lt;/th&gt;
+      &lt;th&gt;Cost Function&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Regression&lt;/td&gt;
+      &lt;td&gt;Real&lt;/td&gt;
+      &lt;td&gt;Real&lt;/td&gt;
+      &lt;td&gt;Identity&lt;/td&gt;
+      &lt;td&gt;Mean squared error&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Classification&lt;/td&gt;
+      &lt;td&gt;Binary&lt;/td&gt;
+      &lt;td&gt;0,1&lt;/td&gt;
+      &lt;td&gt;Sigmoid&lt;/td&gt;
+      &lt;td&gt;Cross Entropy&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Classification&lt;/td&gt;
+      &lt;td&gt;Single Label&lt;/td&gt;
+      &lt;td&gt;One-hot&lt;/td&gt;
+      &lt;td&gt;Sigmoid&lt;/td&gt;
+      &lt;td&gt;Cross Entropy&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Classification&lt;/td&gt;
+      &lt;td&gt;Many Label&lt;/td&gt;
+      &lt;td&gt;Many-hot&lt;/td&gt;
+      &lt;td&gt;Softmax&lt;/td&gt;
+      &lt;td&gt;Cross Entropy&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;overfitting&quot;&gt;Overfitting&lt;/h3&gt;
+
+&lt;p&gt;Overfitting is a common issue of machine learning algorithms, where we increase the accuracy with respect to the training data, at the cost of decreased predictive accuracy. This exists because we expect some random error in the training data. When an algorithm is overfit, it tries to accomodate this random noise, and loses track of the global trends.&lt;/p&gt;
+
+&lt;h3 id=&quot;receiver-operator-characteristic-curve&quot;&gt;Receiver Operator Characteristic Curve&lt;/h3&gt;
+
+&lt;p&gt;The R.O.C plots the probability of correct classification vs the probability of false positive. In an ideal case, the area under the curve will be equal to 1. A random guesser achieves a straight line on this plot, so a classifier needs to beat this result. Placement along the curve is also important, and changes depending on the application.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/roc.png&quot; alt=&quot;roc curve&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;deep-learning-architectures&quot;&gt;Deep Learning Architectures&lt;/h3&gt;
+
+&lt;p&gt;Deep learning algorithms are more powerful, but messier, versions of their linear algebra counterparts. A lot of optimization and more complex architectures are used to learn more abstract behaviors. A few common deep learning architectures are:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Feedforward NN’s&lt;/li&gt;
+  &lt;li&gt;Autoencoders&lt;/li&gt;
+  &lt;li&gt;Restricted Boltzman Machine&lt;/li&gt;
+  &lt;li&gt;Recurrent Neural Network&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;multi-layer-nn-aka-feedforward-neural-network&quot;&gt;Multi-Layer NN aka Feedforward Neural Network&lt;/h3&gt;
+
+&lt;p&gt;A Feedforward neural network has also been referred to as a “deep” learning network, because there are additional hidden layers between the input and output. In general, adding more layers is not the same as adding more nodes to an existing layer, and the relationship between the two is still being explored today.&lt;/p&gt;
+
+&lt;h3 id=&quot;autoencoders&quot;&gt;Autoencoders&lt;/h3&gt;
+
+&lt;p&gt;An autoencoders is a type of unsupervised learning. The goal is to compress and decompress information, which forces the algorithm to find key features to “encode” useful patterns. These can be implemented as a deep neural net, but one in which the output has the same dimension as the input. Additionally, the hidden layer(s) must have fewer nodes than either the input or output.&lt;/p&gt;
+
+&lt;p&gt;There are two flavors of autoencoders:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Regularized autoencoders, or sometimes called sparse autoencoders, are effective for classification tasks.&lt;/li&gt;
+  &lt;li&gt;Variational autoencoders use probability distributions instead of discrete variables, and are effective for generating new content.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;restricted-boltzmann-machine-rbm&quot;&gt;Restricted Boltzmann Machine (RBM)&lt;/h3&gt;
+
+&lt;p&gt;A restricted Boltzmann machine has two layers - a visible layer, and a hidden layer. Every node between the two layers are connected, but none of the nodes within a layer are connected.&lt;/p&gt;
+
+&lt;p&gt;The general idea behind a RBM is that there are hidden triggers which result in the data we see. The weights tie each cause (hidden layer) to each effect (visible layer). These result in probabilities, so we just have to tune our weights until the predicted probability of each event matches the probability distribution we see in our training data!&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The words “trigger” and “result-in” are here to illustrate the idea, but in reality no causal relationship is being proven here! A more accurate version would be to say that there are hidden “indicators” which “correlate to” the data we see.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;One advantage to unsupervised learning with an RBM is that results can be obtained with only a few examples. Today, training is performed using an algorithm called &lt;strong&gt;constrastive divergence&lt;/strong&gt;, which overcomes some of the scaling issues with RBM’s.&lt;/p&gt;
+
+&lt;p&gt;Energy Equation&lt;/p&gt;
+
+\[E(v,h) = -a^Tv - b^Th - v^TWh\]
+
+&lt;h3 id=&quot;recurrent-neural-networks-rnn&quot;&gt;Recurrent Neural Networks (RNN)&lt;/h3&gt;
+
+&lt;p&gt;Before we jump into an RNN, consider a simple sentence generation program, which predicts the next word based only on the last word it encountered. Maybe the output looks something like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; he drinks f(&quot;drinks&quot;)
+&amp;gt; he drinks water f(&quot;water&quot;)
+&amp;gt; he drinks water park f(&quot;park&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is clearly limited because each prediction is made without the context of the rest of the sentence (“drinks” and “water” go together, as does “water” and “park”, but all three certainly do not make sense together!). Flip this around in terms of a learning algorithm and you can run into the same problem.&lt;/p&gt;
+
+&lt;p&gt;A recurrent network networks is structured such that the output of a hidden layer is used as an additional input back into the same hidden layer. This allows them to learn based on the current AND previous state. But what does the previuos state depend on? The state before that. So by recusion, RNN’s learn on the entire sequence.&lt;/p&gt;
+
+&lt;p&gt;The output layer of an RNN is usually just the input layer but shifted by one step. Think about it with this example: If the sequence to be predicted by the RNN is ABCD, then for every step of the sequence, a trained RNN would generate:&lt;/p&gt;
+
+&lt;p&gt;A-&amp;gt;AB, AB-&amp;gt;ABC, ABC-&amp;gt;ABCD, etc. See how the input sequence can also act as the labeled output used in a supervised learning algorithm?&lt;/p&gt;
+
+&lt;p class=&quot;message&quot;&gt;
+Long Short Term Memory is the preferred training algorithm for RNN&apos;s. This helps reduce amplification or minimization due to recursion (e.g. 2x2x2x2 grows very quickly, while 0.5 * 0.5 * 0.5 shrinks very quickly).
+&lt;p&gt;
+
+### Convolutional Neural Networks
+
+
+
+
+
+&lt;/p&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Music and AI - Part 2</title>
+   <link href="https://ludavid15.github.io//musicAI2/"/>
+   <updated>2022-03-25T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//musicAI2</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Music and AI - Part 1</title>
+   <link href="https://ludavid15.github.io//musicAI1/"/>
+   <updated>2022-03-19T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//musicAI1</id>
+   <content type="html">&lt;p&gt;Applications of computing methods towards music.&lt;/p&gt;
+
+&lt;h3 id=&quot;projects-and-companies&quot;&gt;Projects and Companies&lt;/h3&gt;
+
+&lt;p&gt;Just a few practical resources to look at if you are interested in seeing who is currently working on this subject.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Magenta - an open source, Google-led project to explore creatives applications for ML.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;music-information-retrieval-mir&quot;&gt;Music Information Retrieval (MIR)&lt;/h1&gt;
+
+&lt;p&gt;Chord recognition, song identification, etc.&lt;/p&gt;
+
+&lt;h1 id=&quot;generative-ai&quot;&gt;Generative AI&lt;/h1&gt;
+
+&lt;p&gt;Stepping beyond recognition, generative AI tries to create new music. Algorithms in this category range from fully autonomous composers, to assistant bots which make recommendations.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;For a comprehensive review of this topic, I recommend reading “Deep Learning Techniques for Music Generation – A Survey”, by Jean-Pierre Briot, Gaetan Hadjeres, and Francois-David Pache.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;symbolic-vs-non-symbolic&quot;&gt;Symbolic vs Non-symbolic&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Symbolic - harmony, chords progressions&lt;/li&gt;
+  &lt;li&gt;Non-symbolic - sound, timbre&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Algorithms working with symbolic music often needs rules, grammers and structured inputs, which reduces flexibility and increases overhead.&lt;/p&gt;
+
+&lt;h4 id=&quot;markov-models&quot;&gt;Markov Models&lt;/h4&gt;
+
+&lt;p&gt;Markov models predict one step at a time. This makes them easy to implement and understand, but it also means they are unable to think about long-term structure. Think of this like writing a book, but each word is written by finding the most statistically probable word to follow from the one before. You might still get get complete sentences, but highly unlikely to get a coherent theme.&lt;/p&gt;
+
+&lt;h3 id=&quot;categories&quot;&gt;Categories&lt;/h3&gt;
+
+&lt;p&gt;These are a few attributes of different generative AI’s. Keep in mind that some of these might be related, (i.e. they may not be orthogonal, or independent of one another).&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;By Objective&lt;/strong&gt;: What aspect of music are you creating? A melody? A chord progression? An accompaniment?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;By Representation&lt;/strong&gt;: How are you structuring your musical data? E.g. as a signal, MIDI, text, piano roll.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;By Architecture&lt;/strong&gt;: Recurrent NN, autoencoders, generative adversarial modeling, etc.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;By Challenge&lt;/strong&gt;: What qualities are you looking for in what you create? Variability, creativity, interactivity.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;By Strategy&lt;/strong&gt;: TBD - I don’t understand this very well yet.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;/h2&gt;
+
+&lt;p&gt;Let’s think about melody for a moment. What’s the context for the melody we’re writing? Is it a Bach style counterpoint to an existing melody? Is it the baritone part in a SATB choir? Is it an improvised melody over an existing chord progression (like on a lead sheet?).&lt;/p&gt;
+
+&lt;p&gt;These are all valid ways to think about single-voice melodies, but are different enough that they may require unique approaches.&lt;/p&gt;
+
+&lt;h2 id=&quot;representation&quot;&gt;Representation&lt;/h2&gt;
+
+&lt;p&gt;Representation is how we choose to format our music. Is it the raw waveform? Maybe a spectrum if we first run a fourier analysis. Or what about symbolically? If so, what about enharmony? Is an Eb and the D# the same thing?&lt;/p&gt;
+
+&lt;p&gt;Formats that deal with the audio aspect are often continuous, and fall into the realm of signal processing. In contrast, symbolic representation is discrete, and more often found in the field of knowledge representation.&lt;/p&gt;
+
+&lt;h3 id=&quot;notes&quot;&gt;Notes&lt;/h3&gt;
+
+&lt;p&gt;Every note has a pitch, duration, and dynamic. Pitch can be expressed as a frequency, position on a score, or a letter (A through G). Duration can be measured in absolute terms (seconds), or in the context of written music (quarter note, half note, etc.). The same absolute vs relevant distinction can be made for the note’s dynamic, (i.e. decibels vs pianissimo/forte).&lt;/p&gt;
+
+&lt;h3 id=&quot;chords&quot;&gt;Chords&lt;/h3&gt;
+
+&lt;p&gt;Chords can be represented either as a collection of notes, or by a root and type (e.g. C7, Gmin, etc.). The latter is more useful for harmonic analysis, and for some applications, like a jazz musician’s lead sheet, could be more useful.&lt;/p&gt;
+
+&lt;h3 id=&quot;rhythm&quot;&gt;Rhythm&lt;/h3&gt;
+
+&lt;p&gt;In some sense, the rhythm is already captured by the duration and dynamic of each note. But we can also think of rhythm as the “feel” of a piece. Repeating patterns in the duration and dynamic of each note create a combined rhythm effect.&lt;/p&gt;
+
+&lt;h3 id=&quot;midi&quot;&gt;MIDI&lt;/h3&gt;
+
+&lt;p&gt;MIDI (Musical Instrument Digital Interface) is a standard to represent musical information. MIDI works especially well for capturing single note melodies. An example line of MIDI input:&lt;/p&gt;
+
+&lt;p&gt;[96, on, 0, 60, 90]
+[184, off, 0, 60, 0]&lt;/p&gt;
+
+&lt;p&gt;We can understand the above lines as saying:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;at time 96 and on channel 0, start playing the pitch 60 at a volume of 90.&lt;/li&gt;
+  &lt;li&gt;at time 184 and on channel 0, stop playing the pitch 60 at a velocity of 0.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When specifiying an off event, the very last number tells us how quickly to release a note.&lt;/p&gt;
+
+&lt;p&gt;To create a chord, or any two notes played simultaneously, we just introduce a new channel. This is sufficient for capturing audio information, but in the realm of data science, this lack of unique language for chords is problematic. Algorithms which learn using a MIDI format often fail to “learn” harmonies.&lt;/p&gt;
+
+&lt;h3 id=&quot;piano-roll&quot;&gt;Piano Roll&lt;/h3&gt;
+
+&lt;p&gt;Unlike MIDI, a piano roll does capture chords in a more intuitive way. There are only two dimensions: pitch, and time. A third dimension can be added to collect volume and intensity information. As with the MIDI format, the piano roll doesn’t distinguish between melody and harmony.&lt;/p&gt;
+
+&lt;h4 id=&quot;what-about-held-notes&quot;&gt;What About Held Notes?&lt;/h4&gt;
+
+&lt;p&gt;Another major downside of the piano roll is that (depending on how we encode time), it may be impossible distinguish a held note from a repeated note. For this, we’ll need to add a new word to our musical language. One way to do this is to introduce a new notation (somelike a –), which represents a held note. Then when we need to encode this, we can treat the the hold symbol as just another “pitch”.&lt;/p&gt;
+
+&lt;h3 id=&quot;time&quot;&gt;Time&lt;/h3&gt;
+
+&lt;p&gt;There are two approaches to how we create music with respect to time (and if you think about it, there can only be two). You can either model and optimize the entire score all together, or you can step through one unit at a time. This unit can be a beat, or a note. In the latter case, there is no going back to change work you’ve already done. The nuance here seems small, but it has a very big impact on what the input and output to our AI is.&lt;/p&gt;
+
+&lt;p&gt;This type of modeling works if we choose to represent a relative duration (e.g. an 8th note, 16th note, etc.) or in absolute terms (in milliseconds). The latter is needed to capture the “artistic” interpretation that a human musician may add, but is not as useful if our goal is to create written sheet music.&lt;/p&gt;
+
+&lt;h2 id=&quot;metadata&quot;&gt;Metadata&lt;/h2&gt;
+
+&lt;p&gt;What kind of metadata do we want to include? Key signature, meter (i.e. waltz, bossa nova, swing). Music annotating programs like musescore will often allow users to track these. Whether or not they are useful towards generation remains to be proven.&lt;/p&gt;
+
+&lt;h2 id=&quot;encoding&quot;&gt;Encoding&lt;/h2&gt;
+
+&lt;p&gt;Encoding is the step that connects the representation of music we’ve chosen, to the set of input notes or input variables for the nueral network. For example, consider the two definitions we have for chords:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Implicit (C, E, G, B)&lt;/li&gt;
+  &lt;li&gt;Explicit (C major 7th)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;An implicit representation is typically encoded with many-hot, while an explicit representation can be encoded with a multi-one-hot (i.e. the first one-hot is the root, the second one-hot is the quality).&lt;/p&gt;
+
+&lt;p&gt;And finally, a musical rest could be encoded like any other note - except in the case of MIDI which doesn’t need it.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Data Analytics</title>
+   <link href="https://ludavid15.github.io//dataanalytics/"/>
+   <updated>2022-02-14T00:00:00-08:00</updated>
+   <id>https://ludavid15.github.io//dataAnalytics</id>
+   <content type="html">&lt;p&gt;A collection of notes and lessons from the Google Data Analytics Certificate.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;overview&quot;&gt;Overview&lt;/h3&gt;
+
+&lt;h4 id=&quot;the-lifecyce-of-data&quot;&gt;The lifecyce of data.&lt;/h4&gt;
+
+&lt;p&gt;Why do we discuss the lifestyle of data? Because data analytics is not just about obtaining results, it’s about collecting, managing, and then closing out a process.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Plan&lt;/li&gt;
+  &lt;li&gt;Capture&lt;/li&gt;
+  &lt;li&gt;Manage&lt;/li&gt;
+  &lt;li&gt;Analyze&lt;/li&gt;
+  &lt;li&gt;Archive&lt;/li&gt;
+  &lt;li&gt;Destroy&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;setting-up-the-problem&quot;&gt;Setting up the Problem&lt;/h3&gt;
+
+&lt;p&gt;The best results come from a well defined question. And one way to build good questions is to use the SMART system:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Specific&lt;/li&gt;
+  &lt;li&gt;Measurable&lt;/li&gt;
+  &lt;li&gt;Action-oriented&lt;/li&gt;
+  &lt;li&gt;Relevant&lt;/li&gt;
+  &lt;li&gt;Time constrained&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If you’re using a survey to collect data, make sure that you avoid leading questions and vague questions. Some examples:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Isn’t it true that A had a negative effect on B?&lt;/li&gt;
+  &lt;li&gt;What’s going on with A?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And finally, it’s also worth considering the type of problem. Which of these are you trying to do?&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Predict&lt;/li&gt;
+  &lt;li&gt;Categorize&lt;/li&gt;
+  &lt;li&gt;Detect outliers&lt;/li&gt;
+  &lt;li&gt;Identify themes&lt;/li&gt;
+  &lt;li&gt;Discover connections&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Different objectives may lead to different problem setups and approaches. The better you understand what you are trying to do, the more tailored you can make your response.&lt;/p&gt;
+
+&lt;h3 id=&quot;types-of-data-modeling&quot;&gt;Types of Data Modeling&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Conceptual data modeling&lt;/strong&gt; gives a high-level view of the data structure, such as how data interacts across an organization. For example, a conceptual data model may be used to define the business requirements for a new database. A conceptual data model doesn’t contain technical details.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Logical data modeling&lt;/strong&gt; focuses on the technical details of a database such as relationships, attributes, and entities. For example, a logical data model defines how individual records are uniquely identified in a database. But it doesn’t spell out actual names of database tables. That’s the job of a physical data model.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Physical data modeling&lt;/strong&gt; depicts how a database operates. A physical data model defines all entities and attributes used; for example, it includes table names, column names, and data types for the database.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;data-integrity&quot;&gt;Data Integrity&lt;/h3&gt;
+
+&lt;p&gt;Data integrity is something to keep in mind through the entire data analysis process. Data with integrity means that is accurate, complete, consistent, and trust-worthy.&lt;/p&gt;
+
+&lt;p&gt;Common pitfalls of the data cleaning process:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Overlooking missing values&lt;/li&gt;
+  &lt;li&gt;Only looking at a subset&lt;/li&gt;
+  &lt;li&gt;Losing track of objectives&lt;/li&gt;
+  &lt;li&gt;Not fixing the root of the issue&lt;/li&gt;
+  &lt;li&gt;Not analyzing the system&lt;/li&gt;
+  &lt;li&gt;Not backing up your data prior to cleaning&lt;/li&gt;
+  &lt;li&gt;Not accounting for cleaning time in budgeting&lt;/li&gt;
+  &lt;li&gt;Not checking for spelling errors&lt;/li&gt;
+  &lt;li&gt;Forgetting to document errors&lt;/li&gt;
+  &lt;li&gt;Not checking for misfielded values&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;data-visualization&quot;&gt;Data Visualization&lt;/h3&gt;
+
+&lt;p&gt;Principles of good data visualization:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Information&lt;/li&gt;
+  &lt;li&gt;Story&lt;/li&gt;
+  &lt;li&gt;Goal&lt;/li&gt;
+  &lt;li&gt;Visual Form&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You can also review your presentation with these questions:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;What is the practical question?&lt;/li&gt;
+  &lt;li&gt;What does the data say?&lt;/li&gt;
+  &lt;li&gt;What does the visual say?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Finally, make sure to consider the use case. For instance, if we need to monitor new data as it comes in, an interactive dashboard with the proper backend support would be best. However, if we wanted historical data, a dashboard could be too complex. This is an example of how the visualization step is not independent of our initial setup.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Writing Effectively</title>
@@ -114,13 +816,15 @@ J. Wertz&lt;/p&gt;
 &lt;p&gt;From brightest to darkest (notice that we are slowly dropping the pitch of notes, in the same order as we would along the circl of 5ths)&lt;/p&gt;
 
 &lt;table&gt;
-  &lt;tbody&gt;
+  &lt;thead&gt;
     &lt;tr&gt;
-      &lt;td&gt;Name&lt;/td&gt;
-      &lt;td&gt;Sharps or Flats&lt;/td&gt;
-      &lt;td&gt;Quality&lt;/td&gt;
-      &lt;td&gt;Chords&lt;/td&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Sharps or Flats&lt;/th&gt;
+      &lt;th&gt;Quality&lt;/th&gt;
+      &lt;th&gt;Chords&lt;/th&gt;
     &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td&gt;Lydian&lt;/td&gt;
       &lt;td&gt;# 4th&lt;/td&gt;
@@ -189,13 +893,19 @@ b9, sharp 9, natural 3, sharp 11, natural 5, natural 6, flat 7&lt;/p&gt;
 
 &lt;h3 id=&quot;the-2-5-1&quot;&gt;The 2-5-1&lt;/h3&gt;
 
+&lt;p&gt;Starts with the minor 7th on the second, the major 7th on the 5th, and finishes on the root.&lt;/p&gt;
+
 &lt;h4 id=&quot;minor-2-5-1&quot;&gt;Minor 2-5-1&lt;/h4&gt;
 
 &lt;p&gt;It’s the same chord progression, but this is the minor version. The &lt;strong&gt;ii&lt;/strong&gt; which is normally a minor 7th, becomes a diminished&lt;/p&gt;
 
 &lt;h4 id=&quot;extended-3-6-2-5-1&quot;&gt;Extended 3-6-2-5-1&lt;/h4&gt;
 
+&lt;p&gt;Notice that we are adding chords according to their order along the circle of fifths. For instance, in the key of C, the 3rd (E) has 4 sharps, the 6th (A) has 3 sharps, the 2nd (D) has 2 sharps, and the 5th (G) has one sharp.&lt;/p&gt;
+
 &lt;h3 id=&quot;tritone-substitutions&quot;&gt;Tritone Substitutions&lt;/h3&gt;
+
+&lt;p&gt;This method is used on 2-5-1 progressions. We take the dominant fifth, and substitute a chord that is based on the note a tritone above. In the key of C, this means that the &lt;strong&gt;G7&lt;/strong&gt; might be replaced by a &lt;strong&gt;C#7&lt;/strong&gt;. This results in a chromatic sequence (&lt;strong&gt;D&lt;/strong&gt; - &lt;strong&gt;C#&lt;/strong&gt; - &lt;strong&gt;C&lt;/strong&gt;).&lt;/p&gt;
 
 &lt;h3 id=&quot;diminished-sixths&quot;&gt;Diminished Sixths&lt;/h3&gt;
 
@@ -592,6 +1302,15 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;p&gt;Before going further, it’s worth mentioning that many machine learning algorithms are built using optimization. There is almost always something to be optimized (an objective function - error, fitness, etc.), and different ways to run the optimization (genetic, linear, quadratic, etc.). Different algorithms may change the problem, but the name of the game remains the same (for example, the “learning rate” and “search step size” refer to the same thing!) Keep this mind, because it helps to simplify this large field.&lt;/p&gt;
 
+&lt;p&gt;For any machine learning algorithm, we should be able to identify three distinct aspects:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;The architecture&lt;/strong&gt;, or relationship between inputs and ouputs, which influences the&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cost function&lt;/strong&gt;, which we minimize by using different&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Optimization techniques&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For a more mathematical discussion of machine learning algorithms, check out the &lt;a href=&quot;/notes/machineLearning/&quot;&gt;original ML post&lt;/a&gt;!&lt;/p&gt;
+
 &lt;h3 id=&quot;supervised-learning&quot;&gt;Supervised Learning&lt;/h3&gt;
 
 &lt;p&gt;When we know the type of output you want, but need to learn the function that will get us there, we use supervised learning. These algorithms are implemented with deep neural networks, and are useful for classification tasks. As the name implies, this method absolutely requires having a labeled dataset. If your problem doesn’t readily accept labels, this strategy will probably fall short. Try instead to identify if &lt;em&gt;parts&lt;/em&gt; of the solution involve identification.&lt;/p&gt;
@@ -645,7 +1364,7 @@ Problems formatted in one type can be transformed into another format fairly eas
  </entry>
  
  <entry>
-   <title>Machine Vision</title>
+   <title>Machine Vision and SLAM</title>
    <link href="https://ludavid15.github.io//vision/"/>
    <updated>2021-07-26T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//vision</id>
@@ -739,15 +1458,6 @@ Problems formatted in one type can be transformed into another format fairly eas
  </entry>
  
  <entry>
-   <title>Music and AI</title>
-   <link href="https://ludavid15.github.io//musicAI/"/>
-   <updated>2021-07-21T00:00:00-07:00</updated>
-   <id>https://ludavid15.github.io//musicAI</id>
-   <content type="html">
-</content>
- </entry>
- 
- <entry>
    <title>Systems Engineering</title>
    <link href="https://ludavid15.github.io//systemsEngineering/"/>
    <updated>2021-07-16T00:00:00-07:00</updated>
@@ -782,48 +1492,24 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;p&gt;The process of ensuring the design meets the expectation is known as the validation and verification step. &lt;strong&gt;Verification&lt;/strong&gt; checks to see that the design satisfies the exact wording of the requirement. For example, we can measure the interior space of our rocket, and if we find that there is indeed 5000 cubic feet, we have verified that requirement. &lt;strong&gt;Validation&lt;/strong&gt; checks that we’re meeting the spirit of the requirement. In this case, the intent of this requirement is to provide astronauts with enough living space, but is 5000 really enough? What if the 5000 cubic feet is in the form of a 1 ft x 1 ft x 5000 ft narrow tube? Such a design would not meet the intent of the requirement, even though technically it satisfied the exact wording.&lt;/p&gt;
 
-&lt;h4 id=&quot;problems-with-requirement-writing&quot;&gt;Problems with Requirement Writing&lt;/h4&gt;
+&lt;h4 id=&quot;why-requirements&quot;&gt;Why Requirements?&lt;/h4&gt;
 
-&lt;p&gt;At a glance, everything outlined so far seems fine, but the devil is in the details as they say. What happens if the 5000 cubic feet of living space conflicts with the goal of completing the mission in 2 years? Aerospace engineering projects are difficult, and in no world will your requirement be 100% perfect from the start.&lt;/p&gt;
+&lt;p&gt;My personal opinion of requirements is that they exist as a document of wants, agreed upon by the stakeholders. If I want or need A, I’ll go to you, we can talk it over, and we write this down into our requirements document.&lt;/p&gt;
 
-&lt;p&gt;Here is the problem with requirements. Every engineering project is a system of compromises. Very rarely can a change be made in one place without affecting another. So why do we create a system that implies we’ve “lock in” a design from the beginning?&lt;/p&gt;
-
-&lt;h4 id=&quot;requirements-as-documentation&quot;&gt;Requirements as Documentation&lt;/h4&gt;
-
-&lt;p&gt;Often engineers end up using requirements as a form of documentation, but since requirements were not imagined as documentation to begin with, they fulfill this need poorly. One problem is the wording of requirements. As you’ve noticed, each requirements begins with “should” or “shall”. This can lead to clunkly language such as:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The satellite shall have the capability to accept commands from ground.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Where even is the verb in this sentence? And I’m not very compelled by this satellite being the subject. Instead, why not:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Operators on the ground command the satellite.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Here, there is a well defined human being as the subject, with a clear verb - command - that describes the same functionality in half as many words. Unfortunately, the difficult requirement lingo filters its way into other steps of the design process. Let’s say you create a requirement that says:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;He shall have the capability to run 100 m in 10 seconds or less.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;How should an engineering performing verification interpret this sentence? What exactly does it mean to &lt;em&gt;have the capability&lt;/em&gt;? I suppose that as a human being, I &lt;em&gt;have the capability&lt;/em&gt;, but if you asked me to do it I certainly could not.&lt;/p&gt;
-
-&lt;h3 id=&quot;review-of-problems&quot;&gt;Review of Problems&lt;/h3&gt;
-
-&lt;p&gt;With these problems identifed, let’s think logically about what a good design process should include.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;We need a way to track the design baseline.&lt;/li&gt;
-  &lt;li&gt;Once a change is made, it should be easy to explore how it impacts other systems.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;This may be a good way to track our needs, (potentially comparable to “user stories” from agile), but it is not a very good way to organize a project.&lt;/p&gt;
 
 &lt;h3 id=&quot;model-based-systems-engineering&quot;&gt;Model Based Systems Engineering&lt;/h3&gt;
 
 &lt;p&gt;With better computers, engineers have increasingly turned to model based systems engineering, or MBSE as a solution to the engineering process. After all, things like CAD, CFD, and FEM have enabled us to model complex physics, so why not create a program to model a project?&lt;/p&gt;
 
-&lt;p&gt;But what exactly do we need to capture? Here’s a list.&lt;/p&gt;
+&lt;p&gt;The goal of model based systems engineering is to improve upon two things that happen very slowly with traditional requirements documents:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;A way to track the design baseline.&lt;/li&gt;
+  &lt;li&gt;Once a change is made, an easy way to explore how it impacts other systems.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So what aspects of a system can we model? Here’s a list.&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Physical Configuration&lt;/li&gt;
@@ -852,372 +1538,20 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;p&gt;We create words to group stuff together. If many pieces of hardware work together to provide telemetry, we might designate a “telemetry subsystem”. These abstractions are an important part of communicating complex ideas, but also get messy.&lt;/p&gt;
 
-&lt;h3 id=&quot;proposed-mbse-steps&quot;&gt;Proposed MBSE Steps&lt;/h3&gt;
-
-&lt;p&gt;Putting everything together, here is my idea for how to approach a problem:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Start by defining the actions your system must perform.&lt;/li&gt;
-  &lt;li&gt;At this point, do NOT list constraints yet.&lt;/li&gt;
-  &lt;li&gt;Break down high level functions, doing your best to stay away from a specific implementation. For example, if you need your spacecraft to change attitude, you might say: generate a moment. See how this stays away from a particular hardware implemention? (thrusters, momentum wheels, magnetic torque rods, etc.)&lt;/li&gt;
-  &lt;li&gt;Once each function has been mapped out, create a list of specifications. These are tied to a function that has already been created. For example, we might have a function that reads: send telemetry. Now we can add a corresponding spec that reads: send telemetry at 8 kbps. The function is neccessary, but the specification is a design choice. One is required, the other can be changed. The content of the specification is not critical at this point. The point is to identify which parameters we need to think about.&lt;/li&gt;
-  &lt;li&gt;Create a list of constraints.&lt;/li&gt;
-  &lt;li&gt;Begin the process of optimizing the design variables (the specifications), subject to out constraints. Here is where we explore the various hardware solutions that are available.&lt;/li&gt;
-  &lt;li&gt;Verify and validate your system!&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;If you’ve noticed, the above approach is very much inspired by my coursework in optimization. I’m thinking of the problem in terms of a cost function, constraints, and variables.&lt;/p&gt;
-
 &lt;h3 id=&quot;engineering-in-practice&quot;&gt;Engineering in Practice&lt;/h3&gt;
 
-&lt;p&gt;In real life, we often do not build things up from scratch. Instead a project is  an addition, or a modification to something that already exists. Even though this is meant to simplify the process, it also creates a lot of additional work (as anyone who has tried to read someone else’s code can testify).&lt;/p&gt;
-
-&lt;p&gt;For this reason, it makes a lot of sense to develop systems engineering with this in mind.&lt;/p&gt;
+&lt;p&gt;In real life, we often do not build things up from scratch. Instead a project is often an addition to, or a modification of something that already exists. Even though this is meant to simplify the process, it also creates a lot of additional work (as anyone who has tried to read someone else’s code can testify). For this reason, it makes a lot of sense to develop systems engineering practices with this in mind.&lt;/p&gt;
 
 &lt;h3 id=&quot;dodaf&quot;&gt;DoDAF&lt;/h3&gt;
 
 &lt;p&gt;The Department of Defense Architecture Framework is an effort to generalize how we explain complex systems. Before getting into what DodAF is, let’s be clear that DoDAF is NOT model based systems engineering. DoDAF only defines a set of “viewpoints”, which each viewpoint showing a different aspect of the system. For example, systems viewpoint 4 (SV4) shows functional flow diagrams, while SV1’s show a high level overview of the physical elements.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Disclaimer - the benefits of DoDAF remain to be demonstrated.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Consider an analogy - in CAD, we build 3D shapes. When we try to represent them on a 2D screen, we must choose a viewing angle and projection, but there are likely some standard views that everyone expects. Maybe a cross section to show the internal structure, or a profile view if it’s a flat plate. DoDAF is no different.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;DoDAF Views&lt;/td&gt;
-      &lt;td&gt;Explanation&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SV-1&lt;/td&gt;
-      &lt;td&gt;High level hardware overview&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SV-2&lt;/td&gt;
-      &lt;td&gt;Detailed hardware overview&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SV-4&lt;/td&gt;
-      &lt;td&gt;Functional flow diagram&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SV-10&lt;/td&gt;
-      &lt;td&gt;States and Modes transitions&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-</content>
- </entry>
- 
- <entry>
-   <title>Machine Learning</title>
-   <link href="https://ludavid15.github.io//machineLearning/"/>
-   <updated>2021-07-10T00:00:00-07:00</updated>
-   <id>https://ludavid15.github.io//machineLearning</id>
-   <content type="html">&lt;p&gt;At its core, machine learning is a &lt;strong&gt;statistical science&lt;/strong&gt;, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;matrices&quot;&gt;Matrices&lt;/h2&gt;
-
-&lt;p&gt;Before getting started - why do we care about matrices? Well, matrices are how we store data. So before we jump into neural networks, we can begin with techniques from linear algebra to extract data patterns.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Vector&lt;/strong&gt; - By default, vectors are columns. The transpose/Hermitian of a vector turns it into a row.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Range/Span&lt;/strong&gt; - The set of all linear combinations of each vector.&lt;/p&gt;
-
-\[R\left(A\right)={\alpha_1A_1+a_2A_2\ldots+\alpha_kA_k,\ for\ any\ \alpha_i\in F}\]
-
-&lt;p&gt;&lt;strong&gt;Nullspace/Kernel (of a matrix A)&lt;/strong&gt; - The set of all vectors [x] such that Ax = 0&lt;/p&gt;
-
-\[N\left(A\right)={x\in F^n,\ Ax=0}\]
-
-&lt;p&gt;&lt;strong&gt;Ortho-complement (of a subspace)&lt;/strong&gt; -  The set of all vectors [x] that are orthogonal to all vectors in the subspace V.&lt;/p&gt;
-
-\[V^\bot={x,\ x\bot y\ for\ all\ y\in V}\]
-
-&lt;p&gt;&lt;strong&gt;Linear Dependence&lt;/strong&gt; - A set of vectors are said to linearly dependent if there exist scalars \(\alpha\) not all zero such that:&lt;/p&gt;
-
-\[\alpha_1V_1+a_2V_2\ldots+\alpha_kV_k=0\]
-
-&lt;p&gt;&lt;strong&gt;Rank&lt;/strong&gt; - The rank of a matrix is the is the number of linearly independent rows or columns. It is equal to the dimension of the span of the matrix. The rank cannot be greater than min(m, n) given \(A\in F^{m\times n}\).&lt;/p&gt;
-
-&lt;h3 id=&quot;summary-of-matrix-properties&quot;&gt;Summary of Matrix Properties&lt;/h3&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Name&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Mathematical Expression&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Equivalent Statements/Other Properties&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Normal Matrix&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(AA^H=A^HA\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;[A] is normal if it commutes with its conjugate transpose&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;[A] is diagonalizable by a unitary matrix&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;There exists a set of eigenvectors of [A] which form an orthonormal basis for range([A])&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(|A|^2=tr(A^HA)\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;The Frobenius norm can by computed by the eigenvalues&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(A=Q\Lambda Q^H\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(AQ[:,i]=λiQ[:,i]\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;[A] can be decomposed into the product of its unitary eigenvector matrices and a diagonal matrix of eigenvalues&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Unitary/Orthogonal Matrix&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(AA^H=A^HA=I\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;[A] is unitary if it is normal and its product with its conjugate transpose equals the identity matrix&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(|x|_2=|Ax|_2\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;The product of a unitary matrix with a vector does not change the magnitude of the vector.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Symmetric/Hermitian Matrix&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(A=A^T\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;[A] is symmetric if it is equal to its conjugate transpose&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;All symmetric matrices are also normal matrices&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Rectangular matrices are never normal matrices&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;The eigenvalues of a symmetric (and thus normal) matrix are always real&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Diagonalizable Matrix&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(A=Q\Lambda Q^H\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;[A] is diagonalizable if it is similar to a diagonal matrix&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;singular-value-decomposition&quot;&gt;Singular Value Decomposition&lt;/h3&gt;
-
-&lt;p&gt;The singular value decomposition of a matrix [A] yields the following expression, where  U\in F^{m\times m} is the matrix of left singular vector, V\in F^{n\times n} is the matrix of right singular vectors, and the strictly positive entries of \Sigma\in F^{m\times n} are referred to singular values. The number of nonzero singular values equals the rank of [A]. Both U and V are unitary matrixes.&lt;/p&gt;
-
-\[A\in F^{m\times n}=U\Sigma V^H\]
-
-&lt;p&gt;Realizing that in some cases, the rank of A is less than either m or n, leaving a few zero entries along the singular values. These send corresponding vectors in U and V to zero, and thus A can be reassembled with only the vectors of U, V and singular values through (r).&lt;/p&gt;
-
-\[A=\ \sum_{i=1}^{r}{\sigma_iu_iv_i^H}\]
-
-&lt;h4 id=&quot;additional-properties-of-the-svd&quot;&gt;Additional Properties of the SVD&lt;/h4&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;\(Av_j=\sigma_ju_j\ \ \ \ \ \ if\ j\in\left(1,r\right)\)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;\(Av_j=\sigma_ju_j=0\ \ \ \ \ \ \ \ if\ j\in(r+1,\ n)\)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;\(A^Hu_j=\sigma_jv_j\ \ \ \ \ \ \ \ if\ j\in(1,\ r)\)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;The right singular vectors of AH are the left singular vectors of A and vice-versa&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;The dimension of the range of A is equal to the rank of A&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;\(u_1,u_2,\ldots u_r\) are orthogonal basis vectors for the range of A&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;\(u_{r+1},u_{r+2},\ldots u_m\) are orthogonal basis vectors for the orthocomplement of the range of A&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;\(v_{r+1},v_{r+2},\ldots u_n\) are orthogonal basis vectors for the nullspace of A&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;\(v_1,v_2,\ldots v_r\) are orthogonal basis vectors for the orthocomplement of the nullspace of A&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;orthogonal-projection-matrix&quot;&gt;Orthogonal Projection Matrix&lt;/h3&gt;
-
-&lt;p&gt;Consider a set of vectors \(v_1,\ v_2,\ \ldots v_k\) which form an orthonormal basis for the subspace of some range V. The orthogonal projection matrix of the subspace V as well as the orthocomplement of V is formed as:&lt;/p&gt;
-
-\[P_v=Q_kQ_k^H\]
-
-\[P_{v^\bot}={I-Q}_kQ_k^H\]
-
-&lt;p&gt;The orthogonal projection matrix when multiplied by a vector finds the projection of that vector onto the subspace and is equal to subtraction of any orthogonal components from the original vector. That is:&lt;/p&gt;
-
-\[P_{v^\bot}x=x-P_vx\]
-
-&lt;h3 id=&quot;pseudo-inverse-moore-penrose-inverse&quot;&gt;Pseudo-Inverse (Moore-Penrose Inverse)&lt;/h3&gt;
-
-&lt;p&gt;Note that a non-square matrix cannot be inverted in the traditional sense. However, it is still possible to achieve a partial inverse by using the SVD. We define the pseudo inverse as:&lt;/p&gt;
-
-\[A^+=V\Sigma^+U^H\]
-
-\[\Sigma^+=\left[\begin{matrix}\Sigma_{r\times r}&amp;amp;0_{r,\ n-r}\\0_{m\times r,\ r}&amp;amp;0_{m-r,\ n-r}\\\end{matrix}\right]\ \in F^{n\times m}\]
-
-&lt;h3 id=&quot;least-squares-regressionordinary-least-squares&quot;&gt;Least Squares Regression/Ordinary Least Squares&lt;/h3&gt;
-
-&lt;p&gt;Given a problem stated in the following format, it is possible to find an exact solution.&lt;/p&gt;
-
-\[x_{LS}=argmin\|Ax-b\|_2^2\]
-
-\[x_{LS}=A^+b\]
-
-&lt;p&gt;Thus, we may be generally motivated to format our problems in the above format, such that a solution can be easily solved using the pseudo-inverse. Consider a dataset of inputs and corresponding outputs, denoted as t and b.&lt;/p&gt;
-
-&lt;p&gt;Our approximation function we would like to take the form:&lt;/p&gt;
-
-\[b_j=c_1+c_2t_j+c_3t_j^2+ \ldots α_1cos(t_j)+β_1sin(t_j)+α_2cos(t_j)+β_2sin(t_j)+ \ldots\]
-
-&lt;p&gt;This can be represented in a linear format by defining the following sets of A and x matrices.&lt;/p&gt;
-
-\[x=\ \left[c_1,\ c_2,c_3,\ldots,\ \alpha_1,\beta_1,\alpha_2,\beta_2,\ \ldots\right]^T\]
-
-\[A_j=[1,\ t_j,\ t_j^2, \ldots,\cos(t_j),\sin(t_j),\cos(t_j),\sin(t_j)]\]
-
-&lt;p&gt;Thus, the dot product of x with Aj should yield Equation 1. Repeating the above for every data point will yield a full matrix for A. The coefficients for our model equation which best fit the data can be found now using least squares regression.&lt;/p&gt;
-
-&lt;h3 id=&quot;regularized-least-squares&quot;&gt;Regularized Least Squares&lt;/h3&gt;
-
-&lt;p&gt;Consider for a moment, a constrained least squares problem:&lt;/p&gt;
-
-\[x_{LS}=argmin\|Ax-b\|_2^2\]
-
-\[\|Dx\|_2&amp;lt;τ\]
-
-&lt;p&gt;As we did in optimization, we can include the constraint, as something that should be included in the weighting of the objective function.&lt;/p&gt;
-
-\[x_{LS}=argmin\|Ax-b\|_2^2+λ^2\|Dx\|_2^2\]
-
-&lt;p&gt;We can be reformed into our classic least squares problem format by defining the following sets of matrices:&lt;/p&gt;
-
-\[\widetilde{A}=\left[\begin{matrix}A\\\lambda D\\\end{matrix}\right],\ \widetilde{b}=\left[\begin{matrix}b\\0\\\end{matrix}\right]\]
-
-\[x_{LS}=argmin\|Ax-b\|_2^2\]
-
-&lt;h3 id=&quot;first-difference-matrix&quot;&gt;First Difference Matrix&lt;/h3&gt;
-
-&lt;p&gt;The first difference matrix when multiplied by a vector yields the elementwise gradients (taking the spacing/index to be the x displacement).&lt;/p&gt;
-
-\[D=\ \left[\begin{matrix}-1&amp;amp;1&amp;amp;0&amp;amp;0&amp;amp;0\\0&amp;amp;-1&amp;amp;\cdots&amp;amp;0&amp;amp;0\\0&amp;amp;\vdots&amp;amp;\ddots&amp;amp;\vdots&amp;amp;0\\0&amp;amp;0&amp;amp;\cdots&amp;amp;-1&amp;amp;1\\1&amp;amp;0&amp;amp;0&amp;amp;0&amp;amp;-1\\\end{matrix}\right]\]
-
-&lt;h3 id=&quot;trace-of-a-matrix&quot;&gt;Trace of a Matrix&lt;/h3&gt;
-
-&lt;p&gt;The trace of a matrix is defined as the sum of values down the primary diagonal. The trace is invariant under cyclic permutation:&lt;/p&gt;
-
-\[tr\left(AB\right)=tr\left(BA\right)\]
-
-\[tr\left(A+B\right)=tr\left(A\right)+tr\left(B\right)\]
-
-&lt;h3 id=&quot;frobenius-norm&quot;&gt;Frobenius Norm&lt;/h3&gt;
-
-&lt;p&gt;The Frobenius norm of a matrix is the root of the sum of the square of all values. The frobenius norm is also equal to the square root of the trace, and the sum of square of singular values of A.&lt;/p&gt;
-
-\[\|A\|_F = a_{ij}^2\]
-
-\[\|A\|_F^2=tr(AA^H)=tr(A^HA)=σ_i^2\]
-
-&lt;h3 id=&quot;principal-component-analysis&quot;&gt;Principal Component Analysis&lt;/h3&gt;
-
-&lt;p&gt;Consider a matrix whose columns represent different items in a dataset, and whose rows represent different parameters for each data item (i.e. x, y, z, coordinates). Principal Component Analysis, or PCA, finds an orthonormal basis of directions which best fit the data. These lines minimize the average squared distance of each point to the line. This orthonormal basis are also the left singular vectors obtained through SVD.&lt;/p&gt;
-
-&lt;p&gt;The first principal component of a matrix A, associated with the first eigenvector/left singular vector of the eigen decomposition and SVD, can be found as the vector which maximizes the second norm of the product of A with x.&lt;/p&gt;
-
-\[u_1=\ argmax\|Ax\|^2)\]
-
-&lt;p&gt;The next largest principal component can be found by projecting A into the null space formed from the previously found vectors and repeating the previous calculation. (We are finding the next line of best fit that is orthonormal to any previously found lines).&lt;/p&gt;
-
-&lt;h3 id=&quot;independent-component-analysis&quot;&gt;Independent Component Analysis&lt;/h3&gt;
-
-&lt;p&gt;ICA decomposes a signal into independent (non-correlated) non-Gaussian signals. When sources are statistically independent, ICA works very well in separating the two. ICA methods tend to breakdown when there is similarity in the signal, leading to correlation. To do this, ICA identifies directions that maximize absolute kurtosis. Mathematically, this is:&lt;/p&gt;
-
-\[x=\ argmax(|k_4(x^TA)|)\]
-
-&lt;p&gt;Where Kurtosis, or fourth central cumulant, is defined as:&lt;/p&gt;
-
-\[k_4(y^T)=\frac{1}{n}\sum y_i^4- 3(\frac{1}{n} \sum y_i^2)^2\]
-
-&lt;p&gt;And in addition, subject to a spherical constraint on the x input (i.e., two norm of x is equal to 1).&lt;/p&gt;
-
-\[\|x\|_2^2=1\]
-
-&lt;h2 id=&quot;machine-learning-algorithms&quot;&gt;Machine Learning Algorithms&lt;/h2&gt;
-
-&lt;p&gt;Now we can finally get to more modern approaches to machine learning. Current methods fall into three main categories:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Supervised Learning&lt;/li&gt;
-  &lt;li&gt;Unsurpervised Learning&lt;/li&gt;
-  &lt;li&gt;Reinforcement Learning&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;k-means-clustering&quot;&gt;K-Means Clustering&lt;/h3&gt;
-
-&lt;p&gt;Minimizes the intra-cluster variance. The strength of clustering algorithms lies in the fact that it is an unsupervised learning method, i.e., data does not have to come pre-labeled. The process goes:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Propose N cluster centers.&lt;/li&gt;
-  &lt;li&gt;Assign every pixel to the closest cluster center.&lt;/li&gt;
-  &lt;li&gt;Calculate new cluster centers using the average of assigned pixels.&lt;/li&gt;
-  &lt;li&gt;Repeat until centers have stabilized.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;For data classification, there typically needs to be as many dimensions as independent features (N) we’d like to distinguish. This means that for a task like image classification, we’ll need to find a way to transform a 2D image into a single point in 2D dimensional space.&lt;/p&gt;
-
-&lt;h3 id=&quot;neural-networks-and-deep-nets&quot;&gt;Neural Networks and Deep Nets&lt;/h3&gt;
-
-&lt;p&gt;Networks are function approximators. Each node consists of any number of inputs and any number of outputs, but is itself a simple activation function (relu, sigmoid, tangent, etc.) These functions generally produce an output in the range of 0 to 1 or -1 to 1. For each node, there are a series of weights and offsets to be calculated/tuned by the learning process.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../images/dnn.png&quot; alt=&quot;deep neural net&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The benefit of Deep nets is that they can separate non-linear shapes, at the downside of long computation times and unreliable convergence of results. Results depend a lot on how error is measured, the function of each node, etc.&lt;/p&gt;
-
-&lt;h3 id=&quot;receiver-operator-characteristic-curve&quot;&gt;Receiver Operator Characteristic Curve&lt;/h3&gt;
-
-&lt;p&gt;The R.O.C plots the probability of correct classification vs the probability of false positive. In an ideal case, the area under the curve will be equal to 1. A random guesser achieves a straight line on this plot, so a classifier needs to beat this result. Placement along the curve is also important, and changes depending on the application.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../images/roc.png&quot; alt=&quot;roc curve&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;procrustes-analysis&quot;&gt;Procrustes Analysis&lt;/h3&gt;
-
-&lt;p&gt;A method for statistical analysis of shape distributions. An orthogonal Procrustes problem is one that finds the optimal rotation, translation, and/or reflection which aligns two shapes.&lt;/p&gt;
-
-&lt;h3 id=&quot;minimum-dimensions&quot;&gt;Minimum Dimensions&lt;/h3&gt;
-
-&lt;p&gt;If I told you that there were 4 distinct points, and gave you the distance between every pair, you could determine the minimum dimensional space required to properly map these points. For instance, if all 6 distances are the same, there is no way to position these 4 points in a plane that makes this true. Instead, they must be arranged as a regular tetrahedron in 3D space.&lt;/p&gt;
+&lt;p&gt;Consider an analogy - in CAD, we build 3D shapes. When we try to represent them on a 2D screen, we must choose a viewing angle and projection, but there are likely some standard views that everyone expects. Maybe a cross section to show the internal structure, or a profile view if it’s a flat plate. DoDAF is no different.
+| DoDAF Views   | Explanation
+| SV-1          | High level hardware overview
+| SV-2          | Detailed hardware overview
+| SV-4          | Functional flow diagram
+| SV-10         | States and Modes transitions&lt;/p&gt;
 
 </content>
  </entry>
@@ -1358,16 +1692,17 @@ Problems formatted in one type can be transformed into another format fairly eas
  </entry>
  
  <entry>
-   <title>Engineering of Aircraft</title>
+   <title>Aircraft</title>
    <link href="https://ludavid15.github.io//aircraft/"/>
    <updated>2021-06-21T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//aircraft</id>
-   <content type="html">&lt;p&gt;This post reviews the principles of aircraft performance, design, and aerodynamics. Be prepared for a lot of math!&lt;/p&gt;
+   <content type="html">&lt;p&gt;This post covers some of the principles of aircraft performance, design, and aerodynamics.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
-&lt;p&gt; &lt;/p&gt;
 &lt;h3 id=&quot;basic-equations-of-flight&quot;&gt;Basic Equations of Flight:&lt;/h3&gt;
+
+&lt;p&gt;These two equations summarize the aerodynamic forces acting on an airplane as if it were a rigid body.&lt;/p&gt;
 
 \[L=\ \frac{1}{2}\rho U^2SC_L\]
 
@@ -1378,12 +1713,12 @@ Problems formatted in one type can be transformed into another format fairly eas
 &lt;p&gt;We’ll also use a capital D and capital L to denote total coefficient of drag and lift for the wing, vs a lowercase d and lowercase l for local coefficient of drag and lift as a function of the angle of attack.&lt;/p&gt;
 
 &lt;h3 id=&quot;drag&quot;&gt;Drag&lt;/h3&gt;
-&lt;p&gt;Three main types of drag: parasitic, induced, and wave. Total drag coefficient is a function of parasitic and induced drag coefficient.&lt;/p&gt;
+&lt;p&gt;There are three main types of drag: parasitic, induced, and wave. The total drag coefficient is a function of parasitic and induced drag coefficient.&lt;/p&gt;
 
 \[C_D=\ C_{D,min}+\frac{1}{\pi Ae}{C_L}^2\]
 
 &lt;h3 id=&quot;aircraft-performance&quot;&gt;Aircraft Performance&lt;/h3&gt;
-&lt;p&gt;In steady flight, thrust is equal to drag.&lt;/p&gt;
+&lt;p&gt;In steady flight, the thrust is equal to drag (thus the airplane does not accelerate).&lt;/p&gt;
 
 \[Power=Thrust\ast Velocity\]
 
@@ -1490,11 +1825,11 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;h3 id=&quot;carsons-speed&quot;&gt;Carson’s Speed&lt;/h3&gt;
 
-&lt;p&gt;Highest speed to thrust ratio (also known as optimum cruise). Carson’s speed for a propeller aircraft is the same as velocity for max jet aircraft range. Turns out, endurance speed, range speed, and Carson’s speed are all related by 3^{1/4}.&lt;/p&gt;
+&lt;p&gt;Highest speed to thrust ratio (also known as optimum cruise). Carson’s speed for a propeller aircraft is the same as velocity for max jet aircraft range. Turns out, endurance speed, range speed, and Carson’s speed are all related by \(3^{1/4}\).&lt;/p&gt;
 
 &lt;h3 id=&quot;maneuvering&quot;&gt;Maneuvering:&lt;/h3&gt;
 
-&lt;p&gt;We define the loading factor as the ratio of lift to weight. When we turn, our lift vector angles, and so total lift must increase to balance the weight. At low velocities, max load factor is constrained by how much lift we can produce, while at higher velocities it is constrained by how much thrust we can produce (since there is less lift at low velocities, and more drag at higher velocities).&lt;/p&gt;
+&lt;p&gt;We define the loading factor as the ratio of lift to weight. When we turn, our lift vector angles, and so total lift must increase to balance the weight. At low velocities, the max load factor is constrained by how much lift we can produce, while at higher velocities it is constrained by how much thrust we can produce (since there is less lift at low velocities, and more drag at higher velocities).&lt;/p&gt;
 
 \[Turning\ Radius=\ \frac{U^2}{g\sqrt{\eta^2-1}}=\frac{mU^2}{Lsin\phi}\]
 
@@ -2476,7 +2811,6 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 \[H=\ p_0L(t,x,u)+p^Tf(t,x,u)\]
 
 &lt;h3 id=&quot;fritz-john-necessary-conditions&quot;&gt;Fritz-John Necessary Conditions&lt;/h3&gt;
-
 &lt;p&gt;The following necessary conditions must hold at any local or global minimizer. The first condition is known as stationarity, the second is dual feasibility, and the third is complementary slackness.&lt;/p&gt;
 
 \[\nabla_xL\left(x^\ast,\ p,\ q_0,\ q\right)=0\]
@@ -2761,7 +3095,7 @@ A: As with most things in life, very little is free. Since the goal is to produc
 &lt;p&gt;Propeller driven propulsion system are further classified by &lt;em&gt;how power is supplied&lt;/em&gt;.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Turboprop and Turbofan - a jet engine’s turbine is used to turn the propeller. This is a little tricky, because jet engines are capable of producing thrust themselves, but they use an entirely different method.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Turboprop and Turbofan&lt;/strong&gt; - a jet engine’s turbine is used to turn the propeller. This is a little tricky, because jet engines are capable of producing thrust themselves, but they use an entirely different method.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;blockquote&gt;
@@ -2773,8 +3107,8 @@ A: As with most things in life, very little is free. Since the goal is to produc
 &lt;/blockquote&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Electric Propulsion - some power source drives an electric motor which turns the propellor. Batteries have poor energy density, which is why you don’t often see electric airplanes.&lt;/li&gt;
-  &lt;li&gt;Gas Engine - relies on good old combustion with cylinders and pistons to turn the propeller.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Electric Propulsion&lt;/strong&gt; - some power source drives an electric motor which turns the propellor. Batteries have poor energy density, which is why you don’t often see electric airplanes.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Gas Engine&lt;/strong&gt; - relies on good old combustion with cylinders and pistons to turn the propeller.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;electromagnetic-propulsion&quot;&gt;Electromagnetic Propulsion&lt;/h2&gt;
@@ -2798,7 +3132,7 @@ A: As with most things in life, very little is free. Since the goal is to produc
 
 &lt;p&gt;From a mass conservation perspective, the fluid velocity must increase so the mass flow rate remains the same (this applies for incompressible fluids).&lt;/p&gt;
 
-\[\dot{m} = \rhoAV\]
+\[\dot{m} = \rho AV\]
 
 &lt;p&gt;When the velocity increases, the pressure decreases according to Bernoulli’s equation (assumptions: adiabatic, incompressible, inviscid, isentropic).&lt;/p&gt;
 
@@ -4582,7 +4916,7 @@ Several models have been proposed to find an equivalent transition point. Wazzan
  </entry>
  
  <entry>
-   <title>Non Dimensional Numbers</title>
+   <title>Non-Dimensional Numbers</title>
    <link href="https://ludavid15.github.io//misc/"/>
    <updated>2021-05-07T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//reference</id>
@@ -4648,11 +4982,11 @@ For curved surfaces, use the following force balance approach:&lt;/p&gt;
    <link href="https://ludavid15.github.io//jetEngines/"/>
    <updated>2021-05-06T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//jets</id>
-   <content type="html">&lt;p&gt;In 1941, a Messerschmitt Me 262 became the world’s first operational jet powered aircraft. Relying on combustion and a nozzle, the new “jet engine” was conceptually more similar to a rocket than a propeller.&lt;/p&gt;
-
-&lt;p&gt;80 years later, jet engines have continued to rule the aviation world.&lt;/p&gt;
+   <content type="html">&lt;p&gt;In 1941, a Messerschmitt Me 262 became the world’s first operational jet powered aircraft. Relying on combustion and a nozzle, the new “jet engine” is conceptually more similar to a rocket than a propeller.&lt;/p&gt;
 
 &lt;!--more--&gt;
+
+&lt;p&gt;Before getting started, a few definitions that will be relevant:&lt;/p&gt;
 
 &lt;dl&gt;
   &lt;dt&gt;TSFC&lt;/dt&gt;
@@ -5073,7 +5407,8 @@ Laminar Flame Speeds tend to be on the order of 0.1-3 m/s, which is much slower 
 
 &lt;p&gt;Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Donec sed odio dui.&lt;/p&gt;
 
-&lt;p&gt;true&lt;script src=&quot;https://gist.github.com/5555251.js?file=gist.md&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+&lt;noscript&gt;&lt;pre&gt;400: Invalid request&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/5555251.js?file=gist.md&quot;&gt; &lt;/script&gt;
 
 &lt;p&gt;Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Vestibulum id ligula porta felis euismod semper.&lt;/p&gt;
 

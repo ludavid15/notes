@@ -52,14 +52,14 @@ From a force perspective, the fluid's flow over each propeller blade creates a p
 
 Propeller driven propulsion system are further classified by *how power is supplied*. 
 
-1. Turboprop and Turbofan - a jet engine's turbine is used to turn the propeller. This is a little tricky, because jet engines are capable of producing thrust themselves, but they use an entirely different method. 
+1. **Turboprop and Turbofan** - a jet engine's turbine is used to turn the propeller. This is a little tricky, because jet engines are capable of producing thrust themselves, but they use an entirely different method. 
 
 > **Turboprop** - the jet engine turns a propeller.
 
 > **Turbofan** - the jet engine turns a fan (like a propeller, but with more blades and also sits inside a duct).
 
-2. Electric Propulsion - some power source drives an electric motor which turns the propellor. Batteries have poor energy density, which is why you don't often see electric airplanes.
-3. Gas Engine - relies on good old combustion with cylinders and pistons to turn the propeller.
+2. **Electric Propulsion** - some power source drives an electric motor which turns the propellor. Batteries have poor energy density, which is why you don't often see electric airplanes.
+3. **Gas Engine** - relies on good old combustion with cylinders and pistons to turn the propeller.
 
 
 ## Electromagnetic Propulsion
@@ -78,7 +78,7 @@ If you've ever put your thumb over the end of a hose and observed the flow of wa
 
 From a mass conservation perspective, the fluid velocity must increase so the mass flow rate remains the same (this applies for incompressible fluids).
 
-$$\dot{m} = \rhoAV$$
+$$\dot{m} = \rho AV$$
 
 When the velocity increases, the pressure decreases according to Bernoulli's equation (assumptions: adiabatic, incompressible, inviscid, isentropic).
 

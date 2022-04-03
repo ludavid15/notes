@@ -52,7 +52,6 @@ If the Hamiltonian does not explicitly depend on time, then the Hamiltonian rema
 $$H=\ p_0L(t,x,u)+p^Tf(t,x,u)$$
 
 ### Fritz-John Necessary Conditions
-
 The following necessary conditions must hold at any local or global minimizer. The first condition is known as stationarity, the second is dual feasibility, and the third is complementary slackness.
 
 $$\nabla_xL\left(x^\ast,\ p,\ q_0,\ q\right)=0$$
