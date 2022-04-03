@@ -11,7 +11,7 @@
 
   <title>
     
-      Machine Learning &middot; Notes
+      Machine Learning Architectures &middot; Notes
     
   </title>
 
@@ -83,16 +83,16 @@
         
       
         
-          
-            <a class="sidebar-nav-item" href="/notes/applications/">Applied Engineering</a>
-          
-        
-      
-        
       
         
           
             <a class="sidebar-nav-item" href="/notes/dynamics/">Dynamics and Controls</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/notes/engineering/">Engineering</a>
           
         
       
@@ -162,281 +162,44 @@
           
         
       
+        
+          
+        
+      
 
       <!-- <a class="sidebar-nav-item" href="/archive/v2.1.0.zip">Download</a>
       <a class="sidebar-nav-item" href="">GitHub project</a> 
       <span class="sidebar-nav-item">Currently v2.1.0</span> -->
     </nav>
 
-    <p>&copy; 2021. All rights reserved.</p>
+    <p>&copy; 2022. All rights reserved.</p>
   </div>
 </div>
 
 
     <div class="content container">
       <div class="post">
-  <h1 class="post-title">Machine Learning</h1>
-  Last Updated: <span class="post-date">10 Jul 2021</span>
+  <h1 class="post-title">Machine Learning Architectures</h1>
+  Last Updated: <span class="post-date">30 Mar 2022</span>
   <p>At its core, machine learning is a <strong>statistical science</strong>, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.</p>
+
+<p>This article takes the traditional view of machine learning, where we organize the sub-disciplines by objectives and data structure. For a discussion of machine learning as a wandering exploration of linear algrebra, see the post on <a href="/notes/linearAlgebra/">linear algebra</a>. In fact, I’d recommend starting on that page first! Matrices are the bedrock of machine learning.</p>
+
+<p>Or if you are just looking for a high level overview of what machine learning is, I recommend readying this post on <a href="/notes/howTomachineLearning/">how to think about machine learning</a>.</p>
 
 <!--more-->
 
-<h2 id="matrices">Matrices</h2>
+<h3 id="linear-regression">Linear Regression</h3>
 
-<p>Before getting started - why do we care about matrices? Well, matrices are how we store data. So before we jump into neural networks, we can begin with techniques from linear algebra to extract data patterns.</p>
+<p>To start, let’s review the most basic type of machine learning problem is - linear regression. The aim is to find a linear best-fit relationship between (x) and (y).</p>
 
-<p><strong>Vector</strong> - By default, vectors are columns. The transpose/Hermitian of a vector turns it into a row.</p>
+\[h(x) = b + \theta_1x_1 + ... + \theta_nx_n = b + \sum_{i=1}^{n}theta_1x_i\]
 
-<p><strong>Range/Span</strong> - The set of all linear combinations of each vector.</p>
+<p>Where \(h\) is the model, $b$ is an offset, and the \(\theta\)’s are the weights to be learned.</p>
 
-\[R\left(A\right)={\alpha_1A_1+a_2A_2\ldots+\alpha_kA_k,\ for\ any\ \alpha_i\in F}\]
+<h2 id="section-2---machine-learning-algorithms">Section 2 - Machine Learning Algorithms</h2>
 
-<p><strong>Nullspace/Kernel (of a matrix A)</strong> - The set of all vectors [x] such that Ax = 0</p>
-
-\[N\left(A\right)={x\in F^n,\ Ax=0}\]
-
-<p><strong>Ortho-complement (of a subspace)</strong> -  The set of all vectors [x] that are orthogonal to all vectors in the subspace V.</p>
-
-\[V^\bot={x,\ x\bot y\ for\ all\ y\in V}\]
-
-<p><strong>Linear Dependence</strong> - A set of vectors are said to linearly dependent if there exist scalars \(\alpha\) not all zero such that:</p>
-
-\[\alpha_1V_1+a_2V_2\ldots+\alpha_kV_k=0\]
-
-<p><strong>Rank</strong> - The rank of a matrix is the is the number of linearly independent rows or columns. It is equal to the dimension of the span of the matrix. The rank cannot be greater than min(m, n) given \(A\in F^{m\times n}\).</p>
-
-<h3 id="summary-of-matrix-properties">Summary of Matrix Properties</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th style="text-align: left">Mathematical Expression</th>
-      <th style="text-align: left">Equivalent Statements/Other Properties</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Normal Matrix</td>
-      <td style="text-align: left">\(AA^H=A^HA\)</td>
-      <td style="text-align: left">[A] is normal if it commutes with its conjugate transpose</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left">[A] is diagonalizable by a unitary matrix</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left">There exists a set of eigenvectors of [A] which form an orthonormal basis for range([A])</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td style="text-align: left">\(|A|^2=tr(A^HA)\)</td>
-      <td style="text-align: left">The Frobenius norm can by computed by the eigenvalues</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td style="text-align: left">\(A=Q\Lambda Q^H\)</td>
-      <td style="text-align: left"> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td style="text-align: left">\(AQ[:,i]=λiQ[:,i]\)</td>
-      <td style="text-align: left">[A] can be decomposed into the product of its unitary eigenvector matrices and a diagonal matrix of eigenvalues</td>
-    </tr>
-    <tr>
-      <td>Unitary/Orthogonal Matrix</td>
-      <td style="text-align: left">\(AA^H=A^HA=I\)</td>
-      <td style="text-align: left">[A] is unitary if it is normal and its product with its conjugate transpose equals the identity matrix</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td style="text-align: left">\(|x|_2=|Ax|_2\)</td>
-      <td style="text-align: left">The product of a unitary matrix with a vector does not change the magnitude of the vector.</td>
-    </tr>
-    <tr>
-      <td>Symmetric/Hermitian Matrix</td>
-      <td style="text-align: left">\(A=A^T\)</td>
-      <td style="text-align: left">[A] is symmetric if it is equal to its conjugate transpose</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left">All symmetric matrices are also normal matrices</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left">Rectangular matrices are never normal matrices</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td style="text-align: left"> </td>
-      <td style="text-align: left">The eigenvalues of a symmetric (and thus normal) matrix are always real</td>
-    </tr>
-    <tr>
-      <td>Diagonalizable Matrix</td>
-      <td style="text-align: left">\(A=Q\Lambda Q^H\)</td>
-      <td style="text-align: left">[A] is diagonalizable if it is similar to a diagonal matrix</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="singular-value-decomposition">Singular Value Decomposition</h3>
-
-<p>The singular value decomposition of a matrix [A] yields the following expression, where  U\in F^{m\times m} is the matrix of left singular vector, V\in F^{n\times n} is the matrix of right singular vectors, and the strictly positive entries of \Sigma\in F^{m\times n} are referred to singular values. The number of nonzero singular values equals the rank of [A]. Both U and V are unitary matrixes.</p>
-
-\[A\in F^{m\times n}=U\Sigma V^H\]
-
-<p>Realizing that in some cases, the rank of A is less than either m or n, leaving a few zero entries along the singular values. These send corresponding vectors in U and V to zero, and thus A can be reassembled with only the vectors of U, V and singular values through (r).</p>
-
-\[A=\ \sum_{i=1}^{r}{\sigma_iu_iv_i^H}\]
-
-<h4 id="additional-properties-of-the-svd">Additional Properties of the SVD</h4>
-
-<table>
-  <tbody>
-    <tr>
-      <td>\(Av_j=\sigma_ju_j\ \ \ \ \ \ if\ j\in\left(1,r\right)\)</td>
-    </tr>
-    <tr>
-      <td>\(Av_j=\sigma_ju_j=0\ \ \ \ \ \ \ \ if\ j\in(r+1,\ n)\)</td>
-    </tr>
-    <tr>
-      <td>\(A^Hu_j=\sigma_jv_j\ \ \ \ \ \ \ \ if\ j\in(1,\ r)\)</td>
-    </tr>
-    <tr>
-      <td>The right singular vectors of AH are the left singular vectors of A and vice-versa</td>
-    </tr>
-    <tr>
-      <td>The dimension of the range of A is equal to the rank of A</td>
-    </tr>
-    <tr>
-      <td>\(u_1,u_2,\ldots u_r\) are orthogonal basis vectors for the range of A</td>
-    </tr>
-    <tr>
-      <td>\(u_{r+1},u_{r+2},\ldots u_m\) are orthogonal basis vectors for the orthocomplement of the range of A</td>
-    </tr>
-    <tr>
-      <td>\(v_{r+1},v_{r+2},\ldots u_n\) are orthogonal basis vectors for the nullspace of A</td>
-    </tr>
-    <tr>
-      <td>\(v_1,v_2,\ldots v_r\) are orthogonal basis vectors for the orthocomplement of the nullspace of A</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="orthogonal-projection-matrix">Orthogonal Projection Matrix</h3>
-
-<p>Consider a set of vectors \(v_1,\ v_2,\ \ldots v_k\) which form an orthonormal basis for the subspace of some range V. The orthogonal projection matrix of the subspace V as well as the orthocomplement of V is formed as:</p>
-
-\[P_v=Q_kQ_k^H\]
-
-\[P_{v^\bot}={I-Q}_kQ_k^H\]
-
-<p>The orthogonal projection matrix when multiplied by a vector finds the projection of that vector onto the subspace and is equal to subtraction of any orthogonal components from the original vector. That is:</p>
-
-\[P_{v^\bot}x=x-P_vx\]
-
-<h3 id="pseudo-inverse-moore-penrose-inverse">Pseudo-Inverse (Moore-Penrose Inverse)</h3>
-
-<p>Note that a non-square matrix cannot be inverted in the traditional sense. However, it is still possible to achieve a partial inverse by using the SVD. We define the pseudo inverse as:</p>
-
-\[A^+=V\Sigma^+U^H\]
-
-\[\Sigma^+=\left[\begin{matrix}\Sigma_{r\times r}&amp;0_{r,\ n-r}\\0_{m\times r,\ r}&amp;0_{m-r,\ n-r}\\\end{matrix}\right]\ \in F^{n\times m}\]
-
-<h3 id="least-squares-regressionordinary-least-squares">Least Squares Regression/Ordinary Least Squares</h3>
-
-<p>Given a problem stated in the following format, it is possible to find an exact solution.</p>
-
-\[x_{LS}=argmin\|Ax-b\|_2^2\]
-
-\[x_{LS}=A^+b\]
-
-<p>Thus, we may be generally motivated to format our problems in the above format, such that a solution can be easily solved using the pseudo-inverse. Consider a dataset of inputs and corresponding outputs, denoted as t and b.</p>
-
-<p>Our approximation function we would like to take the form:</p>
-
-\[b_j=c_1+c_2t_j+c_3t_j^2+ \ldots α_1cos(t_j)+β_1sin(t_j)+α_2cos(t_j)+β_2sin(t_j)+ \ldots\]
-
-<p>This can be represented in a linear format by defining the following sets of A and x matrices.</p>
-
-\[x=\ \left[c_1,\ c_2,c_3,\ldots,\ \alpha_1,\beta_1,\alpha_2,\beta_2,\ \ldots\right]^T\]
-
-\[A_j=[1,\ t_j,\ t_j^2, \ldots,\cos(t_j),\sin(t_j),\cos(t_j),\sin(t_j)]\]
-
-<p>Thus, the dot product of x with Aj should yield Equation 1. Repeating the above for every data point will yield a full matrix for A. The coefficients for our model equation which best fit the data can be found now using least squares regression.</p>
-
-<h3 id="regularized-least-squares">Regularized Least Squares</h3>
-
-<p>Consider for a moment, a constrained least squares problem:</p>
-
-\[x_{LS}=argmin\|Ax-b\|_2^2\]
-
-\[\|Dx\|_2&lt;τ\]
-
-<p>As we did in optimization, we can include the constraint, as something that should be included in the weighting of the objective function.</p>
-
-\[x_{LS}=argmin\|Ax-b\|_2^2+λ^2\|Dx\|_2^2\]
-
-<p>We can be reformed into our classic least squares problem format by defining the following sets of matrices:</p>
-
-\[\widetilde{A}=\left[\begin{matrix}A\\\lambda D\\\end{matrix}\right],\ \widetilde{b}=\left[\begin{matrix}b\\0\\\end{matrix}\right]\]
-
-\[x_{LS}=argmin\|Ax-b\|_2^2\]
-
-<h3 id="first-difference-matrix">First Difference Matrix</h3>
-
-<p>The first difference matrix when multiplied by a vector yields the elementwise gradients (taking the spacing/index to be the x displacement).</p>
-
-\[D=\ \left[\begin{matrix}-1&amp;1&amp;0&amp;0&amp;0\\0&amp;-1&amp;\cdots&amp;0&amp;0\\0&amp;\vdots&amp;\ddots&amp;\vdots&amp;0\\0&amp;0&amp;\cdots&amp;-1&amp;1\\1&amp;0&amp;0&amp;0&amp;-1\\\end{matrix}\right]\]
-
-<h3 id="trace-of-a-matrix">Trace of a Matrix</h3>
-
-<p>The trace of a matrix is defined as the sum of values down the primary diagonal. The trace is invariant under cyclic permutation:</p>
-
-\[tr\left(AB\right)=tr\left(BA\right)\]
-
-\[tr\left(A+B\right)=tr\left(A\right)+tr\left(B\right)\]
-
-<h3 id="frobenius-norm">Frobenius Norm</h3>
-
-<p>The Frobenius norm of a matrix is the root of the sum of the square of all values. The frobenius norm is also equal to the square root of the trace, and the sum of square of singular values of A.</p>
-
-\[\|A\|_F = a_{ij}^2\]
-
-\[\|A\|_F^2=tr(AA^H)=tr(A^HA)=σ_i^2\]
-
-<h3 id="principal-component-analysis">Principal Component Analysis</h3>
-
-<p>Consider a matrix whose columns represent different items in a dataset, and whose rows represent different parameters for each data item (i.e. x, y, z, coordinates). Principal Component Analysis, or PCA, finds an orthonormal basis of directions which best fit the data. These lines minimize the average squared distance of each point to the line. This orthonormal basis are also the left singular vectors obtained through SVD.</p>
-
-<p>The first principal component of a matrix A, associated with the first eigenvector/left singular vector of the eigen decomposition and SVD, can be found as the vector which maximizes the second norm of the product of A with x.</p>
-
-\[u_1=\ argmax\|Ax\|^2)\]
-
-<p>The next largest principal component can be found by projecting A into the null space formed from the previously found vectors and repeating the previous calculation. (We are finding the next line of best fit that is orthonormal to any previously found lines).</p>
-
-<h3 id="independent-component-analysis">Independent Component Analysis</h3>
-
-<p>ICA decomposes a signal into independent (non-correlated) non-Gaussian signals. When sources are statistically independent, ICA works very well in separating the two. ICA methods tend to breakdown when there is similarity in the signal, leading to correlation. To do this, ICA identifies directions that maximize absolute kurtosis. Mathematically, this is:</p>
-
-\[x=\ argmax(|k_4(x^TA)|)\]
-
-<p>Where Kurtosis, or fourth central cumulant, is defined as:</p>
-
-\[k_4(y^T)=\frac{1}{n}\sum y_i^4- 3(\frac{1}{n} \sum y_i^2)^2\]
-
-<p>And in addition, subject to a spherical constraint on the x input (i.e., two norm of x is equal to 1).</p>
-
-\[\|x\|_2^2=1\]
-
-<h2 id="machine-learning-algorithms">Machine Learning Algorithms</h2>
-
-<p>Now we can finally get to more modern approaches to machine learning. Current methods fall into three main categories:</p>
+<p>So far we’ve talked a lot about what we can do with matrices, and the reason we’ve done this is because many problems can be solved without reaching for a neural network with billions of weights that need to be optimized. This section takes the more traditional approach to machine learning, where we divide algorithms according to their objectives.</p>
 
 <ol>
   <li>Supervised Learning</li>
@@ -463,7 +226,67 @@
 
 <p><img src="../images/dnn.png" alt="deep neural net" class="center-image" /></p>
 
-<p>The benefit of Deep nets is that they can separate non-linear shapes, at the downside of long computation times and unreliable convergence of results. Results depend a lot on how error is measured, the function of each node, etc.</p>
+<p>The benefit of deep nets is that they can separate non-linear shapes, at the downside of long computation times and unreliable convergence of results. Results depend a lot on how error is measured, the function of each node, etc.</p>
+
+<blockquote>
+  <p>Back in the day, pre-training a neural network demonstrated that these could actually be trained efficiently, but since then other strategies have taken over. These include batch normalization and deep residual learning.</p>
+</blockquote>
+
+<h3 id="mathematical-fundamentals-for-nns">Mathematical Fundamentals for NN’s</h3>
+
+<p>A neural network (deep or otherwise), can be broken down into this simple equation:</p>
+
+\[y = h(x) = AF(b + Wx)\]
+
+<p>Where $h(x) = y$ is the model to be trained, $b$ is some kind of offset (sometimes ignored), $W$ the set of weights to be calculated, $x$ the set of inputs, and $AF$ is some activation function. If this looks familiar, it’s because this is just a slightly modified linear regression! This mathematical basis should also reveal that neural networks are deterministic - the same input will always produce the same output!</p>
+
+<p>Depending on the type of task we are training our Neural Network to do, there are different ways to encode our solution, which demand different types of activation functions, which demand different cost functions. These are outlined here:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Output</th>
+      <th>Target Encoding</th>
+      <th>Activation Function</th>
+      <th>Cost Function</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Regression</td>
+      <td>Real</td>
+      <td>Real</td>
+      <td>Identity</td>
+      <td>Mean squared error</td>
+    </tr>
+    <tr>
+      <td>Classification</td>
+      <td>Binary</td>
+      <td>0,1</td>
+      <td>Sigmoid</td>
+      <td>Cross Entropy</td>
+    </tr>
+    <tr>
+      <td>Classification</td>
+      <td>Single Label</td>
+      <td>One-hot</td>
+      <td>Sigmoid</td>
+      <td>Cross Entropy</td>
+    </tr>
+    <tr>
+      <td>Classification</td>
+      <td>Many Label</td>
+      <td>Many-hot</td>
+      <td>Softmax</td>
+      <td>Cross Entropy</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="overfitting">Overfitting</h3>
+
+<p>Overfitting is a common issue of machine learning algorithms, where we increase the accuracy with respect to the training data, at the cost of decreased predictive accuracy. This exists because we expect some random error in the training data. When an algorithm is overfit, it tries to accomodate this random noise, and loses track of the global trends.</p>
 
 <h3 id="receiver-operator-characteristic-curve">Receiver Operator Characteristic Curve</h3>
 
@@ -471,20 +294,103 @@
 
 <p><img src="../images/roc.png" alt="roc curve" class="center-image" /></p>
 
-<h3 id="procrustes-analysis">Procrustes Analysis</h3>
+<h3 id="deep-learning-architectures">Deep Learning Architectures</h3>
 
-<p>A method for statistical analysis of shape distributions. An orthogonal Procrustes problem is one that finds the optimal rotation, translation, and/or reflection which aligns two shapes.</p>
+<p>Deep learning algorithms are more powerful, but messier, versions of their linear algebra counterparts. A lot of optimization and more complex architectures are used to learn more abstract behaviors. A few common deep learning architectures are:</p>
 
-<h3 id="minimum-dimensions">Minimum Dimensions</h3>
+<ol>
+  <li>Feedforward NN’s</li>
+  <li>Autoencoders</li>
+  <li>Restricted Boltzman Machine</li>
+  <li>Recurrent Neural Network</li>
+</ol>
 
-<p>If I told you that there were 4 distinct points, and gave you the distance between every pair, you could determine the minimum dimensional space required to properly map these points. For instance, if all 6 distances are the same, there is no way to position these 4 points in a plane that makes this true. Instead, they must be arranged as a regular tetrahedron in 3D space.</p>
+<h3 id="multi-layer-nn-aka-feedforward-neural-network">Multi-Layer NN aka Feedforward Neural Network</h3>
 
+<p>A Feedforward neural network has also been referred to as a “deep” learning network, because there are additional hidden layers between the input and output. In general, adding more layers is not the same as adding more nodes to an existing layer, and the relationship between the two is still being explored today.</p>
+
+<h3 id="autoencoders">Autoencoders</h3>
+
+<p>An autoencoders is a type of unsupervised learning. The goal is to compress and decompress information, which forces the algorithm to find key features to “encode” useful patterns. These can be implemented as a deep neural net, but one in which the output has the same dimension as the input. Additionally, the hidden layer(s) must have fewer nodes than either the input or output.</p>
+
+<p>There are two flavors of autoencoders:</p>
+<ul>
+  <li>Regularized autoencoders, or sometimes called sparse autoencoders, are effective for classification tasks.</li>
+  <li>Variational autoencoders use probability distributions instead of discrete variables, and are effective for generating new content.</li>
+</ul>
+
+<h3 id="restricted-boltzmann-machine-rbm">Restricted Boltzmann Machine (RBM)</h3>
+
+<p>A restricted Boltzmann machine has two layers - a visible layer, and a hidden layer. Every node between the two layers are connected, but none of the nodes within a layer are connected.</p>
+
+<p>The general idea behind a RBM is that there are hidden triggers which result in the data we see. The weights tie each cause (hidden layer) to each effect (visible layer). These result in probabilities, so we just have to tune our weights until the predicted probability of each event matches the probability distribution we see in our training data!</p>
+
+<blockquote>
+  <p>The words “trigger” and “result-in” are here to illustrate the idea, but in reality no causal relationship is being proven here! A more accurate version would be to say that there are hidden “indicators” which “correlate to” the data we see.</p>
+</blockquote>
+
+<p>One advantage to unsupervised learning with an RBM is that results can be obtained with only a few examples. Today, training is performed using an algorithm called <strong>constrastive divergence</strong>, which overcomes some of the scaling issues with RBM’s.</p>
+
+<p>Energy Equation</p>
+
+\[E(v,h) = -a^Tv - b^Th - v^TWh\]
+
+<h3 id="recurrent-neural-networks-rnn">Recurrent Neural Networks (RNN)</h3>
+
+<p>Before we jump into an RNN, consider a simple sentence generation program, which predicts the next word based only on the last word it encountered. Maybe the output looks something like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; he drinks f("drinks")
+&gt; he drinks water f("water")
+&gt; he drinks water park f("park")
+</code></pre></div></div>
+
+<p>This is clearly limited because each prediction is made without the context of the rest of the sentence (“drinks” and “water” go together, as does “water” and “park”, but all three certainly do not make sense together!). Flip this around in terms of a learning algorithm and you can run into the same problem.</p>
+
+<p>A recurrent network networks is structured such that the output of a hidden layer is used as an additional input back into the same hidden layer. This allows them to learn based on the current AND previous state. But what does the previuos state depend on? The state before that. So by recusion, RNN’s learn on the entire sequence.</p>
+
+<p>The output layer of an RNN is usually just the input layer but shifted by one step. Think about it with this example: If the sequence to be predicted by the RNN is ABCD, then for every step of the sequence, a trained RNN would generate:</p>
+
+<p>A-&gt;AB, AB-&gt;ABC, ABC-&gt;ABCD, etc. See how the input sequence can also act as the labeled output used in a supervised learning algorithm?</p>
+
+<p class="message">
+Long Short Term Memory is the preferred training algorithm for RNN's. This helps reduce amplification or minimization due to recursion (e.g. 2x2x2x2 grows very quickly, while 0.5 * 0.5 * 0.5 shrinks very quickly).
+<p>
+
+### Convolutional Neural Networks
+
+
+
+
+
+</p></p>
 
 </div>
 
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+          
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
     
       <li>
         
@@ -550,7 +456,7 @@
           
           <h3>
             <a href="/notes/vision/">
-              Machine Vision
+              Machine Vision and SLAM
               <small>26 Jul 2021</small>
             </a>
           </h3>
@@ -559,16 +465,6 @@
       </li>
     
       <li>
-        
-      </li>
-    
-      <li>
-        
-      </li>
-    
-      <li>
-        
-          
         
       </li>
     
@@ -676,9 +572,9 @@
 
   </body>
   <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Machine Learning | Notes</title>
+<title>Machine Learning Architectures | Notes</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Machine Learning" />
+<meta property="og:title" content="Machine Learning Architectures" />
 <meta name="author" content="David Lu" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result." />
@@ -687,11 +583,11 @@
 <meta property="og:url" content="https://ludavid15.github.io//notes/machineLearning/" />
 <meta property="og:site_name" content="Notes" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-07-10T00:00:00-07:00" />
+<meta property="article:published_time" content="2022-03-30T00:00:00-07:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Machine Learning" />
+<meta property="twitter:title" content="Machine Learning Architectures" />
 <script type="application/ld+json">
-{"description":"At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.","url":"https://ludavid15.github.io//notes/machineLearning/","headline":"Machine Learning","dateModified":"2021-07-10T00:00:00-07:00","datePublished":"2021-07-10T00:00:00-07:00","author":{"@type":"Person","name":"David Lu"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/machineLearning/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"description":"At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.","headline":"Machine Learning Architectures","dateModified":"2022-03-30T00:00:00-07:00","datePublished":"2022-03-30T00:00:00-07:00","url":"https://ludavid15.github.io//notes/machineLearning/","mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/machineLearning/"},"author":{"@type":"Person","name":"David Lu"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   

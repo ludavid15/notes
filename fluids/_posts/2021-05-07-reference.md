@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Non Dimensional Numbers
+title: Non-Dimensional Numbers
 permalink: /misc/
 excerpt_separator: <!--more-->
 mathjax: true

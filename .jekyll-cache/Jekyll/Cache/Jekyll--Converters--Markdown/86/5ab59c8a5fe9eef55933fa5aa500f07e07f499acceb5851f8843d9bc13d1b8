@@ -1,0 +1,92 @@
+I"�<p>A collection of notes and lessons from the Google Data Analytics Certificate.</p>
+
+<!--more-->
+
+<h3 id="overview">Overview</h3>
+
+<h4 id="the-lifecyce-of-data">The lifecyce of data.</h4>
+
+<p>Why do we discuss the lifestyle of data? Because data analytics is not just about obtaining results, it’s about collecting, managing, and then closing out a process.</p>
+
+<ol>
+  <li>Plan</li>
+  <li>Capture</li>
+  <li>Manage</li>
+  <li>Analyze</li>
+  <li>Archive</li>
+  <li>Destroy</li>
+</ol>
+
+<h3 id="setting-up-the-problem">Setting up the Problem</h3>
+
+<p>The best results come from a well defined question. And one way to build good questions is to use the SMART system:</p>
+
+<ol>
+  <li>Specific</li>
+  <li>Measurable</li>
+  <li>Action-oriented</li>
+  <li>Relevant</li>
+  <li>Time constrained</li>
+</ol>
+
+<p>Also worth considering is the type of problem. Which of these are you trying to do?</p>
+
+<ol>
+  <li>Predict</li>
+  <li>Categorize</li>
+  <li>Detect outliers</li>
+  <li>Identify themes</li>
+  <li>Discover connections</li>
+</ol>
+
+<p>Different objectives can have different solution formats.</p>
+
+<h3 id="types-of-data-modeling">Types of Data Modeling</h3>
+
+<ol>
+  <li><strong>Conceptual data modeling</strong> gives a high-level view of the data structure, such as how data interacts across an organization. For example, a conceptual data model may be used to define the business requirements for a new database. A conceptual data model doesn’t contain technical details.</li>
+  <li><strong>Logical data modeling</strong> focuses on the technical details of a database such as relationships, attributes, and entities. For example, a logical data model defines how individual records are uniquely identified in a database. But it doesn’t spell out actual names of database tables. That’s the job of a physical data model.</li>
+  <li><strong>Physical data modeling</strong> depicts how a database operates. A physical data model defines all entities and attributes used; for example, it includes table names, column names, and data types for the database.</li>
+</ol>
+
+<h3 id="data-integrity">Data Integrity</h3>
+
+<p>Data integrity is something to keep in mind through the entire data analysis process. Data with integrity means that is accurate, complete, consistent, and trust-worthy.</p>
+
+<p>Common pitfalls of the data cleaning process:</p>
+
+<ol>
+  <li>Overlooking missing values</li>
+  <li>Only looking at a subset</li>
+  <li>Losing track of objectives</li>
+  <li>Not fixing the root of the issue</li>
+  <li>Not analyzing the system</li>
+  <li>Not backing up your data prior to cleaning</li>
+  <li>Not accounting for cleaning time in budgeting</li>
+  <li>Not checking for spelling errors</li>
+  <li>Forgetting to document errors</li>
+  <li>Not checking for misfielded values</li>
+</ol>
+
+<h3 id="data-visualization">Data Visualization</h3>
+
+<p>Principles of good data visualization:</p>
+
+<ol>
+  <li>Information</li>
+  <li>Story</li>
+  <li>Goal</li>
+  <li>Visual Form</li>
+</ol>
+
+<p>You can also review your presentation with these questions:</p>
+
+<ol>
+  <li>What is the practical question?</li>
+  <li>What does the data say?</li>
+  <li>What does the visual say?</li>
+</ol>
+
+<p>Finally, make sure to consider the use case. For instance, if we need to monitor new data as it comes in, an interactive dashboard with the proper backend support would be best. However, if we wanted historical data, a dashboard could be too complex. This is an example of how the visualization step is not independent of our initial setup.</p>
+
+:ET
