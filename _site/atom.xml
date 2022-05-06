@@ -4,7 +4,7 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2022-03-30T21:27:03-07:00</updated>
+ <updated>2022-04-04T16:16:35-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
@@ -452,7 +452,7 @@
 
 &lt;p&gt;This is clearly limited because each prediction is made without the context of the rest of the sentence (“drinks” and “water” go together, as does “water” and “park”, but all three certainly do not make sense together!). Flip this around in terms of a learning algorithm and you can run into the same problem.&lt;/p&gt;
 
-&lt;p&gt;A recurrent network networks is structured such that the output of a hidden layer is used as an additional input back into the same hidden layer. This allows them to learn based on the current AND previous state. But what does the previuos state depend on? The state before that. So by recusion, RNN’s learn on the entire sequence.&lt;/p&gt;
+&lt;p&gt;A recurrent neural networks is structured such that the output of a hidden layer is used as an additional input back into the same hidden layer. This allows them to learn based on the current AND previous state. But what does the previous state depend on? The state before that. So by recusion, an RNN learns on the entire sequence.&lt;/p&gt;
 
 &lt;p&gt;The output layer of an RNN is usually just the input layer but shifted by one step. Think about it with this example: If the sequence to be predicted by the RNN is ABCD, then for every step of the sequence, a trained RNN would generate:&lt;/p&gt;
 
@@ -464,6 +464,18 @@ Long Short Term Memory is the preferred training algorithm for RNN&apos;s. This 
 
 ### Convolutional Neural Networks
 
+CNN&apos;s have been used successfully for image classification. The idea is that a smaller convolutional matrix, or kernel, is passed over (i.e. convolved ) with the raw data. This is then repeated over and over, and finally passed through a fully connected layer (like in regular Neural Networks) before ending with a softmax function to classify the image. 
+
+The key to CNN&apos;s is the kernel matrix. Different kernels can be trained to identify different &quot;features&quot; from the data, ranging from the very basic (e.g. an edge or a corner), to more advanced objects (e.g. an eye or a nose), and finally to the most high level (e.g. a face).
+
+&amp;gt; In a sense, convolutional networks juxtapose recurrent networks. Where RNN&apos;s are deep, CNNs are shallow. 
+
+
+### Compound Architectures
+
+In recent years, many people have proposed combined approaches, which make use of more than one architecture. There is for instance, something called an RNN Encoder-Decoder, which attempts to learn the relationship between two different encodings of two different sequences. 
+
+Or to express it another way, the goal is to encode the sequence learned by one RNN into another sequence produced by another RNN. The main application here being translation, where two languages expressing the same idea can have entirely different lengths and grammers.
 
 
 
@@ -477,7 +489,78 @@ Long Short Term Memory is the preferred training algorithm for RNN&apos;s. This 
    <link href="https://ludavid15.github.io//musicAI2/"/>
    <updated>2022-03-25T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//musicAI2</id>
-   <content type="html">
+   <content type="html">&lt;p&gt;This post explores a variety of tried and tested approaches to music generation with deep learning. Although each example can stand alone in theory, they are presented in an order that gradually introduces new concepts and challenges. As we go through each example, we will tag the challenges which apply to each one.&lt;/p&gt;
+
+&lt;p&gt;The complete list of challenges is here:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;em&gt;Creatio Ex nihilo&lt;/em&gt;  (creation from nothing)&lt;/li&gt;
+  &lt;li&gt;Length variability&lt;/li&gt;
+  &lt;li&gt;Content variability (i.e. is it deterministic?)&lt;/li&gt;
+  &lt;li&gt;Expressiveness&lt;/li&gt;
+  &lt;li&gt;Melody-harmony consistency&lt;/li&gt;
+  &lt;li&gt;Control&lt;/li&gt;
+  &lt;li&gt;Style transfer&lt;/li&gt;
+  &lt;li&gt;Structure&lt;/li&gt;
+  &lt;li&gt;Originality&lt;/li&gt;
+  &lt;li&gt;Incrementality&lt;/li&gt;
+  &lt;li&gt;Interactivity&lt;/li&gt;
+  &lt;li&gt;Adaptability&lt;/li&gt;
+  &lt;li&gt;Explainability&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;example-1---introduction-with-bach&quot;&gt;Example 1 - Introduction with Bach&lt;/h3&gt;
+
+&lt;p&gt;For the first example, we’ll walk through a very simple and intuitive deep learning setup. Here are the parameters:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Music Structure&lt;/strong&gt; - 4 measures of SATB in 4/4 time&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;ML Architecture&lt;/strong&gt; - Feedforward neural network with 1 hidden layer&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Input&lt;/strong&gt; - (One hot encoding for pitch at each time step) x number of input voices&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Output&lt;/strong&gt; - (One hot encoding for pitch at each time step) x number of output voices&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Training Data&lt;/strong&gt; - Bach chorales, with each voice extracted and transposed into all keys.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Even before we consider the musical merit of any generated output, we can notice that there will be intrinsic limitations to this method. First, it is deterministic. For each unique input there will only ever be 1 output. Maybe this ok for something like this, but what if our input was a chord progression and our desired ouput was a melody? Many different melodies are possible for the same progression. Here we run into our first challenge - how can we generate a wide variety of content from limited inputs? (&lt;em&gt;creatio ex-nihilo&lt;/em&gt; and content variability)&lt;/p&gt;
+
+&lt;p&gt;The next two examples are ways around this issue.&lt;/p&gt;
+
+&lt;h3 id=&quot;example-2---decoder-feedfoward&quot;&gt;Example 2 - Decoder Feedfoward&lt;/h3&gt;
+
+&lt;p&gt;The basic idea here is to first train an autoencoder, which if you remember, learns the important “features” in its hidden layer. To generate unique outputs, we simply turn this around - the hidden layer becomes the input (i.e. a seed). The seed is fed-forward through the decoder, and we get a unique output. Of course this is still deterministic, but it overcomes the &lt;em&gt;creatio ex-nihilo&lt;/em&gt; issue. (Technically we’re not starting from &lt;em&gt;true nothing&lt;/em&gt;, but then what does? Most randomly generated content, like a minecraft world, starts from a seed anyway).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The DeepHear system by Sun uses this approach to generate ragtime music. They use Scott Joplin songs as the training data, and a stacked autoencoder with a hidden layer size of 16. Due to the small size of this hidden layer, there is a high amount of plagiarism (around 60%).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;example-3---sampling&quot;&gt;Example 3 - Sampling&lt;/h3&gt;
+
+&lt;p&gt;Sampling methods work a little like the feedforward decoder in example 2, but instead of generating examples which are &lt;em&gt;deterministic&lt;/em&gt; based on a seed, examples are randomly generated to match a probability distribution. Some famous sampling strategies include: Metropolis-Hastings algorithm, Gibbs Sampling, and block Gibbs Sampling. These methods overcome both the problem of determinism, &lt;em&gt;and&lt;/em&gt; the problem of something from nothing.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Another way to think about sampling methods is that they are a form of generative AI that is based on stochastic models which learn probability distributions (variational autoencoders, RBM’s, etc.). For this reason, we talk about them as a different type of solution, but conceptually, they can manifest just like the decoder in example 2 (i.e. a seed is used to randomly generate examples).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;With regard to music, there are two ways to apply this type of sampling approach. The first, is in the vertical dimension, (i.e. chord - does the voicing of this chord make sense?). Recurrent Boltzman Machines are effective for this kind of work. The second is in the horizontal dimension (i.e. a melody or sequence of notes - does this sequence of notes make a coherent melody?). This kind of sampling is better achieved by an RNN.&lt;/p&gt;
+
+&lt;h3 id=&quot;example-4---iterative-feedforward&quot;&gt;Example 4 - Iterative Feedforward&lt;/h3&gt;
+
+&lt;p&gt;So far all the examples have shared 1 common limitation - their output is fixed in length. One way to overcome this problem is to fundamentally change the type of input and ouput. An iterative feedforward system takes some initial starting condition, and ouputs something for the next timestep. This can then be repeated indefinitely to produce music of any length.&lt;/p&gt;
+
+&lt;p&gt;This approach was implemented by Eck and Schmidhuber in their 12 bar blues program. The input and output layer both have 25 nodes (13 for notes and 12 for chords) with a hidden layer of eight LSTM blocks. The hidden layer connections are as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Chord block is fully connected to everything in the input and the chord output.&lt;/li&gt;
+  &lt;li&gt;Melody block is fully connected to everything in the input, and melody output.&lt;/li&gt;
+  &lt;li&gt;Chord block is recursive with itself and melody.&lt;/li&gt;
+  &lt;li&gt;Melody block is recursive only with itself.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The asymmetric architecture is used to control the co-dependency of chords and melody. In this case, the chords are dependent on the melody, but not vice-versa.&lt;/p&gt;
+
+&lt;h3 id=&quot;example-5---sampling-again&quot;&gt;Example 5 - Sampling Again&lt;/h3&gt;
+
+&lt;p&gt;In example 3, we introduced sampling as a means to create something from nothing, but sampling is also useful because it is non-deterministic.&lt;/p&gt;
 </content>
  </entry>
  
@@ -486,19 +569,24 @@ Long Short Term Memory is the preferred training algorithm for RNN&apos;s. This 
    <link href="https://ludavid15.github.io//musicAI1/"/>
    <updated>2022-03-19T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//musicAI1</id>
-   <content type="html">&lt;p&gt;Applications of computing methods towards music.&lt;/p&gt;
+   <content type="html">&lt;p&gt;There are two ways in which artifical intelligence has been applied to music. The first is called music information retrieval, or MIR for short. These programs produce data from audio (e.g. song identification, transcribing audio into sheet music). The second is known as &lt;em&gt;generative&lt;/em&gt; AI. These programs try to produce new and original music, either fully autonomously or as a predictive aid to composers (i.e. like text predits on your phone!).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A third application which is not unique to music is song recommendation and classification. This covers apps like Spotify or Pandora which create custom playlists for you, and is  very similar to how Netflix recommends you new movies and shows.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3 id=&quot;projects-and-companies&quot;&gt;Projects and Companies&lt;/h3&gt;
 
 &lt;p&gt;Just a few practical resources to look at if you are interested in seeing who is currently working on this subject.&lt;/p&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://builtin.com/artificial-intelligence/ai-music-examples&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;AI Music: Companies and Applications to Know&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Magenta - an open source, Google-led project to explore creatives applications for ML.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;music-information-retrieval-mir&quot;&gt;Music Information Retrieval (MIR)&lt;/h1&gt;
+&lt;h3 id=&quot;music-information-retrieval-mir&quot;&gt;Music Information Retrieval (MIR)&lt;/h3&gt;
 
-&lt;p&gt;Chord recognition, song identification, etc.&lt;/p&gt;
+&lt;p&gt;Chord recognition, song identification, etc. More information may follow, but this post primarily focuses on generative AI.&lt;/p&gt;
 
 &lt;h1 id=&quot;generative-ai&quot;&gt;Generative AI&lt;/h1&gt;
 
@@ -533,31 +621,37 @@ Long Short Term Memory is the preferred training algorithm for RNN&apos;s. This 
   &lt;li&gt;&lt;strong&gt;By Strategy&lt;/strong&gt;: TBD - I don’t understand this very well yet.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;/h2&gt;
+&lt;h3 id=&quot;objectives&quot;&gt;Objectives&lt;/h3&gt;
 
 &lt;p&gt;Let’s think about melody for a moment. What’s the context for the melody we’re writing? Is it a Bach style counterpoint to an existing melody? Is it the baritone part in a SATB choir? Is it an improvised melody over an existing chord progression (like on a lead sheet?).&lt;/p&gt;
 
 &lt;p&gt;These are all valid ways to think about single-voice melodies, but are different enough that they may require unique approaches.&lt;/p&gt;
 
-&lt;h2 id=&quot;representation&quot;&gt;Representation&lt;/h2&gt;
+&lt;h3 id=&quot;representation&quot;&gt;Representation&lt;/h3&gt;
 
 &lt;p&gt;Representation is how we choose to format our music. Is it the raw waveform? Maybe a spectrum if we first run a fourier analysis. Or what about symbolically? If so, what about enharmony? Is an Eb and the D# the same thing?&lt;/p&gt;
 
-&lt;p&gt;Formats that deal with the audio aspect are often continuous, and fall into the realm of signal processing. In contrast, symbolic representation is discrete, and more often found in the field of knowledge representation.&lt;/p&gt;
+&lt;p&gt;Formats that deal with the audio aspect are often continuous, and fall into the realm of signal processing. In contrast, symbolic representation is discrete, and more often found in the field of knowledge representation. We’ll start by discussing different elements of music and how we might represent them, and then talk about existing representations.&lt;/p&gt;
 
-&lt;h3 id=&quot;notes&quot;&gt;Notes&lt;/h3&gt;
+&lt;h3 id=&quot;note-representations&quot;&gt;Note Representations&lt;/h3&gt;
 
 &lt;p&gt;Every note has a pitch, duration, and dynamic. Pitch can be expressed as a frequency, position on a score, or a letter (A through G). Duration can be measured in absolute terms (seconds), or in the context of written music (quarter note, half note, etc.). The same absolute vs relevant distinction can be made for the note’s dynamic, (i.e. decibels vs pianissimo/forte).&lt;/p&gt;
 
-&lt;h3 id=&quot;chords&quot;&gt;Chords&lt;/h3&gt;
+&lt;h3 id=&quot;chord-representations&quot;&gt;Chord Representations&lt;/h3&gt;
 
 &lt;p&gt;Chords can be represented either as a collection of notes, or by a root and type (e.g. C7, Gmin, etc.). The latter is more useful for harmonic analysis, and for some applications, like a jazz musician’s lead sheet, could be more useful.&lt;/p&gt;
 
-&lt;h3 id=&quot;rhythm&quot;&gt;Rhythm&lt;/h3&gt;
+&lt;h3 id=&quot;rhythm-representations&quot;&gt;Rhythm Representations&lt;/h3&gt;
 
-&lt;p&gt;In some sense, the rhythm is already captured by the duration and dynamic of each note. But we can also think of rhythm as the “feel” of a piece. Repeating patterns in the duration and dynamic of each note create a combined rhythm effect.&lt;/p&gt;
+&lt;p&gt;In some sense, the rhythm is already captured by the duration and dynamic of each note. But we can also think of rhythm as the “feel” of a piece. Repeating patterns in the duration and dynamic of each note create a combined rhythm effect. This collective sense of rhythm is distinct from the detailed implementation of &lt;em&gt;time&lt;/em&gt;.&lt;/p&gt;
 
-&lt;h3 id=&quot;midi&quot;&gt;MIDI&lt;/h3&gt;
+&lt;h3 id=&quot;time-representations&quot;&gt;Time Representations&lt;/h3&gt;
+
+&lt;p&gt;There are two approaches to how we create music with respect to time (and if you think about it, there can only be two). You can either model and optimize the entire score all together, or you can step through one unit at a time. This unit can be a beat, or a note. In the latter case, there is no going back to change work you’ve already done. The nuance here seems small, but it has a very big impact on what the input and output to our AI is.&lt;/p&gt;
+
+&lt;p&gt;This type of modeling works if we choose to represent a relative duration (e.g. an 8th note, 16th note, etc.) or in absolute terms (in milliseconds). The latter is needed to capture the “artistic” interpretation that a human musician may add, but is not as useful if our goal is to create written sheet music.&lt;/p&gt;
+
+&lt;h3 id=&quot;method-1---midi&quot;&gt;Method 1 - MIDI&lt;/h3&gt;
 
 &lt;p&gt;MIDI (Musical Instrument Digital Interface) is a standard to represent musical information. MIDI works especially well for capturing single note melodies. An example line of MIDI input:&lt;/p&gt;
 
@@ -575,25 +669,19 @@ Long Short Term Memory is the preferred training algorithm for RNN&apos;s. This 
 
 &lt;p&gt;To create a chord, or any two notes played simultaneously, we just introduce a new channel. This is sufficient for capturing audio information, but in the realm of data science, this lack of unique language for chords is problematic. Algorithms which learn using a MIDI format often fail to “learn” harmonies.&lt;/p&gt;
 
-&lt;h3 id=&quot;piano-roll&quot;&gt;Piano Roll&lt;/h3&gt;
+&lt;h3 id=&quot;method-2---piano-roll&quot;&gt;Method 2 - Piano Roll&lt;/h3&gt;
 
 &lt;p&gt;Unlike MIDI, a piano roll does capture chords in a more intuitive way. There are only two dimensions: pitch, and time. A third dimension can be added to collect volume and intensity information. As with the MIDI format, the piano roll doesn’t distinguish between melody and harmony.&lt;/p&gt;
 
 &lt;h4 id=&quot;what-about-held-notes&quot;&gt;What About Held Notes?&lt;/h4&gt;
 
-&lt;p&gt;Another major downside of the piano roll is that (depending on how we encode time), it may be impossible distinguish a held note from a repeated note. For this, we’ll need to add a new word to our musical language. One way to do this is to introduce a new notation (somelike a –), which represents a held note. Then when we need to encode this, we can treat the the hold symbol as just another “pitch”.&lt;/p&gt;
+&lt;p&gt;One major downside of the piano roll is that (depending on how we encode time), it may be impossible distinguish a held note from a repeated note. For this, we’ll need to add a new word to our musical language. One way to do this is to introduce a new notation (somelike a –), which represents a held note. Then when we need to encode this, we can treat the the hold symbol as just another “pitch”.&lt;/p&gt;
 
-&lt;h3 id=&quot;time&quot;&gt;Time&lt;/h3&gt;
-
-&lt;p&gt;There are two approaches to how we create music with respect to time (and if you think about it, there can only be two). You can either model and optimize the entire score all together, or you can step through one unit at a time. This unit can be a beat, or a note. In the latter case, there is no going back to change work you’ve already done. The nuance here seems small, but it has a very big impact on what the input and output to our AI is.&lt;/p&gt;
-
-&lt;p&gt;This type of modeling works if we choose to represent a relative duration (e.g. an 8th note, 16th note, etc.) or in absolute terms (in milliseconds). The latter is needed to capture the “artistic” interpretation that a human musician may add, but is not as useful if our goal is to create written sheet music.&lt;/p&gt;
-
-&lt;h2 id=&quot;metadata&quot;&gt;Metadata&lt;/h2&gt;
+&lt;h3 id=&quot;metadata&quot;&gt;Metadata&lt;/h3&gt;
 
 &lt;p&gt;What kind of metadata do we want to include? Key signature, meter (i.e. waltz, bossa nova, swing). Music annotating programs like musescore will often allow users to track these. Whether or not they are useful towards generation remains to be proven.&lt;/p&gt;
 
-&lt;h2 id=&quot;encoding&quot;&gt;Encoding&lt;/h2&gt;
+&lt;h3 id=&quot;encoding&quot;&gt;Encoding&lt;/h3&gt;
 
 &lt;p&gt;Encoding is the step that connects the representation of music we’ve chosen, to the set of input notes or input variables for the nueral network. For example, consider the two definitions we have for chords:&lt;/p&gt;
 
@@ -605,6 +693,10 @@ Long Short Term Memory is the preferred training algorithm for RNN&apos;s. This 
 &lt;p&gt;An implicit representation is typically encoded with many-hot, while an explicit representation can be encoded with a multi-one-hot (i.e. the first one-hot is the root, the second one-hot is the quality).&lt;/p&gt;
 
 &lt;p&gt;And finally, a musical rest could be encoded like any other note - except in the case of MIDI which doesn’t need it.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;And that wraps up the introduction! Hopefully this article leaves you with a top level overview of the subject. We started with the different aspects of music (melody, harmony, rhythm, etc.) and discussed how they connect to machine learning. Before continuing on to &lt;a href=&quot;/notes/musicAI2/&quot;&gt;part 2&lt;/a&gt;, I recommend checking out the &lt;a href=&quot;/notes/howTomachineLearning/&quot;&gt;introduction to machine learning&lt;/a&gt; and &lt;a href=&quot;/notes/machineLearning/&quot;&gt;machine learning&lt;/a&gt; posts.&lt;/p&gt;
 
 </content>
  </entry>
@@ -620,7 +712,7 @@ Long Short Term Memory is the preferred training algorithm for RNN&apos;s. This 
 
 &lt;h3 id=&quot;overview&quot;&gt;Overview&lt;/h3&gt;
 
-&lt;h4 id=&quot;the-lifecyce-of-data&quot;&gt;The lifecyce of data.&lt;/h4&gt;
+&lt;h3 id=&quot;the-lifecyce-of-data&quot;&gt;The lifecyce of data.&lt;/h3&gt;
 
 &lt;p&gt;Why do we discuss the lifestyle of data? Because data analytics is not just about obtaining results, it’s about collecting, managing, and then closing out a process.&lt;/p&gt;
 
@@ -645,12 +737,6 @@ Long Short Term Memory is the preferred training algorithm for RNN&apos;s. This 
   &lt;li&gt;Time constrained&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;If you’re using a survey to collect data, make sure that you avoid leading questions and vague questions. Some examples:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Isn’t it true that A had a negative effect on B?&lt;/li&gt;
-  &lt;li&gt;What’s going on with A?&lt;/li&gt;
-&lt;/ul&gt;
-
 &lt;p&gt;And finally, it’s also worth considering the type of problem. Which of these are you trying to do?&lt;/p&gt;
 
 &lt;ol&gt;
@@ -662,6 +748,22 @@ Long Short Term Memory is the preferred training algorithm for RNN&apos;s. This 
 &lt;/ol&gt;
 
 &lt;p&gt;Different objectives may lead to different problem setups and approaches. The better you understand what you are trying to do, the more tailored you can make your response.&lt;/p&gt;
+
+&lt;h3 id=&quot;types-of-data&quot;&gt;Types of Data&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Nominal vs Ordinal
+    &lt;ol&gt;
+      &lt;li&gt;Nominal - Choices/responses that don’t have a particular order (i.e. yes/no/maybe)&lt;/li&gt;
+      &lt;li&gt;Ordinal - Data that has an associated order (i.e. a scale or ranking).&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Internal vs External (i.e. who owns the data? Does it come from outside your organization?)&lt;/li&gt;
+  &lt;li&gt;Continuous vs Discrete&lt;/li&gt;
+  &lt;li&gt;Quantitative vs Qualitative&lt;/li&gt;
+  &lt;li&gt;Structures vs Unstructured (i.e. survey responses, vs pictures)&lt;/li&gt;
+  &lt;li&gt;Primary vs Secondary&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h3 id=&quot;types-of-data-modeling&quot;&gt;Types of Data Modeling&lt;/h3&gt;
 
@@ -675,7 +777,13 @@ Long Short Term Memory is the preferred training algorithm for RNN&apos;s. This 
 
 &lt;p&gt;Data integrity is something to keep in mind through the entire data analysis process. Data with integrity means that is accurate, complete, consistent, and trust-worthy.&lt;/p&gt;
 
-&lt;p&gt;Common pitfalls of the data cleaning process:&lt;/p&gt;
+&lt;p&gt;One common pitfall is to have biased data. This can occur if you’re using a survey to collect data and use leading or vague questions. Some examples:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Isn’t it true that A had a negative effect on B?&lt;/li&gt;
+  &lt;li&gt;What’s going on with A?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Other common pitfalls of the data cleaning process:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Overlooking missing values&lt;/li&gt;

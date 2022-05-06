@@ -346,7 +346,7 @@
 
 <p>This is clearly limited because each prediction is made without the context of the rest of the sentence (“drinks” and “water” go together, as does “water” and “park”, but all three certainly do not make sense together!). Flip this around in terms of a learning algorithm and you can run into the same problem.</p>
 
-<p>A recurrent network networks is structured such that the output of a hidden layer is used as an additional input back into the same hidden layer. This allows them to learn based on the current AND previous state. But what does the previuos state depend on? The state before that. So by recusion, RNN’s learn on the entire sequence.</p>
+<p>A recurrent neural networks is structured such that the output of a hidden layer is used as an additional input back into the same hidden layer. This allows them to learn based on the current AND previous state. But what does the previous state depend on? The state before that. So by recusion, an RNN learns on the entire sequence.</p>
 
 <p>The output layer of an RNN is usually just the input layer but shifted by one step. Think about it with this example: If the sequence to be predicted by the RNN is ABCD, then for every step of the sequence, a trained RNN would generate:</p>
 
@@ -358,6 +358,18 @@ Long Short Term Memory is the preferred training algorithm for RNN's. This helps
 
 ### Convolutional Neural Networks
 
+CNN's have been used successfully for image classification. The idea is that a smaller convolutional matrix, or kernel, is passed over (i.e. convolved ) with the raw data. This is then repeated over and over, and finally passed through a fully connected layer (like in regular Neural Networks) before ending with a softmax function to classify the image. 
+
+The key to CNN's is the kernel matrix. Different kernels can be trained to identify different "features" from the data, ranging from the very basic (e.g. an edge or a corner), to more advanced objects (e.g. an eye or a nose), and finally to the most high level (e.g. a face).
+
+&gt; In a sense, convolutional networks juxtapose recurrent networks. Where RNN's are deep, CNNs are shallow. 
+
+
+### Compound Architectures
+
+In recent years, many people have proposed combined approaches, which make use of more than one architecture. There is for instance, something called an RNN Encoder-Decoder, which attempts to learn the relationship between two different encodings of two different sequences. 
+
+Or to express it another way, the goal is to encode the sequence learned by one RNN into another sequence produced by another RNN. The main application here being translation, where two languages expressing the same idea can have entirely different lengths and grammers.
 
 
 
@@ -587,7 +599,7 @@ Long Short Term Memory is the preferred training algorithm for RNN's. This helps
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Machine Learning Architectures" />
 <script type="application/ld+json">
-{"description":"At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.","headline":"Machine Learning Architectures","dateModified":"2022-03-30T00:00:00-07:00","datePublished":"2022-03-30T00:00:00-07:00","url":"https://ludavid15.github.io//notes/machineLearning/","mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/machineLearning/"},"author":{"@type":"Person","name":"David Lu"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"description":"At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.","url":"https://ludavid15.github.io//notes/machineLearning/","headline":"Machine Learning Architectures","dateModified":"2022-03-30T00:00:00-07:00","datePublished":"2022-03-30T00:00:00-07:00","author":{"@type":"Person","name":"David Lu"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/machineLearning/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   
