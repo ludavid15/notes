@@ -1,0 +1,130 @@
+I"&<p>There are two ways in which artifical intelligence has been applied to music. The first is called music information retrieval, or MIR for short. These programs produce data from audio (e.g. song identification, transcribing audio into sheet music). The second is known as <em>generative</em> AI. These programs try to produce new and original music, either fully autonomously or as a predictive aid to composers (i.e. like text predits on your phone!).</p>
+
+<blockquote>
+  <p>A third application which is not unique to music is song recommendation and classification. This covers apps like Spotify or Pandora which create custom playlists for you, and is  very similar to how Netflix recommends you new movies and shows.</p>
+</blockquote>
+
+<h3 id="projects-and-companies">Projects and Companies</h3>
+
+<p>Just a few practical resources to look at if you are interested in seeing who is currently working on this subject.</p>
+
+<ul>
+  <li><a href="https://builtin.com/artificial-intelligence/ai-music-examples" target="_blank" rel="noopener noreferrer">AI Music: Companies and Applications to Know</a></li>
+  <li>Magenta - an open source, Google-led project to explore creatives applications for ML.</li>
+</ul>
+
+<h3 id="music-information-retrieval-mir">Music Information Retrieval (MIR)</h3>
+
+<p>Chord recognition, song identification, etc.</p>
+
+<h1 id="generative-ai">Generative AI</h1>
+
+<p>Stepping beyond recognition, generative AI tries to create new music. Algorithms in this category range from fully autonomous composers, to assistant bots which make recommendations.</p>
+
+<blockquote>
+  <p>For a comprehensive review of this topic, I recommend reading “Deep Learning Techniques for Music Generation – A Survey”, by Jean-Pierre Briot, Gaetan Hadjeres, and Francois-David Pache.</p>
+</blockquote>
+
+<h4 id="symbolic-vs-non-symbolic">Symbolic vs Non-symbolic</h4>
+
+<ul>
+  <li>Symbolic - harmony, chords progressions</li>
+  <li>Non-symbolic - sound, timbre</li>
+</ul>
+
+<p>Algorithms working with symbolic music often needs rules, grammers and structured inputs, which reduces flexibility and increases overhead.</p>
+
+<h4 id="markov-models">Markov Models</h4>
+
+<p>Markov models predict one step at a time. This makes them easy to implement and understand, but it also means they are unable to think about long-term structure. Think of this like writing a book, but each word is written by finding the most statistically probable word to follow from the one before. You might still get get complete sentences, but highly unlikely to get a coherent theme.</p>
+
+<h3 id="categories">Categories</h3>
+
+<p>These are a few attributes of different generative AI’s. Keep in mind that some of these might be related, (i.e. they may not be orthogonal, or independent of one another).</p>
+
+<ol>
+  <li><strong>By Objective</strong>: What aspect of music are you creating? A melody? A chord progression? An accompaniment?</li>
+  <li><strong>By Representation</strong>: How are you structuring your musical data? E.g. as a signal, MIDI, text, piano roll.</li>
+  <li><strong>By Architecture</strong>: Recurrent NN, autoencoders, generative adversarial modeling, etc.</li>
+  <li><strong>By Challenge</strong>: What qualities are you looking for in what you create? Variability, creativity, interactivity.</li>
+  <li><strong>By Strategy</strong>: TBD - I don’t understand this very well yet.</li>
+</ol>
+
+<h3 id="objectives">Objectives</h3>
+
+<p>Let’s think about melody for a moment. What’s the context for the melody we’re writing? Is it a Bach style counterpoint to an existing melody? Is it the baritone part in a SATB choir? Is it an improvised melody over an existing chord progression (like on a lead sheet?).</p>
+
+<p>These are all valid ways to think about single-voice melodies, but are different enough that they may require unique approaches.</p>
+
+<h3 id="representation">Representation</h3>
+
+<p>Representation is how we choose to format our music. Is it the raw waveform? Maybe a spectrum if we first run a fourier analysis. Or what about symbolically? If so, what about enharmony? Is an Eb and the D# the same thing?</p>
+
+<p>Formats that deal with the audio aspect are often continuous, and fall into the realm of signal processing. In contrast, symbolic representation is discrete, and more often found in the field of knowledge representation. We’ll start by discussing different elements of music and how we might represent them, and then talk about existing representations.</p>
+
+<h3 id="note-representations">Note Representations</h3>
+
+<p>Every note has a pitch, duration, and dynamic. Pitch can be expressed as a frequency, position on a score, or a letter (A through G). Duration can be measured in absolute terms (seconds), or in the context of written music (quarter note, half note, etc.). The same absolute vs relevant distinction can be made for the note’s dynamic, (i.e. decibels vs pianissimo/forte).</p>
+
+<h3 id="chord-representations">Chord Representations</h3>
+
+<p>Chords can be represented either as a collection of notes, or by a root and type (e.g. C7, Gmin, etc.). The latter is more useful for harmonic analysis, and for some applications, like a jazz musician’s lead sheet, could be more useful.</p>
+
+<h3 id="rhythm-representations">Rhythm Representations</h3>
+
+<p>In some sense, the rhythm is already captured by the duration and dynamic of each note. But we can also think of rhythm as the “feel” of a piece. Repeating patterns in the duration and dynamic of each note create a combined rhythm effect. This collective sense of rhythm is distinct from the detailed implementation of <em>time</em>.</p>
+
+<h3 id="time-representations">Time Representations</h3>
+
+<p>There are two approaches to how we create music with respect to time (and if you think about it, there can only be two). You can either model and optimize the entire score all together, or you can step through one unit at a time. This unit can be a beat, or a note. In the latter case, there is no going back to change work you’ve already done. The nuance here seems small, but it has a very big impact on what the input and output to our AI is.</p>
+
+<p>This type of modeling works if we choose to represent a relative duration (e.g. an 8th note, 16th note, etc.) or in absolute terms (in milliseconds). The latter is needed to capture the “artistic” interpretation that a human musician may add, but is not as useful if our goal is to create written sheet music.</p>
+
+<h3 id="method-1---midi">Method 1 - MIDI</h3>
+
+<p>MIDI (Musical Instrument Digital Interface) is a standard to represent musical information. MIDI works especially well for capturing single note melodies. An example line of MIDI input:</p>
+
+<p>[96, on, 0, 60, 90]
+[184, off, 0, 60, 0]</p>
+
+<p>We can understand the above lines as saying:</p>
+
+<ul>
+  <li>at time 96 and on channel 0, start playing the pitch 60 at a volume of 90.</li>
+  <li>at time 184 and on channel 0, stop playing the pitch 60 at a velocity of 0.</li>
+</ul>
+
+<p>When specifiying an off event, the very last number tells us how quickly to release a note.</p>
+
+<p>To create a chord, or any two notes played simultaneously, we just introduce a new channel. This is sufficient for capturing audio information, but in the realm of data science, this lack of unique language for chords is problematic. Algorithms which learn using a MIDI format often fail to “learn” harmonies.</p>
+
+<h3 id="method-2---piano-roll">Method 2 - Piano Roll</h3>
+
+<p>Unlike MIDI, a piano roll does capture chords in a more intuitive way. There are only two dimensions: pitch, and time. A third dimension can be added to collect volume and intensity information. As with the MIDI format, the piano roll doesn’t distinguish between melody and harmony.</p>
+
+<h4 id="what-about-held-notes">What About Held Notes?</h4>
+
+<p>One major downside of the piano roll is that (depending on how we encode time), it may be impossible distinguish a held note from a repeated note. For this, we’ll need to add a new word to our musical language. One way to do this is to introduce a new notation (somelike a –), which represents a held note. Then when we need to encode this, we can treat the the hold symbol as just another “pitch”.</p>
+
+<h3 id="metadata">Metadata</h3>
+
+<p>What kind of metadata do we want to include? Key signature, meter (i.e. waltz, bossa nova, swing). Music annotating programs like musescore will often allow users to track these. Whether or not they are useful towards generation remains to be proven.</p>
+
+<h3 id="encoding">Encoding</h3>
+
+<p>Encoding is the step that connects the representation of music we’ve chosen, to the set of input notes or input variables for the nueral network. For example, consider the two definitions we have for chords:</p>
+
+<ul>
+  <li>Implicit (C, E, G, B)</li>
+  <li>Explicit (C major 7th)</li>
+</ul>
+
+<p>An implicit representation is typically encoded with many-hot, while an explicit representation can be encoded with a multi-one-hot (i.e. the first one-hot is the root, the second one-hot is the quality).</p>
+
+<p>And finally, a musical rest could be encoded like any other note - except in the case of MIDI which doesn’t need it.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>And that wraps up the introduction! Hopefully this article leaves you with a top level overview of the subject. We started with the different aspects of music (melody, harmony, rhythm, etc.) and discussed how they connect to machine learning. Before continuing on to <a href="/notes/musicAI2/">part 2</a>, I recommend checking out the <a href="/notes/howTomachineLearning/">introduction to machine learning</a> and <a href="/notes/machineLearning/">machine learning</a> posts.</p>
+
+:ET

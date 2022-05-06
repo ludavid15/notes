@@ -1,0 +1,51 @@
+I"�<p>This post explores a variety of tried and tested approaches to music generation with deep learning. Although each example can stand alone in theory, they are presented in an order that gradually introduces new concepts and challenges. As we go through each example, we will tag the challenges which apply to each one.</p>
+
+<p>The complete list of challenges is here:</p>
+
+<ol>
+  <li><em>Creatio Ex nihilo</em>  (creation from nothing)</li>
+  <li>Length variability</li>
+  <li>Content variability (i.e. is it deterministic?)</li>
+  <li>Expressiveness</li>
+  <li>Melody-harmony consistency</li>
+  <li>Control</li>
+  <li>Style transfer</li>
+  <li>Structure</li>
+  <li>Originality</li>
+  <li>Incrementality</li>
+  <li>Interactivity</li>
+  <li>Adaptability</li>
+  <li>Explainability</li>
+</ol>
+
+<h3 id="example-1---introduction-with-bach-1-2-3">Example 1 - Introduction with Bach (1, 2, 3)</h3>
+
+<p>For the first example, we’ll walk through a very simple and intuitive deep learning setup. Here are the parameters:</p>
+
+<ol>
+  <li><strong>Music Structure</strong> - 4 measures of SATB in 4/4 time</li>
+  <li><strong>ML Architecture</strong> - Feedforward neural network with 1 hidden layer</li>
+  <li><strong>Input</strong> - (One hot encoding for pitch at each time step) x number of input voices</li>
+  <li><strong>Output</strong> - (One hot encoding for pitch at each time step) x number of output voices</li>
+  <li><strong>Training Data</strong> - Bach chorales, with each voice extracted and transposed into all keys.</li>
+</ol>
+
+<p>Even before we consider the musical merit of any generated output, we can notice that there will be intrinsic limitations to this method. First, it is deterministic. For each unique input there will only ever be 1 output. Maybe this ok for something like this, but what if our input was a chord progression and our desired ouput was a melody? Many different melodies are possible for the same progression. Here we run into our first challenge - how can we generate a wide variety of content from limited inputs? (<em>creatio ex-nihilo</em> and content variability)</p>
+
+<h3 id="example-2---decoder-feedfoward-2-3">Example 2 - Decoder Feedfoward (2, 3)</h3>
+
+<p>The basic idea here is to first train an autoencoder, which if you remember, learns the important “features” in its hidden layer. To generate unique outputs, we simply turn this around - the hidden layer becomes the input (i.e. a seed). The seed is fed-forward through the decoder, and we get a unique output. Of course this is still deterministic, but it overcomes the <em>creatio ex-nihilo</em> issue. (Technically we’re not starting from <em>true nothing</em>, but then what does? Most randomly generated content, like a minecraft world, starts from a seed anyway).</p>
+
+<blockquote>
+  <p>The DeepHear system by Sun uses this approach to generate ragtime music. They use Scott Joplin songs as the training data, and a stacked autoencoder with a hidden layer size of 16. Due to the small size of this hidden layer, there is a high amount of plagiarism (around 60%).</p>
+</blockquote>
+
+<h3 id="example-3---sampling">Example 3 - Sampling</h3>
+
+<p>Sampling methods work a little like the feedforward decoder in example 2, but instead of generating examples which are deterministic based on a seed, examples are randomly generated to match a probability distribution. Some famous sampling strategies include: Metropolis-Hastings algorithm, Gibbs Sampling, and block Gibbs Sampling.</p>
+
+<p>With regard to music, there are two ways to apply this type of approach. The first, is in the vertical dimension, (i.e. chord - does the voicing of this chord make sense?). Recurrent Boltzman Machines are effective for this kind of work. The second is in the horizontal dimension (i.e. a melody or sequence of notes - does this sequence of notes make a coherent melody?). This kind of sampling is better achieved by an RNN.</p>
+
+<h3 id="example-4---iterative-feedforward">Example 4 - Iterative Feedforward</h3>
+
+:ET

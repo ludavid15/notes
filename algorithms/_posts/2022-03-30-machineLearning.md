@@ -17,15 +17,15 @@ Or if you are just looking for a high level overview of what machine learning is
 
 ### Linear Regression
 
-To start, let's review the most basic type of machine learning problem is - linear regression. The aim is to find a linear best-fit relationship between (x) and (y). 
+To start, let's review the most basic type of machine learning problem - linear regression. The aim is to find a linear best-fit relationship between (x) and (y). 
 
 $$h(x) = b + \theta_1x_1 + ... + \theta_nx_n = b + \sum_{i=1}^{n}theta_1x_i$$
 
 Where $$h$$ is the model, $b$ is an offset, and the $$\theta$$'s are the weights to be learned. 
 
-## Section 2 - Machine Learning Algorithms
+## Machine Learning Algorithms
 
-So far we've talked a lot about what we can do with matrices, and the reason we've done this is because many problems can be solved without reaching for a neural network with billions of weights that need to be optimized. This section takes the more traditional approach to machine learning, where we divide algorithms according to their objectives. 
+On the linear algrebra post, we've talked a lot about what we can do with matrices, and the reason we've done this is because many problems can be solved without reaching for a neural network that has millions of weights which need to be optimized. This section takes the more traditional approach to machine learning, where we think of algorithms by their objectives. 
 
 1. Supervised Learning
 2. Unsurpervised Learning
@@ -138,7 +138,7 @@ A->AB, AB->ABC, ABC->ABCD, etc. See how the input sequence can also act as the l
 
 <p class="message">
 Long Short Term Memory is the preferred training algorithm for RNN's. This helps reduce amplification or minimization due to recursion (e.g. 2x2x2x2 grows very quickly, while 0.5 * 0.5 * 0.5 shrinks very quickly).
-<p>
+</p>
 
 ### Convolutional Neural Networks
 
