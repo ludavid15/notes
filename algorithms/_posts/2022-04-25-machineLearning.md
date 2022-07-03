@@ -70,9 +70,15 @@ Depending on the type of task we are training our Neural Network to do, there ar
 |Classification |Single Label |One-hot            |Sigmoid                | Cross Entropy
 |Classification |Many Label   |Many-hot           |Softmax                | Cross Entropy
 
+> Consider: why do we use one-hot encoding, and not just assign different numbers to things? For example, if we wanted to classify apples from bannanas from oranges, why can't we use the labels 0, 1, 2?
+
+> Answer: Numbers are in sequence, and when we encode three different objects as 0,1,2 we've accidently introduced the concept of order, where in reality there is none. 
+
+
 ### Overfitting
 
 Overfitting is a common issue of machine learning algorithms, where we increase the accuracy with respect to the training data, at the cost of decreased predictive accuracy. This exists because we expect some random error in the training data. When an algorithm is overfit, it tries to accomodate this random noise, and loses track of the global trends. 
+
 
 ### Receiver Operator Characteristic Curve
 
@@ -93,11 +99,11 @@ Deep learning algorithms are more powerful, but messier, versions of their linea
 
 ### Multi-Layer NN aka Feedforward Neural Network
 
-A Feedforward neural network has also been referred to as a "deep" learning network, because there are additional hidden layers between the input and output. In general, adding more layers is not the same as adding more nodes to an existing layer, and the relationship between the two is still being explored today. 
+A Feedforward neural network is also your classic "deep" learning network. It's called deep because there are additional hidden layers between the input and output. In general, adding more layers is not the same as adding more nodes to an existing layer, and the relationship between the two is still being explored today. 
 
 ### Autoencoders
 
-An autoencoders is a type of unsupervised learning. The goal is to compress and decompress information, which forces the algorithm to find key features to "encode" useful patterns. These can be implemented as a deep neural net, but one in which the output has the same dimension as the input. Additionally, the hidden layer(s) must have fewer nodes than either the input or output. 
+An autoencoders is a form of unsupervised learning. The goal is to compress and decompress information, which forces the algorithm to find key features to "encode" useful patterns. These can be implemented as a deep neural net, but one in which the output has the same dimension as the input. Additionally, the hidden layer(s) must have fewer nodes than either the input or output. 
 
 There are two flavors of autoencoders:
 * Regularized autoencoders, or sometimes called sparse autoencoders, are effective for classification tasks. 
@@ -118,6 +124,7 @@ Energy Equation
 
 $$E(v,h) = -a^Tv - b^Th - v^TWh$$
 
+
 ### Recurrent Neural Networks (RNN)
 
 Before we jump into an RNN, consider a simple sentence generation program, which predicts the next word based only on the last word it encountered. Maybe the output looks something like this:
@@ -137,8 +144,14 @@ The output layer of an RNN is usually just the input layer but shifted by one st
 A->AB, AB->ABC, ABC->ABCD, etc. See how the input sequence can also act as the labeled output used in a supervised learning algorithm? 
 
 <p class="message">
-Long Short Term Memory is the preferred training algorithm for RNN's. This helps reduce amplification or minimization due to recursion (e.g. 2x2x2x2 grows very quickly, while 0.5 * 0.5 * 0.5 shrinks very quickly).
+Long Short Term Memory is the preferred training algorithm for RNN's. This helps reduce amplification or minimization due to recursion (e.g. 2x2x2x2 grows very quickly, while 0.5 * 0.5 * 0.5 shrinks very quickly). LSTM's also solve the issue of long term memory. Even though a basic RNN should "in theory" be able to remember information from long ago, in practice they are unable to. 
 </p>
+
+
+### Long Short Term Memory
+
+For this topic, I recommend reading colah's blog post on [understanding LSTM's](https://colah.github.io/posts/2015-08-Understanding-LSTMs/){:target="_blank"}{:rel="noopener noreferrer"}. He explains it much better than I can, plus he's got pictures to go along with. 
+
 
 ### Convolutional Neural Networks
 

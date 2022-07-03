@@ -4,7 +4,7 @@ title: Data Analytics
 permalink: /dataanalytics/
 mathjax: true
 except_separator: <!--more-->
-categories: applications
+categories: engineering
 ---
 
 A collection of notes and lessons from the Google Data Analytics Certificate.

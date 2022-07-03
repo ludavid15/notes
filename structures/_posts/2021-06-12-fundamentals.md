@@ -144,8 +144,7 @@ The magnitude of axial stress and shear stress will change depending on the coor
 Mathematically, the principle stresses are the eigenvalues of the stress tensor, and the direction in which they act are the principle directions (the eigenvectors).
 
 $$\left[\begin{matrix}\sigma_{xx}&\tau_{xy}&\tau_{xy}\\\tau_{xy}&\sigma_{yy}&\tau_{yz}\\\tau_{xz}&\tau_{yz}&\sigma_{zz}\\\end{matrix}\right]=0$$
- 
-### Torsion
+
 
 ### Von Mises Stress Criteria
 
@@ -163,9 +162,6 @@ $$\sigma_{Axial}=\frac{Pr}{2t}$$
 |Fastener Shear		|	|
 |Bearing			|	|
 
-### Thread Failure
-
-### Beam Joints/Splicing
 
 
 
