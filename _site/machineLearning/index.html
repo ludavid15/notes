@@ -180,7 +180,7 @@
     <div class="content container">
       <div class="post">
   <h1 class="post-title">Machine Learning Architectures</h1>
-  Last Updated: <span class="post-date">30 Mar 2022</span>
+  Last Updated: <span class="post-date">25 Apr 2022</span>
   <p>At its core, machine learning is a <strong>statistical science</strong>, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.</p>
 
 <p>This article takes the traditional view of machine learning, where we organize the sub-disciplines by objectives and data structure. For a discussion of machine learning as a wandering exploration of linear algrebra, see the post on <a href="/notes/linearAlgebra/">linear algebra</a>. In fact, I’d recommend starting on that page first! Matrices are the bedrock of machine learning.</p>
@@ -191,15 +191,15 @@
 
 <h3 id="linear-regression">Linear Regression</h3>
 
-<p>To start, let’s review the most basic type of machine learning problem is - linear regression. The aim is to find a linear best-fit relationship between (x) and (y).</p>
+<p>To start, let’s review the most basic type of machine learning problem - linear regression. The aim is to find a linear best-fit relationship between (x) and (y).</p>
 
 \[h(x) = b + \theta_1x_1 + ... + \theta_nx_n = b + \sum_{i=1}^{n}theta_1x_i\]
 
 <p>Where \(h\) is the model, $b$ is an offset, and the \(\theta\)’s are the weights to be learned.</p>
 
-<h2 id="section-2---machine-learning-algorithms">Section 2 - Machine Learning Algorithms</h2>
+<h2 id="machine-learning-algorithms">Machine Learning Algorithms</h2>
 
-<p>So far we’ve talked a lot about what we can do with matrices, and the reason we’ve done this is because many problems can be solved without reaching for a neural network with billions of weights that need to be optimized. This section takes the more traditional approach to machine learning, where we divide algorithms according to their objectives.</p>
+<p>On the linear algrebra post, we’ve talked a lot about what we can do with matrices, and the reason we’ve done this is because many problems can be solved without reaching for a neural network that has millions of weights which need to be optimized. This section takes the more traditional approach to machine learning, where we think of algorithms by their objectives.</p>
 
 <ol>
   <li>Supervised Learning</li>
@@ -284,6 +284,14 @@
   </tbody>
 </table>
 
+<blockquote>
+  <p>Consider: why do we use one-hot encoding, and not just assign different numbers to things? For example, if we wanted to classify apples from bannanas from oranges, why can’t we use the labels 0, 1, 2?</p>
+</blockquote>
+
+<blockquote>
+  <p>Answer: Numbers are in sequence, and when we encode three different objects as 0,1,2 we’ve accidently introduced the concept of order, where in reality there is none.</p>
+</blockquote>
+
 <h3 id="overfitting">Overfitting</h3>
 
 <p>Overfitting is a common issue of machine learning algorithms, where we increase the accuracy with respect to the training data, at the cost of decreased predictive accuracy. This exists because we expect some random error in the training data. When an algorithm is overfit, it tries to accomodate this random noise, and loses track of the global trends.</p>
@@ -307,11 +315,11 @@
 
 <h3 id="multi-layer-nn-aka-feedforward-neural-network">Multi-Layer NN aka Feedforward Neural Network</h3>
 
-<p>A Feedforward neural network has also been referred to as a “deep” learning network, because there are additional hidden layers between the input and output. In general, adding more layers is not the same as adding more nodes to an existing layer, and the relationship between the two is still being explored today.</p>
+<p>A Feedforward neural network is also your classic “deep” learning network. It’s called deep because there are additional hidden layers between the input and output. In general, adding more layers is not the same as adding more nodes to an existing layer, and the relationship between the two is still being explored today.</p>
 
 <h3 id="autoencoders">Autoencoders</h3>
 
-<p>An autoencoders is a type of unsupervised learning. The goal is to compress and decompress information, which forces the algorithm to find key features to “encode” useful patterns. These can be implemented as a deep neural net, but one in which the output has the same dimension as the input. Additionally, the hidden layer(s) must have fewer nodes than either the input or output.</p>
+<p>An autoencoders is a form of unsupervised learning. The goal is to compress and decompress information, which forces the algorithm to find key features to “encode” useful patterns. These can be implemented as a deep neural net, but one in which the output has the same dimension as the input. Additionally, the hidden layer(s) must have fewer nodes than either the input or output.</p>
 
 <p>There are two flavors of autoencoders:</p>
 <ul>
@@ -353,34 +361,60 @@
 <p>A-&gt;AB, AB-&gt;ABC, ABC-&gt;ABCD, etc. See how the input sequence can also act as the labeled output used in a supervised learning algorithm?</p>
 
 <p class="message">
-Long Short Term Memory is the preferred training algorithm for RNN's. This helps reduce amplification or minimization due to recursion (e.g. 2x2x2x2 grows very quickly, while 0.5 * 0.5 * 0.5 shrinks very quickly).
-<p>
+Long Short Term Memory is the preferred training algorithm for RNN's. This helps reduce amplification or minimization due to recursion (e.g. 2x2x2x2 grows very quickly, while 0.5 * 0.5 * 0.5 shrinks very quickly). LSTM's also solve the issue of long term memory. Even though a basic RNN should "in theory" be able to remember information from long ago, in practice they are unable to. 
+</p>
 
-### Convolutional Neural Networks
+<h3 id="long-short-term-memory">Long Short Term Memory</h3>
 
-CNN's have been used successfully for image classification. The idea is that a smaller convolutional matrix, or kernel, is passed over (i.e. convolved ) with the raw data. This is then repeated over and over, and finally passed through a fully connected layer (like in regular Neural Networks) before ending with a softmax function to classify the image. 
+<p>For this topic, I recommend reading colah’s blog post on <a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="noopener noreferrer">understanding LSTM’s</a>. He explains it much better than I can, plus he’s got pictures to go along with.</p>
 
-The key to CNN's is the kernel matrix. Different kernels can be trained to identify different "features" from the data, ranging from the very basic (e.g. an edge or a corner), to more advanced objects (e.g. an eye or a nose), and finally to the most high level (e.g. a face).
+<h3 id="convolutional-neural-networks">Convolutional Neural Networks</h3>
 
-&gt; In a sense, convolutional networks juxtapose recurrent networks. Where RNN's are deep, CNNs are shallow. 
+<p>CNN’s have been used successfully for image classification. The idea is that a smaller convolutional matrix, or kernel, is passed over (i.e. convolved ) with the raw data. This is then repeated over and over, and finally passed through a fully connected layer (like in regular Neural Networks) before ending with a softmax function to classify the image.</p>
 
+<p>The key to CNN’s is the kernel matrix. Different kernels can be trained to identify different “features” from the data, ranging from the very basic (e.g. an edge or a corner), to more advanced objects (e.g. an eye or a nose), and finally to the most high level (e.g. a face).</p>
 
-### Compound Architectures
+<blockquote>
+  <p>In a sense, convolutional networks juxtapose recurrent networks. Where RNN’s are deep, CNNs are shallow.</p>
+</blockquote>
 
-In recent years, many people have proposed combined approaches, which make use of more than one architecture. There is for instance, something called an RNN Encoder-Decoder, which attempts to learn the relationship between two different encodings of two different sequences. 
+<h3 id="compound-architectures">Compound Architectures</h3>
 
-Or to express it another way, the goal is to encode the sequence learned by one RNN into another sequence produced by another RNN. The main application here being translation, where two languages expressing the same idea can have entirely different lengths and grammers.
+<p>In recent years, many people have proposed combined approaches, which make use of more than one architecture. There is for instance, something called an RNN Encoder-Decoder, which attempts to learn the relationship between two different encodings of two different sequences.</p>
 
+<p>Or to express it another way, the goal is to encode the sequence learned by one RNN into another sequence produced by another RNN. The main application here being translation, where two languages expressing the same idea can have entirely different lengths and grammers.</p>
 
-
-
-</p></p>
 
 </div>
 
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+          
+          <h3>
+            <a href="/notes/machineLearningCode/">
+              Coding ML with Julia
+              <small>14 Jun 2022</small>
+            </a>
+          </h3>
+          
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
     
       <li>
         
@@ -473,10 +507,6 @@ Or to express it another way, the goal is to encode the sequence learned by one 
             </a>
           </h3>
           
-        
-      </li>
-    
-      <li>
         
       </li>
     
@@ -595,11 +625,11 @@ Or to express it another way, the goal is to encode the sequence learned by one 
 <meta property="og:url" content="https://ludavid15.github.io//notes/machineLearning/" />
 <meta property="og:site_name" content="Notes" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-03-30T00:00:00-07:00" />
+<meta property="article:published_time" content="2022-04-25T00:00:00-07:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Machine Learning Architectures" />
 <script type="application/ld+json">
-{"description":"At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.","url":"https://ludavid15.github.io//notes/machineLearning/","headline":"Machine Learning Architectures","dateModified":"2022-03-30T00:00:00-07:00","datePublished":"2022-03-30T00:00:00-07:00","author":{"@type":"Person","name":"David Lu"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/machineLearning/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"description":"At its core, machine learning is a statistical science, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.","headline":"Machine Learning Architectures","dateModified":"2022-04-25T00:00:00-07:00","datePublished":"2022-04-25T00:00:00-07:00","url":"https://ludavid15.github.io//notes/machineLearning/","mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/machineLearning/"},"author":{"@type":"Person","name":"David Lu"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   

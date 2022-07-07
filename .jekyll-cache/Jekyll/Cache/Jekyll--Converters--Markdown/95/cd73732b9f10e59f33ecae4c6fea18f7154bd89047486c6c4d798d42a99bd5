@@ -1,0 +1,19 @@
+I"�<h1 id="welcome">Welcome!</h1>
+
+<p>This is my personal website where I document things I have learned. Some of these are a direct copy of my notes from school, while others are more thought out like a blog post. The purpose of this site is twofold - both as a way for me to remember things, and as a place for me to write about new topics to help my learning.</p>
+
+<h2 id="about-me">About Me</h2>
+
+<p>I have both a B.S and M.S in aerospace engineering, completed at UCLA in 2019 and the University of Michigan in 2021 respectively. My master’s thesis was an exploration of image processing and image segmentation on ultrasonic scans of composite laminate panels for impact damage analysis. Right now I’m a systems engineer at Northrop Grumman, where I model and design satellite architectures.</p>
+
+<p>I’m curious about a lot of things, but at the moment, I’m thinking mostly about space systems engineering, agile product management, music theory, and machine learning.</p>
+
+<hr />
+
+<p>Please bear with me as I continue to add features! To-do-list: hyperlinks, more pictures, fix equations.</p>
+
+<p>This website uses the <a href="https://github.com/poole/hyde">Hyde</a> theme for <a href="https://jekyllrb.com/">Jekyll</a>. Check it out!</p>
+
+<hr />
+
+:ET
