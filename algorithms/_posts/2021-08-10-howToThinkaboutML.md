@@ -18,7 +18,7 @@ For any machine learning algorithm, we should be able to identify three distinct
 2. **Cost function**, which we minimize by using different
 3. **Optimization techniques**.
 
-For a more mathematical discussion of machine learning algorithms, check out the [original ML post]({% post_url /algorithms/2022-03-30-machineLearning %})!
+For a more mathematical discussion of machine learning algorithms, check out the [original ML post]({% post_url /algorithms/2022-04-25-machineLearning %})!
 
 ### Supervised Learning
 
@@ -30,7 +30,7 @@ Unsupervised learning algorithms discover patterns in your data. Note that these
 
 * K-means Clustering
 * Singular Value Decomposition
-* [Independent Component Analysis]({% post_url /algorithms/2022-03-30-machineLearning %})
+* [Independent Component Analysis]({% post_url /algorithms/2022-04-25-machineLearning %})
 * Autoencoders
 
 Another way to understand unsupervised learning algorithms is that they look for ways to compress your data. If you had fifty (x,y) coordinates which all fall onto the line y = 3x+2, an unsupervised learning algorithm can compress those 100 numbers into fifty x-coordinates and a function. See how we've reduced the total datasize? If you've ever compressed an image or a word document, you've made use of an unsupervised learning technique. 
