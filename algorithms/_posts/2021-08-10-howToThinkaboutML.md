@@ -7,11 +7,11 @@ except_separator: <!--more-->
 categories: algorithms
 ---
 
-There is so much literature out there on machine learning that it can get pretty overwhelming. This post serves to organize machine learning into a few broad categories, and in doing so, highlight their different strengths. 
+There is so much literature out there on machine learning that it can get pretty overwhelming. This post organizes machine learning into a few broad categories, and in doing so, highlights their different strengths. 
 
 <!--more-->
 
-Before going further, it's worth mentioning that many machine learning algorithms are built using optimization. There is almost always something to be optimized (an objective function - error, fitness, etc.), and different ways to run the optimization (genetic, linear, quadratic, etc.). Different algorithms may change the problem, but the name of the game remains the same (for example, the "learning rate" and "search step size" refer to the same thing!) Keep this mind, because it helps to simplify this large field. 
+Before going further, it's worth mentioning that many machine learning algorithms are built using optimization. There is almost always something to be optimized (an objective function - error, fitness, etc.), and different ways to run the optimization (genetic, linear, quadratic, etc.). Different algorithms may change the problem, but the name of the game remains the same (for example, the "learning rate" and "search step size" usually refer to the same thing!) Keep this in mind, because it helps simplify our perspective. 
 
 For any machine learning algorithm, we should be able to identify three distinct aspects:
 1. **The architecture**, or relationship between inputs and ouputs, which influences the
@@ -22,7 +22,7 @@ For a more mathematical discussion of machine learning algorithms, check out the
 
 ### Supervised Learning
 
-When we know the type of output you want, but need to learn the function that will get us there, we use supervised learning. These algorithms are implemented with deep neural networks, and are useful for classification tasks. As the name implies, this method absolutely requires having a labeled dataset. If your problem doesn't readily accept labels, this strategy will probably fall short. Try instead to identify if *parts* of the solution involve identification. 
+When we know the type of output we want, but need to learn the function that will get us there, we use supervised learning. These algorithms are implemented with deep neural networks, and are useful for classification tasks. As the name implies, this method absolutely requires having a labeled dataset. If your problem doesn't readily accept labels, this strategy will probably fall short. Try instead to identify if *parts* of the solution involve identification. 
 
 ### Unsupervised Learning
 
@@ -53,7 +53,7 @@ If we linearized the pixels of each image (n by m), we'd end up performing clust
 
 So how can we get a machine to learn features? Well, when we perform supervised learning with something like a deep neural net, the last hidden layer before the output can actually be a set of features. 
 
-Or in an unsupervised case, independent component analysis and autoencoders achieve this goal by looking for ways to represent the most original information in the fewest variables. The singular value decomposition and eigenvalues are two methods that do this. 
+Or in an unsupervised case, independent component analysis and autoencoders achieve this goal by looking for ways to represent the most original information in the fewest variables. The singular value decomposition and eigenvalues are two ways to do this. 
 
 > Consider the example of rotations. A rotation matrix in 3D is a 3x3 matrix, for a total of nine variables. But it turns out that any rotation in 3D can be represented by only three Euler angles (Roll Pitch Yaw). If we have those three numbers, we can follow a specific set of rules to reconstruct the original object. In this way, the Euler angles can be thought of as "features" of the rotation matrix. 
 

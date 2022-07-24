@@ -7,7 +7,7 @@ mathjax: true
 categories: dynamics
 ---
 
-Did you know that in space, you slow down to catch up? Such is the strange nature of astrodynamics, where gravity and orbits dominate. 
+Did you know that in space, you slow down to catch up? Such is the strange nature of astrodynamics.
 
 <!--more-->
 
