@@ -4,7 +4,7 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2022-07-07T15:30:10-07:00</updated>
+ <updated>2022-07-24T15:24:39-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
@@ -13,11 +13,27 @@
 
  
  <entry>
+   <title>Communications Technology</title>
+   <link href="https://ludavid15.github.io//Communications/"/>
+   <updated>2022-07-09T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//communications</id>
+   <content type="html">&lt;p&gt;1553: A traffic control protocol for managing information traffic from multiple sources on a shared physical line. 1553 requires a controlling computer and an addresses for each terminal. The underlying constraint of 1553 is that traffic is never parrallel. In other words, each terminal takes turns using the line, and ignores any information on the line while not actively in use.&lt;/p&gt;
+
+&lt;p&gt;Bi-Level: consisting of two states (i.e. 0 and 1). In constrast to &lt;em&gt;analog&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Serial communication: commmunication that consists of sending data one bit at a time.&lt;/p&gt;
+
+&lt;p&gt;RS-422: a point to point interface which transmits digital/bi-level information by changing the difference in voltage between two lines. This allows for higher data rates and lower noise in comparison to a single voltage line because we can achieve the same total change in the difference with only half the voltage change in each line. This is comparable to things like ethernet or USB.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
    <title>Agile Engineering</title>
    <link href="https://ludavid15.github.io//agileEngineering/"/>
    <updated>2022-06-14T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//agile</id>
-   <content type="html">&lt;p&gt;A few notes on the Agile method for engineering, based on on my own experience working on an “agile” team and Google’s Agile Engineering class on Coursera.&lt;/p&gt;
+   <content type="html">&lt;p&gt;A few notes on the Agile method for engineering, based on on my own experience working on an “agile” team and Google’s Agile Project Management class on Coursera.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -97,6 +113,24 @@ Ambiguity - lack of definition&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;h3 id=&quot;devops&quot;&gt;DevOps&lt;/h3&gt;
+
+&lt;p&gt;DevOps is an approach to software engineering that brings together the development team with the operations support team. The goal of this collaboration is to build a more direct path&lt;/p&gt;
+
+&lt;h3 id=&quot;scaling-agile&quot;&gt;Scaling Agile&lt;/h3&gt;
+
+&lt;p&gt;Since scrum teams work best for groups of 5 to 10 people, larger product teams need an adapted agile system. Common big-group agile structures include:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Scaled Agile Framework (SAFe)&lt;/li&gt;
+  &lt;li&gt;Scrum of Scrums&lt;/li&gt;
+  &lt;li&gt;Large Scale Scrum (LeSS)&lt;/li&gt;
+  &lt;li&gt;Disciplined Agile Delivery (DAD)&lt;/li&gt;
+  &lt;li&gt;Spotify Model (of Squads, Tribes, Chapters, and Guilds)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;But in general, it’s important to remember that Agile is all about being flexible to deliver value. These frameworks are NOT meant to be definitive instruction manuals or a process to be followed. Instead, seek a balance of strategies and values that work best for your particular situation.&lt;/p&gt;
+
 </content>
  </entry>
  
@@ -109,9 +143,16 @@ Ambiguity - lack of definition&lt;/p&gt;
 
 &lt;!--more--&gt;
 
+&lt;h3 id=&quot;basics&quot;&gt;Basics&lt;/h3&gt;
+
 &lt;p&gt;An efficient way to use one-hot encoding (better than regular arrays)&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;onehot(1, 1:5)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Softmax normalizes a onehot encoded vector such that the sum of all entries is exactly equal to 1 (as it should be for probability distributions)&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;softmax(model(xs[2]))
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;And now setting up a neural network:&lt;/p&gt;
@@ -120,6 +161,43 @@ Ambiguity - lack of definition&lt;/p&gt;
 L(x,y) = Flux.mse(model(x),y)
 opt = ADAM()
 Flux.train!(L, zip(xs, ys), opt)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Where:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;xs is the feature vector&lt;/li&gt;
+  &lt;li&gt;ys is the label vector&lt;/li&gt;
+  &lt;li&gt;L(x,y) is the loss function&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;deep-learning&quot;&gt;Deep Learning&lt;/h3&gt;
+
+&lt;p&gt;We can build deep learning networks (i.e. networks with more than 1 layer) by using the Chain function.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;layer1 = Dense(2, 3, sigma)
+layer2 = Dense(3, 2, identity)
+layer3 = softmax
+
+model = Chain(layer1, layer2, layer3)  
+L(x,y) = Flux.crossentropy(model(x), y)
+opt = SGD(params(model))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;batching&quot;&gt;Batching&lt;/h3&gt;
+
+&lt;p&gt;Batching is a function that merges many data points into a single matrix. This is more efficient to train because matrix-matrix multiplication has been heavily optimized.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;databatch = (Flux.batch(xs), Flux.batch(ys))
+Flux.train!(L, Iterators.repeated(databatch, 1000), opt)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Second line: Flux takes the model, and trains it on the dataset in databatch, and repeats 1000 times.&lt;/p&gt;
+
+&lt;h3 id=&quot;callbacks&quot;&gt;Callbacks&lt;/h3&gt;
+
+&lt;p&gt;A function that we’d like Flux to call every so often. This is useful for capturing the loss or learning progress while we’re training a model. We can wrap our callback function with the throttle function to set how often (in seconds).&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Flux.throttle(callback, 1)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
  </entry>
@@ -173,7 +251,7 @@ Flux.train!(L, zip(xs, ys), opt)
 
 &lt;h3 id=&quot;transfer-learning&quot;&gt;Transfer Learning&lt;/h3&gt;
 
-&lt;p&gt;Transfer learning for music is one area that really hasn’t been explored in depth, but which could be enormously useful, if we use the (more developed) subject of image generation as a sign of things to come.&lt;/p&gt;
+&lt;p&gt;Transfer learning for music is another area that really hasn’t been explored in depth, but which could be enormously useful, if we use the (more developed) subject of image generation as a sign of things to come.&lt;/p&gt;
 
 &lt;h3 id=&quot;open-questions&quot;&gt;Open Questions&lt;/h3&gt;
 
@@ -185,7 +263,7 @@ Flux.train!(L, zip(xs, ys), opt)
     &lt;p&gt;Can we use a lead sheet as the input, with a polyphonic melody/solo as the output? Maybe the pianist can be the conditional input (i.e. toggle style for different players)&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Can we apply Elgammal’s CAN, to create jazz solos that seem real, but which are not easily classified into an existing composer?&lt;/p&gt;
+    &lt;p&gt;Can we apply Elgammal’s CAN, to create jazz solos that seem real, but which are not easily classified into an existing musicians’s style?&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -250,7 +328,7 @@ Flux.train!(L, zip(xs, ys), opt)
     &lt;p&gt;Music encoding is NOT straightforward, or maybe it is, but just not apparent to me.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;I need to remember that the goal is not to design a general AI capable of doing everything, I just need it to produce a jazz piano solo.&lt;/p&gt;
+    &lt;p&gt;This is a project that succumbs very easily to scope creep.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 </content>
@@ -261,7 +339,7 @@ Flux.train!(L, zip(xs, ys), opt)
    <link href="https://ludavid15.github.io//musicAI2/"/>
    <updated>2022-05-04T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//musicAI2</id>
-   <content type="html">&lt;p&gt;This post explores a variety of tried and tested approaches to music generation with deep learning. Although each example can stand alone in theory, they are presented in an order that gradually introduces new concepts and challenges.&lt;/p&gt;
+   <content type="html">&lt;p&gt;This post explores different approaches to music generation with deep learning. Although each example can stand alone, they are presented in an order that introduces new concepts and challenges one by one.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -442,7 +520,7 @@ That being said, Convolutional Neural Networks - which have been very effective 
 &lt;p&gt;So we mentioned earlier that decoders only allow information to pass through one way, but there’s a way around this: interpolation in the latent space.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;The latent space is the space formed by the latent variables. (e.g. if our seed was 8452, there are 4 latent variables). We could perform clustering in the latent space to identify patterns to the seeds which produce our training data.&lt;/p&gt;
+  &lt;p&gt;The latent space is the space formed by the latent variables. (e.g. if our seed was (8,4,5,2), there are 4 latent variables). We could perform clustering in the latent space to identify patterns to the seeds which produce our training data.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;In this sense, we aren’t really feeding information back through the decoder, but rather applying even more machine learning on the seeds to understand the significance of each digit. In other words, given a set of coordinate &lt;em&gt;numbers&lt;/em&gt;, we’re learning if they are for a cartesian, polar, or spherical &lt;em&gt;system&lt;/em&gt;.&lt;/p&gt;
@@ -1982,11 +2060,11 @@ Problems formatted in one type can be transformed into another format fairly eas
    <link href="https://ludavid15.github.io//howTomachineLearning/"/>
    <updated>2021-08-10T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//howToThinkaboutML</id>
-   <content type="html">&lt;p&gt;There is so much literature out there on machine learning that it can get pretty overwhelming. This post serves to organize machine learning into a few broad categories, and in doing so, highlight their different strengths.&lt;/p&gt;
+   <content type="html">&lt;p&gt;There is so much literature out there on machine learning that it can get pretty overwhelming. This post organizes machine learning into a few broad categories, and in doing so, highlights their different strengths.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
-&lt;p&gt;Before going further, it’s worth mentioning that many machine learning algorithms are built using optimization. There is almost always something to be optimized (an objective function - error, fitness, etc.), and different ways to run the optimization (genetic, linear, quadratic, etc.). Different algorithms may change the problem, but the name of the game remains the same (for example, the “learning rate” and “search step size” refer to the same thing!) Keep this mind, because it helps to simplify this large field.&lt;/p&gt;
+&lt;p&gt;Before going further, it’s worth mentioning that many machine learning algorithms are built using optimization. There is almost always something to be optimized (an objective function - error, fitness, etc.), and different ways to run the optimization (genetic, linear, quadratic, etc.). Different algorithms may change the problem, but the name of the game remains the same (for example, the “learning rate” and “search step size” usually refer to the same thing!) Keep this in mind, because it helps simplify our perspective.&lt;/p&gt;
 
 &lt;p&gt;For any machine learning algorithm, we should be able to identify three distinct aspects:&lt;/p&gt;
 &lt;ol&gt;
@@ -1999,7 +2077,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;h3 id=&quot;supervised-learning&quot;&gt;Supervised Learning&lt;/h3&gt;
 
-&lt;p&gt;When we know the type of output you want, but need to learn the function that will get us there, we use supervised learning. These algorithms are implemented with deep neural networks, and are useful for classification tasks. As the name implies, this method absolutely requires having a labeled dataset. If your problem doesn’t readily accept labels, this strategy will probably fall short. Try instead to identify if &lt;em&gt;parts&lt;/em&gt; of the solution involve identification.&lt;/p&gt;
+&lt;p&gt;When we know the type of output we want, but need to learn the function that will get us there, we use supervised learning. These algorithms are implemented with deep neural networks, and are useful for classification tasks. As the name implies, this method absolutely requires having a labeled dataset. If your problem doesn’t readily accept labels, this strategy will probably fall short. Try instead to identify if &lt;em&gt;parts&lt;/em&gt; of the solution involve identification.&lt;/p&gt;
 
 &lt;h3 id=&quot;unsupervised-learning&quot;&gt;Unsupervised Learning&lt;/h3&gt;
 
@@ -2030,7 +2108,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;p&gt;So how can we get a machine to learn features? Well, when we perform supervised learning with something like a deep neural net, the last hidden layer before the output can actually be a set of features.&lt;/p&gt;
 
-&lt;p&gt;Or in an unsupervised case, independent component analysis and autoencoders achieve this goal by looking for ways to represent the most original information in the fewest variables. The singular value decomposition and eigenvalues are two methods that do this.&lt;/p&gt;
+&lt;p&gt;Or in an unsupervised case, independent component analysis and autoencoders achieve this goal by looking for ways to represent the most original information in the fewest variables. The singular value decomposition and eigenvalues are two ways to do this.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Consider the example of rotations. A rotation matrix in 3D is a 3x3 matrix, for a total of nine variables. But it turns out that any rotation in 3D can be represented by only three Euler angles (Roll Pitch Yaw). If we have those three numbers, we can follow a specific set of rules to reconstruct the original object. In this way, the Euler angles can be thought of as “features” of the rotation matrix.&lt;/p&gt;
@@ -2148,7 +2226,7 @@ Problems formatted in one type can be transformed into another format fairly eas
    <link href="https://ludavid15.github.io//astrodynamics/"/>
    <updated>2021-06-23T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//astrodynamics</id>
-   <content type="html">&lt;p&gt;Did you know that in space, you slow down to catch up? Such is the strange nature of astrodynamics, where gravity and orbits dominate.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Did you know that in space, you slow down to catch up? Such is the strange nature of astrodynamics.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -2297,7 +2375,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;p&gt;Where \(C_{D,min}\) is the contribution due to parasitic drag. We add on the contribution from induced drag (itself a function of the coefficient of lift) to find the total drag \(C_D\) during flight. Recall that \(\frac{1}{2}\rho U^2\) is defined as the dynamic pressure.&lt;/p&gt;
 
-&lt;p&gt;We’ll also use a capital D and capital L to denote total coefficient of drag and lift for the wing, vs a lowercase d and lowercase l for local coefficient of drag and lift as a function of the angle of attack.&lt;/p&gt;
+&lt;p&gt;We’ll also use a capital D and capital L to denote total coefficient of drag and lift for the wing, vs a lowercase d and lowercase l for local coefficient of drag and lift (which are functions of the local angle of attack).&lt;/p&gt;
 
 &lt;h3 id=&quot;drag&quot;&gt;Drag&lt;/h3&gt;
 &lt;p&gt;There are three main types of drag: parasitic, induced, and wave. The total drag coefficient is a function of parasitic and induced drag coefficient.&lt;/p&gt;
@@ -2679,7 +2757,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 \[min | x(t) - x&apos;(t) | + | v(t) - v&apos;(t) | + | a(t) - a&apos;(t) |\]
 
-&lt;p&gt;This is a bit more realistic because “close” is way easier than exactly equal. But as any engineer may point out, we are not only interested in the answer - the margins are just as important. Thus control theory seeks to understand how systems responds to inputs. Then, we can take these theories and design controllers to achieve particular goals.&lt;/p&gt;
+&lt;p&gt;This is a bit more realistic because “close” is way easier than exactly equal. But as any engineer may point out, we are not only interested in the exact answer - the margins are just as important. Thus control theory seeks to understand how systems responds to inputs. Then, we can take these theories and design controllers to achieve particular goals.&lt;/p&gt;
 
 &lt;p&gt;The design of a controller should strive to achieve the following:&lt;/p&gt;
 
