@@ -4,7 +4,7 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2022-07-24T15:24:39-07:00</updated>
+ <updated>2022-07-31T14:54:05-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
@@ -744,9 +744,9 @@ That being said, Convolutional Neural Networks - which have been very effective 
    <id>https://ludavid15.github.io//machineLearning</id>
    <content type="html">&lt;p&gt;At its core, machine learning is a &lt;strong&gt;statistical science&lt;/strong&gt;, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.&lt;/p&gt;
 
-&lt;p&gt;This article takes the traditional view of machine learning, where we organize the sub-disciplines by objectives and data structure. For a discussion of machine learning as a wandering exploration of linear algrebra, see the post on &lt;a href=&quot;/notes/linearAlgebra/&quot;&gt;linear algebra&lt;/a&gt;. In fact, I’d recommend starting on that page first! Matrices are the bedrock of machine learning.&lt;/p&gt;
+&lt;p&gt;This article takes the traditional view of machine learning, where we organize the sub-disciplines by objectives and data structure. For a discussion of machine learning as a wandering exploration of linear algrebra, see the post on &lt;a href=&quot;/notes/linearAlgebra&quot;&gt;linear algebra&lt;/a&gt;. In fact, I’d recommend starting on that page first! Matrices are the bedrock of machine learning.&lt;/p&gt;
 
-&lt;p&gt;Or if you are just looking for a high level overview of what machine learning is, I recommend readying this post on &lt;a href=&quot;/notes/howTomachineLearning/&quot;&gt;how to think about machine learning&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Or if you are just looking for a high level overview of what machine learning is, I recommend readying this post on &lt;a href=&quot;/notes/howToThinkaboutML&quot;&gt;how to think about machine learning&lt;/a&gt;.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -2086,7 +2086,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 &lt;ul&gt;
   &lt;li&gt;K-means Clustering&lt;/li&gt;
   &lt;li&gt;Singular Value Decomposition&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/notes/machineLearning/&quot;&gt;Independent Component Analysis&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/notes/machineLearning&quot;&gt;Independent Component Analysis&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Autoencoders&lt;/li&gt;
 &lt;/ul&gt;
 
