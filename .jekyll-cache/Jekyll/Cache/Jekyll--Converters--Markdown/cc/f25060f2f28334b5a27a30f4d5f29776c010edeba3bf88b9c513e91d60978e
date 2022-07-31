@@ -1,8 +1,8 @@
-I"Õ4<p>At its core, machine learning is a <strong>statistical science</strong>, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.</p>
+I"ö4<p>At its core, machine learning is a <strong>statistical science</strong>, and like most elements of statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.</p>
 
-<p>This article takes the traditional view of machine learning, where we organize the sub-disciplines by objectives and data structure. For a discussion of machine learning as a wandering exploration of linear algrebra, see the post on <a href="/notes/linearAlgebra/">linear algebra</a>. In fact, Iâ€™d recommend starting on that page first! Matrices are the bedrock of machine learning.</p>
+<p>This article takes the traditional view of machine learning, where we organize the sub-disciplines by objectives and data structure. For a discussion of machine learning as a wandering exploration of linear algrebra, see the post on <a href="/notes/math/2022-03-30-linearAlgebra">linear algebra</a>. In fact, Iâ€™d recommend starting on that page first! Matrices are the bedrock of machine learning.</p>
 
-<p>Or if you are just looking for a high level overview of what machine learning is, I recommend readying this post on <a href="/notes/howTomachineLearning/">how to think about machine learning</a>.</p>
+<p>Or if you are just looking for a high level overview of what machine learning is, I recommend readying this post on <a href="/notes/algorithms/2021-08-10-howToThinkaboutML">how to think about machine learning</a>.</p>
 
 <!--more-->
 
