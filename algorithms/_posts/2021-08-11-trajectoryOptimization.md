@@ -7,7 +7,7 @@ except_separator: <!--more-->
 categories: algorithms
 ---
 
-In this article, we learn how to frame a trajectory problem as an optimization problem. To begin, let's connect the physical properties of a trajectory, to the inputs of any optimization problem. 
+In this article, we learn how to frame a trajectory problem as a mathematical optimization problem. Keep in mind that this is only one way to solve plan a trajectory. To begin, let's connect the physical properties of a trajectory, to the inputs of any optimization problem. 
 
 <!--more-->
 
