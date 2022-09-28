@@ -7,6 +7,9 @@ except_separator: <!--more-->
 categories: engineering
 ---
 
+A random assortment of communications technology terms I've encountered over the years. Please keep in mind that electrical engineering and signal processing is *not* one of my subjects, so take everything here with a grain of salt. 
+
+<!--more-->
 
 1553: A traffic control protocol for managing information traffic from multiple sources on a shared physical line. 1553 requires a controlling computer and an addresses for each terminal. The underlying constraint of 1553 is that traffic is never parrallel. In other words, each terminal takes turns using the line, and ignores any information on the line while not actively in use. 
 

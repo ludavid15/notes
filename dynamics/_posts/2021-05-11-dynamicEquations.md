@@ -7,7 +7,7 @@ mathjax: true
 categories: dynamics
 ---
 
-We're almost ready to write down F = ma, but before that, we need to define what F is (a force), and what ma is (an intertial term).
+We're almost ready to write down F = ma, but before that, we need to define what F is (a force), and what ma is (an inertial term).
 
 <!--more-->
 

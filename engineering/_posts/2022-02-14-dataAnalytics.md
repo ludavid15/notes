@@ -7,7 +7,9 @@ except_separator: <!--more-->
 categories: engineering
 ---
 
-A collection of notes and lessons from the Google Data Analytics Certificate.
+In contrast to data *science*, which designs and explores the models and algorithms we have for analyzing data, data *analytics* is about using data to solve problems. This includes additional steps like considering your stakeholders, communicating ideas, and working under a deadline. 
+
+This post is a collection of notes and lessons from the Google Data Analytics Certificate.
 
 <!--more-->
 
