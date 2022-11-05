@@ -191,20 +191,19 @@
 
 <p>Before getting started, a few definitions that will be relevant:</p>
 
-<dl>
-  <dt>TSFC</dt>
-  <dd>Thrust specific fuel consumption</dd>
-  <dt>SFC</dt>
-  <dd>Specific fuel consumption</dd>
-</dl>
+<p><strong>TSFC</strong> - Thrust specific fuel consumption</p>
 
-<p>For the sake of simplicity, jet engines can be analyzed as a quasi 1 dimensional system, that is, we only need to consider velocities in one direction. This makes our math much easier.</p>
+<p><strong>SFC</strong> - Specific fuel consumption</p>
+
+<p>For the sake of simplicity, jet engines can be analyzed as a quasi 1 dimensional system. In other words we only need to consider velocities in one direction. This makes our math much easier.</p>
 
 <h3 id="fundamentals">Fundamentals</h3>
 
+<p>Most of these equations are rooted by a fairly simple conservation of energy/momentum principle. Hence, we can expect to see a lot of energy (\(v^2\)) and momentum (\(\dot{m}v\)) terms</p>
+
 \[F_{uninstalled}=\dot{m_9}u_9-\dot{m_0}u_0-A_{exit}(P_9-P_0)\]
 
-\["{Takeoff\ Thrust"\ F}_{gross}=\dot{m_9}u_9-A_{exit}(P_9-P_0)\]
+\[F_{gross}=\dot{m_9}u_9-A_{exit}(P_9-P_0)\]
 
 \[\mathrm{TSFC}=\ \frac{\dot{m_f}}{T}=\frac{1}{g Isp_f}=\frac{f}{g Isp_{air}}\]
 
@@ -318,6 +317,8 @@
 
 <h3 id="engine-efficiencies">Engine Efficiencies</h3>
 
+<p>These are weights which represent the % of energy lost.</p>
+
 <dl>
   <dt>Propulsive Efficiency</dt>
   <dd>
@@ -335,6 +336,8 @@
 
 <h3 id="real-component-analysis">Real Component Analysis</h3>
 
+<p>These efficiency terms calculate losses at each engine stage (since nothing can truly be 100% efficient in real life).</p>
+
 \[\eta_d=\ \frac{\left(\frac{P_{t2}}{P_0}\right)^\frac{\gamma-1}{\gamma}-1}{\frac{\gamma-1}{2}{M_0}^2}\]
 
 \[\eta_c=\ \frac{\left(\pi_c\right)^\frac{\gamma-1}{\gamma}-1}{\tau_c-1}\]
@@ -347,7 +350,7 @@
 
 <h3 id="ramjets">Ramjets</h3>
 
-<p>Ramjets function like a turbojet, but do not include a turbine or compressor. Most of the original equations still apply. Set \(\tau_c=\ \tau_t=1\).</p>
+<p>Ramjets function like a turbojet, but do not include a turbine or compressor. Most of the original equations still apply. Set \(\tau_c= \tau_t=1\).</p>
 
 \[Isp_{air}=\ \frac{a_0M_0}{g}\left(\sqrt{\tau_b}-1\right)\]
 
@@ -371,7 +374,7 @@
 
 <h3 id="turbofans">Turbofans</h3>
 
-<p>A turbofan makes of use the turbine in a turbojet to generate shaft power which drives a ducted fan. It provides increased efficiency over a regular turbojet. Most commercial passenger planes fly with turbofan engines.</p>
+<p>A turbofan makes use of the turbine in a turbojet to generate shaft power which drives a ducted fan. It provides increased efficiency over a regular turbojet. Most commercial passenger planes fly with turbofan engines.</p>
 
 <p><img src="../images/turboFan.png" alt="turboFan" class="center-image" /></p>
 
@@ -400,7 +403,7 @@ Assume: Work absorbed by turbine = work done by compressor + work done by fan.</
 
 <h3 id="turboprops">Turboprops</h3>
 
-<p>Turboprops operate on a similar idea to turbofans, in that the turbine from the turbojet cycle drives a larger propeller out in front, which is ultimately responsible for generating most of the thrust. Yields increased efficiency. Notice that for this analysis we break the turbine into two parts, the first (4 to 4.5) drives the compressor, while the second (4.5 to 5) drives the propeller.</p>
+<p>Turboprops operate on a similar idea to turbofans, in that the turbine from the turbojet cycle drives a larger propeller out in front, which is ultimately responsible for generating most of the thrust. Unlike a turbofan, the blades do not spin in a duct. Notice that for this analysis we break the turbine into two parts, the first (4 to 4.5) drives the compressor, while the second (4.5 to 5) drives the propeller.</p>
 
 \[T_{prop}u_0=\ \dot{m_0}(1+f)\alpha\eta_{mechanical,\ LPT}\eta_{LPT}\eta_{gearbox}\eta_{propeller}(h_{t4.5}-h_{9s})\]
 
@@ -511,6 +514,10 @@ Laminar Flame Speeds tend to be on the order of 0.1-3 m/s, which is much slower 
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
+    
+      <li>
+        
+      </li>
     
       <li>
         

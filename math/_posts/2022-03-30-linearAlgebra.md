@@ -17,11 +17,11 @@ Although titled linear algrebra, this post is really about linear algebra as it 
 
 $$R\left(A\right)={\alpha_1A_1+a_2A_2\ldots+\alpha_kA_k,\ for\ any\ \alpha_i\in F}$$
 
-**Nullspace/Kernel (of a matrix A)** - The set of all vectors [x] such that Ax = 0
+**Nullspace/Kernel (of a matrix A)** - The set of all vectors $$\vec{x}$$ such that Ax = 0
 
 $$N\left(A\right)={x\in F^n,\ Ax=0}$$
 
-**Ortho-complement (of a subspace)** -  The set of all vectors [x] that are orthogonal to all vectors in the subspace V.
+**Ortho-complement (of a subspace)** -  The set of all vectors $$\vec{x}$$ that are orthogonal to all vectors in the subspace V.
 
 $$V^\bot={x,\ x\bot y\ for\ all\ y\in V}$$
 
@@ -52,7 +52,7 @@ $$\alpha_1V_1+a_2V_2\ldots+\alpha_kV_k=0$$
  
 ### Singular Value Decomposition
 
-The singular value decomposition of a matrix [A] yields the following expression, where  U\in F^{m\times m} is the matrix of left singular vector, V\in F^{n\times n} is the matrix of right singular vectors, and the strictly positive entries of \Sigma\in F^{m\times n} are referred to singular values. The number of nonzero singular values equals the rank of [A]. Both U and V are unitary matrixes.
+The singular value decomposition of a matrix [A] yields the following expression, where  $$U\in F^{m\times m}$$ is the matrix of left singular vector, $$V\in F^{n\times n}$$ is the matrix of right singular vectors, and the strictly positive entries of $$\Sigma\in F^{m\times n}$$ are referred to singular values. The number of nonzero singular values equals the rank of [A]. Both U and V are unitary matrixes.
 
 $$A\in F^{m\times n}=U\Sigma V^H$$
 
@@ -195,4 +195,4 @@ A method for statistical analysis of shape distributions. An orthogonal Procrust
 
 ### Minimum Dimensions
 
-> If I told you that there were 4 distinct points, and gave you the distance between every pair, you could determine the minimum dimensional space required to properly map these points. For instance, if all 6 distances are the same, there is no way to position these 4 points in a plane that makes this true. Instead, they must be arranged as a regular tetrahedron in 3D space. 
+If I told you that there were 4 distinct points, and gave you the distance between every pair, you could determine the minimum dimensional space required to properly map these points. For instance, if all 6 distances are the same, there is no way to position these 4 points in a plane that makes this true. Instead, they must be arranged as a regular tetrahedron in 3D space. This is a useful concept for things like embedding vectors, used in sequence models, like natural language processing. 

@@ -185,18 +185,20 @@
       <div class="post">
   <h1 class="post-title">Trajectory Optimization</h1>
   Last Updated: <span class="post-date">11 Aug 2021</span>
-  <p>In this article, we learn how to frame a trajectory problem as a mathematical optimization problem. Keep in mind that this is only one way to solve plan a trajectory. To begin, let’s connect the physical properties of a trajectory, to the inputs of any optimization problem.</p>
+  <p>In this article, I talk about how to frame a trajectory problem as a mathematical optimization problem. Keep in mind that this is only one way to plan a trajectory. And when I say math, I really do mean <em>math</em> (the difficult kind). You have been warned.</p>
 
 <!--more-->
 
+<p>To begin, let’s connect the physical properties of a trajectory, to the inputs of any optimization problem.</p>
+
 <ul>
   <li>Trajectories occur in 3D dimensional space, meaning that there should be x(t), y(t), and z(t).</li>
-  <li>The variables to be optimized, are the control inputs as a function of time. That is, u(t).</li>
+  <li>The variables to be optimized are the control inputs as a function of time. That is, u(t).</li>
   <li>Trajectories are continuous time problems. Problems can be solved as continuous time or can be discretized and solved as a finite dimensional optimization problem.</li>
   <li>There are equations of motion which govern the effect of the control input u to the state variables x.</li>
 </ul>
 
-<h3 id="general-optimization-problem-statement">General Optimization Problem Statement</h3>
+<h3 id="problem-statement-for-generic-optimization">Problem Statement for Generic Optimization</h3>
 <p>The problem statement in flight trajectory optimization is a specialized version of the problem statement for a generic optimization problem:</p>
 
 \[J=K\left(t_1,\ x_1\right)+\int_{t_0}^{t_1}L\left(t,x,u\right)dt\]
@@ -539,34 +541,14 @@ Problems formatted in one type can be transformed into another format fairly eas
     
       <li>
         
-      </li>
-    
-      <li>
-        
-      </li>
-    
-      <li>
-        
           
           <h3>
             <a href="/notes/mlcode/">
-              Machine Learning Code
-              <small>14 Jun 2022</small>
+              Coding ML with Julia
+              <small>01 Nov 2022</small>
             </a>
           </h3>
           
-        
-      </li>
-    
-      <li>
-        
-      </li>
-    
-      <li>
-        
-      </li>
-    
-      <li>
         
       </li>
     
@@ -576,10 +558,43 @@ Problems formatted in one type can be transformed into another format fairly eas
           <h3>
             <a href="/notes/mlarchitectures/">
               Machine Learning Architectures
-              <small>25 Apr 2022</small>
+              <small>01 Nov 2022</small>
             </a>
           </h3>
           
+        
+      </li>
+    
+      <li>
+        
+          
+          <h3>
+            <a href="/notes/mltuning/">
+              Tuning ML for Performance
+              <small>20 Sep 2022</small>
+            </a>
+          </h3>
+          
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
         
       </li>
     
@@ -769,8 +784,8 @@ Problems formatted in one type can be transformed into another format fairly eas
 <meta property="og:title" content="Trajectory Optimization" />
 <meta name="author" content="David Lu" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="In this article, we learn how to frame a trajectory problem as a mathematical optimization problem. Keep in mind that this is only one way to solve plan a trajectory. To begin, let’s connect the physical properties of a trajectory, to the inputs of any optimization problem." />
-<meta property="og:description" content="In this article, we learn how to frame a trajectory problem as a mathematical optimization problem. Keep in mind that this is only one way to solve plan a trajectory. To begin, let’s connect the physical properties of a trajectory, to the inputs of any optimization problem." />
+<meta name="description" content="In this article, I talk about how to frame a trajectory problem as a mathematical optimization problem. Keep in mind that this is only one way to plan a trajectory. And when I say math, I really do mean math (the difficult kind). You have been warned." />
+<meta property="og:description" content="In this article, I talk about how to frame a trajectory problem as a mathematical optimization problem. Keep in mind that this is only one way to plan a trajectory. And when I say math, I really do mean math (the difficult kind). You have been warned." />
 <link rel="canonical" href="https://ludavid15.github.io//notes/trajoptimization/" />
 <meta property="og:url" content="https://ludavid15.github.io//notes/trajoptimization/" />
 <meta property="og:site_name" content="Notes" />
@@ -779,7 +794,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Trajectory Optimization" />
 <script type="application/ld+json">
-{"description":"In this article, we learn how to frame a trajectory problem as a mathematical optimization problem. Keep in mind that this is only one way to solve plan a trajectory. To begin, let’s connect the physical properties of a trajectory, to the inputs of any optimization problem.","url":"https://ludavid15.github.io//notes/trajoptimization/","headline":"Trajectory Optimization","dateModified":"2021-08-11T00:00:00-07:00","datePublished":"2021-08-11T00:00:00-07:00","author":{"@type":"Person","name":"David Lu"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/trajoptimization/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"description":"In this article, I talk about how to frame a trajectory problem as a mathematical optimization problem. Keep in mind that this is only one way to plan a trajectory. And when I say math, I really do mean math (the difficult kind). You have been warned.","url":"https://ludavid15.github.io//notes/trajoptimization/","headline":"Trajectory Optimization","dateModified":"2021-08-11T00:00:00-07:00","datePublished":"2021-08-11T00:00:00-07:00","author":{"@type":"Person","name":"David Lu"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/trajoptimization/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   

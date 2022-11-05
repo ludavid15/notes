@@ -7,11 +7,13 @@ mathjax: true
 categories: dynamics
 ---
 
-Did you know that in space, you slow down to catch up? Such is the strange nature of astrodynamics.
+Astrodynamics is a lot like any other field of dynamics, except we now have an additional equation to consider: the law of universal gravitation. This leads to some strange and counterintuitive results - like slowing down to catch up! 
 
 <!--more-->
 
 ### Kepler’s Laws of Planetary Motion
+
+As good a place to start as any. These are more a set of observations than a theoretical explanation for celestial motion.
 
 1.	All planets move in elliptical orbits, with the Sun at the focus.
 2.	A line that connects a planet to the Sun sweeps out equal areas in equal times.
@@ -23,37 +25,33 @@ The two-dimensional orbital frame is also known as the perifocal frame (i.e. per
 
 $$r=\ \frac{h^2}{\mu}\frac{1}{1+e\cos(\theta)}$$
 
-Where µ is the gravitational parameter of the larger body being orbited. Standard values are presented below:
+Where µ is the gravitational parameter of the larger body being orbited. Standard values for objects in our solar system can be found [here](https://en.wikipedia.org/wiki/Standard_gravitational_parameter).
 
-|Body	    | µ (m3s-2)
-|Sun	    | $$1.327\ast{10}^{20}$$
-|Mercury	| $$2.203\ast{10}^{13}$$
-|Venus	    | $$3.248\ast{10}^{14}$$
-|Earth	    | $$3.986\ast{10}^{14}$$
-|Moon	    | $$4.904\ast{10}^{12}$$
-|Mars	    | $$6.263\ast{10}^{13}$$
-|Jupiter	| $$1.266\ast{10}^{17}$$
-|Saturn	    | $$3.793\ast{10}^{16}$$
-|Uranus	    | $$5.793\ast{10}^{15}$$
-|Neptune	| $$6.836\ast{10}^{15}$$
+For each orbit, we can also define the specific angular momentum $$\vec{h}$$:
 
-For each orbit, we can also define the specific angular momentum (h):
+$$\vec{h}=\vec{r}\times\vec{v}$$
 
-$$Specific\ Angular\ Momentum\ \vec{h}=\vec{r}\times\vec{v}$$
-
-Where $$vec{r}$$ and $$\vec{v}$$ are the position vector and velocity vector at a point in time. The total angular momentum remains constant through the orbit. If the orbit is elliptical, we can define an apoapsis distance, periapsis distance, and semimajor axis distance.
+Where $$\vec{r}$$ and $$\vec{v}$$ are the position vector and velocity vector at a point in time. The total angular momentum remains constant through the orbit. If the orbit is elliptical, we can define an apoapsis distance, periapsis distance, and semimajor axis distance.
 
 $$2a=\ r_a+r_p$$
+
+The eccentricity (measure of how elliptical an orbit is) can also be calculated with:
 
 $$e=\ \frac{r_a-r_p}{r_a+r_p}$$
 
 Through conservation of energy we arrive at the Vis-Viva equation. An orbit with a specific energy of zero is defined to be on a parabolic orbit. A positive specific energy means that it is on an escape trajectory, while a negative value means it is captured by the planet’s gravity (circular or elliptical). 
 
-Vis Viva Equation:
+### Vis Viva Equation
+
+This equation relates the current velocity and radius of an object in orbit to the total energy, or semi-major axis of it's orbit. This is very useful for computing Hohman transfers.
 
 $$\frac{v^2}{2}-\frac{\mu}{r}=-\frac{\mu}{2a}=\varepsilon$$
 
-$$Orbital\ Period\ \left(T\right)=2\pi\sqrt{\frac{a^3}{\mu}}$$
+### Orbital Period
+
+The orbital period is the total time is takes to complete a single revolution
+
+$$\left(T\right)=2\pi\sqrt{\frac{a^3}{\mu}}$$
 
 Using the energy equation, we can show that for a circular orbit, where r = a, the circular orbit velocity is simply:
 
@@ -62,7 +60,7 @@ $$V=\ \sqrt{\frac{\mu}{r_1}}$$
 
 ### Low Thrust Transfers
 
-In general, there is no way to algebraically solve for a low thrust trajectory. Instead, problems of this type neet to solve for x(t) and u(t) through trajectory optimization. 
+In general, there is no way to algebraically solve for a low thrust trajectory. Instead, for problems of this type we need to solve for x(t) and u(t) through trajectory optimization. 
 
 An initial estimate for the delta V cost of a low thrust transfer orbit can be obtained by assuming that the resulting transfer path is made up of many circular orbits with gradually increasing radius. This applies when the initial and final orbits are circular and transfer time is long. 
 
@@ -96,3 +94,6 @@ Integrating the “gravity drag” term from inner radius to outer radius yields
 
 For short transfers, low thrust trajectories result in a much higher time of flight, but as the transfer distance increases, EP transfer times become better than traditional impulsive options, due to a higher achieved maximum velocity from long periods of sustained thrust.
 
+### Lagrange Points
+
+A lagrange point is a stable orbit position where the gravitional pull and centrifugal force from two other bodies is at an equilibrium. In a three-body system, there are 5 lagrange points. 

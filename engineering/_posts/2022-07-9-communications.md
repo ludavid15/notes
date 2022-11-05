@@ -11,7 +11,7 @@ A random assortment of communications technology terms I've encountered over the
 
 <!--more-->
 
-1553: A traffic control protocol for managing information traffic from multiple sources on a shared physical line. 1553 requires a controlling computer and an addresses for each terminal. The underlying constraint of 1553 is that traffic is never parrallel. In other words, each terminal takes turns using the line, and ignores any information on the line while not actively in use. 
+1553: A traffic control protocol for managing information traffic from multiple sources on a shared physical line. 1553 requires a controlling computer and an addresses for each terminal. The underlying constraint of 1553 is that traffic is never parrallel. In other words, each terminal takes turns using the line, and ignores any information on the line while not actively in use. On any given 1553 line, there can be many *remote terminals*, each with their own *subaddresses*. 
 
 Bi-Level: consisting of two states (i.e. 0 and 1). In constrast to *analog*.
 
