@@ -60,7 +60,7 @@ A really cool outcome we get from unsupervised learning is the ability to genera
 
 The goal of representation learning is to identify patterns in your data. This can be achieved both with supervised or unsupervised methods. 
 
-Why? Because it turns out that *patterns* are useful for both question like:
+Why? Because *patterns* are useful for questions like:
 1. What is this? (Supervised learning)
 
 And questions like:

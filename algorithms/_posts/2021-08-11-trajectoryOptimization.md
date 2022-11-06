@@ -7,16 +7,18 @@ except_separator: <!--more-->
 categories: algorithms
 ---
 
-In this article, we learn how to frame a trajectory problem as a mathematical optimization problem. Keep in mind that this is only one way to solve plan a trajectory. To begin, let's connect the physical properties of a trajectory, to the inputs of any optimization problem. 
+In this article, I talk about how to frame a trajectory problem as a mathematical optimization problem. Keep in mind that this is only one way to plan a trajectory. And when I say math, I really do mean *math* (the difficult kind). You have been warned.
 
 <!--more-->
 
+To begin, let's connect the physical properties of a trajectory, to the inputs of any optimization problem. 
+
 * Trajectories occur in 3D dimensional space, meaning that there should be x(t), y(t), and z(t).
-* The variables to be optimized, are the control inputs as a function of time. That is, u(t). 
+* The variables to be optimized are the control inputs as a function of time. That is, u(t). 
 * Trajectories are continuous time problems. Problems can be solved as continuous time or can be discretized and solved as a finite dimensional optimization problem. 
 * There are equations of motion which govern the effect of the control input u to the state variables x. 
 
-### General Optimization Problem Statement
+### Problem Statement for Generic Optimization 
 The problem statement in flight trajectory optimization is a specialized version of the problem statement for a generic optimization problem:
 
 $$J=K\left(t_1,\ x_1\right)+\int_{t_0}^{t_1}L\left(t,x,u\right)dt$$

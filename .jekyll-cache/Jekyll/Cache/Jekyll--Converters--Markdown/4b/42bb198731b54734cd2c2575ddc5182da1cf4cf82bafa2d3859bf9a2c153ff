@@ -1,0 +1,134 @@
+I"<hr />
+
+<div class="posts">
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/mltuning/">
+        Tuning ML for Performance
+      </a>
+    </h2>
+
+    <span class="post-date">20 Sep 2022</span>
+    <p>In practice, machine learning algorithsm can be tricky to setup and tune. This post discusses the different metrics you can use to evaluate your algorithm, and how to fine-tine your setup based on how those metrics perform.</p>
+
+    <a href="/notes/mltuning/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/mlcode/">
+        Coding ML with Julia
+      </a>
+    </h2>
+
+    <span class="post-date">14 Jun 2022</span>
+    <p>A short reference for using the Flux package in Julia to setup and train deep learning networks. The offical website can be found <a href="https://fluxml.ai/Flux.jl/stable/">here</a>.</p>
+
+    <a href="/notes/mlcode/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/mlarchitectures/">
+        Machine Learning Architectures
+      </a>
+    </h2>
+
+    <span class="post-date">25 Apr 2022</span>
+    <p>At its core, machine learning is a <strong>statistical science</strong>, and like statistics, a great deal of care must be taken when formatting and analyzing data. They way we chose to quantify abstract topics and/or measure error will have a significant impact on the quality of our result.</p>
+
+    <a href="/notes/mlarchitectures/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/pathPlanning/">
+        Path Planning
+      </a>
+    </h2>
+
+    <span class="post-date">25 Aug 2021</span>
+    <p>Across the vast field of robotics and controls, there is a common question of “how do we get from point A to point B?”. Without any constraints, the answer is pretty easy - go in a straight line - but this is not very useful. So how can we formulate a more useful question?</p>
+
+    <a href="/notes/pathPlanning/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/trajoptimization/">
+        Trajectory Optimization
+      </a>
+    </h2>
+
+    <span class="post-date">11 Aug 2021</span>
+    <p>In this article, I talk about how to frame a trajectory problem as a mathematical optimization problem. Keep in mind that this is only one way to plan a trajectory. And when I say math, I really do mean <em>math</em> (the difficult kind). You have been warned.</p>
+
+    <a href="/notes/trajoptimization/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/mlintroduction/">
+        Machine Learning Introduction
+      </a>
+    </h2>
+
+    <span class="post-date">10 Aug 2021</span>
+    <p>There is so much literature out there on machine learning that it can get pretty overwhelming. This post introduces machine learning one concept at a time, without getting into any math.</p>
+
+    <a href="/notes/mlintroduction/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/vision/">
+        Machine Vision and SLAM
+      </a>
+    </h2>
+
+    <span class="post-date">26 Jul 2021</span>
+    <p>The topic of perception and machine vision can be broken down into a few separate problems.</p>
+
+    <a href="/notes/vision/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/optimization/">
+        Optimization Fundamentals
+      </a>
+    </h2>
+
+    <span class="post-date">10 Jun 2021</span>
+    <p>The underlying principle of an optimization is pretty straightfoward - find the best way to do something. Best can mean fastest, safest, most efficient, shortest or thousands of other things, but the common denominator is that we are looking for the most (or least) of something. Mathematically then, this is pretty simple: we’re solving for a maximum.</p>
+
+    <a href="/notes/optimization/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+</div>
+:ET

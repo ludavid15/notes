@@ -1,0 +1,162 @@
+I"t'<p>If you’ve ever tried to manage a highly complex project, you know that a certain amount of organization is required. This kind of big-picture planning helps to reduce risk. However, it’s important to remember that this kind of oversight ultimately serves the product. Otherwise, project management easily devolves into beaurocracy.</p>
+
+<p>This is the balance to be struck in the world of systems engineering. Systems engineering is a set of practices for developing highly complex projects while minimizing risk. It is NOT a substitute for good communication or for responsible people (though it can help).</p>
+
+<!--more-->
+
+<h3 id="requirements">Requirements</h3>
+
+<p>Requirements have been the backbone of aerospace systems engineering for a few decades now. The basic idea is that we write down a complete list of everything our project needs to do, and then break them down piece by piece. The idea is sound, but the execution gets messy very quickly, and is more art than science.</p>
+
+<p>Let’s consider an example. Say we are trying to design a rocketship to Mars. We might define a few high level requirements that read:</p>
+
+<ol>
+  <li>The rocket shall carry 4 astronauts</li>
+  <li>The rocket shall be able to complete the mission in 2 years.</li>
+  <li>The rocket shall use electric propulsion systems.</li>
+</ol>
+
+<p>Taking the first requirement, we can break it down logically into necessary components. This process then gets repeated over and over until we reach a good level of detail, or more likely, until we can’t be bothered to keep going.</p>
+
+<ol>
+  <li>The rocket shall include a life support system to recycle oxygen.</li>
+  <li>The rocket shall include 5000 cubic feet of living space for the astronauts.</li>
+  <li>The rocket shall carry 3000 lbs of food and living equipment.</li>
+</ol>
+
+<p>Once all the requirements have been written, design work begins. The engineers build the rocketship exactly to spec, ahead of schedule and under budget, and then we fly to Mars. Err, ok maybe not. Before we launch we need to validate and verify that everything is good to go.</p>
+
+<h3 id="validation-and-verification">Validation and Verification</h3>
+
+<p>The process of ensuring the design meets the expectation is known as the validation and verification step. <strong>Verification</strong> checks to see that the design satisfies the exact wording of the requirement. For example, we can measure the interior space of our rocket, and if we find that there is indeed 5000 cubic feet, we have verified that requirement. <strong>Validation</strong> checks that we’re meeting the spirit of the requirement. In this case, the intent of this requirement is to provide astronauts with enough living space, but is 5000 really enough? What if the 5000 cubic feet is in the form of a 1 ft x 1 ft x 5000 ft narrow tube? Such a design would not meet the intent of the requirement, even though technically it satisfied the exact wording.</p>
+
+<p>There aren’t really any rules on how a requirement should be written, but usually requirements do one of three things:</p>
+
+<ol>
+  <li>Define some desired function/feature (ex: shall send telemetry)</li>
+  <li>Define how well something has to be done (ex: shall be operational up to 100 deg)</li>
+  <li>Define an aspect of the design (ex: shall operate at 30V)</li>
+</ol>
+
+<h4 id="why-requirements">Why Requirements?</h4>
+
+<p>My personal opinion of requirements is that they exist as a document of wants, agreed upon by the stakeholders. If I want or need A, I’ll go to you, we can talk it over, and we write this down into our requirements document.</p>
+
+<p>This may be a good way to track our needs, (potentially comparable to “user stories” from agile), but I think we shouldn’t imagine requirements to be a good model of your design. In other words, it’s important for your model to meet the requirements, but the requirements are not for organizing your design.</p>
+
+<h3 id="model-based-systems-engineering">Model Based Systems Engineering</h3>
+
+<p>With better computers, engineers have increasingly turned to model based systems engineering, or MBSE as a solution to the engineering process. After all, things like CAD, CFD, and FEM have enabled us to model complex physics, so why not create a program to model a project?</p>
+
+<p>The goal of model based systems engineering is to improve upon two things that happen very slowly with traditional requirements documents:</p>
+
+<ol>
+  <li>A way to track the design baseline.</li>
+  <li>Once a change is made, an easy way to explore how it impacts other systems.</li>
+</ol>
+
+<p>So what aspects of a system can we model? Here’s a list.</p>
+
+<ol>
+  <li>Physical Configuration</li>
+  <li>Function/Behavior</li>
+  <li>Interactions/Data</li>
+  <li>Heirarchies/Definitions</li>
+</ol>
+
+<h4 id="physical-configuration">Physical Configuration</h4>
+
+<p>Fairly straightfoward, we need to track the hardware, physical connectors, and physical properties (shape, weight, thermal resistence, etc.). If our project was a sentence, the physical configuration would be the subject.</p>
+
+<h4 id="functionbehavior">Function/Behavior</h4>
+
+<p>Verbs. Things that happen. You could say that function is the first thing we choose. Hardware is designed to meet a function, not the other way around.</p>
+
+<blockquote>
+  <p>Technically this isn’t always true. When a heritage (proven) piece of hardware is selected, its function is already defined, and then engineers build the rest of the system around it. But maybe we just pretend like the function still preceded the hardware?</p>
+</blockquote>
+
+<h4 id="interactions">Interactions</h4>
+
+<p>Interactions can be very abstract, but are also very important. A function might include an interaction, (i.e. a satellite interacts with a ground station by sending telemetry), but a physical configuration might also include an interaction (i.e. the baseplate on a satellite draws heat away from the electronics).</p>
+
+<p>And inherent to interactions is data and information. What information is tranferred? How is information formatted? Where does information go?</p>
+
+<h4 id="definitions">Definitions</h4>
+
+<p>Definitions explain the words we create to group stuff together. If many pieces of hardware work together to provide telemetry, we might designate a “telemetry subsystem”. These abstractions are an important part of communicating complex ideas, but can also get messy. Definitions are applicable to any of the three prior groupings: hardware, functions, and interactions.</p>
+
+<h3 id="engineering-in-practice">Engineering in Practice</h3>
+
+<p>In real life, we often do not build things up from scratch. Instead a project is often an addition to, or a modification of something that already exists. Even though this is meant to simplify the process, it also creates a lot of additional work (as anyone who has tried to read someone else’s code can testify).</p>
+
+<blockquote>
+  <p>How does this impact the concept of systems engineering?</p>
+</blockquote>
+
+<h3 id="dodaf">DoDAF</h3>
+
+<p>The Department of Defense Architecture Framework is an effort to generalize how we explain complex systems. Before getting into what DodAF is, let’s be clear that DoDAF is NOT model based systems engineering. DoDAF only defines a set of “viewpoints”, which each viewpoint showing a different aspect of the system. For example, systems viewpoint 4 (SV4) shows functional flow diagrams, while SV1’s show a high level overview of the physical elements.</p>
+
+<p>Consider an analogy - in CAD, we build 3D shapes. When we try to represent them on a 2D screen, we must choose a viewing angle and projection, but there are likely some standard views that everyone expects. Maybe a cross section to show the internal structure, or a profile view if it’s a flat plate. DoDAF (and in fact any system diagram) follows the same idea.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>DoDAF Views</td>
+      <td>Explanation</td>
+    </tr>
+    <tr>
+      <td>SV-1</td>
+      <td>High level hardware overview</td>
+    </tr>
+    <tr>
+      <td>SV-2</td>
+      <td>Detailed hardware overview</td>
+    </tr>
+    <tr>
+      <td>SV-4</td>
+      <td>Functional flow diagram</td>
+    </tr>
+    <tr>
+      <td>SV-10b</td>
+      <td>States and Modes transitions</td>
+    </tr>
+    <tr>
+      <td>SV-10c</td>
+      <td>Sequence Diagrams</td>
+    </tr>
+    <tr>
+      <td>DIV-1</td>
+      <td>Conceptual Data Model</td>
+    </tr>
+    <tr>
+      <td>DIV-2</td>
+      <td>Logical Data Model</td>
+    </tr>
+    <tr>
+      <td>DIV-3</td>
+      <td>Physical Data Model</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="sv-4">SV-4</h3>
+
+<p>This is the functional viewpoint. In contrast to an SV-10c, an SV-4 is the functional model of your hardware, and NOT necessarily your order of operations.</p>
+
+<p>In an SV-4, we can either state a heirarchy, (A consists of B, C, D), or we can show it using a flow chart (B, C, and D interact to accomplish A). The first version is known as an SV-4a, and the latter, more complex version is called an SV-4b.</p>
+
+<h3 id="sv-10c">SV-10c</h3>
+
+<p>This is a sequence diagram. In contrast to the SV-4, an SV-10c is not primarily to meant to show the structure of your functions and hardware performers. Instead, an SV-10c tends to be a more explicit (and better) representation of your order of operations.</p>
+
+<h3 id="div">DIV</h3>
+
+<p>The Data information viewpoint breaks down the heirarchy of data. Like functions, we can think of data both in the abstract, or by implementation. For instance, the attitude of a spacecraft is abstract (DIV-1). A set of quaternions stored into memory is an implementation (DIV-2). Whether those quaternions are stored with any bit headers, or in little or big Endian is physical (DIV-3).</p>
+
+<blockquote>
+  <p>CAMEO gives us many tools for representing data. Exchange Elements are the default unit, and can be further refined with Signals. For instance, an exchange element might be created called “Power Command”, which refines into two signals “Power On” and “Power Off”.</p>
+</blockquote>
+
+:ET

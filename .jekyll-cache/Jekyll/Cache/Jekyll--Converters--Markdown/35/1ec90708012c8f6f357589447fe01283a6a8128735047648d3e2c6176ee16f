@@ -1,0 +1,61 @@
+I"�<p>A short reference for using the Flux package in Julia to setup and train deep learning networks. The offical website can be found <a href="https://fluxml.ai/Flux.jl/stable/">here</a>.</p>
+
+<!--more-->
+
+<h3 id="basics">Basics</h3>
+
+<p>An efficient way to use one-hot encoding (better than regular arrays). This produces a one-hot vector of length 5, with a 1 at the second position.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>onehot(2, 1:5)  
+</code></pre></div></div>
+
+<p>Softmax normalizes a vector such that the sum of all entries is exactly equal to 1 (as it should be for probability distributions). Here, <code class="language-plaintext highlighter-rouge">xs[2]</code> is a vector representing the 2nd training example.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>softmax(model(xs[2])) 
+</code></pre></div></div>
+
+<p>And now setting up a neural network:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>model = Dense(2,3,sigma)
+L(x,y) = Flux.mse(model(x),y)
+opt = ADAM()
+Flux.train!(L, zip(xs, ys), opt)
+</code></pre></div></div>
+
+<p>Where:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">xs</code> is the feature vector</li>
+  <li><code class="language-plaintext highlighter-rouge">ys</code> is the label vector</li>
+  <li><code class="language-plaintext highlighter-rouge">L(x,y)</code> is the loss function</li>
+</ol>
+
+<h3 id="deep-learning">Deep Learning</h3>
+
+<p>We can build deep learning networks (i.e. networks with more than 1 layer) by using the Chain function.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>layer1 = Dense(2, 3, sigma)
+layer2 = Dense(3, 2, identity)
+layer3 = softmax
+
+model = Chain(layer1, layer2, layer3)  
+L(x,y) = Flux.crossentropy(model(x), y)
+opt = SGD(params(model))
+</code></pre></div></div>
+
+<h3 id="batching">Batching</h3>
+
+<p>Batching is a function that merges many data points into a single matrix. This is more efficient to train because matrix-matrix multiplication has been heavily optimized. To create mini-batches, we can call the batch function on a subset of our data.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>databatch = (Flux.batch(xs), Flux.batch(ys))
+Flux.train!(L, Iterators.repeated(databatch, 1000), opt)
+</code></pre></div></div>
+
+<p>Second line: Flux takes the model, and trains it on the dataset in databatch, and repeats 1000 times.</p>
+
+<h3 id="callbacks">Callbacks</h3>
+
+<p>A function that we’d like Flux to call every so often. This is useful for capturing the loss or learning progress while we’re training a model. We can wrap our callback function with the throttle function to set how often (in seconds).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Flux.throttle(callback, 1)
+</code></pre></div></div>
+:ET
