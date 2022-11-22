@@ -15,7 +15,9 @@ This post is a collection of notes and lessons from the Google Data Analytics Ce
 
 ### Overview
 
-### The lifecyce of data. 
+To begin, let's be clear that data analytics is not machine learning. In the abstract, they might be the same (i.e. drawing patterns from your data), but machine learning is much more complex mathematically. In contrast, data analytics is limited to a few pretty straightforward computations. 
+
+### The Lifecyce of Data. 
 
 Why do we discuss the lifestyle of data? Because data analytics is not just about obtaining results, it's about collecting, managing, and then closing out a process. 
 
@@ -88,6 +90,22 @@ Other common pitfalls of the data cleaning process:
 10. Not checking for misfielded values
 
 
+### Data Analysis
+
+This is a bit tough to describe, because the analysis you perform is going to be different depending on your application. But in general, you'll have a few toolsets you can use. For smaller databases, excel is perfectly sufficient. 
+
+For anything larger, you'll want to look at SQL, R, or some other coding language such as Python. Personally, I like using Python with the Pandas library. Regardless of what tool you use, there are some common functions you're likely to run into. 
+
+#### Filters and Queries
+
+Basically equivalent to "get all results that satisfy some condition".
+
+
+#### Merges
+
+In a relational database, you data might be split across many different tables (usually to do with how it gets collected). Merges provide a way to combine results into one place. 
+
+
 ### Data Visualization
 
 Principles of good data visualization:
@@ -103,5 +121,5 @@ You can also review your presentation with these questions:
 2. What does the data say?
 3. What does the visual say?
 
-Finally, make sure to consider the use case. For instance, if we need to monitor new data as it comes in, an interactive dashboard with the proper backend support would be best. However, if we wanted historical data, a dashboard could be too complex. This is an example of how the visualization step is not independent of our initial setup. 
+Finally, make sure to consider the use case. For instance, if we need to monitor new data as it comes in, an interactive dashboard with the proper backend support would be best (e.g. Tableau). However, if we wanted historical data, a dashboard could be too complex. 
 

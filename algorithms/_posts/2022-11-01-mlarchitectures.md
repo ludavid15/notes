@@ -293,9 +293,10 @@ The output image will have a number of channels equal to the number of filters w
 
 ### Unit or Pointwise Convolutions
 
-Consider what happens when you use a (1x1) kernel. The output doesn't get reduced in dimension, but the number of *channels* is changed depending on the number of kerenels. This type of convolution is often used to reduce the # of channels, and you can think of it as a channel-wise version of a pooling layer.
+Consider what happens when you use a (1x1) kernel. The output doesn't get reduced in dimension, but the number of *channels* is changed depending on the number of kernels. This type of convolution is often used to reduce the # of channels, and you can think of it as a channel-wise version of a pooling layer.
 
 > Pooling layers are "kernels" which use the function max or average. They are used to reduce the height and width of an input, but not the number of channels. 
+
 
 ### Transpose Convolution
 
@@ -312,9 +313,25 @@ In a deep convolutional neural network, a residual connection (or sometimes call
 > Another way to think about these is that they work sort of like bypass diodes in a solar panel, which provide a path for the current to continue flowing, even if the cell becomes faulty. 
 
 
-### Transformer Network
+### Transformer Network (2017)
 
 A transformer network is a CNN inspired, attention-based approach to natural language processing. In a transformer network, we do away with the recursive component all together, and instead play a game of "word association". 
+
+To begin, let's define a term called **self-attention**. This is an attention based representation of a word. In contrast to embedding vectors which are static, these are context specific. For example, in a sentence containing the words *company*, *phone*, and *technology*, we would guess that the world **apple** is unlikely to refer to a fruit.
+
+We'll make this a function of three parameters, q (query), K (Key), and V (Value). These are computed with a weight matrix and your input word.
+
+$$A(q, K, V) = softmax\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+
+$$q^{<3>} = W^Q x^{<3>}$$
+
+Next, we would like to take the inner product of every query and key pair. This is akin to asking the question, "how relevant is this word towards the meaning of this other word?" (see how this is a type of *attention*?). These query "answers" are first softmaxed, and then multiplied by each value to compute the total "self attention" of that word. 
+
+![Self Attention](../images/transformer.jpg){: .center-image }
+
+The next concept to discuss is **multi-head attention**. Basically, we are recomputing the self-attention parameter for each word, but now with different weight matrices which determine q, K, and V. This is tricky, but the idea is that each "head" is asking a different relational question (e.g. what, when, how, why, etc.). Having multiple "heads" allows for a richer representation of the sentence.
+
+And finally, to put this all together towards an actual translation algorithm, a number of these multi-head attention blocks are set up in an encoder/decoder structure. For more details, you can check out the original paper, called *Attention Is All You Need* by Vaswani (2017).
 
 
 ### Compound Architectures

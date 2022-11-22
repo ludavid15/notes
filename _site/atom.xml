@@ -4,7 +4,7 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2022-11-05T16:59:01-07:00</updated>
+ <updated>2022-11-10T20:06:13-08:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
@@ -402,7 +402,7 @@ model = Dense(2, 1)
 
 &lt;h3 id=&quot;unit-or-pointwise-convolutions&quot;&gt;Unit or Pointwise Convolutions&lt;/h3&gt;
 
-&lt;p&gt;Consider what happens when you use a (1x1) kernel. The output doesn’t get reduced in dimension, but the number of &lt;em&gt;channels&lt;/em&gt; is changed depending on the number of kerenels. This type of convolution is often used to reduce the # of channels, and you can think of it as a channel-wise version of a pooling layer.&lt;/p&gt;
+&lt;p&gt;Consider what happens when you use a (1x1) kernel. The output doesn’t get reduced in dimension, but the number of &lt;em&gt;channels&lt;/em&gt; is changed depending on the number of kernels. This type of convolution is often used to reduce the # of channels, and you can think of it as a channel-wise version of a pooling layer.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Pooling layers are “kernels” which use the function max or average. They are used to reduce the height and width of an input, but not the number of channels.&lt;/p&gt;
@@ -422,9 +422,25 @@ model = Dense(2, 1)
   &lt;p&gt;Another way to think about these is that they work sort of like bypass diodes in a solar panel, which provide a path for the current to continue flowing, even if the cell becomes faulty.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;transformer-network&quot;&gt;Transformer Network&lt;/h3&gt;
+&lt;h3 id=&quot;transformer-network-2017&quot;&gt;Transformer Network (2017)&lt;/h3&gt;
 
 &lt;p&gt;A transformer network is a CNN inspired, attention-based approach to natural language processing. In a transformer network, we do away with the recursive component all together, and instead play a game of “word association”.&lt;/p&gt;
+
+&lt;p&gt;To begin, let’s define a term called &lt;strong&gt;self-attention&lt;/strong&gt;. This is an attention based representation of a word. In contrast to embedding vectors which are static, these are context specific. For example, in a sentence containing the words &lt;em&gt;company&lt;/em&gt;, &lt;em&gt;phone&lt;/em&gt;, and &lt;em&gt;technology&lt;/em&gt;, we would guess that the world &lt;strong&gt;apple&lt;/strong&gt; is unlikely to refer to a fruit.&lt;/p&gt;
+
+&lt;p&gt;We’ll make this a function of three parameters, q (query), K (Key), and V (Value). These are computed with a weight matrix and your input word.&lt;/p&gt;
+
+\[A(q, K, V) = softmax\left(\frac{QK^T}{\sqrt{d_k}}\right)V\]
+
+\[q^{&amp;lt;3&amp;gt;} = W^Q x^{&amp;lt;3&amp;gt;}\]
+
+&lt;p&gt;Next, we would like to take the inner product of every query and key pair. This is akin to asking the question, “how relevant is this word towards the meaning of this other word?” (see how this is a type of &lt;em&gt;attention&lt;/em&gt;?). These query “answers” are first softmaxed, and then multiplied by each value to compute the total “self attention” of that word.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/transformer.jpg&quot; alt=&quot;Self Attention&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The next concept to discuss is &lt;strong&gt;multi-head attention&lt;/strong&gt;. Basically, we are recomputing the self-attention parameter for each word, but now with different weight matrices which determine q, K, and V. This is tricky, but the idea is that each “head” is asking a different relational question (e.g. what, when, how, why, etc.). Having multiple “heads” allows for a richer representation of the sentence.&lt;/p&gt;
+
+&lt;p&gt;And finally, to put this all together towards an actual translation algorithm, a number of these multi-head attention blocks are set up in an encoder/decoder structure. For more details, you can check out the original paper, called &lt;em&gt;Attention Is All You Need&lt;/em&gt; by Vaswani (2017).&lt;/p&gt;
 
 &lt;h3 id=&quot;compound-architectures&quot;&gt;Compound Architectures&lt;/h3&gt;
 
