@@ -1,0 +1,78 @@
+I"e<p>Just some closing thoughts on this topic, as well as some random notes and questions I’ve left for myself in the future.</p>
+
+<!--more-->
+
+<p>In the second post on AI and Music, we discussed why it’s difficult to generate music with AI. Along the way, we presented different learning <em>archictures</em>, and how they were applied to the problem through different <em>strategies</em>. Here is a quick summary of everything we went through:</p>
+
+<h3 id="list-of-architectures">List of Architectures</h3>
+
+<ol>
+  <li>Feedforward</li>
+  <li>Autoencoder</li>
+  <li>Variational Autoencoder</li>
+  <li>Restricted Boltzman Machine</li>
+  <li>Recurrent Networks</li>
+  <li>Convolutional Networks</li>
+  <li>Conditioning Convolutional Networks</li>
+  <li>Generative Adversarial Networks</li>
+  <li>Reinforcement Learning</li>
+</ol>
+
+<h3 id="list-of-strategies">List of Strategies</h3>
+
+<ol>
+  <li>Single step feedforward</li>
+  <li>Decoder feedforward</li>
+  <li>Sampling based methods</li>
+  <li>Iterative feedforward</li>
+  <li>Input manipulation</li>
+  <li>Reinforcement</li>
+  <li>Unit Selection</li>
+</ol>
+
+<h3 id="list-of-challenges">List of Challenges</h3>
+
+<ol>
+  <li>Creatio Ex nihilo (creation from nothing)</li>
+  <li>Length variability (music of different lengths)</li>
+  <li>Content variability (is it deterministic?)</li>
+  <li>Expressiveness (dynamics and feeling)</li>
+  <li>Melody-harmony consistency</li>
+  <li>Control (user ability to affect outcome)</li>
+  <li>Style transfer (applicable to images, but can it apply to music?)</li>
+  <li>Structure (songs formats, AABA, etc.)</li>
+  <li>Originality (not just repeating information from training data)</li>
+  <li>Incrementality</li>
+  <li>Adaptability</li>
+  <li>Explainability</li>
+</ol>
+
+<h3 id="recurrent-vs-convolutional-networks">Recurrent vs Convolutional Networks</h3>
+
+<p>Convolutional networks have not been explored thoroughly as a way to generate or recognize music. Maybe this is because music representation is so complex that it’s difficult to visualize how a CNN would apply.</p>
+
+<p>That being said, convolutional networks do have two advantages:</p>
+<ol>
+  <li>Faster to train and easier to parallelize</li>
+  <li>By nature of their implementation, convolutional networks increase the volume of data.</li>
+</ol>
+
+<h3 id="transfer-learning">Transfer Learning</h3>
+
+<p>Transfer learning for music is another area that really hasn’t been explored in depth, but which could be enormously useful, if we use the (more developed) subject of image generation as a sign of things to come.</p>
+
+<h3 id="open-questions">Open Questions</h3>
+
+<ol>
+  <li>
+    <p>Why do some training sets transpose all songs into a single key, while other training sets transpose all songs into every key? Is there a difference?</p>
+  </li>
+  <li>
+    <p>Can we use a lead sheet as the input, with a polyphonic melody/solo as the output? Maybe the pianist can be the conditional input (i.e. toggle style for different players)</p>
+  </li>
+  <li>
+    <p>Can we apply Elgammal’s CAN, to create jazz solos that seem real, but which are not easily classified into an existing musicians’s style?</p>
+  </li>
+</ol>
+
+:ET

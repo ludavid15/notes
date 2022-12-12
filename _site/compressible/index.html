@@ -185,20 +185,17 @@
       <div class="post">
   <h1 class="post-title">Compressible Flow</h1>
   Last Updated: <span class="post-date">09 May 2021</span>
-  <p>While viscous flow deals with liquids, or flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects.</p>
+  <p>While viscous flow deals with flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects.</p>
 
 <!--more-->
+
+<p><strong>Table of Contents</strong></p>
 
 <ul id="markdown-toc">
   <li><a href="#stagnation-properties" id="markdown-toc-stagnation-properties">Stagnation Properties</a></li>
   <li><a href="#waves" id="markdown-toc-waves">Waves</a>    <ul>
       <li><a href="#acoustic-wave-theory" id="markdown-toc-acoustic-wave-theory">Acoustic Wave Theory</a></li>
-      <li><a href="#method-of-characteristics" id="markdown-toc-method-of-characteristics">Method of Characteristics</a>        <ul>
-          <li><a href="#1d-unsteady-moc" id="markdown-toc-1d-unsteady-moc">1D Unsteady MOC</a></li>
-          <li><a href="#2d-steady-moc" id="markdown-toc-2d-steady-moc">2D Steady MOC</a></li>
-          <li><a href="#minimum-length-nozzle-calculation-using-moc" id="markdown-toc-minimum-length-nozzle-calculation-using-moc">Minimum Length Nozzle Calculation using MOC</a></li>
-        </ul>
-      </li>
+      <li><a href="#method-of-characteristics" id="markdown-toc-method-of-characteristics">Method of Characteristics</a></li>
     </ul>
   </li>
   <li><a href="#shocks" id="markdown-toc-shocks">Shocks</a>    <ul>
@@ -275,18 +272,19 @@ Given the initial conditions about the displacement and rate, the solution for t
 
 <p>Alright here’s where it get complicated. It turns out that when we no longer assume a constant speed of sound, the equations are a tad unsolvable as they are. To this end, mathemeticians have defined a way around this. Instead of solving the entire system for every point in space, we can define some <em>characteristic lines</em>. We can apply a constraint (i.e. some property is constant along the line), and this gives us the final equation we need to solve the system. Then if we define many lines, we can nearly cover the entire region we are solving for. By applying constraints at their intersection points, we can solve a big system of equations and have an approximate solution to our problem.</p>
 
-<h4 id="1d-unsteady-moc">1D Unsteady MOC</h4>
+<p><strong>1D Unsteady MOC</strong></p>
 
-<p>Ok, well I’ve outlined the principle behind it, but I need to actually write the section on how to do this. :(</p>
+<p>More details incoming!</p>
 
-<h4 id="2d-steady-moc">2D Steady MOC</h4>
+<p><strong>2D Steady MOC</strong></p>
 
-<h4 id="minimum-length-nozzle-calculation-using-moc">Minimum Length Nozzle Calculation using MOC</h4>
+<p>More details incoming!</p>
+
+<p><strong>Minimum Length Nozzle Calculation using MOC</strong></p>
 
 <p>With MOC, it is possible to design a nozzle such that the local curvature exactly cancels any incident expansion waves (these result from the diverging section right after the throat). 
  </p>
 <h2 id="shocks">Shocks</h2>
-
 <p>Shocks occur when objects travel faster than the acoustic speed of the fluid it’s in (speed measured relative to the fluid). This leads to a sudden discontinuity in the fluid’s properties as it transitions from supersonic to subsonic velocities.</p>
 
 <h3 id="normal-shocks">Normal Shocks</h3>
@@ -514,6 +512,14 @@ At a free boundary, waves reflect in opposite manners. A shock reflects as an ex
     
       <li>
         
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
           
           <h3>
             <a href="/notes/fluidFundamentals/">
@@ -582,7 +588,7 @@ At a free boundary, waves reflect in opposite manners. A shock reflects as an ex
         
           
           <h3>
-            <a href="/notes/misc/">
+            <a href="/notes/fluidnumbers/">
               Non-Dimensional Numbers
               <small>07 May 2021</small>
             </a>
@@ -619,8 +625,8 @@ At a free boundary, waves reflect in opposite manners. A shock reflects as an ex
 <meta property="og:title" content="Compressible Flow" />
 <meta name="author" content="David Lu" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="While viscous flow deals with liquids, or flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects." />
-<meta property="og:description" content="While viscous flow deals with liquids, or flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects." />
+<meta name="description" content="While viscous flow deals with flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects." />
+<meta property="og:description" content="While viscous flow deals with flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects." />
 <link rel="canonical" href="https://ludavid15.github.io//notes/compressible/" />
 <meta property="og:url" content="https://ludavid15.github.io//notes/compressible/" />
 <meta property="og:site_name" content="Notes" />
@@ -629,7 +635,7 @@ At a free boundary, waves reflect in opposite manners. A shock reflects as an ex
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Compressible Flow" />
 <script type="application/ld+json">
-{"description":"While viscous flow deals with liquids, or flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects.","url":"https://ludavid15.github.io//notes/compressible/","headline":"Compressible Flow","dateModified":"2021-05-09T00:00:00-07:00","datePublished":"2021-05-09T00:00:00-07:00","author":{"@type":"Person","name":"David Lu"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/compressible/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"description":"While viscous flow deals with flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects.","url":"https://ludavid15.github.io//notes/compressible/","headline":"Compressible Flow","dateModified":"2021-05-09T00:00:00-07:00","datePublished":"2021-05-09T00:00:00-07:00","author":{"@type":"Person","name":"David Lu"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/compressible/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   

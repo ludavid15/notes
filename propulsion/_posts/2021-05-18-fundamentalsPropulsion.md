@@ -31,10 +31,10 @@ Other ideas that we have come up with, but cannot achieve yet:
 
 Although not explicitly stated, all relevant propulsion systems work with **fluids**. 
 
-> **Q: What is a good measure for efficiency?**
+> What is a good measure for efficiency?
 
 <p class=message>
-A: As with most things in life, very little is free. Since the goal is to produce thrust, a common measure of effiency is how much thrust gets produced per unit weight of expendable mass. Naturally, this is not so good a quantifier for something like a battery powered quadcopter, but for anything that must carry fuel or propellent, thrust per mass flow is usually what is meant by "efficiency". 
+As with most things in life, very little is free. Since the goal is to produce thrust, a common measure of effiency is how much thrust gets produced per unit weight of expendable mass. Naturally, this is not so good a quantifier for something like a battery powered quadcopter, but for anything that must carry fuel or propellent, thrust per mass flow is usually what is meant by "efficiency". 
 </p>
 
 ## Mechanical Propulsion
@@ -52,12 +52,7 @@ From a force perspective, the fluid's flow over each propeller blade creates a p
 
 Propeller driven propulsion system are further classified by *how power is supplied*. 
 
-1. **Turboprop and Turbofan** - a jet engine's turbine is used to turn the propeller. This is a little tricky, because jet engines are capable of producing thrust themselves, but they use an entirely different method. 
-
-> **Turboprop** - the jet engine turns a propeller.
-
-> **Turbofan** - the jet engine turns a fan (like a propeller, but with more blades and also sits inside a duct).
-
+1. **Turboprop and Turbofan** - a jet engine's turbine is used to turn the propeller. Although the jet engine also does produce thrust, the propeller is what's mostly responsible.
 2. **Electric Propulsion** - some power source drives an electric motor which turns the propellor. Batteries have poor energy density, which is why you don't often see electric airplanes.
 3. **Gas Engine** - relies on good old combustion with cylinders and pistons to turn the propeller.
 

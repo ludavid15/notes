@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Non-Dimensional Numbers
-permalink: /misc/
+permalink: /fluidnumbers/
 excerpt_separator: <!--more-->
 mathjax: true
 categories: fluids

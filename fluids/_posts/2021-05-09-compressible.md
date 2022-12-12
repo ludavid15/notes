@@ -7,11 +7,11 @@ mathjax: true
 categories: fluids
 ---
 
-
-
-While viscous flow deals with liquids, or flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold's number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects.
+While viscous flow deals with flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold's number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects.
 
 <!--more-->
+
+**Table of Contents**
 
 * TOC
 {:toc}
@@ -72,21 +72,19 @@ If we remove this assumption, the local speed at which the disturbance propagate
 
 Alright here's where it get complicated. It turns out that when we no longer assume a constant speed of sound, the equations are a tad unsolvable as they are. To this end, mathemeticians have defined a way around this. Instead of solving the entire system for every point in space, we can define some *characteristic lines*. We can apply a constraint (i.e. some property is constant along the line), and this gives us the final equation we need to solve the system. Then if we define many lines, we can nearly cover the entire region we are solving for. By applying constraints at their intersection points, we can solve a big system of equations and have an approximate solution to our problem.
 
-#### 1D Unsteady MOC
+**1D Unsteady MOC**
 
-Ok, well I've outlined the principle behind it, but I need to actually write the section on how to do this. :(
+More details incoming!
 
-#### 2D Steady MOC
+**2D Steady MOC**
 
+More details incoming!
 
-
-
-#### Minimum Length Nozzle Calculation using MOC
+**Minimum Length Nozzle Calculation using MOC**
 
 With MOC, it is possible to design a nozzle such that the local curvature exactly cancels any incident expansion waves (these result from the diverging section right after the throat). 
  
 ## Shocks
-
 Shocks occur when objects travel faster than the acoustic speed of the fluid it's in (speed measured relative to the fluid). This leads to a sudden discontinuity in the fluid's properties as it transitions from supersonic to subsonic velocities. 
 
 ### Normal Shocks
