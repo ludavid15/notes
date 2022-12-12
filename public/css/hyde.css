@@ -56,9 +56,9 @@ html {
 .sidebar {
   text-align: center;
   padding: 2rem 1rem;
-  color: rgba(255,255,255,.5);
-  /*background-color: #202020;*/
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../sidebarImage.jpg');
+  color: rgb(224, 218, 205);
+  background-color: #3c4a37;
+  /*background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../sidebarImage.jpg');*/
   background-size: cover;
 }
 @media (min-width: 48em) {
@@ -74,14 +74,14 @@ html {
 
 /* Sidebar links */
 .sidebar a {
-  color: #fff;
+  color: rgb(255, 255, 255);
 }
 
 /* About section */
 .sidebar-about h1 {
-  color: #fff;
+  color: rgb(255, 255, 255);
   margin-top: 0;
-  font-family: "Abril Fatface", serif;
+  font-family: "Georgia", serif;
   font-size: 3.25rem;
 }
 

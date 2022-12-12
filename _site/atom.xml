@@ -4,13 +4,362 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2022-11-10T20:06:13-08:00</updated>
+ <updated>2022-12-11T16:53:12-08:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Model Based Systems Engineering</title>
+   <link href="https://ludavid15.github.io//mbse/"/>
+   <updated>2022-12-09T00:00:00-08:00</updated>
+   <id>https://ludavid15.github.io//mbse</id>
+   <content type="html">&lt;p&gt;With better computers, engineers have increasingly turned to model based systems engineering, or MBSE as a solution to the engineering process. After all, things like CAD, CFD, and FEM have enabled us to model complex physics, so why not create a program to model a project?&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;The goal of model based systems engineering is to improve upon two things that happen very slowly with traditional requirements documents:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;A way to track the design baseline.&lt;/li&gt;
+  &lt;li&gt;Once a change is made, an easy way to explore how it impacts other systems.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So what aspects of a system can we model? Here’s a list.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Physical Configuration&lt;/li&gt;
+  &lt;li&gt;Function/Behavior&lt;/li&gt;
+  &lt;li&gt;Interactions/Data&lt;/li&gt;
+  &lt;li&gt;Heirarchies/Definitions&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;physical-configuration&quot;&gt;Physical Configuration&lt;/h4&gt;
+
+&lt;p&gt;Fairly straightfoward, we need to track the hardware, physical connectors, and physical properties (shape, weight, thermal resistence, etc.). If our project was a sentence, the physical configuration would be the subject.&lt;/p&gt;
+
+&lt;h4 id=&quot;functionbehavior&quot;&gt;Function/Behavior&lt;/h4&gt;
+
+&lt;p&gt;Verbs. Things that happen. You could say that function is the first thing we choose. Hardware is designed to meet a function, not the other way around.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Technically this isn’t always true. When a heritage (proven) piece of hardware is selected, its function is already defined, and then engineers build the rest of the system around it. But maybe we just pretend like the function still preceded the hardware?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;interactions&quot;&gt;Interactions&lt;/h4&gt;
+
+&lt;p&gt;Interactions can be very abstract, but are also very important. A function might include an interaction, (i.e. a satellite interacts with a ground station by sending telemetry), but a physical configuration might also include an interaction (i.e. the baseplate on a satellite draws heat away from the electronics).&lt;/p&gt;
+
+&lt;p&gt;And inherent to interactions is data and information. What information is tranferred? How is information formatted? Where does information go?&lt;/p&gt;
+
+&lt;h4 id=&quot;definitions&quot;&gt;Definitions&lt;/h4&gt;
+
+&lt;p&gt;Definitions explain the words we create to group stuff together. If many pieces of hardware work together to provide telemetry, we might designate a “telemetry subsystem”. These abstractions are an important part of communicating complex ideas, but can also get messy. Definitions are applicable to any of the three prior groupings: hardware, functions, and interactions.&lt;/p&gt;
+
+&lt;h3 id=&quot;engineering-in-practice&quot;&gt;Engineering in Practice&lt;/h3&gt;
+
+&lt;p&gt;In real life, we often do not build things up from scratch. Instead a project is often an addition to, or a modification of something that already exists. Even though this is meant to simplify the process, it also creates a lot of additional work (as anyone who has tried to read someone else’s code can testify).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;How does this impact the concept of systems engineering?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;dodaf&quot;&gt;DoDAF&lt;/h3&gt;
+
+&lt;p&gt;The Department of Defense Architecture Framework is an effort to generalize how we explain complex systems. Before getting into what DodAF is, let’s be clear that DoDAF is NOT model based systems engineering. DoDAF only defines a set of “viewpoints”, which each viewpoint showing a different aspect of the system. For example, systems viewpoint 4 (SV4) shows functional flow diagrams, while SV1’s show a high level overview of the physical elements.&lt;/p&gt;
+
+&lt;p&gt;Consider an analogy - in CAD, we build 3D shapes. When we try to represent them on a 2D screen, we must choose a viewing angle and projection, but there are likely some standard views that everyone expects. Maybe a cross section to show the internal structure, or a profile view if it’s a flat plate. DoDAF (and in fact any system diagram) follows the same idea.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DoDAF Views&lt;/td&gt;
+      &lt;td&gt;Explanation&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SV-1&lt;/td&gt;
+      &lt;td&gt;High level hardware overview&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SV-2&lt;/td&gt;
+      &lt;td&gt;Detailed hardware overview&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SV-4&lt;/td&gt;
+      &lt;td&gt;Functional flow diagram&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SV-10b&lt;/td&gt;
+      &lt;td&gt;States and Modes transitions&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SV-10c&lt;/td&gt;
+      &lt;td&gt;Sequence Diagrams&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DIV-1&lt;/td&gt;
+      &lt;td&gt;Conceptual Data Model&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DIV-2&lt;/td&gt;
+      &lt;td&gt;Logical Data Model&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DIV-3&lt;/td&gt;
+      &lt;td&gt;Physical Data Model&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;sv-4&quot;&gt;SV-4&lt;/h3&gt;
+
+&lt;p&gt;This is the functional viewpoint. In contrast to an SV-10c, an SV-4 is the functional model of your hardware, and NOT necessarily your order of operations.&lt;/p&gt;
+
+&lt;p&gt;In an SV-4, we can either state a heirarchy, (A consists of B, C, D), or we can show it using a flow chart (B, C, and D interact to accomplish A). The first version is known as an SV-4a, and the latter, more complex version is called an SV-4b.&lt;/p&gt;
+
+&lt;h3 id=&quot;sv-10c&quot;&gt;SV-10c&lt;/h3&gt;
+
+&lt;p&gt;This is a sequence diagram. In contrast to the SV-4, an SV-10c is not primarily to meant to show the structure of your functions and hardware performers. Instead, an SV-10c tends to be a more explicit (and better) representation of your order of operations.&lt;/p&gt;
+
+&lt;h3 id=&quot;div&quot;&gt;DIV&lt;/h3&gt;
+
+&lt;p&gt;The Data information viewpoint breaks down the heirarchy of data. Like functions, we can think of data both in the abstract, or by implementation. For instance, the attitude of a spacecraft is abstract (DIV-1). A set of quaternions stored into memory is an implementation (DIV-2). Whether those quaternions are stored with any identifying bit headers, or in little or big Endian is physical (DIV-3).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;CAMEO gives us many tools for representing data. Exchange Elements are the default unit, and can be further refined with Signals. For instance, an exchange element might be created called “Power Command”, which refines into two signals “Power On” and “Power Off”.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Music and AI - Part 4</title>
+   <link href="https://ludavid15.github.io//musicAI4/"/>
+   <updated>2022-12-01T00:00:00-08:00</updated>
+   <id>https://ludavid15.github.io//musicAI4</id>
+   <content type="html">&lt;p&gt;Just some closing thoughts on this topic, as well as some random notes and questions I’ve left for myself in the future.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;In the second post on AI and Music, we discussed why it’s difficult to generate music with AI. Along the way, we presented different learning &lt;em&gt;archictures&lt;/em&gt;, and how they were applied to the problem through different &lt;em&gt;strategies&lt;/em&gt;. Here is a quick summary of everything we went through:&lt;/p&gt;
+
+&lt;h3 id=&quot;list-of-architectures&quot;&gt;List of Architectures&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Feedforward&lt;/li&gt;
+  &lt;li&gt;Autoencoder&lt;/li&gt;
+  &lt;li&gt;Variational Autoencoder&lt;/li&gt;
+  &lt;li&gt;Restricted Boltzman Machine&lt;/li&gt;
+  &lt;li&gt;Recurrent Networks&lt;/li&gt;
+  &lt;li&gt;Convolutional Networks&lt;/li&gt;
+  &lt;li&gt;Conditioning Convolutional Networks&lt;/li&gt;
+  &lt;li&gt;Generative Adversarial Networks&lt;/li&gt;
+  &lt;li&gt;Reinforcement Learning&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;list-of-strategies&quot;&gt;List of Strategies&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Single step feedforward&lt;/li&gt;
+  &lt;li&gt;Decoder feedforward&lt;/li&gt;
+  &lt;li&gt;Sampling based methods&lt;/li&gt;
+  &lt;li&gt;Iterative feedforward&lt;/li&gt;
+  &lt;li&gt;Input manipulation&lt;/li&gt;
+  &lt;li&gt;Reinforcement&lt;/li&gt;
+  &lt;li&gt;Unit Selection&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;list-of-challenges&quot;&gt;List of Challenges&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Creatio Ex nihilo (creation from nothing)&lt;/li&gt;
+  &lt;li&gt;Length variability (music of different lengths)&lt;/li&gt;
+  &lt;li&gt;Content variability (is it deterministic?)&lt;/li&gt;
+  &lt;li&gt;Expressiveness (dynamics and feeling)&lt;/li&gt;
+  &lt;li&gt;Melody-harmony consistency&lt;/li&gt;
+  &lt;li&gt;Control (user ability to affect outcome)&lt;/li&gt;
+  &lt;li&gt;Style transfer (applicable to images, but can it apply to music?)&lt;/li&gt;
+  &lt;li&gt;Structure (songs formats, AABA, etc.)&lt;/li&gt;
+  &lt;li&gt;Originality (not just repeating information from training data)&lt;/li&gt;
+  &lt;li&gt;Incrementality&lt;/li&gt;
+  &lt;li&gt;Adaptability&lt;/li&gt;
+  &lt;li&gt;Explainability&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;recurrent-vs-convolutional-networks&quot;&gt;Recurrent vs Convolutional Networks&lt;/h3&gt;
+
+&lt;p&gt;Convolutional networks have not been explored thoroughly as a way to generate or recognize music. Maybe this is because music representation is so complex that it’s difficult to visualize how a CNN would apply.&lt;/p&gt;
+
+&lt;p&gt;That being said, convolutional networks do have two advantages:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Faster to train and easier to parallelize&lt;/li&gt;
+  &lt;li&gt;By nature of their implementation, convolutional networks increase the volume of data.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;transfer-learning&quot;&gt;Transfer Learning&lt;/h3&gt;
+
+&lt;p&gt;Transfer learning for music is another area that really hasn’t been explored in depth, but which could be enormously useful, if we use the (more developed) subject of image generation as a sign of things to come.&lt;/p&gt;
+
+&lt;h3 id=&quot;open-questions&quot;&gt;Open Questions&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Why do some training sets transpose all songs into a single key, while other training sets transpose all songs into every key? Is there a difference?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Can we use a lead sheet as the input, with a polyphonic melody/solo as the output? Maybe the pianist can be the conditional input (i.e. toggle style for different players)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Can we apply Elgammal’s CAN, to create jazz solos that seem real, but which are not easily classified into an existing musicians’s style?&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Music and AI - Part 3</title>
+   <link href="https://ludavid15.github.io//musicAI3/"/>
+   <updated>2022-11-19T00:00:00-08:00</updated>
+   <id>https://ludavid15.github.io//musicAI3</id>
+   <content type="html">&lt;p&gt;In the previous post, we looked at how different architectures have been applied to music generation. But this is a bit like putting your cart before the horse, since we haven’t discussed in detail the kind of attributes we’re looking for. This post goes over some high level considerations - things that could serve as requirements for a project. Depending on your specific needs and desires, you may end up selecting a different architecture.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;part-1---content-variety&quot;&gt;Part 1 - Content Variety&lt;/h2&gt;
+
+&lt;p&gt;In music, there is not going to be a “best” or most “optimal” solution. This means that we actually do want some way to add randomness into our process.&lt;/p&gt;
+
+&lt;h3 id=&quot;11---sampling&quot;&gt;1.1 - Sampling&lt;/h3&gt;
+
+&lt;p&gt;Sampling methods work a little like the feedforward decoder, but instead of generating examples which are &lt;em&gt;deterministic&lt;/em&gt; based on a seed, examples are randomly generated to match a probability distribution. Some famous sampling strategies include: Metropolis-Hastings algorithm, Gibbs Sampling, and block Gibbs Sampling.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Another way to think about sampling methods is that they are a form of generative AI that is based on stochastic models which learn probability distributions (variational autoencoders, RBM’s, etc.). For this reason, we talk about them as a different type of solution, but conceptually, they can manifest just like the decoder in example 2 (i.e. a seed is used to randomly generate examples).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;With regard to music, there are two ways to apply this type of sampling approach. The first, is in the vertical dimension, (i.e. chord - does the voicing of this chord make sense?). Recurrent Boltzman Machines are effective for this kind of work. The second is in the horizontal dimension (i.e. a melody or sequence of notes - does this sequence of notes make a coherent melody?). This kind of sampling is better achieved by an RNN.&lt;/p&gt;
+
+&lt;h3 id=&quot;12---sampling-control-through-interpolation&quot;&gt;1.2 - Sampling Control through Interpolation&lt;/h3&gt;
+
+&lt;p&gt;So we mentioned earlier that decoders only allow information to pass through one way, but there’s a way around this: interpolation in the latent space.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The latent space is the space formed by the latent variables. (e.g. if our seed was (8,4,5,2), there are 4 latent variables). We could perform clustering in the latent space to identify patterns to the seeds which produce our training data.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In this sense, we aren’t really feeding information back through the decoder, but rather applying even more machine learning on the seeds to understand the significance of each digit. In other words, given a set of coordinate &lt;em&gt;numbers&lt;/em&gt;, we’re learning if they are for a cartesian, polar, or spherical &lt;em&gt;system&lt;/em&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hadjeres and Nielsen discuss something called geodesic latent space regularization, which is supposed to be better than linear interpolation.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;13---training-for-originality&quot;&gt;1.3 - Training for Originality&lt;/h3&gt;
+
+&lt;p&gt;For many skills, copying is easier than creating, and this is certainly true for generative AI as well. How can we bias our architecture to create original content, and not just poor copies? Importantly, we would like this to happen &lt;em&gt;a priori&lt;/em&gt;, and not &lt;em&gt;a posteriori&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;The first approach involves a sort of &lt;em&gt;ad hoc&lt;/em&gt; tuning of parameters within the archicture until we get results that mostly seem original. This can certainly be effective, but maybe lacks some of the intentionality we’re going for.&lt;/p&gt;
+
+&lt;p&gt;A second approach is a modification of the traditional generative adversarial network. In a traditional GAN, the classifier returns a signal of how easily/confidently it was able to classify the generated content as real or fake. The new approach, as outlined by Elgammal, called a &lt;em&gt;creative&lt;/em&gt; adversarial network (CAN), uses these two contradictory forces:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The same signal in a traditional GAN about how easily it is able to distinguish between real and fake input.&lt;/li&gt;
+  &lt;li&gt;The ease with which it is able to classify the input into a learned style.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Thus, the generative part of the network is incentived to create ouput that feels real, but also difficult to classify (hence, creative!). Elgammal’s work is primarily applicable to art, and has not yet been applied to music.&lt;/p&gt;
+
+&lt;h2 id=&quot;part-2---more-complex-representations&quot;&gt;Part 2 - More Complex Representations&lt;/h2&gt;
+
+&lt;p&gt;Thus far we’ve talked pretty simply about music as basically a collection of notes through time, but there are plenty of other details we can think about.&lt;/p&gt;
+
+&lt;h3 id=&quot;21---richer-chord-encodings&quot;&gt;2.1 - Richer Chord Encodings&lt;/h3&gt;
+
+&lt;p&gt;We introduced sampling as a means to create something from nothing, but sampling is also useful because it is non-deterministic. (i.e. instead of choosing the most probable solution, we can randomly choose a solution based on the probability distribution).&lt;/p&gt;
+
+&lt;p&gt;An early application of sampling is the CONCERT Bach Melody generation system by Mozer (1994). The program generates melodies with a chord accompaniment, where the chords are just another aspect of each note, alongside pitch and duration. We’ll discuss each of these in order, starting first with pitch.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The pitch of each note has three components, which are the pitch height, the (modulo) chroma circle cartesion coordinates, and the (harmonic) circle of fifths cartesian coordinates. The second two coordinates help capture the similarity of the octave, and the harmonic importance of the fifth respectively.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The duration is subdivided into 12, to accomodate both regular divisions as well as triplets. As with the pitch, there are 3 coordinates to the duration, the absolute duration, the 1/3 beat circle, and the 1/4 beat circle.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The chords are always structured the same, with a root, a third that can be major or minor, a fifth that can be perfect, augmented, or diminished, and an optional 7th that can be major or minor.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;One of the reasons why the CONCERT program uses such a complex representation is because it pre-dates modern deep learning algorithms. Instead of allowing an archicture to learn these relationships, the authors manually design them into the representation.&lt;/p&gt;
+
+&lt;h3 id=&quot;22---dynamics&quot;&gt;2.2 - Dynamics&lt;/h3&gt;
+
+&lt;p&gt;Music played by a human rarely ends up sounding exactly like it is written on the page. Musicians will adjust the dynamics, and take liberties on tempo in an actual performance which are not captured by sheet music. These decisions are often made live, and are based on the musician’s understanding of the music and personal opinion.&lt;/p&gt;
+
+&lt;p&gt;One way to capture this information is to work directly with the audio waveforms rather than symbolic representation. Of course, the obvious downside to this strategy is that we lose the symbolic representation. A second alternative is to add this information to our training data as another aspect of the input and output.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In their program, called Performance RNN, Simon and Oore capture MIDI performance data and introduce an additional time shift and dynamic value to each time step. The time shift ranges from 10 ms to 1 sec, and the dynamics are captured by the 128 possible MIDI velocities quantized into 32 bins.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;part-3---other-desireable-qualities&quot;&gt;Part 3 - Other Desireable Qualities&lt;/h2&gt;
+
+&lt;h3 id=&quot;31---control&quot;&gt;3.1 - Control&lt;/h3&gt;
+
+&lt;p&gt;Stepping back for a moment, let’s think about how we could apply generative AI. The first thing to realize is that most tools are designed to help a real person, and lack direction by themselves. Even the most advanced AI’s - like those that drive your car - still need a destination. So the primary question is: how can we exert control over the result?&lt;/p&gt;
+
+&lt;p&gt;One way we’ve already discussed is through sampling. Like the predictive speech capability on your phone, non-deterministic algorithms are important because they provide &lt;em&gt;options&lt;/em&gt;. But a big problem with sampling methods is that decoders only work in one direction. There’s no easy way to take the output and feed it back to learn a “better” seed. Luckily, we are not without options.&lt;/p&gt;
+
+&lt;p&gt;For RNNs, one option we have is to threshold out low probability options (remember that notes are often predicted with a softmax function). This prevents these a bad note from propagating into futue time steps.&lt;/p&gt;
+
+&lt;p&gt;For single step feedforward networks, we can reduce the sampling scope. Instead of generating large chunks of music, we generate shorter phrases, or fewer voices within a larger and constrained piece.&lt;/p&gt;
+
+&lt;h4 id=&quot;311---conditioning&quot;&gt;3.1.1 - Conditioning&lt;/h4&gt;
+
+&lt;p&gt;Conditioning an architecture means to bias it’s output, based on some extra information (typically applied as an additional input layer). For example, this could be a genre label, a chord progression, or maybe even the previously generated note.&lt;/p&gt;
+
+&lt;h4 id=&quot;312---unit-selection&quot;&gt;3.1.2 - Unit Selection&lt;/h4&gt;
+
+&lt;p&gt;At its core, unit selection is an interative feedforward network, but instead of writing music note by note, it selects measures from a database, which when concatenated together, form a coherent musical idea. This approach needs metadata to represent the musical quality of each measure but unfortunately, music theory doesn’t really think of music in terms of measures. This means we as humans lack the language to think about what these pieces of metadata might be!&lt;/p&gt;
+
+&lt;h3 id=&quot;32---adaptable-networks&quot;&gt;3.2 - Adaptable Networks&lt;/h3&gt;
+
+&lt;p&gt;Another common problem with networks is that they cannot learn after they’ve been trained. How do you reinforce good patterns, and discourage bad ones? One option is to feed good outputs back into the training pool, but this risks over-fitting, and there is no practical way to punish bad behavior.&lt;/p&gt;
+
+&lt;p&gt;In practice, this kind of objective mostly has to be achieved by looking more closely at the generation step, and taking advantage of &lt;em&gt;control&lt;/em&gt; strategies (like reinforcement, conditioning, constraints, etc.). Over-time, we can “learn” values for these parameters that improve the ouput.&lt;/p&gt;
+
+&lt;h3 id=&quot;33---explainable-networks&quot;&gt;3.3 - Explainable Networks&lt;/h3&gt;
+
+&lt;p&gt;The challenge of explaining how AI “thinks” is not unique to music. In general, deep learning architectures are a bit of a black box, but a few basic approaches have been tried to “understand” what patterns each node, or collection of nodes is responding to.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This task gets a lot easier on simple inputs. For instance, in a low rank matrix, we can look at the vectors which span the matrix space, and understand that each vector captures one essential piece of information. But then again, if patterns were easy to spot, we wouldn’t need such complex deep learning archictures to begin with.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Gradient sensitivity - seeing how changes to the inputs affect the result&lt;/li&gt;
+  &lt;li&gt;Signal isolation - attempting to isolate particular input patterns to trigger activation in high level neurons&lt;/li&gt;
+  &lt;li&gt;Attribution - looking at a specific location in the output, and seeing the contributions from each input dimension.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;34---refinement-over-time&quot;&gt;3.4 - Refinement over Time&lt;/h3&gt;
+
+&lt;p&gt;In the real world, your first draft is rarely your final draft. You’ll go back through and make edits, but taking into account now your better understanding of where you’re coming from and where you’re going.&lt;/p&gt;
+
+&lt;p&gt;When applied to music generation and machine learning, this changes the input structure from maybe just a frame or structure, to something more constrained.&lt;/p&gt;
+
+&lt;p&gt;DeepBach is one such example, which uses two LSTM’s and two feedforward networks. The two LSTM’s approach from different sides of the music - one from the past and one from the future. A third network handles harmonic information, and the three together are passed into a final network for the output.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Incremental networks like the one just mentioned are great candidates for providing a user interface, and hence, control over the result!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Coding ML with Julia</title>
@@ -538,13 +887,31 @@ model = Dense(2, 1)
 
 &lt;!--more--&gt;
 
-&lt;p&gt;1553: A traffic control protocol for managing information traffic from multiple sources on a shared physical line. 1553 requires a controlling computer and an addresses for each terminal. The underlying constraint of 1553 is that traffic is never parrallel. In other words, each terminal takes turns using the line, and ignores any information on the line while not actively in use. On any given 1553 line, there can be many &lt;em&gt;remote terminals&lt;/em&gt;, each with their own &lt;em&gt;subaddresses&lt;/em&gt;.&lt;/p&gt;
+&lt;h4 id=&quot;ml-std-1553&quot;&gt;ML-STD 1553&lt;/h4&gt;
 
-&lt;p&gt;Bi-Level: consisting of two states (i.e. 0 and 1). In constrast to &lt;em&gt;analog&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;A traffic control protocol for managing information traffic from multiple sources on a shared physical line. 1553 requires a controlling bus computer (BC) and an addresses for each terminal. The underlying constraint of 1553 is that traffic is never parrallel. In other words, each terminal takes turns using the line, and ignores any information on the line while not actively in use. On any given 1553 line, there can be up to 31 &lt;em&gt;remote terminals&lt;/em&gt; (RTs), each with their own &lt;em&gt;subaddresses&lt;/em&gt;. A number of messages types are defined:&lt;/p&gt;
 
-&lt;p&gt;Serial communication: commmunication that consists of sending data one bit at a time.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Controller to RT&lt;/li&gt;
+  &lt;li&gt;RT to Controller&lt;/li&gt;
+  &lt;li&gt;RT to RT&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;RS-422: a point to point interface which transmits digital/bi-level information by changing the difference in voltage between two lines. This allows for higher data rates and lower noise in comparison to a single voltage line because we can achieve the same total change in the difference with only half the voltage change in each line. This is comparable to things like ethernet or USB.&lt;/p&gt;
+&lt;h4 id=&quot;bi-level&quot;&gt;Bi-Level&lt;/h4&gt;
+
+&lt;p&gt;Consisting of two states (i.e. 0 and 1). In constrast to &lt;em&gt;analog&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;serial-communication&quot;&gt;Serial communication&lt;/h3&gt;
+
+&lt;p&gt;Commmunication that consists of sending data one bit at a time.&lt;/p&gt;
+
+&lt;h4 id=&quot;rs-422&quot;&gt;RS-422&lt;/h4&gt;
+
+&lt;p&gt;A point to point interface which transmits digital/bi-level information by changing the difference in voltage between two lines. This allows for higher data rates and lower noise in comparison to a single voltage line because we can achieve the same total change in the difference with only half the voltage change in each line. This is comparable to things like ethernet or USB.&lt;/p&gt;
+
+&lt;h4 id=&quot;parity&quot;&gt;Parity&lt;/h4&gt;
+
+&lt;p&gt;A single bit which tells you if there is an even or odd number of 1’s in the transmitted signal. Used to check the integrity of a message.&lt;/p&gt;
 
 </content>
  </entry>
@@ -602,9 +969,9 @@ model = Dense(2, 1)
 
 &lt;p&gt;The backlog is an outline of all the work there is to be done. For each item, consider adding a priority level, work estimate, and value added metric. The product owner is typically responsible for keeping the backlog updated and sorted.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Descriptions of each item are usually presented as a “user story”. This is an effective way to define tasks because it describes the “what” without stipulating the “how”. This gives the development team ownership of the task, and ensures they keep vision of the goal, and not get bogged down by following a set of instructions. In systems engineering terms, this would be like using the validation field of a requirement in place of the requirement itself.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p class=&quot;message&quot;&gt;
+Descriptions of each item are usually presented as a &quot;user story&quot;. This is an effective way to define tasks because it describes the &quot;what&quot; without stipulating the &quot;how&quot;. This gives the development team ownership of the task, and ensures they keep vision of the goal, and not get bogged down by following a set of instructions. In systems engineering terms, this would be like using the validation field of a requirement in place of the requirement itself.  
+&lt;/p&gt;
 
 &lt;p&gt;To judge an effective user story description, consider if it is:&lt;/p&gt;
 &lt;ol&gt;
@@ -658,169 +1025,19 @@ model = Dense(2, 1)
  </entry>
  
  <entry>
-   <title>Music and AI - Part 3</title>
-   <link href="https://ludavid15.github.io//musicAI3/"/>
-   <updated>2022-05-04T00:00:00-07:00</updated>
-   <id>https://ludavid15.github.io//musicAI3</id>
-   <content type="html">&lt;p&gt;The thrilling conclusion to a three part series on music and artifical intelligence!&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;In the second post on AI and Music, we discussed why it’s difficult to generate music with AI. Along the way, we presented different learning &lt;em&gt;archictures&lt;/em&gt;, and how they were applied to the problem through different &lt;em&gt;strategies&lt;/em&gt;. Here is a quick summary of everything we went through:&lt;/p&gt;
-
-&lt;h3 id=&quot;list-of-architectures&quot;&gt;List of Architectures&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Feedforward&lt;/li&gt;
-  &lt;li&gt;Autoencoder&lt;/li&gt;
-  &lt;li&gt;Variational Autoencoder&lt;/li&gt;
-  &lt;li&gt;Restricted Boltzman Machine&lt;/li&gt;
-  &lt;li&gt;Recurrent Networks&lt;/li&gt;
-  &lt;li&gt;Convolutional Networks&lt;/li&gt;
-  &lt;li&gt;Conditioning Convolutional Networks&lt;/li&gt;
-  &lt;li&gt;Generative Adversarial Networks&lt;/li&gt;
-  &lt;li&gt;Reinforcement Learning&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;list-of-strategies&quot;&gt;List of Strategies&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Single step feedforward&lt;/li&gt;
-  &lt;li&gt;Decoder feedforward&lt;/li&gt;
-  &lt;li&gt;Sampling based methods&lt;/li&gt;
-  &lt;li&gt;Iterative feedforward&lt;/li&gt;
-  &lt;li&gt;Input manipulation&lt;/li&gt;
-  &lt;li&gt;Reinforcement&lt;/li&gt;
-  &lt;li&gt;Unit Selection&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;recurrent-vs-convolutional-networks&quot;&gt;Recurrent vs Convolutional Networks&lt;/h3&gt;
-
-&lt;p&gt;Convolutional networks have not been explored thoroughly as a way to generate or recognize music. Maybe this is because music representation is so complex that it’s difficult to visualize how a CNN would apply.&lt;/p&gt;
-
-&lt;p&gt;That being said, convolutional networks do have two advantages:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Faster to train and easier to parallelize&lt;/li&gt;
-  &lt;li&gt;By nature of their implementation, convolutional networks increase the volume of data.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;transfer-learning&quot;&gt;Transfer Learning&lt;/h3&gt;
-
-&lt;p&gt;Transfer learning for music is another area that really hasn’t been explored in depth, but which could be enormously useful, if we use the (more developed) subject of image generation as a sign of things to come.&lt;/p&gt;
-
-&lt;h3 id=&quot;open-questions&quot;&gt;Open Questions&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Why do some training sets transpose all songs into a single key, while other training sets transpose all songs into every key? Is there a difference?&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Can we use a lead sheet as the input, with a polyphonic melody/solo as the output? Maybe the pianist can be the conditional input (i.e. toggle style for different players)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Can we apply Elgammal’s CAN, to create jazz solos that seem real, but which are not easily classified into an existing musicians’s style?&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;project-ideas&quot;&gt;Project Ideas&lt;/h3&gt;
-
-&lt;h4 id=&quot;objective&quot;&gt;Objective&lt;/h4&gt;
-
-&lt;p&gt;Train a network to produce jazz solos, based on a lead sheet as input.&lt;/p&gt;
-
-&lt;h4 id=&quot;input&quot;&gt;Input&lt;/h4&gt;
-
-&lt;p&gt;The input should be a lead sheet, featuring melody, and chords. Since lead sheets are of varying length, we will need an RNN, possibly an LSTM for the architecture. There shall also be a label for the performer.&lt;/p&gt;
-
-&lt;h4 id=&quot;output&quot;&gt;Output&lt;/h4&gt;
-
-&lt;p&gt;The output should be a polyphonic piano part (i.e. one instrument, with multiple notes/voices).&lt;/p&gt;
-
-&lt;h4 id=&quot;limitations&quot;&gt;Limitations&lt;/h4&gt;
-
-&lt;p&gt;It will be difficult to find one standard that has been performed by many different jazz musicians. If we’d like to apply different styles, it probably makes more sense to train a network that identifies styles independent of the lead sheet. However, it’s possible that this will result in the classifier learning to associate melodies to musicians, and not styles.&lt;/p&gt;
-
-&lt;h4 id=&quot;architecture&quot;&gt;Architecture&lt;/h4&gt;
-
-&lt;p&gt;The architecture shall be an LSTM, which takes as input a lead sheet and composer and outputs a jazz solo for that lead sheet. This output is then trained against a classification network, which attempts to distinguish between real and generated content. The classification network also needs to be an RNN/LSTM to handle the variable input length.&lt;/p&gt;
-
-&lt;p&gt;The optimizer the will push the generative network to produce solos that are believed to be real, but difficult to classify.&lt;/p&gt;
-
-&lt;p&gt;The output of the generative network shall be the same as the input to the classifier.&lt;/p&gt;
-
-&lt;h4 id=&quot;outline&quot;&gt;Outline&lt;/h4&gt;
-
-&lt;p&gt;First, we need to identify a source of training data, and convert these into our input representation. This should be a challenging first step, but once completed, we will be able to tweak our architecture more easily.&lt;/p&gt;
-
-&lt;p&gt;To start, we can train the classification network independently to classify performers. The ouput of this will be a softmax function, with a threshold.&lt;/p&gt;
-
-&lt;h4 id=&quot;training-data&quot;&gt;Training Data&lt;/h4&gt;
-
-&lt;p&gt;One place to start with our training data is to simply take what’s most easily accessible. In this case, maybe the musescore database of jazz standards.&lt;/p&gt;
-
-&lt;h4 id=&quot;lessons-learned&quot;&gt;Lessons Learned&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;MIDI is a readily accessible format for storing musical information, but lacks support for extrinsic chord representation (e.g. C major 7 #9).&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;This problem is potentially resolved by musicXML, which is a more explicit format and CAN record text information/notation.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://juliamusic.github.io/JuliaMusic_documentation.jl/latest/&quot;&gt;JuliaMusic&lt;/a&gt; provides an easy way to create midi tracks, and the documentation goes into detail for ways to export to MuseScore for sheet music and playback.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Flux.jl is the most popular machine learning library for Julia.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Next step - build a Julia function for reading and exporting XML files. This input to this file should be a an XML file, and the ouput should be an array, which can serve as the input to our deep learning network.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;MusicXMl 2.0 now supports a compressed version called “.mxl” - this brings the file size to be comparable to MIDI&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Music encoding is NOT straightforward, or maybe it is, but just not apparent to me.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;This is a project that succumbs very easily to scope creep.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Treat chords as “words” and we can learn embeddings, and build up a natural work processor for creating a chord progression. Then we can apply melodic lines over these harmonies with another RNN.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-</content>
- </entry>
- 
- <entry>
    <title>Music and AI - Part 2</title>
    <link href="https://ludavid15.github.io//musicAI2/"/>
    <updated>2022-05-04T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//musicAI2</id>
-   <content type="html">&lt;p&gt;This post explores different approaches to music generation with deep learning. Although each example can stand alone, they are presented in an order that introduces new concepts and challenges one by one.&lt;/p&gt;
+   <content type="html">&lt;p&gt;This post explores a few different approaches to music generation with deep learning.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
-&lt;p&gt;The complete list of challenges is here:&lt;/p&gt;
+&lt;h2 id=&quot;part-1---single-step-feedforward-learning&quot;&gt;Part 1 - Single Step Feedforward Learning&lt;/h2&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;&lt;em&gt;Creatio Ex nihilo&lt;/em&gt;  (creation from nothing)&lt;/li&gt;
-  &lt;li&gt;Length variability (music of different lengths)&lt;/li&gt;
-  &lt;li&gt;Content variability (is it deterministic?)&lt;/li&gt;
-  &lt;li&gt;Expressiveness (dynamics and feeling)&lt;/li&gt;
-  &lt;li&gt;Melody-harmony consistency&lt;/li&gt;
-  &lt;li&gt;Control (user ability to affect outcome)&lt;/li&gt;
-  &lt;li&gt;Style transfer (applicable to images, but can it apply to music?)&lt;/li&gt;
-  &lt;li&gt;Structure (songs formats, AABA, etc.)&lt;/li&gt;
-  &lt;li&gt;Originality (not just repeating information from training data)&lt;/li&gt;
-  &lt;li&gt;Incrementality&lt;/li&gt;
-  &lt;li&gt;Adaptability&lt;/li&gt;
-  &lt;li&gt;Explainability&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;These architectures do not ingest music one step at a time, but rather ingest a chunk all at once. While straightforward, a major limitation of this method is that it’s difficult to produce musical phrases of variable length. It’d be like deciding ahead of time how many words are allowed in each sentence.&lt;/p&gt;
 
-&lt;p&gt;As we will see, some of these are at odds with one another. For example, the solution to overcoming length variability is worse at creating structure.&lt;/p&gt;
-
-&lt;h3 id=&quot;example-1---introduction-with-bach&quot;&gt;Example 1 - Introduction with Bach&lt;/h3&gt;
+&lt;h3 id=&quot;11---introduction-with-bach&quot;&gt;1.1 - Introduction with Bach&lt;/h3&gt;
 
 &lt;p&gt;For the first example, we’ll walk through a very simple and intuitive deep learning setup. Here are the parameters:&lt;/p&gt;
 
@@ -836,7 +1053,7 @@ model = Dense(2, 1)
 
 &lt;p&gt;The next two examples are ways around this issue.&lt;/p&gt;
 
-&lt;h3 id=&quot;example-2---decoder-feedfoward&quot;&gt;Example 2 - Decoder Feedfoward&lt;/h3&gt;
+&lt;h3 id=&quot;12---encoderdecoder&quot;&gt;1.2 - Encoder/Decoder&lt;/h3&gt;
 
 &lt;p&gt;The basic idea here is to first train an autoencoder, which if you remember, learns the important “features” in its hidden layer. To generate unique outputs, we simply turn this around - the hidden layer becomes the input (i.e. a seed). The seed is fed-forward through the decoder, and we get a unique output. Of course this is still deterministic, but it overcomes the &lt;em&gt;creatio ex-nihilo&lt;/em&gt; issue. (Technically we’re not starting from &lt;em&gt;true nothing&lt;/em&gt;, but then what does? Most randomly generated content, like a minecraft world, starts from a seed anyway).&lt;/p&gt;
 
@@ -844,21 +1061,13 @@ model = Dense(2, 1)
   &lt;p&gt;The DeepHear system by Sun uses this approach to generate ragtime music. They use Scott Joplin songs as the training data, and a stacked autoencoder with a hidden layer size of 16. Due to the small size of this hidden layer, there is a high amount of plagiarism (around 60%).&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;example-3---sampling&quot;&gt;Example 3 - Sampling&lt;/h3&gt;
+&lt;h2 id=&quot;part-2---sequential-models&quot;&gt;Part 2 - Sequential Models&lt;/h2&gt;
 
-&lt;p&gt;Sampling methods work a little like the feedforward decoder in example 2, but instead of generating examples which are &lt;em&gt;deterministic&lt;/em&gt; based on a seed, examples are randomly generated to match a probability distribution. Some famous sampling strategies include: Metropolis-Hastings algorithm, Gibbs Sampling, and block Gibbs Sampling. These methods overcome both the problem of determinism, &lt;em&gt;and&lt;/em&gt; the problem of something from nothing.&lt;/p&gt;
+&lt;p&gt;These architectures treat the data sequentially. Once advantage of structuring a model this way is that you can produce music of variable length. Most are implemented with some kind of RNN.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Another way to think about sampling methods is that they are a form of generative AI that is based on stochastic models which learn probability distributions (variational autoencoders, RBM’s, etc.). For this reason, we talk about them as a different type of solution, but conceptually, they can manifest just like the decoder in example 2 (i.e. a seed is used to randomly generate examples).&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id=&quot;21---a-basic-rnn-with-lstm&quot;&gt;2.1 - A Basic RNN with LSTM&lt;/h3&gt;
 
-&lt;p&gt;With regard to music, there are two ways to apply this type of sampling approach. The first, is in the vertical dimension, (i.e. chord - does the voicing of this chord make sense?). Recurrent Boltzman Machines are effective for this kind of work. The second is in the horizontal dimension (i.e. a melody or sequence of notes - does this sequence of notes make a coherent melody?). This kind of sampling is better achieved by an RNN.&lt;/p&gt;
-
-&lt;h3 id=&quot;example-4---iterative-feedforward&quot;&gt;Example 4 - Iterative Feedforward&lt;/h3&gt;
-
-&lt;p&gt;So far all the examples have shared a common limitation - their output is fixed in length. One way to overcome this problem is to fundamentally change the type of input and ouput. An iterative feedforward system takes some initial starting condition, and ouputs something for the next timestep. This can then be repeated indefinitely to produce music of any length.&lt;/p&gt;
-
-&lt;p&gt;An example of this approach was implemented by Eck and Schmidhuber in their 12 bar blues program. The input and output layer both have 25 nodes (13 for notes and 12 for chords) with a hidden layer of eight LSTM blocks. The hidden layer connections are as follows:&lt;/p&gt;
+&lt;p&gt;An example of this sequential approach was implemented by Eck and Schmidhuber in their 12 bar blues program. The input and output layer both have 25 nodes (13 for notes and 12 for chords) with a hidden layer of eight LSTM blocks. The hidden layer connections are as follows:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Chord block is fully connected to everything in the input and the chord output.&lt;/li&gt;
@@ -867,44 +1076,22 @@ model = Dense(2, 1)
   &lt;li&gt;Melody block is recursive only with itself.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;The asymmetric architecture is used to control the dependency of chords and melody. In this case, the chords are dependent on the melody, but not vice-versa. Also worth noting, the use of an RNN (LTSM) architecture for an interative program is not by coincidence. The nature of RNN’s lend themselves very well to this kind of setup.&lt;/p&gt;
+&lt;p&gt;The asymmetric architecture is used to control the dependency of chords and melody. In this case, the chords are dependent on the melody, but not vice-versa.&lt;/p&gt;
 
-&lt;h3 id=&quot;example-5---bi-directional-ltsm-for-accompaniment&quot;&gt;Example 5 - Bi-Directional LTSM for Accompaniment&lt;/h3&gt;
+&lt;h3 id=&quot;22---bi-directional-lstm-for-accompaniment&quot;&gt;2.2 - Bi-Directional LSTM for Accompaniment&lt;/h3&gt;
 
-&lt;p&gt;RNN’s by their nature lend themselves to a recursive strategy (the ouput becomes the input); however this is not the only way to apply an RNN architecture.&lt;/p&gt;
+&lt;p&gt;A Bi-directional RNN uses data from both before and after the target timestep to make predictions. This makes sense when generating music, since motifs or themes are often repeated.&lt;/p&gt;
 
-&lt;p&gt;The objective of the BLTSM architecture is to generate a progression of chords as an accompaniment to a melody.&lt;/p&gt;
+&lt;p&gt;One such way to use a BLSTM is to generate a progression of chords as an accompaniment to a melody.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Input encoding: one-hot for each of 12 pitches&lt;/li&gt;
   &lt;li&gt;Output encoding: one-hot for each minor and major triad of 12 pitches (24 total)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;This particular structure is unique from many other LTSM or recurrent networks because although it is recurrent, it is not recursive (i.e. the chord output is not fed back into input). This example highlights that there is more than one way to use different architectures.&lt;/p&gt;
+&lt;h3 id=&quot;23---rnnrbm-polyphany-generation&quot;&gt;2.3 - RNN/RBM Polyphany Generation&lt;/h3&gt;
 
-&lt;h3 id=&quot;example-6---sampling-again&quot;&gt;Example 6 - Sampling Again&lt;/h3&gt;
-
-&lt;p&gt;In example 3, we introduced sampling as a means to create something from nothing, but sampling is also useful because it is non-deterministic. (i.e. instead of choosing the most probable solution, we can randomly choose a solution based on the probability distribution).&lt;/p&gt;
-
-&lt;p&gt;An early application of sampling is the CONCERT Bach Melody generation system by Mozer (1994). The program generates melodies with a chord accompaniment, where the chords are just another aspect of each note, alongside pitch and duration. We’ll discuss each of these in order, starting first with pitch.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;The pitch of each note has three components, which are the pitch height, the (modulo) chroma circle cartesion coordinates, and the (harmonic) circle of fifths cartesian coordinates. The second two coordinates help capture the similarity of the octave, and the harmonic importance of the fifth respectively.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;The duration is subdivided into 12, to accomodate both regular divisions as well as triplets. As with the pitch, there are 3 coordinates to the duration, the absolute duration, the 1/3 beat circle, and the 1/4 beat circle.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;The chords are always structured the same, with a root, a third that can be major or minor, a fifth that can be perfect, augmented, or diminished, and an optional 7th that can be major or minor.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;One of the reasons why the CONCERT program uses such a complex representation is because it pre-dates modern deep learning algorithms. Instead of allowing an archicture to learn these relationships, the authors manually design them into the representation.&lt;/p&gt;
-
-&lt;h3 id=&quot;example-7---rnn-rbm-polyphany-generation&quot;&gt;Example 7 - RNN-RBM Polyphany Generation&lt;/h3&gt;
-
-&lt;p&gt;Ok, so we’ve been introducing architectures to tackle different technical problems, but we haven’t factored in anything about music yet. Music theory offers many ideas through which we can understand the structure and shape of songs, so why not incoporate them into our architecture?&lt;/p&gt;
+&lt;p&gt;Ok, we’ve introduced a few architectures, but we haven’t really factored in anything about music yet. Music theory offers many ideas through which we can understand the structure and shape of songs, so why not incoporate them into our architecture?&lt;/p&gt;
 
 &lt;p&gt;To begin, let’s start with the basic differentiation of melody and harmony. From a music theory perspective, there are two dimensions to a song: the vertical and the horizontal. Vertical is the pairing of melody with harmony, while horizontal is the change from one time step to the next.&lt;/p&gt;
 
@@ -926,7 +1113,7 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;/p&gt;
 
-&lt;h3 id=&quot;example-8---rnn-rnn-polyphany-generation&quot;&gt;Example 8 - RNN-RNN Polyphany Generation&lt;/h3&gt;
+&lt;h3 id=&quot;24---rnnrnn-polyphany-generation&quot;&gt;2.4 - RNN/RNN Polyphany Generation&lt;/h3&gt;
 
 &lt;p&gt;This is nearly identical to the architecture in example 7, but the vertical dimension is modeled by another RNN, instead of an RBM.&lt;/p&gt;
 
@@ -934,27 +1121,23 @@ That being said, Convolutional Neural Networks - which have been very effective 
   &lt;p&gt;For an example of this implementation, see the Bi-Axial LSTM archicture proposed by Daniel Johnson “Generating Polyphonic music using tied parallel networks” (2017).&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;example-9---variational-recurrent-autoencoder&quot;&gt;Example 9 - Variational Recurrent Autoencoder&lt;/h3&gt;
+&lt;h2 id=&quot;part-3---hybrid-approaches&quot;&gt;Part 3 - Hybrid Approaches&lt;/h2&gt;
 
-&lt;p&gt;Besides the melody vs harmony distinction, another important challenge with music generation is that of musical &lt;em&gt;structure&lt;/em&gt;. Songs are not one monolithic piece from start to finish, but rather are organized into sections, often with recurring motifs (e.g. AABA, Sonata, Etude, etc.).&lt;/p&gt;
+&lt;p&gt;Although RNN’s are great for sequential data, music actually tends to have a bit more structure than language. Songs are not one monolithic piece from start to finish, but rather are organized into sections, often with recurring motifs (e.g. AABA, Sonata, Etude, etc.).&lt;/p&gt;
 
-&lt;p&gt;Often, this type of capability is intentionally withheld from music writing AI’s because it’s very difficult to learn high level structures simultaneously with low-level harmony and melodic style.&lt;/p&gt;
+&lt;p&gt;This kind of repeating structure is actually really well captured by things like convolutional neural networks or encoders. So can we get the best of both worlds by using both a sequential and single-step architecture?&lt;/p&gt;
+
+&lt;h3 id=&quot;31---variational-recurrent-autoencoder&quot;&gt;3.1 - Variational Recurrent Autoencoder&lt;/h3&gt;
+
+&lt;p&gt;Often, structure is intentionally withheld from music writing AI’s because it’s very difficult to learn high level structures simultaneously with low-level harmony and melodic style.&lt;/p&gt;
 
 &lt;p&gt;MusicVAE is a variational recurrent autoencoder with a 2-level heirarchical RNN within the decoder. The introduction of an additional level improves the algorithm’s ability to learn structure. This allows it to generate longer sequences of music with better overall cohesion.&lt;/p&gt;
 
 &lt;p&gt;The first level within the hierarchy deals with low level concepts, like a musical phrase, while the second (higher) level deals with musical structure. (Technically, there is nothing that forces this association, but the hope is that by designing the archicture this way, the network will also learn this concept when it is trained).&lt;/p&gt;
 
-&lt;h3 id=&quot;example-10---incorporation-of-dynamics&quot;&gt;Example 10 - Incorporation of Dynamics&lt;/h3&gt;
+&lt;h2 id=&quot;part-4---miscellaneous&quot;&gt;Part 4 - Miscellaneous&lt;/h2&gt;
 
-&lt;p&gt;Music played by a human rarely ends up sounding exactly like it is written on the page. Musicians will adjust the dynamics, and take liberties on tempo in an actual performance which are not captured by sheet music. These decisions are often made live, and are based on the musician’s understanding of the music and personal opinion.&lt;/p&gt;
-
-&lt;p&gt;One way to capture this information is to work directly with the audio waveforms rather than symbolic representation. Of course, the obvious downside to this strategy is that we lose the symbolic representation. A second alternative is to add this information to our training data as another aspect of the input and output.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;In their program, called Performance RNN, Simon and Oore capture MIDI performance data and introduce an additional time shift and dynamic value to each time step. The time shift ranges from 10 ms to 1 sec, and the dynamics are captured by the 128 possible MIDI velocities quantized into 32 bins.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;example-11---style-transfer&quot;&gt;Example 11 - Style Transfer&lt;/h3&gt;
+&lt;h3 id=&quot;41---style-transfer&quot;&gt;4.1 - Style Transfer&lt;/h3&gt;
 
 &lt;p&gt;Style transfer is an active field of image processing, but hasn’t been explored very much in music. Musicians do this all the time in real life, (e.g. rearranging a pop song into a waltz, copying a jazz pianists style, or remixing a song into lo-fi). Conceptually, we can think about two types of style transfer:&lt;/p&gt;
 
@@ -963,84 +1146,8 @@ That being said, Convolutional Neural Networks - which have been very effective 
   &lt;li&gt;Performance style (e.g. different style of harmony, embellishments. Think how different jazz pianists can approach the same standard in dramatically different ways)&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;example-12---control&quot;&gt;Example 12 - Control&lt;/h3&gt;
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
 
-&lt;p&gt;Stepping back for a moment, let’s think about how we could apply generative AI. The first thing to realize is that most tools are designed to help a real person, and lack direction by themselves. Even the most advanced AI’s - like those that drive your car - still need a destination. So the primary question is: how can we exert control over the result?&lt;/p&gt;
-
-&lt;p&gt;One way we’ve already discussed is through sampling. Like the predictive speech capability on your phone, non-deterministic algorithms are important because they provide &lt;em&gt;options&lt;/em&gt;. But a big problem with sampling methods is that decoders only work in one direction. There’s no easy way to take the output and feed it back to learn a “better” seed. Luckily, we are not without options.&lt;/p&gt;
-
-&lt;p&gt;For RNNs, one option we have is to threshold out low probability options (remember that notes are often predicted with a softmax function). This prevents these a bad note from propagating into futue time steps.&lt;/p&gt;
-
-&lt;p&gt;For single step feedforward networks, we can reduce the sampling scope. Instead of generating large chunks of music, we generate shorter phrases, or fewer voices within a larger and constrained piece.&lt;/p&gt;
-
-&lt;h3 id=&quot;example-13---sampling-control-through-interpolation&quot;&gt;Example 13 - Sampling Control through Interpolation&lt;/h3&gt;
-
-&lt;p&gt;So we mentioned earlier that decoders only allow information to pass through one way, but there’s a way around this: interpolation in the latent space.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The latent space is the space formed by the latent variables. (e.g. if our seed was (8,4,5,2), there are 4 latent variables). We could perform clustering in the latent space to identify patterns to the seeds which produce our training data.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In this sense, we aren’t really feeding information back through the decoder, but rather applying even more machine learning on the seeds to understand the significance of each digit. In other words, given a set of coordinate &lt;em&gt;numbers&lt;/em&gt;, we’re learning if they are for a cartesian, polar, or spherical &lt;em&gt;system&lt;/em&gt;.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Hadjeres and Nielsen discuss something called geodesic latent space regularization, which is supposed to be better than linear interpolation.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;example-14---conditioning&quot;&gt;Example 14 - Conditioning&lt;/h3&gt;
-
-&lt;p&gt;Conditioning an architecture means to bias it’s output, based on some extra information (typically applied as an additional input layer). For example, this could be a genre label, a chord progression, or maybe even the previously generated note.&lt;/p&gt;
-
-&lt;h3 id=&quot;example-15---unit-selection&quot;&gt;Example 15 - Unit Selection&lt;/h3&gt;
-
-&lt;p&gt;At its core, unit selection is an interative feedforward network, but instead of writing music note by note, it selects measures from a database, which when concatenated together, form a coherent musical idea. This approach needs metadata to represent the musical quality of each measure but unfortunately, music theory doesn’t really think of music in terms of measures. This means we as humans lack the language to think about what these pieces of metadata might be!&lt;/p&gt;
-
-&lt;h3 id=&quot;example-16---originality&quot;&gt;Example 16 - Originality&lt;/h3&gt;
-
-&lt;p&gt;For many skills, copying is easier than creating, and this is certainly true for generative AI as well. How can we bias our architecture to create original content, and not just poor copies? Importantly, we would like this to happen &lt;em&gt;a priori&lt;/em&gt;, and not &lt;em&gt;a posteriori&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;The first approach involves a sort of &lt;em&gt;ad hoc&lt;/em&gt; tuning of parameters within the archicture until we get results that mostly seem original. This can certainly be effective, but maybe lacks some of the intentionality we’re going for.&lt;/p&gt;
-
-&lt;p&gt;A second approach is a modification of the traditional generative adversarial network. In a traditional GAN, the classifier returns a signal of how easily/confidently it was able to classify the generated content as real or fake. The new approach, as outlined by Elgammal, called a &lt;em&gt;creative&lt;/em&gt; adversarial network (CAN), uses these two contradictory forces:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;The same signal in a traditional GAN about how easily it is able to distinguish between real and fake input.&lt;/li&gt;
-  &lt;li&gt;The ease with which it is able to classify the input into a learned style.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Thus, the generative part of the network is incentived to create ouput that feels real, but also difficult to classify (hence, creative!). Elgammal’s work is primarily applicable to art, and has not yet been applied to music.&lt;/p&gt;
-
-&lt;h3 id=&quot;example-17---refinement-over-time&quot;&gt;Example 17 - Refinement over Time&lt;/h3&gt;
-
-&lt;p&gt;In the real world, your first draft is rarely your final draft. You’ll go back through and make edits, but taking into account now your better understanding of where you’re coming from and where you’re going.&lt;/p&gt;
-
-&lt;p&gt;When applied to music generation and machine learning, this changes the input structure from maybe just a frame or structure, to something more constrained.&lt;/p&gt;
-
-&lt;p&gt;DeepBach is one such example, which uses two LSTM’s and two feedforward networks. The two LSTM’s approach from different sides of the music - one from the past and one from the future. A third network handles harmonic information, and the three together are passed into a final network for the output.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Incremental networks like the one just mentioned are great candidates for providing a user interface, and hence, control over the result!&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;example-18---adaptable-networks&quot;&gt;Example 18 - Adaptable Networks&lt;/h3&gt;
-
-&lt;p&gt;Another common problem with networks is that they cannot learn after they’ve been trained. How do you reinforce good patterns, and discourage bad ones? One option is to feed good outputs back into the training pool, but this risks over-fitting, and there is no practical way to punish bad behavior.&lt;/p&gt;
-
-&lt;p&gt;In practice, this kind of objective mostly has to be achieved by looking more closely at the generation step, and taking advantage of &lt;em&gt;control&lt;/em&gt; strategies (like reinforcement, conditioning, constraints, etc.). Over-time, we can “learn” values for these parameters that improve the ouput.&lt;/p&gt;
-
-&lt;h3 id=&quot;example-19---explainable-networks&quot;&gt;Example 19 - Explainable Networks&lt;/h3&gt;
-
-&lt;p&gt;The challenge of explaining how AI “thinks” is not unique to music. In general, deep learning architectures are a bit of a black box, but a few basic approaches have been tried to “understand” what patterns each node, or collection of nodes is responding to.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;This task gets a lot easier on simple inputs. For instance, in a low rank matrix, we can look at the vectors which span the matrix space, and understand that each vector captures one essential piece of information. But then again, if patterns were easy to spot, we wouldn’t need such complex deep learning archictures to begin with.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Gradient sensitivity - seeing how changes to the inputs affect the result&lt;/li&gt;
-  &lt;li&gt;Signal isolation - attempting to isolate particular input patterns to trigger activation in high level neurons&lt;/li&gt;
-  &lt;li&gt;Attribution - looking at a specific location in the output, and seeing the contributions from each input dimension.&lt;/li&gt;
-&lt;/ol&gt;
 </content>
  </entry>
  
@@ -1094,121 +1201,6 @@ That being said, Convolutional Neural Networks - which have been very effective 
 &lt;p&gt;My personal opinion of requirements is that they exist as a document of wants, agreed upon by the stakeholders. If I want or need A, I’ll go to you, we can talk it over, and we write this down into our requirements document.&lt;/p&gt;
 
 &lt;p&gt;This may be a good way to track our needs, (potentially comparable to “user stories” from agile), but I think we shouldn’t imagine requirements to be a good model of your design. In other words, it’s important for your model to meet the requirements, but the requirements are not for organizing your design.&lt;/p&gt;
-
-&lt;h3 id=&quot;model-based-systems-engineering&quot;&gt;Model Based Systems Engineering&lt;/h3&gt;
-
-&lt;p&gt;With better computers, engineers have increasingly turned to model based systems engineering, or MBSE as a solution to the engineering process. After all, things like CAD, CFD, and FEM have enabled us to model complex physics, so why not create a program to model a project?&lt;/p&gt;
-
-&lt;p&gt;The goal of model based systems engineering is to improve upon two things that happen very slowly with traditional requirements documents:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;A way to track the design baseline.&lt;/li&gt;
-  &lt;li&gt;Once a change is made, an easy way to explore how it impacts other systems.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;So what aspects of a system can we model? Here’s a list.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Physical Configuration&lt;/li&gt;
-  &lt;li&gt;Function/Behavior&lt;/li&gt;
-  &lt;li&gt;Interactions/Data&lt;/li&gt;
-  &lt;li&gt;Heirarchies/Definitions&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;physical-configuration&quot;&gt;Physical Configuration&lt;/h4&gt;
-
-&lt;p&gt;Fairly straightfoward, we need to track the hardware, physical connectors, and physical properties (shape, weight, thermal resistence, etc.). If our project was a sentence, the physical configuration would be the subject.&lt;/p&gt;
-
-&lt;h4 id=&quot;functionbehavior&quot;&gt;Function/Behavior&lt;/h4&gt;
-
-&lt;p&gt;Verbs. Things that happen. You could say that function is the first thing we choose. Hardware is designed to meet a function, not the other way around.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Technically this isn’t always true. When a heritage (proven) piece of hardware is selected, its function is already defined, and then engineers build the rest of the system around it. But maybe we just pretend like the function still preceded the hardware?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;interactions&quot;&gt;Interactions&lt;/h4&gt;
-
-&lt;p&gt;Interactions can be very abstract, but are also very important. A function might include an interaction, (i.e. a satellite interacts with a ground station by sending telemetry), but a physical configuration might also include an interaction (i.e. the baseplate on a satellite draws heat away from the electronics).&lt;/p&gt;
-
-&lt;p&gt;And inherent to interactions is data and information. What information is tranferred? How is information formatted? Where does information go?&lt;/p&gt;
-
-&lt;h4 id=&quot;definitions&quot;&gt;Definitions&lt;/h4&gt;
-
-&lt;p&gt;Definitions explain the words we create to group stuff together. If many pieces of hardware work together to provide telemetry, we might designate a “telemetry subsystem”. These abstractions are an important part of communicating complex ideas, but can also get messy. Definitions are applicable to any of the three prior groupings: hardware, functions, and interactions.&lt;/p&gt;
-
-&lt;h3 id=&quot;engineering-in-practice&quot;&gt;Engineering in Practice&lt;/h3&gt;
-
-&lt;p&gt;In real life, we often do not build things up from scratch. Instead a project is often an addition to, or a modification of something that already exists. Even though this is meant to simplify the process, it also creates a lot of additional work (as anyone who has tried to read someone else’s code can testify).&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;How does this impact the concept of systems engineering?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;dodaf&quot;&gt;DoDAF&lt;/h3&gt;
-
-&lt;p&gt;The Department of Defense Architecture Framework is an effort to generalize how we explain complex systems. Before getting into what DodAF is, let’s be clear that DoDAF is NOT model based systems engineering. DoDAF only defines a set of “viewpoints”, which each viewpoint showing a different aspect of the system. For example, systems viewpoint 4 (SV4) shows functional flow diagrams, while SV1’s show a high level overview of the physical elements.&lt;/p&gt;
-
-&lt;p&gt;Consider an analogy - in CAD, we build 3D shapes. When we try to represent them on a 2D screen, we must choose a viewing angle and projection, but there are likely some standard views that everyone expects. Maybe a cross section to show the internal structure, or a profile view if it’s a flat plate. DoDAF (and in fact any system diagram) follows the same idea.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;DoDAF Views&lt;/td&gt;
-      &lt;td&gt;Explanation&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SV-1&lt;/td&gt;
-      &lt;td&gt;High level hardware overview&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SV-2&lt;/td&gt;
-      &lt;td&gt;Detailed hardware overview&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SV-4&lt;/td&gt;
-      &lt;td&gt;Functional flow diagram&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SV-10b&lt;/td&gt;
-      &lt;td&gt;States and Modes transitions&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;SV-10c&lt;/td&gt;
-      &lt;td&gt;Sequence Diagrams&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;DIV-1&lt;/td&gt;
-      &lt;td&gt;Conceptual Data Model&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;DIV-2&lt;/td&gt;
-      &lt;td&gt;Logical Data Model&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;DIV-3&lt;/td&gt;
-      &lt;td&gt;Physical Data Model&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;sv-4&quot;&gt;SV-4&lt;/h3&gt;
-
-&lt;p&gt;This is the functional viewpoint. In contrast to an SV-10c, an SV-4 is the functional model of your hardware, and NOT necessarily your order of operations.&lt;/p&gt;
-
-&lt;p&gt;In an SV-4, we can either state a heirarchy, (A consists of B, C, D), or we can show it using a flow chart (B, C, and D interact to accomplish A). The first version is known as an SV-4a, and the latter, more complex version is called an SV-4b.&lt;/p&gt;
-
-&lt;h3 id=&quot;sv-10c&quot;&gt;SV-10c&lt;/h3&gt;
-
-&lt;p&gt;This is a sequence diagram. In contrast to the SV-4, an SV-10c is not primarily to meant to show the structure of your functions and hardware performers. Instead, an SV-10c tends to be a more explicit (and better) representation of your order of operations.&lt;/p&gt;
-
-&lt;h3 id=&quot;div&quot;&gt;DIV&lt;/h3&gt;
-
-&lt;p&gt;The Data information viewpoint breaks down the heirarchy of data. Like functions, we can think of data both in the abstract, or by implementation. For instance, the attitude of a spacecraft is abstract (DIV-1). A set of quaternions stored into memory is an implementation (DIV-2). Whether those quaternions are stored with any identifying bit headers, or in little or big Endian is physical (DIV-3).&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;CAMEO gives us many tools for representing data. Exchange Elements are the default unit, and can be further refined with Signals. For instance, an exchange element might be created called “Power Command”, which refines into two signals “Power On” and “Power Off”.&lt;/p&gt;
-&lt;/blockquote&gt;
 
 </content>
  </entry>
@@ -1489,7 +1481,7 @@ That being said, Convolutional Neural Networks - which have been very effective 
    <content type="html">&lt;p&gt;There are two ways in which artifical intelligence has been applied to music. The first is called music information retrieval, or MIR for short. These programs produce data from audio (e.g. song identification, transcribing audio into sheet music). The second is known as &lt;em&gt;generative&lt;/em&gt; AI. These programs try to produce new and original music, either fully autonomously or as a predictive aid to composers (i.e. like text predits on your phone!).&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;A third application which is not unique to music is song recommendation and classification. This covers apps like Spotify or Pandora which create custom playlists for you, and is  very similar to how Netflix recommends you new movies and shows.&lt;/p&gt;
+  &lt;p&gt;A third application which is not unique to music is song recommendation and classification. This includes apps like Spotify or Pandora which create custom playlists for you, and is very similar to how Netflix recommends you new movies and shows.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;projects-and-companies&quot;&gt;Projects and Companies&lt;/h3&gt;
@@ -1528,16 +1520,16 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;p&gt;Markov models predict one step at a time. This makes them easy to implement and understand, but it also means they are unable to think about long-term structure. Think of this like writing a book, but each word is written by finding the most statistically probable word to follow from the one before. You might still get complete sentences, but highly unlikely to get a coherent theme.&lt;/p&gt;
 
-&lt;h3 id=&quot;categories&quot;&gt;Categories&lt;/h3&gt;
+&lt;h3 id=&quot;attributes&quot;&gt;Attributes&lt;/h3&gt;
 
 &lt;p&gt;These are a few attributes of different generative AI’s. Keep in mind that some of these might be related, (i.e. they may not be orthogonal, or independent of one another).&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;By Objective&lt;/strong&gt;: What aspect of music are you creating? A melody? A chord progression? An accompaniment?&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;By Representation&lt;/strong&gt;: How are you structuring your musical data? E.g. as a signal, MIDI, text, piano roll.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;By Architecture&lt;/strong&gt;: Recurrent NN, autoencoders, generative adversarial modeling, etc.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;By Challenge&lt;/strong&gt;: What qualities are you looking for in what you create? Variability, creativity, interactivity.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;By Strategy&lt;/strong&gt;: Strategy is how you’re going to convert the input into the output. Does it happen all at once? Note by note?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Objective&lt;/strong&gt;: What aspect of music are you creating? A melody? A chord progression? An accompaniment?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Representation&lt;/strong&gt;: How are you structuring your musical data? E.g. as a signal, MIDI, text, piano roll.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Architecture&lt;/strong&gt;: Recurrent NN, autoencoders, generative adversarial modeling, etc.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Challenge&lt;/strong&gt;: What qualities are you looking for in what you create? Variability, creativity, interactivity.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Strategy&lt;/strong&gt;: Strategy is how you’re going to convert the input into the output. Does it happen all at once? Note by note?&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;objectives&quot;&gt;Objectives&lt;/h3&gt;
@@ -1633,7 +1625,9 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;h3 id=&quot;overview&quot;&gt;Overview&lt;/h3&gt;
 
-&lt;h3 id=&quot;the-lifecyce-of-data&quot;&gt;The lifecyce of data.&lt;/h3&gt;
+&lt;p&gt;To begin, let’s be clear that data analytics is not machine learning. In the abstract, they might be the same (i.e. drawing patterns from your data), but machine learning is much more complex mathematically. In contrast, data analytics is limited to a few pretty straightforward computations.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-lifecyce-of-data&quot;&gt;The Lifecyce of Data.&lt;/h3&gt;
 
 &lt;p&gt;Why do we discuss the lifestyle of data? Because data analytics is not just about obtaining results, it’s about collecting, managing, and then closing out a process.&lt;/p&gt;
 
@@ -1719,6 +1713,20 @@ That being said, Convolutional Neural Networks - which have been very effective 
   &lt;li&gt;Not checking for misfielded values&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;h3 id=&quot;data-analysis&quot;&gt;Data Analysis&lt;/h3&gt;
+
+&lt;p&gt;This is a bit tough to describe, because the analysis you perform is going to be different depending on your application. But in general, you’ll have a few toolsets you can use. For smaller databases, excel is perfectly sufficient.&lt;/p&gt;
+
+&lt;p&gt;For anything larger, you’ll want to look at SQL, R, or some other coding language such as Python. Personally, I like using Python with the Pandas library. Regardless of what tool you use, there are some common functions you’re likely to run into.&lt;/p&gt;
+
+&lt;h4 id=&quot;filters-and-queries&quot;&gt;Filters and Queries&lt;/h4&gt;
+
+&lt;p&gt;Basically equivalent to “get all results that satisfy some condition”.&lt;/p&gt;
+
+&lt;h4 id=&quot;merges&quot;&gt;Merges&lt;/h4&gt;
+
+&lt;p&gt;In a relational database, you data might be split across many different tables (usually to do with how it gets collected). Merges provide a way to combine results into one place.&lt;/p&gt;
+
 &lt;h3 id=&quot;data-visualization&quot;&gt;Data Visualization&lt;/h3&gt;
 
 &lt;p&gt;Principles of good data visualization:&lt;/p&gt;
@@ -1738,7 +1746,7 @@ That being said, Convolutional Neural Networks - which have been very effective 
   &lt;li&gt;What does the visual say?&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Finally, make sure to consider the use case. For instance, if we need to monitor new data as it comes in, an interactive dashboard with the proper backend support would be best. However, if we wanted historical data, a dashboard could be too complex. This is an example of how the visualization step is not independent of our initial setup.&lt;/p&gt;
+&lt;p&gt;Finally, make sure to consider the use case. For instance, if we need to monitor new data as it comes in, an interactive dashboard with the proper backend support would be best (e.g. Tableau). However, if we wanted historical data, a dashboard could be too complex.&lt;/p&gt;
 
 </content>
  </entry>
@@ -3873,9 +3881,9 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 
 &lt;p&gt;To build a bridge between music theory and physics, let us begin with intervals. If we define the note &lt;strong&gt;A&lt;/strong&gt; at 1 hz and then double the frequency to 2 hz, the resulting note is defined in our musical langauge as being 1 octave higher.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;In western music, two notes that are an octave apart are considered the same “note”. For this reason, they recieve the same label, although a number is sometimes used to indicate how high the note is. However, not all musical languages may recognize the concept of an octave, and after all, why should they? Even though we say two notes an octave apart are the same, they clearly are not - one is much higher in pitch than the other. Be careful to remember that the language we have shapes our perspective of the world.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p class=&quot;message&quot;&gt;
+In western music, two notes that are an octave apart are considered the same &quot;note&quot;. For this reason, they recieve the same label, although a number is sometimes used to indicate how high the note is. However, not all musical languages may recognize the concept of an octave, and after all, why should they? Even though we say two notes an octave apart are the same, they clearly are not - one is much higher in pitch than the other. Be careful to remember that the language we have shapes our perspective of the world. 
+&lt;/p&gt;
 
 &lt;p&gt;We could continue to double each frequency (1, 2, 4, …) and find a series of notes spaced 1 octave apart, but this musical scale is pretty limiting. So how do we define other intervals? Well, let’s take other ratios along the set of positive integers.&lt;/p&gt;
 
@@ -3997,11 +4005,11 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 &lt;p&gt;Although not explicitly stated, all relevant propulsion systems work with &lt;strong&gt;fluids&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Q: What is a good measure for efficiency?&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;What is a good measure for efficiency?&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p class=&quot;message&quot;&gt;
-A: As with most things in life, very little is free. Since the goal is to produce thrust, a common measure of effiency is how much thrust gets produced per unit weight of expendable mass. Naturally, this is not so good a quantifier for something like a battery powered quadcopter, but for anything that must carry fuel or propellent, thrust per mass flow is usually what is meant by &quot;efficiency&quot;. 
+As with most things in life, very little is free. Since the goal is to produce thrust, a common measure of effiency is how much thrust gets produced per unit weight of expendable mass. Naturally, this is not so good a quantifier for something like a battery powered quadcopter, but for anything that must carry fuel or propellent, thrust per mass flow is usually what is meant by &quot;efficiency&quot;. 
 &lt;/p&gt;
 
 &lt;h2 id=&quot;mechanical-propulsion&quot;&gt;Mechanical Propulsion&lt;/h2&gt;
@@ -4019,18 +4027,7 @@ A: As with most things in life, very little is free. Since the goal is to produc
 &lt;p&gt;Propeller driven propulsion system are further classified by &lt;em&gt;how power is supplied&lt;/em&gt;.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Turboprop and Turbofan&lt;/strong&gt; - a jet engine’s turbine is used to turn the propeller. This is a little tricky, because jet engines are capable of producing thrust themselves, but they use an entirely different method.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Turboprop&lt;/strong&gt; - the jet engine turns a propeller.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Turbofan&lt;/strong&gt; - the jet engine turns a fan (like a propeller, but with more blades and also sits inside a duct).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Turboprop and Turbofan&lt;/strong&gt; - a jet engine’s turbine is used to turn the propeller. Although the jet engine also does produce thrust, the propeller is what’s mostly responsible.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Electric Propulsion&lt;/strong&gt; - some power source drives an electric motor which turns the propellor. Batteries have poor energy density, which is why you don’t often see electric airplanes.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Gas Engine&lt;/strong&gt; - relies on good old combustion with cylinders and pistons to turn the propeller.&lt;/li&gt;
 &lt;/ol&gt;
@@ -5324,7 +5321,7 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
 
 &lt;h2 id=&quot;pipes&quot;&gt;Pipes&lt;/h2&gt;
 
-&lt;p&gt;Although infinite plates are useful for understanding some of the concepts, they are exactly reflective of real life. What we do see plenty of though, is flow through pipes.&lt;/p&gt;
+&lt;p&gt;Although infinite plates are useful for understanding some of the concepts, they aren’t exactly reflective of real life. What we do see plenty of though, is flow through pipes.&lt;/p&gt;
 
 &lt;h3 id=&quot;hagen-poiseuille-circular-pipe-flow-model&quot;&gt;Hagen-Poiseuille Circular Pipe Flow Model&lt;/h3&gt;
 
@@ -5515,20 +5512,17 @@ Viscosity is to fluids what the modulus of elasticity is to solids. It relates t
    <link href="https://ludavid15.github.io//compressible/"/>
    <updated>2021-05-09T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//compressible</id>
-   <content type="html">&lt;p&gt;While viscous flow deals with liquids, or flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects.&lt;/p&gt;
+   <content type="html">&lt;p&gt;While viscous flow deals with flows that are very slow, compressible flow is for your rockets and airplanes. In this Reynold’s number regime, the density of a fluid cannot assumed to be constant, but luckily we can ignore viscous effects.&lt;/p&gt;
 
 &lt;!--more--&gt;
+
+&lt;p&gt;&lt;strong&gt;Table of Contents&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#stagnation-properties&quot; id=&quot;markdown-toc-stagnation-properties&quot;&gt;Stagnation Properties&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#waves&quot; id=&quot;markdown-toc-waves&quot;&gt;Waves&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#acoustic-wave-theory&quot; id=&quot;markdown-toc-acoustic-wave-theory&quot;&gt;Acoustic Wave Theory&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#method-of-characteristics&quot; id=&quot;markdown-toc-method-of-characteristics&quot;&gt;Method of Characteristics&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#1d-unsteady-moc&quot; id=&quot;markdown-toc-1d-unsteady-moc&quot;&gt;1D Unsteady MOC&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#2d-steady-moc&quot; id=&quot;markdown-toc-2d-steady-moc&quot;&gt;2D Steady MOC&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#minimum-length-nozzle-calculation-using-moc&quot; id=&quot;markdown-toc-minimum-length-nozzle-calculation-using-moc&quot;&gt;Minimum Length Nozzle Calculation using MOC&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#method-of-characteristics&quot; id=&quot;markdown-toc-method-of-characteristics&quot;&gt;Method of Characteristics&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#shocks&quot; id=&quot;markdown-toc-shocks&quot;&gt;Shocks&lt;/a&gt;    &lt;ul&gt;
@@ -5605,18 +5599,19 @@ Given the initial conditions about the displacement and rate, the solution for t
 
 &lt;p&gt;Alright here’s where it get complicated. It turns out that when we no longer assume a constant speed of sound, the equations are a tad unsolvable as they are. To this end, mathemeticians have defined a way around this. Instead of solving the entire system for every point in space, we can define some &lt;em&gt;characteristic lines&lt;/em&gt;. We can apply a constraint (i.e. some property is constant along the line), and this gives us the final equation we need to solve the system. Then if we define many lines, we can nearly cover the entire region we are solving for. By applying constraints at their intersection points, we can solve a big system of equations and have an approximate solution to our problem.&lt;/p&gt;
 
-&lt;h4 id=&quot;1d-unsteady-moc&quot;&gt;1D Unsteady MOC&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;1D Unsteady MOC&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Ok, well I’ve outlined the principle behind it, but I need to actually write the section on how to do this. :(&lt;/p&gt;
+&lt;p&gt;More details incoming!&lt;/p&gt;
 
-&lt;h4 id=&quot;2d-steady-moc&quot;&gt;2D Steady MOC&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;2D Steady MOC&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;minimum-length-nozzle-calculation-using-moc&quot;&gt;Minimum Length Nozzle Calculation using MOC&lt;/h4&gt;
+&lt;p&gt;More details incoming!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Minimum Length Nozzle Calculation using MOC&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;With MOC, it is possible to design a nozzle such that the local curvature exactly cancels any incident expansion waves (these result from the diverging section right after the throat). 
  &lt;/p&gt;
 &lt;h2 id=&quot;shocks&quot;&gt;Shocks&lt;/h2&gt;
-
 &lt;p&gt;Shocks occur when objects travel faster than the acoustic speed of the fluid it’s in (speed measured relative to the fluid). This leads to a sudden discontinuity in the fluid’s properties as it transitions from supersonic to subsonic velocities.&lt;/p&gt;
 
 &lt;h3 id=&quot;normal-shocks&quot;&gt;Normal Shocks&lt;/h3&gt;
@@ -5842,7 +5837,7 @@ Several models have been proposed to find an equivalent transition point. Wazzan
  
  <entry>
    <title>Non-Dimensional Numbers</title>
-   <link href="https://ludavid15.github.io//misc/"/>
+   <link href="https://ludavid15.github.io//fluidnumbers/"/>
    <updated>2021-05-07T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//reference</id>
    <content type="html">&lt;p&gt;Non-dimensional simply means unitless. Why unitless? Because we’re taking the ratio of two similar properties and comparing their relative magnitude.&lt;/p&gt;

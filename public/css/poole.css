@@ -61,14 +61,14 @@ html {
 
 body {
   color: #515151;
-  background-color: #fff;
+  background-color: rgb(238, 232, 208);
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
 
 /* No `:visited` state is required by default (browsers will use `a`) */
 a {
-  color: #268bd2;
+  color: #336a9e;
   text-decoration: none;
 }
 a strong {
@@ -133,8 +133,8 @@ hr {
   position: relative;
   margin: 1.5rem 0;
   border: 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #fff;
+  border-top: 1px solid rgb(0, 0, 0);
+  border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 abbr {
@@ -157,7 +157,7 @@ code {
   padding: .25em .5em;
   font-size: 85%;
   color: #bf616a;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border-radius: 3px;
 }
 pre {
@@ -171,7 +171,7 @@ pre {
   white-space: pre-wrap;
   word-break: break-all;
   word-wrap: break-word;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
 }
 pre code {
   padding: 0;
@@ -222,15 +222,15 @@ pre code {
 blockquote {
   padding: .5rem 1rem;
   margin: .8rem 0;
-  color: #7a7a7a;
-  border-left: .25rem solid #e5e5e5;
+  color: #444444;
+  border-left: .25rem solid #5c7354;
 }
 blockquote p:last-child {
   margin-bottom: 0;
 }
 @media (min-width: 30em) {
   blockquote {
-    padding-right: 5rem;
+    padding-right: 1rem;
     padding-left: 1.25rem;
   }
 }
@@ -246,16 +246,21 @@ img {
 table {
   margin-bottom: 1rem;
   width: 100%;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #383838;
   border-collapse: collapse;
 }
 td,
 th {
   padding: .25rem .5rem;
-  border: 1px solid #e5e5e5;
+  border: 1px solid #393939;
+  background-color: #b2bea0;
 }
 tbody tr:nth-child(odd) td,
 tbody tr:nth-child(odd) th {
+  background-color: #f9f9f9;
+}
+tbody tr:nth-child(even) td,
+tbody tr:nth-child(even) th {
   background-color: #f9f9f9;
 }
 
@@ -282,8 +287,8 @@ tbody tr:nth-child(odd) th {
 .message {
   margin-bottom: 1rem;
   padding: 1rem;
-  color: #717171;
-  background-color: #f9f9f9;
+  color: #353434;
+  background-color: #c4beaf;
 }
 
 
@@ -338,7 +343,7 @@ tbody tr:nth-child(odd) th {
 
 .page,
 .post {
-  margin-bottom: 4em;
+  margin-bottom: 2em;
 }
 
 /* Blog post or page title */
@@ -357,7 +362,7 @@ tbody tr:nth-child(odd) th {
   display: block;
   margin-top: -.5rem;
   margin-bottom: 1rem;
-  color: #9a9a9a;
+  color: #757575;
 }
 
 /* Related posts */
