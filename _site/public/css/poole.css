@@ -369,7 +369,7 @@ tbody tr:nth-child(even) th {
 .related {
   padding-top: 2rem;
   padding-bottom: 2rem;
-  border-top: 1px solid #eee;
+  border-top: 2px solid rgb(47, 47, 47);
 }
 .related-posts {
   padding-left: 0;

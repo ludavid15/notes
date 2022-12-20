@@ -37,9 +37,9 @@ $$\mathcal{L}=q_0f\left(x\right)+p^Tg\left(x\right)+q^Th(x)$$
 
 Lagrange multipliers have a price interpretation, that is, the Lagrange multiplier leading an inequality function is the sensitivity of the final objective cost to slackness in that inequality.
 
-$$h\left(x\right)+b\le0\$$
+$$h\left(x\right)+b \le 0 $$
 
-$$q=\ \frac{\partial f^\ast}{\partial b}$$
+$$q=\frac{\partial f^\ast}{\partial b}$$
 
 ### Derivatives of Multivariable Functions
 Rather than having a singular gradient/slope/derivative, a multivariable function will have a gradient with respect to each variable. This together is represented as a vector of values. 

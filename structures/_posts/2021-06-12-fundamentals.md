@@ -148,6 +148,8 @@ $$\left[\begin{matrix}\sigma_{xx}&\tau_{xy}&\tau_{xy}\\\tau_{xy}&\sigma_{yy}&\ta
 
 ### Von Mises Stress Criteria
 
+Coming soon?
+
 ### Pressure Vessels
 For a cylindrical pressure vessel of radius $$r$$ and a (thin) wall of thickness $$t$$, we can define the hoop stress and axial stress using the equations below:
 
