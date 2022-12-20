@@ -3,13 +3,18 @@ layout: post
 title: Linear Algrebra
 permalink: /linearAlgebra/
 mathjax: true
-except_separator: <!--more-->
+except_separator: 
 categories: math
 ---
 
-Although titled linear algrebra, this post is really about linear algebra as it applies to machine learning. 
+We've mentioned before that machine learning is really just glorified regression. But neural networks are just one way to do this. If we're working with matrices, linear algrebra gives us many ways to extract patterns from our data as well.  
 
-### Section 1 - Matrices
+
+<!--more-->
+
+### Matrix Fundamentals
+
+Before getting into the more interesting/complicated math, let's start by defining a few terms.  
 
 **Vector** - By default, vectors are columns. The transpose/Hermitian of a vector turns it into a row. 
 
@@ -31,23 +36,45 @@ $$\alpha_1V_1+a_2V_2\ldots+\alpha_kV_k=0$$
 
 **Rank** - The rank of a matrix is the is the number of linearly independent rows or columns. It is equal to the dimension of the span of the matrix. The rank cannot be greater than min(m, n) given $$A\in F^{m\times n}$$.
 
-### Summary of Matrix Properties
+### Normal Matrix
 
-| Name	        | Mathematical Expression	| Equivalent Statements/Other Properties
-|-|:-|:-
-|Normal Matrix  |	$$AA^H=A^HA$$       | [A] is normal if it commutes with its conjugate transpose
-|		        |                       | [A] is diagonalizable by a unitary matrix
-|               |                       | There exists a set of eigenvectors of [A] which form an orthonormal basis for range([A])
-|               | $$\|A\|^2=tr(A^HA)$$        | The Frobenius norm can by computed by the eigenvalues
-|               | $$A=Q\Lambda Q^H$$    | 
-|               | $$AQ[:,i]=λiQ[:,i]$$  | [A] can be decomposed into the product of its unitary eigenvector matrices and a diagonal matrix of eigenvalues
-| Unitary/Orthogonal Matrix	| $$AA^H=A^HA=I$$ |	[A] is unitary if it is normal and its product with its conjugate transpose equals the identity matrix
-|                           | $$\|x\|_2=\|Ax\|_2$$      | The product of a unitary matrix with a vector does not change the magnitude of the vector.
-| Symmetric/Hermitian Matrix    |	$$A=A^T$$   | [A] is symmetric if it is equal to its conjugate transpose
-|                               |           | All symmetric matrices are also normal matrices
-|                               |           | Rectangular matrices are never normal matrices
-|                               |           | The eigenvalues of a symmetric (and thus normal) matrix are always real |
-| Diagonalizable Matrix	| $$A=Q\Lambda Q^H$$ |	[A] is diagonalizable if it is similar to a diagonal matrix
+$$AA^H=A^HA$$  
+
+$$\|A\|^2=tr(A^HA)$$  
+
+$$A=Q\Lambda Q^H$$
+
+$$AQ[:,i]=λiQ[:,i]$$
+
+| The Frobenius norm can by computed by the eigenvalues
+| [A] is normal if it commutes with its conjugate transpose
+| [A] is diagonalizable by a unitary matrix
+| There exists a set of eigenvectors of [A] which form an orthonormal basis for range([A])
+| [A] can be decomposed into the product of its unitary eigenvector matrices and a diagonal matrix of eigenvalues
+
+### Unitary/Orthogonal Matrix
+
+$$AA^H=A^HA=I$$
+
+$$\|x\|_2=\|Ax\|_2$$
+
+| [A] is unitary if it is normal and its product with its conjugate transpose equals the identity matrix
+| The product of a unitary matrix with a vector does not change the magnitude of the vector.
+
+### Symmetric/Hermitian Matrix
+
+$$A=A^T$$
+
+| [A] is symmetric if it is equal to its conjugate transpose
+| All symmetric matrices are also normal matrices
+| Rectangular matrices are never normal matrices
+| The eigenvalues of a symmetric (and thus normal) matrix are always real
+
+### Diagonalizable Matrix
+
+$$A=Q\Lambda Q^H$$ 
+
+| [A] is diagonalizable if it is similar to a diagonal matrix
 
  
 ### Singular Value Decomposition
@@ -61,11 +88,14 @@ Realizing that in some cases, the rank of A is less than either m or n, leaving 
 $$A=\ \sum_{i=1}^{r}{\sigma_iu_iv_i^H}$$
 
 
-#### Additional Properties of the SVD
+### Additional Properties of the SVD
 
-|$$Av_j=\sigma_ju_j\ \ \ \ \ \ if\ j\in\left(1,r\right)$$
-|$$Av_j=\sigma_ju_j=0\ \ \ \ \ \ \ \ if\ j\in(r+1,\ n)$$
-|$$A^Hu_j=\sigma_jv_j\ \ \ \ \ \ \ \ if\ j\in(1,\ r)$$
+$$Av_j=\sigma_ju_j  \ \ \ \ \ \ if\ j\in\left(1,r\right)$$
+
+$$Av_j=\sigma_ju_j=0\ \ \ \ \ \ if\ j\in(r+1,\ n)$$
+
+$$A^Hu_j=\sigma_jv_j\ \ \ \ \ \ if\ j\in(1,\ r)$$
+
 |The right singular vectors of AH are the left singular vectors of A and vice-versa
 |The dimension of the range of A is equal to the rank of A
 |$$u_1,u_2,\ldots u_r$$ are orthogonal basis vectors for the range of A

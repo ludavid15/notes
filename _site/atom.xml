@@ -4,13 +4,182 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2022-12-11T16:53:12-08:00</updated>
+ <updated>2022-12-17T15:12:54-08:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Satellite Engineering Fundamentals</title>
+   <link href="https://ludavid15.github.io//satellitesIntro/"/>
+   <updated>2022-12-10T00:00:00-08:00</updated>
+   <id>https://ludavid15.github.io//satellites</id>
+   <content type="html">&lt;p&gt;Finally we’re getting to stuff that I work with. There’s a lot to know when it comes to satellites, so in this post we’re just going to stick to the basics.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Before we design any hardware, first we need to understand our mission objective. Once that’s determined, we’ll be able to select an appropriate orbit. The orbit is very important because that decides our operating environment (for example, solar intensity, exposure to radiation, available communication stations, etc).&lt;/p&gt;
+
+&lt;h2 id=&quot;orbits&quot;&gt;Orbits&lt;/h2&gt;
+
+&lt;p&gt;In this post we’ll focus on Earth Orbits. For the most part these can be roughly categorized by their altitude, eccentricity, and inclination.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;HEO&lt;/td&gt;
+      &lt;td&gt;Highly Elliptical Orbit&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;These have a perigee relatively close to Earth, but have a very high apogee. This means that the satellite spends a lot of time at apogee, but swings through perigee pretty quickly.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;LEO&lt;/td&gt;
+      &lt;td&gt;Low Earth Orbit&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Roughly any orbit below 2000km in altitude. These orbits are convenient and accessible, but have a limited field of view.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GEO&lt;/td&gt;
+      &lt;td&gt;Geosychonous Earth Orbit&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;These orbits have a period equal to 24 hours, which means they sit over the same spot on earth.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Orbits will high inclination are typically called “polar” (i.e. they fly over the poles of the Earth). Generally, changing an orbit’s inclination is pretty expensive in terms of delta-V, so many polar satellites are launched at higher latitudes.&lt;/p&gt;
+
+&lt;h2 id=&quot;hardware&quot;&gt;Hardware&lt;/h2&gt;
+
+&lt;p&gt;Regardless of where you go, almost every satellite is going to have some form of each of the following.&lt;/p&gt;
+
+&lt;h3 id=&quot;communication&quot;&gt;Communication&lt;/h3&gt;
+
+&lt;p&gt;Your comm system will be unique to your application, but in general some kind of antenna will be required. More importantly perhaps, is &lt;em&gt;what and when&lt;/em&gt; you plan to communicate. A few questions to ponder:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Are there specific ground stations you want to point to? Or will you have an omni-directional antenna onboard?&lt;/li&gt;
+  &lt;li&gt;What are the security needs? If there’s data to protect, you’ll probably want some kind of encoding or encryption.&lt;/li&gt;
+  &lt;li&gt;How are you going to communicate with the satellite from the ground? Will you have an antenna that points to it? If so, how are you going to track the satellite’s position in the sky?&lt;/li&gt;
+  &lt;li&gt;What are the signal to noise (S/N) and latency requirements?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Also worth thinking about is the &lt;a href=&quot;https://en.wikipedia.org/wiki/OSI_model&quot;&gt;OSI Model&lt;/a&gt;. For a satellite’s comm system, you’ll need to consider all layers.&lt;/p&gt;
+
+&lt;p&gt;Especially for satellites, the distances between your sending and receiving terminal can be significant. You’ll want to pay careful attention to the required power of your signal, and balance that against noise and signal degradation.&lt;/p&gt;
+
+&lt;h3 id=&quot;propulsion&quot;&gt;Propulsion&lt;/h3&gt;
+
+&lt;p&gt;The propulsion system provides Delta-V capacity to your satellite. This could be used initially for getting into your orbit, but also after the fact for maintaining your orbit, or for emergency collision avoidance maneuvers.&lt;/p&gt;
+
+&lt;p class=&quot;message&quot;&gt;
+Why do orbits need to be maintained? Well, atmospheric drag for one. But also the Earth isn&apos;t perfectly spherical and this causes orbits to drift over time (called precession).
+&lt;/p&gt;
+
+&lt;h3 id=&quot;attitude-control&quot;&gt;Attitude Control&lt;/h3&gt;
+
+&lt;p&gt;The attitude control system serves effectively the same role as your car’s steering. In zero-G however, the only way to control your pointing is to control your momentum. The primary methods are:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Thrusters&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;This one’s pretty straightforward. If you have thrusters that aren’t pointed through the center of mass, firing them will create a torque. The obvious downside here is that fuel is a limited resource.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Magnetic Torque Rods&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;If you’re orbiting the Earth, you have the benefit of orbiting in a magnetic field. If you pass current through a wire, it will interact with this magnetic field and generate a force, which you can harness for attitude control.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Wheels or Gyros&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;These are maybe less intuitive. First, we should remember that total momentum is conserved. This means that if we change the momentum of one thing on the spacecraft, something else will change as well to preserve the total. On a satellite, we can change the speed/orientation of a heavy wheel or gyro using an electric motor, which induces a corresponding change in the angular momentum in the rest of the satellite, thereby providing us with a means of attitude control.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;If you’ve taken a controls class, you may also know that effective controller design requires knowledge of your mass distribution. Some of the more important external placements are going to be your:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Solar arrays&lt;/li&gt;
+  &lt;li&gt;Comm Antennas&lt;/li&gt;
+  &lt;li&gt;Payload&lt;/li&gt;
+  &lt;li&gt;Radiator&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Which is going to be constrained primarily by your orbit, power needs, thermal needs, and mission needs. In other words, any controller needs are usually going to come second. This is usually fine - it’s easier to size up your control mechanism than to realize later that your radiator accidently gets pointed into the sun while pointing the payload!&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Propulsion tanks tend to be placed towards the center of your satellite. This just works overall because tanks tend to be both big and heavy, but also over time as you use up propellant, this minimizes how far the center of mass shifts.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;attitude-determination&quot;&gt;Attitude Determination&lt;/h3&gt;
+
+&lt;p&gt;Control doesn’t do much good unless you know where you are. For a satellite, two important things to know are your 1) ephemeris (position along the orbit) and 2) attitude. This gets a little bit into the world of controls, which we won’t dive into, but you’ll always want sensors to collect data. A few options include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GPS Receiver&lt;/li&gt;
+  &lt;li&gt;Star Tracker&lt;/li&gt;
+  &lt;li&gt;Sun Sensor&lt;/li&gt;
+  &lt;li&gt;Inertial Measurement or Reference Unit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As for actually determining your attitude and ephemeris from sensor data, you could try some kind of Kalman filter.&lt;/p&gt;
+
+&lt;h3 id=&quot;power&quot;&gt;Power&lt;/h3&gt;
+
+&lt;p&gt;For Earth orbiting satellites, your primary source of power is almost always going to be solar, it’s just too easy not to!&lt;/p&gt;
+
+&lt;p class=&quot;message&quot;&gt;
+The only time you wouldn&apos;t use solar is for deep space missions. As you move away from the sun, solar intensity drops proportionally to the inverse square of your distance. So if you were going out to Pluto for example, nuclear power might be a better option.
+&lt;/p&gt;
+
+&lt;p&gt;If you’re in LEO or even HEO orbit, there will likely be times when you are eclipsed by the Earth. You’ll need to size your batteries accordingly so you can get through this period without solar power.&lt;/p&gt;
+
+&lt;p&gt;If your position and attitude are changing rapidly, you may also want some way to gimbal your solar panels into or out of the sun, to control the flow of power/heat.&lt;/p&gt;
+
+&lt;h3 id=&quot;thermal&quot;&gt;Thermal&lt;/h3&gt;
+
+&lt;p&gt;Thermal gets tricky in space, because there’s no convection or conduction, only radiation. This means that spacecraft are often subjected to enormous temperature ranges (-100 to 100 deg celsius is not a bad estimate). Heaters are essential to prevent things from freezing, while radiators are just as important to prevent things from overheating.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Model Based Systems Engineering</title>
@@ -59,26 +228,20 @@
 
 &lt;p&gt;Definitions explain the words we create to group stuff together. If many pieces of hardware work together to provide telemetry, we might designate a “telemetry subsystem”. These abstractions are an important part of communicating complex ideas, but can also get messy. Definitions are applicable to any of the three prior groupings: hardware, functions, and interactions.&lt;/p&gt;
 
-&lt;h3 id=&quot;engineering-in-practice&quot;&gt;Engineering in Practice&lt;/h3&gt;
-
-&lt;p&gt;In real life, we often do not build things up from scratch. Instead a project is often an addition to, or a modification of something that already exists. Even though this is meant to simplify the process, it also creates a lot of additional work (as anyone who has tried to read someone else’s code can testify).&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;How does this impact the concept of systems engineering?&lt;/p&gt;
-&lt;/blockquote&gt;
-
 &lt;h3 id=&quot;dodaf&quot;&gt;DoDAF&lt;/h3&gt;
 
-&lt;p&gt;The Department of Defense Architecture Framework is an effort to generalize how we explain complex systems. Before getting into what DodAF is, let’s be clear that DoDAF is NOT model based systems engineering. DoDAF only defines a set of “viewpoints”, which each viewpoint showing a different aspect of the system. For example, systems viewpoint 4 (SV4) shows functional flow diagrams, while SV1’s show a high level overview of the physical elements.&lt;/p&gt;
+&lt;p&gt;The Department of Defense Architecture Framework is an effort to generalize how we explain complex systems. Before getting into what DodAF is, let’s be clear that DoDAF is NOT model based systems engineering. DoDAF only defines a set of “viewpoints”, with each viewpoint showing a different aspect of the system. For example, systems viewpoint 4 (SV4) shows functional flow diagrams, while SV1’s show a high level overview of the physical elements.&lt;/p&gt;
 
 &lt;p&gt;Consider an analogy - in CAD, we build 3D shapes. When we try to represent them on a 2D screen, we must choose a viewing angle and projection, but there are likely some standard views that everyone expects. Maybe a cross section to show the internal structure, or a profile view if it’s a flat plate. DoDAF (and in fact any system diagram) follows the same idea.&lt;/p&gt;
 
 &lt;table&gt;
-  &lt;tbody&gt;
+  &lt;thead&gt;
     &lt;tr&gt;
-      &lt;td&gt;DoDAF Views&lt;/td&gt;
-      &lt;td&gt;Explanation&lt;/td&gt;
+      &lt;th&gt;DoDAF Views&lt;/th&gt;
+      &lt;th&gt;Explanation&lt;/th&gt;
     &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td&gt;SV-1&lt;/td&gt;
       &lt;td&gt;High level hardware overview&lt;/td&gt;
@@ -116,13 +279,13 @@
 
 &lt;h3 id=&quot;sv-4&quot;&gt;SV-4&lt;/h3&gt;
 
-&lt;p&gt;This is the functional viewpoint. In contrast to an SV-10c, an SV-4 is the functional model of your hardware, and NOT necessarily your order of operations.&lt;/p&gt;
+&lt;p&gt;This is the functional viewpoint. In contrast to an SV-10c, an SV-4 is the functional model of your hardware, and NOT necessarily your order of operations. You can think of these a bit like a user story.&lt;/p&gt;
 
 &lt;p&gt;In an SV-4, we can either state a heirarchy, (A consists of B, C, D), or we can show it using a flow chart (B, C, and D interact to accomplish A). The first version is known as an SV-4a, and the latter, more complex version is called an SV-4b.&lt;/p&gt;
 
 &lt;h3 id=&quot;sv-10c&quot;&gt;SV-10c&lt;/h3&gt;
 
-&lt;p&gt;This is a sequence diagram. In contrast to the SV-4, an SV-10c is not primarily to meant to show the structure of your functions and hardware performers. Instead, an SV-10c tends to be a more explicit (and better) representation of your order of operations.&lt;/p&gt;
+&lt;p&gt;This is a sequence diagram. In contrast to the SV-4, an SV-10c is not primarily to meant to show the structure of your functions and hardware performers. Instead, an SV-10c tends to be a more explicit (and better) representation of your order of operations. An SV-10c also places greater emphasis on the &lt;em&gt;messages&lt;/em&gt; and ownership of an operation. For instance, will you provide me an update, or am I responsible for reaching out and asking for it? As such, SV-10c diagrams are great for modeling low level behaviors.&lt;/p&gt;
 
 &lt;h3 id=&quot;div&quot;&gt;DIV&lt;/h3&gt;
 
@@ -913,6 +1076,16 @@ model = Dense(2, 1)
 
 &lt;p&gt;A single bit which tells you if there is an even or odd number of 1’s in the transmitted signal. Used to check the integrity of a message.&lt;/p&gt;
 
+&lt;h3 id=&quot;hardware&quot;&gt;Hardware&lt;/h3&gt;
+
+&lt;h4 id=&quot;traveling-wave-tube-amplifier&quot;&gt;Traveling Wave Tube Amplifier&lt;/h4&gt;
+
+&lt;p&gt;Often abbreviated to just TWTA, this is a device used for amplifying radio signals. Satellites often need this since they communicate over large distances.&lt;/p&gt;
+
+&lt;h4 id=&quot;waveguide&quot;&gt;Waveguide&lt;/h4&gt;
+
+&lt;h4 id=&quot;coax-cable&quot;&gt;Coax-Cable&lt;/h4&gt;
+
 </content>
  </entry>
  
@@ -1148,6 +1321,8 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
 
+&lt;p&gt;And that’s it! A quick overview of different architectures that researchers have used to tackle music generation. In the next post, we’ll take a look at specific challenges and more practical considerations for if you wanted to deploy a production model.&lt;/p&gt;
+
 </content>
  </entry>
  
@@ -1156,7 +1331,7 @@ That being said, Convolutional Neural Networks - which have been very effective 
    <link href="https://ludavid15.github.io//systemsEngineering/"/>
    <updated>2022-05-04T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//systems</id>
-   <content type="html">&lt;p&gt;If you’ve ever tried to manage a highly complex project, you know that a certain amount of organization is required. This kind of big-picture planning helps to reduce risk. However, it’s important to remember that this kind of oversight ultimately serves the product. Otherwise, project management easily devolves into beaurocracy.&lt;/p&gt;
+   <content type="html">&lt;p&gt;If you’ve ever tried to manage a highly complex project, you know that a certain amount of organization is required. This kind of big-picture planning helps to reduce risk. However, it’s important to remember that this kind of oversight ultimately serves the product. There is such a thing as too much management.&lt;/p&gt;
 
 &lt;p&gt;This is the balance to be struck in the world of systems engineering. Systems engineering is a set of practices for developing highly complex projects while minimizing risk. It is NOT a substitute for good communication or for responsible people (though it can help).&lt;/p&gt;
 
@@ -1200,7 +1375,56 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;p&gt;My personal opinion of requirements is that they exist as a document of wants, agreed upon by the stakeholders. If I want or need A, I’ll go to you, we can talk it over, and we write this down into our requirements document.&lt;/p&gt;
 
-&lt;p&gt;This may be a good way to track our needs, (potentially comparable to “user stories” from agile), but I think we shouldn’t imagine requirements to be a good model of your design. In other words, it’s important for your model to meet the requirements, but the requirements are not for organizing your design.&lt;/p&gt;
+&lt;p&gt;This may be a good way to track our needs, (potentially comparable to “user stories” from agile), but I think we shouldn’t imagine requirements to necessarily be a good model of your design. In other words, it’s important for your model to meet the requirements, but the requirements are not for organizing your design.&lt;/p&gt;
+
+&lt;h3 id=&quot;engineering-in-practice&quot;&gt;Engineering in Practice&lt;/h3&gt;
+
+&lt;p&gt;In real life, we often do not build things up from scratch. Instead a project is often an addition to, or a modification of something that already exists. Even though this is meant to simplify the process, it also creates a lot of additional work (as anyone who has tried to read someone else’s code can testify). For this situation, there are often requirements which outline a specific design (i.e. shall use ABC hardware).&lt;/p&gt;
+
+&lt;h3 id=&quot;operations&quot;&gt;Operations&lt;/h3&gt;
+
+&lt;p&gt;Also known as functions or activities, operations are used to explain &lt;em&gt;how&lt;/em&gt; something is done. This could be for the benefit of a designer, an operator, or even a computer. Depending on the user, this can also be detailed to different resolutions, ranging from the abstract, to the very specific (like individual command messages).&lt;/p&gt;
+
+&lt;p&gt;Some Operations Documents:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Concept of Operations (CONOPS)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A high level overview which outlines the overall goals and objectives. Usually includes context or rational details for why things are the way they are. This is frequently a user or customer facing document.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Mission Operations Document (MOD)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A more detailed outline of your procedures than the CONOPS. A MOD can provide specific details about what your hardware (or an operator) needs to do.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Recommended Operating Procedures (ROP)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;The most detailed document of the three, a ROP is as detailed as you can get before actually implementing a solution. For things like commanding or telemetry, a ROP can be as specific as the individual bits in a dataframe. In an OSI context, this means going down to the Data Link Layer (layer 2).&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 </content>
  </entry>
@@ -1210,9 +1434,13 @@ That being said, Convolutional Neural Networks - which have been very effective 
    <link href="https://ludavid15.github.io//linearAlgebra/"/>
    <updated>2022-03-30T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//linearAlgebra</id>
-   <content type="html">&lt;p&gt;Although titled linear algrebra, this post is really about linear algebra as it applies to machine learning.&lt;/p&gt;
+   <content type="html">&lt;p&gt;We’ve mentioned before that machine learning is really just glorified regression. But neural networks are just one way to do this. If we’re working with matrices, linear algrebra gives us many ways to extract patterns from our data as well.&lt;/p&gt;
 
-&lt;h3 id=&quot;section-1---matrices&quot;&gt;Section 1 - Matrices&lt;/h3&gt;
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;matrix-fundamentals&quot;&gt;Matrix Fundamentals&lt;/h3&gt;
+
+&lt;p&gt;Before getting into the more interesting/complicated math, let’s start by defining a few terms.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Vector&lt;/strong&gt; - By default, vectors are columns. The transpose/Hermitian of a vector turns it into a row.&lt;/p&gt;
 
@@ -1234,81 +1462,82 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;p&gt;&lt;strong&gt;Rank&lt;/strong&gt; - The rank of a matrix is the is the number of linearly independent rows or columns. It is equal to the dimension of the span of the matrix. The rank cannot be greater than min(m, n) given \(A\in F^{m\times n}\).&lt;/p&gt;
 
-&lt;h3 id=&quot;summary-of-matrix-properties&quot;&gt;Summary of Matrix Properties&lt;/h3&gt;
+&lt;h3 id=&quot;normal-matrix&quot;&gt;Normal Matrix&lt;/h3&gt;
+
+\[AA^H=A^HA\]
+
+\[\|A\|^2=tr(A^HA)\]
+
+\[A=Q\Lambda Q^H\]
+
+\[AQ[:,i]=λiQ[:,i]\]
 
 &lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Name&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Mathematical Expression&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Equivalent Statements/Other Properties&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;Normal Matrix&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(AA^H=A^HA\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;[A] is normal if it commutes with its conjugate transpose&lt;/td&gt;
+      &lt;td&gt;The Frobenius norm can by computed by the eigenvalues&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;[A] is diagonalizable by a unitary matrix&lt;/td&gt;
+      &lt;td&gt;[A] is normal if it commutes with its conjugate transpose&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;There exists a set of eigenvectors of [A] which form an orthonormal basis for range([A])&lt;/td&gt;
+      &lt;td&gt;[A] is diagonalizable by a unitary matrix&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(|A|^2=tr(A^HA)\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;The Frobenius norm can by computed by the eigenvalues&lt;/td&gt;
+      &lt;td&gt;There exists a set of eigenvectors of [A] which form an orthonormal basis for range([A])&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(A=Q\Lambda Q^H\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt;[A] can be decomposed into the product of its unitary eigenvector matrices and a diagonal matrix of eigenvalues&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;unitaryorthogonal-matrix&quot;&gt;Unitary/Orthogonal Matrix&lt;/h3&gt;
+
+\[AA^H=A^HA=I\]
+
+\[\|x\|_2=\|Ax\|_2\]
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[A] is unitary if it is normal and its product with its conjugate transpose equals the identity matrix&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(AQ[:,i]=λiQ[:,i]\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;[A] can be decomposed into the product of its unitary eigenvector matrices and a diagonal matrix of eigenvalues&lt;/td&gt;
+      &lt;td&gt;The product of a unitary matrix with a vector does not change the magnitude of the vector.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;symmetrichermitian-matrix&quot;&gt;Symmetric/Hermitian Matrix&lt;/h3&gt;
+
+\[A=A^T\]
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[A] is symmetric if it is equal to its conjugate transpose&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;Unitary/Orthogonal Matrix&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(AA^H=A^HA=I\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;[A] is unitary if it is normal and its product with its conjugate transpose equals the identity matrix&lt;/td&gt;
+      &lt;td&gt;All symmetric matrices are also normal matrices&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(|x|_2=|Ax|_2\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;The product of a unitary matrix with a vector does not change the magnitude of the vector.&lt;/td&gt;
+      &lt;td&gt;Rectangular matrices are never normal matrices&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;Symmetric/Hermitian Matrix&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(A=A^T\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;[A] is symmetric if it is equal to its conjugate transpose&lt;/td&gt;
+      &lt;td&gt;The eigenvalues of a symmetric (and thus normal) matrix are always real&lt;/td&gt;
     &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;diagonalizable-matrix&quot;&gt;Diagonalizable Matrix&lt;/h3&gt;
+
+\[A=Q\Lambda Q^H\]
+
+&lt;table&gt;
+  &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;All symmetric matrices are also normal matrices&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Rectangular matrices are never normal matrices&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;The eigenvalues of a symmetric (and thus normal) matrix are always real&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Diagonalizable Matrix&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;\(A=Q\Lambda Q^H\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;[A] is diagonalizable if it is similar to a diagonal matrix&lt;/td&gt;
+      &lt;td&gt;[A] is diagonalizable if it is similar to a diagonal matrix&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1323,19 +1552,16 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 \[A=\ \sum_{i=1}^{r}{\sigma_iu_iv_i^H}\]
 
-&lt;h4 id=&quot;additional-properties-of-the-svd&quot;&gt;Additional Properties of the SVD&lt;/h4&gt;
+&lt;h3 id=&quot;additional-properties-of-the-svd&quot;&gt;Additional Properties of the SVD&lt;/h3&gt;
+
+\[Av_j=\sigma_ju_j  \ \ \ \ \ \ if\ j\in\left(1,r\right)\]
+
+\[Av_j=\sigma_ju_j=0\ \ \ \ \ \ if\ j\in(r+1,\ n)\]
+
+\[A^Hu_j=\sigma_jv_j\ \ \ \ \ \ if\ j\in(1,\ r)\]
 
 &lt;table&gt;
   &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;\(Av_j=\sigma_ju_j\ \ \ \ \ \ if\ j\in\left(1,r\right)\)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;\(Av_j=\sigma_ju_j=0\ \ \ \ \ \ \ \ if\ j\in(r+1,\ n)\)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;\(A^Hu_j=\sigma_jv_j\ \ \ \ \ \ \ \ if\ j\in(1,\ r)\)&lt;/td&gt;
-    &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;The right singular vectors of AH are the left singular vectors of A and vice-versa&lt;/td&gt;
     &lt;/tr&gt;
@@ -2453,6 +2679,12 @@ Problems formatted in one type can be transformed into another format fairly eas
 &lt;p&gt;&lt;em&gt;*The coordinate frame is very important! Positions are always defined with respect to something.&lt;/em&gt;&lt;/p&gt;
 
 &lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Task&lt;/th&gt;
+      &lt;th&gt;Implementation Stategy&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td&gt;Odometry&lt;/td&gt;
@@ -2521,7 +2753,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;p&gt;SLAM is a process which covers the first two goals in computer vision - odometry and mapping. SLAM then can be further subdivided into two components, a &lt;strong&gt;front end&lt;/strong&gt; which identifies features in the environment, and a &lt;strong&gt;back-end&lt;/strong&gt; which builds an internal map of those features.&lt;/p&gt;
 
-&lt;h3 id=&quot;term-definitions&quot;&gt;Term Definitions&lt;/h3&gt;
+&lt;h3 id=&quot;misc-definitions&quot;&gt;Misc Definitions&lt;/h3&gt;
 
 &lt;p&gt;Isomorphism – a form of transformation that preserves structure.&lt;/p&gt;
 
@@ -2634,7 +2866,7 @@ Problems formatted in one type can be transformed into another format fairly eas
    <link href="https://ludavid15.github.io//aircraft/"/>
    <updated>2021-06-21T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//aircraft</id>
-   <content type="html">&lt;p&gt;This post covers some of the principles of aircraft performance, design, and aerodynamics. Mostly an assortment of notes collected from my undergraduate courses at UCLA.&lt;/p&gt;
+   <content type="html">&lt;p&gt;This post covers some principles of aircraft performance, design, and aerodynamics. It’s an assortment of notes collected from my undergraduate courses at UCLA, so it’s a little messy.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -3542,6 +3774,8 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 
 &lt;h3 id=&quot;von-mises-stress-criteria&quot;&gt;Von Mises Stress Criteria&lt;/h3&gt;
 
+&lt;p&gt;Coming soon?&lt;/p&gt;
+
 &lt;h3 id=&quot;pressure-vessels&quot;&gt;Pressure Vessels&lt;/h3&gt;
 &lt;p&gt;For a cylindrical pressure vessel of radius \(r\) and a (thin) wall of thickness \(t\), we can define the hoop stress and axial stress using the equations below:&lt;/p&gt;
 
@@ -3728,9 +3962,9 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 
 &lt;p&gt;Lagrange multipliers have a price interpretation, that is, the Lagrange multiplier leading an inequality function is the sensitivity of the final objective cost to slackness in that inequality.&lt;/p&gt;
 
-\[h\left(x\right)+b\le0\\]
+\[h\left(x\right)+b \le 0\]
 
-\[q=\ \frac{\partial f^\ast}{\partial b}\]
+\[q=\frac{\partial f^\ast}{\partial b}\]
 
 &lt;h3 id=&quot;derivatives-of-multivariable-functions&quot;&gt;Derivatives of Multivariable Functions&lt;/h3&gt;
 &lt;p&gt;Rather than having a singular gradient/slope/derivative, a multivariable function will have a gradient with respect to each variable. This together is represented as a vector of values.&lt;/p&gt;
@@ -4565,6 +4799,8 @@ As with most things in life, very little is free. Since the goal is to produce t
 &lt;p&gt;Importantly, we find that that thrust scales with the square of voltage, but inversely with the cube of Isp. At high values of specific impulse, an extremely large voltage is required to produce even small amounts of thrust. Thus electrosprays must be built with multiple emission sites (typically on the order of 100-1000) to reach thrust levels comparable to gridded ion or hall thrusters.&lt;/p&gt;
 
 &lt;p&gt;Luckily, this also means that we can just keep adding emission sites to increase the thrust (like increasing the number of thrusters). At this scale, doing so adds relatively little support equipment mass.&lt;/p&gt;
+
+&lt;p&gt;If you’re interested, read all about electrospray scaling issues &lt;a href=&quot;https://docs.google.com/document/d/1sRX4AJxvLSF1PADZBpmdQWkueGrxS-LC/edit?usp=share_link&amp;amp;ouid=113710643301397614506&amp;amp;rtpof=true&amp;amp;sd=true&quot;&gt;here&lt;/a&gt;!&lt;/p&gt;
 </content>
  </entry>
  
@@ -5902,7 +6138,7 @@ For curved surfaces, use the following force balance approach:&lt;/p&gt;
    <link href="https://ludavid15.github.io//jetEngines/"/>
    <updated>2021-05-06T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//jets</id>
-   <content type="html">&lt;p&gt;In 1941, a Messerschmitt Me 262 became the world’s first operational jet powered aircraft. Relying on combustion and a nozzle, the new “jet engine” is conceptually more similar to a rocket than a propeller.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Alright, let’s talk about jet engines. Why are they everywhere? What’s the big deal? What happened to propellers!?&lt;/p&gt;
 
 &lt;!--more--&gt;
 

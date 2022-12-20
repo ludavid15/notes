@@ -36,4 +36,19 @@ A point to point interface which transmits digital/bi-level information by chang
 A single bit which tells you if there is an even or odd number of 1's in the transmitted signal. Used to check the integrity of a message.
 
 
+### Hardware
+
+#### Traveling Wave Tube Amplifier
+
+Often abbreviated to just TWTA, this is a device used for amplifying radio signals. Satellites often need this since they communicate over large distances.
+
+#### Waveguide
+
+
+
+#### Coax-Cable
+
+
+
+
 
