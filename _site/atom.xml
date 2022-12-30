@@ -4,13 +4,95 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2022-12-17T15:12:54-08:00</updated>
+ <updated>2022-12-29T20:55:45-08:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>The Math of Dice Rolling</title>
+   <link href="https://ludavid15.github.io//dice/"/>
+   <updated>2022-12-29T00:00:00-08:00</updated>
+   <id>https://ludavid15.github.io//dice</id>
+   <content type="html">&lt;p&gt;Have you ever been a DM and wondered what it means to roll with disadvantage? Or why some weapons are 2d6 instead of 1d12? It all has to do with the statistics of dice rolls!&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Let’s start with something pretty basic to understand. If you are rolling a single dice, there is an equal probability of any number landing face up. This means a flat distribution across the board.&lt;/p&gt;
+
+&lt;h3 id=&quot;taking-the-sum-of-2-dice&quot;&gt;Taking the Sum of 2 Dice&lt;/h3&gt;
+
+&lt;p&gt;Now instead of rolling a single dice, we’ll take the sum of two dice. So instead of rolling 1d12, we can roll 2d6. The first obvious change is that now it’s no longer possible to roll a 1. However, the distribution is now also way different! Averages values (like a 6, 7, 8) are way more likely than the extremes (a 2 or a 12).&lt;/p&gt;
+
+&lt;p&gt;Here’s a fairly straightforward snippet of code to help us analyze the distribution. We’re getting the every combination from 2 dice rolls, summing them, and then tallying up each sum.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def distribution_sum(a, b):
+    result = []
+    total = max(a)*max(b)
+    for roll_1 in a:
+        for roll_2 in b:
+            result.append(roll_1 + roll_2)
+            
+    x = np.arange(1, max(result)+1)
+    y = np.zeros(max(result))
+    for sum in result:
+        y[sum-1] += 1
+    return x, y/total
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;When we plot the results, we can see that the sum of two dice is actually &lt;strong&gt;not&lt;/strong&gt; a bell curve, but a triangle.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/d6d6.png&quot; alt=&quot;SumOfTwo&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;However, as we increase the difference between the two die used (e.g. d12 and d8), we also “flatten” the top. You can think of this as the bigger dice “enveloping” the smaller dice so to speak.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/d12d8.png&quot; alt=&quot;SumOfTwoDifferent&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;sum-of-more-than-2-dice&quot;&gt;Sum of More than 2 Dice&lt;/h3&gt;
+
+&lt;p&gt;When we increase the number of dice (for example, 3d4 instead of 1d12), we end up both flattening the curve, as well as shifting it to the right. Here’s a few examples all together:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/2d63d4.png&quot; alt=&quot;MultipleDice&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;rolling-with-advantagedisadvantage&quot;&gt;Rolling with Advantage/Disadvantage&lt;/h3&gt;
+
+&lt;p&gt;When you roll with advantage, you roll two dice and take the higher value. We could take the same approach as before, and find every combination, compare the results, and only record the higher value, and that code would look like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def distribution_advantage(a):
+    result = []
+    total = max(a)**2
+    for roll_1 in a:
+        for roll_2 in a:
+            result.append(max([roll_1, roll_2]))
+            
+    x = np.arange(2, max(a)+1)
+    y = np.zeros(max(result)-1)
+    for sum in result:
+        y[sum-2] += 1
+    return x, y/total
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;But there’s a faster way to come to an answer. Let’s say that on one d20 die you rolled a 20. This means that the other die can be literally anything, and you’d still take the 20. But now let’s say you roll a 2 on the first die. Well now there’s only one number on the other die for which you’d still take the 2 from the first die.&lt;/p&gt;
+
+&lt;p&gt;So the idea I’m trying to convey here is that larger numbers are &lt;em&gt;dominant&lt;/em&gt; over smaller numbers, in the same way as with dominant and recessive genes. So back to our previous analogy, all 20 combinations with a 20 results in a 20, but only 1 combination with a 1 results in a 1 (whew take a second to digest that, that was confusing).&lt;/p&gt;
+
+&lt;p&gt;All this means that a 20 is going to be about 20 times more likely than a 1 in a roll with advantage. If we plot the distribution, it’ll look something like this.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/advantaged20.png&quot; alt=&quot;Advantage&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Rolling with diadvantage is going to be the same, but in reverse, where 1 becomes more likely, and 20 becomes less likely.&lt;/p&gt;
+
+&lt;p&gt;The weighted average of an advantaged d20 roll (result * probability) is 13.825, compared to 10.5 for a straight roll. In other words, you can think of an advantaged roll as approximately equivalent to adding 3.325 to a roll.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;And that’s it! Those should cover most cases you’ll encounter as a player or DM. Next up, a chapter on why paladin crits are ridiculous.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Satellite Engineering Fundamentals</title>
@@ -62,7 +144,7 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;Orbits will high inclination are typically called “polar” (i.e. they fly over the poles of the Earth). Generally, changing an orbit’s inclination is pretty expensive in terms of delta-V, so many polar satellites are launched at higher latitudes.&lt;/p&gt;
+&lt;p&gt;Orbits will high inclination are typically called “polar” (i.e. they fly over the poles of the Earth). Generally, changing an orbit’s inclination is pretty expensive in terms of delta-V, so many polar satellites are launched at higher latitudes (which puts you naturally into a high inclination orbit).&lt;/p&gt;
 
 &lt;h2 id=&quot;hardware&quot;&gt;Hardware&lt;/h2&gt;
 
@@ -83,6 +165,8 @@
 
 &lt;p&gt;Especially for satellites, the distances between your sending and receiving terminal can be significant. You’ll want to pay careful attention to the required power of your signal, and balance that against noise and signal degradation.&lt;/p&gt;
 
+&lt;p&gt;Once the main downlink path has been designed, you’ll want to think about what actual content you want. Will you have telemetry to monitor the health and status of your system? How often will it be collected and reported? How will it be identified?&lt;/p&gt;
+
 &lt;h3 id=&quot;propulsion&quot;&gt;Propulsion&lt;/h3&gt;
 
 &lt;p&gt;The propulsion system provides Delta-V capacity to your satellite. This could be used initially for getting into your orbit, but also after the fact for maintaining your orbit, or for emergency collision avoidance maneuvers.&lt;/p&gt;
@@ -90,6 +174,8 @@
 &lt;p class=&quot;message&quot;&gt;
 Why do orbits need to be maintained? Well, atmospheric drag for one. But also the Earth isn&apos;t perfectly spherical and this causes orbits to drift over time (called precession).
 &lt;/p&gt;
+
+&lt;p&gt;Depending on your design, propulsion thrusters are usually classified in two ways: either as primary thrusters, which provide delta-V, or as attitude control thrusters. The latter needs less thrust, but are used more, so a higher specific impulse would be good.&lt;/p&gt;
 
 &lt;h3 id=&quot;attitude-control&quot;&gt;Attitude Control&lt;/h3&gt;
 
@@ -178,6 +264,25 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 
 &lt;p&gt;Thermal gets tricky in space, because there’s no convection or conduction, only radiation. This means that spacecraft are often subjected to enormous temperature ranges (-100 to 100 deg celsius is not a bad estimate). Heaters are essential to prevent things from freezing, while radiators are just as important to prevent things from overheating.&lt;/p&gt;
 
+&lt;p&gt;For any given piece of hardware, there’s usually an operating temperature range, and a survival temperature range. And then on the structural side of things, you may need to think about your coefficients of thermal expansion. This can be a primary source for structural stress.&lt;/p&gt;
+
+&lt;h3 id=&quot;launch-vehicle-intefacing&quot;&gt;Launch Vehicle Intefacing&lt;/h3&gt;
+
+&lt;p&gt;An equally important piece of your design is your launch vehicle interface. After all, the LV is what takes you into space. Do you have special environmental needs while you’re in the fairing? Can you survive the g’s during launch? How will you ensure a clean separation?&lt;/p&gt;
+
+&lt;h2 id=&quot;systems-engineering&quot;&gt;Systems Engineering&lt;/h2&gt;
+
+&lt;p&gt;In the real world, no task is performed in isolation. A lot of supporting infrastructure goes a long way towards making programs safe, reliable, and effective. A satellite is no different. In addition to hardware to perform the basic functions, we also need hardware to support them. This can look like a number of things:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fault Detection and Response&lt;/li&gt;
+  &lt;li&gt;Software Updates&lt;/li&gt;
+  &lt;li&gt;Health and Status Monitoring&lt;/li&gt;
+  &lt;li&gt;Redundant/Emergency Systems&lt;/li&gt;
+  &lt;li&gt;Data Verification and Validation&lt;/li&gt;
+  &lt;li&gt;Security Systems&lt;/li&gt;
+&lt;/ul&gt;
+
 </content>
  </entry>
  
@@ -186,7 +291,7 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
    <link href="https://ludavid15.github.io//mbse/"/>
    <updated>2022-12-09T00:00:00-08:00</updated>
    <id>https://ludavid15.github.io//mbse</id>
-   <content type="html">&lt;p&gt;With better computers, engineers have increasingly turned to model based systems engineering, or MBSE as a solution to the engineering process. After all, things like CAD, CFD, and FEM have enabled us to model complex physics, so why not create a program to model a project?&lt;/p&gt;
+   <content type="html">&lt;p&gt;With better computers, engineers have increasingly turned to model based systems engineering, or MBSE as a solution to the engineering process. After all, things like CAD, CFD, and FEM have enabled us to model complex physics, so why not model a project?&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -197,7 +302,16 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
   &lt;li&gt;Once a change is made, an easy way to explore how it impacts other systems.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;So what aspects of a system can we model? Here’s a list.&lt;/p&gt;
+&lt;p&gt;The primary advantage of using a model is to quickly see connections while keeping a single point of truth. For instance, if the total mass of your spacecraft is an important parameter, everything which references that number can point directly to that parameter. This way, when that parameter gets updated (hopefully in real time), its effect becomes instantly tangible.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;For you programmers, this is like passing-by-reference.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So that’s the first important concept of MBSE - this idea of the model as a series of connections between parameters. The second concept is &lt;em&gt;visualization&lt;/em&gt;, or how humans actually interface with the model. So far, a series of variables and their connections is easily achievable with a database, or even through lines of code, but neither of these are very accessible to a person. Instead we map the model to visualizations so we can have something useful for our human designers. Operations can be still be shown as flowcharts, hardware can still be shown as block diagrams, and of course we can still fall back on tables and matrices where it makes sense (like with data). The key is that each diagram is not static, but is a connected view &lt;em&gt;into&lt;/em&gt; the model.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-model&quot;&gt;The Model&lt;/h2&gt;
+
+&lt;p&gt;What aspects of a system can we model? Here’s a list.&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Physical Configuration&lt;/li&gt;
@@ -208,14 +322,14 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 
 &lt;h4 id=&quot;physical-configuration&quot;&gt;Physical Configuration&lt;/h4&gt;
 
-&lt;p&gt;Fairly straightfoward, we need to track the hardware, physical connectors, and physical properties (shape, weight, thermal resistence, etc.). If our project was a sentence, the physical configuration would be the subject.&lt;/p&gt;
+&lt;p&gt;Fairly straightfoward, we need to track the hardware, physical connectors, and physical properties (shape, weight, thermal resistence, etc.). If our project was a sentence, the physical configuration would be the nouns.&lt;/p&gt;
 
 &lt;h4 id=&quot;functionbehavior&quot;&gt;Function/Behavior&lt;/h4&gt;
 
 &lt;p&gt;Verbs. Things that happen. You could say that function is the first thing we choose. Hardware is designed to meet a function, not the other way around.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Technically this isn’t always true. When a heritage (proven) piece of hardware is selected, its function is already defined, and then engineers build the rest of the system around it. But maybe we just pretend like the function still preceded the hardware?&lt;/p&gt;
+  &lt;p&gt;Technically this isn’t always true. When a heritage (proven) piece of hardware is selected, its function is already defined, and then engineers build the rest of the system around it.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h4 id=&quot;interactions&quot;&gt;Interactions&lt;/h4&gt;
@@ -230,7 +344,7 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 
 &lt;h3 id=&quot;dodaf&quot;&gt;DoDAF&lt;/h3&gt;
 
-&lt;p&gt;The Department of Defense Architecture Framework is an effort to generalize how we explain complex systems. Before getting into what DodAF is, let’s be clear that DoDAF is NOT model based systems engineering. DoDAF only defines a set of “viewpoints”, with each viewpoint showing a different aspect of the system. For example, systems viewpoint 4 (SV4) shows functional flow diagrams, while SV1’s show a high level overview of the physical elements.&lt;/p&gt;
+&lt;p&gt;The Department of Defense Architecture Framework is an effort to generalize how we explain complex systems. Before getting into what DodAF is, let’s be clear that DoDAF is not necessarily model based systems engineering. DoDAF only defines a set of “viewpoints”, with each viewpoint showing a different aspect of the system. For example, systems viewpoint 4 (SV4) shows functional flow diagrams, while SV1’s show a high level overview of the physical elements.&lt;/p&gt;
 
 &lt;p&gt;Consider an analogy - in CAD, we build 3D shapes. When we try to represent them on a 2D screen, we must choose a viewing angle and projection, but there are likely some standard views that everyone expects. Maybe a cross section to show the internal structure, or a profile view if it’s a flat plate. DoDAF (and in fact any system diagram) follows the same idea.&lt;/p&gt;
 
@@ -253,6 +367,10 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
     &lt;tr&gt;
       &lt;td&gt;SV-4&lt;/td&gt;
       &lt;td&gt;Functional flow diagram&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SV-6&lt;/td&gt;
+      &lt;td&gt;Resource flow matrix&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;SV-10b&lt;/td&gt;
@@ -283,9 +401,13 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 
 &lt;p&gt;In an SV-4, we can either state a heirarchy, (A consists of B, C, D), or we can show it using a flow chart (B, C, and D interact to accomplish A). The first version is known as an SV-4a, and the latter, more complex version is called an SV-4b.&lt;/p&gt;
 
+&lt;h3 id=&quot;sv-6&quot;&gt;SV-6&lt;/h3&gt;
+
+&lt;p&gt;This is a table of all your producing and consuming functions (and by extension, the performer of that function) for each resource. In a perfectly connected model, these resource interactions should appear on your functional diagrams (SV-4), physical diagrams (SV-1 and SV-2) and your data diagrams (DIV).&lt;/p&gt;
+
 &lt;h3 id=&quot;sv-10c&quot;&gt;SV-10c&lt;/h3&gt;
 
-&lt;p&gt;This is a sequence diagram. In contrast to the SV-4, an SV-10c is not primarily to meant to show the structure of your functions and hardware performers. Instead, an SV-10c tends to be a more explicit (and better) representation of your order of operations. An SV-10c also places greater emphasis on the &lt;em&gt;messages&lt;/em&gt; and ownership of an operation. For instance, will you provide me an update, or am I responsible for reaching out and asking for it? As such, SV-10c diagrams are great for modeling low level behaviors.&lt;/p&gt;
+&lt;p&gt;This is a sequence diagram. In contrast to the SV-4, an SV-10c is not primarily to meant to show the structure of your functions and hardware performers. Instead, an SV-10c tends to be a more explicit (and better) representation of your order of operations. An SV-10c also places greater emphasis on the &lt;em&gt;messages&lt;/em&gt; and ownership of an operation. For instance, will you provide me an update, or am I responsible for reaching out and asking for it? As such, SV-10c diagrams are great for modeling detailed behaviors.&lt;/p&gt;
 
 &lt;h3 id=&quot;div&quot;&gt;DIV&lt;/h3&gt;
 
@@ -1098,7 +1220,9 @@ model = Dense(2, 1)
 
 &lt;!--more--&gt;
 
-&lt;p&gt;Personal Impressions of Agile:&lt;/p&gt;
+&lt;h3 id=&quot;personal-impressions-of-agile&quot;&gt;Personal Impressions of Agile:&lt;/h3&gt;
+
+&lt;p&gt;Before getting into the details, just a few of my personal impressions on agile and scrum.&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -1111,7 +1235,7 @@ model = Dense(2, 1)
     &lt;p&gt;Ironically, rules or processes designed to promote agile can be inherently un-agile. Agile is a culture, not a process.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Agile can be rather “capitalist”. The disregard of rules and tradition usually benefits those who are loudest or already in power. Maybe rules and processes slow down a project, but they also protect people who are vulnerable.&lt;/p&gt;
+    &lt;p&gt;Agile can be rather “capitalist”. The disregard of rules and tradition usually benefits those who are loudest or already in power. Maybe rules and processes slow down a project, but they also protect people who are vulnerable. As with all things, there’s a balance to be struck.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -1160,6 +1284,10 @@ Descriptions of each item are usually presented as a &quot;user story&quot;. Thi
 
 &lt;p&gt;As a &lt;strong&gt;user&lt;/strong&gt;, I want to &lt;strong&gt;action&lt;/strong&gt; so that I can &lt;strong&gt;value&lt;/strong&gt;.&lt;/p&gt;
 
+&lt;h3 id=&quot;sprints&quot;&gt;Sprints&lt;/h3&gt;
+
+&lt;p&gt;In scrum, the workflow is broken up into periods called sprints. At the start of every sprint, we set an objective (based on past velocity) about what we will accomplish. We work towards that goal, and then at the end we review our product and process. The review is an especially important piece of the sprint since that’s what allows us to make improvements.&lt;/p&gt;
+
 &lt;h3 id=&quot;pitfalls&quot;&gt;Pitfalls&lt;/h3&gt;
 
 &lt;p&gt;Here are a few pitfalls, which can derail the original design intent of some agile practices (and remember, following a process without knowing the reason is step number one towards bad design and delays).&lt;/p&gt;
@@ -1178,7 +1306,7 @@ Descriptions of each item are usually presented as a &quot;user story&quot;. Thi
 
 &lt;h3 id=&quot;devops&quot;&gt;DevOps&lt;/h3&gt;
 
-&lt;p&gt;DevOps is an approach to software engineering that brings together the development team with the operations support team. The goal of this collaboration is to build a more direct path&lt;/p&gt;
+&lt;p&gt;DevOps is an approach to software engineering that brings together the development team with the operations support team. The goal of this collaboration is to build a more direct path between the two.&lt;/p&gt;
 
 &lt;h3 id=&quot;scaling-agile&quot;&gt;Scaling Agile&lt;/h3&gt;
 
@@ -1377,9 +1505,41 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;p&gt;This may be a good way to track our needs, (potentially comparable to “user stories” from agile), but I think we shouldn’t imagine requirements to necessarily be a good model of your design. In other words, it’s important for your model to meet the requirements, but the requirements are not for organizing your design.&lt;/p&gt;
 
-&lt;h3 id=&quot;engineering-in-practice&quot;&gt;Engineering in Practice&lt;/h3&gt;
+&lt;h3 id=&quot;requirements-in-practice&quot;&gt;Requirements in Practice&lt;/h3&gt;
 
 &lt;p&gt;In real life, we often do not build things up from scratch. Instead a project is often an addition to, or a modification of something that already exists. Even though this is meant to simplify the process, it also creates a lot of additional work (as anyone who has tried to read someone else’s code can testify). For this situation, there are often requirements which outline a specific design (i.e. shall use ABC hardware).&lt;/p&gt;
+
+&lt;p&gt;###&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;PDR&lt;/th&gt;
+      &lt;th&gt;Preliminary Design Review&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;CDR&lt;/th&gt;
+      &lt;th&gt;Critical Design Review&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;h3 id=&quot;operations&quot;&gt;Operations&lt;/h3&gt;
 
@@ -1395,7 +1555,7 @@ That being said, Convolutional Neural Networks - which have been very effective 
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;A high level overview which outlines the overall goals and objectives. Usually includes context or rational details for why things are the way they are. This is frequently a user or customer facing document.&lt;/td&gt;
+      &lt;td&gt;A high level overview which outlines the overall goals and objectives. Usually includes context or rationale for why things are the way they are. This is frequently a user or customer facing document.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1408,7 +1568,7 @@ That being said, Convolutional Neural Networks - which have been very effective 
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;A more detailed outline of your procedures than the CONOPS. A MOD can provide specific details about what your hardware (or an operator) needs to do.&lt;/td&gt;
+      &lt;td&gt;A more detailed outline of your procedures than the CONOPS. A MOD can provide specific details about what your hardware (or an operator) needs to do. This is something you might hand to a responsible engineer to turn into code.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1421,7 +1581,7 @@ That being said, Convolutional Neural Networks - which have been very effective 
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;The most detailed document of the three, a ROP is as detailed as you can get before actually implementing a solution. For things like commanding or telemetry, a ROP can be as specific as the individual bits in a dataframe. In an OSI context, this means going down to the Data Link Layer (layer 2).&lt;/td&gt;
+      &lt;td&gt;The most detailed document of the three, a ROP is as detailed as you can get before actually implementing a solution. For things like commanding or telemetry, a ROP can be as specific as the individual bits in a dataframe. In an OSI context, this means going down to the Data Link Layer (layer 2). Unlike a CONOPS document or MOD, a ROP can include fault management/anomaly response procedures.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
