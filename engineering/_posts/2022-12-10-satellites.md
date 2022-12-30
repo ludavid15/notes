@@ -26,7 +26,8 @@ In this post we'll focus on Earth Orbits. For the most part these can be roughly
 |GEO    | Geosychonous Earth Orbit
 |       | These orbits have a period equal to 24 hours, which means they sit over the same spot on earth. 
 
-Orbits will high inclination are typically called "polar" (i.e. they fly over the poles of the Earth). Generally, changing an orbit's inclination is pretty expensive in terms of delta-V, so many polar satellites are launched at higher latitudes. 
+Orbits will high inclination are typically called "polar" (i.e. they fly over the poles of the Earth). Generally, changing an orbit's inclination is pretty expensive in terms of delta-V, so many polar satellites are launched at higher latitudes (which puts you naturally into a high inclination orbit).
+
 
 ## Hardware
 
@@ -45,6 +46,8 @@ Also worth thinking about is the [OSI Model](https://en.wikipedia.org/wiki/OSI_m
 
 Especially for satellites, the distances between your sending and receiving terminal can be significant. You'll want to pay careful attention to the required power of your signal, and balance that against noise and signal degradation. 
 
+Once the main downlink path has been designed, you'll want to think about what actual content you want. Will you have telemetry to monitor the health and status of your system? How often will it be collected and reported? How will it be identified? 
+
 ### Propulsion
 
 The propulsion system provides Delta-V capacity to your satellite. This could be used initially for getting into your orbit, but also after the fact for maintaining your orbit, or for emergency collision avoidance maneuvers. 
@@ -52,6 +55,8 @@ The propulsion system provides Delta-V capacity to your satellite. This could be
 <p class=message>
 Why do orbits need to be maintained? Well, atmospheric drag for one. But also the Earth isn't perfectly spherical and this causes orbits to drift over time (called precession).
 </p>
+
+Depending on your design, propulsion thrusters are usually classified in two ways: either as primary thrusters, which provide delta-V, or as attitude control thrusters. The latter needs less thrust, but are used more, so a higher specific impulse would be good.
 
 ### Attitude Control
 
@@ -91,7 +96,6 @@ Control doesn't do much good unless you know where you are. For a satellite, two
 
 As for actually determining your attitude and ephemeris from sensor data, you could try some kind of Kalman filter. 
 
-
 ### Power
 
 For Earth orbiting satellites, your primary source of power is almost always going to be solar, it's just too easy not to! 
@@ -104,10 +108,32 @@ If you're in LEO or even HEO orbit, there will likely be times when you are ecli
 
 If your position and attitude are changing rapidly, you may also want some way to gimbal your solar panels into or out of the sun, to control the flow of power/heat.
 
-
 ### Thermal
 
 Thermal gets tricky in space, because there's no convection or conduction, only radiation. This means that spacecraft are often subjected to enormous temperature ranges (-100 to 100 deg celsius is not a bad estimate). Heaters are essential to prevent things from freezing, while radiators are just as important to prevent things from overheating. 
+
+For any given piece of hardware, there's usually an operating temperature range, and a survival temperature range. And then on the structural side of things, you may need to think about your coefficients of thermal expansion. This can be a primary source for structural stress.
+
+### Launch Vehicle Intefacing
+
+An equally important piece of your design is your launch vehicle interface. After all, the LV is what takes you into space. Do you have special environmental needs while you're in the fairing? Can you survive the g's during launch? How will you ensure a clean separation? 
+
+
+## Systems Engineering
+
+In the real world, no task is performed in isolation. A lot of supporting infrastructure goes a long way towards making programs safe, reliable, and effective. A satellite is no different. In addition to hardware to perform the basic functions, we also need hardware to support them. This can look like a number of things:
+
+* Fault Detection and Response 
+* Software Updates
+* Health and Status Monitoring
+* Redundant/Emergency Systems
+* Data Verification and Validation
+* Security Systems
+
+
+
+
+
 
 
 

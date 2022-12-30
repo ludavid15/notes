@@ -3,7 +3,7 @@ layout: post
 title: Linear Algrebra
 permalink: /linearAlgebra/
 mathjax: true
-except_separator: 
+except_separator: <!--more-->
 categories: math
 ---
 
