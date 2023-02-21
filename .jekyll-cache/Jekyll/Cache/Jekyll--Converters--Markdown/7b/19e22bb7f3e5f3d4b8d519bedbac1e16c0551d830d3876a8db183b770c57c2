@@ -1,0 +1,162 @@
+I"�&<p>Join me as I document the things I learn while developing a custom application! I’m starting with a frontend, which is the code that is a user interface. The frontend connects the user (via buttons and pretty images) to the backend (the business logic).</p>
+
+<!--more-->
+
+<h2 id="1-html-and-css">1. HTML and CSS</h2>
+
+<p>Underneath the hood all websites are coded using HTML and CSS. These are like the fundamental building blocks which tell your browser what to render and how to render it.</p>
+
+<p>But HTML and CSS are static. This means you can’t code things like a clock that updates in real time (but you could code a static clock). Luckily there’s Javascript. Javascript is a multi-purpose language which can create the illusion of a dynamic website.</p>
+
+<p class="message">
+This website you're reading right now is a static website. Underneath the hood, it's just a bunch of HTML and CSS that gets rendered by your browser. I use a program called Jekyll, which is a content management system. It converts the content I write (which is in markdown) into a .html file. 
+</p>
+
+<h2 id="2-javascript-libraries">2. Javascript Libraries</h2>
+
+<p>Javascript by itself is plenty powerful, but still many steps removed from the end product (the visual UI). In the same way that you would use something like TensorFlow instead of raw Python for machine learning, you’d likely use a JS library instead of raw JS for UI development. For my project, I’m using React.</p>
+
+<h2 id="3-ui-design-tools">3. UI Design Tools</h2>
+
+<p>Let’s step away from code and talk about UI as a visual design task. Questions like, what’s the right spacing? What’s the right color? Where should the navigation bar be? You could, and probably should, answer questions like this on a canvas. It’s a lot of work to code a visual element, and it’s all work that isn’t needed to answer these questions. For this kind of task there are vector design tools. Two popular ones are Adobe XD and Figma.</p>
+
+<h2 id="4-features">4. Features</h2>
+
+<p>Before jumping into React, I want to take a step back and think about the different types of features we could expect to see in a website, in a very generic sense.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Routing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Chances are you website will have multiples pages (e.g. about, contact, products). You will need a system for re-directing users to and from these pages.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Queries</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="5-setting-up-a-project">5. Setting Up a Project</h2>
+
+<h4 id="install-nodejs">Install Node.js</h4>
+
+<p>Do it! It’s easy. Node is a javascript runtime. Normally, your browser can run javascript and for frontends this is the runtime we use. But, sometimes we might want to run js locally on our machine and not through a browser.</p>
+
+<h4 id="package-manager">Package Manager</h4>
+
+<p>Once you have Node.js, you’re gonna want a package manager. This is a tool to help you install, track, and manage libraries. For JS, you’ll probably want either NPM or YARN.</p>
+
+<h4 id="bundlers">Bundlers</h4>
+
+<p>Next, you’ll want to think about a bundler. A bundler takes the files you have written (with all their messy dependencies) and turns it into static assets for your browser to run. Most bundlers will also throw up a local server, allowing you to check out how your website actually renders without pushing to the internet. As of this writing, webpack is the most popular, but I’m using parcel, because it’s simpler.</p>
+
+<blockquote>
+  <p>Simpler how? Well there’s nothing to configure with parcel. You just write your .js and .html and .jsx files and then run parcel!</p>
+</blockquote>
+
+<p>Install parcel with <code class="language-plaintext highlighter-rouge">npm install -g parcel</code> (the <code class="language-plaintext highlighter-rouge">-g</code> is an option tag which tells npm to install as a global package).</p>
+
+<h3 id="components-of-a-react-project">Components of a React Project</h3>
+
+<p><code class="language-plaintext highlighter-rouge">package-lock.json</code> records the exact version of each installed package which allows you to re-install them. Future installs will be able to build an identical dependency tree.</p>
+
+<p><code class="language-plaintext highlighter-rouge">package.json</code> records the minimum version your app needs. If you update the versions of a particular package, the change is not going to be reflected here. If you’ve lost your node_modules folder somehow, you can call <code class="language-plaintext highlighter-rouge">npm install</code> which will look at this .json file and install your dependencies.</p>
+
+<p>To create a package.json file, you can run <code class="language-plaintext highlighter-rouge">npm init -y</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">node_modules</code> this stores all your project dependencies. For the most part, you won’t need to change anything in here.</p>
+
+<p><code class="language-plaintext highlighter-rouge">src</code> this folder contains 99% of the files you’ll be working with. Here is where you will initialize your index.js, and create your React components.</p>
+
+<p><code class="language-plaintext highlighter-rouge">index.js</code> this usually contains a simple section of code which just renders your <code class="language-plaintext highlighter-rouge">App.js</code> component to your DOM, and then this gets placed into your <code class="language-plaintext highlighter-rouge">index.html</code> file.</p>
+
+<p><code class="language-plaintext highlighter-rouge">index.css</code> this is a .css file which provides all the styling for your project. A quirk about React is that different .css files are combined into a single file when you compile your code. This means that even if you create many components, they’ll all share the same css.</p>
+
+<p><code class="language-plaintext highlighter-rouge">App.js</code> this is usually the <em>root</em> component. It serves as the container which holds all your other components (maybe your navbars, your content, your sidebars, etc.). You can think of a React project as basically just a tree of components, all pointing back to your root, which is what gets rendered to the reactROM in your <code class="language-plaintext highlighter-rouge">index.js</code>.</p>
+
+<h2 id="6-using-react">6. Using React</h2>
+
+<h3 id="jsx">JSX</h3>
+
+<p>A unique feature of JSX is that you can have dynamic values. These are created using a curly bracket. Here’s a few examples:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const Title = My Blog
+const link = http://google.com
+
+&lt;h1&gt;{Title}&lt;/h1&gt;
+&lt;a hred={link}&gt; Google &lt;/a&gt;
+</code></pre></div></div>
+
+<h3 id="click-events">Click Events</h3>
+
+<p>It’s important that the onclick event is provided a function reference, and that you aren’t actually calling the function. The following code won’t work, because <code class="language-plaintext highlighter-rouge">doSomething()</code> with the parentheses is a function call.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;button onClick() = {doSomething(variable)}&gt;Do It!&lt;/button&gt;
+</code></pre></div></div>
+<p>Instead, place the function into an anonymous wrapper.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;button onClick() = {() =&gt; doSomething(variable)}&gt;Do It!&lt;/button&gt;
+</code></pre></div></div>
+
+<h3 id="hooks">Hooks</h3>
+
+<p>At a high level, hooks are like functions, which help you manage stateful objects in your project.</p>
+
+<p class="message">
+In React, the state of a component is like its memory. Things like the items added to your cart, or the current image in a carousel of images you're scrolling through. 
+</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import { useState } from 'react';
+
+const [number, setNumber] = useState(25);
+
+const handleClick = () =&gt; {
+    setNumber(50)
+}
+</code></pre></div></div>
+
+<h3 id="lists">Lists</h3>
+
+<p>Let’s say you wanted to maintain a list of something on your website (maybe a directory of employees). To store this information, we want a variable that can be edited and additionally one that is Reactive.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const [employees, setEmployees] = useState([
+    { name: Joe, id: 1},
+    { name: Bob, id: 2}
+]);
+</code></pre></div></div>
+
+<p>And then to display these items, we can use the map function from javascript.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{employees.map((employee) =&gt; (
+    &lt;div className="employee-preview" key={employee.id}&gt;
+        &lt;h2&gt;Name&lt;/h2&gt;
+    &lt;/div&gt;
+))};
+</code></pre></div></div>
+
+<h3 id="props">Props</h3>
+
+<p>Props are used to pass data from a parent component into a child component. Conceptually, this is like passing argument to a function. This makes a lot of sense since components in React are basically declared as functions.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const function = (props)
+const name = props.name     # Access different attributes of the function argument
+</code></pre></div></div>
+
+<h3 id="serve-it-up">Serve it Up</h3>
+
+<p>Bundle your <del>home and auto insurance</del> project and launch with <code class="language-plaintext highlighter-rouge">npx parcel src/index.html</code></p>
+
+:ET

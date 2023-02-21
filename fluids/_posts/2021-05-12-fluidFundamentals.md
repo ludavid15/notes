@@ -7,13 +7,13 @@ mathjax: true
 categories: fluids
 ---
 
-To be clear, when we talk about fluid mechanics, we aren't just talking about the second state of matter (liquid $$\subset$$ fluid). It honestly would make a lot more sense if we called it "flow mechanics", but too many textbooks have been printed now to change that. In any case, we're stuck with the term fluid mechanics, so that's what we'll be working with here.
+When we talk about fluid mechanics, we aren't just talking about the second state of matter (liquid $$\subset$$ fluid). Fluid mechanics is the study of *flow*, which applies to both liquids and gases. 
 
 <!--more-->
 
-Also, we'll be dealing with so called **Newtonion fluids**. Non-newtonian fluids are weird, and I haven't studied them, so there won't be anything about them here.
+Also, we're only dealing with **Newtonion fluids**. Non-newtonian fluids are weird, and I haven't studied them, so there won't be anything about them here.
 
-Lastly, while we're laying down the groundwork here, it's important to mention that classic fluid mechanics is treated as a subset of continuum mechanics. This is known as an engineering model. 
+Lastly, while we're laying down the groundwork, it's important to mention that classic fluid mechanics is treated as a subset of continuum mechanics. This is known as an engineering model - a set of assumptions we make to simplify real-life.
 
 > Continuums are characterized by the existence of shear, and by being continuous (duh). 
 

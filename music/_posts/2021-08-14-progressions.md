@@ -29,5 +29,5 @@ This method is used on 2-5-1 progressions. We take the dominant fifth, and subst
 
 ### Diminished Sixths
 
-Sometimes also known as the Barry Harris progression, 
+Sometimes also known as the Barry Harris progression. 
 

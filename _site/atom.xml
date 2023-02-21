@@ -4,13 +4,208 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2022-12-29T20:55:45-08:00</updated>
+ <updated>2023-02-05T13:36:32-08:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Frontend Development</title>
+   <link href="https://ludavid15.github.io//frontend/"/>
+   <updated>2023-01-29T00:00:00-08:00</updated>
+   <id>https://ludavid15.github.io//frontend</id>
+   <content type="html">&lt;p&gt;Join me as I document the things I learn while developing a custom application! I’m starting with a frontend, which is the code that is a user interface. The frontend connects the user (via buttons and pretty images) to the backend (the business logic).&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;1-html-and-css&quot;&gt;1. HTML and CSS&lt;/h2&gt;
+
+&lt;p&gt;Underneath the hood all websites are coded using HTML and CSS. These are like the fundamental building blocks which tell your browser what to render and how to render it.&lt;/p&gt;
+
+&lt;p&gt;But HTML and CSS are static. This means you can’t code things like a clock that updates in real time (but you could code a static clock). Luckily there’s Javascript. Javascript is a multi-purpose language which can create the illusion of a dynamic website.&lt;/p&gt;
+
+&lt;p class=&quot;message&quot;&gt;
+This website you&apos;re reading right now is a static website. Underneath the hood, it&apos;s just a bunch of HTML and CSS that gets rendered by your browser. I use a program called Jekyll, which is a content management system. It converts the content I write (which is in markdown) into a .html file. 
+&lt;/p&gt;
+
+&lt;h2 id=&quot;2-javascript-libraries&quot;&gt;2. Javascript Libraries&lt;/h2&gt;
+
+&lt;p&gt;Javascript by itself is plenty powerful, but still many steps removed from the end product (the visual UI). In the same way that you would use something like TensorFlow instead of raw Python for machine learning, you’d likely use a JS library instead of raw JS for UI development. For my project, I’m using React.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-ui-design-tools&quot;&gt;3. UI Design Tools&lt;/h2&gt;
+
+&lt;p&gt;Let’s step away from code and talk about UI as a visual design task. Questions like, what’s the right spacing? What’s the right color? Where should the navigation bar be? You could, and probably should, answer questions like this on a canvas. It’s a lot of work to code a visual element, and it’s all work that isn’t needed to answer these questions. For this kind of task there are vector design tools. Two popular ones are Adobe XD and Figma.&lt;/p&gt;
+
+&lt;h2 id=&quot;4-features&quot;&gt;4. Features&lt;/h2&gt;
+
+&lt;p&gt;Before jumping into React, I want to take a step back and think about the different types of features we could expect to see in a website, in a very generic sense.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Rendering Dynamic Values&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Unless you’re building a static website, you’ll have components that can change value depending on how your users are interacting with your site. For these kind of components, you’ll need to think about their state and their lifecycle.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Routing&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Chances are your website will have multiples pages (e.g. about, contact, products). You will need a system for re-directing users to and from these pages.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Queries&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Queries are requests from a server or database. For a query, you’ll need to handle making the external connection, saving the variable once you’ve acquired it, and dealing with any potential delays or errors along the way.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Writes&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Just like a query, you’ll need to transfer something from the local browser to an external server or database. Unique to a write request, you may need to consider how to save the user’s inputs, and how to handle re-directs after the write request is complete.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;5-setting-up-a-project&quot;&gt;5. Setting Up a Project&lt;/h2&gt;
+
+&lt;h4 id=&quot;install-nodejs&quot;&gt;Install Node.js&lt;/h4&gt;
+
+&lt;p&gt;Do it! It’s easy. Node is a javascript runtime. Normally, your browser can run javascript and for frontends this is the runtime we use. But, sometimes we might want to run js locally on our machine and not through a browser.&lt;/p&gt;
+
+&lt;h4 id=&quot;package-manager&quot;&gt;Package Manager&lt;/h4&gt;
+
+&lt;p&gt;Once you have Node.js, you’re gonna want a package manager. This is a tool to help you install, track, and manage libraries. For JS, you’ll probably want either NPM or YARN.&lt;/p&gt;
+
+&lt;h4 id=&quot;bundlers&quot;&gt;Bundlers&lt;/h4&gt;
+
+&lt;p&gt;Next, you’ll want to think about a bundler. A bundler takes the files you have written (with all their messy dependencies) and turns it into static assets for your browser to run. Most bundlers will also throw up a local server, allowing you to check out how your website actually renders without pushing to the internet. As of this writing, webpack is the most popular, but I’m using parcel, because it’s simpler.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Simpler how? Well there’s nothing to configure with parcel. You just write your .js and .html and .jsx files and then run parcel!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Install parcel with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install -g parcel&lt;/code&gt; (the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-g&lt;/code&gt; is an option tag which tells npm to install as a global package).&lt;/p&gt;
+
+&lt;h3 id=&quot;components-of-a-react-project&quot;&gt;Components of a React Project&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package-lock.json&lt;/code&gt; records the exact version of each installed package which allows you to re-install them. Future installs will be able to build an identical dependency tree.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package.json&lt;/code&gt; records the minimum version your app needs. If you update the versions of a particular package, the change is not going to be reflected here. If you’ve lost your node_modules folder somehow, you can call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install&lt;/code&gt; which will look at this .json file and install your dependencies.&lt;/p&gt;
+
+&lt;p&gt;To create a package.json file, you can run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm init -y&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;node_modules&lt;/code&gt; this stores all your project dependencies. For the most part, you won’t need to change anything in here.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src&lt;/code&gt; this folder contains 99% of the files you’ll be working with. Here is where you will initialize your index.js, and create your React components.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.js&lt;/code&gt; this usually contains a simple section of code which just renders your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;App.js&lt;/code&gt; component to your DOM, and then this gets placed into your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.css&lt;/code&gt; this is a .css file which provides all the styling for your project. A quirk about React is that different .css files are combined into a single file when you compile your code. This means that even if you create many components, they’ll all share the same css.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;App.js&lt;/code&gt; this is usually the &lt;em&gt;root&lt;/em&gt; component. It serves as the container which holds all your other components (maybe your navbars, your content, your sidebars, etc.). You can think of a React project as basically just a tree of components, all pointing back to your root, which is what gets rendered to the reactROM in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.js&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;6-using-react&quot;&gt;6. Using React&lt;/h2&gt;
+
+&lt;h3 id=&quot;jsx&quot;&gt;JSX&lt;/h3&gt;
+
+&lt;p&gt;A unique feature of JSX is that you can have dynamic values. These are created using a curly bracket. Here’s a few examples:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const Title = My Blog
+const link = http://google.com
+
+&amp;lt;h1&amp;gt;{Title}&amp;lt;/h1&amp;gt;
+&amp;lt;a hred={link}&amp;gt; Google &amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;click-events&quot;&gt;Click Events&lt;/h3&gt;
+
+&lt;p&gt;It’s important that the onclick event is provided a function reference, and that you aren’t actually calling the function. The following code won’t work, because &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;doSomething()&lt;/code&gt; with the parentheses is a function call.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;button onClick() = {doSomething(variable)}&amp;gt;Do It!&amp;lt;/button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Instead, place the function into an anonymous wrapper.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;button onClick() = {() =&amp;gt; doSomething(variable)}&amp;gt;Do It!&amp;lt;/button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;hooks&quot;&gt;Hooks&lt;/h3&gt;
+
+&lt;p&gt;At a high level, hooks are like functions, which help you manage stateful objects in your project.&lt;/p&gt;
+
+&lt;p class=&quot;message&quot;&gt;
+In React, the state of a component is like its memory. Things like the items added to your cart, or the current image in a carousel of images you&apos;re scrolling through. 
+&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import { useState } from &apos;react&apos;;
+
+const [number, setNumber] = useState(25);
+
+const handleClick = () =&amp;gt; {
+    setNumber(50)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;lists&quot;&gt;Lists&lt;/h3&gt;
+
+&lt;p&gt;Let’s say you wanted to maintain a list of something on your website (maybe a directory of employees). To store this information, we want a variable that can be edited and additionally one that is Reactive.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const [employees, setEmployees] = useState([
+    { name: Joe, id: 1},
+    { name: Bob, id: 2}
+]);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And then to display these items, we can use the map function from javascript.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{employees.map((employee) =&amp;gt; (
+    &amp;lt;div className=&quot;employee-preview&quot; key={employee.id}&amp;gt;
+        &amp;lt;h2&amp;gt;Name&amp;lt;/h2&amp;gt;
+    &amp;lt;/div&amp;gt;
+))};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;props&quot;&gt;Props&lt;/h3&gt;
+
+&lt;p&gt;Props are used to pass data from a parent component into a child component. Conceptually, this is like passing argument to a function. This makes a lot of sense since components in React are basically declared as functions.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const function = (props)
+const name = props.name     # Access different attributes of the function argument
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;serve-it-up&quot;&gt;Serve it Up&lt;/h3&gt;
+
+&lt;p&gt;Bundle your &lt;del&gt;home and auto insurance&lt;/del&gt; project and launch with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npx parcel src/index.html&lt;/code&gt;&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>The Math of Dice Rolling</title>
@@ -1034,19 +1229,19 @@ model = Dense(2, 1)
 
 &lt;p&gt;The output image will have a number of channels equal to the number of filters we apply. So for instance, an input image that is (10, 10, 3), convolved with five filters that are (3, 3, 3), will produce an output of shape (8, 8,5 ), assuming that we did not add any padding.&lt;/p&gt;
 
+&lt;h3 id=&quot;pooling-layer&quot;&gt;Pooling Layer&lt;/h3&gt;
+
+&lt;p&gt;Pooling layers are “kernels” which use the function max or average. They are used to reduce the height and width of an input, but not the number of channels. This reduces the size of data.&lt;/p&gt;
+
 &lt;h3 id=&quot;unit-or-pointwise-convolutions&quot;&gt;Unit or Pointwise Convolutions&lt;/h3&gt;
 
 &lt;p&gt;Consider what happens when you use a (1x1) kernel. The output doesn’t get reduced in dimension, but the number of &lt;em&gt;channels&lt;/em&gt; is changed depending on the number of kernels. This type of convolution is often used to reduce the # of channels, and you can think of it as a channel-wise version of a pooling layer.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Pooling layers are “kernels” which use the function max or average. They are used to reduce the height and width of an input, but not the number of channels.&lt;/p&gt;
-&lt;/blockquote&gt;
 
 &lt;h3 id=&quot;transpose-convolution&quot;&gt;Transpose Convolution&lt;/h3&gt;
 
 &lt;p&gt;Tranpose convolution is the opposite of regular convolution. Instead of shrinking the dimension of an input image, we increase the dimension by multiplying each input by a filter/kernel. This type of CNN is used when we start with something small, and want to increase its size.&lt;/p&gt;
 
-&lt;p&gt;Segmantic segmention is one such application for this type of convolution. In segmentation segmention, we often start with a regular CNN to first shrink/identify the input, and then grow it out again to it’s original dimension for pixel classification.&lt;/p&gt;
+&lt;p&gt;Semantic segmention is one such application for this type of convolution. In segmentation segmention, we often start with a regular CNN to first shrink/identify the input, and then grow it out again to it’s original dimension for pixel classification. In this particular case, semantic segmentation usually also involves the use of a skip connection. As we increase the image size, we re-incorporate earlier outputs from our CNN.&lt;/p&gt;
 
 &lt;h3 id=&quot;residual-connections&quot;&gt;Residual Connections&lt;/h3&gt;
 
@@ -1330,7 +1525,7 @@ Descriptions of each item are usually presented as a &quot;user story&quot;. Thi
    <link href="https://ludavid15.github.io//musicAI2/"/>
    <updated>2022-05-04T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//musicAI2</id>
-   <content type="html">&lt;p&gt;This post explores a few different approaches to music generation with deep learning.&lt;/p&gt;
+   <content type="html">&lt;p&gt;This post goes over a few different approaches to music generation with deep learning.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1509,19 +1704,37 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;p&gt;In real life, we often do not build things up from scratch. Instead a project is often an addition to, or a modification of something that already exists. Even though this is meant to simplify the process, it also creates a lot of additional work (as anyone who has tried to read someone else’s code can testify). For this situation, there are often requirements which outline a specific design (i.e. shall use ABC hardware).&lt;/p&gt;
 
-&lt;p&gt;###&lt;/p&gt;
+&lt;h3 id=&quot;requirement-pitfalls&quot;&gt;Requirement Pitfalls&lt;/h3&gt;
+
+&lt;p&gt;Just a few other things to watch out for when writing requirements.&lt;/p&gt;
+
+&lt;h4 id=&quot;1-negatives&quot;&gt;1. Negatives&lt;/h4&gt;
+
+&lt;p&gt;Requirements that specify what &lt;em&gt;not&lt;/em&gt; to do can be difficult to verify. For instance, “shall not fail under xxx circumstances” requires a lot of definition about what exactly these circumstances are.&lt;/p&gt;
+
+&lt;h4 id=&quot;2-subjective-goals&quot;&gt;2. Subjective Goals&lt;/h4&gt;
+
+&lt;p&gt;This is intuitive, but requirements should not be subjective. “Shall be satisfactory” is vague. Good according to who? Again, being verifiable is important.&lt;/p&gt;
+
+&lt;h4 id=&quot;3-not-including-rationale&quot;&gt;3. Not Including Rationale&lt;/h4&gt;
+
+&lt;p&gt;Even a perfectly good requirement can be challenging if there’s confusion about why it exists. I promise that no matter how good your memory is, if you come back to a requirement many months later you’ll be glad to have a rationale section. For instance, maybe a requirement was derived from a user study, but 2 years later, that study was proven to be unreliable. For situations like this, a rationale blurb would let you know quickly if a requirement is still relevant.&lt;/p&gt;
+
+&lt;h4 id=&quot;4-requirements-that-are-constraints&quot;&gt;4. Requirements that are Constraints&lt;/h4&gt;
+
+&lt;p&gt;Another deceptively complex situation is to have a requirement that defines a constraint. For instance, “the satellite shall operate normally under xxx constraints”. Ok, seems easy. But what if another part of the design fails to keep us within these constraints? Technically, we’ve still met this first requirement. We’re just never operational, but that’s ok because we’re outside the limit. If you have a requirement like the first one, you’d better have a second requirement which defines availability, “the satellite shall be operational for 75% of the day”.&lt;/p&gt;
+
+&lt;h3 id=&quot;design-reviews&quot;&gt;Design Reviews&lt;/h3&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
-      &lt;th&gt;PDR&lt;/th&gt;
-      &lt;th&gt;Preliminary Design Review&lt;/th&gt;
+      &lt;th&gt;Preliminary Design Review (PDR)&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;PDR is the first major “design” checkpoint. This means that an idea for a part has matured into a design for that part. By PDR, you should be able to demonstrate that your design is going to meet all your requirements, at least in theory.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1529,14 +1742,12 @@ That being said, Convolutional Neural Networks - which have been very effective 
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
-      &lt;th&gt;CDR&lt;/th&gt;
-      &lt;th&gt;Critical Design Review&lt;/th&gt;
+      &lt;th&gt;Critical Design Review (CDR)&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;In short, your CDR is the last checkpoint before moving on to fabrication, integration, and testing. By CDR, your design should be baselined, and you should be fairly confident that what you’re building will work. This usually means plenty of analysis. You should also have a plan for how you are going to manufacture or acquire all your hardware.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1864,7 +2075,11 @@ That being said, Convolutional Neural Networks - which have been very effective 
    <link href="https://ludavid15.github.io//musicAI1/"/>
    <updated>2022-03-19T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//musicAI1</id>
-   <content type="html">&lt;p&gt;There are two ways in which artifical intelligence has been applied to music. The first is called music information retrieval, or MIR for short. These programs produce data from audio (e.g. song identification, transcribing audio into sheet music). The second is known as &lt;em&gt;generative&lt;/em&gt; AI. These programs try to produce new and original music, either fully autonomously or as a predictive aid to composers (i.e. like text predits on your phone!).&lt;/p&gt;
+   <content type="html">&lt;p&gt;DallE-2 and ChatGPT have come and shown us how powerful AI can be when it comes to abstract and creative tasks. If AI can create images and sentences, why not music?&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;There are two ways in which artifical intelligence has been applied to music so far. The first is called music information retrieval, or MIR for short. These programs produce data from audio (e.g. song identification, transcribing audio into sheet music). The second is known as &lt;em&gt;generative&lt;/em&gt; AI. These programs try to produce new and original music, either fully autonomously or as a predictive aid to composers (i.e. like text predits on your phone!).&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;A third application which is not unique to music is song recommendation and classification. This includes apps like Spotify or Pandora which create custom playlists for you, and is very similar to how Netflix recommends you new movies and shows.&lt;/p&gt;
@@ -2146,7 +2361,88 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;!--more--&gt;
 
-&lt;h3 id=&quot;be-concise&quot;&gt;Be Concise.&lt;/h3&gt;
+&lt;p class=&quot;message&quot;&gt;
+TLDR: Be concise &amp;amp; tell your story.
+&lt;/p&gt;
+
+&lt;h3 id=&quot;1-dumb-it-down&quot;&gt;1. Dumb it Down&lt;/h3&gt;
+
+&lt;p&gt;Especially in scientific writing, using simple language is a must. Your words might make sense to you, but they likely don’t to most other people, and that’s not their fault.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-use-the-active-voice&quot;&gt;2. Use the Active Voice&lt;/h3&gt;
+
+&lt;p&gt;I know this is the first rule you learn in school, but at some point we all forget or are told otherwise. For instance, have you ever heard that you’re not supposed to use pronouns in scientific writing? Something about keeping the focus on the data and not on the user. In my opinion, this is a pretty stupid rule, since the active voice keeps your writing energetic and engaging. If you have a cool scientific thing to discuss, don’t make it boring with passive voice.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;The satellite’s flight software had been developed at NASA. The requirements were met by their software.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;See how there’s no clear narrative with passive voice? We’re missing a clear actor and action. Instead, we can do something like this:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;NASA developed the satellite’s flight software, and it met their requirements.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;3-cut-the-clutter&quot;&gt;3. Cut the Clutter&lt;/h3&gt;
+
+&lt;p&gt;Be careful to avoid “fluffy” language in your writing. For instance, don’t use big words where a smaller word would suffice. Also avoid those extra clauses, adverbs, or adjectives that don’t contribute to your primary point.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;These improved performance metrics presents a compelling argument for the adoption of our recently developed program to classify and label images regarding animals of the species C. familiaris.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is a rather extreme example of “fluff”. There are many big and unnecessary words here, which don’t add any useful information. In general, use the shortest word you can, and take the shortest path to your point.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;Our classifier for dog images performed very well and should be used.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Adverbs are especially susceptible to redundancy.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;Clenched tightly&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Finished completely&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Whispered quietly&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;4-use-verbs-not-nouns&quot;&gt;4. Use Verbs not Nouns&lt;/h3&gt;
+
+&lt;p&gt;In the same spirit as tip #2 to use the active voice, you should avoid turning your verbs into nouns. This is usually done by adding “tion” or “ment” to the end of a verb. For instance, &lt;em&gt;create&lt;/em&gt; -&amp;gt; &lt;em&gt;creation&lt;/em&gt;, &lt;em&gt;establish&lt;/em&gt; -&amp;gt; &lt;em&gt;establishment&lt;/em&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;The establishment of a new cyber security team at the organization was a direct response to the recent breach.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This reads fine, but it’s not very exciting. It lacks a strong actor and action.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;The organization established a new cyber security team after the recent breach.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;5-only-one-hedge-word&quot;&gt;5. Only One Hedge Word&lt;/h3&gt;
+
+&lt;p&gt;Hedge words are words which create ambiguity. These tend to dull the impact of a sentence. When using a hedge word, consider if you are actually uncertain, or if you’re just trying to avoid committment. If something is truly uncertain, one hedge word is enough.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;The data perhaps suggests a potential connection between the two effects.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;See how there are so many hedge words that hardly anything is being staked? The sentence also reads a lack of confidence. Let’s either get rid of all the hedge words, or keep a maximum of one to express genuine uncertainty.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;The data (shows/suggests) a connection between the two effects&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;6-take-ownership&quot;&gt;6. Take Ownership&lt;/h3&gt;
+
+&lt;p&gt;Don’t be afraid to use “I” in your writing, and do take owernship of your opinions and thoughts. For the same reason you might dislike talking to an automated answering machine, I find that people are uninterested in writing that doesn’t demonstrate personality. Especially when writing about science/technology which can be very dense.&lt;/p&gt;
+
+&lt;p&gt;Also, the use of “I” can help bring out your writing style. As William Zinsser stays, “writing is an act of ego, and you might as well admit it”.&lt;/p&gt;
+
+&lt;h3 id=&quot;7-write-for-yourself&quot;&gt;7. Write for Yourself&lt;/h3&gt;
+
+&lt;p&gt;On the topic of style, one way to develop yours is to write for yourself. Don’t feel overly burdened by what your readers might think. Use words/humor/pacing that feel right to you. To write is to be heard, so let the authentic version of yourself show through. However, this doesn’t mean you should ignore the rules of effective communication. Being able to communicate an idea clearly and expressing that idea with personality aren’t mutually exclusive.&lt;/p&gt;
+
 </content>
  </entry>
  
@@ -2236,7 +2532,7 @@ J. Wertz&lt;/p&gt;
 
 &lt;p&gt;More importantly, we need to know the style and color of a scale (major, minor, dom7, bright, dark, etc.)&lt;/p&gt;
 
-&lt;p&gt;From brightest to darkest (notice that we are slowly dropping the pitch of notes, in the same order as we would along the circl of 5ths)&lt;/p&gt;
+&lt;p&gt;From brightest to darkest (notice that we are slowly dropping the pitch of notes, in the same order as we would along the circle of 5ths)&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -2332,7 +2628,7 @@ b9, sharp 9, natural 3, sharp 11, natural 5, natural 6, flat 7&lt;/p&gt;
 
 &lt;h3 id=&quot;diminished-sixths&quot;&gt;Diminished Sixths&lt;/h3&gt;
 
-&lt;p&gt;Sometimes also known as the Barry Harris progression,&lt;/p&gt;
+&lt;p&gt;Sometimes also known as the Barry Harris progression.&lt;/p&gt;
 
 </content>
  </entry>
@@ -2903,11 +3199,17 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;p&gt;The basic idea is pretty simple. From the entire complete set of “matches”, we take a random set, and calculate the resulting change in position. We then repeat with another random set, and another, and check to see if there is agreement.&lt;/p&gt;
 
-&lt;h3 id=&quot;feature-tracking&quot;&gt;Feature Tracking&lt;/h3&gt;
-
 &lt;h3 id=&quot;image-segmentation&quot;&gt;Image Segmentation&lt;/h3&gt;
 
-&lt;p&gt;Broadly, image segmentation is a form of pixel classification. The ultimate goal is to find meaningful groupings. Note that this can be done independently, in combination with, or as step in object classification, which involves finding labels. Traditional image segmentation methods are also not necessarily feature tracking methods or SLAM methods.&lt;/p&gt;
+&lt;p&gt;Broadly, image segmentation is pixel classification. The ultimate goal is to find meaningful groupings. Note that this can be done independently, in combination with, or as step in object classification, which involves finding labels. Traditional image segmentation methods are also not necessarily feature tracking methods or SLAM methods. Here are a few, ordered approximately by increasing complexity:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Hard-coded thresholds&lt;/li&gt;
+  &lt;li&gt;Hard-coded kernels, like a sobel filter (which is basically an edge detector)&lt;/li&gt;
+  &lt;li&gt;Watershed algorithms&lt;/li&gt;
+  &lt;li&gt;Otsu-multi-level thresholding, a.k.a. K-means clustering&lt;/li&gt;
+  &lt;li&gt;Convolutional neural networks (e.g. YOLO)&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h3 id=&quot;simultaneous-localization-and-mapping-slam&quot;&gt;Simultaneous Localization and Mapping (SLAM)&lt;/h3&gt;
 
@@ -2943,7 +3245,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;h3 id=&quot;2d-orbits&quot;&gt;2D Orbits&lt;/h3&gt;
 
-&lt;p&gt;The two-dimensional orbital frame is also known as the perifocal frame (i.e. periapsis and apoapsis vectors are in the plane). Assumes that one body is significantly larger than the other. Given θ as the true anomaly of your orbit, orbital radius from focus is:&lt;/p&gt;
+&lt;p&gt;The two-dimensional orbital frame is also known as the perifocal frame (i.e. periapsis and apoapsis vectors are in the plane). We also assume that one body is significantly larger than the other. Given θ as the true anomaly of your orbit, orbital radius from a focus point is:&lt;/p&gt;
 
 \[r=\ \frac{h^2}{\mu}\frac{1}{1+e\cos(\theta)}\]
 
@@ -3018,6 +3320,10 @@ Problems formatted in one type can be transformed into another format fairly eas
 &lt;h3 id=&quot;lagrange-points&quot;&gt;Lagrange Points&lt;/h3&gt;
 
 &lt;p&gt;A lagrange point is a stable orbit position where the gravitional pull and centrifugal force from two other bodies is at an equilibrium. In a three-body system, there are 5 lagrange points.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The James Webb Space Telescope is at the Earth-Sun Lagrange point L2!&lt;/p&gt;
+&lt;/blockquote&gt;
 </content>
  </entry>
  
@@ -5017,13 +5323,13 @@ As with most things in life, very little is free. Since the goal is to produce t
    <link href="https://ludavid15.github.io//fluidFundamentals/"/>
    <updated>2021-05-12T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//fluidFundamentals</id>
-   <content type="html">&lt;p&gt;To be clear, when we talk about fluid mechanics, we aren’t just talking about the second state of matter (liquid \(\subset\) fluid). It honestly would make a lot more sense if we called it “flow mechanics”, but too many textbooks have been printed now to change that. In any case, we’re stuck with the term fluid mechanics, so that’s what we’ll be working with here.&lt;/p&gt;
+   <content type="html">&lt;p&gt;When we talk about fluid mechanics, we aren’t just talking about the second state of matter (liquid \(\subset\) fluid). Fluid mechanics is the study of &lt;em&gt;flow&lt;/em&gt;, which applies to both liquids and gases.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
-&lt;p&gt;Also, we’ll be dealing with so called &lt;strong&gt;Newtonion fluids&lt;/strong&gt;. Non-newtonian fluids are weird, and I haven’t studied them, so there won’t be anything about them here.&lt;/p&gt;
+&lt;p&gt;Also, we’re only dealing with &lt;strong&gt;Newtonion fluids&lt;/strong&gt;. Non-newtonian fluids are weird, and I haven’t studied them, so there won’t be anything about them here.&lt;/p&gt;
 
-&lt;p&gt;Lastly, while we’re laying down the groundwork here, it’s important to mention that classic fluid mechanics is treated as a subset of continuum mechanics. This is known as an engineering model.&lt;/p&gt;
+&lt;p&gt;Lastly, while we’re laying down the groundwork, it’s important to mention that classic fluid mechanics is treated as a subset of continuum mechanics. This is known as an engineering model - a set of assumptions we make to simplify real-life.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Continuums are characterized by the existence of shear, and by being continuous (duh).&lt;/p&gt;
@@ -5285,7 +5591,7 @@ As with most things in life, very little is free. Since the goal is to produce t
 
 &lt;p&gt;The partial velocities are defined in much the same way.&lt;/p&gt;
 
-\[{}^AV^B= [{}^AV_1^B,\ \ldots,\ {}^AV_n^B ] \begin{bmatrix}u_1\\\ldots\\u_n\\\end{bmatrix} +V_t\]
+\[{}^A V^B= [{}^AV_1^B,\ \ldots,\ {}^AV_n^B ] \begin{bmatrix}u_1\\\ldots\\u_n\\\end{bmatrix} +V_t\]
 
 \[{}^AV^B= [{}^A \widetilde{V}_1^B,\ \ldots,\ {}^A \widetilde{V}_p^B ] \begin{bmatrix}u_1\\\ldots\\u_p\\\end{bmatrix}+\widetilde{V}_t\]
 
@@ -5293,13 +5599,13 @@ As with most things in life, very little is free. Since the goal is to produce t
 
 \[{}^A\omega^B=b_1(\dot{b_2}\bullet b_3)+b_2 (\dot{b_3}\bullet b_1 )+b_3 (\dot{b_1}\bullet b_2)\]
 
-\[\frac{}^AdV}{dt}= \begin{bmatrix}\frac{\partial V}{\partial q_1}&amp;amp;\ldots&amp;amp;\frac{\partial V}{\partial q_s}\\\end{bmatrix} \begin{matrix}{\dot{q}_1\\\ldots\\{\dot{q}_s\\\end{matrix}+\frac{}^A\partial V}{\partial t}=\frac{\partial V}{\partial q}\dot{q}+\frac{}^A\partial V}{\partial t}\]
+\[\frac{ ^AdV}{dt}= \begin{bmatrix}\frac{\partial V}{\partial q_1}&amp;amp;\ldots&amp;amp; \frac{\partial V}{\partial q_s}\\\end{bmatrix} \begin{bmatrix} \dot{q}_1\\\ldots\\\dot{q}_s\\\end{bmatrix} +\frac{^A\partial V}{\partial t}=\frac{\partial V}{\partial q}\dot{q}+\frac{^A\partial V}{\partial t}\]
 
 \[\dot{q}=Wu+X\]
 
-\[{}^A\omega^B=\left[b_1\frac{\partial b_2}{\partial q}\bullet b_3+b_2\frac{\partial b_3}{\partial q}\bullet b_1+b_3\frac{\partial b_1}{\partial q}\bullet b_2\right]\left(Wu+X\right)+\frac{}^A\partial b_1}{\partial t}+\frac{}^A\partial b_2}{\partial t}+\frac{}^A\partial b_3}{\partial t}\]
+\[{}^A\omega^B=\left[b_1\frac{\partial b_2}{\partial q}\bullet b_3+b_2\frac{\partial b_3}{\partial q}\bullet b_1+b_3\frac{\partial b_1}{\partial q}\bullet b_2\right]\left(Wu+X\right)+\frac{^A\partial b_1}{\partial t}+\frac{^A\partial b_2}{\partial t}+\frac{^A\partial b_3}{\partial t}\]
 
-\[{}^A\omega^B=\left[~\right]Wu+\left[~\right]X+\frac{}^A\partial b_1}{\partial t}+\frac{}^A\partial b_2}{\partial t}+\frac{}^A\partial b_3}{\partial t}\]
+\[{}^A\omega^B=\left[~\right]Wu+\left[~\right]X+\frac{^A\partial b_1}{\partial t}+\frac{^A\partial b_2}{\partial t}+\frac{^A\partial b_3}{\partial t}\]
 
 &lt;p&gt;We now have an expression for the angular velocity which satisfies the format we’ve already defined for the partial angular velocities. Take care to notice everything that goes into the remainder term.&lt;/p&gt;
 
@@ -5307,7 +5613,7 @@ As with most things in life, very little is free. Since the goal is to produce t
 
 &lt;h3 id=&quot;partial-acceleration-and-partial-velocities&quot;&gt;Partial Acceleration and Partial Velocities&lt;/h3&gt;
 
-&lt;p&gt;We’re going to take the projection of accelerations into the partial velocities and see that it connects to the same result in Lagrange’s Method. I will write more when I understand what’s going on.&lt;/p&gt;
+&lt;p&gt;This is basically the projection of accelerations into the partial velocities. Doing so, we’d see that it connects to the same result as in Lagrange’s Method. More info on this topic may come in the future.&lt;/p&gt;
 </content>
  </entry>
  

@@ -21,7 +21,7 @@ As good a place to start as any. These are more a set of observations than a the
 
 ### 2D Orbits
 
-The two-dimensional orbital frame is also known as the perifocal frame (i.e. periapsis and apoapsis vectors are in the plane). Assumes that one body is significantly larger than the other. Given θ as the true anomaly of your orbit, orbital radius from focus is:
+The two-dimensional orbital frame is also known as the perifocal frame (i.e. periapsis and apoapsis vectors are in the plane). We also assume that one body is significantly larger than the other. Given θ as the true anomaly of your orbit, orbital radius from a focus point is:
 
 $$r=\ \frac{h^2}{\mu}\frac{1}{1+e\cos(\theta)}$$
 
@@ -94,6 +94,9 @@ Integrating the “gravity drag” term from inner radius to outer radius yields
 
 For short transfers, low thrust trajectories result in a much higher time of flight, but as the transfer distance increases, EP transfer times become better than traditional impulsive options, due to a higher achieved maximum velocity from long periods of sustained thrust.
 
+
 ### Lagrange Points
 
 A lagrange point is a stable orbit position where the gravitional pull and centrifugal force from two other bodies is at an equilibrium. In a three-body system, there are 5 lagrange points. 
+
+> The James Webb Space Telescope is at the Earth-Sun Lagrange point L2!
