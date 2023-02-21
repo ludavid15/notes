@@ -197,7 +197,7 @@ $${}^A\omega^B= [{}^A \tilde{\omega}_1^B,\ \ldots, {}^A \tilde{\omega}_p^B ]  \b
 
 The partial velocities are defined in much the same way. 
 
-$${}^AV^B= [{}^AV_1^B,\ \ldots,\ {}^AV_n^B ] \begin{bmatrix}u_1\\\ldots\\u_n\\\end{bmatrix} +V_t$$
+$${}^A V^B= [{}^AV_1^B,\ \ldots,\ {}^AV_n^B ] \begin{bmatrix}u_1\\\ldots\\u_n\\\end{bmatrix} +V_t$$
 
 $${}^AV^B= [{}^A \widetilde{V}_1^B,\ \ldots,\ {}^A \widetilde{V}_p^B ] \begin{bmatrix}u_1\\\ldots\\u_p\\\end{bmatrix}+\widetilde{V}_t$$
 
@@ -205,13 +205,13 @@ The partial angular velocities can be derived by using our previous definition o
 
 $${}^A\omega^B=b_1(\dot{b_2}\bullet b_3)+b_2 (\dot{b_3}\bullet b_1 )+b_3 (\dot{b_1}\bullet b_2)$$
 
-$$\frac{}^AdV}{dt}= \begin{bmatrix}\frac{\partial V}{\partial q_1}&\ldots&\frac{\partial V}{\partial q_s}\\\end{bmatrix} \begin{matrix}{\dot{q}_1\\\ldots\\{\dot{q}_s\\\end{matrix}+\frac{}^A\partial V}{\partial t}=\frac{\partial V}{\partial q}\dot{q}+\frac{}^A\partial V}{\partial t}$$
+$$\frac{ ^AdV}{dt}= \begin{bmatrix}\frac{\partial V}{\partial q_1}&\ldots& \frac{\partial V}{\partial q_s}\\\end{bmatrix} \begin{bmatrix} \dot{q}_1\\\ldots\\\dot{q}_s\\\end{bmatrix} +\frac{^A\partial V}{\partial t}=\frac{\partial V}{\partial q}\dot{q}+\frac{^A\partial V}{\partial t}$$
 
 $$\dot{q}=Wu+X$$
 
-$${}^A\omega^B=\left[b_1\frac{\partial b_2}{\partial q}\bullet b_3+b_2\frac{\partial b_3}{\partial q}\bullet b_1+b_3\frac{\partial b_1}{\partial q}\bullet b_2\right]\left(Wu+X\right)+\frac{}^A\partial b_1}{\partial t}+\frac{}^A\partial b_2}{\partial t}+\frac{}^A\partial b_3}{\partial t}$$
+$${}^A\omega^B=\left[b_1\frac{\partial b_2}{\partial q}\bullet b_3+b_2\frac{\partial b_3}{\partial q}\bullet b_1+b_3\frac{\partial b_1}{\partial q}\bullet b_2\right]\left(Wu+X\right)+\frac{^A\partial b_1}{\partial t}+\frac{^A\partial b_2}{\partial t}+\frac{^A\partial b_3}{\partial t}$$
 
-$${}^A\omega^B=\left[~\right]Wu+\left[~\right]X+\frac{}^A\partial b_1}{\partial t}+\frac{}^A\partial b_2}{\partial t}+\frac{}^A\partial b_3}{\partial t}$$
+$${}^A\omega^B=\left[~\right]Wu+\left[~\right]X+\frac{^A\partial b_1}{\partial t}+\frac{^A\partial b_2}{\partial t}+\frac{^A\partial b_3}{\partial t}$$
 
 We now have an expression for the angular velocity which satisfies the format we’ve already defined for the partial angular velocities. Take care to notice everything that goes into the remainder term. 
 
@@ -220,4 +220,4 @@ But why define partial angular velocities at well? Well, in a full dynamics prob
 
 ### Partial Acceleration and Partial Velocities
 
-We’re going to take the projection of accelerations into the partial velocities and see that it connects to the same result in Lagrange’s Method. I will write more when I understand what’s going on. 
+This is basically the projection of accelerations into the partial velocities. Doing so, we'd see that it connects to the same result as in Lagrange’s Method. More info on this topic may come in the future.

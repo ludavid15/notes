@@ -291,18 +291,21 @@ Because of how convolutions work, doing so shrinks the height and width of our i
  
 The output image will have a number of channels equal to the number of filters we apply. So for instance, an input image that is (10, 10, 3), convolved with five filters that are (3, 3, 3), will produce an output of shape (8, 8,5 ), assuming that we did not add any padding. 
 
+### Pooling Layer
+
+Pooling layers are "kernels" which use the function max or average. They are used to reduce the height and width of an input, but not the number of channels. This reduces the size of data. 
+
+
 ### Unit or Pointwise Convolutions
 
 Consider what happens when you use a (1x1) kernel. The output doesn't get reduced in dimension, but the number of *channels* is changed depending on the number of kernels. This type of convolution is often used to reduce the # of channels, and you can think of it as a channel-wise version of a pooling layer.
-
-> Pooling layers are "kernels" which use the function max or average. They are used to reduce the height and width of an input, but not the number of channels. 
 
 
 ### Transpose Convolution
 
 Tranpose convolution is the opposite of regular convolution. Instead of shrinking the dimension of an input image, we increase the dimension by multiplying each input by a filter/kernel. This type of CNN is used when we start with something small, and want to increase its size.
 
-Segmantic segmention is one such application for this type of convolution. In segmentation segmention, we often start with a regular CNN to first shrink/identify the input, and then grow it out again to it's original dimension for pixel classification.
+Semantic segmention is one such application for this type of convolution. In segmentation segmention, we often start with a regular CNN to first shrink/identify the input, and then grow it out again to it's original dimension for pixel classification. In this particular case, semantic segmentation usually also involves the use of a skip connection. As we increase the image size, we re-incorporate earlier outputs from our CNN. 
 
 
 
