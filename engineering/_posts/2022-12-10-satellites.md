@@ -15,7 +15,7 @@ Before we design any hardware, first we need to understand our mission objective
 
 ## Orbits
 
-In this post we'll focus on Earth Orbits. For the most part these can be roughly categorized by their altitude, eccentricity, and inclination.
+In this post we'll focus on Earth Orbits (in constrast to interplanetary missions). For the most part these can be roughly categorized by their altitude, eccentricity, and inclination.
 
 | Name  | Description 
 |--     |--
