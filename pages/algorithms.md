@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Algorithms
+title: AI and Algorithms
 permalink: /algorithms/
 mathjax: true
 date: 2021-05-11

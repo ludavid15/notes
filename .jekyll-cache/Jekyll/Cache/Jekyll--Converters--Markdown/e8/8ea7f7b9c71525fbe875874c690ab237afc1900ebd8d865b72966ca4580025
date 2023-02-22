@@ -1,4 +1,4 @@
-I"�*<p>Join me as I document the things I learn while developing a custom application! I’m starting with a frontend, which is the code that is a user interface. The frontend connects the user (via buttons and pretty images) to the backend (the business logic).</p>
+I"_,<p>Join me as I document the things I learn while developing a custom application! I’m starting with a frontend, which is the code that is a user interface. The frontend connects the user (via buttons and pretty images) to the backend (the business logic).</p>
 
 <!--more-->
 
@@ -96,6 +96,12 @@ This website you're reading right now is a static website. Underneath the hood, 
 
 <p>Install parcel with <code class="language-plaintext highlighter-rouge">npm install -g parcel</code> (the <code class="language-plaintext highlighter-rouge">-g</code> is an option tag which tells npm to install as a global package).</p>
 
+<p>If you’re using parcel, I’ve found that your <code class="language-plaintext highlighter-rouge">index.html file</code> needs this in the body section. Also, I place the <code class="language-plaintext highlighter-rouge">index.html</code> file into the /src/ folder.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div id="root"&gt;&lt;/div&gt;
+&lt;script type="module" src="./index.js"&gt;&lt;/script&gt;
+</code></pre></div></div>
+
 <h3 id="components-of-a-react-project">Components of a React Project</h3>
 
 <p><code class="language-plaintext highlighter-rouge">package-lock.json</code> records the exact version of each installed package which allows you to re-install them. Future installs will be able to build an identical dependency tree.</p>
@@ -118,7 +124,7 @@ This website you're reading right now is a static website. Underneath the hood, 
 
 <h3 id="jsx">JSX</h3>
 
-<p>A unique feature of JSX is that you can have dynamic values. These are created using a curly bracket. Here’s a few examples:</p>
+<p>In JSX, you can indicate a dynamic variable using a curly bracket. Here’s a few examples:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const Title = My Blog
 const link = http://google.com

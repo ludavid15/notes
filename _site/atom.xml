@@ -4,7 +4,7 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2023-02-05T13:36:32-08:00</updated>
+ <updated>2023-02-20T21:05:43-08:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
@@ -115,6 +115,12 @@ This website you&apos;re reading right now is a static website. Underneath the h
 
 &lt;p&gt;Install parcel with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install -g parcel&lt;/code&gt; (the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-g&lt;/code&gt; is an option tag which tells npm to install as a global package).&lt;/p&gt;
 
+&lt;p&gt;If you’re using parcel, I’ve found that your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html file&lt;/code&gt; needs this in the body section. Also, I place the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt; file into the /src/ folder.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;div id=&quot;root&quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;script type=&quot;module&quot; src=&quot;./index.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;h3 id=&quot;components-of-a-react-project&quot;&gt;Components of a React Project&lt;/h3&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package-lock.json&lt;/code&gt; records the exact version of each installed package which allows you to re-install them. Future installs will be able to build an identical dependency tree.&lt;/p&gt;
@@ -137,7 +143,7 @@ This website you&apos;re reading right now is a static website. Underneath the h
 
 &lt;h3 id=&quot;jsx&quot;&gt;JSX&lt;/h3&gt;
 
-&lt;p&gt;A unique feature of JSX is that you can have dynamic values. These are created using a curly bracket. Here’s a few examples:&lt;/p&gt;
+&lt;p&gt;In JSX, you can indicate a dynamic variable using a curly bracket. Here’s a few examples:&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const Title = My Blog
 const link = http://google.com
@@ -302,7 +308,7 @@ const name = props.name     # Access different attributes of the function argume
 
 &lt;h2 id=&quot;orbits&quot;&gt;Orbits&lt;/h2&gt;
 
-&lt;p&gt;In this post we’ll focus on Earth Orbits. For the most part these can be roughly categorized by their altitude, eccentricity, and inclination.&lt;/p&gt;
+&lt;p&gt;In this post we’ll focus on Earth Orbits (in constrast to interplanetary missions). For the most part these can be roughly categorized by their altitude, eccentricity, and inclination.&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -1424,7 +1430,7 @@ model = Dense(2, 1)
     &lt;p&gt;Agile is all about trusting in people. It’s the belief that capable individuals will deliver better products. To this end, everything in agile is designed to make individuals feel empowered, supported, and motivated. It encourages people to think for themselves, and to think critically, instead of relying on tradition.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;However, in the absense of process and planning, something is needed to guide people towards an objective. This is achieved by literally that - a reminder to everyone that the objective is more important than any plan or process designed to get you there.&lt;/p&gt;
+    &lt;p&gt;In the absense of process and planning, something is needed to guide people towards an objective. This is achieved by literally that - a reminder to everyone that the objective is more important than any plan or process designed to get you there.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Ironically, rules or processes designed to promote agile can be inherently un-agile. Agile is a culture, not a process.&lt;/p&gt;
