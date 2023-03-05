@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Satellite Engineering Fundamentals
+title: Satellite Architecture
 permalink: /satellitesIntro/
 mathjax: true
 except_separator: <!--more-->
