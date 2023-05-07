@@ -170,6 +170,14 @@
           
         
       
+        
+          
+        
+      
+        
+          
+        
+      
 
       <!-- <a class="sidebar-nav-item" href="/archive/v2.1.0.zip">Download</a>
       <a class="sidebar-nav-item" href="">GitHub project</a> 
@@ -281,6 +289,10 @@
 <h3 id="conjugate-gradient">Conjugate Gradient</h3>
 <p>Conjugate gradient improves line search convergence by providing a better alternative for the search direction than steepest descent. It retains information about the previous descent direction in the direction update for the next search.</p>
 
+<blockquote>
+  <p>This is sometimes also known as a momentum term</p>
+</blockquote>
+
 \[p_k=-\nabla f_k+\beta_kp_{k-1}\]
 
 \[\beta_k=\frac{\nabla f_k^T\nabla f_k}{\nabla f_{k-1}^T\nabla f_k}\]
@@ -289,7 +301,7 @@
 
 <h3 id="newtons-method">Newton’s Method</h3>
 
-<p>Newton’s method makes a local quadratic approximation of the function and goes to the minimum. Requires second order differentiable functions in order to work but has the fastest convergence. The step (i.e. the next point is calculated as x + s) in every iteration is calculated as:</p>
+<p>Newton’s method makes a local quadratic approximation of the function and steps to the minimum of that approximation. This requires second order differentiable functions in order to work but has the fastest convergence. The step (i.e. the next point is calculated as x + s) in every iteration is calculated as:</p>
 
 \[s_k=-H_k^{-1}\nabla f_k\]
 
@@ -326,18 +338,20 @@
 
 \[df\cong\frac{f\left(x+h\right)-f(x)}{h}\]
 
-<p>Complex step eliminates the subtraction step and provides a better approach with more accuracy, but still requires one function evaluations per term in the gradient.</p>
+<p>Complex step eliminates the subtraction step and provides a better approach with more accuracy, and also requires only one function evaluation per term in the gradient. This method is based on the Taylor series expansion, where using a very small value for h allows us to ignore higher order terms.</p>
 
-\[df\cong Im[fx+ih]h\]
+\[df\cong \frac{1}{h}Im[f(x+ih)]\]
 
 <p>Algorithmic differentiation, or sometimes known as automatic differentiation is similar to taking an analytical gradient but is performed line by line on the code of the objective function. AD derivates are exact and require zero function evaluations but are limited in regard to where they can be applied. Developers intending to use AD later on should understand ahead of time the types of code that cannot be passed through an AD tool and write their objective function accordingly. For python, the module Autograd provides an easy and useful tool for applying AD to obtain the first order gradient or second order Hessian.</p>
 
 <h3 id="gradient-free-methods">Gradient Free Methods</h3>
+
 <p>These methods avoid the calculation of a gradient. For this reason, they are more robust to non-continuous objective functions and constraints. Unfortunately, this also means that gradient free methods scale very poorly for problems of very many variables. There are a multitude of different gradient free algorithms, but two of the most popular are the genetic algorithm and Nelder-mead methods.</p>
 
 <p>Nelder-mead is a simplex method, where a simplex is defined as an N dimensional polyhedron formed form triangles. In 2D, it is a triangle, in 3D it is a tetrahedron, etc.</p>
 
 <h3 id="metaheuristics">Metaheuristics</h3>
+
 <p>Refers generally to a class of optimization methods that are designed to perform “well enough”. These typically can provide good solutions, but in a limited capacity and does not guarantee a perfect solution.</p>
 
 <p>These strategies make relatively few assumptions about the problem nature and aim to be generally applicable. A common metaheuristic strategy is to implement a form of stochastic optimization. Some examples of metaheuristic optimization include:</p>
@@ -362,6 +376,52 @@
       </li>
     
       <li>
+        
+          
+          <h3>
+            <a href="/notes/vae/">
+              Variational Auto Encoders
+              <small>14 Apr 2023</small>
+            </a>
+          </h3>
+          
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+      </li>
+    
+      <li>
+        
+          
+          <h3>
+            <a href="/notes/cnn/">
+              Convolutional Neural Networks
+              <small>12 Jan 2023</small>
+            </a>
+          </h3>
+          
         
       </li>
     
@@ -542,10 +602,6 @@
     
       <li>
         
-      </li>
-    
-      <li>
-        
           
         
       </li>
@@ -624,7 +680,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Optimization Fundamentals" />
 <script type="application/ld+json">
-{"description":"The underlying principle of an optimization is pretty straightfoward - find the best way to do something. Best can mean fastest, safest, most efficient, shortest or thousands of other things, but the common denominator is that we are looking for the most (or least) of something. Mathematically then, this is pretty simple: we’re solving for a maximum.","headline":"Optimization Fundamentals","dateModified":"2021-06-10T00:00:00-07:00","datePublished":"2021-06-10T00:00:00-07:00","url":"https://ludavid15.github.io//notes/optimization/","mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/optimization/"},"author":{"@type":"Person","name":"David Lu"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"description":"The underlying principle of an optimization is pretty straightfoward - find the best way to do something. Best can mean fastest, safest, most efficient, shortest or thousands of other things, but the common denominator is that we are looking for the most (or least) of something. Mathematically then, this is pretty simple: we’re solving for a maximum.","url":"https://ludavid15.github.io//notes/optimization/","headline":"Optimization Fundamentals","dateModified":"2021-06-10T00:00:00-07:00","datePublished":"2021-06-10T00:00:00-07:00","author":{"@type":"Person","name":"David Lu"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://ludavid15.github.io//notes/optimization/"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   

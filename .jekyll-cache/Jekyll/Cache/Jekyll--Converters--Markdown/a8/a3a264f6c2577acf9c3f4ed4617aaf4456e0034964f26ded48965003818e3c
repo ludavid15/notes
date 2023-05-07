@@ -1,0 +1,77 @@
+I"�<p>Over the years, I’ve had the chance to lead a number of different teams. This post is a collection of things I’ve learned so far, as well as my own thoughts on what makes an effective leader.</p>
+
+<!--more-->
+
+<h3 id="establish-expectation">Establish Expectation</h3>
+
+<p>This is a two way street. You need to <strong>communicate</strong> your expectations, but also scale those expectations based on your team’s ability.</p>
+
+<p>The amount that needs to be communicated can also depend on the individual. Someone with a lot of experience will need fewer check-ins, and too many might even be detrimental. On the other hand, someone who is new might need explicit guidelines.</p>
+
+<h3 id="teach-by-asking">Teach by Asking</h3>
+
+<p>Have you ever explained something to someone, only to be asked the same question again 2 weeks later? Moments like this make you realize that your original explanation never really sunk in.</p>
+
+<p>A more effective solution that I’ve found is to teach not from my own understanding, but rather through the other person’s understanding. This means frequently asking non-trivial questions like:</p>
+
+<ul>
+  <li>What do you think this means?</li>
+  <li>How would you explain this topic?</li>
+  <li>What theories do you have?</li>
+</ul>
+
+<p>This way, you allow the other person to show you their perspective. Then that becomes the anchor for what you talk through next. This can be effective in one-on-one meetings, but also in group meetings, such as a backlog refinement. Instead of having the product owner ask “does this make sense?” have the dev team present their understanding of each user story.</p>
+
+<h3 id="patience--teamwork">Patience &amp; Teamwork</h3>
+
+<p>There can be a lot of frustration when working on a team, but at the end of the day, I think the following quote holds true:</p>
+
+<blockquote>
+  <p><em>“Go alone to go fast. Go together to go far”</em></p>
+</blockquote>
+
+<p>In other words, it’s always worth taking the time to teach or communicate. Not to mention, I think teaching is a worthwhile effort in of itself, even if there won’t be a project “payoff”.</p>
+
+<h3 id="traditions">Traditions</h3>
+
+<p>My senior year at UCLA, I took over as AIAA president and I made some sweeping overhauls in our process. Some traditions really were due for an upgrade, but all this change had the side effect of slowing us down in other unforseen ways. The whole experience made me appreciate the usefulness of tradition. Like habits, they carry some amount of momentum, and (for better or for worse) help push things along.</p>
+
+<h3 id="changing-behavior">Changing Behavior</h3>
+
+<p>This idea is pulled from the book <em>Influencer</em> by Grenny, Patterson, Maxfield, McMillan, and Switzler. In the book, the authors highlight six different considerations when it comes to influencing how people behave, organized in a matrix like this:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Motivation</th>
+      <th>Ability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Personal</td>
+      <td>Personal Motivation</td>
+      <td>Personal ability</td>
+    </tr>
+    <tr>
+      <td>Social</td>
+      <td>Social Motivation</td>
+      <td>Team ability</td>
+    </tr>
+    <tr>
+      <td>Structural</td>
+      <td>Economic Motivation</td>
+      <td>Access to resources/space</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A few takeaways I want to highlight:</p>
+
+<ol>
+  <li>You can motivate individuals, but it won’t be very effective if they are recieving pushback from their social circle. Both people <em>and</em> teams need to be aligned.</li>
+  <li>Many tasks require teamwork, and that may require a certain amount of social capital.</li>
+</ol>
+
+:ET

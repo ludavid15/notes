@@ -1,0 +1,70 @@
+I"'<hr />
+
+<div class="posts">
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/bayes/">
+        Bayes Theory
+      </a>
+    </h2>
+
+    <span class="post-date">15 Apr 2023</span>
+    <p>Although there are many interpretations of Bayes Theorem, let’s start with this one: Bayes Theory gives us a way to update a prediction based on observation of new evidence.</p>
+
+    <a href="/notes/bayes/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/dice/">
+        The Math of Dice Rolling
+      </a>
+    </h2>
+
+    <span class="post-date">29 Dec 2022</span>
+    <p>Have you ever been a DM and wondered what it means to roll with disadvantage? Or why some weapons are 2d6 instead of 1d12? It all has to do with the statistics of dice rolls!</p>
+
+    <a href="/notes/dice/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/linearAlgebra/">
+        Linear Algrebra
+      </a>
+    </h2>
+
+    <span class="post-date">30 Mar 2022</span>
+    <p>We’ve mentioned before that machine learning is really just glorified regression. But neural networks are just one way to do this. If we’re working with matrices, linear algrebra gives us many ways to extract patterns from our data as well.</p>
+
+    <a href="/notes/linearAlgebra/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/eigen/">
+        Eigen Values
+      </a>
+    </h2>
+
+    <span class="post-date">10 Aug 2021</span>
+    <p>Eigenvalues are everywhere, from machine learning, to structural mechanics, to dynamics, to linear algebra. So just exactly what are these strange numbers?</p>
+
+    <a href="/notes/eigen/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+</div>
+:ET

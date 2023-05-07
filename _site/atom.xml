@@ -4,13 +4,469 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2023-02-25T21:02:31-08:00</updated>
+ <updated>2023-05-07T12:18:03-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Bayes Theory</title>
+   <link href="https://ludavid15.github.io//bayes/"/>
+   <updated>2023-04-15T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//bayes</id>
+   <content type="html">&lt;p&gt;Although there are many interpretations of Bayes Theorem, let’s start with this one: Bayes Theory gives us a way to update a prediction based on observation of new evidence.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;basic-mathematical-statement&quot;&gt;Basic Mathematical Statement&lt;/h3&gt;
+
+&lt;p&gt;The probability of A given B, is equal to the probability of B given A, times the probability of A, divided by the probability of B.&lt;/p&gt;
+
+\[P(A|B) = \frac{P(B|A)P(A)}{P(B)}\]
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;The Prior Probability&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;P(A)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I think of this like the original estimate. This is what we are going to be updating, when we take into account new information about how B relates to A.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;The Posterior Probability&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;P(A|B)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;This is what we are solving for. In the absense of observed data, we would be solving for P(A). But if we have some observation B, now we can solve for a conditional probability, i.e. the probability of A given B.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;The Liklihood&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;P(B|A)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;This term is called the liklihood because it is equal to the liklihood of A given a fixed B.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Variational Auto Encoders</title>
+   <link href="https://ludavid15.github.io//vae/"/>
+   <updated>2023-04-14T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//vae</id>
+   <content type="html">&lt;p&gt;This post takes a deeper look at variational auto encoders (VAE). Like regular auto encoders, a VAE maps a large dimension onto a small set of latent variables, from which we can reconstruct something very close to the original input. However, unlike regular auto encoders, a VAE uses a probability distribution in the latent space.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;auto-encoders&quot;&gt;Auto Encoders&lt;/h3&gt;
+
+&lt;p&gt;Before getting into what a VAE is, let’s make a stop along the way to discuss some applications of auto encoders. At the most basic level, an AE compresses your input. But if we feed it different types of input, we can change the question being asked. For instance, what if we applied gaussian noise to the input before providing it to the AE, but still asked it to return a noiseless image? Such an auto encoder is trained to become a “de-noising” auto encoder.&lt;/p&gt;
+
+&lt;p&gt;We could also feed it input where we’ve covered up different pixels. An auto encoder trained on this data set would learn how to generate new content to fill those missing regions. This is called nueral inpainting.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-variational-in-vae&quot;&gt;The “Variational” in VAE&lt;/h3&gt;
+
+&lt;p&gt;This word comes from a family of techniques for estimating intractable integrals called Variational Bayesian Methods. One such intractable integral is known as the &lt;em&gt;posterior probability&lt;/em&gt;. I recommend checking out this &lt;a href=&quot;/notes/bayes&quot;&gt;post&lt;/a&gt; on Bayes Theorem for more information. A lot of that math is going to be very important in understanding how a VAE is constructed.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;An intractable integral is one that cannot feasibly be computed in a reasonable amount of time.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;variational-vs-regular-auto-encoders&quot;&gt;Variational vs Regular Auto Encoders&lt;/h3&gt;
+
+&lt;p&gt;Let’s think for a moment about what really sets these two apart. We’ve introduced a VAE as basically a regular auto encoder, but instead we use a probality/normal distribution instead of explicit variables in the latent space. This might seem like a small change, but it has big implications.&lt;/p&gt;
+
+&lt;p&gt;With explicit variables, we are finding a single number, or set of numbers. But there’s no requirement that the latent space around these values are smooth. We could be constructing a patchwork of steep mountains and deep valleys. In fact, this is very likely, since typically we just optimize for the reconstruction loss.&lt;/p&gt;
+
+&lt;p&gt;But with a normal distribution, we’re now searching for a more “regular” set of latent variables. We’re not looking for a single value anymore, we’re trying to fit a &lt;em&gt;whole distribution&lt;/em&gt;. In other words, you can think of this as a &lt;em&gt;normalized&lt;/em&gt; version of the regular auto encoder. If your latent space as a whole is more smooth, you can interpolate more confidently within that space and still produce reasonable outputs from the decoder.&lt;/p&gt;
+
+&lt;h3 id=&quot;log-probabilities&quot;&gt;Log Probabilities&lt;/h3&gt;
+
+&lt;p&gt;One more math concept to introduce - a log probability is just the logarithm of a probability. The advantage of a log probability is that we can add instead of multiply. Recall that the probabilities of independent events multiply with one another.&lt;/p&gt;
+
+&lt;h3 id=&quot;kl-divergence&quot;&gt;KL Divergence&lt;/h3&gt;
+
+&lt;p&gt;KL Divergence is a measure of the difference between two probability distributions.&lt;/p&gt;
+
+\[KL(p\| q) = -\sum_{}^{} p(x) log(q(x)) + \sum_{}^{}  p(x) log(p(x))\]
+
+\[KL(p\| q) = \sum_{}^{}  p(x) log \frac{p(x)}{q(x)}\]
+
+&lt;p&gt;Based on the equations above, we can deduce two facts about the KL divergence. First, it is always greater than zero. Second, it is not symmetric, i.e. the KL divergence of &lt;em&gt;p&lt;/em&gt; with respect to &lt;em&gt;q&lt;/em&gt; is not the same as the KL divergence of &lt;em&gt;q&lt;/em&gt; with respect to &lt;em&gt;p&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-latent-probability-distribution&quot;&gt;The Latent Probability Distribution&lt;/h3&gt;
+
+&lt;p&gt;As we’ve mentioned, a variational auto encoder uses a probability distribution for the latent dimensions. This is implemented as a vector of means, and a vector of standard deviations. When we go to the decoder, we can sample a latent vector from these distributions. Thus this process is &lt;em&gt;not&lt;/em&gt; deterministic (and hints at why VAE’s are considered a type of generative network).&lt;/p&gt;
+
+&lt;p&gt;Mathematically, we’d like to maximize the probability that we re-produce input &lt;em&gt;x&lt;/em&gt; given the distributions in the latent dimension. Let’s define the latent representation as &lt;strong&gt;z&lt;/strong&gt; and the distribution of &lt;strong&gt;z&lt;/strong&gt; as &lt;strong&gt;p(z)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Our probabilistic decoder can be defined by &lt;strong&gt;p(x|z)&lt;/strong&gt; or the distribution/liklihood of &lt;strong&gt;x&lt;/strong&gt; given &lt;strong&gt;z&lt;/strong&gt;. The opposite of that, our probabilistic encoder can be defined by &lt;strong&gt;p(z|x)&lt;/strong&gt;, or the distribution/liklihood of our latent variables given the input. Using Bayes Theorem, we can relate all of these together as:&lt;/p&gt;
+
+\[p(z|x) = \frac{p(x|z)p(z)}{p(x)}\]
+
+&lt;h3 id=&quot;loss-function&quot;&gt;Loss Function&lt;/h3&gt;
+
+&lt;p&gt;The loss function for a VAE network consists of two pieces. The first is the reconstruction loss. This is a measure of how accurately we reproduce the input. The second is called the KL divergence term or distance loss. This pushes the distribution towards a normal guassian distribution, of mean zero and standard deviation one. We can think of this second term as a regularization term.&lt;/p&gt;
+
+&lt;h3 id=&quot;reparametrization-trick&quot;&gt;Reparametrization Trick&lt;/h3&gt;
+
+&lt;p&gt;In the middle of our VAE, we used a sampling step to get from our learned distribution to a vector of latent variables to be input to our decoder. Unfortunately, this is an operation we cannot take the gradient of, which gets in the way when we try to perform gradient descent.&lt;/p&gt;
+
+&lt;p&gt;The solution is to parametrize this step into two steps, one that is differentiable, and another that is stochastic but fixed.&lt;/p&gt;
+
+&lt;h3 id=&quot;disentangled-vae&quot;&gt;Disentangled VAE&lt;/h3&gt;
+
+&lt;p&gt;One common problem of neural network is that they tend to function a bit like a black box. How they arrive at a particular answer is often a bit of a mystery. To this end, a new type of VAE which addresses this problem is called a disentangled VAE. The basic principle behind a disentangled VAE is that it adds one additional hyper parameter to the cost function, which pushes the dimensions within the latent space to be independent of one another.&lt;/p&gt;
+
+&lt;p&gt;When dimensions are uncorrellated, it is easier to understand what aspect each dimension captures. To use a linear algebra analogy, this is like finding the principle directions or eigenvectors of your space.&lt;/p&gt;
+
+&lt;h3 id=&quot;further-reading&quot;&gt;Further Reading&lt;/h3&gt;
+
+&lt;p&gt;If you’ve mastered all the content on this page, I recommend tackling diffusion models next. The underlying math is very similar.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Satellite Ground Tracks</title>
+   <link href="https://ludavid15.github.io//groundTracks/"/>
+   <updated>2023-04-11T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//groundTracks</id>
+   <content type="html">&lt;p&gt;The ground track of a satellite is its orbit projected into the surface. I’d recommend checking out the post on &lt;a href=&quot;/notes/astrodynamics/&quot;&gt;astrodynamics&lt;/a&gt; first, which gives a basic overview of how orbits work.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;To start, here are the three parameters which we can use to define an orbit in the Earth Centered Interial frame. These function like a set of rotation angles which relate the orbital/perifocal frame to the ECI frame.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Inclination&lt;/li&gt;
+  &lt;li&gt;Right Ascension of the Ascending Node&lt;/li&gt;
+  &lt;li&gt;Argument of Periapsis&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And then within the perifocal frame, the position/radius along the orbit is defined as a function of the true anomaly as:&lt;/p&gt;
+
+\[r = \frac{h^2}{\mu}\frac{1}{1+ecos(\theta)}\]
+
+&lt;p&gt;Let’s also think about the position in the perifocal frame as a vector. In polar coordinates, this is just \(r\) and \(\theta\), but what about in cartesian coordinates? Well, something like this:&lt;/p&gt;
+
+\[r_{perifocal} = \begin{bmatrix} r cos(\theta) \\ r sin(\theta) \\ 0 \end{bmatrix}\]
+
+&lt;p&gt;At this point, we can write a couple of rotation matrices to get from the perifocal frame to the ECI frame. The order of rotations is going to be:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Rotate about Z by the argument of periapsis \((\omega)\).&lt;/li&gt;
+  &lt;li&gt;Rotate about X by the inclination \((i)\).&lt;/li&gt;
+  &lt;li&gt;Rotate about Z by the right ascenrion of the ascending node \((\Omega)\).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Linear Algebra Question - what type of matrix is a rotation matrix?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Mathematically, this is going to be written as:&lt;/p&gt;
+
+\[r_{ECI} = R(\omega) \cdot R(i) \cdot R(\Omega) \cdot r_{perifocal}\]
+
+&lt;p&gt;Finally, we’ll want to convert from ECI to ECEF. This is going to be a rotation about the Z axis. The angle is going to vary depending on the time.&lt;/p&gt;
+
+\[r_{ECEF} = R(GMST) \cdot r_{ECI}\]
+
+&lt;p&gt;If we represent this ECEF position vector in spherical coordinates, we can take the radial and azimuth angles which will give us our longitude and latitude. All said and done, we’ll have an expression for the ground track of our satellite as a function of the orbital parameters, time, and true anomaly. Keep in mind that the specific ground track on a 2D map might look different, depending on the type of projection used.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-qualitative-perspective&quot;&gt;A Qualitative Perspective&lt;/h3&gt;
+
+&lt;p&gt;An exact mathematical expression is great, but it doesn’t offer very much in the way of visual intuition. We’d like to know how different parameters affect the ground track’s shape. To start, let’s clarify that while ground tracks are periodic, they aren’t sinusoids. Nonetheless, we can still think about them with features like a “period” and “amplitude”.&lt;/p&gt;
+
+&lt;h3 id=&quot;inclination&quot;&gt;Inclination&lt;/h3&gt;
+
+&lt;p&gt;The inclination defines the maximum (and also minimum) latitude reached by the ground track. (Remember that the inclination is the same measured from both above and below the equator). You also can’t launch into a lower inclination orbit than the latitude of your launch site, hence why equatorial launch sites are very popular.&lt;/p&gt;
+
+&lt;h3 id=&quot;orbital-period&quot;&gt;Orbital Period&lt;/h3&gt;
+
+&lt;p&gt;The orbital period defines the “wavelength/frequency” of your ground track. However, we need to keep in mind that the Earth is also rotating. This means that on sequential orbits, we do not return to the same place.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Example: Let’s say we’re in a 2 hour LEO orbit. After we complete 1 orbit, the Earth will have rotated by 360 * (1/12) = 30 degrees. This means on every orbit, we’ll cross the equator at a longitude that’s shifted 30 degrees.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;eccentricity&quot;&gt;Eccentricity&lt;/h3&gt;
+
+&lt;p&gt;The ground track of a circular orbit is symmetric about the equator. But if your orbit is elliptical, the track is going to change between the northern and southern hemisphere.&lt;/p&gt;
+
+&lt;p&gt;But how exactly does it change? Well we know that for an elliptical orbit, we travel slowly at apogee, and quickly at perigee. In ground track terms, this means we don’t cover a lot of ground at apogee, but we &lt;em&gt;do&lt;/em&gt; cover a lot of ground at Perigee. Thus the ground track is going to be more “compact” under apogee, and more “spread out” under Perigee.&lt;/p&gt;
+
+&lt;h3 id=&quot;apparent-retrograde&quot;&gt;Apparent Retrograde&lt;/h3&gt;
+
+&lt;p&gt;There’s a magical altitude at which the period of our orbit is exactly equal to the 24 hours. This is called a &lt;em&gt;Geostationary&lt;/em&gt; orbit, because satellites at this position appear to be stationary relative to the surface of the Earth.&lt;/p&gt;
+
+&lt;p&gt;But what if the satellite is even further out? In this case, it is moving slower than the rotation of the Earth, and from an observer on the ground it’s actually going to look like it’s moving backwards (i.e.g East to West). This is also called apparent retrograde, where the satellite is still technically in a prograde orbit, it just appears to be in retrograde from the ground.&lt;/p&gt;
+
+&lt;p&gt;Now that you get the idea, I want to caveat that we don’t &lt;em&gt;have&lt;/em&gt; to be strictly higher than GEO altitudes for this to happen. We could be in a highly elliptical orbit, and around the apogee of that orbit, we could be orbiting slower than the rotation of the Earth.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Low Thrust Transfers</title>
+   <link href="https://ludavid15.github.io//lowThrust/"/>
+   <updated>2023-04-08T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//lowThrust</id>
+   <content type="html">&lt;p&gt;In general, there is no way to algebraically solve for a low thrust trajectory. Instead, for problems of this type we need to solve for x(t) and u(t) through trajectory optimization. However, this can be a lengthy process, especially if done in a void (i.e without engineering constraints).&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Nonetheless, we can still make an initial estimate for the delta V cost of a low thrust transfer orbit by assuming that the resulting transfer path is made up of many circular orbits with gradually increasing radius. This applies when the initial and final orbits are circular and transfer time is long.&lt;/p&gt;
+
+\[∆V= \sqrt{\frac{μ}{r_1}}-\sqrt{\frac{μ}{r_2}}\]
+
+&lt;h3 id=&quot;derivation&quot;&gt;Derivation:&lt;/h3&gt;
+
+&lt;p&gt;We start with Newton’s first law, relating forces to acceleration.&lt;/p&gt;
+
+\[m\frac{d\vec{V}}{dt}=\vec{T}-\frac{\mu m}{r^3}\vec{r}\]
+
+&lt;p&gt;We assume T is aligned with velocity. Both sides of the expression are dotted with V.&lt;/p&gt;
+
+\[\vec{V}\bullet\left(m\frac{d\vec{V}}{dt}\right)=\vec{V}\bullet\left(T\ast\hat{V}-\frac{\mu m}{r^3}\vec{r}\right)\]
+
+\[\frac{1}{2}\frac{d}{dt}V^2=\frac{T}{m}\vec{V}-\frac{1}{2}\frac{\mu}{r^2}\frac{d}{dt}r^2\]
+
+&lt;p&gt;We re-write the thrust in terms of the mass flow rate and the exhaust velocity and integrate.&lt;/p&gt;
+
+\[T=\ \dot{m}U_{ex}\]
+
+\[\frac{d\vec{V}}{dt}=-\frac{d}{dt}\ln{\left(m\right)}U_{ex}-\frac{\mu}{r^2}\frac{dr}{dt}\frac{1}{V}\]
+
+\[∆V=-U_{ex}ln\frac{m_f}{m_o}-\int_{t_o}^{t_f}\frac{μ}{r^2}\frac{dr}{dt}\frac{1}{V}dt\]
+
+&lt;p&gt;With a circular approximation, we can substitute the magnitude of velocity in with the radius.&lt;/p&gt;
+
+\[V=\sqrt{\frac{\mu}{r}}\]
+
+&lt;p&gt;Integrating the “gravity drag” term from inner radius to outer radius yields the circular transfer approximation equation.&lt;/p&gt;
+
+&lt;p&gt;For short transfers, low thrust trajectories result in a much higher time of flight, but as the transfer distance increases, EP transfer times become better than traditional impulsive options, due to a higher achieved maximum velocity from long periods of sustained thrust.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Astrodynamics</title>
+   <link href="https://ludavid15.github.io//astrodynamics/"/>
+   <updated>2023-04-02T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//astrodynamics</id>
+   <content type="html">&lt;p&gt;Astrodynamics is a lot like any other field of dynamics, except we now have an additional equation to consider: the law of universal gravitation. This leads to some strange and counterintuitive results - like slowing down to catch up!&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;keplers-laws-of-planetary-motion&quot;&gt;Kepler’s Laws of Planetary Motion&lt;/h3&gt;
+
+&lt;p&gt;As good a place to start as any. These are more a set of observations than a theoretical explanation for celestial motion.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;All planets move in elliptical orbits, with the Sun at the focus.&lt;/li&gt;
+  &lt;li&gt;A line that connects a planet to the Sun sweeps out equal areas in equal times.&lt;/li&gt;
+  &lt;li&gt;The period of an orbit is proportional to the root of the cube of the semimajor axis.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;2d-orbits&quot;&gt;2D Orbits&lt;/h3&gt;
+
+&lt;p&gt;The two-dimensional orbital frame is also known as the perifocal frame (i.e. periapsis and apoapsis vectors are in the plane). We also assume that one body is significantly larger than the other. Given θ as the true anomaly of your orbit, the orbital radius from a focus point is:&lt;/p&gt;
+
+\[r=\ \frac{h^2}{\mu}\frac{1}{1+e\cos(\theta)}\]
+
+&lt;p&gt;Where µ is the gravitational parameter of the larger body being orbited. Standard values for objects in our solar system can be found &lt;a href=&quot;https://en.wikipedia.org/wiki/Standard_gravitational_parameter&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For each orbit, we can also define the specific angular momentum \(\vec{h}\):&lt;/p&gt;
+
+\[\vec{h}=\vec{r}\times\vec{v}\]
+
+&lt;p&gt;Where \(\vec{r}\) and \(\vec{v}\) are the position vector and velocity vector at a point in time. The total angular momentum remains constant through the orbit. If the orbit is elliptical, we can define an apoapsis distance, periapsis distance, and semimajor axis distance.&lt;/p&gt;
+
+\[2a=\ r_a+r_p\]
+
+&lt;p&gt;The eccentricity (measure of how elliptical an orbit is) can also be calculated with:&lt;/p&gt;
+
+\[e=\ \frac{r_a-r_p}{r_a+r_p}\]
+
+&lt;h3 id=&quot;specific-orbital-energy&quot;&gt;Specific Orbital Energy&lt;/h3&gt;
+
+&lt;p&gt;As with most things, the total energy is the sum of kinetic and potential energy. For an orbit, these two terms are going to be:&lt;/p&gt;
+
+\[\varepsilon = \frac{v^2}{2} - \frac{\mu}{r} = -\frac{\mu}{2a}\]
+
+&lt;p&gt;Notice that the kinetic energy is a positive term, while the potential energy is a negative term. An orbit with a specific energy of zero is defined to be on a parabolic orbit. A positive specific energy means that it is on an escape trajectory, while a negative value means it is captured by the planet’s gravity (circular or elliptical).&lt;/p&gt;
+
+&lt;h3 id=&quot;vis-viva-equation&quot;&gt;Vis Viva Equation&lt;/h3&gt;
+
+&lt;p&gt;This equation relates the current velocity and radius of an object in orbit to the specific orbital energy, or semi-major axis of it’s orbit. This is very useful for computing Hohman transfers.&lt;/p&gt;
+
+\[\frac{v^2}{2}-\frac{\mu}{r}=-\frac{\mu}{2a}=\varepsilon\]
+
+&lt;p&gt;This equation shows us that velocity and radius are inversely related. In other words, we move fastest at periapsis, and slowest at apoapsis. Or, if we hold radius constant, increasing velocity increases the semi-major axis.&lt;/p&gt;
+
+&lt;h3 id=&quot;orbital-period&quot;&gt;Orbital Period&lt;/h3&gt;
+
+&lt;p&gt;The orbital period is the total time is takes to complete a single revolution&lt;/p&gt;
+
+\[\left(T\right)=2\pi\sqrt{\frac{a^3}{\mu}}\]
+
+&lt;p&gt;Using the energy equation, we can show that for a circular orbit, where r = a, the circular orbit velocity is simply:&lt;/p&gt;
+
+\[V=\ \sqrt{\frac{\mu}{r_1}}\]
+
+&lt;h3 id=&quot;retrograde--prograde&quot;&gt;Retrograde &amp;amp; Prograde&lt;/h3&gt;
+
+&lt;p&gt;A prograde orbit means that we move in the same direction as the rotation of the planet/star we’re around. This is also the easier orbit to launch into, in terms of fuel cost.&lt;/p&gt;
+
+&lt;p&gt;Retrograde is the opposite, where the orbital motion and rotation of the central body are in different directions.&lt;/p&gt;
+
+&lt;h3 id=&quot;catching-up-example&quot;&gt;Catching up Example&lt;/h3&gt;
+
+&lt;p&gt;Consider a situation in which you are trailing some target, but the two of you are in the same orbit. How do you catch up? If you increase your velocity to “catch up”, you’re going to increase the semi-major axis of your orbit. Now you’re on a different trajectory, &lt;em&gt;and&lt;/em&gt; it’ll take you longer to complete a single orbit than your target. The next time around, you’ll be even further behind.&lt;/p&gt;
+
+&lt;p&gt;The correct answer is, unintuitively, to slow down. By slowing down, we lower our orbit, which means we’ll complete it faster. When we come back around, we’ll have caught up with our target, at which point we can increase our velocity again to restore ourselves to the original trajectory. A drawback of this strategy is that we must complete an entire orbit. This is perhaps not so bad in LEO, where orbits take 90 minutes, but this isn’t something we’d want to do with Pluto’s 200+ year orbit around the Sun.&lt;/p&gt;
+
+&lt;h3 id=&quot;thinking-in-3d&quot;&gt;Thinking in 3D&lt;/h3&gt;
+
+&lt;p&gt;Although the orbital plane (perifocal frame) is two-dimensional, the plane itself lives in a three dimensional universe. To define this plane, we need to define a few variables.&lt;/p&gt;
+
+&lt;h4 id=&quot;reference-frame&quot;&gt;Reference Frame&lt;/h4&gt;
+
+&lt;p&gt;For Earth orbits, two of the most common reference frames are Earth Centered Inertial (ECI), and Earth Centered Earth Fixed (ECEF). ECI is fixed, while ECEF rotates with the Earth.&lt;/p&gt;
+
+&lt;h4 id=&quot;inclination&quot;&gt;Inclination&lt;/h4&gt;
+
+&lt;p&gt;The inclination is the angle formed by the orbit plane, and the reference plane. Along with the right ascension of the ascending node (RAAN), these two values are necessary and sufficient to define the orbital plane’s position.&lt;/p&gt;
+
+&lt;h4 id=&quot;orbital-nodes&quot;&gt;Orbital Nodes&lt;/h4&gt;
+
+&lt;p&gt;The orbital nodes are the two points where the orbit crosses the reference plane. This occurs on the line formed by the intersection of these two planes. The node at which the satellite crosses into the northern hemisphere is called the ascending node, and the node at which the staellite crosses back into the southern hemisphere is called the descending node. The angle formed by the ascending node and the reference frame is known as the Longitude of the Ascending Node, or sometimes called the right ascension of the ascending node (RAAN).&lt;/p&gt;
+
+&lt;h4 id=&quot;argument-of-periapsis&quot;&gt;Argument of Periapsis&lt;/h4&gt;
+
+&lt;p&gt;The argument of periapsis determines the orientation of the ellipse &lt;strong&gt;within&lt;/strong&gt; the orbital plane. This is the angle formed by the the line to periapsis and your reference.&lt;/p&gt;
+
+&lt;h3 id=&quot;lagrange-points&quot;&gt;Lagrange Points&lt;/h3&gt;
+
+&lt;p&gt;A lagrange point is a stable orbit position where the gravitional pull and centrifugal force from two other bodies is at an equilibrium. In a three-body system, there are 5 lagrange points.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The James Webb Space Telescope is at the Earth-Sun Lagrange point L2!&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Engineering Leadership</title>
+   <link href="https://ludavid15.github.io//leadership/"/>
+   <updated>2023-03-31T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//leadership</id>
+   <content type="html">&lt;p&gt;Over the years, I’ve had the chance to lead a number of different teams. This post is a collection of things I’ve learned so far, as well as my own thoughts on what makes an effective leader.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;establish-expectation&quot;&gt;Establish Expectation&lt;/h3&gt;
+
+&lt;p&gt;This is a two way street. You need to &lt;strong&gt;communicate&lt;/strong&gt; your expectations, but also scale those expectations based on your team’s ability.&lt;/p&gt;
+
+&lt;p&gt;The amount that needs to be communicated can also depend on the individual. Someone with a lot of experience will need fewer check-ins, and too many might even be detrimental. On the other hand, someone who is new might need explicit guidelines.&lt;/p&gt;
+
+&lt;h3 id=&quot;teach-by-asking&quot;&gt;Teach by Asking&lt;/h3&gt;
+
+&lt;p&gt;Have you ever explained something to someone, only to be asked the same question again 2 weeks later? Moments like this make you realize that your original explanation never really sunk in.&lt;/p&gt;
+
+&lt;p&gt;A more effective solution that I’ve found is to teach not from my own understanding, but rather through the other person’s understanding. This means frequently asking non-trivial questions like:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What do you think this means?&lt;/li&gt;
+  &lt;li&gt;How would you explain this topic?&lt;/li&gt;
+  &lt;li&gt;What theories do you have?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This way, you allow the other person to show you their perspective. Then that becomes the anchor for what you talk through next. This can be effective in one-on-one meetings, but also in group meetings, such as a backlog refinement. Instead of having the product owner ask “does this make sense?” have the dev team present their understanding of each user story.&lt;/p&gt;
+
+&lt;h3 id=&quot;patience--teamwork&quot;&gt;Patience &amp;amp; Teamwork&lt;/h3&gt;
+
+&lt;p&gt;There can be a lot of frustration when working on a team, but at the end of the day, I think the following quote holds true:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;“Go alone to go fast. Go together to go far”&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In other words, it’s always worth taking the time to teach or communicate. Not to mention, I think teaching is a worthwhile effort in of itself, even if there won’t be a project “payoff”.&lt;/p&gt;
+
+&lt;h3 id=&quot;traditions&quot;&gt;Traditions&lt;/h3&gt;
+
+&lt;p&gt;My senior year at UCLA, I took over as AIAA president and I made some sweeping overhauls in our process. Some traditions really were due for an upgrade, but all this change had the side effect of slowing us down in other unforseen ways. The whole experience made me appreciate the usefulness of tradition. Like habits, they carry some amount of momentum, and (for better or for worse) help push things along.&lt;/p&gt;
+
+&lt;h3 id=&quot;changing-behavior&quot;&gt;Changing Behavior&lt;/h3&gt;
+
+&lt;p&gt;This idea is pulled from the book &lt;em&gt;Influencer&lt;/em&gt; by Grenny, Patterson, Maxfield, McMillan, and Switzler. In the book, the authors highlight six different considerations when it comes to influencing how people behave, organized in a matrix like this:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Motivation&lt;/th&gt;
+      &lt;th&gt;Ability&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Personal&lt;/td&gt;
+      &lt;td&gt;Personal Motivation&lt;/td&gt;
+      &lt;td&gt;Personal ability&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Social&lt;/td&gt;
+      &lt;td&gt;Social Motivation&lt;/td&gt;
+      &lt;td&gt;Team ability&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Structural&lt;/td&gt;
+      &lt;td&gt;Economic Motivation&lt;/td&gt;
+      &lt;td&gt;Access to resources/space&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;A few takeaways I want to highlight:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;You can motivate individuals, but it won’t be very effective if they are recieving pushback from their social circle. Both people &lt;em&gt;and&lt;/em&gt; teams need to be aligned.&lt;/li&gt;
+  &lt;li&gt;Many tasks require teamwork, and that may require a certain amount of social capital.&lt;/li&gt;
+&lt;/ol&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Full Stack Development on AWS</title>
@@ -21,19 +477,19 @@
 
 &lt;h3 id=&quot;overview&quot;&gt;Overview&lt;/h3&gt;
 
-&lt;p&gt;Lets begin by discussing the pieces of our project. There’s a lot of different tools required to make this whole thing work.&lt;/p&gt;
+&lt;p&gt;Let’s begin by discussing the pieces of our project. There’s a lot of different tools required to make this whole thing work.&lt;/p&gt;
 
 &lt;h4 id=&quot;1-react-code&quot;&gt;1. React Code&lt;/h4&gt;
 
-&lt;p&gt;This is the javascript code that makes up the frontend. A bundling tool is usually used to turn the React code you write into the final scripts that your browser will run.&lt;/p&gt;
+&lt;p&gt;This is the javascript code that makes up the frontend. A bundling tool turns our React code into the build version that your browser will run.&lt;/p&gt;
 
 &lt;h4 id=&quot;2-aws-s3-bucket&quot;&gt;2. AWS S3 Bucket&lt;/h4&gt;
 
-&lt;p&gt;This is a file hosting service that we’ll use to store our React Code. When a user tries to access our website, they’ll be sent the react code stored in S3 (technically actually the build version, not the source React scripts).&lt;/p&gt;
+&lt;p&gt;This is a file hosting service that we’ll use to store our React Code. When a user tries to access our website, they’ll be sent the React code stored in S3 (technically we’re actually storing the build version, not the source React scripts).&lt;/p&gt;
 
 &lt;h4 id=&quot;3-aws-route-53&quot;&gt;3. AWS Route 53&lt;/h4&gt;
 
-&lt;p&gt;This is a DNS service that connects the human readable domain name (e.g. www.coolwebsite.com), to the actual machine readable IP address (194.34.25445).&lt;/p&gt;
+&lt;p&gt;This is a DNS service that connects the human readable domain name (e.g. www.coolwebsite.com), to the actual machine readable IP address (93.184.216.34). Behind the scenes, a DNS service is doing a lot of lookup to make this connection.&lt;/p&gt;
 
 &lt;h4 id=&quot;4-aws-cloudfront&quot;&gt;4. AWS Cloudfront&lt;/h4&gt;
 
@@ -41,11 +497,15 @@
 
 &lt;h4 id=&quot;5-aws-dynamodb&quot;&gt;5. AWS DynamoDB&lt;/h4&gt;
 
-&lt;p&gt;A noSQL database service. This is the primary repository for user data. Databases provide a nice way to manage and read from large datasets. The benefit of using an AWS database is that it is managed for us. All we have to take care of is our data structure.&lt;/p&gt;
+&lt;p&gt;A noSQL database service. This is our primary repository for user data. Databases provide a nice way to manage and read from large datasets. The benefit of using an AWS database is that it is managed for us, which means all we have to take care of is our data structure.&lt;/p&gt;
 
-&lt;h4 id=&quot;6-api&quot;&gt;6. API&lt;/h4&gt;
+&lt;h4 id=&quot;6-aws-api-gateway&quot;&gt;6. AWS API Gateway&lt;/h4&gt;
 
-&lt;p&gt;Since we’re using a database service, we’ll need an API to fetch/write data from/to the database. In other words, it is like the doorway connecting our frontend to our backend. Our React frontend will use this API to connect a user’s interactions with data in our database. For this project, I’m going to use REST since I have a pretty basic application, but GraphQL is a popular alternative.&lt;/p&gt;
+&lt;p&gt;Since we’re using a database service, we’ll need an API to fetch/write data from/to the database. Now, we could use the AWS SDK to interect directly with our database from our React frontend, but this is not recommended. Doing so introduces issues with security, scability, and cost. Instead, we’ll use AWS API Gateway to handle interactions with DynamoDB. This exposes a set of well-defined API endpoints that our client-side application can interact with. This allows us to centralize our application logic and ensure that our backend services are properly secured and scaled to meet demand.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;AWS API Gateway primarily works with REST. For my application, REST is more than sufficient. But this is just one type of API; another popular alternative is GraphQL, which provides a richer way to query data.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h4 id=&quot;7-aws-lambda&quot;&gt;7. AWS Lambda&lt;/h4&gt;
 
@@ -54,6 +514,23 @@
 &lt;p class=&quot;message&quot;&gt;
 There&apos;s another AWS tool called AWS amplify which helps you quickly setup a website. It&apos;s worth noting that all it does is basically set up the aforementioned resources for you. In other words, it&apos;s not a fundamental service, but rather a tool to help setup other services. If you know what you&apos;re doing, this is a very handy tool, but if you&apos;re new I recommend building everything from scratch. This will help you learn and also avoid suprise fees. 
 &lt;/p&gt;
+
+&lt;h3 id=&quot;http-methods&quot;&gt;HTTP Methods&lt;/h3&gt;
+
+&lt;p&gt;HTTP is an application layer communication protocol used for transferring data on the internet. Or, another way to think about it, HTTP is how the user makes requests from the server. There are four basic methods available in HTTP.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Create&lt;/li&gt;
+  &lt;li&gt;Read&lt;/li&gt;
+  &lt;li&gt;Update&lt;/li&gt;
+  &lt;li&gt;Delete&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In a request, we will need to specify the: Method, URL, and Data (if relevant).&lt;/p&gt;
+
+&lt;h3 id=&quot;databases&quot;&gt;Databases&lt;/h3&gt;
+
+&lt;p&gt;DynamoDB is a managed noSQL database service. Setting it up is not so bad, but in the context of an application, it’s important to consider the &lt;em&gt;cost&lt;/em&gt; of reading and writing. Here’s an example to illustrate. Maybe you use DynamoDB as a database of your employees. You only write to it when you hire someone new, and you only read from it once a week to generate payrolls. This would be pretty cheap. But let’s say now that you build a frontend application which everytime it renders makes a read request to your database. This is a pretty dramatic increase in frequency, and could be expensive. Instead, consider how up-to-date you really need your frontend. Maybe instead of making a read request every time it renders, it can update from the database once a day, and store this result somewhere else.&lt;/p&gt;
 </content>
  </entry>
  
@@ -267,6 +744,63 @@ const name = props.name
  </entry>
  
  <entry>
+   <title>Convolutional Neural Networks</title>
+   <link href="https://ludavid15.github.io//cnn/"/>
+   <updated>2023-01-12T00:00:00-08:00</updated>
+   <id>https://ludavid15.github.io//cnn</id>
+   <content type="html">&lt;p&gt;Convolutional neural networks are a very intuitive (and fast) type of network for image processing problems. It uses a mathematical operation called a &lt;em&gt;convolution&lt;/em&gt;, to analyze/generalize different sections of the input.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;The basic principle of a CNN is that a smaller matrix (aka, kernel, feature detector, filter), is passed over (i.e. convolved ) with the raw data. This is repeated over and over, and eventually passed through a fully connected layer (like in regular neural networks).&lt;/p&gt;
+
+&lt;p&gt;The key to CNN’s is the kernel matrix. Different kernels can be trained to identify different “features” from the data, ranging from the very basic (e.g. an edge or a corner), to more advanced objects (e.g. an eye or a nose), and finally to the most high level (e.g. a face).&lt;/p&gt;
+
+&lt;p&gt;CNN’s are an effective tool for processing very large images that would take up too much memory using a standard deep neural net.  This is accomplished by:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Parameter sharing - only a few filters of all the same parameters are used everywhere.&lt;/li&gt;
+  &lt;li&gt;Low connectivity - not every pixel depends on every other pixel, only its neighbors.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;cnn-is-3d&quot;&gt;CNN is 3D&lt;/h3&gt;
+
+&lt;p&gt;Although we think of images as 2D, there are actually three layers in a standard RBG layer, one for each color. This means that images are actually (h, w, d) matrices, and when we perform convolutions, our filters also need to be three-dimensional.&lt;/p&gt;
+
+&lt;p&gt;Because of how convolutions work, doing so shrinks the height and width of our image. To avoid this, we can add “padding” to the original image.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Valid - no padding&lt;/li&gt;
+  &lt;li&gt;Same - enough padding to keep original dimensions.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The output image will have a number of channels equal to the number of filters we apply. So for instance, an input image that is (10, 10, 3), convolved with five filters that are (3, 3, 3), will produce an output of shape (8, 8,5), assuming that we did not add any padding.&lt;/p&gt;
+
+&lt;h3 id=&quot;pooling-layer&quot;&gt;Pooling Layer&lt;/h3&gt;
+
+&lt;p&gt;Pooling layers are “kernels” which use the function max or average. They are used to reduce the height and width of an input, but not the number of channels. This reduces the size of data.&lt;/p&gt;
+
+&lt;h3 id=&quot;unit-or-pointwise-convolutions&quot;&gt;Unit or Pointwise Convolutions&lt;/h3&gt;
+
+&lt;p&gt;Consider what happens when you use a (1x1) kernel. The output doesn’t get reduced in dimension, but the number of &lt;em&gt;channels&lt;/em&gt; is changed depending on the number of kernels. This type of convolution is often used to reduce the number of channels, and you can think of it as a channel-wise version of a pooling layer.&lt;/p&gt;
+
+&lt;h3 id=&quot;transpose-convolution&quot;&gt;Transpose Convolution&lt;/h3&gt;
+
+&lt;p&gt;Tranpose convolution is the opposite of regular convolution. Instead of shrinking the dimension of an input image, we increase the dimension by multiplying each input by a filter/kernel. This type of CNN is used when we start with something small, and want to increase its size.&lt;/p&gt;
+
+&lt;p&gt;Semantic segmention is one such application for this type of convolution. In segmentation segmention, we often start with a regular CNN to first shrink/identify the input, and then grow it out again to it’s original dimension for pixel classification. In this particular case, semantic segmentation usually also involves the use of a skip connection. As we increase the image size, we re-incorporate earlier outputs from our CNN.&lt;/p&gt;
+
+&lt;h3 id=&quot;residual-connections&quot;&gt;Residual Connections&lt;/h3&gt;
+
+&lt;p&gt;In a deep convolutional neural network, a residual connection (or sometimes called a “skip connection”) is a connection from an earlier layer, to a later layer. For instance, the input to layer 4 is usually the output from layer 3, but a residual connection means it might also receive the output from layer 1 or layer 2. In effect, residual connections allows us to train deeper networks!&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Another way to think about these is that they work sort of like bypass diodes in a solar panel, which provide a path for the current to continue flowing, even if the cell becomes faulty.&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>The Math of Dice Rolling</title>
    <link href="https://ludavid15.github.io//dice/"/>
    <updated>2022-12-29T00:00:00-08:00</updated>
@@ -429,7 +963,7 @@ const name = props.name
 Why do orbits need to be maintained? Well, atmospheric drag for one. But also the Earth isn&apos;t perfectly spherical and this causes orbits to drift over time (called precession).
 &lt;/p&gt;
 
-&lt;p&gt;Depending on your design, propulsion thrusters are usually classified in two ways: either as primary thrusters, which provide delta-V, or as attitude control thrusters. The latter needs less thrust, but are used more, so a higher specific impulse would be good.&lt;/p&gt;
+&lt;p&gt;Depending on your design, propulsion thrusters are usually classified in two ways: either as primary thrusters, which provide delta-V, or as attitude control thrusters. The latter needs less thrust, but are used more, so a higher specific impulse would be good. The efficiency and demands on your propulsion system will dictate the amount of propellent that needs to be carried. The weight of propellant will make up a significant piece of your mass budget.&lt;/p&gt;
 
 &lt;h3 id=&quot;attitude-control&quot;&gt;Attitude Control&lt;/h3&gt;
 
@@ -520,7 +1054,7 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 
 &lt;p&gt;For any given piece of hardware, there’s usually an operating temperature range, and a survival temperature range. And then on the structural side of things, you may need to think about your coefficients of thermal expansion. This can be a primary source for structural stress.&lt;/p&gt;
 
-&lt;h3 id=&quot;launch-vehicle-intefacing&quot;&gt;Launch Vehicle Intefacing&lt;/h3&gt;
+&lt;h3 id=&quot;launch-vehicle-interfacing&quot;&gt;Launch Vehicle Interfacing&lt;/h3&gt;
 
 &lt;p&gt;An equally important piece of your design is your launch vehicle interface. After all, the LV is what takes you into space. Do you have special environmental needs while you’re in the fairing? Can you survive the g’s during launch? How will you ensure a clean separation?&lt;/p&gt;
 
@@ -536,6 +1070,8 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
   &lt;li&gt;Data Verification and Validation&lt;/li&gt;
   &lt;li&gt;Security Systems&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;These considerations can also drive a lot on your final design, but will need to be balanced by the amount of risk you can accept.&lt;/p&gt;
 
 </content>
  </entry>
@@ -557,9 +1093,6 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 &lt;/ol&gt;
 
 &lt;p&gt;The primary advantage of using a model is to quickly see connections while keeping a single point of truth. For instance, if the total mass of your spacecraft is an important parameter, everything which references that number can point directly to that parameter. This way, when that parameter gets updated (hopefully in real time), its effect becomes instantly tangible.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;For you programmers, this is like passing-by-reference.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;So that’s the first important concept of MBSE - this idea of the model as a series of connections between parameters. The second concept is &lt;em&gt;visualization&lt;/em&gt;, or how humans actually interface with the model. So far, a series of variables and their connections is easily achievable with a database, or even through lines of code, but neither of these are very accessible to a person. Instead we map the model to visualizations so we can have something useful for our human designers. Operations can be still be shown as flowcharts, hardware can still be shown as block diagrams, and of course we can still fall back on tables and matrices where it makes sense (like with data). The key is that each diagram is not static, but is a connected view &lt;em&gt;into&lt;/em&gt; the model.&lt;/p&gt;
 
@@ -671,6 +1204,26 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
   &lt;p&gt;CAMEO gives us many tools for representing data. Exchange Elements are the default unit, and can be further refined with Signals. For instance, an exchange element might be created called “Power Command”, which refines into two signals “Power On” and “Power Off”.&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;h3 id=&quot;relationships&quot;&gt;Relationships&lt;/h3&gt;
+
+&lt;p&gt;A key element of systems modeling is the &lt;em&gt;relationship&lt;/em&gt; between two elements. Here are a few, presented in no particular order:&lt;/p&gt;
+
+&lt;h3 id=&quot;composition&quot;&gt;Composition&lt;/h3&gt;
+
+&lt;p&gt;A composition relationship is a strong relationship, meaning “is a part of”. Usually, this means that the child cannot exist independently of the parent. This is akin to defining a non-optional property. For example in a database, each data entry probably needs a key or index. However, the key/index does not exist conceptually without belonging to a data entry (i.e. if there exists a key, the existence of that key implies that there must exist a data entry).&lt;/p&gt;
+
+&lt;h3 id=&quot;aggregation&quot;&gt;Aggregation&lt;/h3&gt;
+
+&lt;p&gt;An aggregration is also a strong relationship, meaning something like “is made up of” or “includes”. In contrast to a composition, the child &lt;em&gt;can&lt;/em&gt; exist independently of the parent. Usually this is used to indicate that the parent is not the sole container of the child property. I think of this like a foreign key in a relational database.&lt;/p&gt;
+
+&lt;h3 id=&quot;generalization&quot;&gt;Generalization&lt;/h3&gt;
+
+&lt;p&gt;A generalization is a weak relationship, meaning “is a type of”. For example, a camry and a civic are both types of cars. Element which are specializations of a generalization will &lt;em&gt;inherit&lt;/em&gt; the properties of the generalization. If all cars have 4 wheels, then a camry and a civic will also have 4 wheels.&lt;/p&gt;
+
+&lt;h3 id=&quot;association&quot;&gt;Association&lt;/h3&gt;
+
+&lt;p&gt;An association is the weakest type of relationship. It simply means “related to”. There is no sharing of properties and doesn’t give you much in the way of definition either. I often use these to capture elements which interface with one another, but are otherwise separate.&lt;/p&gt;
+
 </content>
  </entry>
  
@@ -742,20 +1295,6 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 
 &lt;p&gt;Transfer learning for music is another area that really hasn’t been explored in depth, but which could be enormously useful, if we use the (more developed) subject of image generation as a sign of things to come.&lt;/p&gt;
 
-&lt;h3 id=&quot;open-questions&quot;&gt;Open Questions&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Why do some training sets transpose all songs into a single key, while other training sets transpose all songs into every key? Is there a difference?&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Can we use a lead sheet as the input, with a polyphonic melody/solo as the output? Maybe the pianist can be the conditional input (i.e. toggle style for different players)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Can we apply Elgammal’s CAN, to create jazz solos that seem real, but which are not easily classified into an existing musicians’s style?&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
 </content>
  </entry>
  
@@ -774,10 +1313,10 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 
 &lt;h3 id=&quot;11---sampling&quot;&gt;1.1 - Sampling&lt;/h3&gt;
 
-&lt;p&gt;Sampling methods work a little like the feedforward decoder, but instead of generating examples which are &lt;em&gt;deterministic&lt;/em&gt; based on a seed, examples are randomly generated to match a probability distribution. Some famous sampling strategies include: Metropolis-Hastings algorithm, Gibbs Sampling, and block Gibbs Sampling.&lt;/p&gt;
+&lt;p&gt;Sampling methods work a little like the feedforward decoder, but instead of generating examples which are &lt;em&gt;deterministic&lt;/em&gt; based on a seed, examples are randomly generated to match a probability distribution. Some sampling strategies include: Metropolis-Hastings algorithm, Gibbs Sampling, and block Gibbs Sampling.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Another way to think about sampling methods is that they are a form of generative AI that is based on stochastic models which learn probability distributions (variational autoencoders, RBM’s, etc.). For this reason, we talk about them as a different type of solution, but conceptually, they can manifest just like the decoder in example 2 (i.e. a seed is used to randomly generate examples).&lt;/p&gt;
+  &lt;p&gt;Another way to think about sampling methods is that they are a form of generative AI that is based on stochastic models which learn probability distributions (variational autoencoders, RBM’s, etc.). For this reason, we talk about them as a different type of solution, but conceptually, they can manifest just like the decoders we’ve already discussed (i.e. a seed is used to randomly generate examples).&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;With regard to music, there are two ways to apply this type of sampling approach. The first, is in the vertical dimension, (i.e. chord - does the voicing of this chord make sense?). Recurrent Boltzman Machines are effective for this kind of work. The second is in the horizontal dimension (i.e. a melody or sequence of notes - does this sequence of notes make a coherent melody?). This kind of sampling is better achieved by an RNN.&lt;/p&gt;
@@ -800,16 +1339,16 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 
 &lt;p&gt;For many skills, copying is easier than creating, and this is certainly true for generative AI as well. How can we bias our architecture to create original content, and not just poor copies? Importantly, we would like this to happen &lt;em&gt;a priori&lt;/em&gt;, and not &lt;em&gt;a posteriori&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;The first approach involves a sort of &lt;em&gt;ad hoc&lt;/em&gt; tuning of parameters within the archicture until we get results that mostly seem original. This can certainly be effective, but maybe lacks some of the intentionality we’re going for.&lt;/p&gt;
+&lt;p&gt;The first approach involves a sort of &lt;em&gt;ad hoc&lt;/em&gt; tuning of parameters within the architecture until we get results that mostly seem original. This can certainly be effective, but maybe lacks some of the intentionality we’re going for.&lt;/p&gt;
 
-&lt;p&gt;A second approach is a modification of the traditional generative adversarial network. In a traditional GAN, the classifier returns a signal of how easily/confidently it was able to classify the generated content as real or fake. The new approach, as outlined by Elgammal, called a &lt;em&gt;creative&lt;/em&gt; adversarial network (CAN), uses these two contradictory forces:&lt;/p&gt;
+&lt;p&gt;Another approach is to modify the traditional generative adversarial network. In a traditional GAN, the classifier returns a measure of how easily/confidently it was able to classify the generated content as real or fake. The new approach, as outlined by Elgammal, called a &lt;em&gt;creative&lt;/em&gt; adversarial network (CAN), uses these two contradictory forces:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;The same signal in a traditional GAN about how easily it is able to distinguish between real and fake input.&lt;/li&gt;
+  &lt;li&gt;The same measure in a traditional GAN about how easily the network was able to distinguish between real and fake input.&lt;/li&gt;
   &lt;li&gt;The ease with which it is able to classify the input into a learned style.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Thus, the generative part of the network is incentived to create ouput that feels real, but also difficult to classify (hence, creative!). Elgammal’s work is primarily applicable to art, and has not yet been applied to music.&lt;/p&gt;
+&lt;p&gt;Thus, the generative part of the network is incentivized to create ouputs that feel real, but also difficult to classify (hence, creative!). Elgammal’s work is primarily applicable to art, and has not yet been applied to music.&lt;/p&gt;
 
 &lt;h2 id=&quot;part-2---more-complex-representations&quot;&gt;Part 2 - More Complex Representations&lt;/h2&gt;
 
@@ -887,15 +1426,13 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 
 &lt;h3 id=&quot;34---refinement-over-time&quot;&gt;3.4 - Refinement over Time&lt;/h3&gt;
 
-&lt;p&gt;In the real world, your first draft is rarely your final draft. You’ll go back through and make edits, but taking into account now your better understanding of where you’re coming from and where you’re going.&lt;/p&gt;
+&lt;p&gt;In the real world, your first draft is rarely your final draft. You’ll go back through and make edits, but taking into account your improved understanding of the big picture.&lt;/p&gt;
 
 &lt;p&gt;When applied to music generation and machine learning, this changes the input structure from maybe just a frame or structure, to something more constrained.&lt;/p&gt;
 
 &lt;p&gt;DeepBach is one such example, which uses two LSTM’s and two feedforward networks. The two LSTM’s approach from different sides of the music - one from the past and one from the future. A third network handles harmonic information, and the three together are passed into a final network for the output.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Incremental networks like the one just mentioned are great candidates for providing a user interface, and hence, control over the result!&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Incremental networks like this are great candidates for providing a user interface, and hence, control over the result!&lt;/p&gt;
 
 </content>
  </entry>
@@ -1032,75 +1569,87 @@ Flux.train!(L, Iterators.repeated(databatch, 1000), opt)
 
 &lt;p&gt;But what purpose does the non-linear activation function serve? Well it turns out, without the non-linearity of the activation function, the composition of two linear functions is just yet another linear function. In other words, the activation function is ultimately what allows a NN to accomplish complex tasks.&lt;/p&gt;
 
-&lt;p&gt;Depending on the type of task we are training our Neural Network to do, there are different ways to encode our solution, which demand different types of activation functions, which demand different cost functions. These are outlined here:&lt;/p&gt;
+&lt;h3 id=&quot;output-encoding&quot;&gt;Output Encoding&lt;/h3&gt;
+
+&lt;p&gt;Depending on the type of task we are training our Neural Network to do, there are different ways to encode our solution.&lt;/p&gt;
+
+&lt;h4 id=&quot;regression&quot;&gt;Regression&lt;/h4&gt;
+
+&lt;p&gt;Regression usually means we are trying to correlate two values. For this kind of problem, the output can basically be any number, so we use an identity activation function.&lt;/p&gt;
+
+&lt;h4 id=&quot;binary-or-boolean-questions&quot;&gt;Binary or Boolean Questions&lt;/h4&gt;
+
+&lt;p&gt;For this kind of task, we’d like a yes/no answer. This usually means a zero or one, so we can use something like a sigmoid or tanh activation function.&lt;/p&gt;
+
+&lt;h4 id=&quot;classification&quot;&gt;Classification&lt;/h4&gt;
+
+&lt;p&gt;A classification task has many potential outputs (e.g. apple, pear, strawberry). Here, the output is usually a one-hot encoded vector. This is a sparse vector, where only the index corresponding to a particular class will be set to 1.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Consider:&lt;/strong&gt; Why do we use one-hot encoding, and not just assign different numbers to things? For example, if we wanted to classify apples from bannanas from oranges, why can’t we use the labels 0, 1, 2?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; Numbers are in sequence, and when we encode three different objects as 0,1,2 we’ve accidently introduced the concept of order, where in reality there is none (sometimes).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;activation-functions&quot;&gt;Activation Functions&lt;/h3&gt;
+
+&lt;p&gt;Although the final output node needs a very specific activation function depending on the task, on hidden nodes, the ReLU or tanh function is almost always better than the sigmoid function.&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
-      &lt;th&gt;Task&lt;/th&gt;
-      &lt;th&gt;Output&lt;/th&gt;
-      &lt;th&gt;Target Encoding&lt;/th&gt;
-      &lt;th&gt;Activation Function&lt;/th&gt;
-      &lt;th&gt;Cost Function&lt;/th&gt;
+      &lt;th&gt;Rectified Linear Unit (Relu)&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;Regression&lt;/td&gt;
-      &lt;td&gt;Real&lt;/td&gt;
-      &lt;td&gt;Real&lt;/td&gt;
-      &lt;td&gt;Identity&lt;/td&gt;
-      &lt;td&gt;Mean squared error&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Classification&lt;/td&gt;
-      &lt;td&gt;Binary&lt;/td&gt;
-      &lt;td&gt;0,1&lt;/td&gt;
-      &lt;td&gt;Sigmoid&lt;/td&gt;
-      &lt;td&gt;Cross Entropy&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Classification&lt;/td&gt;
-      &lt;td&gt;Single Label&lt;/td&gt;
-      &lt;td&gt;One-hot&lt;/td&gt;
-      &lt;td&gt;Sigmoid&lt;/td&gt;
-      &lt;td&gt;Cross Entropy&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Classification&lt;/td&gt;
-      &lt;td&gt;Many Label&lt;/td&gt;
-      &lt;td&gt;Many-hot&lt;/td&gt;
-      &lt;td&gt;Softmax&lt;/td&gt;
-      &lt;td&gt;Cross Entropy&lt;/td&gt;
+      &lt;td&gt;Unlike the tanh or sigmoid function which approaches a slope of zero at the extremes, ReLU maintains a constant slope, which usually allows machine learning algorithms to converge faster. Sometimes, algorithms use a slightly modified version called “leaky” ReLU, where the slope is slightly positive (rather than zero) for negative values. This is another feature designed to help the optimization converge more quickly.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;&lt;strong&gt;Consider:&lt;/strong&gt; Why do we use one-hot encoding, and not just assign different numbers to things? For example, if we wanted to classify apples from bannanas from oranges, why can’t we use the labels 0, 1, 2?&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Tanh&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Hyperbolic tangent. Unlike Relu or Sigmoid, this function ranges from -1 to 1.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; Numbers are in sequence, and when we encode three different objects as 0,1,2 we’ve accidently introduced the concept of order, where in reality there is none (sometimes).&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Softmax&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;The Softmax functions converts a vector of numbers into a vector of probabilities which sum to one. (Good for a final layer when making predictions)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-&lt;h3 id=&quot;a-note-on-activation-functions&quot;&gt;A Note on Activation Functions&lt;/h3&gt;
-
-&lt;p&gt;On hidden nodes, the ReLU or tanh function is almost always better than the sigmoid function.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Sigmoid Function&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;The sigmoid function ranges from 0 to 1:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Sigmoid&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;The sigmoid function ranges from 0 to 1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 \[h(x) = \frac{1}{1-e^{-x}}\]
-
-&lt;p&gt;&lt;strong&gt;Rectified Linear Unit - ReLU&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Unlike the tanh or sigmoid function which approaches a slope of zero at the extremes, ReLU maintains a constant slope, which usually allows machine learning algorithms to converge faster.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Tanh Function&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Hyperbolic tangent and unlike Relu or Sigmoid, this function ranges from -1 to 1.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Softmax&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;The Softmax functions converts a vector of numbers into a vector of probabilities which sum to one. (Good for a final layer when making predictions)&lt;/p&gt;
 
 &lt;h3 id=&quot;overfitting&quot;&gt;Overfitting&lt;/h3&gt;
 
@@ -1183,12 +1732,12 @@ layer2 = Softmax
 
 &lt;h3 id=&quot;autoencoders&quot;&gt;Autoencoders&lt;/h3&gt;
 
-&lt;p&gt;An autoencoders is a form of unsupervised learning. The goal is to compress and decompress information, which forces the algorithm to find key features to “encode” useful patterns. These can be implemented as a deep neural net, but one in which the output has the same dimension as the input. Additionally, the hidden layer(s) must have fewer nodes than either the input or output.&lt;/p&gt;
+&lt;p&gt;An autoencoders is a form of unsupervised learning. The goal is to compress and decompress information, which forces the algorithm to find key features to “encode” useful patterns. These can be implemented as a deep neural net, but one in which the output has the same dimension as the input. In between, there are a number of hidden layers which first get smaller before growing out in size again.&lt;/p&gt;
 
 &lt;p&gt;There are two flavors of autoencoders:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Regularized autoencoders, or sometimes called sparse autoencoders, are effective for classification tasks.&lt;/li&gt;
-  &lt;li&gt;Variational autoencoders use probability distributions instead of discrete variables, and are effective for generating new content.&lt;/li&gt;
+  &lt;li&gt;Variational autoencoders use probability distributions instead of discrete variables, and are effective for generating new content. Read more about them &lt;a href=&quot;/notes/vae&quot;&gt;here&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;restricted-boltzmann-machine-rbm&quot;&gt;Restricted Boltzmann Machine (RBM)&lt;/h3&gt;
@@ -1268,47 +1817,14 @@ model = Dense(2, 1)
 
 &lt;p&gt;The key to CNN’s is the kernel matrix. Different kernels can be trained to identify different “features” from the data, ranging from the very basic (e.g. an edge or a corner), to more advanced objects (e.g. an eye or a nose), and finally to the most high level (e.g. a face).&lt;/p&gt;
 
-&lt;p&gt;CNN’s are an effective tool for processing very large images, that would take up too much memory using a standard deep neural net.  This is accomplished by:&lt;/p&gt;
+&lt;p&gt;CNN’s are an effective tool for processing very large images, that would take up too much memory using a standard deep neural net. This is accomplished by:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Parameter sharing - only a few filters of all the same parameters are used everywhere.&lt;/li&gt;
   &lt;li&gt;Low connectivity - not every pixel depends on every other pixel, only its neighbors.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&quot;cnn-is-3d&quot;&gt;CNN is 3D&lt;/h3&gt;
-
-&lt;p&gt;Although we think of images as 2D, there are actually three layers in a standard RBG layer, one for each color. This means that images are actually (h, w, d) matrices, and when we perform convolutions, our filters also need to be three-dimensional.&lt;/p&gt;
-
-&lt;p&gt;Because of how convolutions work, doing so shrinks the height and width of our image. To avoid this, we can add “padding” to the original image.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Valid - no padding&lt;/li&gt;
-  &lt;li&gt;Same - enough padding to keep original dimensions.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The output image will have a number of channels equal to the number of filters we apply. So for instance, an input image that is (10, 10, 3), convolved with five filters that are (3, 3, 3), will produce an output of shape (8, 8,5 ), assuming that we did not add any padding.&lt;/p&gt;
-
-&lt;h3 id=&quot;pooling-layer&quot;&gt;Pooling Layer&lt;/h3&gt;
-
-&lt;p&gt;Pooling layers are “kernels” which use the function max or average. They are used to reduce the height and width of an input, but not the number of channels. This reduces the size of data.&lt;/p&gt;
-
-&lt;h3 id=&quot;unit-or-pointwise-convolutions&quot;&gt;Unit or Pointwise Convolutions&lt;/h3&gt;
-
-&lt;p&gt;Consider what happens when you use a (1x1) kernel. The output doesn’t get reduced in dimension, but the number of &lt;em&gt;channels&lt;/em&gt; is changed depending on the number of kernels. This type of convolution is often used to reduce the # of channels, and you can think of it as a channel-wise version of a pooling layer.&lt;/p&gt;
-
-&lt;h3 id=&quot;transpose-convolution&quot;&gt;Transpose Convolution&lt;/h3&gt;
-
-&lt;p&gt;Tranpose convolution is the opposite of regular convolution. Instead of shrinking the dimension of an input image, we increase the dimension by multiplying each input by a filter/kernel. This type of CNN is used when we start with something small, and want to increase its size.&lt;/p&gt;
-
-&lt;p&gt;Semantic segmention is one such application for this type of convolution. In segmentation segmention, we often start with a regular CNN to first shrink/identify the input, and then grow it out again to it’s original dimension for pixel classification. In this particular case, semantic segmentation usually also involves the use of a skip connection. As we increase the image size, we re-incorporate earlier outputs from our CNN.&lt;/p&gt;
-
-&lt;h3 id=&quot;residual-connections&quot;&gt;Residual Connections&lt;/h3&gt;
-
-&lt;p&gt;In a deep convolutional neural network, a residual connection (or sometimes called a “skip connection”) is a connection from an earlier layer, to a later layer. For instance, the input to layer 4 is usually the output from layer 3, but a residual connection means it might also receive the output from layer 1 or layer 2. In effect, residual connections allows us to train deeper networks!&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Another way to think about these is that they work sort of like bypass diodes in a solar panel, which provide a path for the current to continue flowing, even if the cell becomes faulty.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;You can continue reading about convolutional neural networks &lt;a href=&quot;/notes/cnn&quot;&gt;here&lt;/a&gt;!&lt;/p&gt;
 
 &lt;h3 id=&quot;transformer-network-2017&quot;&gt;Transformer Network (2017)&lt;/h3&gt;
 
@@ -1332,7 +1848,7 @@ model = Dense(2, 1)
 
 &lt;h3 id=&quot;compound-architectures&quot;&gt;Compound Architectures&lt;/h3&gt;
 
-&lt;p&gt;In recent years, many people have proposed combined approaches, which make use of more than one architecture. There is for instance, something called an RNN Encoder-Decoder, which attempts to learn the relationship between two different encodings of two different sequences.&lt;/p&gt;
+&lt;p&gt;In recent years, researchers have proposed combined approaches, which make use of more than one architecture. There is for instance, something called an RNN Encoder-Decoder, which attempts to learn the relationship between two different encodings of two different sequences.&lt;/p&gt;
 
 &lt;p&gt;Or to express it another way, the goal is to encode the sequence learned by one RNN into another sequence produced by another RNN. The main application here being translation, where two languages expressing the same idea can have entirely different lengths and grammers.&lt;/p&gt;
 
@@ -1483,13 +1999,13 @@ model = Dense(2, 1)
     &lt;p&gt;Agile is all about trusting in people. It’s the belief that capable individuals will deliver better products. To this end, everything in agile is designed to make individuals feel empowered, supported, and motivated. It encourages people to think for themselves, and to think critically, instead of relying on tradition.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;In the absense of process and planning, something is needed to guide people towards an objective. This is achieved by literally that - a reminder to everyone that the objective is more important than any plan or process designed to get you there.&lt;/p&gt;
+    &lt;p&gt;In the absense of process and planning, something is needed to guide people towards an objective. This is achieved by literally that - a core principle of agile is that the objective is more important than any plan or process designed to get you there.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Ironically, rules or processes designed to promote agile can be inherently un-agile. Agile is a culture, not a process.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Agile can be rather “capitalist”. The disregard of rules and tradition usually benefits those who are loudest or already in power. Maybe rules and processes slow down a project, but they also protect people who are vulnerable. As with all things, there’s a balance to be struck.&lt;/p&gt;
+    &lt;p&gt;Agile can be exploitive. A lack of formal process usually means that those who are loudest get their way. Rules and processes might slow down a project, but they also protect people who are not as forceful. As with all things, there’s a balance to be struck.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -1540,7 +2056,38 @@ Descriptions of each item are usually presented as a &quot;user story&quot;. Thi
 
 &lt;h3 id=&quot;sprints&quot;&gt;Sprints&lt;/h3&gt;
 
-&lt;p&gt;In scrum, the workflow is broken up into periods called sprints. At the start of every sprint, we set an objective (based on past velocity) about what we will accomplish. We work towards that goal, and then at the end we review our product and process. The review is an especially important piece of the sprint since that’s what allows us to make improvements.&lt;/p&gt;
+&lt;p&gt;In scrum, the workflow is broken up into periods called sprints. At the start of every sprint, we set an objective (based on past velocity) about what we will accomplish. We work towards that goal, and then at the end we review our product and process. The review is an especially important piece of the sprint since that’s what allows us to make improvements. There are four meetings to complete a sprint:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Meeting&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Planning&lt;/td&gt;
+      &lt;td&gt;The planning meeting is where you vote on story points, assign, and prioritize stories. There’s a lot of ways to do this, but for small to medium size backlogs, you can just vote as a team.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Review&lt;/td&gt;
+      &lt;td&gt;The review meeting is where you reflect on the technical content of what you accomplished. It’s the “what” of your tasking.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Retrosepctive&lt;/td&gt;
+      &lt;td&gt;The retrospective is concerned about &lt;em&gt;process&lt;/em&gt;. The goal is to improve the “how” of what you do, so you can do it better next time.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Backlog Refinement&lt;/td&gt;
+      &lt;td&gt;The backlog refinement is the chance for everyone to get on the same page about what’s in the backlog. It’s important for the dev team &amp;amp; scrum master to understand the objective of each task set by the product owner.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;the-daily-standup&quot;&gt;The Daily Standup&lt;/h3&gt;
+
+&lt;p&gt;I think the key to a useful and effective standup meeting is priotize &lt;em&gt;actions&lt;/em&gt;, rather than &lt;em&gt;statuses&lt;/em&gt;. For example, don’t describe a task as “in progress” or “blocked”. Describe the actions you took, or plan to take.&lt;/p&gt;
 
 &lt;h3 id=&quot;pitfalls&quot;&gt;Pitfalls&lt;/h3&gt;
 
@@ -1757,7 +2304,7 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;p&gt;My personal opinion of requirements is that they exist as a document of wants, agreed upon by the stakeholders. If I want or need A, I’ll go to you, we can talk it over, and we write this down into our requirements document.&lt;/p&gt;
 
-&lt;p&gt;This may be a good way to track our needs, (potentially comparable to “user stories” from agile), but I think we shouldn’t imagine requirements to necessarily be a good model of your design. In other words, it’s important for your model to meet the requirements, but the requirements are not for organizing your design.&lt;/p&gt;
+&lt;p&gt;This may be a good way to track our needs, (potentially comparable to “user stories” from agile), but I think we shouldn’t imagine requirements to necessarily be a good model of your design. In other words, it’s important for your model to meet the requirements, but the requirements are not a comprehensive model of your design.&lt;/p&gt;
 
 &lt;h3 id=&quot;requirements-in-practice&quot;&gt;Requirements in Practice&lt;/h3&gt;
 
@@ -1872,13 +2419,13 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;p&gt;Before getting into the more interesting/complicated math, let’s start by defining a few terms.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Vector&lt;/strong&gt; - By default, vectors are columns. The transpose/Hermitian of a vector turns it into a row.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Vector&lt;/strong&gt; - A vector is an object which specifies a magnitude and direction. Usually represented as an array of scalars. The convention is that vectors are columns. The transpose/Hermitian of a vector turns it into a row.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Range/Span&lt;/strong&gt; - The set of all linear combinations of each vector.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Range/Span&lt;/strong&gt; - The set of all linear combinations of each vector. Given a matrix A, the range of A can be computed as:&lt;/p&gt;
 
 \[R\left(A\right)={\alpha_1A_1+a_2A_2\ldots+\alpha_kA_k,\ for\ any\ \alpha_i\in F}\]
 
-&lt;p&gt;&lt;strong&gt;Nullspace/Kernel (of a matrix A)&lt;/strong&gt; - The set of all vectors \(\vec{x}\) such that Ax = 0&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nullspace/Kernel (of a matrix A)&lt;/strong&gt; - The set of all vectors \(\vec{x}\) such that Ax = 0. In a geometric sense, these are vectors that are “orthogonal” to the matrix.&lt;/p&gt;
 
 \[N\left(A\right)={x\in F^n,\ Ax=0}\]
 
@@ -2277,15 +2824,11 @@ That being said, Convolutional Neural Networks - which have been very effective 
    <link href="https://ludavid15.github.io//dataanalytics/"/>
    <updated>2022-02-14T00:00:00-08:00</updated>
    <id>https://ludavid15.github.io//dataAnalytics</id>
-   <content type="html">&lt;p&gt;In contrast to data &lt;em&gt;science&lt;/em&gt;, which designs and explores the models and algorithms we have for analyzing data, data &lt;em&gt;analytics&lt;/em&gt; is about using data to solve problems. This includes additional steps like considering your stakeholders, communicating ideas, and working under a deadline.&lt;/p&gt;
+   <content type="html">&lt;p&gt;In contrast to data &lt;em&gt;science&lt;/em&gt;, which designs and explores the models and algorithms we have for analyzing data, data &lt;em&gt;analytics&lt;/em&gt; is about using data to solve problems. This includes additional steps like considering your stakeholders, communicating ideas, and working under a deadline. If you want to read about machine learning, check out the &lt;a href=&quot;/notes/mlintroduction/&quot;&gt;introduction to machine learning post&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;This post is a collection of notes and lessons from the Google Data Analytics Certificate.&lt;/p&gt;
 
 &lt;!--more--&gt;
-
-&lt;h3 id=&quot;overview&quot;&gt;Overview&lt;/h3&gt;
-
-&lt;p&gt;To begin, let’s be clear that data analytics is not machine learning. In the abstract, they might be the same (i.e. drawing patterns from your data), but machine learning is much more complex mathematically. In contrast, data analytics is limited to a few pretty straightforward computations.&lt;/p&gt;
 
 &lt;h3 id=&quot;the-lifecyce-of-data&quot;&gt;The Lifecyce of Data.&lt;/h3&gt;
 
@@ -2585,13 +3128,7 @@ J. Wertz&lt;/p&gt;
    <link href="https://ludavid15.github.io//scales/"/>
    <updated>2021-08-16T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//scales</id>
-   <content type="html">&lt;p&gt;Major Scale (Diatonic Scale, Ionian Mode)&lt;/p&gt;
-
-&lt;p&gt;Ionian, Dorian, Phrygian, Lydian,&lt;/p&gt;
-
-&lt;p&gt;More importantly, we need to know the style and color of a scale (major, minor, dom7, bright, dark, etc.)&lt;/p&gt;
-
-&lt;p&gt;From brightest to darkest (notice that we are slowly dropping the pitch of notes, in the same order as we would along the circle of 5ths)&lt;/p&gt;
+   <content type="html">&lt;p&gt;From brightest to darkest (notice that we are slowly dropping the pitch of notes, in the same order as we would along the circle of 5ths)&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -2648,15 +3185,6 @@ J. Wertz&lt;/p&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h3 id=&quot;dominant-7-harmony-scales&quot;&gt;Dominant 7 Harmony Scales&lt;/h3&gt;
-
-&lt;p&gt;Lydian Flat 7
-Altered Scale - flat 9, sharp 9, natural 3, sharp 11, flat 13, flat 7
-Normally does not include the 5th, but the 5th is still usable in this scale.&lt;/p&gt;
-
-&lt;p&gt;Symmetric Diminished - sounds like the diminished chord
-b9, sharp 9, natural 3, sharp 11, natural 5, natural 6, flat 7&lt;/p&gt;
-
 </content>
  </entry>
  
@@ -2669,9 +3197,9 @@ b9, sharp 9, natural 3, sharp 11, natural 5, natural 6, flat 7&lt;/p&gt;
 
 &lt;!--more--&gt;
 
-&lt;h3 id=&quot;the-2-5-1&quot;&gt;The 2-5-1&lt;/h3&gt;
+&lt;h3 id=&quot;the-two-five-one&quot;&gt;The Two-Five-One&lt;/h3&gt;
 
-&lt;p&gt;Starts with the minor 7th on the second, the major 7th on the 5th, and finishes on the root.&lt;/p&gt;
+&lt;p&gt;This is the bread and butter of jazz harmony. It starts with the minor 7th on the second, the major 7th on the 5th, and finishes on the root. Here are some variations:&lt;/p&gt;
 
 &lt;h4 id=&quot;minor-2-5-1&quot;&gt;Minor 2-5-1&lt;/h4&gt;
 
@@ -2681,13 +3209,19 @@ b9, sharp 9, natural 3, sharp 11, natural 5, natural 6, flat 7&lt;/p&gt;
 
 &lt;p&gt;Notice that we are adding chords according to their order along the circle of fifths. For instance, in the key of C, the 3rd (E) has 4 sharps, the 6th (A) has 3 sharps, the 2nd (D) has 2 sharps, and the 5th (G) has one sharp.&lt;/p&gt;
 
-&lt;h3 id=&quot;tritone-substitutions&quot;&gt;Tritone Substitutions&lt;/h3&gt;
+&lt;h4 id=&quot;tritone-substitutions&quot;&gt;Tritone Substitutions&lt;/h4&gt;
 
-&lt;p&gt;This method is used on 2-5-1 progressions. We take the dominant fifth, and substitute a chord that is based on the note a tritone above. In the key of C, this means that the &lt;strong&gt;G7&lt;/strong&gt; might be replaced by a &lt;strong&gt;C#7&lt;/strong&gt;. This results in a chromatic sequence (&lt;strong&gt;D&lt;/strong&gt; - &lt;strong&gt;C#&lt;/strong&gt; - &lt;strong&gt;C&lt;/strong&gt;).&lt;/p&gt;
+&lt;p&gt;We take the dominant fifth, and substitute a chord that is based on the note a tritone above. In the key of C, this means that the &lt;strong&gt;G7&lt;/strong&gt; might be replaced by a &lt;strong&gt;C#7&lt;/strong&gt;. This results in a chromatic sequence (&lt;strong&gt;D&lt;/strong&gt; - &lt;strong&gt;C#&lt;/strong&gt; - &lt;strong&gt;C&lt;/strong&gt;).&lt;/p&gt;
 
 &lt;h3 id=&quot;diminished-sixths&quot;&gt;Diminished Sixths&lt;/h3&gt;
 
-&lt;p&gt;Sometimes also known as the Barry Harris progression.&lt;/p&gt;
+&lt;p&gt;To explain this concept, let’s start simple. For a given tonic, there’s this concept of the dominant, which provides &lt;em&gt;tension&lt;/em&gt;. Also in jazz, chords are often played with extensions, which means that the dominant often gets a flat 9, which is a flat 6th in the tonic key.&lt;/p&gt;
+
+&lt;p&gt;So this creates a new scale, where some notes, (the 2, 4, flat 6, 7) belong to the “dominant” sound, and other notes, (the 1, 3, 5) belong to the “tonic” sound.&lt;/p&gt;
+
+&lt;p&gt;Here, we can notice that the dominant notes (the top 4 notes of a extended dominant chord) form a &lt;em&gt;diminished&lt;/em&gt; chord. And since a diminished chords is built on minor thirds, it stays constant in any inversion.&lt;/p&gt;
+
+&lt;p&gt;Finally, all we have to do now is move between the tonic sound and the dominant sound. This can be done quickly, too. For example if you’re playing a descending scale, you can alternate the harmany on each step to create a nice &amp;amp; rich feeling of tension &amp;amp; release.&lt;/p&gt;
 
 </content>
  </entry>
@@ -3164,11 +3698,13 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;p&gt;Improvement through natural selection is the general idea of reinforcement learning. For some problems, success is measured by a distant goal, or by some cumulative performance. In these cases, it doesn’t make sense to define individual state variables. Here is where reinforcement learning comes in.&lt;/p&gt;
 
+&lt;p&gt;The example usually given is a video game. Intermediate objects or states don’t result in a direct payoff - which means there isn’t really a gradient over which to opimize. Instead, we can only reinforce behaviors that resulted in good results.&lt;/p&gt;
+
 &lt;h3 id=&quot;knowledge-base-or-symbolic-ai&quot;&gt;Knowledge Base or Symbolic AI&lt;/h3&gt;
 
 &lt;p&gt;Although other algorithms perform well enough (i.e. the output is good), they don’t gain any real “understanding” about what they’re doing, at least, not in the same capacity as you or me. And when something does goes wrong, it’s extremely difficult to identify the cause, especially when you’re dealing with NN’s that can have millions of weights.&lt;/p&gt;
 
-&lt;p&gt;A knowledge base approach uses logic to make deductions. If I said that a cat is a type of mammal, and that all mammals are animals, then it could be deduced that a cat is a type of animal. These types of system are great for when we need to understand how the machine arrived at a decision. But because they operate on such an abstract level, building up the required database of statements is also a highly abstract task that relies on human input. Furthermore, many topics cannot be described with binary yes/no logic (things like the arts, personal opinions, relationships, etc.).&lt;/p&gt;
+&lt;p&gt;A knowledge base approach uses logic to make deductions. If I said that a cat is a type of mammal, and that all mammals are animals, then it could be deduced that a cat is a type of animal. These types of system are great for when we need to understand how the machine arrived at a decision. But because they operate on such an abstract level, building up the required database of statements is also a highly abstract task that relies on human input. Furthermore, many topics are not easily described with binary yes/no logic (things like the arts, personal opinions, relationships, etc.).&lt;/p&gt;
 
 </content>
  </entry>
@@ -3230,7 +3766,7 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;p&gt;Where \(u\), \(v\) are the coordinates of point P expressed in the image plane, and f is the focal length of the camera. Note that \(u\), \(v\) are not pixel coordinates, but image plane coordinates defined from an origin.&lt;/p&gt;
 
-&lt;p&gt;An important characteristic of 2D images is the lack information regarding depth. A machine cannot tell if we are looking at a large object very far away or a close object nearby. There are multiple ways around this problem, including but not limited to LiDAR, Radar, or triangulation.&lt;/p&gt;
+&lt;p&gt;An important characteristic of 2D images is the lack information regarding depth. A machine cannot tell if we are looking at a large object very far away or a close object nearby. There are really only two ways around this problem. First, you can take direct measurements of the depth, using something like LiDAR or radar. The other alternative is to collect a second snapshot from a different position, and then triangulate the depth according to how the view is shifted (like what we do with our eyes). However, note that the second method requires accurate knowledge of the two positions from which each snapshot is taken.&lt;/p&gt;
 
 &lt;h3 id=&quot;feature-identification&quot;&gt;Feature Identification&lt;/h3&gt;
 
@@ -3280,109 +3816,6 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;p&gt;Homography – an isomorphism between projected images.&lt;/p&gt;
 
-</content>
- </entry>
- 
- <entry>
-   <title>Astrodynamics</title>
-   <link href="https://ludavid15.github.io//astrodynamics/"/>
-   <updated>2021-06-23T00:00:00-07:00</updated>
-   <id>https://ludavid15.github.io//astrodynamics</id>
-   <content type="html">&lt;p&gt;Astrodynamics is a lot like any other field of dynamics, except we now have an additional equation to consider: the law of universal gravitation. This leads to some strange and counterintuitive results - like slowing down to catch up!&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h3 id=&quot;keplers-laws-of-planetary-motion&quot;&gt;Kepler’s Laws of Planetary Motion&lt;/h3&gt;
-
-&lt;p&gt;As good a place to start as any. These are more a set of observations than a theoretical explanation for celestial motion.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;All planets move in elliptical orbits, with the Sun at the focus.&lt;/li&gt;
-  &lt;li&gt;A line that connects a planet to the Sun sweeps out equal areas in equal times.&lt;/li&gt;
-  &lt;li&gt;The period of an orbit is proportional to the root of the cube of the semimajor axis.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;2d-orbits&quot;&gt;2D Orbits&lt;/h3&gt;
-
-&lt;p&gt;The two-dimensional orbital frame is also known as the perifocal frame (i.e. periapsis and apoapsis vectors are in the plane). We also assume that one body is significantly larger than the other. Given θ as the true anomaly of your orbit, orbital radius from a focus point is:&lt;/p&gt;
-
-\[r=\ \frac{h^2}{\mu}\frac{1}{1+e\cos(\theta)}\]
-
-&lt;p&gt;Where µ is the gravitational parameter of the larger body being orbited. Standard values for objects in our solar system can be found &lt;a href=&quot;https://en.wikipedia.org/wiki/Standard_gravitational_parameter&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;For each orbit, we can also define the specific angular momentum \(\vec{h}\):&lt;/p&gt;
-
-\[\vec{h}=\vec{r}\times\vec{v}\]
-
-&lt;p&gt;Where \(\vec{r}\) and \(\vec{v}\) are the position vector and velocity vector at a point in time. The total angular momentum remains constant through the orbit. If the orbit is elliptical, we can define an apoapsis distance, periapsis distance, and semimajor axis distance.&lt;/p&gt;
-
-\[2a=\ r_a+r_p\]
-
-&lt;p&gt;The eccentricity (measure of how elliptical an orbit is) can also be calculated with:&lt;/p&gt;
-
-\[e=\ \frac{r_a-r_p}{r_a+r_p}\]
-
-&lt;p&gt;Through conservation of energy we arrive at the Vis-Viva equation. An orbit with a specific energy of zero is defined to be on a parabolic orbit. A positive specific energy means that it is on an escape trajectory, while a negative value means it is captured by the planet’s gravity (circular or elliptical).&lt;/p&gt;
-
-&lt;h3 id=&quot;vis-viva-equation&quot;&gt;Vis Viva Equation&lt;/h3&gt;
-
-&lt;p&gt;This equation relates the current velocity and radius of an object in orbit to the total energy, or semi-major axis of it’s orbit. This is very useful for computing Hohman transfers.&lt;/p&gt;
-
-\[\frac{v^2}{2}-\frac{\mu}{r}=-\frac{\mu}{2a}=\varepsilon\]
-
-&lt;h3 id=&quot;orbital-period&quot;&gt;Orbital Period&lt;/h3&gt;
-
-&lt;p&gt;The orbital period is the total time is takes to complete a single revolution&lt;/p&gt;
-
-\[\left(T\right)=2\pi\sqrt{\frac{a^3}{\mu}}\]
-
-&lt;p&gt;Using the energy equation, we can show that for a circular orbit, where r = a, the circular orbit velocity is simply:&lt;/p&gt;
-
-\[V=\ \sqrt{\frac{\mu}{r_1}}\]
-
-&lt;h3 id=&quot;low-thrust-transfers&quot;&gt;Low Thrust Transfers&lt;/h3&gt;
-
-&lt;p&gt;In general, there is no way to algebraically solve for a low thrust trajectory. Instead, for problems of this type we need to solve for x(t) and u(t) through trajectory optimization.&lt;/p&gt;
-
-&lt;p&gt;An initial estimate for the delta V cost of a low thrust transfer orbit can be obtained by assuming that the resulting transfer path is made up of many circular orbits with gradually increasing radius. This applies when the initial and final orbits are circular and transfer time is long.&lt;/p&gt;
-
-\[∆V= \sqrt{\frac{μ}{r_1}}-\sqrt{\frac{μ}{r_2}}\]
-
-&lt;p&gt;Derivation:&lt;/p&gt;
-
-&lt;p&gt;We start with Newton’s first law, relating forces to acceleration.&lt;/p&gt;
-
-\[m\frac{d\vec{V}}{dt}=\vec{T}-\frac{\mu m}{r^3}\vec{r}\]
-
-&lt;p&gt;We assume T is aligned with velocity. Both sides of the expression are dotted with V.&lt;/p&gt;
-
-\[\vec{V}\bullet\left(m\frac{d\vec{V}}{dt}\right)=\vec{V}\bullet\left(T\ast\hat{V}-\frac{\mu m}{r^3}\vec{r}\right)\]
-
-\[\frac{1}{2}\frac{d}{dt}V^2=\frac{T}{m}\vec{V}-\frac{1}{2}\frac{\mu}{r^2}\frac{d}{dt}r^2\]
-
-&lt;p&gt;We re-write the thrust in terms of the mass flow rate and the exhaust velocity and integrate.&lt;/p&gt;
-
-\[T=\ \dot{m}U_{ex}\]
-
-\[\frac{d\vec{V}}{dt}=-\frac{d}{dt}\ln{\left(m\right)}U_{ex}-\frac{\mu}{r^2}\frac{dr}{dt}\frac{1}{V}\]
-
-\[∆V=-U_{ex}ln\frac{m_f}{m_o}-\int_{t_o}^{t_f}\frac{μ}{r^2}\frac{dr}{dt}\frac{1}{V}dt\]
-
-&lt;p&gt;With a circular approximation, we can substitute the magnitude of velocity in with the radius.&lt;/p&gt;
-
-\[V=\sqrt{\frac{\mu}{r}}\]
-
-&lt;p&gt;Integrating the “gravity drag” term from inner radius to outer radius yields the circular transfer approximation equation.&lt;/p&gt;
-
-&lt;p&gt;For short transfers, low thrust trajectories result in a much higher time of flight, but as the transfer distance increases, EP transfer times become better than traditional impulsive options, due to a higher achieved maximum velocity from long periods of sustained thrust.&lt;/p&gt;
-
-&lt;h3 id=&quot;lagrange-points&quot;&gt;Lagrange Points&lt;/h3&gt;
-
-&lt;p&gt;A lagrange point is a stable orbit position where the gravitional pull and centrifugal force from two other bodies is at an equilibrium. In a three-body system, there are 5 lagrange points.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The James Webb Space Telescope is at the Earth-Sun Lagrange point L2!&lt;/p&gt;
-&lt;/blockquote&gt;
 </content>
  </entry>
  
@@ -3908,26 +4341,52 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;p&gt;A system can be stable, unstable, or marginally stable.&lt;/p&gt;
 
-&lt;p&gt;Stable&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;All poles must be in the LHP&lt;/li&gt;
-&lt;/ol&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Stable&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;All poles must be in the LHP&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-&lt;p&gt;Marginally Stable&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;There are no poles in the RHP&lt;/li&gt;
-  &lt;li&gt;There are poles on the imaginary axis&lt;/li&gt;
-  &lt;li&gt;Poles on the imaginary axis are non-repeated&lt;/li&gt;
-&lt;/ol&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Marginally Stable&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;There are no poles in the RHP&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;There are poles on the imaginary axis&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Poles on the imaginary axis are non-repeated&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-&lt;p&gt;Unstable&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Any pole in the RHP makes a system unstable&lt;/li&gt;
-&lt;/ol&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Unstable&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Any pole in the RHP makes a system unstable&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Theorem: Given a system represented by a denominator in expanded form, it is not stable if any coefficients of sn are zero or negative.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Theorem: Given a system represented by a denominator in expanded form, it is not stable if any coefficients of sn are zero or negative.&lt;/p&gt;
 
 &lt;h3 id=&quot;undershoot&quot;&gt;Undershoot&lt;/h3&gt;
 &lt;p&gt;Typical in non-minimum phase systems (defined as having a zero in the RHP).&lt;/p&gt;
@@ -4553,6 +5012,10 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 &lt;h3 id=&quot;conjugate-gradient&quot;&gt;Conjugate Gradient&lt;/h3&gt;
 &lt;p&gt;Conjugate gradient improves line search convergence by providing a better alternative for the search direction than steepest descent. It retains information about the previous descent direction in the direction update for the next search.&lt;/p&gt;
 
+&lt;blockquote&gt;
+  &lt;p&gt;This is sometimes also known as a momentum term&lt;/p&gt;
+&lt;/blockquote&gt;
+
 \[p_k=-\nabla f_k+\beta_kp_{k-1}\]
 
 \[\beta_k=\frac{\nabla f_k^T\nabla f_k}{\nabla f_{k-1}^T\nabla f_k}\]
@@ -4561,7 +5024,7 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 
 &lt;h3 id=&quot;newtons-method&quot;&gt;Newton’s Method&lt;/h3&gt;
 
-&lt;p&gt;Newton’s method makes a local quadratic approximation of the function and goes to the minimum. Requires second order differentiable functions in order to work but has the fastest convergence. The step (i.e. the next point is calculated as x + s) in every iteration is calculated as:&lt;/p&gt;
+&lt;p&gt;Newton’s method makes a local quadratic approximation of the function and steps to the minimum of that approximation. This requires second order differentiable functions in order to work but has the fastest convergence. The step (i.e. the next point is calculated as x + s) in every iteration is calculated as:&lt;/p&gt;
 
 \[s_k=-H_k^{-1}\nabla f_k\]
 
@@ -4598,18 +5061,20 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 
 \[df\cong\frac{f\left(x+h\right)-f(x)}{h}\]
 
-&lt;p&gt;Complex step eliminates the subtraction step and provides a better approach with more accuracy, but still requires one function evaluations per term in the gradient.&lt;/p&gt;
+&lt;p&gt;Complex step eliminates the subtraction step and provides a better approach with more accuracy, and also requires only one function evaluation per term in the gradient. This method is based on the Taylor series expansion, where using a very small value for h allows us to ignore higher order terms.&lt;/p&gt;
 
-\[df\cong Im[fx+ih]h\]
+\[df\cong \frac{1}{h}Im[f(x+ih)]\]
 
 &lt;p&gt;Algorithmic differentiation, or sometimes known as automatic differentiation is similar to taking an analytical gradient but is performed line by line on the code of the objective function. AD derivates are exact and require zero function evaluations but are limited in regard to where they can be applied. Developers intending to use AD later on should understand ahead of time the types of code that cannot be passed through an AD tool and write their objective function accordingly. For python, the module Autograd provides an easy and useful tool for applying AD to obtain the first order gradient or second order Hessian.&lt;/p&gt;
 
 &lt;h3 id=&quot;gradient-free-methods&quot;&gt;Gradient Free Methods&lt;/h3&gt;
+
 &lt;p&gt;These methods avoid the calculation of a gradient. For this reason, they are more robust to non-continuous objective functions and constraints. Unfortunately, this also means that gradient free methods scale very poorly for problems of very many variables. There are a multitude of different gradient free algorithms, but two of the most popular are the genetic algorithm and Nelder-mead methods.&lt;/p&gt;
 
 &lt;p&gt;Nelder-mead is a simplex method, where a simplex is defined as an N dimensional polyhedron formed form triangles. In 2D, it is a triangle, in 3D it is a tetrahedron, etc.&lt;/p&gt;
 
 &lt;h3 id=&quot;metaheuristics&quot;&gt;Metaheuristics&lt;/h3&gt;
+
 &lt;p&gt;Refers generally to a class of optimization methods that are designed to perform “well enough”. These typically can provide good solutions, but in a limited capacity and does not guarantee a perfect solution.&lt;/p&gt;
 
 &lt;p&gt;These strategies make relatively few assumptions about the problem nature and aim to be generally applicable. A common metaheuristic strategy is to implement a form of stochastic optimization. Some examples of metaheuristic optimization include:&lt;/p&gt;
@@ -6698,11 +7163,13 @@ For curved surfaces, use the following force balance approach:&lt;/p&gt;
 &lt;p&gt;Combustion does not always happen to completion and fuels are not made of a singular type of hydrocarbon. This means that as equivalence ratio tends to 1, actual flame temperature is lower than the ideal value.&lt;/p&gt;
 
 &lt;table&gt;
-  &lt;tbody&gt;
+  &lt;thead&gt;
     &lt;tr&gt;
-      &lt;td&gt;Equivalence Ratio&lt;/td&gt;
-      &lt;td&gt;Type of Combustion Environment&lt;/td&gt;
+      &lt;th&gt;Equivalence Ratio&lt;/th&gt;
+      &lt;th&gt;Type of Combustion Environment&lt;/th&gt;
     &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td&gt;\(\phi&amp;lt;1\)&lt;/td&gt;
       &lt;td&gt;Fuel Lean&lt;/td&gt;
@@ -6733,15 +7200,17 @@ For curved surfaces, use the following force balance approach:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;../images/jetBasic.png&quot; alt=&quot;turbojet&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
 
 &lt;table&gt;
-  &lt;tbody&gt;
+  &lt;thead&gt;
     &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;Diffuser&lt;/td&gt;
-      &lt;td&gt;Compressor&lt;/td&gt;
-      &lt;td&gt;Burner&lt;/td&gt;
-      &lt;td&gt;Turbine&lt;/td&gt;
-      &lt;td&gt;Nozzle&lt;/td&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Diffuser&lt;/th&gt;
+      &lt;th&gt;Compressor&lt;/th&gt;
+      &lt;th&gt;Burner&lt;/th&gt;
+      &lt;th&gt;Turbine&lt;/th&gt;
+      &lt;th&gt;Nozzle&lt;/th&gt;
     &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td&gt;π (Pressure Ratio)&lt;/td&gt;
       &lt;td&gt;1&lt;/td&gt;
@@ -6797,15 +7266,19 @@ For curved surfaces, use the following force balance approach:&lt;/p&gt;
 
 &lt;p&gt;These are weights which represent the % of energy lost.&lt;/p&gt;
 
-&lt;dl&gt;
-  &lt;dt&gt;Propulsive Efficiency&lt;/dt&gt;
-  &lt;dd&gt;
+&lt;p&gt;&lt;strong&gt;Propulsive Efficiency&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A measure of kinetic energy efficiency.&lt;/p&gt;
+
 \[\eta_p=\frac{P_{prop}}{P_{KE}}\cong\frac{2\frac{u_o}{u_e}}{1+\frac{u_o}{u_e}}\]
-  &lt;/dd&gt;
-  &lt;dt&gt;Thermal Efficiency&lt;/dt&gt;
-  &lt;dd&gt;
+
+&lt;p&gt;&lt;strong&gt;Thermal Efficiency&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A measure of thermal energy efficiency.&lt;/p&gt;
+
 \[\eta_{th}=\frac{P_{KE}}{P_{in}}=\frac{\left\{\left(\dot{m_0}+\dot{m_f}\right)\frac{ u_e^2}{2}-\dot{m_0}\frac{ u_0^2}{2}\right\}}{\dot{m_f}Q_R}=1-\frac{T_9-T_0}{T_{t4}-T_{t3}}=1-\frac{1}{\tau_r\tau_c}\]
-  &lt;/dd&gt;
+
+&lt;dl&gt;
   &lt;dt&gt;Total Efficiency&lt;/dt&gt;
   &lt;dd&gt;
 \[\eta_0=\eta_{th}\eta_p=\frac{P_{Prop}}{P_{in}}=\ \frac{Thrust\ast u_0}{\dot{m_f}Q_R}\]

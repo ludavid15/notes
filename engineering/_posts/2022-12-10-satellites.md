@@ -56,7 +56,7 @@ The propulsion system provides Delta-V capacity to your satellite. This could be
 Why do orbits need to be maintained? Well, atmospheric drag for one. But also the Earth isn't perfectly spherical and this causes orbits to drift over time (called precession).
 </p>
 
-Depending on your design, propulsion thrusters are usually classified in two ways: either as primary thrusters, which provide delta-V, or as attitude control thrusters. The latter needs less thrust, but are used more, so a higher specific impulse would be good.
+Depending on your design, propulsion thrusters are usually classified in two ways: either as primary thrusters, which provide delta-V, or as attitude control thrusters. The latter needs less thrust, but are used more, so a higher specific impulse would be good. The efficiency and demands on your propulsion system will dictate the amount of propellent that needs to be carried. The weight of propellant will make up a significant piece of your mass budget. 
 
 ### Attitude Control
 
@@ -108,13 +108,14 @@ If you're in LEO or even HEO orbit, there will likely be times when you are ecli
 
 If your position and attitude are changing rapidly, you may also want some way to gimbal your solar panels into or out of the sun, to control the flow of power/heat.
 
+
 ### Thermal
 
 Thermal gets tricky in space, because there's no convection or conduction, only radiation. This means that spacecraft are often subjected to enormous temperature ranges (-100 to 100 deg celsius is not a bad estimate). Heaters are essential to prevent things from freezing, while radiators are just as important to prevent things from overheating. 
 
 For any given piece of hardware, there's usually an operating temperature range, and a survival temperature range. And then on the structural side of things, you may need to think about your coefficients of thermal expansion. This can be a primary source for structural stress.
 
-### Launch Vehicle Intefacing
+### Launch Vehicle Interfacing
 
 An equally important piece of your design is your launch vehicle interface. After all, the LV is what takes you into space. Do you have special environmental needs while you're in the fairing? Can you survive the g's during launch? How will you ensure a clean separation? 
 
@@ -130,7 +131,7 @@ In the real world, no task is performed in isolation. A lot of supporting infras
 * Data Verification and Validation
 * Security Systems
 
-
+These considerations can also drive a lot on your final design, but will need to be balanced by the amount of risk you can accept. 
 
 
 
