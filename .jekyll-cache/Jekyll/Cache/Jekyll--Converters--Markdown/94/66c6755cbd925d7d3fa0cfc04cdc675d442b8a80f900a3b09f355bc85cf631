@@ -1,0 +1,58 @@
+I"B<p>From brightest to darkest (notice that we are slowly dropping the pitch of notes, in the same order as we would along the circle of 5ths)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sharps or Flats</th>
+      <th>Quality</th>
+      <th>Chords</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Lydian</td>
+      <td># 4th</td>
+      <td>Major</td>
+      <td>Major chords</td>
+    </tr>
+    <tr>
+      <td>Ionian</td>
+      <td>None</td>
+      <td>Major</td>
+      <td>Major chords</td>
+    </tr>
+    <tr>
+      <td>Mixolydian</td>
+      <td>b7</td>
+      <td>Dominant</td>
+      <td>Dominant 7th chords</td>
+    </tr>
+    <tr>
+      <td>Dorian</td>
+      <td>add b3</td>
+      <td>Minor</td>
+      <td>Minor 7th chords</td>
+    </tr>
+    <tr>
+      <td>Aeolian</td>
+      <td>add b6</td>
+      <td>Minor</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Phyrgian</td>
+      <td>add b2</td>
+      <td>Minor</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Locrian</td>
+      <td>add b5</td>
+      <td>Minor</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+:ET

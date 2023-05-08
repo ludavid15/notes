@@ -83,12 +83,14 @@ Or in an unsupervised case, independent component analysis and autoencoders achi
 
 Improvement through natural selection is the general idea of reinforcement learning. For some problems, success is measured by a distant goal, or by some cumulative performance. In these cases, it doesn't make sense to define individual state variables. Here is where reinforcement learning comes in. 
 
+The example usually given is a video game. Intermediate objects or states don't result in a direct payoff - which means there isn't really a gradient over which to opimize. Instead, we can only reinforce behaviors that resulted in good results. 
+
 
 ### Knowledge Base or Symbolic AI
 
 Although other algorithms perform well enough (i.e. the output is good), they don't gain any real "understanding" about what they're doing, at least, not in the same capacity as you or me. And when something does goes wrong, it's extremely difficult to identify the cause, especially when you're dealing with NN's that can have millions of weights. 
 
-A knowledge base approach uses logic to make deductions. If I said that a cat is a type of mammal, and that all mammals are animals, then it could be deduced that a cat is a type of animal. These types of system are great for when we need to understand how the machine arrived at a decision. But because they operate on such an abstract level, building up the required database of statements is also a highly abstract task that relies on human input. Furthermore, many topics cannot be described with binary yes/no logic (things like the arts, personal opinions, relationships, etc.).
+A knowledge base approach uses logic to make deductions. If I said that a cat is a type of mammal, and that all mammals are animals, then it could be deduced that a cat is a type of animal. These types of system are great for when we need to understand how the machine arrived at a decision. But because they operate on such an abstract level, building up the required database of statements is also a highly abstract task that relies on human input. Furthermore, many topics are not easily described with binary yes/no logic (things like the arts, personal opinions, relationships, etc.).
 
 
 

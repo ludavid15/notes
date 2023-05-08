@@ -1,0 +1,144 @@
+I"#<p>If you’ve ever tried to manage a highly complex project, you know that a certain amount of organization is required. This kind of big-picture planning helps to reduce risk. However, it’s important to remember that this kind of oversight ultimately serves the product. There is such a thing as too much management.</p>
+
+<p>This is the balance to be struck in the world of systems engineering. Systems engineering is a set of practices for developing highly complex projects while minimizing risk. It is NOT a substitute for good communication or for responsible people (though it can help).</p>
+
+<!--more-->
+
+<h3 id="requirements">Requirements</h3>
+
+<p>Requirements have been the backbone of aerospace systems engineering for a few decades now. The basic idea is that we write down a complete list of everything our project needs to do, and then break them down piece by piece. The idea is sound, but the execution gets messy very quickly, and is more art than science.</p>
+
+<p>Let’s consider an example. Say we are trying to design a rocketship to Mars. We might define a few high level requirements that read:</p>
+
+<ol>
+  <li>The rocket shall carry 4 astronauts</li>
+  <li>The rocket shall be able to complete the mission in 2 years.</li>
+  <li>The rocket shall use electric propulsion systems.</li>
+</ol>
+
+<p>Taking the first requirement, we can break it down logically into necessary components. This process then gets repeated over and over until we reach a good level of detail, or more likely, until we can’t be bothered to keep going.</p>
+
+<ol>
+  <li>The rocket shall include a life support system to recycle oxygen.</li>
+  <li>The rocket shall include 5000 cubic feet of living space for the astronauts.</li>
+  <li>The rocket shall carry 3000 lbs of food and living equipment.</li>
+</ol>
+
+<p>Once all the requirements have been written, design work begins. The engineers build the rocketship exactly to spec, ahead of schedule and under budget, and then we fly to Mars. Err, ok maybe not. Before we launch we need to validate and verify that everything is good to go.</p>
+
+<h3 id="validation-and-verification">Validation and Verification</h3>
+
+<p>The process of ensuring the design meets the expectation is known as the validation and verification step. <strong>Verification</strong> checks to see that the design satisfies the exact wording of the requirement. For example, we can measure the interior space of our rocket, and if we find that there is indeed 5000 cubic feet, we have verified that requirement. <strong>Validation</strong> checks that we’re meeting the spirit of the requirement. In this case, the intent of this requirement is to provide astronauts with enough living space, but is 5000 really enough? What if the 5000 cubic feet is in the form of a 1 ft x 1 ft x 5000 ft narrow tube? Such a design would not meet the intent of the requirement, even though technically it satisfied the exact wording.</p>
+
+<p>There aren’t really any rules on how a requirement should be written, but usually requirements do one of three things:</p>
+
+<ol>
+  <li>Define some desired function/feature (ex: shall send telemetry)</li>
+  <li>Define how well something has to be done (ex: shall be operational up to 100 deg)</li>
+  <li>Define an aspect of the design (ex: shall operate at 30V)</li>
+</ol>
+
+<h4 id="why-requirements">Why Requirements?</h4>
+
+<p>My personal opinion of requirements is that they exist as a document of wants, agreed upon by the stakeholders. If I want or need A, I’ll go to you, we can talk it over, and we write this down into our requirements document.</p>
+
+<p>This may be a good way to track our needs, (potentially comparable to “user stories” from agile), but I think we shouldn’t imagine requirements to necessarily be a good model of your design. In other words, it’s important for your model to meet the requirements, but the requirements are not a comprehensive model of your design.</p>
+
+<h3 id="requirements-in-practice">Requirements in Practice</h3>
+
+<p>In real life, we often do not build things up from scratch. Instead a project is often an addition to, or a modification of something that already exists. Even though this is meant to simplify the process, it also creates a lot of additional work (as anyone who has tried to read someone else’s code can testify). For this situation, there are often requirements which outline a specific design (i.e. shall use ABC hardware).</p>
+
+<h3 id="requirement-pitfalls">Requirement Pitfalls</h3>
+
+<p>Just a few other things to watch out for when writing requirements.</p>
+
+<h4 id="1-negatives">1. Negatives</h4>
+
+<p>Requirements that specify what <em>not</em> to do can be difficult to verify. For instance, “shall not fail under xxx circumstances” requires a lot of definition about what exactly these circumstances are.</p>
+
+<h4 id="2-subjective-goals">2. Subjective Goals</h4>
+
+<p>This is intuitive, but requirements should not be subjective. “Shall be satisfactory” is vague. Good according to who? Again, being verifiable is important.</p>
+
+<h4 id="3-not-including-rationale">3. Not Including Rationale</h4>
+
+<p>Even a perfectly good requirement can be challenging if there’s confusion about why it exists. I promise that no matter how good your memory is, if you come back to a requirement many months later you’ll be glad to have a rationale section. For instance, maybe a requirement was derived from a user study, but 2 years later, that study was proven to be unreliable. For situations like this, a rationale blurb would let you know quickly if a requirement is still relevant.</p>
+
+<h4 id="4-requirements-that-are-constraints">4. Requirements that are Constraints</h4>
+
+<p>Another deceptively complex situation is to have a requirement that defines a constraint. For instance, “the satellite shall operate normally under xxx constraints”. Ok, seems easy. But what if another part of the design fails to keep us within these constraints? Technically, we’ve still met this first requirement. We’re just never operational, but that’s ok because we’re outside the limit. If you have a requirement like the first one, you’d better have a second requirement which defines availability, “the satellite shall be operational for 75% of the day”.</p>
+
+<h3 id="design-reviews">Design Reviews</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Preliminary Design Review (PDR)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PDR is the first major “design” checkpoint. This means that an idea for a part has matured into a design for that part. By PDR, you should be able to demonstrate that your design is going to meet all your requirements, at least in theory.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Critical Design Review (CDR)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>In short, your CDR is the last checkpoint before moving on to fabrication, integration, and testing. By CDR, your design should be baselined, and you should be fairly confident that what you’re building will work. This usually means plenty of analysis. You should also have a plan for how you are going to manufacture or acquire all your hardware.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="operations">Operations</h3>
+
+<p>Also known as functions or activities, operations are used to explain <em>how</em> something is done. This could be for the benefit of a designer, an operator, or even a computer. Depending on the user, this can also be detailed to different resolutions, ranging from the abstract, to the very specific (like individual command messages).</p>
+
+<p>Some Operations Documents:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concept of Operations (CONOPS)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A high level overview which outlines the overall goals and objectives. Usually includes context or rationale for why things are the way they are. This is frequently a user or customer facing document.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mission Operations Document (MOD)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A more detailed outline of your procedures than the CONOPS. A MOD can provide specific details about what your hardware (or an operator) needs to do. This is something you might hand to a responsible engineer to turn into code.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Recommended Operating Procedures (ROP)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>The most detailed document of the three, a ROP is as detailed as you can get before actually implementing a solution. For things like commanding or telemetry, a ROP can be as specific as the individual bits in a dataframe. In an OSI context, this means going down to the Data Link Layer (layer 2). Unlike a CONOPS document or MOD, a ROP can include fault management/anomaly response procedures.</td>
+    </tr>
+  </tbody>
+</table>
+
+:ET

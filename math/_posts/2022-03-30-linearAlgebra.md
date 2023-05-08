@@ -16,13 +16,13 @@ We've mentioned before that machine learning is really just glorified regression
 
 Before getting into the more interesting/complicated math, let's start by defining a few terms.  
 
-**Vector** - By default, vectors are columns. The transpose/Hermitian of a vector turns it into a row. 
+**Vector** - A vector is an object which specifies a magnitude and direction. Usually represented as an array of scalars. The convention is that vectors are columns. The transpose/Hermitian of a vector turns it into a row. 
 
-**Range/Span** - The set of all linear combinations of each vector. 
+**Range/Span** - The set of all linear combinations of each vector. Given a matrix A, the range of A can be computed as:
 
 $$R\left(A\right)={\alpha_1A_1+a_2A_2\ldots+\alpha_kA_k,\ for\ any\ \alpha_i\in F}$$
 
-**Nullspace/Kernel (of a matrix A)** - The set of all vectors $$\vec{x}$$ such that Ax = 0
+**Nullspace/Kernel (of a matrix A)** - The set of all vectors $$\vec{x}$$ such that Ax = 0. In a geometric sense, these are vectors that are "orthogonal" to the matrix. 
 
 $$N\left(A\right)={x\in F^n,\ Ax=0}$$
 
@@ -106,7 +106,7 @@ $$A^Hu_j=\sigma_jv_j\ \ \ \ \ \ if\ j\in(1,\ r)$$
 
 ### Orthogonal Projection Matrix 
 
-Consider a set of vectors $$v_1,\ v_2,\ \ldots v_k$$ which form an orthonormal basis for the subspace of some range V. The orthogonal projection matrix of the subspace V as well as the orthocomplement of V is formed as:
+Consider a set of vectors $$ v_1,\ v_2,\ \ldots v_k $$ which form an orthonormal basis for the subspace of some range V. The orthogonal projection matrix of the subspace V as well as the orthocomplement of V is formed as:
 
 $$P_v=Q_kQ_k^H$$
 

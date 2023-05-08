@@ -13,7 +13,6 @@ This post lays a stronger mathematical foundation for machine learning, but if y
 
 For a discussion of machine learning as a wandering exploration of linear algrebra, see the post on [linear algebra](/notes/linearAlgebra). In fact, I'd recommend starting on that page first! Matrices are the bedrock of machine learning.
 
-
 <!--more-->
 
 ## Part 1 - Basic Architectures
@@ -63,41 +62,47 @@ Where $h(x) = y$ is the model to be trained, $b$ is some kind of offset (sometim
 
 But what purpose does the non-linear activation function serve? Well it turns out, without the non-linearity of the activation function, the composition of two linear functions is just yet another linear function. In other words, the activation function is ultimately what allows a NN to accomplish complex tasks. 
 
-Depending on the type of task we are training our Neural Network to do, there are different ways to encode our solution, which demand different types of activation functions, which demand different cost functions. These are outlined here:
+### Output Encoding
 
-| Task          | Output      | Target Encoding   | Activation Function   | Cost Function
-|-              |-            |-                  |-                      |-      
-|Regression     |Real         |Real               |Identity               | Mean squared error
-|Classification |Binary       |0,1                |Sigmoid                | Cross Entropy
-|Classification |Single Label |One-hot            |Sigmoid                | Cross Entropy
-|Classification |Many Label   |Many-hot           |Softmax                | Cross Entropy
+Depending on the type of task we are training our Neural Network to do, there are different ways to encode our solution. 
 
-**Consider:** Why do we use one-hot encoding, and not just assign different numbers to things? For example, if we wanted to classify apples from bannanas from oranges, why can't we use the labels 0, 1, 2?
+#### Regression        
 
-**Answer:** Numbers are in sequence, and when we encode three different objects as 0,1,2 we've accidently introduced the concept of order, where in reality there is none (sometimes). 
+Regression usually means we are trying to correlate two values. For this kind of problem, the output can basically be any number, so we use an identity activation function.
 
+#### Binary or Boolean Questions
 
-### A Note on Activation Functions
+For this kind of task, we'd like a yes/no answer. This usually means a zero or one, so we can use something like a sigmoid or tanh activation function.
 
-On hidden nodes, the ReLU or tanh function is almost always better than the sigmoid function. 
+#### Classification
 
-**Sigmoid Function** 
+A classification task has many potential outputs (e.g. apple, pear, strawberry). Here, the output is usually a one-hot encoded vector. This is a sparse vector, where only the index corresponding to a particular class will be set to 1. 
 
-The sigmoid function ranges from 0 to 1:
+> **Consider:** Why do we use one-hot encoding, and not just assign different numbers to things? For example, if we wanted to classify apples from bannanas from oranges, why can't we use the labels 0, 1, 2?
+
+> **Answer:** Numbers are in sequence, and when we encode three different objects as 0,1,2 we've accidently introduced the concept of order, where in reality there is none (sometimes). 
+
+### Activation Functions
+
+Although the final output node needs a very specific activation function depending on the task, on hidden nodes, the ReLU or tanh function is almost always better than the sigmoid function. 
+
+| Rectified Linear Unit (Relu)
+|-
+| Unlike the tanh or sigmoid function which approaches a slope of zero at the extremes, ReLU maintains a constant slope, which usually allows machine learning algorithms to converge faster. Sometimes, algorithms use a slightly modified version called "leaky" ReLU, where the slope is slightly positive (rather than zero) for negative values. This is another feature designed to help the optimization converge more quickly. 
+
+| Tanh
+|-
+| Hyperbolic tangent. Unlike Relu or Sigmoid, this function ranges from -1 to 1. 
+
+| Softmax
+|-
+| The Softmax functions converts a vector of numbers into a vector of probabilities which sum to one. (Good for a final layer when making predictions)
+
+| Sigmoid
+|-
+| The sigmoid function ranges from 0 to 1
 
 $$h(x) = \frac{1}{1-e^{-x}}$$
-
-**Rectified Linear Unit - ReLU** 
-
-Unlike the tanh or sigmoid function which approaches a slope of zero at the extremes, ReLU maintains a constant slope, which usually allows machine learning algorithms to converge faster.
-
-**Tanh Function**
-
-Hyperbolic tangent and unlike Relu or Sigmoid, this function ranges from -1 to 1. 
-
-**Softmax**
-
-The Softmax functions converts a vector of numbers into a vector of probabilities which sum to one. (Good for a final layer when making predictions)
 
 
 ### Overfitting
@@ -151,8 +156,6 @@ And finally, we initialize E with random variables, and allow the algorithm to t
 > It turns out, if we're only trying to learn embeddings, we don't need that much "context" - it can be as little as a single random word selected from nearby the target! More context tends to be required if we're also trying to learn a language model (with grammer).
 
 
-
-
 ## Part 2 - Deep Learning Architectures
 
 Deep learning algorithms are more powerful, but messier, versions of their linear algebra counterparts. A lot of optimization and more complex architectures are used to learn more abstract behaviors. A few common deep learning architectures are:
@@ -186,13 +189,14 @@ Where $$\mu$$ and $$\sigma$$ are our normalization parameters, applied to an out
 
 $$a = ReLU(w\tilde{z}+b)$$
 
+
 ### Autoencoders
 
-An autoencoders is a form of unsupervised learning. The goal is to compress and decompress information, which forces the algorithm to find key features to "encode" useful patterns. These can be implemented as a deep neural net, but one in which the output has the same dimension as the input. Additionally, the hidden layer(s) must have fewer nodes than either the input or output. 
+An autoencoders is a form of unsupervised learning. The goal is to compress and decompress information, which forces the algorithm to find key features to "encode" useful patterns. These can be implemented as a deep neural net, but one in which the output has the same dimension as the input. In between, there are a number of hidden layers which first get smaller before growing out in size again.
 
 There are two flavors of autoencoders:
 * Regularized autoencoders, or sometimes called sparse autoencoders, are effective for classification tasks. 
-* Variational autoencoders use probability distributions instead of discrete variables, and are effective for generating new content.
+* Variational autoencoders use probability distributions instead of discrete variables, and are effective for generating new content. Read more about them [here](/notes/vae)
 
 
 ### Restricted Boltzmann Machine (RBM)
@@ -268,53 +272,18 @@ Keeping in mind that the output `e_t` needs to be passed through a softmax befor
 
 ### Convolutional Neural Networks
 
-The principle of a CNN is that a smaller matrix (aka, kernel, feature detector, filter), is passed over (i.e. convolved ) with the raw data. This is repeated over and over, and eventually passed through a fully connected layer (like in regular Neural Networks).
+The principle of a CNN is that a smaller matrix (aka, kernel, feature detector, filter), is passed over (i.e. convolved ) with the raw data. This is repeated over and over, and eventually passed through a fully connected layer (like in regular Neural Networks). 
 
-> In a sense, convolutional networks juxtapose recurrent networks. Where RNN's are deep, CNNs are shallow. 
+> In a sense, convolutional networks juxtapose recurrent networks. Where RNN’s are deep, CNNs are shallow.
 
-The key to CNN's is the kernel matrix. Different kernels can be trained to identify different "features" from the data, ranging from the very basic (e.g. an edge or a corner), to more advanced objects (e.g. an eye or a nose), and finally to the most high level (e.g. a face).
+The key to CNN’s is the kernel matrix. Different kernels can be trained to identify different “features” from the data, ranging from the very basic (e.g. an edge or a corner), to more advanced objects (e.g. an eye or a nose), and finally to the most high level (e.g. a face).
 
-CNN's are an effective tool for processing very large images, that would take up too much memory using a standard deep neural net.  This is accomplished by:
+CNN’s are an effective tool for processing very large images, that would take up too much memory using a standard deep neural net. This is accomplished by:
 
 1. Parameter sharing - only a few filters of all the same parameters are used everywhere.
 2. Low connectivity - not every pixel depends on every other pixel, only its neighbors.
 
-
-### CNN is 3D
-
-Although we think of images as 2D, there are actually three layers in a standard RBG layer, one for each color. This means that images are actually (h, w, d) matrices, and when we perform convolutions, our filters also need to be three-dimensional. 
-
-Because of how convolutions work, doing so shrinks the height and width of our image. To avoid this, we can add "padding" to the original image. 
-
-* Valid - no padding
-* Same - enough padding to keep original dimensions.
- 
-The output image will have a number of channels equal to the number of filters we apply. So for instance, an input image that is (10, 10, 3), convolved with five filters that are (3, 3, 3), will produce an output of shape (8, 8,5 ), assuming that we did not add any padding. 
-
-### Pooling Layer
-
-Pooling layers are "kernels" which use the function max or average. They are used to reduce the height and width of an input, but not the number of channels. This reduces the size of data. 
-
-
-### Unit or Pointwise Convolutions
-
-Consider what happens when you use a (1x1) kernel. The output doesn't get reduced in dimension, but the number of *channels* is changed depending on the number of kernels. This type of convolution is often used to reduce the # of channels, and you can think of it as a channel-wise version of a pooling layer.
-
-
-### Transpose Convolution
-
-Tranpose convolution is the opposite of regular convolution. Instead of shrinking the dimension of an input image, we increase the dimension by multiplying each input by a filter/kernel. This type of CNN is used when we start with something small, and want to increase its size.
-
-Semantic segmention is one such application for this type of convolution. In segmentation segmention, we often start with a regular CNN to first shrink/identify the input, and then grow it out again to it's original dimension for pixel classification. In this particular case, semantic segmentation usually also involves the use of a skip connection. As we increase the image size, we re-incorporate earlier outputs from our CNN. 
-
-
-
-### Residual Connections
-
-In a deep convolutional neural network, a residual connection (or sometimes called a "skip connection") is a connection from an earlier layer, to a later layer. For instance, the input to layer 4 is usually the output from layer 3, but a residual connection means it might also receive the output from layer 1 or layer 2. In effect, residual connections allows us to train deeper networks! 
-
-> Another way to think about these is that they work sort of like bypass diodes in a solar panel, which provide a path for the current to continue flowing, even if the cell becomes faulty. 
-
+You can continue reading about convolutional neural networks [here](/notes/cnn)!
 
 ### Transformer Network (2017)
 
@@ -339,7 +308,7 @@ And finally, to put this all together towards an actual translation algorithm, a
 
 ### Compound Architectures
 
-In recent years, many people have proposed combined approaches, which make use of more than one architecture. There is for instance, something called an RNN Encoder-Decoder, which attempts to learn the relationship between two different encodings of two different sequences. 
+In recent years, researchers have proposed combined approaches, which make use of more than one architecture. There is for instance, something called an RNN Encoder-Decoder, which attempts to learn the relationship between two different encodings of two different sequences. 
 
 Or to express it another way, the goal is to encode the sequence learned by one RNN into another sequence produced by another RNN. The main application here being translation, where two languages expressing the same idea can have entirely different lengths and grammers.
 

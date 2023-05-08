@@ -1,0 +1,3 @@
+I"+<p>In general, there is no way to algebraically solve for a low thrust trajectory. Instead, for problems of this type we need to solve for x(t) and u(t) through trajectory optimization. However, this can be a lengthy process, especially if done in a void (i.e without engineering constraints).</p>
+
+:ET

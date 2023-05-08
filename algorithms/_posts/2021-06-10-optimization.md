@@ -103,6 +103,8 @@ $$\left|p^T\nabla f(x+ap)\right|\le\ c_2\left|p^T\nabla f(x)\right|$$
 ### Conjugate Gradient
 Conjugate gradient improves line search convergence by providing a better alternative for the search direction than steepest descent. It retains information about the previous descent direction in the direction update for the next search. 
 
+> This is sometimes also known as a momentum term
+
 $$p_k=-\nabla f_k+\beta_kp_{k-1}$$
 
 $$\beta_k=\frac{\nabla f_k^T\nabla f_k}{\nabla f_{k-1}^T\nabla f_k}$$
@@ -111,7 +113,7 @@ Where p is the search direction. Conjugate gradient avoids the zig-zagging behav
 
 ### Newton’s Method
 
-Newton’s method makes a local quadratic approximation of the function and goes to the minimum. Requires second order differentiable functions in order to work but has the fastest convergence. The step (i.e. the next point is calculated as x + s) in every iteration is calculated as: 
+Newton’s method makes a local quadratic approximation of the function and steps to the minimum of that approximation. This requires second order differentiable functions in order to work but has the fastest convergence. The step (i.e. the next point is calculated as x + s) in every iteration is calculated as: 
 
 $$s_k=-H_k^{-1}\nabla f_k$$
 
@@ -148,18 +150,20 @@ The method of gradient calculation can have a large impact the accuracy, and hen
 
 $$df\cong\frac{f\left(x+h\right)-f(x)}{h}$$
 
-Complex step eliminates the subtraction step and provides a better approach with more accuracy, but still requires one function evaluations per term in the gradient.
+Complex step eliminates the subtraction step and provides a better approach with more accuracy, and also requires only one function evaluation per term in the gradient. This method is based on the Taylor series expansion, where using a very small value for h allows us to ignore higher order terms. 
 
-$$df\cong Im[fx+ih]h$$
+$$df\cong \frac{1}{h}Im[f(x+ih)]$$
 
 Algorithmic differentiation, or sometimes known as automatic differentiation is similar to taking an analytical gradient but is performed line by line on the code of the objective function. AD derivates are exact and require zero function evaluations but are limited in regard to where they can be applied. Developers intending to use AD later on should understand ahead of time the types of code that cannot be passed through an AD tool and write their objective function accordingly. For python, the module Autograd provides an easy and useful tool for applying AD to obtain the first order gradient or second order Hessian. 
 
 ### Gradient Free Methods
+
 These methods avoid the calculation of a gradient. For this reason, they are more robust to non-continuous objective functions and constraints. Unfortunately, this also means that gradient free methods scale very poorly for problems of very many variables. There are a multitude of different gradient free algorithms, but two of the most popular are the genetic algorithm and Nelder-mead methods. 
 
 Nelder-mead is a simplex method, where a simplex is defined as an N dimensional polyhedron formed form triangles. In 2D, it is a triangle, in 3D it is a tetrahedron, etc. 
 
 ### Metaheuristics
+
 Refers generally to a class of optimization methods that are designed to perform “well enough”. These typically can provide good solutions, but in a limited capacity and does not guarantee a perfect solution. 
 
 These strategies make relatively few assumptions about the problem nature and aim to be generally applicable. A common metaheuristic strategy is to implement a form of stochastic optimization. Some examples of metaheuristic optimization include:

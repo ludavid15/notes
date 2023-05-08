@@ -7,15 +7,11 @@ except_separator: <!--more-->
 categories: engineering
 ---
 
-In contrast to data *science*, which designs and explores the models and algorithms we have for analyzing data, data *analytics* is about using data to solve problems. This includes additional steps like considering your stakeholders, communicating ideas, and working under a deadline. 
+In contrast to data *science*, which designs and explores the models and algorithms we have for analyzing data, data *analytics* is about using data to solve problems. This includes additional steps like considering your stakeholders, communicating ideas, and working under a deadline. If you want to read about machine learning, check out the [introduction to machine learning post](/notes/mlintroduction/).
 
 This post is a collection of notes and lessons from the Google Data Analytics Certificate.
 
 <!--more-->
-
-### Overview
-
-To begin, let's be clear that data analytics is not machine learning. In the abstract, they might be the same (i.e. drawing patterns from your data), but machine learning is much more complex mathematically. In contrast, data analytics is limited to a few pretty straightforward computations. 
 
 ### The Lifecyce of Data. 
 
