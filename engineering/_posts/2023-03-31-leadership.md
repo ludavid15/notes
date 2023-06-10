@@ -11,15 +11,17 @@ Over the years, I've had the chance to lead a number of different teams. This po
 
 <!--more-->
 
+
 ### Establish Expectation
 
-This is a two way street. You need to **communicate** your expectations, but also scale those expectations based on your team's ability. 
+Expectation is built on a two way street. You need to **communicate** your expectations, but also scale those expectations based on your team's ability (althought remember that this isn't necessarily a static value). 
 
 The amount that needs to be communicated can also depend on the individual. Someone with a lot of experience will need fewer check-ins, and too many might even be detrimental. On the other hand, someone who is new might need explicit guidelines. 
 
+
 ### Teach by Asking
 
-Have you ever explained something to someone, only to be asked the same question again 2 weeks later? Moments like this make you realize that your original explanation never really sunk in. 
+Have you ever explained something to someone, only to repeat yourself a few weeks later? Moments like this make you realize that your original explanation never really sunk in. 
 
 A more effective solution that I've found is to teach not from my own understanding, but rather through the other person's understanding. This means frequently asking non-trivial questions like:
 
@@ -29,17 +31,23 @@ A more effective solution that I've found is to teach not from my own understand
 
 This way, you allow the other person to show you their perspective. Then that becomes the anchor for what you talk through next. This can be effective in one-on-one meetings, but also in group meetings, such as a backlog refinement. Instead of having the product owner ask "does this make sense?" have the dev team present their understanding of each user story. 
 
+All that said, this advice is predicated on that individual having the desire to understand "why". For those who don't seek to spend all their time wondering about the deeper questions, this may not be the best strategy. 
+
+
 ### Patience & Teamwork
 
 There can be a lot of frustration when working on a team, but at the end of the day, I think the following quote holds true: 
 
 > *"Go alone to go fast. Go together to go far"*
 
-In other words, it's always worth taking the time to teach or communicate. Not to mention, I think teaching is a worthwhile effort in of itself, even if there won't be a project "payoff". 
+In other words, it's worth taking the time to teach or communicate. That being said, I think this view stems from the personal value I put in teaching/spreading knowledge. The sentiment of this quote is nice, but the real world is more complex. Factor in finances, and there's a limit to how much time and money you can actually spend on education. Importantly, how much education you can afford is a problem to figure out well before hiring and setting project deadlines. 
+
 
 ### Traditions
 
-My senior year at UCLA, I took over as AIAA president and I made some sweeping overhauls in our process. Some traditions really were due for an upgrade, but all this change had the side effect of slowing us down in other unforseen ways. The whole experience made me appreciate the usefulness of tradition. Like habits, they carry some amount of momentum, and (for better or for worse) help push things along. 
+My senior year at UCLA, I took over as AIAA president and I made some sweeping overhauls in our club processes. Some traditions really were due for an upgrade, but all this change had the side effect of slowing us down in other unforseen ways. The whole experience made me appreciate the usefulness of tradition. Like habits, they carry some amount of momentum, and (for better or for worse) help push things along. 
+
+In industry, traditions look like processes, and I believe that once upon a time, there was some problem that justifiably resulted in the creation of each process. But as the landscape changes, and the driving parameters go away, it should be possible, and necessary, to phase some out. Just make sure to do so cautiously, and think through the repurcussions. 
 
 
 ### Changing Behavior
@@ -52,10 +60,19 @@ This idea is pulled from the book *Influencer* by Grenny, Patterson, Maxfield, M
 | Social    | Social Motivation     | Team ability 
 | Structural| Economic Motivation   | Access to resources/space
 
-A few takeaways I want to highlight:
+I won't get into details on each, but I think it's important to remember that there are multiple dimensions to motivation. If you've pursued one dimension without seeing results, consider if there are other aspects which are resisting. A few takeaways I want to highlight:
 
 1. You can motivate individuals, but it won't be very effective if they are recieving pushback from their social circle. Both people *and* teams need to be aligned.
-2. Many tasks require teamwork, and that may require a certain amount of social capital. 
+2. Many tasks require teamwork, and that may require a certain amount of social capital. This is an example of social or team ability. 
+
+
+### Talent
+
+There's two perspectives on the distribution of talent in the world. The first is that talent follows a normal distribution, where the majority of people fall towards the middle. In such a world, the largest benefits are reaped by "moving the middle". If you can slightly improve/support the average worker, your total output will go up, simply because of the numbers. 
+
+The latter view, perhaps a more pessimistic view, is that talent is a power function, with the majority of people towards the bottom, and exponentially fewer individuals who are truly "talented". In such a view, attention must be put on attracting and holding only the best individuals. 
+
+Perhaps the world is large enough that there's room for both. Whatever it is, we can use these views to help understand different strategies for attracting and retaining talent. At companies like SpaceX, the culture and environment is more geared towards the latter. By having the reputation that they do, talent self-selects before they even step through the door. The people who apply are prepared to compete and work long hours, even if the pay and benefits aren't as competitive. 
 
 
 

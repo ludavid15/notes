@@ -1,0 +1,89 @@
+I"%<p>Over the years, I’ve had the chance to lead a number of different teams. This post is a collection of things I’ve learned so far, as well as my own thoughts on what makes an effective leader.</p>
+
+<!--more-->
+
+<h3 id="establish-expectation">Establish Expectation</h3>
+
+<p>Expectation is built on a two way street. You need to <strong>communicate</strong> your expectations, but also scale those expectations based on your team’s ability (althought remember that this isn’t necessarily a static value).</p>
+
+<p>The amount that needs to be communicated can also depend on the individual. Someone with a lot of experience will need fewer check-ins, and too many might even be detrimental. On the other hand, someone who is new might need explicit guidelines.</p>
+
+<h3 id="teach-by-asking">Teach by Asking</h3>
+
+<p>Have you ever explained something to someone, only to repeat yourself a few weeks later? Moments like this make you realize that your original explanation never really sunk in.</p>
+
+<p>A more effective solution that I’ve found is to teach not from my own understanding, but rather through the other person’s understanding. This means frequently asking non-trivial questions like:</p>
+
+<ul>
+  <li>What do you think this means?</li>
+  <li>How would you explain this topic?</li>
+  <li>What theories do you have?</li>
+</ul>
+
+<p>This way, you allow the other person to show you their perspective. Then that becomes the anchor for what you talk through next. This can be effective in one-on-one meetings, but also in group meetings, such as a backlog refinement. Instead of having the product owner ask “does this make sense?” have the dev team present their understanding of each user story.</p>
+
+<p>All that said, this advice is predicated on that individual having the desire to understand “why”. For those who don’t seek to spend all their time wondering about the deeper questions, this may not be the best strategy.</p>
+
+<h3 id="patience--teamwork">Patience &amp; Teamwork</h3>
+
+<p>There can be a lot of frustration when working on a team, but at the end of the day, I think the following quote holds true:</p>
+
+<blockquote>
+  <p><em>“Go alone to go fast. Go together to go far”</em></p>
+</blockquote>
+
+<p>In other words, it’s worth taking the time to teach or communicate. That being said, I think this view stems from the personal value I put in teaching/spreading knowledge. The sentiment of this quote is nice, but the real world is more complex. Factor in finances, and there’s a limit to how much time and money you can actually spend on education. Importantly, how much education you can afford is a problem to figure out well before hiring and setting project deadlines.</p>
+
+<h3 id="traditions">Traditions</h3>
+
+<p>My senior year at UCLA, I took over as AIAA president and I made some sweeping overhauls in our club processes. Some traditions really were due for an upgrade, but all this change had the side effect of slowing us down in other unforseen ways. The whole experience made me appreciate the usefulness of tradition. Like habits, they carry some amount of momentum, and (for better or for worse) help push things along.</p>
+
+<p>In industry, traditions look like processes, and I believe that once upon a time, there was some problem that justifiably resulted in the creation of each process. But as the landscape changes, and the driving parameters go away, it should be possible, and necessary, to phase some out. Just make sure to do so cautiously, and think through the repurcussions.</p>
+
+<h3 id="changing-behavior">Changing Behavior</h3>
+
+<p>This idea is pulled from the book <em>Influencer</em> by Grenny, Patterson, Maxfield, McMillan, and Switzler. In the book, the authors highlight six different considerations when it comes to influencing how people behave, organized in a matrix like this:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Motivation</th>
+      <th>Ability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Personal</td>
+      <td>Personal Motivation</td>
+      <td>Personal ability</td>
+    </tr>
+    <tr>
+      <td>Social</td>
+      <td>Social Motivation</td>
+      <td>Team ability</td>
+    </tr>
+    <tr>
+      <td>Structural</td>
+      <td>Economic Motivation</td>
+      <td>Access to resources/space</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>I won’t get into details on each, but I think it’s important to remember that there are multiple dimensions to motivation. If you’ve pursued one dimension without seeing results, consider if there are other aspects which are resisting. A few takeaways I want to highlight:</p>
+
+<ol>
+  <li>You can motivate individuals, but it won’t be very effective if they are recieving pushback from their social circle. Both people <em>and</em> teams need to be aligned.</li>
+  <li>Many tasks require teamwork, and that may require a certain amount of social capital. This is an example of social or team ability.</li>
+</ol>
+
+<h3 id="talent">Talent</h3>
+
+<p>There’s two perspectives on the distribution of talent in the world. The first is that talent follows a normal distribution, where the majority of people fall towards the middle. In such a world, the largest benefits are reaped by “moving the middle”. If you can slightly improve/support the average worker, your total output will go up, simply because of the numbers.</p>
+
+<p>The latter view, perhaps a more pessimistic view, is that talent is a power function, with the majority of people towards the bottom, and exponentially fewer individuals who are truly “talented”. In such a view, attention must be put on attracting and holding only the best individuals.</p>
+
+<p>Perhaps the world is large enough that there’s room for both. Whatever it is, we can use these views to help understand different strategies for attracting and retaining talent. At companies like SpaceX, the culture and environment is more geared towards the latter. By having the reputation that they do, talent self-selects before they even step through the door. The people who apply are prepared to compete and work long hours, even if the pay and benefits aren’t as competitive.</p>
+
+:ET

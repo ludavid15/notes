@@ -24,10 +24,11 @@ Why do we discuss the lifestyle of data? Because data analytics is not just abou
 5. Archive
 6. Destroy
 
+Each step comes with its own unique set of challenges. For example, how do you collect and store data securely? How do you use is ethically? How can you account for bias?
 
 ### Setting up the Problem
 
-The best results come from a well defined question. And one way to build good questions is to use the SMART system:
+The best results come from a well defined question. This means it should be:
 
 1. Specific
 2. Measurable
@@ -59,6 +60,8 @@ Different objectives may lead to different problem setups and approaches. The be
 
 ### Types of Data Modeling
 
+These types of data modeling are actually pretty universal. The DoD Architecture Framework (DoDAF) also includes the following three models, known as a DIV-1, 2, and 3 respectively. 
+
 1. **Conceptual data modeling** gives a high-level view of the data structure, such as how data interacts across an organization. For example, a conceptual data model may be used to define the business requirements for a new database. A conceptual data model doesn't contain technical details. 
 2. **Logical data modeling** focuses on the technical details of a database such as relationships, attributes, and entities. For example, a logical data model defines how individual records are uniquely identified in a database. But it doesn't spell out actual names of database tables. That's the job of a physical data model.
 3. **Physical data modeling** depicts how a database operates. A physical data model defines all entities and attributes used; for example, it includes table names, column names, and data types for the database.
@@ -85,24 +88,15 @@ Other common pitfalls of the data cleaning process:
 9. Forgetting to document errors
 10. Not checking for misfielded values
 
+Speaking from personal experience, another easy to miss aspect of data integrity is redundancy. If you're managing a large and diverse set of tables, you'll want to do your best to map out the relationships and generally cleanup any overlap. For example, there should be a single point of truth which maps customer ID's to their emails. It'll help in the long run to have this single table which you query from, rather than a set of unlinked tables which all may duplicate the same information. 
 
 ### Data Analysis
 
-This is a bit tough to describe, because the analysis you perform is going to be different depending on your application. But in general, you'll have a few toolsets you can use. For smaller databases, excel is perfectly sufficient. 
-
-For anything larger, you'll want to look at SQL, R, or some other coding language such as Python. Personally, I like using Python with the Pandas library. Regardless of what tool you use, there are some common functions you're likely to run into. 
-
-#### Filters and Queries
-
-Basically equivalent to "get all results that satisfy some condition".
-
-
-#### Merges
-
-In a relational database, you data might be split across many different tables (usually to do with how it gets collected). Merges provide a way to combine results into one place. 
-
+This is a bit tough to describe, because the analysis you perform is going to be different depending on your application. But in general, you'll have a few toolsets you can use. For smaller databases, excel is perfectly sufficient. For anything larger, you'll want to look at SQL, R, or some other coding language such as Python. Personally, I like using Python with the Pandas library. 
 
 ### Data Visualization
+
+Once you've analyzed your data and drawn conclusions, the next step is to turn your insights into actions, which will require you to communicate your ideas. 
 
 Principles of good data visualization:
 
@@ -117,5 +111,5 @@ You can also review your presentation with these questions:
 2. What does the data say?
 3. What does the visual say?
 
-Finally, make sure to consider the use case. For instance, if we need to monitor new data as it comes in, an interactive dashboard with the proper backend support would be best (e.g. Tableau). However, if we wanted historical data, a dashboard could be too complex. 
+Finally, make sure to consider the use case. For instance, if we need to monitor new data as it comes in, an interactive dashboard with the proper backend support would be best (e.g. Tableau). However, if we wanted historical data, a dashboard could be too complex and now worth the effort. 
 

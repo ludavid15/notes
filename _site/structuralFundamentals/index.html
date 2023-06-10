@@ -198,54 +198,73 @@
 <!--more-->
 
 <h3 id="moments">Moments</h3>
-<p>Description of the various types of “moments” and their relevant applications. Tabulated values for moments of common shapes are not included in this document.</p>
+<p>I remember during school that “moments” was a term that kept reappearing. And depending on the application, this can mean different things. So here’s a quick summary:</p>
 
 <table>
   <thead>
     <tr>
-      <th>Type</th>
-      <th>Mathematical Expression</th>
-      <th>Use/Meaning</th>
+      <th>1st Moment</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>1st Moment</td>
-      <td>\(\iint x d A\)</td>
-      <td>Centroid andCenter of Mass</td>
+      <td>Centroid and Center of Mass. The integral of distance with respect to area.</td>
     </tr>
+  </tbody>
+</table>
+
+\[\iint x d A\]
+
+<table>
+  <thead>
     <tr>
-      <td>2nd Moment</td>
-      <td>\(I_y=\iint{x^2dA}\)</td>
+      <th>2nd Moment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
       <td>Second Moment of Inertia/Area or Area Moment of Inertia [m^4], This property is relevant for 2D objects! Beam bending uses this type of moment calculation.</td>
     </tr>
+  </tbody>
+</table>
+
+\[I_y=\iint{x^2dA}\]
+
+\[I_x=\iint{y^2dA}\]
+
+\[I_{xy}=\iint x y dA\]
+
+\[I=\ mr^2\]
+
+<table>
+  <thead>
     <tr>
-      <td> </td>
-      <td>\(I_x=\iint{y^2dA}\)</td>
-      <td> </td>
+      <th>Moment of Inertia</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
-      <td> </td>
-      <td>\(I_{xy}=\iint x y dA\)</td>
-      <td> </td>
+      <td>3D objects have can have moments in Yaw, Pitch and Roll. Units of [kg-m^2]</td>
     </tr>
+  </tbody>
+</table>
+
+\[M = Iα\]
+
+<table>
+  <thead>
     <tr>
-      <td> </td>
-      <td>\(I=\ mr^2\)</td>
-      <td>(For a point mass)</td>
+      <th>Moment / Torque</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
-      <td>Moment of Inertia [kg-m^2]</td>
-      <td>\(M = Iα\)</td>
-      <td>3D objects have can have moments in Yaw, Pitch and Roll</td>
-    </tr>
-    <tr>
-      <td>Moment or Torque</td>
-      <td>\(T=\ f\ast d\)</td>
       <td>Moment of Force/Torque [Nm] - Causes angular acceleration/torsion</td>
     </tr>
   </tbody>
 </table>
+
+\[T=\ f\ast d\]
 
 <p> </p>
 <h3 id="stress--strain-1d">Stress &amp; Strain (1D)</h3>
@@ -270,8 +289,9 @@
 
 \[\left[\begin{matrix}\varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\\gamma_{yz}\\\gamma_{xz}\\\gamma_{xy}\\\end{matrix}\right]=\left[\begin{matrix}\frac{1}{E_x}&amp;-\frac{v_{yx}}{E_y}&amp;-\frac{v_{zx}}{E_z}&amp;\frac{n_{yz,x}}{G_{yz}}&amp;\frac{n_{xz,x}}{G_{xz}}&amp;\frac{n_{xy,x}}{G_{xy}}\\-\frac{v_{xy}}{E_x}&amp;\frac{1}{E_y}&amp;-\frac{v_{zy}}{E_z}&amp;\frac{n_{yz,y}}{G_{yz}}&amp;\frac{n_{xz,y}}{G_{xz}}&amp;\frac{n_{xy,y}}{G_{xy}}\\-\frac{v_{xz}}{E_x}&amp;-\frac{v_{yz}}{E_y}&amp;\frac{1}{E_z}&amp;\frac{n_{yz,z}}{G_{yz}}&amp;\frac{n_{xz,z}}{G_{xz}}&amp;\frac{n_{xy,z}}{G_{xy}}\\\frac{n_{x,yz}}{E_x}&amp;\frac{n_{y,yz}}{E_y}&amp;\frac{n_{z,yz}}{E_z}&amp;\frac{1}{G_{yz}}&amp;\frac{\mu_{xz,yz}}{G_{xz}}&amp;\frac{\mu_{xy,yz}}{G_{xy}}\\\frac{n_{x,xz}}{E_x}&amp;\frac{n_{y,xz}}{E_y}&amp;\frac{n_{z,xz}}{E_z}&amp;\frac{\mu_{yz,xz}}{G_{yz}}&amp;\frac{1}{G_{xz}}&amp;\frac{\mu_{xy,xz}}{G_{xy}}\\\frac{n_{x,xy}}{E_x}&amp;\frac{n_{y,xy}}{E_y}&amp;\frac{n_{z,xy}}{E_z}&amp;\frac{\mu_{yz,xy}}{G_{yz}}&amp;\frac{\mu_{xz,xy}}{G_{xz}}&amp;\frac{1}{G_{xy}}\\\end{matrix}\right]\ast\left[\begin{matrix}\sigma_{xx}\\\sigma_{yy}\\\sigma_{zz}\\\tau_{yz}\\\tau_{xz}\\\tau_{xy}\\\end{matrix}\right]\]
 
-<p> </p>
 <h3 id="isotropic-materials-in-3d">Isotropic Materials in 3D</h3>
+
+<p>An isotropic material has the same properties in all three directions. Hence, the only non-zero values occur on the diagonal.</p>
 
 \[\left[\begin{matrix}\frac{vE}{\left(1+v\right)\left(1-2v\right)}+2G&amp;&amp;\\&amp;\frac{vE}{\left(1+v\right)\left(1-2v\right)}+2G&amp;\\&amp;&amp;\frac{vE}{\left(1+v\right)\left(1-2v\right)}+2G\\\end{matrix}\right]\]
 
@@ -357,6 +377,7 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 </ol>
 
 <h3 id="shear-flow-in-multiple-cells">Shear Flow in Multiple Cells</h3>
+
 <p>When multiple cells are adjacent to one another, you must apply a compatibility constraint, which states that the twist in both cells are equal.</p>
 
 \[\theta_1=\frac{q_1}{A_1}∆S_i t_i\]
@@ -415,6 +436,10 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
+    
+      <li>
+        
+      </li>
     
       <li>
         

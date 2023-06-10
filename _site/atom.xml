@@ -4,13 +4,53 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2023-05-07T12:18:03-07:00</updated>
+ <updated>2023-06-09T18:41:31-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Reliability</title>
+   <link href="https://ludavid15.github.io//reliability/"/>
+   <updated>2023-05-13T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//reliability</id>
+   <content type="html">&lt;p&gt;Reliability engineering aims to understand the probability of success over time. It is heavily based in probability and statistics.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;failure-rate&quot;&gt;Failure Rate&lt;/h3&gt;
+
+&lt;p&gt;Let’s say you perform some testing on 10 units for 100 hours each. By the end of that testing, 4 units failed, at [35, 47, 32, 41] hours. What would be the failure rate? Well, you’d divide the number of failures (in this case 4) by the total number of cycles that were run across all 10 units. This means the sum of 35 + 47 + 32 + 41, but also 6(100), which is the time that the other six units ran successfully without any failure.&lt;/p&gt;
+
+\[Failure Rate (\lambda) = \frac{Number of Failures}{Operating Time} = Failures Per Hour\]
+
+&lt;h3 id=&quot;inverse-of-the-failure-rate&quot;&gt;Inverse of the Failure Rate&lt;/h3&gt;
+
+&lt;p&gt;Although the failure rate is easy to calculate from data, it’s not as useful for day to day planning. Instead, we often take the inverse of the failure rate, which gives us a much more intuitive value. The &lt;strong&gt;mean time to failure&lt;/strong&gt; (MTTF) is the reliability index we use for non-repairable units. This goes for things like lightbulbs, where the part does not have anymore function after failing. In contrast, for repairable units (like your car), we use something called the &lt;strong&gt;mean time between failure&lt;/strong&gt; (MTBF).&lt;/p&gt;
+
+\[MTTF (\theta) = \frac{Operating Time}{Number of Failures}\]
+
+\[MTBF (\theta) = \frac{Operating Time}{Nuber of Failures}\]
+
+\[\lambda = \frac{1}{\theta}\]
+
+&lt;h3 id=&quot;mean-time-to-recovery&quot;&gt;Mean Time to Recovery&lt;/h3&gt;
+
+&lt;p&gt;Besides just how often a part may fail, we’re also interested in how long is takes to fix these failures. This leads us to the mean time to recovery. This is the average time it takes to restore normal operations after a failure has occured.&lt;/p&gt;
+
+&lt;h3 id=&quot;availability&quot;&gt;Availability&lt;/h3&gt;
+
+&lt;p&gt;Now that we’ve discussed the mean time between failure and the mean time to recover, we can combine these values into a new metric known as &lt;em&gt;availability&lt;/em&gt;. You can think of this like a measure of the “down time”. Officially, availability is defined as the percentage of time which a system is ready/operational under normal circumstances. The availability is calculated as a fraction:&lt;/p&gt;
+
+\[A(t) = \frac{MTBF}{MTBF + MTTR}\]
+
+&lt;p&gt;The above value is unitless, but you could multiply this value by 8760 for example (the number of hours in a year) to get an estimate for down time in a year.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Bayes Theory</title>
@@ -62,7 +102,7 @@
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
-      &lt;th&gt;The Liklihood&lt;/th&gt;
+      &lt;th&gt;The Likelihood&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
@@ -395,13 +435,13 @@
 
 &lt;h3 id=&quot;establish-expectation&quot;&gt;Establish Expectation&lt;/h3&gt;
 
-&lt;p&gt;This is a two way street. You need to &lt;strong&gt;communicate&lt;/strong&gt; your expectations, but also scale those expectations based on your team’s ability.&lt;/p&gt;
+&lt;p&gt;Expectation is built on a two way street. You need to &lt;strong&gt;communicate&lt;/strong&gt; your expectations, but also scale those expectations based on your team’s ability (althought remember that this isn’t necessarily a static value).&lt;/p&gt;
 
 &lt;p&gt;The amount that needs to be communicated can also depend on the individual. Someone with a lot of experience will need fewer check-ins, and too many might even be detrimental. On the other hand, someone who is new might need explicit guidelines.&lt;/p&gt;
 
 &lt;h3 id=&quot;teach-by-asking&quot;&gt;Teach by Asking&lt;/h3&gt;
 
-&lt;p&gt;Have you ever explained something to someone, only to be asked the same question again 2 weeks later? Moments like this make you realize that your original explanation never really sunk in.&lt;/p&gt;
+&lt;p&gt;Have you ever explained something to someone, only to repeat yourself a few weeks later? Moments like this make you realize that your original explanation never really sunk in.&lt;/p&gt;
 
 &lt;p&gt;A more effective solution that I’ve found is to teach not from my own understanding, but rather through the other person’s understanding. This means frequently asking non-trivial questions like:&lt;/p&gt;
 
@@ -413,6 +453,8 @@
 
 &lt;p&gt;This way, you allow the other person to show you their perspective. Then that becomes the anchor for what you talk through next. This can be effective in one-on-one meetings, but also in group meetings, such as a backlog refinement. Instead of having the product owner ask “does this make sense?” have the dev team present their understanding of each user story.&lt;/p&gt;
 
+&lt;p&gt;All that said, this advice is predicated on that individual having the desire to understand “why”. For those who don’t seek to spend all their time wondering about the deeper questions, this may not be the best strategy.&lt;/p&gt;
+
 &lt;h3 id=&quot;patience--teamwork&quot;&gt;Patience &amp;amp; Teamwork&lt;/h3&gt;
 
 &lt;p&gt;There can be a lot of frustration when working on a team, but at the end of the day, I think the following quote holds true:&lt;/p&gt;
@@ -421,11 +463,13 @@
   &lt;p&gt;&lt;em&gt;“Go alone to go fast. Go together to go far”&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;In other words, it’s always worth taking the time to teach or communicate. Not to mention, I think teaching is a worthwhile effort in of itself, even if there won’t be a project “payoff”.&lt;/p&gt;
+&lt;p&gt;In other words, it’s worth taking the time to teach or communicate. That being said, I think this view stems from the personal value I put in teaching/spreading knowledge. The sentiment of this quote is nice, but the real world is more complex. Factor in finances, and there’s a limit to how much time and money you can actually spend on education. Importantly, how much education you can afford is a problem to figure out well before hiring and setting project deadlines.&lt;/p&gt;
 
 &lt;h3 id=&quot;traditions&quot;&gt;Traditions&lt;/h3&gt;
 
-&lt;p&gt;My senior year at UCLA, I took over as AIAA president and I made some sweeping overhauls in our process. Some traditions really were due for an upgrade, but all this change had the side effect of slowing us down in other unforseen ways. The whole experience made me appreciate the usefulness of tradition. Like habits, they carry some amount of momentum, and (for better or for worse) help push things along.&lt;/p&gt;
+&lt;p&gt;My senior year at UCLA, I took over as AIAA president and I made some sweeping overhauls in our club processes. Some traditions really were due for an upgrade, but all this change had the side effect of slowing us down in other unforseen ways. The whole experience made me appreciate the usefulness of tradition. Like habits, they carry some amount of momentum, and (for better or for worse) help push things along.&lt;/p&gt;
+
+&lt;p&gt;In industry, traditions look like processes, and I believe that once upon a time, there was some problem that justifiably resulted in the creation of each process. But as the landscape changes, and the driving parameters go away, it should be possible, and necessary, to phase some out. Just make sure to do so cautiously, and think through the repurcussions.&lt;/p&gt;
 
 &lt;h3 id=&quot;changing-behavior&quot;&gt;Changing Behavior&lt;/h3&gt;
 
@@ -458,12 +502,20 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;A few takeaways I want to highlight:&lt;/p&gt;
+&lt;p&gt;I won’t get into details on each, but I think it’s important to remember that there are multiple dimensions to motivation. If you’ve pursued one dimension without seeing results, consider if there are other aspects which are resisting. A few takeaways I want to highlight:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;You can motivate individuals, but it won’t be very effective if they are recieving pushback from their social circle. Both people &lt;em&gt;and&lt;/em&gt; teams need to be aligned.&lt;/li&gt;
-  &lt;li&gt;Many tasks require teamwork, and that may require a certain amount of social capital.&lt;/li&gt;
+  &lt;li&gt;Many tasks require teamwork, and that may require a certain amount of social capital. This is an example of social or team ability.&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;h3 id=&quot;talent&quot;&gt;Talent&lt;/h3&gt;
+
+&lt;p&gt;There’s two perspectives on the distribution of talent in the world. The first is that talent follows a normal distribution, where the majority of people fall towards the middle. In such a world, the largest benefits are reaped by “moving the middle”. If you can slightly improve/support the average worker, your total output will go up, simply because of the numbers.&lt;/p&gt;
+
+&lt;p&gt;The latter view, perhaps a more pessimistic view, is that talent is a power function, with the majority of people towards the bottom, and exponentially fewer individuals who are truly “talented”. In such a view, attention must be put on attracting and holding only the best individuals.&lt;/p&gt;
+
+&lt;p&gt;Perhaps the world is large enough that there’s room for both. Whatever it is, we can use these views to help understand different strategies for attracting and retaining talent. At companies like SpaceX, the culture and environment is more geared towards the latter. By having the reputation that they do, talent self-selects before they even step through the door. The people who apply are prepared to compete and work long hours, even if the pay and benefits aren’t as competitive.&lt;/p&gt;
 
 </content>
  </entry>
@@ -919,7 +971,7 @@ const name = props.name
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;Roughly any orbit below 2000km in altitude. These orbits are convenient and accessible, but have a limited field of view.&lt;/td&gt;
+      &lt;td&gt;Roughly any orbit below 2000km in altitude. These orbits are convenient and accessible, but have a limited field of view. They also suffer from higher atmospheric drag, which shortens their lifespan.&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;GEO&lt;/td&gt;
@@ -927,7 +979,15 @@ const name = props.name
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;These orbits have a period equal to 24 hours, which means they sit over the same spot on earth.&lt;/td&gt;
+      &lt;td&gt;These orbits have a period equal to 24 hours, which means they sit over the same spot on Earth. But communications latency is high due to how far away they are.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MEO&lt;/td&gt;
+      &lt;td&gt;Medium Earth Orbit&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;An orbit that’s between LEO and GEO. As you might expect, this trades off between the pros and cons and LEO and GEO. Unfortunately, MEO suffers from higher radiation exposure than LEO and GEO, due to spending more time in the Van Allen belts which are right around this altitude.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -949,7 +1009,7 @@ const name = props.name
   &lt;li&gt;What are the signal to noise (S/N) and latency requirements?&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Also worth thinking about is the &lt;a href=&quot;https://en.wikipedia.org/wiki/OSI_model&quot;&gt;OSI Model&lt;/a&gt;. For a satellite’s comm system, you’ll need to consider all layers.&lt;/p&gt;
+&lt;p&gt;Also worth thinking about is the &lt;a href=&quot;https://en.wikipedia.org/wiki/OSI_model&quot;&gt;OSI Model&lt;/a&gt;. For a satellite’s comm system, you’ll need to consider all the layers, but the lowest three are the most important. This is because we usually prefer to put the heavy lifting on the ground side, since it’s much easier to upgrade or change.&lt;/p&gt;
 
 &lt;p&gt;Especially for satellites, the distances between your sending and receiving terminal can be significant. You’ll want to pay careful attention to the required power of your signal, and balance that against noise and signal degradation.&lt;/p&gt;
 
@@ -1017,7 +1077,7 @@ Why do orbits need to be maintained? Well, atmospheric drag for one. But also th
   &lt;li&gt;Radiator&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Which is going to be constrained primarily by your orbit, power needs, thermal needs, and mission needs. In other words, any controller needs are usually going to come second. This is usually fine - it’s easier to size up your control mechanism than to realize later that your radiator accidently gets pointed into the sun while pointing the payload!&lt;/p&gt;
+&lt;p&gt;Which is going to be constrained primarily by your orbit, power needs, thermal needs, and mission needs. In other words, the design of your controller is going to come second. This is usually fine - it’s easier to size up your control mechanism than to realize later that your radiator accidently gets pointed into the sun while pointing the payload!&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Propulsion tanks tend to be placed towards the center of your satellite. This just works overall because tanks tend to be both big and heavy, but also over time as you use up propellant, this minimizes how far the center of mass shifts.&lt;/p&gt;
@@ -1058,6 +1118,8 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 
 &lt;p&gt;An equally important piece of your design is your launch vehicle interface. After all, the LV is what takes you into space. Do you have special environmental needs while you’re in the fairing? Can you survive the g’s during launch? How will you ensure a clean separation?&lt;/p&gt;
 
+&lt;p&gt;Also, most launch fairings prevent transmission of comm signals between your spacecraft and ground. This means you’ll have to route data to the launch vehicle’s own communications system if you want telemetry during launch.&lt;/p&gt;
+
 &lt;h2 id=&quot;systems-engineering&quot;&gt;Systems Engineering&lt;/h2&gt;
 
 &lt;p&gt;In the real world, no task is performed in isolation. A lot of supporting infrastructure goes a long way towards making programs safe, reliable, and effective. A satellite is no different. In addition to hardware to perform the basic functions, we also need hardware to support them. This can look like a number of things:&lt;/p&gt;
@@ -1084,6 +1146,12 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
    <content type="html">&lt;p&gt;With better computers, engineers have increasingly turned to model based systems engineering, or MBSE as a solution to the engineering process. After all, things like CAD, CFD, and FEM have enabled us to model complex physics, so why not model a project?&lt;/p&gt;
 
 &lt;!--more--&gt;
+
+&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;Before jumping into MBSE, I want to preface by saying that the key to understanding MBSE is to first understand databases. Because most of what it boils down to is a relational or graphical database. Just like how knowing Micrsoft Word doesn’t make you a great writer, the tools of MBSE don’t make you a great systems engineer if you don’t have a solid understanding of &lt;em&gt;data&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-mbse&quot;&gt;Why MBSE?&lt;/h3&gt;
 
 &lt;p&gt;The goal of model based systems engineering is to improve upon two things that happen very slowly with traditional requirements documents:&lt;/p&gt;
 
@@ -1118,6 +1186,8 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 &lt;blockquote&gt;
   &lt;p&gt;Technically this isn’t always true. When a heritage (proven) piece of hardware is selected, its function is already defined, and then engineers build the rest of the system around it.&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;p&gt;Functions could be high level, like “launch satellite”, or low level like “detect separation from launch vehicle”.&lt;/p&gt;
 
 &lt;h4 id=&quot;interactions&quot;&gt;Interactions&lt;/h4&gt;
 
@@ -1944,7 +2014,7 @@ model = Dense(2, 1)
 
 &lt;h4 id=&quot;ml-std-1553&quot;&gt;ML-STD 1553&lt;/h4&gt;
 
-&lt;p&gt;A traffic control protocol for managing information traffic from multiple sources on a shared physical line. 1553 requires a controlling bus computer (BC) and an addresses for each terminal. The underlying constraint of 1553 is that traffic is never parrallel. In other words, each terminal takes turns using the line, and ignores any information on the line while not actively in use. On any given 1553 line, there can be up to 31 &lt;em&gt;remote terminals&lt;/em&gt; (RTs), each with their own &lt;em&gt;subaddresses&lt;/em&gt;. A number of messages types are defined:&lt;/p&gt;
+&lt;p&gt;A traffic control protocol for managing information traffic from multiple sources on a shared physical line. 1553 requires a controlling bus computer (BC) and an addresses for each terminal. The underlying constraint of 1553 is that traffic is never parrallel. In other words, each terminal takes turns using the line, and ignores any information on the line while not actively in use. On any given 1553 line, there can be up to 31 &lt;em&gt;remote terminals&lt;/em&gt; (RTs), each with their own &lt;em&gt;subaddresses&lt;/em&gt;. Data transmission can happen in pretty much any direction:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Controller to RT&lt;/li&gt;
@@ -1952,21 +2022,57 @@ model = Dense(2, 1)
   &lt;li&gt;RT to RT&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h4 id=&quot;bi-level&quot;&gt;Bi-Level&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Being an older protocol, 1553 only has a bandwidth of around 1 Mbps&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;Consisting of two states (i.e. 0 and 1). In constrast to &lt;em&gt;analog&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;ethernet&quot;&gt;Ethernet&lt;/h3&gt;
 
-&lt;h3 id=&quot;serial-communication&quot;&gt;Serial communication&lt;/h3&gt;
+&lt;p&gt;Ethernet is another communications protocol, defined at the physical layer and data link layer. In contrast to 1553 which uses a shared bus topology, ethernet supports direct transmission paths between devices. The data link layer has two different aspects. There’s the Logical Link Control (LLC) and the Media Access Control (MAC).&lt;/p&gt;
 
-&lt;p&gt;Commmunication that consists of sending data one bit at a time.&lt;/p&gt;
+&lt;p&gt;There are also two transmission modes:&lt;/p&gt;
 
-&lt;h4 id=&quot;rs-422&quot;&gt;RS-422&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;Half Duplex - transmission is only allowed in 1 direction at any given moment.&lt;/li&gt;
+  &lt;li&gt;Full Duplex - transmission is allowed in both directions at once.&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;A point to point interface which transmits digital/bi-level information by changing the difference in voltage between two lines. This allows for higher data rates and lower noise in comparison to a single voltage line because we can achieve the same total change in the difference with only half the voltage change in each line. This is comparable to things like ethernet or USB.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Standard ethernet has bandwidths of 100 Mbps, 1000 Mbps, or 10 Gbps.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;h4 id=&quot;parity&quot;&gt;Parity&lt;/h4&gt;
+&lt;h3 id=&quot;spacewire&quot;&gt;SpaceWire&lt;/h3&gt;
 
-&lt;p&gt;A single bit which tells you if there is an even or odd number of 1’s in the transmitted signal. Used to check the integrity of a message.&lt;/p&gt;
+&lt;p&gt;If you need the high bandwidth capability of ethernet, but also want something a bit more tailored to space applications, there’s SpaceWire. This is a point to point network, and features better reliability than Ethernet. It’s slightly less suitable for huge networks, but when you’re talking about a spacecraft there are only a handful of nodes anyway.&lt;/p&gt;
+
+&lt;h3 id=&quot;rs-422&quot;&gt;RS-422&lt;/h3&gt;
+
+&lt;p&gt;A point to point interface which transmits digital/bi-level information by changing the difference in voltage between two lines. This allows for higher data rates and lower noise in comparison to a single voltage line because we can achieve the same total change in the difference with only half the voltage change in each line.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;RS422 has a typical bandwitch of up to 10 Mbps&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;miscellaneous-definitions&quot;&gt;Miscellaneous Definitions&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Definition&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bi-Level&lt;/td&gt;
+      &lt;td&gt;Consisting of two states (i.e. 0 and 1). In constrast to &lt;em&gt;analog&lt;/em&gt;.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Serial communication&lt;/td&gt;
+      &lt;td&gt;Commmunication that consists of sending data one bit at a time.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;h3 id=&quot;hardware&quot;&gt;Hardware&lt;/h3&gt;
 
@@ -1976,7 +2082,17 @@ model = Dense(2, 1)
 
 &lt;h4 id=&quot;waveguide&quot;&gt;Waveguide&lt;/h4&gt;
 
+&lt;p&gt;TBD&lt;/p&gt;
+
 &lt;h4 id=&quot;coax-cable&quot;&gt;Coax-Cable&lt;/h4&gt;
+
+&lt;p&gt;TBD&lt;/p&gt;
+
+&lt;h3 id=&quot;message-securityintegrity&quot;&gt;Message Security/Integrity&lt;/h3&gt;
+
+&lt;p&gt;Besides protocols and hardware to manage communications, we’d should also think about ways to ensure security and check the integrity of what we communicate.&lt;/p&gt;
+
+&lt;p&gt;An easy one to start with is Parity. This is a single bit which tells you if there is an even or odd number of 1’s in the transmitted signal. We can use this to check the integrity of a message.&lt;/p&gt;
 
 </content>
  </entry>
@@ -2020,7 +2136,7 @@ model = Dense(2, 1)
   &lt;li&gt;Ambiguity - lack of definition&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Agile is best suited for project that have high VUCA (volatility, uncertainty, complexity, and ambiguity). In constrast, if you are working in an industry that is steady, well-defined and simple, waterfall may be a better strategy.&lt;/p&gt;
+&lt;p&gt;Agile is best suited for projects that have high VUCA (volatility, uncertainty, complexity, and ambiguity). In constrast, if you are working in an industry that is steady, well-defined and simple, waterfall may be a better strategy.&lt;/p&gt;
 
 &lt;h3 id=&quot;scrum&quot;&gt;Scrum&lt;/h3&gt;
 
@@ -2052,7 +2168,7 @@ Descriptions of each item are usually presented as a &quot;user story&quot;. Thi
 
 &lt;p&gt;User stories often follow the structure of:&lt;/p&gt;
 
-&lt;p&gt;As a &lt;strong&gt;user&lt;/strong&gt;, I want to &lt;strong&gt;action&lt;/strong&gt; so that I can &lt;strong&gt;value&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;As a &lt;strong&gt;user&lt;/strong&gt;, I want to &lt;strong&gt;action&lt;/strong&gt; so that I can &lt;strong&gt;value&lt;/strong&gt;. And once again just because it’s really important, stories should be &lt;strong&gt;testable&lt;/strong&gt; for the use case in which it is valuable. If it’s not, you might be in a “fake” agile situation - a fascimile which only mimics the surface appearance, but misses the deeper point.&lt;/p&gt;
 
 &lt;h3 id=&quot;sprints&quot;&gt;Sprints&lt;/h3&gt;
 
@@ -2316,7 +2432,7 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;h4 id=&quot;1-negatives&quot;&gt;1. Negatives&lt;/h4&gt;
 
-&lt;p&gt;Requirements that specify what &lt;em&gt;not&lt;/em&gt; to do can be difficult to verify. For instance, “shall not fail under xxx circumstances” requires a lot of definition about what exactly these circumstances are.&lt;/p&gt;
+&lt;p&gt;Requirements that specify what &lt;em&gt;not&lt;/em&gt; to do can be difficult to verify. For instance, something like “shall not fail” is a pretty worthless statement. In order to make something like this work, you should define the circumstances in which this applies, and these definitions should be &lt;em&gt;very&lt;/em&gt; specific.&lt;/p&gt;
 
 &lt;h4 id=&quot;2-subjective-goals&quot;&gt;2. Subjective Goals&lt;/h4&gt;
 
@@ -2843,9 +2959,11 @@ That being said, Convolutional Neural Networks - which have been very effective 
   &lt;li&gt;Destroy&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;p&gt;Each step comes with its own unique set of challenges. For example, how do you collect and store data securely? How do you use is ethically? How can you account for bias?&lt;/p&gt;
+
 &lt;h3 id=&quot;setting-up-the-problem&quot;&gt;Setting up the Problem&lt;/h3&gt;
 
-&lt;p&gt;The best results come from a well defined question. And one way to build good questions is to use the SMART system:&lt;/p&gt;
+&lt;p&gt;The best results come from a well defined question. This means it should be:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Specific&lt;/li&gt;
@@ -2885,6 +3003,8 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;h3 id=&quot;types-of-data-modeling&quot;&gt;Types of Data Modeling&lt;/h3&gt;
 
+&lt;p&gt;These types of data modeling are actually pretty universal. The DoD Architecture Framework (DoDAF) also includes the following three models, known as a DIV-1, 2, and 3 respectively.&lt;/p&gt;
+
 &lt;ol&gt;
   &lt;li&gt;&lt;strong&gt;Conceptual data modeling&lt;/strong&gt; gives a high-level view of the data structure, such as how data interacts across an organization. For example, a conceptual data model may be used to define the business requirements for a new database. A conceptual data model doesn’t contain technical details.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Logical data modeling&lt;/strong&gt; focuses on the technical details of a database such as relationships, attributes, and entities. For example, a logical data model defines how individual records are uniquely identified in a database. But it doesn’t spell out actual names of database tables. That’s the job of a physical data model.&lt;/li&gt;
@@ -2916,21 +3036,15 @@ That being said, Convolutional Neural Networks - which have been very effective 
   &lt;li&gt;Not checking for misfielded values&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;p&gt;Speaking from personal experience, another easy to miss aspect of data integrity is redundancy. If you’re managing a large and diverse set of tables, you’ll want to do your best to map out the relationships and generally cleanup any overlap. For example, there should be a single point of truth which maps customer ID’s to their emails. It’ll help in the long run to have this single table which you query from, rather than a set of unlinked tables which all may duplicate the same information.&lt;/p&gt;
+
 &lt;h3 id=&quot;data-analysis&quot;&gt;Data Analysis&lt;/h3&gt;
 
-&lt;p&gt;This is a bit tough to describe, because the analysis you perform is going to be different depending on your application. But in general, you’ll have a few toolsets you can use. For smaller databases, excel is perfectly sufficient.&lt;/p&gt;
-
-&lt;p&gt;For anything larger, you’ll want to look at SQL, R, or some other coding language such as Python. Personally, I like using Python with the Pandas library. Regardless of what tool you use, there are some common functions you’re likely to run into.&lt;/p&gt;
-
-&lt;h4 id=&quot;filters-and-queries&quot;&gt;Filters and Queries&lt;/h4&gt;
-
-&lt;p&gt;Basically equivalent to “get all results that satisfy some condition”.&lt;/p&gt;
-
-&lt;h4 id=&quot;merges&quot;&gt;Merges&lt;/h4&gt;
-
-&lt;p&gt;In a relational database, you data might be split across many different tables (usually to do with how it gets collected). Merges provide a way to combine results into one place.&lt;/p&gt;
+&lt;p&gt;This is a bit tough to describe, because the analysis you perform is going to be different depending on your application. But in general, you’ll have a few toolsets you can use. For smaller databases, excel is perfectly sufficient. For anything larger, you’ll want to look at SQL, R, or some other coding language such as Python. Personally, I like using Python with the Pandas library.&lt;/p&gt;
 
 &lt;h3 id=&quot;data-visualization&quot;&gt;Data Visualization&lt;/h3&gt;
+
+&lt;p&gt;Once you’ve analyzed your data and drawn conclusions, the next step is to turn your insights into actions, which will require you to communicate your ideas.&lt;/p&gt;
 
 &lt;p&gt;Principles of good data visualization:&lt;/p&gt;
 
@@ -2949,7 +3063,7 @@ That being said, Convolutional Neural Networks - which have been very effective 
   &lt;li&gt;What does the visual say?&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Finally, make sure to consider the use case. For instance, if we need to monitor new data as it comes in, an interactive dashboard with the proper backend support would be best (e.g. Tableau). However, if we wanted historical data, a dashboard could be too complex.&lt;/p&gt;
+&lt;p&gt;Finally, make sure to consider the use case. For instance, if we need to monitor new data as it comes in, an interactive dashboard with the proper backend support would be best (e.g. Tableau). However, if we wanted historical data, a dashboard could be too complex and now worth the effort.&lt;/p&gt;
 
 </content>
  </entry>
@@ -4579,54 +4693,73 @@ Problems formatted in one type can be transformed into another format fairly eas
 &lt;!--more--&gt;
 
 &lt;h3 id=&quot;moments&quot;&gt;Moments&lt;/h3&gt;
-&lt;p&gt;Description of the various types of “moments” and their relevant applications. Tabulated values for moments of common shapes are not included in this document.&lt;/p&gt;
+&lt;p&gt;I remember during school that “moments” was a term that kept reappearing. And depending on the application, this can mean different things. So here’s a quick summary:&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
-      &lt;th&gt;Type&lt;/th&gt;
-      &lt;th&gt;Mathematical Expression&lt;/th&gt;
-      &lt;th&gt;Use/Meaning&lt;/th&gt;
+      &lt;th&gt;1st Moment&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;1st Moment&lt;/td&gt;
-      &lt;td&gt;\(\iint x d A\)&lt;/td&gt;
-      &lt;td&gt;Centroid andCenter of Mass&lt;/td&gt;
+      &lt;td&gt;Centroid and Center of Mass. The integral of distance with respect to area.&lt;/td&gt;
     &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+\[\iint x d A\]
+
+&lt;table&gt;
+  &lt;thead&gt;
     &lt;tr&gt;
-      &lt;td&gt;2nd Moment&lt;/td&gt;
-      &lt;td&gt;\(I_y=\iint{x^2dA}\)&lt;/td&gt;
+      &lt;th&gt;2nd Moment&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
       &lt;td&gt;Second Moment of Inertia/Area or Area Moment of Inertia [m^4], This property is relevant for 2D objects! Beam bending uses this type of moment calculation.&lt;/td&gt;
     &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+\[I_y=\iint{x^2dA}\]
+
+\[I_x=\iint{y^2dA}\]
+
+\[I_{xy}=\iint x y dA\]
+
+\[I=\ mr^2\]
+
+&lt;table&gt;
+  &lt;thead&gt;
     &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;\(I_x=\iint{y^2dA}\)&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
+      &lt;th&gt;Moment of Inertia&lt;/th&gt;
     &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;\(I_{xy}=\iint x y dA\)&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;3D objects have can have moments in Yaw, Pitch and Roll. Units of [kg-m^2]&lt;/td&gt;
     &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+\[M = Iα\]
+
+&lt;table&gt;
+  &lt;thead&gt;
     &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;\(I=\ mr^2\)&lt;/td&gt;
-      &lt;td&gt;(For a point mass)&lt;/td&gt;
+      &lt;th&gt;Moment / Torque&lt;/th&gt;
     &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;Moment of Inertia [kg-m^2]&lt;/td&gt;
-      &lt;td&gt;\(M = Iα\)&lt;/td&gt;
-      &lt;td&gt;3D objects have can have moments in Yaw, Pitch and Roll&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Moment or Torque&lt;/td&gt;
-      &lt;td&gt;\(T=\ f\ast d\)&lt;/td&gt;
       &lt;td&gt;Moment of Force/Torque [Nm] - Causes angular acceleration/torsion&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
+
+\[T=\ f\ast d\]
 
 &lt;p&gt; &lt;/p&gt;
 &lt;h3 id=&quot;stress--strain-1d&quot;&gt;Stress &amp;amp; Strain (1D)&lt;/h3&gt;
@@ -4651,8 +4784,9 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 \[\left[\begin{matrix}\varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\\gamma_{yz}\\\gamma_{xz}\\\gamma_{xy}\\\end{matrix}\right]=\left[\begin{matrix}\frac{1}{E_x}&amp;amp;-\frac{v_{yx}}{E_y}&amp;amp;-\frac{v_{zx}}{E_z}&amp;amp;\frac{n_{yz,x}}{G_{yz}}&amp;amp;\frac{n_{xz,x}}{G_{xz}}&amp;amp;\frac{n_{xy,x}}{G_{xy}}\\-\frac{v_{xy}}{E_x}&amp;amp;\frac{1}{E_y}&amp;amp;-\frac{v_{zy}}{E_z}&amp;amp;\frac{n_{yz,y}}{G_{yz}}&amp;amp;\frac{n_{xz,y}}{G_{xz}}&amp;amp;\frac{n_{xy,y}}{G_{xy}}\\-\frac{v_{xz}}{E_x}&amp;amp;-\frac{v_{yz}}{E_y}&amp;amp;\frac{1}{E_z}&amp;amp;\frac{n_{yz,z}}{G_{yz}}&amp;amp;\frac{n_{xz,z}}{G_{xz}}&amp;amp;\frac{n_{xy,z}}{G_{xy}}\\\frac{n_{x,yz}}{E_x}&amp;amp;\frac{n_{y,yz}}{E_y}&amp;amp;\frac{n_{z,yz}}{E_z}&amp;amp;\frac{1}{G_{yz}}&amp;amp;\frac{\mu_{xz,yz}}{G_{xz}}&amp;amp;\frac{\mu_{xy,yz}}{G_{xy}}\\\frac{n_{x,xz}}{E_x}&amp;amp;\frac{n_{y,xz}}{E_y}&amp;amp;\frac{n_{z,xz}}{E_z}&amp;amp;\frac{\mu_{yz,xz}}{G_{yz}}&amp;amp;\frac{1}{G_{xz}}&amp;amp;\frac{\mu_{xy,xz}}{G_{xy}}\\\frac{n_{x,xy}}{E_x}&amp;amp;\frac{n_{y,xy}}{E_y}&amp;amp;\frac{n_{z,xy}}{E_z}&amp;amp;\frac{\mu_{yz,xy}}{G_{yz}}&amp;amp;\frac{\mu_{xz,xy}}{G_{xz}}&amp;amp;\frac{1}{G_{xy}}\\\end{matrix}\right]\ast\left[\begin{matrix}\sigma_{xx}\\\sigma_{yy}\\\sigma_{zz}\\\tau_{yz}\\\tau_{xz}\\\tau_{xy}\\\end{matrix}\right]\]
 
-&lt;p&gt; &lt;/p&gt;
 &lt;h3 id=&quot;isotropic-materials-in-3d&quot;&gt;Isotropic Materials in 3D&lt;/h3&gt;
+
+&lt;p&gt;An isotropic material has the same properties in all three directions. Hence, the only non-zero values occur on the diagonal.&lt;/p&gt;
 
 \[\left[\begin{matrix}\frac{vE}{\left(1+v\right)\left(1-2v\right)}+2G&amp;amp;&amp;amp;\\&amp;amp;\frac{vE}{\left(1+v\right)\left(1-2v\right)}+2G&amp;amp;\\&amp;amp;&amp;amp;\frac{vE}{\left(1+v\right)\left(1-2v\right)}+2G\\\end{matrix}\right]\]
 
@@ -4738,6 +4872,7 @@ This leads to an idea called “shear flow”. Note that this concept is not def
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;shear-flow-in-multiple-cells&quot;&gt;Shear Flow in Multiple Cells&lt;/h3&gt;
+
 &lt;p&gt;When multiple cells are adjacent to one another, you must apply a compatibility constraint, which states that the twist in both cells are equal.&lt;/p&gt;
 
 \[\theta_1=\frac{q_1}{A_1}∆S_i t_i\]

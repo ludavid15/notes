@@ -22,9 +22,11 @@ In this post we'll focus on Earth Orbits (in constrast to interplanetary mission
 |HEO    | Highly Elliptical Orbit
 |       | These have a perigee relatively close to Earth, but have a very high apogee. This means that the satellite spends a lot of time at apogee, but swings through perigee pretty quickly.
 |LEO    | Low Earth Orbit
-|       | Roughly any orbit below 2000km in altitude. These orbits are convenient and accessible, but have a limited field of view. 
+|       | Roughly any orbit below 2000km in altitude. These orbits are convenient and accessible, but have a limited field of view. They also suffer from higher atmospheric drag, which shortens their lifespan.
 |GEO    | Geosychonous Earth Orbit
-|       | These orbits have a period equal to 24 hours, which means they sit over the same spot on earth. 
+|       | These orbits have a period equal to 24 hours, which means they sit over the same spot on Earth. But communications latency is high due to how far away they are.
+|MEO    | Medium Earth Orbit
+|       | An orbit that's between LEO and GEO. As you might expect, this trades off between the pros and cons and LEO and GEO. Unfortunately, MEO suffers from higher radiation exposure than LEO and GEO, due to spending more time in the Van Allen belts which are right around this altitude. 
 
 Orbits will high inclination are typically called "polar" (i.e. they fly over the poles of the Earth). Generally, changing an orbit's inclination is pretty expensive in terms of delta-V, so many polar satellites are launched at higher latitudes (which puts you naturally into a high inclination orbit).
 
@@ -42,7 +44,7 @@ Your comm system will be unique to your application, but in general some kind of
 3. How are you going to communicate with the satellite from the ground? Will you have an antenna that points to it? If so, how are you going to track the satellite's position in the sky?
 4. What are the signal to noise (S/N) and latency requirements? 
 
-Also worth thinking about is the [OSI Model](https://en.wikipedia.org/wiki/OSI_model). For a satellite's comm system, you'll need to consider all layers. 
+Also worth thinking about is the [OSI Model](https://en.wikipedia.org/wiki/OSI_model). For a satellite's comm system, you'll need to consider all the layers, but the lowest three are the most important. This is because we usually prefer to put the heavy lifting on the ground side, since it's much easier to upgrade or change. 
 
 Especially for satellites, the distances between your sending and receiving terminal can be significant. You'll want to pay careful attention to the required power of your signal, and balance that against noise and signal degradation. 
 
@@ -81,7 +83,7 @@ If you've taken a controls class, you may also know that effective controller de
 3. Payload
 4. Radiator
 
-Which is going to be constrained primarily by your orbit, power needs, thermal needs, and mission needs. In other words, any controller needs are usually going to come second. This is usually fine - it's easier to size up your control mechanism than to realize later that your radiator accidently gets pointed into the sun while pointing the payload!
+Which is going to be constrained primarily by your orbit, power needs, thermal needs, and mission needs. In other words, the design of your controller is going to come second. This is usually fine - it's easier to size up your control mechanism than to realize later that your radiator accidently gets pointed into the sun while pointing the payload!
 
 > Propulsion tanks tend to be placed towards the center of your satellite. This just works overall because tanks tend to be both big and heavy, but also over time as you use up propellant, this minimizes how far the center of mass shifts.
 
@@ -115,9 +117,12 @@ Thermal gets tricky in space, because there's no convection or conduction, only 
 
 For any given piece of hardware, there's usually an operating temperature range, and a survival temperature range. And then on the structural side of things, you may need to think about your coefficients of thermal expansion. This can be a primary source for structural stress.
 
+
 ### Launch Vehicle Interfacing
 
 An equally important piece of your design is your launch vehicle interface. After all, the LV is what takes you into space. Do you have special environmental needs while you're in the fairing? Can you survive the g's during launch? How will you ensure a clean separation? 
+
+Also, most launch fairings prevent transmission of comm signals between your spacecraft and ground. This means you'll have to route data to the launch vehicle's own communications system if you want telemetry during launch. 
 
 
 ## Systems Engineering
