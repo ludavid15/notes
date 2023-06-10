@@ -13,17 +13,39 @@ In dynamics, we often make a "rigid body" assumption for all our working parts. 
 
 
 ### Moments
-Description of the various types of “moments” and their relevant applications. Tabulated values for moments of common shapes are not included in this document. 
+I remember during school that "moments" was a term that kept reappearing. And depending on the application, this can mean different things. So here's a quick summary:
 
-| Type				| Mathematical Expression	| Use/Meaning
+
+| 1st Moment		
+|- 
+| Centroid and Center of Mass. The integral of distance with respect to area.
+
+$$\iint x d A$$	
+
+| 2nd Moment		
 |-
-| 1st Moment		| $$\iint x d A$$			| Centroid andCenter of Mass
-| 2nd Moment		| $$I_y=\iint{x^2dA}$$		| Second Moment of Inertia/Area or Area Moment of Inertia [m^4], This property is relevant for 2D objects! Beam bending uses this type of moment calculation.
-|					| $$I_x=\iint{y^2dA}$$	|
-| 					| $$I_{xy}=\iint x y dA$$	|
-|					| $$I=\ mr^2$$		| (For a point mass)
-| Moment of Inertia [kg-m^2] | $$M = Iα$$  | 3D objects have can have moments in Yaw, Pitch and Roll
-| Moment or Torque| $$T=\ f\ast d$$	|  Moment of Force/Torque [Nm] - Causes angular acceleration/torsion
+| Second Moment of Inertia/Area or Area Moment of Inertia [m^4], This property is relevant for 2D objects! Beam bending uses this type of moment calculation.
+
+$$I_y=\iint{x^2dA}$$
+
+$$I_x=\iint{y^2dA}$$
+
+$$I_{xy}=\iint x y dA$$	
+
+$$I=\ mr^2$$	
+
+| Moment of Inertia |
+|-
+| 3D objects have can have moments in Yaw, Pitch and Roll. Units of [kg-m^2]
+
+$$M = Iα$$
+
+| Moment / Torque
+|-
+| Moment of Force/Torque [Nm] - Causes angular acceleration/torsion
+
+$$T=\ f\ast d$$
+
 
  
 ### Stress & Strain (1D)
@@ -49,11 +71,9 @@ The fully expanded relationship between stress and the strain can be represented
 
 $$\left[\begin{matrix}\varepsilon_{xx}\\\varepsilon_{yy}\\\varepsilon_{zz}\\\gamma_{yz}\\\gamma_{xz}\\\gamma_{xy}\\\end{matrix}\right]=\left[\begin{matrix}\frac{1}{E_x}&-\frac{v_{yx}}{E_y}&-\frac{v_{zx}}{E_z}&\frac{n_{yz,x}}{G_{yz}}&\frac{n_{xz,x}}{G_{xz}}&\frac{n_{xy,x}}{G_{xy}}\\-\frac{v_{xy}}{E_x}&\frac{1}{E_y}&-\frac{v_{zy}}{E_z}&\frac{n_{yz,y}}{G_{yz}}&\frac{n_{xz,y}}{G_{xz}}&\frac{n_{xy,y}}{G_{xy}}\\-\frac{v_{xz}}{E_x}&-\frac{v_{yz}}{E_y}&\frac{1}{E_z}&\frac{n_{yz,z}}{G_{yz}}&\frac{n_{xz,z}}{G_{xz}}&\frac{n_{xy,z}}{G_{xy}}\\\frac{n_{x,yz}}{E_x}&\frac{n_{y,yz}}{E_y}&\frac{n_{z,yz}}{E_z}&\frac{1}{G_{yz}}&\frac{\mu_{xz,yz}}{G_{xz}}&\frac{\mu_{xy,yz}}{G_{xy}}\\\frac{n_{x,xz}}{E_x}&\frac{n_{y,xz}}{E_y}&\frac{n_{z,xz}}{E_z}&\frac{\mu_{yz,xz}}{G_{yz}}&\frac{1}{G_{xz}}&\frac{\mu_{xy,xz}}{G_{xy}}\\\frac{n_{x,xy}}{E_x}&\frac{n_{y,xy}}{E_y}&\frac{n_{z,xy}}{E_z}&\frac{\mu_{yz,xy}}{G_{yz}}&\frac{\mu_{xz,xy}}{G_{xz}}&\frac{1}{G_{xy}}\\\end{matrix}\right]\ast\left[\begin{matrix}\sigma_{xx}\\\sigma_{yy}\\\sigma_{zz}\\\tau_{yz}\\\tau_{xz}\\\tau_{xy}\\\end{matrix}\right]$$
 
-
-
-
- 
 ### Isotropic Materials in 3D 
+
+An isotropic material has the same properties in all three directions. Hence, the only non-zero values occur on the diagonal. 
 
 $$\left[\begin{matrix}\frac{vE}{\left(1+v\right)\left(1-2v\right)}+2G&&\\&\frac{vE}{\left(1+v\right)\left(1-2v\right)}+2G&\\&&\frac{vE}{\left(1+v\right)\left(1-2v\right)}+2G\\\end{matrix}\right]$$
 
@@ -127,6 +147,7 @@ $$T=\sum2Aq=V_x\ast e$$
 
  
 ### Shear Flow in Multiple Cells
+
 When multiple cells are adjacent to one another, you must apply a compatibility constraint, which states that the twist in both cells are equal.
 
 $$\theta_1=\frac{q_1}{A_1}∆S_i t_i$$
