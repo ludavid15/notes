@@ -43,6 +43,13 @@ $$A(t) = \frac{MTBF}{MTBF + MTTR}$$
 The above value is unitless, but you could multiply this value by 8760 for example (the number of hours in a year) to get an estimate for down time in a year. 
 
 
+### Failure Modes and Effects Analysis
+
+Also known FMEA, or sometimes FMECA, this type of analysis aims to understand the ways in which parts fail, and any effects that failure would cause. It helps inform us where the highest risks are, and allows us to plan our risk mitigation strategy. High risk items can be those which fail often, or those that that have very severe consequences, or both!
+
+The types of failure modes will depend on the level of detail we're exploring. At the lowest level, (e.g. an electrical interface) you can define failure modes based on fundamental failure mechanisms, such as an open circuit or short circuit. Or for components like a resistor, which perform a pretty basic function, it's easy to capture 100% of the ways in which it can fail. 
+
+But as you get more complex, (e.g. a whole circuit board), you have to start thinking about what the larger system performs. Maybe this circuit board's function is to perform convolutional encoding of your data. At this level the failure modes might be more abstract, but in theory can still be accounted for through logical induction and looking at all the individual components. 
 
 
 

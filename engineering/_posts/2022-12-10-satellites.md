@@ -125,7 +125,7 @@ An equally important piece of your design is your launch vehicle interface. Afte
 Also, most launch fairings prevent transmission of comm signals between your spacecraft and ground. This means you'll have to route data to the launch vehicle's own communications system if you want telemetry during launch. 
 
 
-## Systems Engineering
+### Systems Engineering
 
 In the real world, no task is performed in isolation. A lot of supporting infrastructure goes a long way towards making programs safe, reliable, and effective. A satellite is no different. In addition to hardware to perform the basic functions, we also need hardware to support them. This can look like a number of things:
 
@@ -139,7 +139,12 @@ In the real world, no task is performed in isolation. A lot of supporting infras
 These considerations can also drive a lot on your final design, but will need to be balanced by the amount of risk you can accept. 
 
 
+### Ground Systems
+
+Not to be overlooked is the all important ground system. It's perhaps not as glamorous, but ground systems are way easier to manage and update than a satellite. This means that oftentimes, the heavy lifting is performed on the ground rather than on the spacecraft. 
 
 
+### Conclusion
 
+For a more in-depth discussion of satellites, you can check out SMAD (Space Mission Analysis and Design). It's known in the aerospace community as the bible of spacecraft design. 
 

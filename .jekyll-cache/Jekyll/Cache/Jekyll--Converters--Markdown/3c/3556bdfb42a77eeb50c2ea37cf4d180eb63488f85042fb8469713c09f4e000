@@ -1,0 +1,127 @@
+I"<hr />
+
+<div class="posts">
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/groundTracks/">
+        Satellite Ground Tracks
+      </a>
+    </h2>
+
+    <span class="post-date">11 Apr 2023</span>
+    <p>The ground track of a satellite is its orbit projected into the surface. I’d recommend checking out the post on <a href="/notes/astrodynamics/">astrodynamics</a> first, which gives a basic overview of how orbits work.</p>
+
+    <a href="/notes/groundTracks/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/lowThrust/">
+        Low Thrust Transfers
+      </a>
+    </h2>
+
+    <span class="post-date">08 Apr 2023</span>
+    <p>In general, there is no way to algebraically solve for a low thrust trajectory. Instead, for problems of this type we need to solve for x(t) and u(t) through trajectory optimization. However, this can be a lengthy process, especially if done without other engineering constraints.</p>
+
+
+    <a href="/notes/lowThrust/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/astrodynamics/">
+        Astrodynamics
+      </a>
+    </h2>
+
+    <span class="post-date">02 Apr 2023</span>
+    <p>Astrodynamics is a lot like any other field of dynamics, except we now have an additional equation to consider: the law of universal gravitation. This leads to some strange and counterintuitive results - like slowing down to catch up!</p>
+
+
+    <a href="/notes/astrodynamics/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/controls/">
+        Intro to Control Theory
+      </a>
+    </h2>
+
+    <span class="post-date">15 Jun 2021</span>
+    <p>In previous posts, we explored the field of dynamics, which taught us how to calculate the position, velocity, and acceleration of an object given a set of driving forces. The topic of control theory flips this process around, and seeks an answer to the question: what type of force will produce the desired motion? In other words, if dynamics is the study of rules, controls is the study of how we use those rules to achieve results.</p>
+
+    <a href="/notes/controls/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/fundamentalsDynamics/">
+        Fundamentals of Dynamics
+      </a>
+    </h2>
+
+    <span class="post-date">13 May 2021</span>
+    <p>In dynamics, the goal is to predict the position, velocity, and acceleration of rigid bodies as a function of time through using this equation: F=ma. While the basic principle is simple, the key challenge of dynamics involves defining reference frames, vectors, and their relationships.</p>
+
+<blockquote>
+  <p>Note that F = ma is not the only way to solve dynamics problems! In the late 1700’s, Joseph-Louis Lagrange introduced an energy conservation strategy, known today as the Euler-Lagrange Equations.</p>
+</blockquote>
+
+
+    <a href="/notes/fundamentalsDynamics/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/kinematics/">
+        Kinematics
+      </a>
+    </h2>
+
+    <span class="post-date">12 May 2021</span>
+    <p>A subset of dynamics, where forces are neglected, and we focus instead on the motion of points and rigid bodies over time. At the core of this topic are a series of rules about positions, velocities, accelerations, and how to find them amid a potentially messy system of reference frames and motion constraints.</p>
+
+
+    <a href="/notes/kinematics/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+  <div class="post">
+    <h2 class="post-title">
+      <a href="/notes/dynamicalEquations/">
+        Finally Getting to Dynamics
+      </a>
+    </h2>
+
+    <span class="post-date">11 May 2021</span>
+    <p>We’re almost ready to write down F = ma, but before that, we need to define what F is (a force), and what ma is (an inertial term).</p>
+
+
+    <a href="/notes/dynamicalEquations/">
+    Read on
+    </a>
+  </div>
+  <hr />
+  
+</div>
+:ET

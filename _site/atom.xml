@@ -4,7 +4,7 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2023-06-09T18:41:31-07:00</updated>
+ <updated>2023-06-11T19:09:13-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
@@ -48,6 +48,14 @@
 \[A(t) = \frac{MTBF}{MTBF + MTTR}\]
 
 &lt;p&gt;The above value is unitless, but you could multiply this value by 8760 for example (the number of hours in a year) to get an estimate for down time in a year.&lt;/p&gt;
+
+&lt;h3 id=&quot;failure-modes-and-effects-analysis&quot;&gt;Failure Modes and Effects Analysis&lt;/h3&gt;
+
+&lt;p&gt;Also known FMEA, or sometimes FMECA, this type of analysis aims to understand the ways in which parts fail, and any effects that failure would cause. It helps inform us where the highest risks are, and allows us to plan our risk mitigation strategy. High risk items can be those which fail often, or those that that have very severe consequences, or both!&lt;/p&gt;
+
+&lt;p&gt;The types of failure modes will depend on the level of detail we’re exploring. At the lowest level, (e.g. an electrical interface) you can define failure modes based on fundamental failure mechanisms, such as an open circuit or short circuit. Or for components like a resistor, which perform a pretty basic function, it’s easy to capture 100% of the ways in which it can fail.&lt;/p&gt;
+
+&lt;p&gt;But as you get more complex, (e.g. a whole circuit board), you have to start thinking about what the larger system performs. Maybe this circuit board’s function is to perform convolutional encoding of your data. At this level the failure modes might be more abstract, but in theory can still be accounted for through logical induction and looking at all the individual components.&lt;/p&gt;
 
 </content>
  </entry>
@@ -279,7 +287,7 @@
    <link href="https://ludavid15.github.io//lowThrust/"/>
    <updated>2023-04-08T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//lowThrust</id>
-   <content type="html">&lt;p&gt;In general, there is no way to algebraically solve for a low thrust trajectory. Instead, for problems of this type we need to solve for x(t) and u(t) through trajectory optimization. However, this can be a lengthy process, especially if done in a void (i.e without engineering constraints).&lt;/p&gt;
+   <content type="html">&lt;p&gt;In general, there is no way to algebraically solve for a low thrust trajectory. Instead, for problems of this type we need to solve for x(t) and u(t) through trajectory optimization. However, this can be a lengthy process, especially if done without other engineering constraints.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -525,7 +533,7 @@
    <link href="https://ludavid15.github.io//fullStack/"/>
    <updated>2023-02-25T00:00:00-08:00</updated>
    <id>https://ludavid15.github.io//fullStack</id>
-   <content type="html">&lt;p&gt;In the frontend post, we explored React and how to build a dynamic website with it. Now let’s focus on developing a full stack application, using React for the frontend, and AWS to support the backend.&lt;/p&gt;
+   <content type="html">&lt;p&gt;In the frontend post, we explored React and how to build a dynamic website with it. Now let’s focus on developing a full stack application, using React for the frontend, and AWS to support the backend. This is a bit of a work in progress, and presents only one way to do this. There are alot more tools available, and depending on the requirements of your site you may choose a different architecture entirely.&lt;/p&gt;
 
 &lt;h3 id=&quot;overview&quot;&gt;Overview&lt;/h3&gt;
 
@@ -1120,7 +1128,7 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 
 &lt;p&gt;Also, most launch fairings prevent transmission of comm signals between your spacecraft and ground. This means you’ll have to route data to the launch vehicle’s own communications system if you want telemetry during launch.&lt;/p&gt;
 
-&lt;h2 id=&quot;systems-engineering&quot;&gt;Systems Engineering&lt;/h2&gt;
+&lt;h3 id=&quot;systems-engineering&quot;&gt;Systems Engineering&lt;/h3&gt;
 
 &lt;p&gt;In the real world, no task is performed in isolation. A lot of supporting infrastructure goes a long way towards making programs safe, reliable, and effective. A satellite is no different. In addition to hardware to perform the basic functions, we also need hardware to support them. This can look like a number of things:&lt;/p&gt;
 
@@ -1134,6 +1142,14 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 &lt;/ul&gt;
 
 &lt;p&gt;These considerations can also drive a lot on your final design, but will need to be balanced by the amount of risk you can accept.&lt;/p&gt;
+
+&lt;h3 id=&quot;ground-systems&quot;&gt;Ground Systems&lt;/h3&gt;
+
+&lt;p&gt;Not to be overlooked is the all important ground system. It’s perhaps not as glamorous, but ground systems are way easier to manage and update than a satellite. This means that oftentimes, the heavy lifting is performed on the ground rather than on the spacecraft.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;For a more in-depth discussion of satellites, you can check out SMAD (Space Mission Analysis and Design). It’s known in the aerospace community as the bible of spacecraft design.&lt;/p&gt;
 
 </content>
  </entry>
@@ -1149,7 +1165,9 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 
 &lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
 
-&lt;p&gt;Before jumping into MBSE, I want to preface by saying that the key to understanding MBSE is to first understand databases. Because most of what it boils down to is a relational or graphical database. Just like how knowing Micrsoft Word doesn’t make you a great writer, the tools of MBSE don’t make you a great systems engineer if you don’t have a solid understanding of &lt;em&gt;data&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Before jumping into MBSE, I want to preface by saying that the key to understanding MBSE is to first understand databases. At the core of systems engineering is an understanding that all elements of the design are related, and systems engineering is an attempt to track and manage those relationships.&lt;/p&gt;
+
+&lt;p&gt;I think databases provide a good foundation because they teach you to think about relationships. Just like how knowing Micrsoft Word doesn’t make you a great writer, the tools of MBSE don’t make you a great systems engineer if you don’t have a solid understanding of systems.&lt;/p&gt;
 
 &lt;h3 id=&quot;why-mbse&quot;&gt;Why MBSE?&lt;/h3&gt;
 
@@ -1160,7 +1178,7 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
   &lt;li&gt;Once a change is made, an easy way to explore how it impacts other systems.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;The primary advantage of using a model is to quickly see connections while keeping a single point of truth. For instance, if the total mass of your spacecraft is an important parameter, everything which references that number can point directly to that parameter. This way, when that parameter gets updated (hopefully in real time), its effect becomes instantly tangible.&lt;/p&gt;
+&lt;p&gt;The primary advantage of using a model is to quickly see connections while keeping a single point of truth. For instance, if the total mass of your spacecraft is an important parameter, everything which references that number can point directly to that parameter. This way, when that parameter gets updated (hopefully in real time), its effect becomes instantly tangible. If you’ve set up a relational database, this goal should be familiar.&lt;/p&gt;
 
 &lt;p&gt;So that’s the first important concept of MBSE - this idea of the model as a series of connections between parameters. The second concept is &lt;em&gt;visualization&lt;/em&gt;, or how humans actually interface with the model. So far, a series of variables and their connections is easily achievable with a database, or even through lines of code, but neither of these are very accessible to a person. Instead we map the model to visualizations so we can have something useful for our human designers. Operations can be still be shown as flowcharts, hardware can still be shown as block diagrams, and of course we can still fall back on tables and matrices where it makes sense (like with data). The key is that each diagram is not static, but is a connected view &lt;em&gt;into&lt;/em&gt; the model.&lt;/p&gt;
 
@@ -1177,7 +1195,7 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
 
 &lt;h4 id=&quot;physical-configuration&quot;&gt;Physical Configuration&lt;/h4&gt;
 
-&lt;p&gt;Fairly straightfoward, we need to track the hardware, physical connectors, and physical properties (shape, weight, thermal resistence, etc.). If our project was a sentence, the physical configuration would be the nouns.&lt;/p&gt;
+&lt;p&gt;Fairly straightfoward, we need to track the hardware, physical connectors, and physical properties (shape, weight, thermal resistence, etc.). If our project was a sentence, the physical configuration would be the nouns. Physical configuration could also include more analytical properties as well, such as failure modes and reliability.&lt;/p&gt;
 
 &lt;h4 id=&quot;functionbehavior&quot;&gt;Function/Behavior&lt;/h4&gt;
 
@@ -1512,7 +1530,9 @@ The only time you wouldn&apos;t use solar is for deep space missions. As you mov
    <link href="https://ludavid15.github.io//mlcode/"/>
    <updated>2022-11-01T00:00:00-07:00</updated>
    <id>https://ludavid15.github.io//mlcode</id>
-   <content type="html">&lt;p&gt;A short reference for using the Flux package in Julia to setup and train deep learning networks. The offical website can be found &lt;a href=&quot;https://fluxml.ai/Flux.jl/stable/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+   <content type="html">&lt;p&gt;When I took my machine learning classes at Michigan, we learned how to code our architectures using Julia. It’s a very performant language (compared to something like Python) and was built with math and data science in mind.&lt;/p&gt;
+
+&lt;p&gt;One of Julia’s machine learning libraries is called Flux. This post is a short reference for using the Flux package to setup and train deep learning networks. The offical website can be found &lt;a href=&quot;https://fluxml.ai/Flux.jl/stable/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -2090,9 +2110,13 @@ model = Dense(2, 1)
 
 &lt;h3 id=&quot;message-securityintegrity&quot;&gt;Message Security/Integrity&lt;/h3&gt;
 
-&lt;p&gt;Besides protocols and hardware to manage communications, we’d should also think about ways to ensure security and check the integrity of what we communicate.&lt;/p&gt;
+&lt;p&gt;Besides protocols and hardware to manage communications, we’d should also think about ways to ensure security and check the integrity of what we communicate. But before jumping in further, I do want to highlight the distinction between integrity and authenticity.&lt;/p&gt;
 
-&lt;p&gt;An easy one to start with is Parity. This is a single bit which tells you if there is an even or odd number of 1’s in the transmitted signal. We can use this to check the integrity of a message.&lt;/p&gt;
+&lt;p&gt;Integrity is a simple check to see if the data is complete, or it’s accurate. Authenticity checks to ensure that data has not been modified in transit, or that it comes from the source/target you expect. Security measures usually help to ensure &lt;em&gt;authenticity&lt;/em&gt; rather than integrity.&lt;/p&gt;
+
+&lt;p&gt;An easy integrity check to start with is Parity. This is a single bit which tells you if there is an even or odd number of 1’s in the transmitted signal. We can use this to check the integrity of a message.&lt;/p&gt;
+
+&lt;p&gt;Another integrity check we can do is called a checksum. A checksum function transforms some input and calculates an output. Strong checksum functions will produce unique outputs, even for similar inputs. If a receiver and transmitter both know the checksum function, they can each calculate the checksum value and by comparing the outputs, verify that the sent and received message are the same, without revealing the message itself.&lt;/p&gt;
 
 </content>
  </entry>
@@ -2168,7 +2192,11 @@ Descriptions of each item are usually presented as a &quot;user story&quot;. Thi
 
 &lt;p&gt;User stories often follow the structure of:&lt;/p&gt;
 
-&lt;p&gt;As a &lt;strong&gt;user&lt;/strong&gt;, I want to &lt;strong&gt;action&lt;/strong&gt; so that I can &lt;strong&gt;value&lt;/strong&gt;. And once again just because it’s really important, stories should be &lt;strong&gt;testable&lt;/strong&gt; for the use case in which it is valuable. If it’s not, you might be in a “fake” agile situation - a fascimile which only mimics the surface appearance, but misses the deeper point.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;As a &lt;strong&gt;user&lt;/strong&gt;, I want to &lt;strong&gt;action&lt;/strong&gt; so that I can &lt;strong&gt;value&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;And once again just because it’s really important, stories should be &lt;strong&gt;testable&lt;/strong&gt; for the use case in which it is valuable. If it’s not, you might be in a “fake” agile situation - a fascimile which only mimics the surface appearance, but misses the deeper point.&lt;/p&gt;
 
 &lt;h3 id=&quot;sprints&quot;&gt;Sprints&lt;/h3&gt;
 
@@ -2203,7 +2231,7 @@ Descriptions of each item are usually presented as a &quot;user story&quot;. Thi
 
 &lt;h3 id=&quot;the-daily-standup&quot;&gt;The Daily Standup&lt;/h3&gt;
 
-&lt;p&gt;I think the key to a useful and effective standup meeting is priotize &lt;em&gt;actions&lt;/em&gt;, rather than &lt;em&gt;statuses&lt;/em&gt;. For example, don’t describe a task as “in progress” or “blocked”. Describe the actions you took, or plan to take.&lt;/p&gt;
+&lt;p&gt;I think the key to a useful and effective standup meeting is to priotize &lt;em&gt;actions&lt;/em&gt;, rather than &lt;em&gt;statuses&lt;/em&gt;. For example, don’t describe a task as “in progress” or “blocked”. Describe the actions you took, or plan to take.&lt;/p&gt;
 
 &lt;h3 id=&quot;pitfalls&quot;&gt;Pitfalls&lt;/h3&gt;
 
@@ -2448,6 +2476,10 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;h3 id=&quot;design-reviews&quot;&gt;Design Reviews&lt;/h3&gt;
 
+&lt;p&gt;Design reviews are checkpoints, meant to ensure that a certain level of maturity has been reached across the board before moving on to the next stage of work. Experts and or customers external to the design team are the ones who perform the review.&lt;/p&gt;
+
+&lt;p&gt;Beyond this high level objective however, reviews can take many forms. The review process for something like the 10 billion dollar James Webb Space Telescope is going to be very different from the review process for a cubesat.&lt;/p&gt;
+
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
@@ -2518,6 +2550,26 @@ That being said, Convolutional Neural Networks - which have been very effective 
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
+
+&lt;h3 id=&quot;other-domains-of-systems-engineering&quot;&gt;Other Domains of Systems Engineering&lt;/h3&gt;
+
+&lt;p&gt;In this post I’ve mostly talked about requirements, but systems engineering can cover a broad range of specialties. They are all brought together because they apply to the entire project and require lots of integrated thinking. These can include:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Reliability &amp;amp; Availability&lt;/li&gt;
+  &lt;li&gt;Fault Management&lt;/li&gt;
+  &lt;li&gt;Safety &amp;amp; Security&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In addition, I’ve also seen a number of areas which get grouped into systems engineering, although arguably they could belong to any organization:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Command and Telemetry Databases&lt;/li&gt;
+  &lt;li&gt;Data architecture&lt;/li&gt;
+  &lt;li&gt;Integration&lt;/li&gt;
+  &lt;li&gt;Testing&lt;/li&gt;
+  &lt;li&gt;Simulation (goes along with planning &amp;amp; operations)&lt;/li&gt;
+&lt;/ol&gt;
 
 </content>
  </entry>
@@ -3238,86 +3290,21 @@ J. Wertz&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>Scales</title>
-   <link href="https://ludavid15.github.io//scales/"/>
-   <updated>2021-08-16T00:00:00-07:00</updated>
-   <id>https://ludavid15.github.io//scales</id>
-   <content type="html">&lt;p&gt;From brightest to darkest (notice that we are slowly dropping the pitch of notes, in the same order as we would along the circle of 5ths)&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Name&lt;/th&gt;
-      &lt;th&gt;Sharps or Flats&lt;/th&gt;
-      &lt;th&gt;Quality&lt;/th&gt;
-      &lt;th&gt;Chords&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Lydian&lt;/td&gt;
-      &lt;td&gt;# 4th&lt;/td&gt;
-      &lt;td&gt;Major&lt;/td&gt;
-      &lt;td&gt;Major chords&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Ionian&lt;/td&gt;
-      &lt;td&gt;None&lt;/td&gt;
-      &lt;td&gt;Major&lt;/td&gt;
-      &lt;td&gt;Major chords&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Mixolydian&lt;/td&gt;
-      &lt;td&gt;b7&lt;/td&gt;
-      &lt;td&gt;Dominant&lt;/td&gt;
-      &lt;td&gt;Dominant 7th chords&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Dorian&lt;/td&gt;
-      &lt;td&gt;add b3&lt;/td&gt;
-      &lt;td&gt;Minor&lt;/td&gt;
-      &lt;td&gt;Minor 7th chords&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Aeolian&lt;/td&gt;
-      &lt;td&gt;add b6&lt;/td&gt;
-      &lt;td&gt;Minor&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Phyrgian&lt;/td&gt;
-      &lt;td&gt;add b2&lt;/td&gt;
-      &lt;td&gt;Minor&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Locrian&lt;/td&gt;
-      &lt;td&gt;add b5&lt;/td&gt;
-      &lt;td&gt;Minor&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-</content>
- </entry>
- 
- <entry>
-   <title>Chord Progressions</title>
-   <link href="https://ludavid15.github.io//progressions/"/>
+   <title>Harmony</title>
+   <link href="https://ludavid15.github.io//harmony/"/>
    <updated>2021-08-14T00:00:00-07:00</updated>
-   <id>https://ludavid15.github.io//progressions</id>
-   <content type="html">&lt;p&gt;A collection of common chord progressions I’ve encountered. Though they come in all sorts of flavors and styles, many progressions are built on the idea of &lt;strong&gt;tension&lt;/strong&gt; and &lt;strong&gt;release&lt;/strong&gt;. We play dissonant chords to “push” the melody towards a nice resolution, which usually is the tonic chord (also known as the home chord).&lt;/p&gt;
+   <id>https://ludavid15.github.io//harmony</id>
+   <content type="html">&lt;p&gt;This post is a collection of ideas all about musical harmony, especially in Jazz. Though they come in all sorts of flavors and styles, many chord progressions are built on the idea of &lt;strong&gt;tension&lt;/strong&gt; and &lt;strong&gt;release&lt;/strong&gt;. We play dissonant chords to “push” the melody towards a nice resolution, which usually is the tonic chord (also known as the home chord).&lt;/p&gt;
 
 &lt;!--more--&gt;
 
 &lt;h3 id=&quot;the-two-five-one&quot;&gt;The Two-Five-One&lt;/h3&gt;
 
-&lt;p&gt;This is the bread and butter of jazz harmony. It starts with the minor 7th on the second, the major 7th on the 5th, and finishes on the root. Here are some variations:&lt;/p&gt;
+&lt;p&gt;This is the bread and butter of jazz harmony. It starts with the minor 7th on the second, then the major 7th on the 5th, and finally resolves back the root. Everything from here on out basically either builds on, or modifies this fundamental underlying sequence.&lt;/p&gt;
 
 &lt;h4 id=&quot;minor-2-5-1&quot;&gt;Minor 2-5-1&lt;/h4&gt;
 
-&lt;p&gt;It’s the same chord progression, but this is the minor version. The &lt;strong&gt;ii&lt;/strong&gt; which is normally a minor 7th, becomes a diminished&lt;/p&gt;
+&lt;p&gt;It’s the same chord progression, but this is the minor version. The tonic is replaced by the minor chord, and the &lt;strong&gt;ii&lt;/strong&gt; which is normally a minor 7th, becomes a diminished chord.&lt;/p&gt;
 
 &lt;h4 id=&quot;extended-3-6-2-5-1&quot;&gt;Extended 3-6-2-5-1&lt;/h4&gt;
 
@@ -3336,6 +3323,18 @@ J. Wertz&lt;/p&gt;
 &lt;p&gt;Here, we can notice that the dominant notes (the top 4 notes of a extended dominant chord) form a &lt;em&gt;diminished&lt;/em&gt; chord. And since a diminished chords is built on minor thirds, it stays constant in any inversion.&lt;/p&gt;
 
 &lt;p&gt;Finally, all we have to do now is move between the tonic sound and the dominant sound. This can be done quickly, too. For example if you’re playing a descending scale, you can alternate the harmany on each step to create a nice &amp;amp; rich feeling of tension &amp;amp; release.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-unicorn-chord-aka-a-diminished-major-seventh&quot;&gt;The Unicorn Chord aka a Diminished Major Seventh&lt;/h3&gt;
+
+&lt;p&gt;This particular voicing creates a very unstable sound, which is great for leading us to different places. The three main uses of this are:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Tonic diminished, usually resolving back to the tonic.&lt;/li&gt;
+  &lt;li&gt;Flat-3 diminished, usually coming from the major third and resolving to the second.&lt;/li&gt;
+  &lt;li&gt;Flat-5 diminished, usually resolving to the fifth.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;It’s important to mention that taken in root position, these might not always sound great. The &lt;em&gt;key&lt;/em&gt; (pun not intended) to using this chord is to choose our voicings to create chromatic motion. This might mean taking inversions, or using drop chords.&lt;/p&gt;
 
 </content>
  </entry>

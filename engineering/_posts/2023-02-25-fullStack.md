@@ -7,7 +7,7 @@ except_separator: <!--more-->
 categories: engineering
 ---
 
-In the frontend post, we explored React and how to build a dynamic website with it. Now let's focus on developing a full stack application, using React for the frontend, and AWS to support the backend. 
+In the frontend post, we explored React and how to build a dynamic website with it. Now let's focus on developing a full stack application, using React for the frontend, and AWS to support the backend. This is a bit of a work in progress, and presents only one way to do this. There are alot more tools available, and depending on the requirements of your site you may choose a different architecture entirely. 
 
 ### Overview
 
