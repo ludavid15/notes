@@ -67,11 +67,13 @@ TBD
 
 ### Message Security/Integrity
 
-Besides protocols and hardware to manage communications, we'd should also think about ways to ensure security and check the integrity of what we communicate.
+Besides protocols and hardware to manage communications, we'd should also think about ways to ensure security and check the integrity of what we communicate. But before jumping in further, I do want to highlight the distinction between integrity and authenticity. 
 
-An easy one to start with is Parity. This is a single bit which tells you if there is an even or odd number of 1's in the transmitted signal. We can use this to check the integrity of a message.
+Integrity is a simple check to see if the data is complete, or it's accurate. Authenticity checks to ensure that data has not been modified in transit, or that it comes from the source/target you expect. Security measures usually help to ensure *authenticity* rather than integrity.  
 
+An easy integrity check to start with is Parity. This is a single bit which tells you if there is an even or odd number of 1's in the transmitted signal. We can use this to check the integrity of a message.
 
+Another integrity check we can do is called a checksum. A checksum function transforms some input and calculates an output. Strong checksum functions will produce unique outputs, even for similar inputs. If a receiver and transmitter both know the checksum function, they can each calculate the checksum value and by comparing the outputs, verify that the sent and received message are the same, without revealing the message itself. 
 
 
 
