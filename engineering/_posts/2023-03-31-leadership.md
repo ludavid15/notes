@@ -18,6 +18,7 @@ Expectation is built on a two way street. You need to **communicate** your expec
 
 The amount that needs to be communicated can also depend on the individual. Someone with a lot of experience will need fewer check-ins, and too many might even be detrimental. On the other hand, someone who is new might need explicit guidelines. 
 
+Finally, as much as it might be bothersome to do, constantly reminding your team of what's expected is effective. For example, asking everyone at the daily standup to update the status of their cards in JIRA.  
 
 ### Teach by Asking
 
@@ -40,19 +41,23 @@ There can be a lot of frustration when working on a team, but at the end of the 
 
 > *"Go alone to go fast. Go together to go far"*
 
-In other words, it's worth taking the time to teach or communicate. That being said, I think this view stems from the personal value I put in teaching/spreading knowledge. The sentiment of this quote is nice, but the real world is more complex. Factor in finances, and there's a limit to how much time and money you can actually spend on education. Importantly, how much education you can afford is a problem to figure out well before hiring and setting project deadlines. 
+In other words, it's worth taking the time to teach or communicate. That being said, this stems from the personal value I put in teaching/spreading knowledge. The sentiment of this quote is nice, but the real world is more complex. Factor in finances, and there's a limit to how much time and money you can actually spend on education. Importantly, how much education you can afford is a problem to figure out well before hiring and setting project deadlines. 
 
 
-### Traditions
+### Traditions & Process
 
 My senior year at UCLA, I took over as AIAA president and I made some sweeping overhauls in our club processes. Some traditions really were due for an upgrade, but all this change had the side effect of slowing us down in other unforseen ways. The whole experience made me appreciate the usefulness of tradition. Like habits, they carry some amount of momentum, and (for better or for worse) help push things along. 
 
-In industry, traditions look like processes, and I believe that once upon a time, there was some problem that justifiably resulted in the creation of each process. But as the landscape changes, and the driving parameters go away, it should be possible, and necessary, to phase some out. Just make sure to do so cautiously, and think through the repurcussions. 
+In industry, traditions look like processes, and based on what I understand, processes are a way to delegate work. This usually happens when someone with more expertise must rely on someone with less expertise. Creating a process helps ensure that those who do the work don't miss anything important. 
+
+Personally, I've found a checklist of questions to be more useful than instructions. Things like "Did you remember to factor in the required 25% margin?". The goal is to encourage those who follow the process to learn the *why* and not just to memorize the steps. The best result is if everyone comes to know the problem well enough to no longer need the process. 
+
+The worst result is that the proces becomes a crutch, because the team no longer understand the problem enough to get things done without instructions. Maybe someone retires or leaves the team, and now everyone is blindly following a proces without understanding why it was established in the first place. In the long run, it may be beneficial to remove the old process and build up a new one from scratch that people actually understand. This is why it's so important to document rationale and to encourage new engineers to always be asking "why". 
 
 
 ### Changing Behavior
 
-This idea is pulled from the book *Influencer* by Grenny, Patterson, Maxfield, McMillan, and Switzler. In the book, the authors highlight six different considerations when it comes to influencing how people behave, organized in a matrix like this:
+Long term sustainability is built on good habits, but how can you change a team's behavior to adopt healthier habits? The book *Influencer* by Grenny, Patterson, Maxfield, McMillan, and Switzler offers an explanation. In the book, the authors highlight six different considerations when it comes to influencing how people behave, organized in a matrix like this:
 
 |           | Motivation            | Ability
 |-          |-                      |-

@@ -11,6 +11,9 @@ Reliability engineering aims to understand the probability of success over time.
 
 <!--more-->
 
+First, let's define a few terms. A **fault** is when something doens't perform as expected, regardless of the cause. A **failure** is when something is broken, which usually results in a fault. A **failure mode** is the way in which a fault occurs. 
+
+
 ### Failure Rate
 
 Let's say you perform some testing on 10 units for 100 hours each. By the end of that testing, 4 units failed, at [35, 47, 32, 41] hours. What would be the failure rate? Well, you'd divide the number of failures (in this case 4) by the total number of cycles that were run across all 10 units. This means the sum of 35 + 47 + 32 + 41, but also 6(100), which is the time that the other six units ran successfully without any failure. 
@@ -43,13 +46,41 @@ $$A(t) = \frac{MTBF}{MTBF + MTTR}$$
 The above value is unitless, but you could multiply this value by 8760 for example (the number of hours in a year) to get an estimate for down time in a year. 
 
 
+### Reliability
+
+If we know the failure rate, how can we answer the question: What is my probability of success after (t) amount of time? We should expect that as time increases, this probability should go down. 
+
+$$R = exp^(- \lambda t)$$
+
+
+### More Advanced Calculations
+
+Now that we have some basic definitions, let's see how we can calculate results to more complex questions. Did I mention that reliability deals heavily in probabilities and statistics?  
+
+To begin, how do we handle multiple parts in series or parallel? If they are in series, we multiply their reliabilities together:
+
+$$R_s = R_a * R_b$$
+
+If they are in parallel, we add them and then subtract the product:
+
+$$R_p = R_a + R_b - R_a*R_b$$
+
+
+
 ### Failure Modes and Effects Analysis
 
 Also known FMEA, or sometimes FMECA, this type of analysis aims to understand the ways in which parts fail, and any effects that failure would cause. It helps inform us where the highest risks are, and allows us to plan our risk mitigation strategy. High risk items can be those which fail often, or those that that have very severe consequences, or both!
 
-The types of failure modes will depend on the level of detail we're exploring. At the lowest level, (e.g. an electrical interface) you can define failure modes based on fundamental failure mechanisms, such as an open circuit or short circuit. Or for components like a resistor, which perform a pretty basic function, it's easy to capture 100% of the ways in which it can fail. 
+The types of failure modes will depend on the level of detail we're exploring. At the lowest level, (e.g. an electrical interface) you can define failure modes based on fundamental failure mechanisms, such as an open circuit or short circuit. 
 
-But as you get more complex, (e.g. a whole circuit board), you have to start thinking about what the larger system performs. Maybe this circuit board's function is to perform convolutional encoding of your data. At this level the failure modes might be more abstract, but in theory can still be accounted for through logical induction and looking at all the individual components. 
+For components like a resistor, which perform a pretty basic function, it's easy to capture 100% of the ways in which it can fail. But as you get more complex, (e.g. a whole circuit board), you have to start thinking about what the larger system performs. Maybe this circuit board's function is to perform convolutional encoding of your data. At this level the failure modes might be more abstract, but in theory can still be accounted for through logical induction and looking at all the individual components. 
+
+
+### Redundancy
+
+Putting in redundancy provides an easy way to improve reliability. Consider an example of a satellite. We can put in two separate controllers, and keep one turned off as a backup in case anything goes wrong with the first one. This is known as a cold standby. If this backup unit is never used, it comes with the added benefit potentially doubling the usable life of our satellite. 
+
+But we could also keep the backup on. In this case, this is called a warm standby. This might allow for a quicker swap in the event of failure. Unfortunately, in this case we'd be burning through the usable life of both units. So if each unit is designed for 5 years of operation, at the end of five years both would be at the end of their life. 
 
 
 

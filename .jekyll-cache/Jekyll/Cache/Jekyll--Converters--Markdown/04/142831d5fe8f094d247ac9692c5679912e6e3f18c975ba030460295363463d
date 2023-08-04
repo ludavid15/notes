@@ -1,4 +1,4 @@
-I"�(<p>If you’ve ever tried to manage a highly complex project, you know that a certain amount of organization is required. This kind of big-picture planning helps to reduce risk. However, it’s important to remember that this kind of oversight ultimately serves the product. There is such a thing as too much management.</p>
+I"�&<p>If you’ve ever tried to manage a highly complex project, you know that a certain amount of organization is required. This kind of big-picture planning helps to reduce risk. However, it’s important to remember that this kind of oversight ultimately serves the product. There is such a thing as too much management.</p>
 
 <p>This is the balance to be struck in the world of systems engineering. Systems engineering is a set of practices for developing highly complex projects while minimizing risk. It is NOT a substitute for good communication or for responsible people (though it can help).</p>
 
@@ -68,6 +68,10 @@
 
 <p>Another deceptively complex situation is to have a requirement that defines a constraint. For instance, “the satellite shall operate normally under xxx constraints”. Ok, seems easy. But what if another part of the design fails to keep us within these constraints? Technically, we’ve still met this first requirement. We’re just never operational, but that’s ok because we’re outside the limit. If you have a requirement like the first one, you’d better have a second requirement which defines availability, “the satellite shall be operational for 75% of the day”.</p>
 
+<h4 id="5-multiple-parts-in-a-single-requirement">5. Multiple Parts in a Single Requirement</h4>
+
+<p>The problem with having multiple parts to a requirement is that sometimes parts can be missed. This was actually likely one of the reasons why the Mars Polar Lander failed in 1999. A requirement about landing sensors included a second clause about being robust to spurious signals during descent. However during requirements flowdown, this clause failed to make it to the software team. The result was that software did not incoporate this aspect into their design. During the mission, an accidental signal during descent was registered by the software as a landing event, even though the lander was still far above the surface.</p>
+
 <h3 id="design-reviews">Design Reviews</h3>
 
 <p>Design reviews are checkpoints, meant to ensure that a certain level of maturity has been reached across the board before moving on to the next stage of work. Experts and or customers external to the design team are the ones who perform the review.</p>
@@ -102,48 +106,7 @@
 
 <h3 id="operations">Operations</h3>
 
-<p>Also known as functions or activities, operations are used to explain <em>how</em> something is done. This could be for the benefit of a designer, an operator, or even a computer. Depending on the user, this can also be detailed to different resolutions, ranging from the abstract, to the very specific (like individual command messages).</p>
-
-<p>Some Operations Documents:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Concept of Operations (CONOPS)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>A high level overview which outlines the overall goals and objectives. Usually includes context or rationale for why things are the way they are. This is frequently a user or customer facing document.</td>
-    </tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr>
-      <th>Mission Operations Document (MOD)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>A more detailed outline of your procedures than the CONOPS. A MOD can provide specific details about what your hardware (or an operator) needs to do. This is something you might hand to a responsible engineer to turn into code.</td>
-    </tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr>
-      <th>Recommended Operating Procedures (ROP)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>The most detailed document of the three, a ROP is as detailed as you can get before actually implementing a solution. For things like commanding or telemetry, a ROP can be as specific as the individual bits in a dataframe. In an OSI context, this means going down to the Data Link Layer (layer 2). Unlike a CONOPS document or MOD, a ROP can include fault management/anomaly response procedures.</td>
-    </tr>
-  </tbody>
-</table>
+<p>This is the domain that I work in. Some engineers design hardware, but someone has to figure out how it’s all going to work together. The operations design or functional architecture of a program outlines <em>how</em> something will be done. This could be for the benefit of a designer, an operator, or even a computer. Depending on the user, this can also be detailed to different resolutions, ranging from the abstract, to the very specific (like individual command messages).</p>
 
 <h3 id="other-domains-of-systems-engineering">Other Domains of Systems Engineering</h3>
 

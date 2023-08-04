@@ -1,7 +1,7 @@
 ---
 layout: page
-title: References
-permalink: /references/
+title: Other Things
+permalink: /other/
 mathjax: true
 date: 2021-05-11
 ---

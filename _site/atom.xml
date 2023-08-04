@@ -4,13 +4,55 @@
  <title>Notes</title>
  <link href="https://ludavid15.github.io//atom.xml" rel="self"/>
  <link href="https://ludavid15.github.io//"/>
- <updated>2023-06-11T19:09:13-07:00</updated>
+ <updated>2023-08-04T12:46:57-07:00</updated>
  <id>https://ludavid15.github.io/</id>
  <author>
    <name>David Lu</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Working Effectively</title>
+   <link href="https://ludavid15.github.io//workingEffectively/"/>
+   <updated>2023-07-11T00:00:00-07:00</updated>
+   <id>https://ludavid15.github.io//focus</id>
+   <content type="html">&lt;p&gt;A collection of lessons I’ve learned about working effectively. Before going any further, let me establish that the notes here are for myself. I don’t know if any of these tactics would work well for someone else. I think most people arrive at their own version of the truth in different ways. There are hundreds (thousands?) of “self-improvement” books out there, so it’s not like the world needs a another one. I’ve gone through a few myself with mixed success. Sometimes there’s no way to learn a lesson until an event really makes it sinks in, and a strategy you once thought was silly suddenly makes a lot more sense.&lt;/p&gt;
+
+&lt;p&gt;Also, when I say work I don’t necessarily mean a job. It’s anything and everything you spend time on. This includes your hobbies, your health, and anything else you care about.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;part-1---the-most-important-thing-upfront&quot;&gt;Part 1 - The Most Important Thing Upfront&lt;/h2&gt;
+
+&lt;h3 id=&quot;attention&quot;&gt;Attention&lt;/h3&gt;
+
+&lt;p&gt;In our hyper connected, information abundant world, your attention is your most valuable commodity. Everything is out to grab a piece of it (social media, the news, Netflix). Backed with a decade of big data, they’ve all become very &lt;em&gt;good&lt;/em&gt; at it too. Sometimes it feels like your biology just wasn’t built to keep up with it all. Arguably, it isn’t.&lt;/p&gt;
+
+&lt;p&gt;But your attention is important, because that’s how we achieve our goals. When we really focus our attention on something, is when we open ourselves to the most growth. A lot of books seem to return to this basic idea. &lt;em&gt;Indistractable&lt;/em&gt;, &lt;em&gt;Ikigai&lt;/em&gt;, &lt;em&gt;Flow&lt;/em&gt;, &lt;em&gt;Getting Things Done&lt;/em&gt;, &lt;em&gt;Deep Work&lt;/em&gt;. Almost all of it can be boiled down to just:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Focus on one thing at a time&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;This can take many forms depending on the task at hand. Maybe focus means paying attention at a meeting, taking notes, and then following up with a summary and a plan for everyone involved. In this case, maybe an hour of focus is all you need.&lt;/p&gt;
+
+&lt;p&gt;But as the objective grows larger, so does the demand. If your goal is to master an instrument, you may need to focus on it for years, or even decades.&lt;/p&gt;
+
+&lt;h3 id=&quot;motivation-and-discipline&quot;&gt;Motivation and Discipline&lt;/h3&gt;
+
+&lt;p&gt;Although we may understand the importance of focus, being able to focus is another matter. Unfortunately I don’t have much insight offer here. At the end of the day, focus is a choice we have to make despite all the things out there trying to distract us, and that requires motivation and discipline.&lt;/p&gt;
+
+&lt;h2 id=&quot;part-2---efficiency-in-the-day-to-day&quot;&gt;Part 2 - Efficiency in the Day to Day&lt;/h2&gt;
+
+&lt;h3 id=&quot;exploration&quot;&gt;Exploration&lt;/h3&gt;
+
+&lt;p&gt;As days get busier, I’ve had less time to experiment and explore new ideas, but I believe this has been to my detriment. Exploration is when we find new ideas and build perspective. In the long run, this helps us find better solutions and grow beyond our current capability.&lt;/p&gt;
+
+&lt;h3 id=&quot;writing-down-your-thoughts&quot;&gt;Writing down your Thoughts&lt;/h3&gt;
+
+&lt;p&gt;Personally, writing helps me focus. The act of putting down your thoughts into words solidifies the idea. So when I’m working on a problem, I’ll often write a short paragraph on what I’m thinking. Often, the act of writing helps me figure out my problem. And as an added bonus, I now have a reference I can revisit in the future.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Reliability</title>
@@ -20,6 +62,8 @@
    <content type="html">&lt;p&gt;Reliability engineering aims to understand the probability of success over time. It is heavily based in probability and statistics.&lt;/p&gt;
 
 &lt;!--more--&gt;
+
+&lt;p&gt;First, let’s define a few terms. A &lt;strong&gt;fault&lt;/strong&gt; is when something doens’t perform as expected, regardless of the cause. A &lt;strong&gt;failure&lt;/strong&gt; is when something is broken, which usually results in a fault. A &lt;strong&gt;failure mode&lt;/strong&gt; is the way in which a fault occurs.&lt;/p&gt;
 
 &lt;h3 id=&quot;failure-rate&quot;&gt;Failure Rate&lt;/h3&gt;
 
@@ -49,13 +93,37 @@
 
 &lt;p&gt;The above value is unitless, but you could multiply this value by 8760 for example (the number of hours in a year) to get an estimate for down time in a year.&lt;/p&gt;
 
+&lt;h3 id=&quot;reliability&quot;&gt;Reliability&lt;/h3&gt;
+
+&lt;p&gt;If we know the failure rate, how can we answer the question: What is my probability of success after (t) amount of time? We should expect that as time increases, this probability should go down.&lt;/p&gt;
+
+\[R = exp^(- \lambda t)\]
+
+&lt;h3 id=&quot;more-advanced-calculations&quot;&gt;More Advanced Calculations&lt;/h3&gt;
+
+&lt;p&gt;Now that we have some basic definitions, let’s see how we can calculate results to more complex questions. Did I mention that reliability deals heavily in probabilities and statistics?&lt;/p&gt;
+
+&lt;p&gt;To begin, how do we handle multiple parts in series or parallel? If they are in series, we multiply their reliabilities together:&lt;/p&gt;
+
+\[R_s = R_a * R_b\]
+
+&lt;p&gt;If they are in parallel, we add them and then subtract the product:&lt;/p&gt;
+
+\[R_p = R_a + R_b - R_a*R_b\]
+
 &lt;h3 id=&quot;failure-modes-and-effects-analysis&quot;&gt;Failure Modes and Effects Analysis&lt;/h3&gt;
 
 &lt;p&gt;Also known FMEA, or sometimes FMECA, this type of analysis aims to understand the ways in which parts fail, and any effects that failure would cause. It helps inform us where the highest risks are, and allows us to plan our risk mitigation strategy. High risk items can be those which fail often, or those that that have very severe consequences, or both!&lt;/p&gt;
 
-&lt;p&gt;The types of failure modes will depend on the level of detail we’re exploring. At the lowest level, (e.g. an electrical interface) you can define failure modes based on fundamental failure mechanisms, such as an open circuit or short circuit. Or for components like a resistor, which perform a pretty basic function, it’s easy to capture 100% of the ways in which it can fail.&lt;/p&gt;
+&lt;p&gt;The types of failure modes will depend on the level of detail we’re exploring. At the lowest level, (e.g. an electrical interface) you can define failure modes based on fundamental failure mechanisms, such as an open circuit or short circuit.&lt;/p&gt;
 
-&lt;p&gt;But as you get more complex, (e.g. a whole circuit board), you have to start thinking about what the larger system performs. Maybe this circuit board’s function is to perform convolutional encoding of your data. At this level the failure modes might be more abstract, but in theory can still be accounted for through logical induction and looking at all the individual components.&lt;/p&gt;
+&lt;p&gt;For components like a resistor, which perform a pretty basic function, it’s easy to capture 100% of the ways in which it can fail. But as you get more complex, (e.g. a whole circuit board), you have to start thinking about what the larger system performs. Maybe this circuit board’s function is to perform convolutional encoding of your data. At this level the failure modes might be more abstract, but in theory can still be accounted for through logical induction and looking at all the individual components.&lt;/p&gt;
+
+&lt;h3 id=&quot;redundancy&quot;&gt;Redundancy&lt;/h3&gt;
+
+&lt;p&gt;Putting in redundancy provides an easy way to improve reliability. Consider an example of a satellite. We can put in two separate controllers, and keep one turned off as a backup in case anything goes wrong with the first one. This is known as a cold standby. If this backup unit is never used, it comes with the added benefit potentially doubling the usable life of our satellite.&lt;/p&gt;
+
+&lt;p&gt;But we could also keep the backup on. In this case, this is called a warm standby. This might allow for a quicker swap in the event of failure. Unfortunately, in this case we’d be burning through the usable life of both units. So if each unit is designed for 5 years of operation, at the end of five years both would be at the end of their life.&lt;/p&gt;
 
 </content>
  </entry>
@@ -102,7 +170,7 @@
       &lt;td&gt;P(A|B)&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;This is what we are solving for. In the absense of observed data, we would be solving for P(A). But if we have some observation B, now we can solve for a conditional probability, i.e. the probability of A given B.&lt;/td&gt;
+      &lt;td&gt;This is what we are solving for. In the absence of observed data, we would be solving for P(A). But if we have some observation B, now we can solve for a conditional probability, i.e. the probability of A given B.&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -447,6 +515,8 @@
 
 &lt;p&gt;The amount that needs to be communicated can also depend on the individual. Someone with a lot of experience will need fewer check-ins, and too many might even be detrimental. On the other hand, someone who is new might need explicit guidelines.&lt;/p&gt;
 
+&lt;p&gt;Finally, as much as it might be bothersome to do, constantly reminding your team of what’s expected is effective. For example, asking everyone at the daily standup to update the status of their cards in JIRA.&lt;/p&gt;
+
 &lt;h3 id=&quot;teach-by-asking&quot;&gt;Teach by Asking&lt;/h3&gt;
 
 &lt;p&gt;Have you ever explained something to someone, only to repeat yourself a few weeks later? Moments like this make you realize that your original explanation never really sunk in.&lt;/p&gt;
@@ -471,17 +541,21 @@
   &lt;p&gt;&lt;em&gt;“Go alone to go fast. Go together to go far”&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;In other words, it’s worth taking the time to teach or communicate. That being said, I think this view stems from the personal value I put in teaching/spreading knowledge. The sentiment of this quote is nice, but the real world is more complex. Factor in finances, and there’s a limit to how much time and money you can actually spend on education. Importantly, how much education you can afford is a problem to figure out well before hiring and setting project deadlines.&lt;/p&gt;
+&lt;p&gt;In other words, it’s worth taking the time to teach or communicate. That being said, this stems from the personal value I put in teaching/spreading knowledge. The sentiment of this quote is nice, but the real world is more complex. Factor in finances, and there’s a limit to how much time and money you can actually spend on education. Importantly, how much education you can afford is a problem to figure out well before hiring and setting project deadlines.&lt;/p&gt;
 
-&lt;h3 id=&quot;traditions&quot;&gt;Traditions&lt;/h3&gt;
+&lt;h3 id=&quot;traditions--process&quot;&gt;Traditions &amp;amp; Process&lt;/h3&gt;
 
 &lt;p&gt;My senior year at UCLA, I took over as AIAA president and I made some sweeping overhauls in our club processes. Some traditions really were due for an upgrade, but all this change had the side effect of slowing us down in other unforseen ways. The whole experience made me appreciate the usefulness of tradition. Like habits, they carry some amount of momentum, and (for better or for worse) help push things along.&lt;/p&gt;
 
-&lt;p&gt;In industry, traditions look like processes, and I believe that once upon a time, there was some problem that justifiably resulted in the creation of each process. But as the landscape changes, and the driving parameters go away, it should be possible, and necessary, to phase some out. Just make sure to do so cautiously, and think through the repurcussions.&lt;/p&gt;
+&lt;p&gt;In industry, traditions look like processes, and based on what I understand, processes are a way to delegate work. This usually happens when someone with more expertise must rely on someone with less expertise. Creating a process helps ensure that those who do the work don’t miss anything important.&lt;/p&gt;
+
+&lt;p&gt;Personally, I’ve found a checklist of questions to be more useful than instructions. Things like “Did you remember to factor in the required 25% margin?”. The goal is to encourage those who follow the process to learn the &lt;em&gt;why&lt;/em&gt; and not just to memorize the steps. The best result is if everyone comes to know the problem well enough to no longer need the process.&lt;/p&gt;
+
+&lt;p&gt;The worst result is that the proces becomes a crutch, because the team no longer understand the problem enough to get things done without instructions. Maybe someone retires or leaves the team, and now everyone is blindly following a proces without understanding why it was established in the first place. In the long run, it may be beneficial to remove the old process and build up a new one from scratch that people actually understand. This is why it’s so important to document rationale and to encourage new engineers to always be asking “why”.&lt;/p&gt;
 
 &lt;h3 id=&quot;changing-behavior&quot;&gt;Changing Behavior&lt;/h3&gt;
 
-&lt;p&gt;This idea is pulled from the book &lt;em&gt;Influencer&lt;/em&gt; by Grenny, Patterson, Maxfield, McMillan, and Switzler. In the book, the authors highlight six different considerations when it comes to influencing how people behave, organized in a matrix like this:&lt;/p&gt;
+&lt;p&gt;Long term sustainability is built on good habits, but how can you change a team’s behavior to adopt healthier habits? The book &lt;em&gt;Influencer&lt;/em&gt; by Grenny, Patterson, Maxfield, McMillan, and Switzler offers an explanation. In the book, the authors highlight six different considerations when it comes to influencing how people behave, organized in a matrix like this:&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -2102,11 +2176,26 @@ model = Dense(2, 1)
 
 &lt;h4 id=&quot;waveguide&quot;&gt;Waveguide&lt;/h4&gt;
 
-&lt;p&gt;TBD&lt;/p&gt;
+&lt;p&gt;A waveguide is used to move an electromagnetic signal (usually microwaves). It restricts transmission to just one direction, so there is very little loss along the path.&lt;/p&gt;
+
+&lt;p&gt;A great and easy to understand description of how waveguides work can be found &lt;a href=&quot;https://www.pa3fwm.nl/technotes/tn21-how-does-a-waveguide-work.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The basic idea is that waves are “bouncing” in a zig zag pattern from wall to wall. This allows the signal to satisfy the required boundary conditions. The specific angle and phase of this “bounce” is unique and depends on the frequency of the signal and the width of the waveguide. For every waveguide, there is a &lt;em&gt;cut-off frequency&lt;/em&gt;. Signals below this frequency (i.e. longer wavelengths) cannot propogate through that waveguide.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In order for this bounce to take place, a waveguide must be at least half a wavelength wide. The lower end of Microwaves have a wavelength of 1m, so you can imagine that construction becomes increasingly problematic if we continue to drop the frequency. For lower frequencies, there are coax cables.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h4 id=&quot;coax-cable&quot;&gt;Coax-Cable&lt;/h4&gt;
 
-&lt;p&gt;TBD&lt;/p&gt;
+&lt;p&gt;A co-axial cable is another way to transmit an electrical signal. The signal propogates through some conductor (copper usually) so losses are comparitively higher. A coax cable consists of 4 layers, all aligned in the same direction (hence co-axial).&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;An inner conductor (carries the main signal).&lt;/li&gt;
+  &lt;li&gt;A non-conductive dielectric around inner conductor.&lt;/li&gt;
+  &lt;li&gt;An outer conductor (to block interference).&lt;/li&gt;
+  &lt;li&gt;An outer non-conductive sheath around the entire cable.&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h3 id=&quot;message-securityintegrity&quot;&gt;Message Security/Integrity&lt;/h3&gt;
 
@@ -2117,6 +2206,16 @@ model = Dense(2, 1)
 &lt;p&gt;An easy integrity check to start with is Parity. This is a single bit which tells you if there is an even or odd number of 1’s in the transmitted signal. We can use this to check the integrity of a message.&lt;/p&gt;
 
 &lt;p&gt;Another integrity check we can do is called a checksum. A checksum function transforms some input and calculates an output. Strong checksum functions will produce unique outputs, even for similar inputs. If a receiver and transmitter both know the checksum function, they can each calculate the checksum value and by comparing the outputs, verify that the sent and received message are the same, without revealing the message itself.&lt;/p&gt;
+
+&lt;h3 id=&quot;hashing&quot;&gt;Hashing&lt;/h3&gt;
+
+&lt;p&gt;Hashing is another way to &lt;em&gt;validate&lt;/em&gt; the content of a message (different from protecting the content). A hashing function is a deterministic function which produces a unique output (often called the digest) for each possible input. A typical process might look like this:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;I put together a message and calculate the hash digest.&lt;/li&gt;
+  &lt;li&gt;I send you that message, and you indendently calculate the hash digest using the same hash function.&lt;/li&gt;
+  &lt;li&gt;We compare hash digests. If they are the same, we know that we have the same message.&lt;/li&gt;
+&lt;/ol&gt;
 
 </content>
  </entry>
@@ -2474,6 +2573,10 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;p&gt;Another deceptively complex situation is to have a requirement that defines a constraint. For instance, “the satellite shall operate normally under xxx constraints”. Ok, seems easy. But what if another part of the design fails to keep us within these constraints? Technically, we’ve still met this first requirement. We’re just never operational, but that’s ok because we’re outside the limit. If you have a requirement like the first one, you’d better have a second requirement which defines availability, “the satellite shall be operational for 75% of the day”.&lt;/p&gt;
 
+&lt;h4 id=&quot;5-multiple-parts-in-a-single-requirement&quot;&gt;5. Multiple Parts in a Single Requirement&lt;/h4&gt;
+
+&lt;p&gt;The problem with having multiple parts to a requirement is that sometimes parts can be missed. This was actually likely one of the reasons why the Mars Polar Lander failed in 1999. A requirement about landing sensors included a second clause about being robust to spurious signals during descent. However during requirements flowdown, this clause failed to make it to the software team. The result was that software did not incoporate this aspect into their design. During the mission, an accidental signal during descent was registered by the software as a landing event, even though the lander was still far above the surface.&lt;/p&gt;
+
 &lt;h3 id=&quot;design-reviews&quot;&gt;Design Reviews&lt;/h3&gt;
 
 &lt;p&gt;Design reviews are checkpoints, meant to ensure that a certain level of maturity has been reached across the board before moving on to the next stage of work. Experts and or customers external to the design team are the ones who perform the review.&lt;/p&gt;
@@ -2508,48 +2611,7 @@ That being said, Convolutional Neural Networks - which have been very effective 
 
 &lt;h3 id=&quot;operations&quot;&gt;Operations&lt;/h3&gt;
 
-&lt;p&gt;Also known as functions or activities, operations are used to explain &lt;em&gt;how&lt;/em&gt; something is done. This could be for the benefit of a designer, an operator, or even a computer. Depending on the user, this can also be detailed to different resolutions, ranging from the abstract, to the very specific (like individual command messages).&lt;/p&gt;
-
-&lt;p&gt;Some Operations Documents:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Concept of Operations (CONOPS)&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;A high level overview which outlines the overall goals and objectives. Usually includes context or rationale for why things are the way they are. This is frequently a user or customer facing document.&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Mission Operations Document (MOD)&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;A more detailed outline of your procedures than the CONOPS. A MOD can provide specific details about what your hardware (or an operator) needs to do. This is something you might hand to a responsible engineer to turn into code.&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Recommended Operating Procedures (ROP)&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;The most detailed document of the three, a ROP is as detailed as you can get before actually implementing a solution. For things like commanding or telemetry, a ROP can be as specific as the individual bits in a dataframe. In an OSI context, this means going down to the Data Link Layer (layer 2). Unlike a CONOPS document or MOD, a ROP can include fault management/anomaly response procedures.&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;This is the domain that I work in. Some engineers design hardware, but someone has to figure out how it’s all going to work together. The operations design or functional architecture of a program outlines &lt;em&gt;how&lt;/em&gt; something will be done. This could be for the benefit of a designer, an operator, or even a computer. Depending on the user, this can also be detailed to different resolutions, ranging from the abstract, to the very specific (like individual command messages).&lt;/p&gt;
 
 &lt;h3 id=&quot;other-domains-of-systems-engineering&quot;&gt;Other Domains of Systems Engineering&lt;/h3&gt;
 
@@ -3246,6 +3308,9 @@ H. Schlichting&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Space Mission Analysis and Design&lt;/strong&gt;
 J. Wertz&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;A Practical Guide to SysML&lt;/strong&gt;
+Alan Moore, Rick Steiner, and Sanford Friedenthal&lt;/p&gt;
 </content>
  </entry>
  
@@ -3925,9 +3990,24 @@ Problems formatted in one type can be transformed into another format fairly eas
 
 &lt;h3 id=&quot;misc-definitions&quot;&gt;Misc Definitions&lt;/h3&gt;
 
-&lt;p&gt;Isomorphism – a form of transformation that preserves structure.&lt;/p&gt;
-
-&lt;p&gt;Homography – an isomorphism between projected images.&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Term&lt;/th&gt;
+      &lt;th&gt;Definition&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Isomorphism&lt;/td&gt;
+      &lt;td&gt;a form of transformation that preserves structure.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Homography&lt;/td&gt;
+      &lt;td&gt;an isomorphism between projected images.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 </content>
  </entry>

@@ -4,7 +4,7 @@ title: Textbooks
 permalink: /textbooks/
 mathjax: true
 except_separator: <!--more-->
-categories: references
+categories: other
 ---
 
 These are some textbooks that I found helpful, or that were recommended to me by friends and professors. 
@@ -34,3 +34,6 @@ H. Schlichting
 
 **Space Mission Analysis and Design**
 J. Wertz
+
+**A Practical Guide to SysML**
+Alan Moore, Rick Steiner, and Sanford Friedenthal
