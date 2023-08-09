@@ -21,6 +21,7 @@ A traffic control protocol for managing information traffic from multiple source
 
 > Being an older protocol, 1553 only has a bandwidth of around 1 Mbps
 
+
 ### Ethernet
 
 Ethernet is another communications protocol, defined at the physical layer and data link layer. In contrast to 1553 which uses a shared bus topology, ethernet supports direct transmission paths between devices. The data link layer has two different aspects. There's the Logical Link Control (LLC) and the Media Access Control (MAC).
@@ -59,11 +60,22 @@ Often abbreviated to just TWTA, this is a device used for amplifying radio signa
 
 #### Waveguide
 
-TBD
+A waveguide is used to move an electromagnetic signal (usually microwaves). It restricts transmission to just one direction, so there is very little loss along the path. 
+
+A great and easy to understand description of how waveguides work can be found [here](https://www.pa3fwm.nl/technotes/tn21-how-does-a-waveguide-work.html).
+
+The basic idea is that waves are "bouncing" in a zig zag pattern from wall to wall. This allows the signal to satisfy the required boundary conditions. The specific angle and phase of this "bounce" is unique and depends on the frequency of the signal and the width of the waveguide. For every waveguide, there is a *cut-off frequency*. Signals below this frequency (i.e. longer wavelengths) cannot propogate through that waveguide. 
+
+> In order for this bounce to take place, a waveguide must be at least half a wavelength wide. The lower end of Microwaves have a wavelength of 1m, so you can imagine that construction becomes increasingly problematic if we continue to drop the frequency. For lower frequencies, there are coax cables.
 
 #### Coax-Cable
 
-TBD
+A co-axial cable is another way to transmit an electrical signal. The signal propogates through some conductor (copper usually) so losses are comparitively higher. A coax cable consists of 4 layers, all aligned in the same direction (hence co-axial).
+
+1. An inner conductor (carries the main signal).
+2. A non-conductive dielectric around inner conductor.
+3. An outer conductor (to block interference).
+4. An outer non-conductive sheath around the entire cable. 
 
 ### Message Security/Integrity
 
@@ -74,6 +86,14 @@ Integrity is a simple check to see if the data is complete, or it's accurate. Au
 An easy integrity check to start with is Parity. This is a single bit which tells you if there is an even or odd number of 1's in the transmitted signal. We can use this to check the integrity of a message.
 
 Another integrity check we can do is called a checksum. A checksum function transforms some input and calculates an output. Strong checksum functions will produce unique outputs, even for similar inputs. If a receiver and transmitter both know the checksum function, they can each calculate the checksum value and by comparing the outputs, verify that the sent and received message are the same, without revealing the message itself. 
+
+### Hashing
+
+Hashing is another way to *validate* the content of a message (different from protecting the content). A hashing function is a deterministic function which produces a unique output (often called the digest) for each possible input. A typical process might look like this:
+
+1. I put together a message and calculate the hash digest.
+2. I send you that message, and you indendently calculate the hash digest using the same hash function.
+3. We compare hash digests. If they are the same, we know that we have the same message. 
 
 
 

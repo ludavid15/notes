@@ -1,4 +1,4 @@
-I"R<p>Machine vision refers broadly to any imaging analysis task performed by a computer. Meanwhile, simultaneous localization and mapping (SLAM) is a specific domain focused on obtaining an understanding of the environment and your position within it. These two often go hand in hand (but not always!).</p>
+I"<p>Machine vision refers broadly to any imaging analysis task performed by a computer. Meanwhile, simultaneous localization and mapping (SLAM) is a specific domain focused on obtaining an understanding of the environment and your position within it. These two often go hand in hand (but not always!).</p>
 
 <!--more-->
 
@@ -96,8 +96,23 @@
 
 <h3 id="misc-definitions">Misc Definitions</h3>
 
-<p>Isomorphism – a form of transformation that preserves structure.</p>
-
-<p>Homography – an isomorphism between projected images.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Isomorphism</td>
+      <td>a form of transformation that preserves structure.</td>
+    </tr>
+    <tr>
+      <td>Homography</td>
+      <td>an isomorphism between projected images.</td>
+    </tr>
+  </tbody>
+</table>
 
 :ET

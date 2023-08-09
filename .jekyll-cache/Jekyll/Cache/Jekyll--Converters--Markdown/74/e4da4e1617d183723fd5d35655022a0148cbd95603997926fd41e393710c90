@@ -35,7 +35,7 @@
       <td>P(A|B)</td>
     </tr>
     <tr>
-      <td>This is what we are solving for. In the absense of observed data, we would be solving for P(A). But if we have some observation B, now we can solve for a conditional probability, i.e. the probability of A given B.</td>
+      <td>This is what we are solving for. In the absence of observed data, we would be solving for P(A). But if we have some observation B, now we can solve for a conditional probability, i.e. the probability of A given B.</td>
     </tr>
   </tbody>
 </table>
