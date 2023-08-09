@@ -65,7 +65,7 @@ If they are in parallel, we add them and then subtract the product:
 
 $$R_p = R_a + R_b - R_a*R_b$$
 
-
+Taking these two, we can combine more complex systems to calculate a net reliability. We can also calculate coupled probabilities using [Bayes Theorem](/notes/bayes).
 
 ### Failure Modes and Effects Analysis
 
