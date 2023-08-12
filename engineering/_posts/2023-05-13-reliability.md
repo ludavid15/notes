@@ -78,7 +78,7 @@ For components like a resistor, which perform a pretty basic function, it's easy
 
 ### Redundancy
 
-Putting in redundancy provides an easy way to improve reliability. Consider an example of a satellite. We can put in two separate controllers, and keep one turned off as a backup in case anything goes wrong with the first one. This is known as a cold standby. If this backup unit is never used, it comes with the added benefit potentially doubling the usable life of our satellite. 
+Putting in redundancy provides an easy way to improve reliability. Consider an example of a satellite. We can put in two separate controllers, and keep one turned off as a backup in case anything goes wrong with the first one. This is known as a cold standby. If this backup unit is never used, it comes with the added benefit of potentially doubling the usable life of our satellite. 
 
 But we could also keep the backup on. In this case, this is called a warm standby. This might allow for a quicker swap in the event of failure. Unfortunately, in this case we'd be burning through the usable life of both units. So if each unit is designed for 5 years of operation, at the end of five years both would be at the end of their life. 
 
