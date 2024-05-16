@@ -11,7 +11,14 @@ A random assortment of communications technology terms I've encountered over the
 
 <!--more-->
 
-#### ML-STD 1553
+### Synchronous vs Asynchronous
+
+When you are transmitting digital data, how does the reciever and transmitter agree on what constitutes a new byte? Well, one solution is to give both ends a clock set to the same frequency. Everytime a new "tic" occurs, the receiver looks at the status on the line (i.e. high or low) and records it. This is known as asynchonous communication, because the timing mechanism on the transmitter and receiver ends do not communicate with one another. 
+
+
+## Communication Protocols
+
+### ML-STD 1553
 
 A traffic control protocol for managing information traffic from multiple sources on a shared physical line. 1553 requires a controlling bus computer (BC) and an addresses for each terminal. The underlying constraint of 1553 is that traffic is never parrallel. In other words, each terminal takes turns using the line, and ignores any information on the line while not actively in use. On any given 1553 line, there can be up to 31 *remote terminals* (RTs), each with their own *subaddresses*. Data transmission can happen in pretty much any direction:
 
@@ -20,7 +27,6 @@ A traffic control protocol for managing information traffic from multiple source
 3. RT to RT
 
 > Being an older protocol, 1553 only has a bandwidth of around 1 Mbps
-
 
 ### Ethernet
 
@@ -56,7 +62,7 @@ A point to point interface which transmits digital/bi-level information by chang
 
 #### Traveling Wave Tube Amplifier
 
-Often abbreviated to just TWTA, this is a device used for amplifying radio signals. Satellites often need this since they communicate over large distances.
+Often abbreviated to just TWTA, this is a device used for amplifying radio signals. Satellites often need this since they communicate over large distances. An alternative to TWTA's are solid state amplifiers. 
 
 #### Waveguide
 
