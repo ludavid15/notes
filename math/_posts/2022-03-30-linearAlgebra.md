@@ -38,6 +38,14 @@ $$\alpha_1V_1+a_2V_2\ldots+\alpha_kV_k=0$$
 
 ### Normal Matrix
 
+Some properties of a normal matrix:
+
+1. The Frobenius norm can by computed by the eigenvalues
+2. [A] is normal if it commutes with its conjugate transpose
+3. [A] is diagonalizable by a unitary matrix
+4. There exists a set of eigenvectors of [A] which form an orthonormal basis for range([A])
+5. [A] can be decomposed into the product of its unitary eigenvector matrices and a diagonal matrix of eigenvalues
+
 $$AA^H=A^HA$$  
 
 $$\|A\|^2=tr(A^HA)$$  
@@ -46,35 +54,33 @@ $$A=Q\Lambda Q^H$$
 
 $$AQ[:,i]=λiQ[:,i]$$
 
-| The Frobenius norm can by computed by the eigenvalues
-| [A] is normal if it commutes with its conjugate transpose
-| [A] is diagonalizable by a unitary matrix
-| There exists a set of eigenvectors of [A] which form an orthonormal basis for range([A])
-| [A] can be decomposed into the product of its unitary eigenvector matrices and a diagonal matrix of eigenvalues
+
 
 ### Unitary/Orthogonal Matrix
+
+1. [A] is unitary if it is normal and its product with its conjugate transpose equals the identity matrix
+2. The product of a unitary matrix with a vector does not change the magnitude of the vector.
 
 $$AA^H=A^HA=I$$
 
 $$\|x\|_2=\|Ax\|_2$$
 
-| [A] is unitary if it is normal and its product with its conjugate transpose equals the identity matrix
-| The product of a unitary matrix with a vector does not change the magnitude of the vector.
-
 ### Symmetric/Hermitian Matrix
+
+1. [A] is symmetric if it is equal to its conjugate transpose
+2. All symmetric matrices are also normal matrices
+3. Rectangular matrices are never normal matrices
+4. The eigenvalues of a symmetric (and thus normal) matrix are always real
 
 $$A=A^T$$
 
-| [A] is symmetric if it is equal to its conjugate transpose
-| All symmetric matrices are also normal matrices
-| Rectangular matrices are never normal matrices
-| The eigenvalues of a symmetric (and thus normal) matrix are always real
-
 ### Diagonalizable Matrix
 
-$$A=Q\Lambda Q^H$$ 
+Properties of a Diagonalizable Matrix
 
-| [A] is diagonalizable if it is similar to a diagonal matrix
+1. [A] is diagonalizable if it is similar to a diagonal matrix
+
+$$A=Q\Lambda Q^H$$ 
 
  
 ### Singular Value Decomposition
@@ -90,18 +96,19 @@ $$A=\ \sum_{i=1}^{r}{\sigma_iu_iv_i^H}$$
 
 ### Additional Properties of the SVD
 
+1. The right singular vectors of AH are the left singular vectors of A and vice-versa
+2. The dimension of the range of A is equal to the rank of A
+3. u1, u2, ... uR are orthogonal basis vectors for the range of A
+4. u(r+1), u(r+2), ... u(M) are orthogonal basis vectors for the orthocomplement of the range of A
+5. v(r+1), v(r+2), ... v(N) are orthogonal basis vectors for the nullspace of A
+6. v1, v2, ... vR are orthogonal basis vectors for the orthocomplement of the nullspace of A
+
+
 $$Av_j=\sigma_ju_j  \ \ \ \ \ \ if\ j\in\left(1,r\right)$$
 
 $$Av_j=\sigma_ju_j=0\ \ \ \ \ \ if\ j\in(r+1,\ n)$$
 
 $$A^Hu_j=\sigma_jv_j\ \ \ \ \ \ if\ j\in(1,\ r)$$
-
-|The right singular vectors of AH are the left singular vectors of A and vice-versa
-|The dimension of the range of A is equal to the rank of A
-|$$u_1,u_2,\ldots u_r$$ are orthogonal basis vectors for the range of A
-|$$u_{r+1},u_{r+2},\ldots u_m$$ are orthogonal basis vectors for the orthocomplement of the range of A
-|$$v_{r+1},v_{r+2},\ldots u_n$$ are orthogonal basis vectors for the nullspace of A
-|$$v_1,v_2,\ldots v_r$$ are orthogonal basis vectors for the orthocomplement of the nullspace of A
 
 
 ### Orthogonal Projection Matrix 

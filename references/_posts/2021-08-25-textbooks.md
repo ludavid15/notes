@@ -11,29 +11,21 @@ These are some textbooks that I found helpful, or that were recommended to me by
 
 <!--more-->
 
-**Thermodynamics: Foundations and Applications**
+1. **Thermodynamics: Foundations and Applications**
 E.P Gyftopoulos, and G. P. Beretta
-
-**The Dynamics and Thermodynamics of Compressible Fluid Flow**
+2. **The Dynamics and Thermodynamics of Compressible Fluid Flow**
 A. H. Shapiro
-
-**Elements of Gasdynamics**
+3. **Elements of Gasdynamics**
 H.W Liempann and A. Roshko
-
-**Physics of Shock Waves and High Temperature Hydrodynamic Phenomena**
+4. **Physics of Shock Waves and High Temperature Hydrodynamic Phenomena**
 Y.B Zel'dovich and Y.P Raizer
-
-**Viscous Flow**
+5. **Viscous Flow**
 F. M. White
-
-**Fluid Mechanics**
+6. **Fluid Mechanics**
 L. D. Landau and E.M Lifshitz
-
-**Boundary Layer Theory**
+7. **Boundary Layer Theory**
 H. Schlichting
-
-**Space Mission Analysis and Design**
+8. **Space Mission Analysis and Design**
 J. Wertz
-
-**A Practical Guide to SysML**
+9. **A Practical Guide to SysML**
 Alan Moore, Rick Steiner, and Sanford Friedenthal
