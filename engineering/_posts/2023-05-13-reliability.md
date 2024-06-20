@@ -75,6 +75,8 @@ The types of failure modes will depend on the level of detail we're exploring. A
 
 For components like a resistor, which perform a pretty basic function, it's easy to capture 100% of the ways in which it can fail. But as you get more complex, (e.g. a whole circuit board), you have to start thinking about what the larger system performs. Maybe this circuit board's function is to perform convolutional encoding of your data. At this level the failure modes might be more abstract, but in theory can still be accounted for through logical induction and looking at all the individual components. 
 
+> A FMECA is like an FMEA but with the addition of a "criticality" component. This usually means assigning a numerical liklihood to a failure. In my experience, this can be a significant increase to the workload, with not so clear a return on value. It can be fine to leave this out on most programs. 
+
 
 ### Redundancy
 

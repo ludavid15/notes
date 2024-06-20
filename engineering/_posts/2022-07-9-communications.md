@@ -15,18 +15,22 @@ A random assortment of communications technology terms I've encountered over the
 
 When you are transmitting digital data, how does the reciever and transmitter agree on what constitutes a new byte? Well, one solution is to give both ends a clock set to the same frequency. Everytime a new "tic" occurs, the receiver looks at the status on the line (i.e. high or low) and records it. This is known as asynchonous communication, because the timing mechanism on the transmitter and receiver ends do not communicate with one another. 
 
+In the case of synchronous communication, we have the transmitter send a separate clock signal (e.g. a pulse) to the receiver. This pulse usually slightly leads the actual data so the receiver can "perk up its ears" after it receives the pulse. This adds a second interface, and isn't really feasible in wireless communication, but it can be used when speed and high data rate is important.
 
-## Communication Protocols
+Returning to asynchronous for a moment, one failure mode that may arise is for the two communication points to fall out of sync. To mitigate this, we often add start/end of message bit patterns that the receiver can use to get back in phase with the transmitter (e.g. like in 1553B words). Unfortunately these sync patterns take up a portion of the total bandwidth. This means we have different *interface speeds* and *data transfer speeds*. 
+
+
+## Communication Systems
+
+<hr>
 
 ### ML-STD 1553
 
-A traffic control protocol for managing information traffic from multiple sources on a shared physical line. 1553 requires a controlling bus computer (BC) and an addresses for each terminal. The underlying constraint of 1553 is that traffic is never parrallel. In other words, each terminal takes turns using the line, and ignores any information on the line while not actively in use. On any given 1553 line, there can be up to 31 *remote terminals* (RTs), each with their own *subaddresses*. Data transmission can happen in pretty much any direction:
-
-1. Controller to RT
-2. RT to Controller
-3. RT to RT
+A traffic control protocol for managing information traffic from multiple sources on a shared physical line. 1553 requires a controlling bus computer (BC) and an addresses for each terminal. The underlying constraint of 1553 is that traffic is never parrallel. In other words, each terminal takes turns using the line, and ignores any information on the line while not actively in use. On any given 1553 line, there can be up to 31 *remote terminals* (RTs), each with their own *subaddresses*. For more information, check out the full post on [1553B](/notes/1553B/).
 
 > Being an older protocol, 1553 only has a bandwidth of around 1 Mbps
+
+
 
 ### Ethernet
 
@@ -50,6 +54,10 @@ A point to point interface which transmits digital/bi-level information by chang
 
 > RS422 has a typical bandwitch of up to 10 Mbps
 
+### LVDS
+
+This stands for low voltage differential signaling, and works the same as RS-422. But LVDS uses especially low voltages, on the order of 250 mV. 
+
 ### Miscellaneous Definitions
 
 | Name      | Definition
@@ -62,7 +70,9 @@ A point to point interface which transmits digital/bi-level information by chang
 
 #### Traveling Wave Tube Amplifier
 
-Often abbreviated to just TWTA, this is a device used for amplifying radio signals. Satellites often need this since they communicate over large distances. An alternative to TWTA's are solid state amplifiers. 
+Often abbreviated to just TWTA, this is a device used for amplifying radio signals. Satellites often need this since they communicate over large distances. 
+
+> Alternatively, you can also use solid state amplifiers. 
 
 #### Waveguide
 
