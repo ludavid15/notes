@@ -11,6 +11,25 @@ Over the years, I've had the chance to lead a number of different teams. This po
 
 <!--more-->
 
+## Leadership Types
+
+Taken from a University of Michigan paper on leadership archetypes. The following four competing forces all have their time and place, and it is up to leaders to recognize and balance all four. Learning should also reflect this, i.e. true learning occurs when you have to navigate the tension across these groups, and not within any 1 particular group. 
+
+#### Robust Results
+These actions drive performance under pressure. Results are delivered through a healthy sense of competition and good judgement.
+
+#### Collaborative Communities
+This is all about building relationships, empowering people, and cultivating trust and cohesion.  However, too much comfort and a community can stop challenging each other to perform better. 
+
+#### Strategic Structures
+Structures and processes establish accountability, ensure reliable processes, and optimize efficiency. These actions create the stability to execute. 
+
+#### Creative Change
+In contrast to stability is creativity. Creative change represents the actions to enable innovation and create new opportunities.
+
+
+
+## How to Lead
 
 ### Establish Expectation
 
@@ -32,8 +51,7 @@ A more effective solution that I've found is to teach not from my own understand
 
 This way, you allow the other person to show you their perspective. Then that becomes the anchor for what you talk through next. This can be effective in one-on-one meetings, but also in group meetings, such as a backlog refinement. Instead of having the product owner ask "does this make sense?" have the dev team present their understanding of each user story. 
 
-All that said, this advice is predicated on that individual having the desire to understand "why". For those who don't seek to spend all their time wondering about the deeper questions, this may not be the best strategy. 
-
+All that said, this advice is depends on that individual having the desire to understand "why" in the first place. For those who aren't interested in learning, this probably wouldn't work. 
 
 ### Patience & Teamwork
 
@@ -41,18 +59,20 @@ There can be a lot of frustration when working on a team, but at the end of the 
 
 > *"Go alone to go fast. Go together to go far"*
 
-In other words, it's worth taking the time to teach or communicate. That being said, this stems from the personal value I put in teaching/spreading knowledge. The sentiment of this quote is nice, but the real world is more complex. Factor in finances, and there's a limit to how much time and money you can actually spend on education. Importantly, how much education you can afford is a problem to figure out well before hiring and setting project deadlines. 
+In other words, it's worth taking the time to teach or communicate. But thought the sentiment of this quote is nice, the real world is more complex. Factor in finances, and there's a limit to how much time and money you can actually spend on education. Importantly, how much education you can afford is a problem to figure out well before hiring and setting project deadlines. 
 
 
 ### Traditions & Process
 
 My senior year at UCLA, I took over as AIAA president and I made some sweeping overhauls in our club processes. Some traditions really were due for an upgrade, but all this change had the side effect of slowing us down in other unforseen ways. The whole experience made me appreciate the usefulness of tradition. Like habits, they carry some amount of momentum, and (for better or for worse) help push things along. 
 
-In industry, traditions look like processes, and based on what I understand, processes are a way to delegate work. This usually happens when someone with more expertise must rely on someone with less expertise. Creating a process helps ensure that those who do the work don't miss anything important. 
+> A good leader needs to create stability for execution, but too much stability stifles innovation.
+
+In industry, traditions look like processes, and based on what I understand, processes are a way to delegate work. This usually happens when someone with more expertise must rely on someone with less expertise. Creating a process helps ensure that those who do the work don't miss anything important. This is also a form of leadership, and one of the leadership archetypes.
 
 Personally, I've found a checklist of questions to be more useful than instructions. Things like "Did you remember to factor in the required 25% margin?". The goal is to encourage those who follow the process to learn the *why* and not just to memorize the steps. The best result is if everyone comes to know the problem well enough to no longer need the process. 
 
-The worst result is that the proces becomes a crutch, because the team no longer understand the problem enough to get things done without instructions. Maybe someone retires or leaves the team, and now everyone is blindly following a proces without understanding why it was established in the first place. In the long run, it may be beneficial to remove the old process and build up a new one from scratch that people actually understand. This is why it's so important to document rationale and to encourage new engineers to always be asking "why". 
+The worst result is that the proces becomes a crutch, because the team no longer understand the problem enough to get things done without instructions. Maybe someone retires or leaves the team, and now everyone is blindly following a proces without understanding why it was established in the first place. In the long run, it may be beneficial to remove the old process and build up a new one from scratch that people actually understand. This is why it's so important to document rationale and to encourage new engineers to always be asking "why".
 
 
 ### Changing Behavior
@@ -71,7 +91,7 @@ I won't get into details on each, but I think it's important to remember that th
 2. Many tasks require teamwork, and that may require a certain amount of social capital. This is an example of social or team ability. 
 
 
-### Talent
+## Talent
 
 There's two perspectives on the distribution of talent in the world. The first is that talent follows a normal distribution, where the majority of people fall towards the middle. In such a world, the largest benefits are reaped by "moving the middle". If you can slightly improve/support the average worker, your total output will go up, simply because of the numbers. 
 
