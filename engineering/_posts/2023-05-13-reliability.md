@@ -11,7 +11,7 @@ Reliability engineering aims to understand the probability of success over time.
 
 <!--more-->
 
-First, let's define a few terms. A **fault** is when something doens't perform as expected, regardless of the cause. A **failure** is when something is broken, which usually results in a fault. A **failure mode** is the way in which a fault occurs. 
+First, let's define a few terms. A **fault** is when something doesn't perform as expected, regardless of the cause. A **failure** is when something is broken, which usually results in a fault. A **failure mode** is the way in which a fault occurs. 
 
 
 ### Failure Rate
@@ -50,7 +50,7 @@ The above value is unitless, but you could multiply this value by 8760 for examp
 
 If we know the failure rate, how can we answer the question: What is my probability of success after (t) amount of time? We should expect that as time increases, this probability should go down. 
 
-$$R = exp^(- \lambda t)$$
+$$R = exp^{(- \lambda t)}$$
 
 
 ### More Advanced Calculations

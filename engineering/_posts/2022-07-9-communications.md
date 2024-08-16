@@ -15,7 +15,7 @@ A random assortment of communications technology terms I've encountered over the
 
 When you are transmitting digital data, how does the reciever and transmitter agree on what constitutes a new byte? Well, one solution is to give both ends a clock set to the same frequency. Everytime a new "tic" occurs, the receiver looks at the status on the line (i.e. high or low) and records it. This is known as asynchonous communication, because the timing mechanism on the transmitter and receiver ends do not communicate with one another. 
 
-In the case of synchronous communication, we have the transmitter send a separate clock signal (e.g. a pulse) to the receiver. This pulse usually slightly leads the actual data so the receiver can "perk up its ears" after it receives the pulse. This adds a second interface, and isn't really feasible in wireless communication, but it can be used when speed and high data rate is important.
+In the case of synchronous communication, we have the transmitter send a separate clock signal (e.g. a pulse) to the receiver. This pulse usually slightly leads the actual data so the receiver can "perk up its ears" after it receives the pulse. This adds a second interface, but it can be used when speed and high data rate is important.
 
 Returning to asynchronous for a moment, one failure mode that may arise is for the two communication points to fall out of sync. To mitigate this, we often add start/end of message bit patterns that the receiver can use to get back in phase with the transmitter (e.g. like in 1553B words). Unfortunately these sync patterns take up a portion of the total bandwidth. This means we have different *interface speeds* and *data transfer speeds*. 
 
