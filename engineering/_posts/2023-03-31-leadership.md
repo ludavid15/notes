@@ -31,6 +31,8 @@ In contrast to stability is creativity. Creative change represents the actions t
 
 ## How to Lead
 
+<hr>
+
 ### Establish Expectation
 
 Expectation is built on a two way street. You need to **communicate** your expectations, but also scale those expectations based on your team's ability (althought remember that this isn't necessarily a static value). 
@@ -59,7 +61,7 @@ There can be a lot of frustration when working on a team, but at the end of the 
 
 > *"Go alone to go fast. Go together to go far"*
 
-In other words, it's worth taking the time to teach or communicate. But thought the sentiment of this quote is nice, the real world is more complex. Factor in finances, and there's a limit to how much time and money you can actually spend on education. Importantly, how much education you can afford is a problem to figure out well before hiring and setting project deadlines. 
+In other words, it's worth taking the time to teach or communicate. Although the sentiment of this quote is nice, the real world is more complex. Factor in finances, and there's a limit to how much time and money you can actually spend on education. Importantly, how much education you can afford is a problem to figure out before hiring and setting project deadlines. 
 
 
 ### Traditions & Process
@@ -75,7 +77,7 @@ Personally, I've found a checklist of questions to be more useful than instructi
 The worst result is that the proces becomes a crutch, because the team no longer understand the problem enough to get things done without instructions. Maybe someone retires or leaves the team, and now everyone is blindly following a proces without understanding why it was established in the first place. In the long run, it may be beneficial to remove the old process and build up a new one from scratch that people actually understand. This is why it's so important to document rationale and to encourage new engineers to always be asking "why".
 
 
-### Changing Behavior
+### Influencing Behavior
 
 Long term sustainability is built on good habits, but how can you change a team's behavior to adopt healthier habits? The book *Influencer* by Grenny, Patterson, Maxfield, McMillan, and Switzler offers an explanation. In the book, the authors highlight six different considerations when it comes to influencing how people behave, organized in a matrix like this:
 
